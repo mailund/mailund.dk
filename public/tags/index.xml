@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Sun, 09 Sep 2018 08:02:17 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 06:32:53 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Blog</title>
       <link>https://mailund.dk/tags/blog/</link>
-      <pubDate>Sun, 09 Sep 2018 08:02:17 +0200</pubDate>
+      <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
       
       <guid>https://mailund.dk/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Writing</title>
+      <link>https://mailund.dk/tags/writing/</link>
+      <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
+      
+      <guid>https://mailund.dk/tags/writing/</guid>
       <description></description>
     </item>
     

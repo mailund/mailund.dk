@@ -86,23 +86,112 @@ ga('send', 'pageview');
 
 
 
-<section id="list">
+<article>
+
+    <h1>New Books Page</h1>
 
     
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-09-10T06:32:53&#43;02:00">Sep 10, 2018</time>
+        </li>
+        
+        
 
-    <h2>Tags</h2>
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/writing/">#writing</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/blog/">#blog</a>
+                
+            </em>
+        </li>
+        
 
+        <li>1 min read</li>
+    </ul>
+</aside>
     
 
+    <p>I have set up a page for the <a href="https://mailund.dk/books/">books I have written</a>. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.</p>
+
+<p>I&rsquo;m thinking of putting one sample chapter per book here. I need to check with my Apress contracts, but I believe I can do this as long as it is less than 10%.</p>
+
+
+</article>
+
+
+<section class="post-nav">
     <ul>
         
-            <li><a href="blog">blog</a> <span class="count">(2 entries)</span></li>
+        <li>
+            <a href="https://mailund.dk/posts/new-blog/"><i class="fa fa-chevron-circle-left"></i> New Blog</a>
+        </li>
         
-            <li><a href="writing">writing</a> <span class="count">(1 entries)</span></li>
         
     </ul>
-
 </section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
 
 
 

@@ -2,7 +2,7 @@
 title: "New Books Page"
 date: 2018-09-10T06:32:53+02:00
 draft: false
-tags: [writing, blog]
+tags: ["writing", "blog", "books"]
 ---
 
 I have set up a page for the [books I have written](https://mailund.dk/books/). Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.

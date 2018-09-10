@@ -2,6 +2,7 @@
 title = "Books"
 date = "2018-09-09"
 menu = "main"
+tags = ["books", "writing"]
 +++
 
 ## The Joys of Hashing
