@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Mailund on the Internet</title>
+    <link>https://mailund.dk/categories/</link>
+    <description>Recent content in Categories on Mailund on the Internet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
+    
+	<atom:link href="https://mailund.dk/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

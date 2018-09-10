@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mailund on the Internet</title>
+    <link>https://mailund.dk/</link>
+    <description>Recent content on Mailund on the Internet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
+    <lastBuildDate>Sun, 09 Sep 2018 08:02:17 +0200</lastBuildDate>
+    
+	<atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New Blog</title>
+      <link>https://mailund.dk/posts/new-blog/</link>
+      <pubDate>Sun, 09 Sep 2018 08:02:17 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/new-blog/</guid>
+      <description>Ok, so, I have had a lot of problems with keeping Wordpress and various plugins up to date on my old mailund.dk blog. Considering that I don&amp;rsquo;t write a whole lot of posts there, I decided that it simply wasn&amp;rsquo;t worth the effort.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://mailund.dk/about/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/about/</guid>
+      <description>Hi there,
+This is my personal blog and shouldn&amp;rsquo;t be confused with my word-webpages. I speak only for myself here, even when I write about work-related things.
+I don&amp;rsquo;t write a lot here so it is more a web-page than a blog, but I do occasionally say something about what I am working on.</description>
+    </item>
+    
+    <item>
+      <title>Books</title>
+      <link>https://mailund.dk/books/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/books/</guid>
+      <description>The Joys of Hashing  Build working implementations of hash tables, written in the C programming language. This book starts with simple first attempts devoid of collision resolution strategies, and moves through improvements and extensions illustrating different design ideas and approaches, followed by experiments to validate the choices.</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://mailund.dk/publications/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/publications/</guid>
+      <description>Textbooks 2017  Functional Data Structures in R: Advanced Statistical Programming in R  Thomas Mailund  Apress, November 18, 2017, ISBN-10: 1484231430, ISBN-13: 978-1484231432
+ Advanced Object-Oriented Programming in R: Statistical Programming for Data Science, Analysis, and Finance  Thomas Mailund  Apress, August 2, 2017, ISBN-10: 1484229185, ISBN-13: 978-1484229187</description>
+    </item>
+    
+    <item>
+      <title>Software</title>
+      <link>https://mailund.dk/software/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/software/</guid>
+      <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
+    </item>
+    
+  </channel>
+</rss>
