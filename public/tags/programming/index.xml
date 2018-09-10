@@ -22,5 +22,16 @@ I write my books in Markdown and then I process them using Pandoc. If you are no
 For that book, because it is very short, I just have a single Markdown document containing the entire book, but usually, I have one file per chapter. Pandoc doesn&amp;rsquo;t handle that, but you can cat the files before you convert the Markdown source to PDF or ePUB documents.</description>
     </item>
     
+    <item>
+      <title>Software</title>
+      <link>https://mailund.dk/software/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/software/</guid>
+      <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining). I will do my best to handle issues with older software, but some of it is simply too old for me to keep track of.
+premarkdown The premarkdown project is a preprocessor for my Markdown manuscripts. It contains code for analysing and processing Markdown files and producing one or more documents from them.
+There is a command-line tool, premd, that does the processing.</description>
+    </item>
+    
   </channel>
 </rss>
