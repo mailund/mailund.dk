@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 10 Sep 2018 09:11:42 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 14:25:40 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Premarkdown Plugins</title>
+      <link>https://mailund.dk/posts/premd-plugins/</link>
+      <pubDate>Mon, 10 Sep 2018 14:25:40 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/premd-plugins/</guid>
+      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.
+I write my books in Markdown and then I process them using Pandoc. If you are not familiar with that setup, then I have written a short book on the topic: The Beginner&amp;rsquo;s Guide to Markdown and Pandoc.
+For that book, because it is very short, I just have a single Markdown document containing the entire book, but usually, I have one file per chapter. Pandoc doesn&amp;rsquo;t handle that, but you can cat the files before you convert the Markdown source to PDF or ePUB documents.</description>
+    </item>
     
     <item>
       <title>Fluent Python</title>
@@ -17,7 +28,8 @@
       <pubDate>Mon, 10 Sep 2018 09:11:42 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/fluent-python/</guid>
-      <description>I just finished reading Fluent Python. It is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn.</description>
+      <description>I just finished reading Fluent Python. It is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn. Rather, it it covers Python topics you might use in day-to-day programming and explains how you would write code in the most Pythonic way.
+Well, it covers mostly stuff you would use in everyday programming. It also covers co-routines and meta-programming; topics I do not expect you use every day. From time to time, yes, but not every day. If you find that you need it, though, the coverage in Fluent Python is excellent.</description>
     </item>
     
     <item>
@@ -26,7 +38,8 @@
       <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/new-books-page/</guid>
-      <description>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.</description>
+      <description>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.
+I&amp;rsquo;m thinking of putting one sample chapter per book here. I need to check with my Apress contracts, but I believe I can do this as long as it is less than 10%.</description>
     </item>
     
     <item>
@@ -35,7 +48,8 @@
       <pubDate>Sun, 09 Sep 2018 08:02:17 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/new-blog/</guid>
-      <description>Ok, so, I have had a lot of problems with keeping Wordpress and various plugins up to date on my old mailund.dk blog. Considering that I don&amp;rsquo;t write a whole lot of posts there, I decided that it simply wasn&amp;rsquo;t worth the effort.</description>
+      <description>Ok, so, I have had a lot of problems with keeping Wordpress and various plugins up to date on my old mailund.dk blog. Considering that I don&amp;rsquo;t write a whole lot of posts there, I decided that it simply wasn&amp;rsquo;t worth the effort.
+On top of that, the account I had on Aarhus University&amp;rsquo;s computers, where I could ssh into a file server and put pages in public_html, will soon be removed. They are simply phasing out those computers, because few really use them any more, and while I could keep ssh access to a virtual account, I don&amp;rsquo;t think it is worth the bother to do this just to keep a homepage.</description>
     </item>
     
   </channel>

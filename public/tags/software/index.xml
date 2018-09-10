@@ -17,7 +17,9 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/software/</guid>
-      <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
+      <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining). I will do my best to handle issues with older software, but some of it is simply too old for me to keep track of.
+premarkdown The premarkdown project is a preprocessor for my Markdown manuscripts. It contains code for analysing and processing Markdown files and producing one or more documents from them.
+There is a command-line tool, premd, that does the processing.</description>
     </item>
     
   </channel>
