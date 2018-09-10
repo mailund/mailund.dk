@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Writing on Mailund on the Internet</title>
-    <link>https://mailund.dk/tags/writing/</link>
-    <description>Recent content in Writing on Mailund on the Internet</description>
+    <title>Books on Mailund on the Internet</title>
+    <link>https://mailund.dk/tags/books/</link>
+    <description>Recent content in Books on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 10 Sep 2018 06:32:53 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 09:11:42 +0200</lastBuildDate>
     
-	<atom:link href="https://mailund.dk/tags/writing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mailund.dk/tags/books/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fluent Python</title>
+      <link>https://mailund.dk/posts/fluent-python/</link>
+      <pubDate>Mon, 10 Sep 2018 09:11:42 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/fluent-python/</guid>
+      <description>I just finished reading Fluent Python. It is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn.</description>
+    </item>
     
     <item>
       <title>New Books Page</title>

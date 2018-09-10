@@ -5,6 +5,17 @@ menu = "main"
 tags = ["books", "writing"]
 +++
 
+I enjoy writing and I've written bunch of books by now. Mostly about R programming, published by Apress, but also on a few other topics.
+
+When I'm working on a book I haven't sold yet, I usually put the draft on [Leanpub](https://leanpub.com/u/mailund) where you can get it for free until it is done. Once I've sold a book, I have to pull it from Leanpub, but it is a good way to get an early copy, and a good way for me to get feedback while writing. If you get a draft there, then please let me know what you think and how I can improve it.
+
+Right now, I'm working on [The Joys of Hashing](https://amzn.to/2wZEamU) (see below for a description). It will be out next year and I still have some editing to do and one more chapter to write. Since I have already sold this book, you cannot get it on Leanpub any more.
+
+Another book I am working on is [Introduction to Computational Thinking](https://leanpub.com/comp-thinking). This covers various algorithms and some topics on how computers work and how you represent data on a computer. This is a longer book that started out as lecture notes. I have already written the chapters I need for my own teaching, but I still have a long way to go before the complete book is done. I upload new chapters as I finish them, so have a look at it.
+
+Below are a complete list of my finished books (plus books that will soon be published).
+
+
 ## The Joys of Hashing
 
 <iframe style="width:120px;height:240px;float:left;margin-right:10px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=qf_sp_asin_til&ad_type=product_link&tracking_id=mailund07-20&marketplace=amazon&region=US&placement=1484240650&asins=1484240650&linkId=8783d7603773c333e876a2e6892e4686&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">

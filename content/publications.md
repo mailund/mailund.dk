@@ -7,6 +7,12 @@ menu = "main"
 
 ## Textbooks
 
+### 2019
+* [**The Joys of Hashing: Hash Table Programming with C**](https://amzn.to/2oWoTiQ) <br/> Thomas Mailund<br/> Apress, May 14, 2019, ISBN-10: 1484240650, ISBN-13: 978-1484240656
+
+### 2018
+* [**Domain-Specific Languages in R:  Advanced Statistical Programming**](https://amzn.to/2N5r6aA) <br/> Thomas Mailund<br/> Apress, June 23, 2018, ISBN-10: 1484240049, ISBN-13: 978-1484240045
+
 ### 2017
 * [**Functional Data Structures in R: Advanced Statistical Programming in R**](http://amzn.to/2i0tPzN) <br/>
 Thomas Mailund <br/>
