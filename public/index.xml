@@ -55,7 +55,8 @@ I don&amp;rsquo;t write a lot here so it is more a web-page than a blog, but I d
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/books/</guid>
-      <description>The Joys of Hashing  Build working implementations of hash tables, written in the C programming language. This book starts with simple first attempts devoid of collision resolution strategies, and moves through improvements and extensions illustrating different design ideas and approaches, followed by experiments to validate the choices.</description>
+      <description>I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.
+When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put the draft on Leanpub where you can get it for free until it is done.</description>
     </item>
     
     <item>
@@ -64,8 +65,7 @@ I don&amp;rsquo;t write a lot here so it is more a web-page than a blog, but I d
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/publications/</guid>
-      <description>Textbooks 2017  Functional Data Structures in R: Advanced Statistical Programming in R  Thomas Mailund  Apress, November 18, 2017, ISBN-10: 1484231430, ISBN-13: 978-1484231432
- Advanced Object-Oriented Programming in R: Statistical Programming for Data Science, Analysis, and Finance  Thomas Mailund  Apress, August 2, 2017, ISBN-10: 1484229185, ISBN-13: 978-1484229187</description>
+      <description>Textbooks 2019  The Joys of Hashing: Hash Table Programming with C  Thomas Mailund Apress, May 14, 2019, ISBN-10: 1484240650, ISBN-13: 978-1484240656  2018  Domain-Specific Languages in R: Advanced Statistical Programming  Thomas Mailund Apress, June 23, 2018, ISBN-10: 1484240049, ISBN-13: 978-1484240045  2017  Functional Data Structures in R: Advanced Statistical Programming in R  Thomas Mailund  Apress, November 18, 2017, ISBN-10: 1484231430, ISBN-13: 978-1484231432</description>
     </item>
     
     <item>

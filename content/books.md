@@ -5,7 +5,7 @@ menu = "main"
 tags = ["books", "writing"]
 +++
 
-I enjoy writing and I've written bunch of books by now. Mostly about R programming, published by Apress, but also on a few other topics.
+I enjoy writing and I've written bunch of books by now. Mostly about R programming, but also on a few other topics.
 
 When I'm working on a book I haven't sold yet, I usually put the draft on [Leanpub](https://leanpub.com/u/mailund) where you can get it for free until it is done. Once I've sold a book, I have to pull it from Leanpub, but it is a good way to get an early copy, and a good way for me to get feedback while writing. If you get a draft there, then please let me know what you think and how I can improve it.
 
