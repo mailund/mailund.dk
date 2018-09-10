@@ -8,7 +8,17 @@ I have written various software over the years. You can get a list of most of it
 
 ## premarkdown
 
+The [premarkdown](https://github.com/mailund/premarkdown) project is a preprocessor for my Markdown manuscripts. It contains code for analysing and processing Markdown files and producing one or more documents from them.
+
+There is a command-line tool, `premd`, that does the processing. I call it "premed" for reasons that are lost to me, but it is my software and I can call it what I want. I can't pronounce "md" without adding a vowel, so…
+
+This tool flattens a document where different Markdown files include other files. You can add plugins to collect information about the document while it is processed.
+
+As it is right now, it is not a lot of preprocessing you can do. I plan to allow plugins to output text that will be included in the output at some point, but I first have to figure out how to do this.
+
 ## pmatch
+
+The [pmatch]() R package implements pattern-matching, similar to Haskell and SML. 
 
 ## foobox
 
