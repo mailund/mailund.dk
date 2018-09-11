@@ -5,6 +5,8 @@ menu = "main"
 tags = ["books", "writing"]
 +++
 
+
+
 I enjoy writing and I've written bunch of books by now. Mostly about R programming, but also on a few other topics.
 
 When I'm working on a book I haven't sold yet, I usually put the draft on [Leanpub](https://leanpub.com/u/mailund) where you can get it for free until it is done. Once I've sold a book, I have to pull it from Leanpub, but it is a good way to get an early copy, and a good way for me to get feedback while writing. If you get a draft there, then please let me know what you think and how I can improve it.
@@ -12,6 +14,23 @@ When I'm working on a book I haven't sold yet, I usually put the draft on [Leanp
 Right now, I'm working on [The Joys of Hashing](https://amzn.to/2wZEamU) (see below for a description). It will be out next year and I still have some editing to do and one more chapter to write. Since I have already sold this book, you cannot get it on Leanpub any more.
 
 Another book I am working on is [Introduction to Computational Thinking](https://leanpub.com/comp-thinking). This covers various algorithms and some topics on how computers work and how you represent data on a computer. This is a longer book that started out as lecture notes. I have already written the chapters I need for my own teaching, but I still have a long way to go before the complete book is done. I upload new chapters as I finish them, so have a look at it.
+
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_search_bar = "true";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_search_bar_position = "bottom";
+amzn_assoc_ad_mode = "search";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_title = "My books on Amazon";
+amzn_assoc_default_search_phrase = "Thomas Mailund";
+amzn_assoc_default_category = "Books";
+amzn_assoc_linkid = "cb757586a4f73605963ec26a1f893f16";
+amzn_assoc_default_browse_node = "283155";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
 
 Below are a complete list of my finished books (plus books that will soon be published).
 
@@ -42,6 +61,21 @@ Those with at least some prior programming experience, especially in C programmi
 [ [Amazon](https://amzn.to/2wZEamU) ]
 [ [Apress](https://www.apress.com/gp/book/9781484240656) ]
 
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_ad_mode = "manual";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_linkid = "e80589a4ac0fbcc12da80152ce1a4662";
+amzn_assoc_asins = "0262033844,032157351X,1849967202,812656217X,0201350882";
+amzn_assoc_design = "text_links";
+amzn_assoc_title = "Related books";
+amzn_assoc_rows = "4";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
 ## Domain-Specific Languages in R
 
 <iframe style="width:120px;height:240px;float:left;margin-right:10px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=qf_sp_asin_til&ad_type=product_link&tracking_id=mailund07-20&marketplace=amazon&region=US&placement=1484235878&asins=1484235878&linkId=7a244e495817e0ed4e46573a3e749a31&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
@@ -66,6 +100,21 @@ Those with prior programming experience. R knowledge is helpful but not required
 
 [ [Amazon](https://amzn.to/2CDqhAU) ]
 [ [Apress](https://www.apress.com/gp/book/9781484235874) ]
+
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_ad_mode = "manual";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_linkid = "e80589a4ac0fbcc12da80152ce1a4662";
+amzn_assoc_asins = "0321712943,1786464969,1935182455,1782160302";
+amzn_assoc_design = "text_links";
+amzn_assoc_title = "Related books";
+amzn_assoc_rows = "4";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
 
 ## Functional Data Structures in R
 
@@ -93,6 +142,21 @@ Experienced or advanced programmers with at least a comfort level with R. Some e
 [ [Amazon](https://amzn.to/2oUG2cP) ]
 [ [Apress](https://www.apress.com/gp/book/9781484231432) ]
 
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_ad_mode = "manual";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_linkid = "e80589a4ac0fbcc12da80152ce1a4662";
+amzn_assoc_asins = "0521663504,1785888730,0521513383,0201596040";
+amzn_assoc_design = "text_links";
+amzn_assoc_title = "Related books";
+amzn_assoc_rows = "4";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
 ## Metaprogramming in R
 
 <iframe style="width:120px;height:240px;float:left;margin-right:10px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=qf_sp_asin_til&ad_type=product_link&tracking_id=mailund07-20&marketplace=amazon&region=US&placement=1484228804&asins=1484228804&linkId=3989046e375c26ca2cd76c611a894457&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
@@ -118,6 +182,21 @@ Those with at least some experience with R and certainly for those with experien
 [ [Amazon](https://amzn.to/2x1cYUR) ]
 [ [Apress](https://www.apress.com/gp/book/9781484228807) ]
 
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_ad_mode = "manual";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_linkid = "e80589a4ac0fbcc12da80152ce1a4662";
+amzn_assoc_asins = "0321227255,1934356476,B000QECSC8,0387983201";
+amzn_assoc_design = "text_links";
+amzn_assoc_title = "Related books";
+amzn_assoc_rows = "4";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+
 ## Advanced Object-Oriented Programming in R
 
 <iframe style="width:120px;height:240px;float:left;margin-right:10px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=qf_sp_asin_til&ad_type=product_link&tracking_id=mailund07-20&marketplace=amazon&region=US&placement=1484229185&asins=1484229185&linkId=9b12490526f8fc3a0c63dd00ad524cea&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
@@ -141,7 +220,22 @@ Experienced programmers and for those with at least some prior experience with R
 ### Shops
 
 [ [Amazon](https://amzn.to/2wZnBbp) ]
-[ [Apess](https://www.apress.com/gp/book/9781484229187) ]
+[ [Apress](https://www.apress.com/gp/book/9781484229187) ]
+
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_ad_mode = "manual";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_linkid = "e80589a4ac0fbcc12da80152ce1a4662";
+amzn_assoc_asins = "1449359019,0201633612,0596809158,013454692X";
+amzn_assoc_design = "text_links";
+amzn_assoc_title = "Related books";
+amzn_assoc_rows = "4";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
 
 ## Functional Programming in R
 
@@ -172,6 +266,21 @@ Those with at least some experience with programming in R.
 
 [ [Amazon](https://amzn.to/2wY4m11) ]
 [ [Apress](https://www.apress.com/gp/book/9781484227459) ]
+
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_ad_mode = "manual";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_linkid = "e80589a4ac0fbcc12da80152ce1a4662";
+amzn_assoc_asins = "0201882957,1491910399,1466586966,1484220765";
+amzn_assoc_design = "text_links";
+amzn_assoc_title = "Related books";
+amzn_assoc_rows = "4";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
 
 
 ## Beginning Data Science in R
@@ -214,6 +323,8 @@ Pandoc is a tool for translating between different markup languages, such as LaT
 
 ### Shops
 
+There are only e-books of this books because I self-published it and because the print-on-demand option probably isn’t worth the cost. To read it, I would recommend using the [Kindle app](https://amzn.to/2oVRTHE) or a tablet rather than a Kindle; an actual Kindle doesn’t display code particularly nicely.
+
 [ [Amazon](https://amzn.to/2x1Httw) ]
 [ [iBooks](https://itunes.apple.com/us/book/the-beginners-guide-to-markdown-and-pandoc/id1385083866?ls=1&mt=11) ]
 [ [Leanpub](https://leanpub.com/beginners-markdown-and-pandoc) ]
@@ -228,6 +339,8 @@ You have heard about git and GitHub and want to know what the buzz is about. Tha
 
 ### Shops
 
+There are only e-books of this books because I self-published it and because the print-on-demand option probably isn’t worth the cost. To read it, I would recommend using the [Kindle app](https://amzn.to/2oVRTHE) or a tablet rather than a Kindle; an actual Kindle doesn’t display code particularly nicely.
+
 [ [Amazon](https://amzn.to/2Nt0rDY) ]
 [ [iBooks](https://itunes.apple.com/us/book/the-beginners-guide-to-github/id1385073203?ls=1&mt=11) ]
 [ [Leanpub](https://leanpub.com/beginners-github) ]
@@ -241,7 +354,25 @@ You have heard about git and GitHub and want to know what the buzz is about. Tha
 
 ### Shops
 
+There are only e-books of this books because I self-published it and because the print-on-demand option probably isn’t worth the cost. To read it, I would recommend using the [Kindle app](https://amzn.to/2oVRTHE) or a tablet rather than a Kindle; an actual Kindle doesn’t display code particularly nicely.
+
 [ [Amazon](https://amzn.to/2CBs4WT) ]
 [ [iBooks](https://itunes.apple.com/us/book/the-beginners-guide-to-todoist/id1384279780?ls=1&mt=11) ]
 [ [Leanpub](https://leanpub.com/beginners-todoist) ]
 [ [Gumroad](https://gum.co/Todoist) ]
+
+
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_ad_mode = "manual";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_linkid = "e80589a4ac0fbcc12da80152ce1a4662";
+amzn_assoc_asins = "1491952962,1491910399,1491912057,1449358659";
+amzn_assoc_design = "text_links";
+amzn_assoc_title = "Related books";
+amzn_assoc_rows = "4";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
