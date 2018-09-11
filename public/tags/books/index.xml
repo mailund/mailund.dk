@@ -17,8 +17,8 @@
       <pubDate>Mon, 10 Sep 2018 09:11:42 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/fluent-python/</guid>
-      <description>I just finished reading Fluent Python. It is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn. Rather, it it covers Python topics you might use in day-to-day programming and explains how you would write code in the most Pythonic way.
-Well, it covers mostly stuff you would use in everyday programming. It also covers co-routines and meta-programming; topics I do not expect you use every day. From time to time, yes, but not every day. If you find that you need it, though, the coverage in Fluent Python is excellent.</description>
+      <description>I just finished reading Fluent Python. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn. Rather, it covers Python topics you might use in day-to-day programming and explains how you would write code in the most Pythonic way.
+Well, it covers mostly stuff you would use in everyday programming. It also covers co-routines and meta-programming; topics I do not expect you would use every day. From time to time, yes, but not every day. If you find that you need it, though, the coverage in Fluent Python is excellent.</description>
     </item>
     
     <item>
