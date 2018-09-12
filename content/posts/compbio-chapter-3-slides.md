@@ -2,7 +2,6 @@
 title: "Slides for Computational Thinking (Chapter 3)"
 date: 2018-09-12T13:40:42+02:00
 tags: [books, writing, teaching]
-draft: true
 ---
 
 I’m teaching four weeks of a class called *Computational Thinking in Bioinformatics* this year (the other weeks are taught by colleagues).
