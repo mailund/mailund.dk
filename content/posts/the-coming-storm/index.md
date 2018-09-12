@@ -18,6 +18,10 @@ The book tells a number of stories about weather forecasting and scientist invol
 
 If you have an Audible membership and haven’t chosen your two books yet, I would strongly recommend this one.
 
+<hr/>
+If you are on goodreads, [why not friend me or follow me?](https://www.goodreads.com/author/show/15484380.Thomas_Mailund)
+<hr/>
+
 <script type="text/javascript">
 amzn_assoc_placement = "adunit0";
 amzn_assoc_tracking_id = "mailund06-20";

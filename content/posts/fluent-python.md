@@ -18,6 +18,10 @@ Other than that, the book describes the Python data model and the protocols for 
 
 It is a rather long book, but if you are interested in Python programming, it is well worth getting.
 
+<hr/>
+If you are on goodreads, [why not friend me or follow me?](https://www.goodreads.com/author/show/15484380.Thomas_Mailund)
+<hr/>
+
 <script type="text/javascript">
 amzn_assoc_placement = "adunit0";
 amzn_assoc_tracking_id = "mailund07-20";
