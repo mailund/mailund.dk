@@ -1,12 +1,12 @@
 ---
 title: "Slides for Computational Thinking (Chapter 3)"
 date: 2018-09-12T13:40:42+02:00
-tags: [books, writing, teaching]
+tags: [teaching, computational-thinking]
 ---
 
 I’m teaching four weeks of a class called *Computational Thinking in Bioinformatics* this year (the other weeks are taught by colleagues).
 
-It is this class that got me started on my book [*Introduction to Computational Thinking*](https://leanpub.com/comp-thinking). I have finished the chapters I need for the class—chapters three, four, five, seven and nine—but there is still a *looong* way to go before the book is done.
+It is this class that got me started on my book on the topic: [*Introduction to Computational Thinking*](https://leanpub.com/comp-thinking). I have finished the chapters I need for the class—chapters three, four, five, seven and nine—but there is still a *looong* way to go before the book is done.
 
 Anyway, I am not writing on the book these days, but make slides for the lectures. That takes surprisingly long time. I have grown used to having slides to pick and choose from for any lecture, but I am starting from scratch here.
 

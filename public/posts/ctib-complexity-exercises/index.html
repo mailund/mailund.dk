@@ -86,62 +86,107 @@ ga('send', 'pageview');
 
 
 
-<section id="list">
+<article>
 
+    <h1>Complexity Exercises</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-09-14T10:20:44&#43;02:00">Sep 14, 2018</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/teaching/">#teaching</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/computational-thinking/">#computational-thinking</a>
+                
+            </em>
+        </li>
+        
+
+        <li>0 min read</li>
+    </ul>
+</aside>
     
 
     
-        <h2>Posts</h2>
-    
 
-    
+</article>
 
-    
 
-    <h3>2018</h3>
+<section class="post-nav">
     <ul>
         
         <li>
-            <a href="https://mailund.dk/posts/ctib-complexity-exercises/">DRAFT: Complexity Exercises</a>
-            <time class="date-meta">Sep 14</time>
+            <a href="https://mailund.dk/posts/compbio-chapter-3-slides/"><i class="fa fa-chevron-circle-left"></i> Slides for Computational Thinking (Chapter 3)</a>
         </li>
         
-        <li>
-            <a href="https://mailund.dk/posts/compbio-chapter-3-slides/">Slides for Computational Thinking (Chapter 3)</a>
-            <time class="date-meta">Sep 12</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/the-coming-storm/">The Coming Storm</a>
-            <time class="date-meta">Sep 12</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/premd-plugins/">Premarkdown Plugins</a>
-            <time class="date-meta">Sep 10</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/fluent-python/">Fluent Python</a>
-            <time class="date-meta">Sep 10</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/new-books-page/">New Books Page</a>
-            <time class="date-meta">Sep 10</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/new-blog/">New Blog</a>
-            <time class="date-meta">Sep 9</time>
-        </li>
         
     </ul>
+</section>
     
-    
-
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
 </section>
 
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
 
 
 
