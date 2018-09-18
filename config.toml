@@ -21,6 +21,7 @@ pygmentsStyle = "friendly"
     linkedin = "thomas-mailund-94153b1"
     facebook = "mailund"
     patreon = "mailund"
+    goodreads = "15484380.Thomas_Mailund"
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
