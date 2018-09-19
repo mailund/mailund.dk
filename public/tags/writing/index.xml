@@ -6,21 +6,10 @@
     <description>Recent content in Writing on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Wed, 12 Sep 2018 13:40:42 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 14:25:40 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/writing/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Slides for Computational Thinking (Chapter 3)</title>
-      <link>https://mailund.dk/posts/compbio-chapter-3-slides/</link>
-      <pubDate>Wed, 12 Sep 2018 13:40:42 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/compbio-chapter-3-slides/</guid>
-      <description>I’m teaching four weeks of a class called Computational Thinking in Bioinformatics this year (the other weeks are taught by colleagues).
-It is this class that got me started on my book Introduction to Computational Thinking. I have finished the chapters I need for the class—chapters three, four, five, seven and nine—but there is still a looong way to go before the book is done.
-Anyway, I am not writing on the book these days, but make slides for the lectures. That takes surprisingly long time. I have grown used to having slides to pick and choose from for any lecture, but I am starting from scratch here.</description>
-    </item>
     
     <item>
       <title>Premarkdown Plugins</title>
