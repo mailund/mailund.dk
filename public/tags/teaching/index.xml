@@ -6,10 +6,20 @@
     <description>Recent content in Teaching on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 14 Sep 2018 10:20:44 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 19 Sep 2018 16:41:37 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Exercises (CT chapter 3)</title>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter3/</link>
+      <pubDate>Wed, 19 Sep 2018 16:41:37 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter3/</guid>
+      <description>I have cleaned up the exercises for chapter three of Introduction to Computational Thinking. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below. I have listed my answers below the exercises, so if you want to do the exercises, then stop in time.
+Exercises for “Introduction to Algorithms” Below or above Here&amp;rsquo;s a game you can play with a friend: one of you think of a number between 1 and 20, both 1 and 20 included.</description>
+    </item>
     
     <item>
       <title>Complexity Exercises</title>

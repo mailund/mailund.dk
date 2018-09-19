@@ -1,0 +1,2 @@
+
+[Introduction to Computational Thinking](https://leanpub.com/comp-thinking)
