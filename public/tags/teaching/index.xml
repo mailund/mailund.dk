@@ -6,10 +6,21 @@
     <description>Recent content in Teaching on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Wed, 19 Sep 2018 16:41:37 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 19 Sep 2018 17:04:47 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Slides (CT chapters 3 and 4)</title>
+      <link>https://mailund.dk/posts/ctib-slides-chp3-and-4/</link>
+      <pubDate>Wed, 19 Sep 2018 17:04:47 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/ctib-slides-chp3-and-4/</guid>
+      <description>I played around a little with my slides for chapter three of Introduction to Computational Thinking and made slides for chapter four.
+It takes surprisingly long to make these; I had expected to be done with the five chapters I use in my class this year a few weeks ago but I still have three chapters to go. I won’t run out of time—I have plenty of time to make slides between the first and last lecture—but it is eating into time I really should be using on The Joys of Hashing where a deadline is coming up.
+Anyway, here are the slides—let me know if you spot any obvious errors so I can fix them before my lectures.</description>
+    </item>
     
     <item>
       <title>Exercises (CT chapter 3)</title>

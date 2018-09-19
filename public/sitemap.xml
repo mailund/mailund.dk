@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mailund.dk/posts/ctib-slides-chp3-and-4/</loc>
+    <lastmod>2018-09-19T17:04:47+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/ctib-exercises-chapter3/</loc>
     <lastmod>2018-09-19T16:41:37+02:00</lastmod>
   </url>
@@ -81,19 +86,19 @@
   
   <url>
     <loc>https://mailund.dk/tags/computational-thinking/</loc>
-    <lastmod>2018-09-19T16:41:37+02:00</lastmod>
+    <lastmod>2018-09-19T17:04:47+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/</loc>
-    <lastmod>2018-09-19T16:41:37+02:00</lastmod>
+    <lastmod>2018-09-19T17:04:47+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/posts/</loc>
-    <lastmod>2018-09-19T16:41:37+02:00</lastmod>
+    <lastmod>2018-09-19T17:04:47+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -129,7 +134,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/teaching/</loc>
-    <lastmod>2018-09-19T16:41:37+02:00</lastmod>
+    <lastmod>2018-09-19T17:04:47+02:00</lastmod>
     <priority>0</priority>
   </url>
   
