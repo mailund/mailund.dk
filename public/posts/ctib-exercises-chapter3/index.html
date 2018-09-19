@@ -144,9 +144,9 @@ ga('send', 'pageview');
 
 <p>I have cleaned up the exercises for chapter three of <a href="https://leanpub.com/comp-thinking">Introduction to Computational Thinking</a>. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below. I have listed my answers below the exercises, so if you want to do the exercises, then stop in time.</p>
 
-<h2 id="exercises-for-introduction-to-algorithms">Exercises for “Introduction to Algorithms”</h2>
+<p>As always, if you have comments or criticisms, or just suggestions for more exercises, I’m dying to hear.</p>
 
-<h3 id="below-or-above">Below or above</h3>
+<h2 id="below-or-above">Below or above</h2>
 
 <p>Here&rsquo;s a game you can play with a friend: one of you think of a number between 1 and 20, both 1 and 20 included. The other has to figure out what that number is. He or she can guess at the number, and after guessing will be told if the guess is correct,  too high, or is too low. Unless the guess is correct, the guesser must try again until the guess <em>is</em> correct.</p>
 
@@ -235,7 +235,7 @@ guess <span style="color:#666">=</span> input_integer(<span style="color:#4070a0
 
 <p>When iterating from 20 and down, for the second strategy, you should always get the result <code>&quot;high&quot;</code> when you ask about your guess, so you can use a <code>for</code> loop and not worry about the actual result form <code>input_selection</code>. When you implement strategy number three, however, you need to keep track of a candidate interval with a lower bound, initially 1, and an upper bound, initially 20. When you guess too high, you should lower your upper bound to the value you just guessed minus one (no need to include the guess we know is too high). When you guess to low, you must increase your lower bound to the number you just guessed plus one. In both cases, after updating the interval, you should guess for the middle point in the new range. When you compute the middle value in your interval, you can use</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">guess <span style="color:#666">=</span> <span style="color:#007020">int</span>(upper_bound <span style="color:#666">+</span> lower_bound) <span style="color:#666">/</span> <span style="color:#40a070">2</span>)</code></pre></div>
-<h3 id="finding-square-roots">Finding square roots</h3>
+<h2 id="finding-square-roots">Finding square roots</h2>
 
 <p>Given a positive number S &gt; 0, we want to compute its positive square root, √S. We don&rsquo;t need our answer to be perfectly accurate. Using floating point numbers with a finite number of bits to represent the uncountable set of real numbers prevents this anyway. However, we want to be able to put an upper bound on the error we get, ε, such that we are guaranteed that for our result, S’, we have |S - S’| &lt; ε.</p>
 
@@ -271,7 +271,7 @@ guess <span style="color:#666">=</span> input_integer(<span style="color:#4070a0
 
 <p><strong>Exercise:</strong> Implement and test this algorithm.</p>
 
-<h3 id="changing-base">Changing base</h3>
+<h2 id="changing-base">Changing base</h2>
 
 <p>When we write a number such as 123 we usually mean this to be in base 10, that is, we implicitly understand this to be the number 3 × 10⁰ + 2 × 10¹ + 1 × 10². Starting from the right and moving towards the left, each digit represents an increasing power of tens. The number <em>could</em> also be in octal, although then we would usually write it like 123₈. If the number were in octal, each digit would represent a power of eight, and the number should be understood as 3 × 8⁰ + 2 × 8¹ + 3 × 8².</p>
 
@@ -305,7 +305,7 @@ digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> 
 
 <p><strong>Exercise:</strong> Flesh out an algorithm, based on the observations above, that can print any integer in any base b &lt;= 16. Show that your method terminates and outputs the correct string of digits.</p>
 
-<h3 id="sieve-of-eratosthenes">Sieve of Eratosthenes</h3>
+<h2 id="sieve-of-eratosthenes">Sieve of Eratosthenes</h2>
 
 <p>The <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a> is an early algorithm for computing all prime numbers less than some upper bound n. It works as follows: we start with a set of candidates for numbers that could be primes, and since we do not a priori know which numbers will be primes we start with all the natural numbers from two and up to n.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">candidates <span style="color:#666">=</span> <span style="color:#007020">list</span>(<span style="color:#007020">range</span>(<span style="color:#40a070">2</span>, n <span style="color:#666">+</span> <span style="color:#40a070">1</span>))</code></pre></div>
@@ -329,7 +329,7 @@ digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> 
 
 <p><strong>Exercise:</strong> Implement and test this algorithm.</p>
 
-<h3 id="longest-increasing-substring">Longest increasing substring</h3>
+<h2 id="longest-increasing-substring">Longest increasing substring</h2>
 
 <p>Assume you have a list of numbers, for example</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#666">=</span> [<span style="color:#40a070">12</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">32</span>, <span style="color:#40a070">65</span>, <span style="color:#40a070">78</span>, <span style="color:#40a070">23</span>, <span style="color:#40a070">35</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">57</span>]</code></pre></div>
@@ -337,7 +337,7 @@ digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> 
 
 <p><em>Hint:</em> One way to approach this is to consider the longest sequence seen so far and the longest sequence up to a given index into <code>x</code>. From this, you can formalise invariants that should get you through.</p>
 
-<h3 id="computing-power-sets">Computing power-sets</h3>
+<h2 id="computing-power-sets">Computing power-sets</h2>
 
 <p>The <em>powerset</em> P(S) of a set S is the set that contains all possible subsets of S. For example, if S={a,b,c}, then</p>
 
@@ -355,15 +355,15 @@ digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> 
 
 <p><em>Hint:</em> This problem is harder than the previous one, but you can brute force it by generating <em>all</em> subsequences and checking if the invariant is satisfied. This is a <em>very</em> inefficient approach, but we need to learn a little more about algorithms before we will see a more efficient solution.</p>
 
-<h3 id="merging">Merging</h3>
+<h2 id="merging">Merging</h2>
 
 <p>Assume you have two sorted lists, <code>x</code> and <code>y</code>, and you want to combine them into a new sequence, <code>z</code>, that contains all the elements from <code>x</code> and all the elements from <code>y</code>, in sorted order. You can create <code>z</code> by <em>merging</em> <code>x</code> and <code>y</code> as follows: have an index, <code>i</code>, into <code>x</code> and another index, <code>j</code>, into <code>y</code>—both initially zero—and compare <code>x[i]</code> to <code>y[j]</code>. If <code>x[i] &lt; y[j]</code>, then append <code>x[i]</code> to <code>z</code> and increment <code>i</code> by one. Otherwise, append <code>y[j]</code> to <code>z</code> and increment <code>j</code>. If either <code>i</code> reaches the length of <code>x</code> or <code>j</code> reaches the end of <code>y</code>, simply copy the remainder of the other list to <code>z</code>.</p>
 
 <p><strong>Exercise:</strong> Argue why this approach creates the correct <code>z</code> list and why it terminates.</p>
 
-<h2 id="answers">Answers</h2>
+<h1 id="answers">Answers</h1>
 
-<h3 id="below-or-above-1">Below or above</h3>
+<h2 id="below-or-above-1">Below or above</h2>
 
 <p><strong>Exercise:</strong> Prove that all three strategies terminate and with the correct answer, i.e. they are algorithms for solving this problem.</p>
 
@@ -437,7 +437,7 @@ upper_bound <span style="color:#666">=</span> <span style="color:#40a070">20</sp
         lower_bound <span style="color:#666">=</span> guess <span style="color:#666">+</span> <span style="color:#40a070">1</span>
     <span style="color:#007020;font-weight:bold">else</span>:
         upper_bound <span style="color:#666">=</span> guess <span style="color:#666">-</span> <span style="color:#40a070">1</span></code></pre></div>
-<h3 id="finding-square-roots-1">Finding square roots</h3>
+<h2 id="finding-square-roots-1">Finding square roots</h2>
 
 <p><strong>Exercise:</strong> From the description alone you can argue that <em>if</em> the method terminates, it will report a correct answer. Prove that the algorithm is correct.</p>
 
@@ -488,7 +488,7 @@ x <span style="color:#666">=</span> upper_bound <span style="color:#666">/</span
 <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;Results:&#34;</span>)
 <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;Python suggests {:.5f}&#34;</span><span style="color:#666">.</span>format(sqrt(<span style="color:#40a070">2</span>)))
 <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;Babylonian method gave us {:.5f}&#34;</span><span style="color:#666">.</span>format(x))</code></pre></div>
-<h3 id="changing-base-1">Changing base</h3>
+<h2 id="changing-base-1">Changing base</h2>
 
 <p>My implementation looks like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits <span style="color:#666">=</span> {}
@@ -545,7 +545,7 @@ base_b <span style="color:#666">=</span> []
     base_b<span style="color:#666">.</span>append(digits[n <span style="color:#666">%</span> b])
     n <span style="color:#666">//=</span> b
 <span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;in base&#34;</span>, b, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;is&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))</code></pre></div>
-<h3 id="sieve-of-eratosthenes-1">Sieve of Eratosthenes</h3>
+<h2 id="sieve-of-eratosthenes-1">Sieve of Eratosthenes</h2>
 
 <p>I will require the following loop invariants:</p>
 
@@ -580,7 +580,7 @@ primes <span style="color:#666">=</span> []
     primes<span style="color:#666">.</span>append(p)</code></pre></div>
 <p>Pick <code>n</code> and try it out.</p>
 
-<h3 id="longest-increasing-substring-1">Longest increasing substring</h3>
+<h2 id="longest-increasing-substring-1">Longest increasing substring</h2>
 
 <p>My implementation looks like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#666">=</span> [<span style="color:#40a070">12</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">32</span>, <span style="color:#40a070">65</span>, <span style="color:#40a070">78</span>, <span style="color:#40a070">23</span>, <span style="color:#40a070">35</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">57</span>]
@@ -611,7 +611,7 @@ current_from <span style="color:#666">=</span> <span style="color:#40a070">0</sp
 		current_from, current_len <span style="color:#666">=</span> i, <span style="color:#40a070">1</span>
 
 <span style="color:#007020;font-weight:bold">print</span>(longest_from, longest_to, x[longest_from:longest_to])</code></pre></div>
-<h3 id="computing-power-sets-1">Computing power-sets</h3>
+<h2 id="computing-power-sets-1">Computing power-sets</h2>
 
 <p>The hint tells you that there is a close correspondence between the powers of a set, S, and the binary representation of all the numbers from zero to <code>len(S)</code>.</p>
 
@@ -660,7 +660,7 @@ m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span st
 <span style="color:#007020;font-weight:bold">print</span>()
 
 <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;powS =&#34;</span>, powS)</code></pre></div>
-<h3 id="longest-increasing-subsequence-1">Longest increasing subsequence</h3>
+<h2 id="longest-increasing-subsequence-1">Longest increasing subsequence</h2>
 
 <p>My solution is this implementation (I explain it below):</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#666">=</span> [<span style="color:#40a070">12</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">32</span>, <span style="color:#40a070">65</span>, <span style="color:#40a070">78</span>, <span style="color:#40a070">23</span>, <span style="color:#40a070">35</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">57</span>]
@@ -789,7 +789,7 @@ m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span st
 <p>When you are done, you can output the indices and corresponding values like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vals <span style="color:#666">=</span> [x[i] <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> best_indices]
 <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;increasing sequence:&#34;</span>, best_indices, vals)</code></pre></div>
-<h3 id="merging-1">Merging</h3>
+<h2 id="merging-1">Merging</h2>
 
 <p>To make the algorithm concrete, I will list it as I would implement it:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n, m <span style="color:#666">=</span> <span style="color:#007020">len</span>(x), <span style="color:#007020">len</span>(y)
@@ -812,13 +812,13 @@ z <span style="color:#666">=</span> []
 
 <p>Now, let us prove termination and correctness…</p>
 
-<h4 id="termination">Termination</h4>
+<h3 id="termination">Termination</h3>
 
 <p>Termination is the easiest to handle. Let <code>n = len(x)</code> and <code>m = len(y)</code>, then the termination function is <code>t(i,n,j,m) = (n-i) + (m-j)</code>. In each iteration we either increase <code>i</code> by one or we increase <code>j</code> by one; in either case we decrease <code>t(i,n,j,m)</code> by one.</p>
 
 <p>We never actually reach zero with this termination function, we will leave the loop when <em>either</em> <code>i == n</code> or <code>j == m</code>, but <em>if</em> we reached zero, then the loop-condition would be false, so <code>t</code> works as a termination function.</p>
 
-<h4 id="correctness">Correctness</h4>
+<h3 id="correctness">Correctness</h3>
 
 <p>The pre-condition for the loop is that <code>x</code> and <code>y</code> are sorted. We will use the invariant that <code>z</code> contains the elements in <code>x[:i]</code> and <code>y[:j]</code> in sorted order. NB: with this slicing notation, <code>i</code> and <code>j</code> are <em>not</em> included in the slices, so <code>x[i]</code> and <code>y[j]</code> are not yet in <code>z</code>.</p>
 

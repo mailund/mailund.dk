@@ -6,9 +6,9 @@ tags: [teaching, computational-thinking]
 
 I have cleaned up the exercises for chapter three of [Introduction to Computational Thinking](https://leanpub.com/comp-thinking). I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below. I have listed my answers below the exercises, so if you want to do the exercises, then stop in time.
 
-## Exercises for “Introduction to Algorithms”
+As always, if you have comments or criticisms, or just suggestions for more exercises, I’m dying to hear.
 
-### Below or above
+## Below or above
 
 Here's a game you can play with a friend: one of you think of a number between 1 and 20, both 1 and 20 included. The other has to figure out what that number is. He or she can guess at the number, and after guessing will be told if the guess is correct,  too high, or is too low. Unless the guess is correct, the guesser must try again until the guess *is* correct.
 
@@ -110,7 +110,7 @@ guess = int(upper_bound + lower_bound) / 2)
 
 
 
-### Finding square roots
+## Finding square roots
 
 Given a positive number S > 0, we want to compute its positive square root, √S. We don't need our answer to be perfectly accurate. Using floating point numbers with a finite number of bits to represent the uncountable set of real numbers prevents this anyway. However, we want to be able to put an upper bound on the error we get, ε, such that we are guaranteed that for our result, S’, we have |S - S’| < ε.
 
@@ -143,7 +143,7 @@ In each iteration, we update the interval in which we know √S resides by cutti
 **Exercise:** Implement and test this algorithm.
 
 
-### Changing base
+## Changing base
 
 When we write a number such as 123 we usually mean this to be in base 10, that is, we implicitly understand this to be the number 3 × 10⁰ + 2 × 10¹ + 1 × 10². Starting from the right and moving towards the left, each digit represents an increasing power of tens. The number *could* also be in octal, although then we would usually write it like 123₈. If the number were in octal, each digit would represent a power of eight, and the number should be understood as 3 × 8⁰ + 2 × 8¹ + 3 × 8².
 
@@ -186,7 +186,7 @@ If you iteratively extract the lowest digit and put it in a list and then reduce
 **Exercise:** Flesh out an algorithm, based on the observations above, that can print any integer in any base b <= 16. Show that your method terminates and outputs the correct string of digits.
 
 
-### Sieve of Eratosthenes
+## Sieve of Eratosthenes
 
 The [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) is an early algorithm for computing all prime numbers less than some upper bound n. It works as follows: we start with a set of candidates for numbers that could be primes, and since we do not a priori know which numbers will be primes we start with all the natural numbers from two and up to n.
 
@@ -217,7 +217,7 @@ We will now loop as long as there are candidates left. In the loop, we take the 
 **Exercise:** Implement and test this algorithm.
 
 
-### Longest increasing substring
+## Longest increasing substring
 
 Assume you have a list of numbers, for example
 
@@ -229,7 +229,7 @@ x = [12, 45, 32, 65, 78, 23, 35, 45, 57]
 
 *Hint:* One way to approach this is to consider the longest sequence seen so far and the longest sequence up to a given index into `x`. From this, you can formalise invariants that should get you through.
 
-### Computing power-sets
+## Computing power-sets
 
 
 The *powerset* P(S) of a set S is the set that contains all possible subsets of S. For example, if S={a,b,c}, then 
@@ -249,15 +249,15 @@ Notice that this problem has a different name than "longest increasing *substrin
 
 *Hint:* This problem is harder than the previous one, but you can brute force it by generating *all* subsequences and checking if the invariant is satisfied. This is a *very* inefficient approach, but we need to learn a little more about algorithms before we will see a more efficient solution.
 
-### Merging
+## Merging
 
 Assume you have two sorted lists, `x` and `y`, and you want to combine them into a new sequence, `z`, that contains all the elements from `x` and all the elements from `y`, in sorted order. You can create `z` by *merging* `x` and `y` as follows: have an index, `i`, into `x` and another index, `j`, into `y`—both initially zero—and compare `x[i]` to `y[j]`. If `x[i] < y[j]`, then append `x[i]` to `z` and increment `i` by one. Otherwise, append `y[j]` to `z` and increment `j`. If either `i` reaches the length of `x` or `j` reaches the end of `y`, simply copy the remainder of the other list to `z`.
 
 **Exercise:** Argue why this approach creates the correct `z` list and why it terminates.
 
-## Answers
+# Answers
 
-### Below or above
+## Below or above
 
 **Exercise:** Prove that all three strategies terminate and with the correct answer, i.e. they are algorithms for solving this problem.
 
@@ -344,7 +344,7 @@ while True:
 ```
 
 
-### Finding square roots
+## Finding square roots
 
 **Exercise:** From the description alone you can argue that *if* the method terminates, it will report a correct answer. Prove that the algorithm is correct.
 
@@ -403,7 +403,7 @@ print("Python suggests {:.5f}".format(sqrt(2)))
 print("Babylonian method gave us {:.5f}".format(x))
 ```
 
-### Changing base
+## Changing base
 
 My implementation looks like this:
 
@@ -464,7 +464,7 @@ while n > 0:
 print(m, "in base", b, "is", "".join(base_b[::-1]))
 ```
 
-### Sieve of Eratosthenes
+## Sieve of Eratosthenes
 
 I will require the following loop invariants:
 
@@ -502,7 +502,7 @@ while len(candidates) > 0:
 Pick `n` and try it out.
 
 
-### Longest increasing substring
+## Longest increasing substring
 
 My implementation looks like this:
 
@@ -538,7 +538,7 @@ for i in range(1, len(x)):
 print(longest_from, longest_to, x[longest_from:longest_to])
 ```
 
-### Computing power-sets
+## Computing power-sets
 
 The hint tells you that there is a close correspondence between the powers of a set, S, and the binary representation of all the numbers from zero to `len(S)`.
 
@@ -596,7 +596,7 @@ print()
 print("powS =", powS)
 ```
 
-### Longest increasing subsequence
+## Longest increasing subsequence
 
 My solution is this implementation (I explain it below):
 
@@ -753,7 +753,7 @@ vals = [x[i] for i in best_indices]
 print("increasing sequence:", best_indices, vals)
 ```
 
-### Merging
+## Merging
 
 To make the algorithm concrete, I will list it as I would implement it:
 
@@ -780,13 +780,13 @@ You can find this implementation in [merge.py](merge.py).
 
 Now, let us prove termination and correctness…
 
-#### Termination
+### Termination
 
 Termination is the easiest to handle. Let `n = len(x)` and `m = len(y)`, then the termination function is `t(i,n,j,m) = (n-i) + (m-j)`. In each iteration we either increase `i` by one or we increase `j` by one; in either case we decrease `t(i,n,j,m)` by one. 
 
 We never actually reach zero with this termination function, we will leave the loop when *either* `i == n` or `j == m`, but *if* we reached zero, then the loop-condition would be false, so `t` works as a termination function.
 
-#### Correctness
+### Correctness
 
 The pre-condition for the loop is that `x` and `y` are sorted. We will use the invariant that `z` contains the elements in `x[:i]` and `y[:j]` in sorted order. NB: with this slicing notation, `i` and `j` are *not* included in the slices, so `x[i]` and `y[j]` are not yet in `z`.
 
