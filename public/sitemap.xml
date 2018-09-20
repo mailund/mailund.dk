@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mailund.dk/posts/scoping-rules-and-nse/</loc>
+    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/ctib-slides-chp3-and-4/</loc>
     <lastmod>2018-09-19T17:04:47+02:00</lastmod>
   </url>
@@ -92,13 +97,19 @@
   
   <url>
     <loc>https://mailund.dk/</loc>
-    <lastmod>2018-09-19T17:04:47+02:00</lastmod>
+    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/categories/non-standard-evaluation/</loc>
+    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/posts/</loc>
-    <lastmod>2018-09-19T17:04:47+02:00</lastmod>
+    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -117,6 +128,12 @@
   <url>
     <loc>https://mailund.dk/tags/science/</loc>
     <lastmod>2018-09-12T08:06:58+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/scope-rules/</loc>
+    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
     <priority>0</priority>
   </url>
   
