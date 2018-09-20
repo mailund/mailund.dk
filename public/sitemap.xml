@@ -102,12 +102,6 @@
   </url>
   
   <url>
-    <loc>https://mailund.dk/categories/non-standard-evaluation/</loc>
-    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://mailund.dk/posts/</loc>
     <lastmod>2018-09-20T05:00:15+02:00</lastmod>
     <priority>0</priority>
@@ -115,7 +109,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/programming/</loc>
-    <lastmod>2018-09-10T14:25:40+02:00</lastmod>
+    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -126,14 +120,14 @@
   </url>
   
   <url>
-    <loc>https://mailund.dk/tags/science/</loc>
-    <lastmod>2018-09-12T08:06:58+02:00</lastmod>
+    <loc>https://mailund.dk/tags/rstats/</loc>
+    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mailund.dk/tags/scope-rules/</loc>
-    <lastmod>2018-09-20T05:00:15+02:00</lastmod>
+    <loc>https://mailund.dk/tags/science/</loc>
+    <lastmod>2018-09-12T08:06:58+02:00</lastmod>
     <priority>0</priority>
   </url>
   

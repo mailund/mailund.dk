@@ -1,8 +1,7 @@
 +++
 title = "Scoping Rules and NSE"
 date = 2018-09-20T05:00:15+02:00
-tags = ["scope-rules"]
-categories = ["Non-standard evaluation"]
+tags = ["programming", "rstats"]
 draft = false
 +++
 
