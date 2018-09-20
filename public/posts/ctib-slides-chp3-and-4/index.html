@@ -108,72 +108,136 @@ ga('send', 'pageview');
 
 
 
-<section id="list">
+<article>
+
+    <h1>Slides (CT chapters 3 and 4)</h1>
 
     
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-09-19T17:04:47&#43;02:00">Sep 19, 2018</time>
+        </li>
+        
+        
 
-    
-        <h2>Posts</h2>
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/teaching/">#teaching</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/computational-thinking/">#computational-thinking</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
     
 
-    
+    <p>I played around a little with my slides for chapter three of <a href="https://leanpub.com/comp-thinking"><em>Introduction to Computational Thinking</em></a> and made slides for chapter four.</p>
 
-    
+<p>It takes surprisingly long to make these; I had expected to be done with the five chapters I use in my class this year a few weeks ago but I still have three chapters to go. I won’t run out of time—I have plenty of time to make slides between the first and last lecture—but it is eating into time I really should be using on <a href="https://amzn.to/2pngZQ0"><em>The Joys of Hashing</em></a> where a deadline is coming up.</p>
 
-    <h3>2018</h3>
+<p>Anyway, here are the slides—let me know if you spot any obvious errors so I can fix them before my lectures.</p>
+
+<ul>
+<li><strong>Chapter 3</strong> — <em>Introduction to Algorithms</em>
+
+<ul>
+<li><a href="https://bit.ly/2xmDIQE">Slides (Keynote)</a></li>
+<li><a href="https://bit.ly/2MNLYhe">Slides (PDF)</a></li>
+<li><a href="https://bit.ly/2D9ORta">Handouts</a></li>
+<li><a href="https://bit.ly/2QHe94P">Handouts with notes</a></li>
+</ul></li>
+<li><strong>Chapter 4</strong> — <em>Algorithmic Efficiency</em>
+
+<ul>
+<li><a href="https://bit.ly/2QJpktO">Slides (Keynote)</a></li>
+<li><a href="https://bit.ly/2MMqYYf">Slides (PDF)</a></li>
+<li><a href="https://bit.ly/2MMrky3">Handouts</a></li>
+<li><a href="https://bit.ly/2PMMJcA">Handouts with notes</a></li>
+</ul></li>
+</ul>
+
+<hr/>
+
+<p><small>If you liked what you read, and want more like it, consider supporting me at <a href="https://www.patreon.com/mailund">Patreon</a>.</small>
+<hr/></p>
+
+
+</article>
+
+
+<section class="post-nav">
     <ul>
         
         <li>
-            <a href="https://mailund.dk/posts/ctib-slides-chp3-and-4/">Slides (CT chapters 3 and 4)</a>
-            <time class="date-meta">Sep 19</time>
+            <a href="https://mailund.dk/posts/ctib-exercises-chapter3/"><i class="fa fa-chevron-circle-left"></i> Exercises (CT chapter 3)</a>
         </li>
         
-        <li>
-            <a href="https://mailund.dk/posts/ctib-exercises-chapter3/">Exercises (CT chapter 3)</a>
-            <time class="date-meta">Sep 19</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/ctib-complexity-exercises/">Complexity Exercises</a>
-            <time class="date-meta">Sep 14</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/compbio-chapter-3-slides/">Slides for Computational Thinking (Chapter 3)</a>
-            <time class="date-meta">Sep 12</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/the-coming-storm/">The Coming Storm</a>
-            <time class="date-meta">Sep 12</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/premd-plugins/">Premarkdown Plugins</a>
-            <time class="date-meta">Sep 10</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/fluent-python/">Fluent Python</a>
-            <time class="date-meta">Sep 10</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/new-books-page/">New Books Page</a>
-            <time class="date-meta">Sep 10</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/new-blog/">New Blog</a>
-            <time class="date-meta">Sep 9</time>
-        </li>
         
     </ul>
+</section>
     
-    
-
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
 </section>
 
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
 
 
 
