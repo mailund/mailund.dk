@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.40.2" />
+  <meta name="generator" content="Hugo 0.37.1" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -120,16 +120,26 @@ ga('send', 'pageview');
         </li>
         
         
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">programming</a>
+                
+                    , 
+                    <a href="https://mailund.dk/categories/rstats/">rstats</a>
+                
+            </em>
+        </li>
+        
 
         
         <li>
             <em>
                 
                     
-                    <a href="https://mailund.dk/tags/programming/">#programming</a>
-                
-                    , 
-                    <a href="https://mailund.dk/tags/rstats/">#rstats</a>
+                    <a href="https://mailund.dk/tags/scope-rules/">#scope-rules</a>
                 
             </em>
         </li>
@@ -314,9 +324,9 @@ x <span style="color:#666">+</span> y</code></pre></div>
 <pre><code>## [1] 8
 </code></pre>
 
-<p>but don&rsquo;t confuse the two. When you write <code>expr(x + y)</code> you give <code>expr</code> a value. Well, strictly speaking you give it a promise, but it amounts to a value because <code>expr</code> doesn&rsquo;t capture it and make it into a quoted expression.</p>
+<p>but don&rsquo;t confuse the two. When you write <code>eval(x + y)</code> you give <code>eval</code> a value. Well, strictly speaking you give it a promise, but it amounts to a value because <code>expr</code> doesn&rsquo;t capture it and make it into a quoted expression.</p>
 
-<p>When you use <code>expr(x + y)</code> the expression <code>x + y</code> is, conceptually, evaluated before it is passed to <code>expr</code>. If you change <code>x</code> or <code>y</code> it doesn&rsquo;t change that value. If you create the quoted expression <code>quote(x + y)</code> it <em>isn&rsquo;t</em> evaluated before you explicitly do so, and if you change <code>x</code> or <code>y</code> before you evaluate the expression, that affects what the expression evaluates to.</p>
+<p>When you use <code>eval(x + y)</code> the expression <code>x + y</code> is, conceptually, evaluated before it is passed to <code>eval</code>. If you change <code>x</code> or <code>y</code> it doesn&rsquo;t change that value. If you create the quoted expression <code>quote(x + y)</code> it <em>isn&rsquo;t</em> evaluated before you explicitly do so, and if you change <code>x</code> or <code>y</code> before you evaluate the expression, that affects what the expression evaluates to.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">val <span style="color:#666">&lt;-</span> x <span style="color:#666">+</span> y
 ex <span style="color:#666">&lt;-</span> <span style="color:#007020">quote</span>(x <span style="color:#666">+</span> y)
 x <span style="color:#666">&lt;-</span> <span style="color:#40a070">2</span> <span style="color:#666">*</span> x
@@ -331,7 +341,7 @@ x <span style="color:#666">&lt;-</span> <span style="color:#40a070">2</span> <sp
 
 <p>When we run the code</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">val <span style="color:#666">&lt;-</span> x <span style="color:#666">+</span> y</code></pre></div>
-<p>we evaluate <code>x + y</code> before we assign it to <code>val</code>, and when we run <code>expr(val)</code> we get it back. With</p>
+<p>we evaluate <code>x + y</code> before we assign it to <code>val</code>, and when we run <code>eval(val)</code> we get it back. With</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ex <span style="color:#666">&lt;-</span> <span style="color:#007020">quote</span>(x <span style="color:#666">+</span> y)</code></pre></div>
 <p>we create an expression that we haven&rsquo;t evaluated yet.</p>
 
@@ -349,7 +359,7 @@ lm(y <span style="color:#666">~</span> x)</code></pre></div>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##      0.6603       0.2847
+##    -0.83544      0.01251
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm(y <span style="color:#666">~</span> x, data <span style="color:#666">=</span> d)</code></pre></div>
 <pre><code>## 
@@ -358,7 +368,7 @@ lm(y <span style="color:#666">~</span> x)</code></pre></div>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##   -0.412015    -0.003936
+##     -0.2194       0.5842
 </code></pre>
 
 <p>We give the <code>lm</code> function the same formula to work with, but when we give it a data frame, then <code>x</code> and <code>y</code> refer to values there, while otherwise they refer to the global variables. The values that <code>x</code> and <code>y</code> refers to change when we give <code>lm</code> a data frame; it seems it is evaluated in a different context when we give it the data frame.</p>
@@ -366,20 +376,20 @@ lm(y <span style="color:#666">~</span> x)</code></pre></div>
 <p>We can do the same thing. We can make an expression and evaluate it in two different contexts:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ex <span style="color:#666">&lt;-</span> <span style="color:#007020">quote</span>(x <span style="color:#666">+</span> y)
 <span style="color:#007020">eval</span>(ex)</code></pre></div>
-<pre><code>## [1] -3.2576509 -0.7436478  2.9787822 -0.2667018 -0.1877152
+<pre><code>## [1]  0.1703110 -1.3982507 -1.7200192 -1.2105850 -0.1077106
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">eval</span>(ex, d)</code></pre></div>
-<pre><code>## [1]  0.2874991 -0.9223203  2.5817922 -0.7996936 -1.5134339
+<pre><code>## [1] -0.2611779  1.8509168 -2.9479462  0.6238554  1.6672398
 </code></pre>
 
 <p>When we give <code>eval</code> the data frame <code>d</code>, it will find <code>x</code> and <code>y</code> in there; when we do not give it <code>d</code> it finds them in the global scope.</p>
 
 <p>Do not forget to use a quoted expression if you want this to work. If you just give <code>eval</code> an expression—without quoting it—you get the value of that expression. Changing the context in which it is evaluated does nothing.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">eval</span>(x <span style="color:#666">+</span> y)</code></pre></div>
-<pre><code>## [1] -3.2576509 -0.7436478  2.9787822 -0.2667018 -0.1877152
+<pre><code>## [1]  0.1703110 -1.3982507 -1.7200192 -1.2105850 -0.1077106
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">eval</span>(x <span style="color:#666">+</span> y, d)</code></pre></div>
-<pre><code>## [1] -3.2576509 -0.7436478  2.9787822 -0.2667018 -0.1877152
+<pre><code>## [1]  0.1703110 -1.3982507 -1.7200192 -1.2105850 -0.1077106
 </code></pre>
 
 <p>This, again, has to do with how parameters are passed as promises. Promises are not <em>just</em> expressions. For the rest of this post, just think of function arguments as passed by value <em>unless</em> we get the expressions using <code>substitute</code>. It isn&rsquo;t exactly true, but I have to leave promises for another post. I promise.</p>
@@ -453,7 +463,7 @@ f(x)</code></pre></div>
 
 <figure>
     
-        <img src="global-scope.tiff" />
+        <img src="global-scope.png" />
     
     
 </figure>
@@ -480,7 +490,7 @@ f(x)</code></pre></div>
 
 <figure>
     
-        <img src="global%20scope%20with%20function.tiff" />
+        <img src="global%20scope%20with%20function.png" />
     
     
 </figure>
@@ -495,7 +505,7 @@ f(x)</code></pre></div>
 
 <figure>
     
-        <img src="global%20scope%20with%20function%20instance.tiff" />
+        <img src="global%20scope%20with%20function%20instance.png" />
     
     
 </figure>
@@ -516,7 +526,7 @@ f <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:b
 
 <figure>
     
-        <img src="nested%20function%20before%20call.tiff" />
+        <img src="nested%20function%20before%20call.png" />
     
     
 </figure>
@@ -529,7 +539,7 @@ f <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:b
 
 <figure>
     
-        <img src="nested%20function%20outer%20fall%20before%20h.tiff" />
+        <img src="nested%20function%20outer%20fall%20before%20h.png" />
     
     
 </figure>
@@ -540,7 +550,7 @@ f <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:b
 
 <figure>
     
-        <img src="nested%20functions%20after%20outer%20call.tiff" />
+        <img src="nested%20functions%20after%20outer%20call.png" />
     
     
 </figure>
@@ -553,7 +563,7 @@ f <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:b
 
 <figure>
     
-        <img src="nested%20functions%20inner%20call.tiff" />
+        <img src="nested%20functions%20inner%20call.png" />
     
     
 </figure>
@@ -564,7 +574,7 @@ f <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:b
 
 <figure>
     
-        <img src="evaluate%20in%20inner.tiff" />
+        <img src="evaluate%20in%20inner.png" />
     
     
 </figure>
@@ -598,7 +608,7 @@ h(x <span style="color:#666">+</span> y)</code></pre></div>
 
 <figure>
     
-        <img src="calling%20eval.tiff" />
+        <img src="calling%20eval.png" />
     
     
 </figure>
@@ -620,7 +630,7 @@ dyn_closure <span style="color:#666">&lt;-</span> dynamic(<span style="color:#40
 
 <figure>
     
-        <img src="lex%20vs%20dyn.tiff" />
+        <img src="lex%20vs%20dyn.png" />
     
     
 </figure>
@@ -642,7 +652,7 @@ caller(<span style="color:#40a070">2</span>, lex_closure)</code></pre></div>
 
 <figure>
     
-        <img src="Lex%20dyn%20call.tiff" />
+        <img src="Lex%20dyn%20call.png" />
     
     
 </figure>
@@ -653,7 +663,7 @@ caller(<span style="color:#40a070">2</span>, lex_closure)</code></pre></div>
 
 <figure>
     
-        <img src="Lex%20dyn%20call%20search.tiff" />
+        <img src="Lex%20dyn%20call%20search.png" />
     
     
 </figure>
@@ -664,7 +674,7 @@ caller(<span style="color:#40a070">2</span>, lex_closure)</code></pre></div>
 
 <figure>
     
-        <img src="Lex%20dyn%20call%20search%202.tiff" />
+        <img src="Lex%20dyn%20call%20search%202.png" />
     
     
 </figure>
@@ -689,23 +699,23 @@ d2 <span style="color:#666">&lt;-</span> <span style="color:#902000">data.frame<
 
 <span style="color:#60a0b0;font-style:italic"># Not unreasonable usage:</span>
 <span style="color:#007020">summary</span>(lm(y <span style="color:#666">~</span> x, data <span style="color:#666">=</span> d1))[[<span style="color:#4070a0">&#34;residuals&#34;</span>]]</code></pre></div>
-<pre><code>##          1          2          3          4          5 
-##  0.9751945  0.1675222 -0.3440797  0.3898687 -1.1885058
+<pre><code>##           1           2           3           4           5 
+##  0.07741166 -0.20278206 -0.10604822  0.55641439 -0.32499577
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(b <span style="color:#666">~</span> a, data <span style="color:#666">=</span> d2))[[<span style="color:#4070a0">&#34;residuals&#34;</span>]]</code></pre></div>
-<pre><code>##           1           2           3           4           5 
-##  0.06490299 -0.07519080  0.35779857 -0.63113147  0.28362071
+<pre><code>##          1          2          3          4          5 
+##  0.9660145 -0.6454435  0.4787097  0.3636013 -1.1628820
 </code></pre>
 
 <p>The way formulas work in R, you can combine variables from data frames with variables known where you created the formula. In this case the global environment. So we can mix global variables with variables from the data frames like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">xx <span style="color:#666">&lt;-</span> rnorm(<span style="color:#40a070">5</span>)
 <span style="color:#007020">summary</span>(lm(y <span style="color:#666">~</span> xx, data <span style="color:#666">=</span> d1))[[<span style="color:#4070a0">&#34;residuals&#34;</span>]]</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  0.8281775  0.7503579 -0.9368557  0.2366646 -0.8783444
+##  0.3547103  0.3194020 -0.6716218 -0.2567259  0.2542354
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(b <span style="color:#666">~</span> xx, data <span style="color:#666">=</span> d2))[[<span style="color:#4070a0">&#34;residuals&#34;</span>]]</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  2.2437730 -2.0773345  0.6364192 -0.6214619 -0.1813958
+##  0.9892798 -0.8160543 -0.1747234  0.8304665 -0.8289687
 </code></pre>
 
 <p>Now, I might want to parameterise these expressions in a function that looks like this:</p>
@@ -714,15 +724,15 @@ d2 <span style="color:#666">&lt;-</span> <span style="color:#902000">data.frame<
     <span style="color:#007020">summary</span>(m)[[prop]]
 }
 lm_prop(x, y, d1, <span style="color:#4070a0">&#34;residuals&#34;</span>)</code></pre></div>
-<pre><code>##          1          2          3          4          5 
-##  0.9751945  0.1675222 -0.3440797  0.3898687 -1.1885058
+<pre><code>##           1           2           3           4           5 
+##  0.07741166 -0.20278206 -0.10604822  0.55641439 -0.32499577
 </code></pre>
 
 <p>Great, this looks like it is working, but that is an unfortunate coincidence. It works because the data frame <code>d1</code> contains variables <code>x</code> and <code>y</code> and those happens to be the ones we want to fit. In the <code>lm(y ~ x, data = d)</code> call, however, the variables are quoted, so to speak. The formula is <code>y ~ x</code> and we do not substitute <code>x</code> and <code>y</code> with the arguments to <code>lm_prop</code>.</p>
 
 <p>Because of this, we get an error if we try to fit a model from <code>d2</code>:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop(a, b, d2, <span style="color:#4070a0">&#34;residuals&#34;</span>)</code></pre></div>
-<pre><code>## Error in eval(predvars, data, env): objekt 'b' blev ikke fundet
+<pre><code>## Error in eval(predvars, data, env): object 'b' not found
 </code></pre>
 
 <p>To get this to work, we need to substitute arguments into the model-fitting.</p>
@@ -742,12 +752,12 @@ lm_prop2(<span style="color:#4070a0">&#34;x&#34;</span>, <span style="color:#407
 <pre><code>## summary(lm(y ~ x, data = d))$residuals
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(y <span style="color:#666">~</span> x, data <span style="color:#666">=</span> d1))<span style="color:#666">$</span>residuals</code></pre></div>
-<pre><code>##          1          2          3          4          5 
-##  0.9751945  0.1675222 -0.3440797  0.3898687 -1.1885058
+<pre><code>##           1           2           3           4           5 
+##  0.07741166 -0.20278206 -0.10604822  0.55641439 -0.32499577
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop2(<span style="color:#4070a0">&#34;x&#34;</span>, <span style="color:#4070a0">&#34;y&#34;</span>, d1, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
-<pre><code>##          1          2          3          4          5 
-##  0.9751945  0.1675222 -0.3440797  0.3898687 -1.1885058
+<pre><code>##           1           2           3           4           5 
+##  0.07741166 -0.20278206 -0.10604822  0.55641439 -0.32499577
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#60a0b0;font-style:italic"># Mixed variables</span>
 lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#4070a0">&#34;y&#34;</span>, d1, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">FALSE</span>)</code></pre></div>
@@ -755,23 +765,23 @@ lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#40
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#4070a0">&#34;y&#34;</span>, d1, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  0.8281775  0.7503579 -0.9368557  0.2366646 -0.8783444
+##  0.3547103  0.3194020 -0.6716218 -0.2567259  0.2542354
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(y <span style="color:#666">~</span> xx, data <span style="color:#666">=</span> d1))<span style="color:#666">$</span>residuals</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  0.8281775  0.7503579 -0.9368557  0.2366646 -0.8783444
+##  0.3547103  0.3194020 -0.6716218 -0.2567259  0.2542354
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#60a0b0;font-style:italic"># Data frame variables</span>
 lm_prop2(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#4070a0">&#34;b&#34;</span>, d2, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">FALSE</span>)</code></pre></div>
 <pre><code>## summary(lm(b ~ a, data = d))$residuals
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(b <span style="color:#666">~</span> a, data <span style="color:#666">=</span> d2))<span style="color:#666">$</span>residuals</code></pre></div>
-<pre><code>##           1           2           3           4           5 
-##  0.06490299 -0.07519080  0.35779857 -0.63113147  0.28362071
+<pre><code>##          1          2          3          4          5 
+##  0.9660145 -0.6454435  0.4787097  0.3636013 -1.1628820
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop2(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#4070a0">&#34;b&#34;</span>, d2, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
-<pre><code>##           1           2           3           4           5 
-##  0.06490299 -0.07519080  0.35779857 -0.63113147  0.28362071
+<pre><code>##          1          2          3          4          5 
+##  0.9660145 -0.6454435  0.4787097  0.3636013 -1.1628820
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#60a0b0;font-style:italic"># Mixed variables</span>
 lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#4070a0">&#34;b&#34;</span>, d2, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">FALSE</span>)</code></pre></div>
@@ -779,11 +789,11 @@ lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#40
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(b <span style="color:#666">~</span> xx, data <span style="color:#666">=</span> d2))<span style="color:#666">$</span>residuals</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  2.2437730 -2.0773345  0.6364192 -0.6214619 -0.1813958
+##  0.9892798 -0.8160543 -0.1747234  0.8304665 -0.8289687
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#4070a0">&#34;b&#34;</span>, d2, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  2.2437730 -2.0773345  0.6364192 -0.6214619 -0.1813958
+##  0.9892798 -0.8160543 -0.1747234  0.8304665 -0.8289687
 </code></pre>
 
 <p>Great, it looks like it is working.</p>
@@ -800,11 +810,11 @@ lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#40
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(y <span style="color:#666">~</span> a, data <span style="color:#666">=</span> d1))<span style="color:#666">$</span>residuals</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  0.8281775  0.7503579 -0.9368557  0.2366646 -0.8783444
+##  0.3547103  0.3194020 -0.6716218 -0.2567259  0.2542354
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop2(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#4070a0">&#34;y&#34;</span>, d1, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  0.8281775  0.7503579 -0.9368557  0.2366646 -0.8783444
+##  0.3547103  0.3194020 -0.6716218 -0.2567259  0.2542354
 </code></pre>
 
 <p>Ok, so far it looks fine.</p>
@@ -815,7 +825,7 @@ lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#40
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(b <span style="color:#666">~</span> x, data <span style="color:#666">=</span> d2))<span style="color:#666">$</span>residuals</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  2.2437730 -2.0773345  0.6364192 -0.6214619 -0.1813958
+##  0.9892798 -0.8160543 -0.1747234  0.8304665 -0.8289687
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop2(<span style="color:#4070a0">&#34;x&#34;</span>, <span style="color:#4070a0">&#34;b&#34;</span>, d2, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
 <pre><code>## Error in model.frame.default(formula = b ~ x, data = d, drop.unused.levels = TRUE): variable lengths differ (found for 'x')
@@ -830,7 +840,7 @@ lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#40
 
 <figure>
     
-        <img src="lm_prob2%20ok.tiff" />
+        <img src="lm_prob2%20ok.png" />
     
     
 </figure>
@@ -841,7 +851,7 @@ lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#40
 
 <figure>
     
-        <img src="lm_prob2%20fail.tiff" />
+        <img src="lm_prob2%20fail.png" />
     
     
 </figure>
@@ -856,7 +866,7 @@ lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#40
 
 <figure>
     
-        <img src="lm2%20details%20ok.tiff" />
+        <img src="lm2%20details%20ok.png" />
     
     
 </figure>
@@ -867,7 +877,7 @@ lm_prop2(<span style="color:#4070a0">&#34;xx&#34;</span>, <span style="color:#40
 
 <figure>
     
-        <img src="lm2%20details%20ok%20fail.tiff" />
+        <img src="lm2%20details%20ok%20fail.png" />
     
     
 </figure>
@@ -886,7 +896,7 @@ lm_prop3(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#407
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(y <span style="color:#666">~</span> a, data <span style="color:#666">=</span> d1))<span style="color:#666">$</span>residuals</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  0.8281775  0.7503579 -0.9368557  0.2366646 -0.8783444
+##  0.3547103  0.3194020 -0.6716218 -0.2567259  0.2542354
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop3(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#4070a0">&#34;y&#34;</span>,  d1, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
 <pre><code>## NULL
@@ -896,7 +906,7 @@ lm_prop3(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#407
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(b <span style="color:#666">~</span> x, data <span style="color:#666">=</span> d2))<span style="color:#666">$</span>residuals</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  2.2437730 -2.0773345  0.6364192 -0.6214619 -0.1813958
+##  0.9892798 -0.8160543 -0.1747234  0.8304665 -0.8289687
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop3(<span style="color:#4070a0">&#34;x&#34;</span>, <span style="color:#4070a0">&#34;b&#34;</span>, d2, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
 <pre><code>## NULL
@@ -915,22 +925,22 @@ lm_prop4(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#407
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(y <span style="color:#666">~</span> a, data <span style="color:#666">=</span> d1))<span style="color:#666">$</span>residuals</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  0.8281775  0.7503579 -0.9368557  0.2366646 -0.8783444
+##  0.3547103  0.3194020 -0.6716218 -0.2567259  0.2542354
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop4(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#4070a0">&#34;y&#34;</span>,  <span style="color:#4070a0">&#34;d1&#34;</span>, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  0.8281775  0.7503579 -0.9368557  0.2366646 -0.8783444
+##  0.3547103  0.3194020 -0.6716218 -0.2567259  0.2542354
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop4(<span style="color:#4070a0">&#34;x&#34;</span>, <span style="color:#4070a0">&#34;b&#34;</span>,  <span style="color:#4070a0">&#34;d2&#34;</span>, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">FALSE</span>)</code></pre></div>
 <pre><code>## summary(lm(b ~ x, data = d2))$residuals
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#007020">summary</span>(lm(b <span style="color:#666">~</span> x, data <span style="color:#666">=</span> d2))<span style="color:#666">$</span>residuals</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  2.2437730 -2.0773345  0.6364192 -0.6214619 -0.1813958
+##  0.9892798 -0.8160543 -0.1747234  0.8304665 -0.8289687
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lm_prop4(<span style="color:#4070a0">&#34;x&#34;</span>, <span style="color:#4070a0">&#34;b&#34;</span>,  <span style="color:#4070a0">&#34;d2&#34;</span>, <span style="color:#4070a0">&#34;residuals&#34;</span>, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
 <pre><code>##          1          2          3          4          5 
-##  2.2437730 -2.0773345  0.6364192 -0.6214619 -0.1813958
+##  0.9892798 -0.8160543 -0.1747234  0.8304665 -0.8289687
 </code></pre>
 
 <p>This looks like it is working. Can you spot where the problem is?</p>
@@ -943,14 +953,14 @@ lm_prop4(<span style="color:#4070a0">&#34;a&#34;</span>, <span style="color:#407
 
 aa <span style="color:#666">&lt;-</span> rnorm(<span style="color:#40a070">5</span>) ; bb <span style="color:#666">&lt;-</span> rnorm(<span style="color:#40a070">5</span>)
 <span style="color:#007020">summary</span>(lm(bb <span style="color:#666">~</span> aa))<span style="color:#666">$</span>residuals</code></pre></div>
-<pre><code>##           1           2           3           4           5 
-## -0.48153667  0.23140432  0.33854856 -0.04245577 -0.04596044
+<pre><code>##          1          2          3          4          5 
+## -0.9138281 -0.6546838  1.1573312  0.9020162 -0.4908355
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">indirect(aa, bb, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">FALSE</span>)</code></pre></div>
 <pre><code>## summary(lm(y ~ x, data = d))$residuals
 </code></pre>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">indirect(aa, bb, eval <span style="color:#666">=</span> <span style="color:#007020;font-weight:bold">TRUE</span>)</code></pre></div>
-<pre><code>## Error in is.data.frame(data): objekt 'd' blev ikke fundet
+<pre><code>## Error in is.data.frame(data): object 'd' not found
 </code></pre>
 
 <p>It cannot find <code>d</code> because that name only exists in the call-environment of <code>indirect(aa, bb, eval = TRUE)</code>.</p>
@@ -960,7 +970,7 @@ aa <span style="color:#666">&lt;-</span> rnorm(<span style="color:#40a070">5</sp
 
 <figure>
     
-        <img src="lm%20prob%205%20failure.tiff" />
+        <img src="lm%20prob%205%20failure.png" />
     
     
 </figure>
