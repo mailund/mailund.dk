@@ -10,23 +10,5 @@
 	<atom:link href="https://mailund.dk/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>Programming</title>
-      <link>https://mailund.dk/categories/programming/</link>
-      <pubDate>Thu, 20 Sep 2018 05:00:15 +0200</pubDate>
-      
-      <guid>https://mailund.dk/categories/programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rstats</title>
-      <link>https://mailund.dk/categories/rstats/</link>
-      <pubDate>Thu, 20 Sep 2018 05:00:15 +0200</pubDate>
-      
-      <guid>https://mailund.dk/categories/rstats/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
