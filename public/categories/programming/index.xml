@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Mailund on the Internet</title>
+    <link>https://mailund.dk/categories/programming/</link>
+    <description>Recent content in Programming on Mailund on the Internet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
+    <lastBuildDate>Thu, 20 Sep 2018 05:00:15 +0200</lastBuildDate>
+    
+	<atom:link href="https://mailund.dk/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scoping Rules and NSE</title>
+      <link>https://mailund.dk/posts/scoping-rules-and-nse/</link>
+      <pubDate>Thu, 20 Sep 2018 05:00:15 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/scoping-rules-and-nse/</guid>
+      <description>Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do non-standard evaluation. I cover this in both Metaprogramming in R and Domain-Specific Languages in R, but this tweet
+Comprehensive overview of NSE. Should be of interest to @ThomasMailund @MilesMcBain @_ColinFay and @edwin_thoen https://t.co/2uI1HSnfEN
+&amp;mdash; Deemah 🇺🇦 🇳🇴 (@dmi3k) September 17, 2018  made me write about it again—only this time in a twitter thread.
+Well, I say thread—I don&amp;rsquo;t actually know how to do that, it seams; I just replied to the tweet a bunch of times and apparently that doesn&amp;rsquo;t make a thread, it therefore my reply was hard to read.</description>
+    </item>
+    
+  </channel>
+</rss>
