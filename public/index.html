@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.37.1" />
+  <meta name="generator" content="Hugo 0.37" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -112,6 +112,42 @@ ga('send', 'pageview');
         <ul>
           
           <li class="first">
+            <h1><a href="https://mailund.dk/posts/eval-and-overscoping/" title="Overscoping and eval">Overscoping and eval</a></h1> 
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-09-22T12:23:09&#43;02:00">Sep 22, 2018</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/rstats/">#rstats</a>
+                
+            </em>
+        </li>
+        
+
+        <li>16 min read</li>
+    </ul>
+</aside>
+            <p>In my previous post I used the lm function for an example of scope rules, but I left a few details out. I didn&rsquo;t want to muddy the example with too many details, so I choice to lie a little.
+The drawing I used to explain the example was this:
+  I explained how scope is implemented using environments that are chained through parent pointers, and how a function has an environment associated with it. This environment is the environment where you define the function.
+When you call a function, it gets its own instance environment (for historical reasons more than anything else we call this the call frame, but it is really just a new environment).</p>
+            
+            <a href="https://mailund.dk/posts/eval-and-overscoping/">Read more&hellip;</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://mailund.dk/posts/scoping-rules-and-nse/" title="Scoping Rules and NSE">Scoping Rules and NSE</a></h1> 
             <aside>
     <ul>
@@ -426,37 +462,6 @@ Well, it covers mostly stuff you would use in everyday programming. It also cove
 </aside>
             <p>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.
 I&rsquo;m thinking of putting one sample chapter per book here. I need to check with my Apress contracts, but I believe I can do this as long as it is less than 10%.</p>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://mailund.dk/posts/new-blog/" title="New Blog">New Blog</a></h1> 
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2018-09-09T08:02:17&#43;02:00">Sep 9, 2018</time>
-        </li>
-        
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="https://mailund.dk/tags/blog/">#blog</a>
-                
-            </em>
-        </li>
-        
-
-        <li>2 min read</li>
-    </ul>
-</aside>
-            <p>Ok, so, I have had a lot of problems with keeping Wordpress and various plugins up to date on my old mailund.dk blog. Considering that I don&rsquo;t write a whole lot of posts there, I decided that it simply wasn&rsquo;t worth the effort.
-On top of that, the account I had on Aarhus University&rsquo;s computers, where I could ssh into a file server and put pages in public_html, will soon be removed. They are simply phasing out those computers, because few really use them any more, and while I could keep ssh access to a virtual account, I don&rsquo;t think it is worth the bother to do this just to keep a homepage.</p>
-            
-            <a href="https://mailund.dk/posts/new-blog/">Read more&hellip;</a>
             
           </li>
           

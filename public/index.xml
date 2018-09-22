@@ -6,10 +6,22 @@
     <description>Recent content on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Thu, 20 Sep 2018 05:00:15 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 22 Sep 2018 12:23:09 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Overscoping and eval</title>
+      <link>https://mailund.dk/posts/eval-and-overscoping/</link>
+      <pubDate>Sat, 22 Sep 2018 12:23:09 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/eval-and-overscoping/</guid>
+      <description>In my previous post I used the lm function for an example of scope rules, but I left a few details out. I didn&amp;rsquo;t want to muddy the example with too many details, so I choice to lie a little.
+The drawing I used to explain the example was this:
+  I explained how scope is implemented using environments that are chained through parent pointers, and how a function has an environment associated with it. This environment is the environment where you define the function.
+When you call a function, it gets its own instance environment (for historical reasons more than anything else we call this the call frame, but it is really just a new environment).</description>
+    </item>
     
     <item>
       <title>Scoping Rules and NSE</title>
