@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Thu, 20 Sep 2018 05:00:15 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 22 Sep 2018 12:12:45 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Slides for Computational Thinking (Chapter 5)</title>
+      <link>https://mailund.dk/posts/ct-slides-chapter5/</link>
+      <pubDate>Sat, 22 Sep 2018 12:12:45 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/ct-slides-chapter5/</guid>
+      <description>I just finished make slides for chapter 5 of Introduction to Computational Thinking that covers search and sorting algorithms.
+The slides cover linear and binary search, insertion, selection and bubble sort, as well as bucket and radix sort. The chapter covers a little bit more, including how numbers are represented on a computer, and the consequences of this for bucket and radix sort.
+You can get the slides here.
+ If you liked what you read, and want more like it, consider supporting me at Patreon.</description>
+    </item>
     
     <item>
       <title>Scoping Rules and NSE</title>
