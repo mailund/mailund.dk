@@ -108,125 +108,110 @@ ga('send', 'pageview');
 
 
 
-<section id="list">
+<article>
+
+    <h1>Slides for Computational Thinking (Chapter 5)</h1>
 
     
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-09-22T12:12:45&#43;02:00">Sep 22, 2018</time>
+        </li>
+        
+        
 
-    
-        <h2>Posts</h2>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
     
 
-    
+    <p>I just finished make slides for chapter 5 of <a href="https://leanpub.com/comp-thinking"><em>Introduction to Computational Thinking</em></a> that covers search and sorting algorithms.</p>
 
-    
+<p>The slides cover linear and binary search, insertion, selection and bubble sort, as well as bucket and radix sort. The chapter covers a little bit more, including how numbers are represented on a computer, and the consequences of this for bucket and radix sort.</p>
 
-    <h3>2018</h3>
+<p>You can get the slides <a href="https://github.com/mailund/compthink/tree/master/slides/Chapter%205%20-Searching%20and%20Sorting">here</a>.</p>
+
+<hr/>
+
+<p><small>If you liked what you read, and want more like it, consider supporting me at <a href="https://www.patreon.com/mailund">Patreon</a>.</small>
+<hr/></p>
+
+
+</article>
+
+
+<section class="post-nav">
     <ul>
         
         <li>
-            <a href="https://mailund.dk/posts/eval-and-overscoping/">Overscoping and eval</a>
-            <time class="date-meta">Sep 22</time>
+            <a href="https://mailund.dk/posts/scoping-rules-and-nse/"><i class="fa fa-chevron-circle-left"></i> Scoping Rules and NSE</a>
         </li>
         
-        <li>
-            <a href="https://mailund.dk/posts/ct-slides-chapter5/">Slides for Computational Thinking (Chapter 5)</a>
-            <time class="date-meta">Sep 22</time>
-        </li>
         
         <li>
-            <a href="https://mailund.dk/posts/scoping-rules-and-nse/">Scoping Rules and NSE</a>
-            <time class="date-meta">Sep 20</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/ctib-slides-chp3-and-4/">Slides (CT chapters 3 and 4)</a>
-            <time class="date-meta">Sep 19</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/ctib-exercises-chapter3/">Exercises (CT chapter 3)</a>
-            <time class="date-meta">Sep 19</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/ctib-complexity-exercises/">Complexity Exercises</a>
-            <time class="date-meta">Sep 14</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/compbio-chapter-3-slides/">Slides for Computational Thinking (Chapter 3)</a>
-            <time class="date-meta">Sep 12</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/the-coming-storm/">The Coming Storm</a>
-            <time class="date-meta">Sep 12</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/premd-plugins/">Premarkdown Plugins</a>
-            <time class="date-meta">Sep 10</time>
-        </li>
-        
-        <li>
-            <a href="https://mailund.dk/posts/fluent-python/">Fluent Python</a>
-            <time class="date-meta">Sep 10</time>
+            <a href="https://mailund.dk/posts/eval-and-overscoping/">Overscoping and eval <i class="fa fa-chevron-circle-right"></i> </a>
         </li>
         
     </ul>
+</section>
     
-    
-
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
 </section>
 
+<section id="disqus_thread"></section>
 
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
 
-<ul class="pagination">
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
     
-    <li>
-        <a href="https://mailund.dk/posts/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li
-    class="disabled">
-    <a href="" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li
-    class="active"><a href="https://mailund.dk/posts/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li
-    ><a href="https://mailund.dk/posts/page/2/">2</a></li>
-    
-    
-    <li
-    >
-    <a href="https://mailund.dk/posts/page/2/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li>
-        <a href="https://mailund.dk/posts/page/2/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
-</ul>
+
 
 
 
