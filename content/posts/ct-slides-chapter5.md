@@ -1,6 +1,7 @@
 ---
 title: "Slides for Computational Thinking (Chapter 5)"
 date: 2018-09-22T12:12:45+02:00
+tags: ["computational-thinking"]
 ---
 
 I just finished make slides for chapter 5 of [*Introduction to Computational Thinking*](https://leanpub.com/comp-thinking) that covers search and sorting algorithms.
