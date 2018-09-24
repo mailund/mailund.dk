@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computaitonal Thinking on Mailund on the Internet</title>
+    <link>https://mailund.dk/tags/computaitonal-thinking/</link>
+    <description>Recent content in Computaitonal Thinking on Mailund on the Internet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
+    <lastBuildDate>Mon, 24 Sep 2018 10:54:12 +0200</lastBuildDate>
+    
+	<atom:link href="https://mailund.dk/tags/computaitonal-thinking/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Exercises (CT chapter 5)</title>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter5/</link>
+      <pubDate>Mon, 24 Sep 2018 10:54:12 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter5/</guid>
+      <description>I’m on a roll today! Here are the exercises for chapter 5 of Introduction to Computational Thinking.
+Let me know if you spot any errors; I am known to make some from time to time.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -17,10 +17,7 @@
       <pubDate>Sat, 22 Sep 2018 12:23:09 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/eval-and-overscoping/</guid>
-      <description>In my previous post I used the lm function for an example of scope rules, but I left a few details out. I didn&amp;rsquo;t want to muddy the example with too many details, so I choice to lie a little.
-The drawing I used to explain the example was this:
-  I explained how scope is implemented using environments that are chained through parent pointers, and how a function has an environment associated with it. This environment is the environment where you define the function.
-When you call a function, it gets its own instance environment (for historical reasons more than anything else we call this the call frame, but it is really just a new environment).</description>
+      <description>In my previous post I used the lm function for an example of scope rules, but I left a few details out.</description>
     </item>
     
     <item>
@@ -29,10 +26,7 @@ When you call a function, it gets its own instance environment (for historical r
       <pubDate>Thu, 20 Sep 2018 05:00:15 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/scoping-rules-and-nse/</guid>
-      <description>Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do non-standard evaluation. I cover this in both Metaprogramming in R and Domain-Specific Languages in R, but this tweet
-Comprehensive overview of NSE. Should be of interest to @ThomasMailund @MilesMcBain @_ColinFay and @edwin_thoen https://t.co/2uI1HSnfEN
-&amp;mdash; Deemah 🇺🇦 🇳🇴 (@dmi3k) September 17, 2018  made me write about it again—only this time in a twitter thread.
-Well, I say thread—I don&amp;rsquo;t actually know how to do that, it seams; I just replied to the tweet a bunch of times and apparently that doesn&amp;rsquo;t make a thread, it therefore my reply was hard to read.</description>
+      <description>Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do non-standard evaluation.</description>
     </item>
     
     <item>
@@ -41,9 +35,7 @@ Well, I say thread—I don&amp;rsquo;t actually know how to do that, it seams; I
       <pubDate>Mon, 10 Sep 2018 14:25:40 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/premd-plugins/</guid>
-      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.
-I write my books in Markdown and then I process them using Pandoc. If you are not familiar with that setup, then I have written a short book on the topic: The Beginner&amp;rsquo;s Guide to Markdown and Pandoc.
-For that book, because it is very short, I just have a single Markdown document containing the entire book, but usually, I have one file per chapter. Pandoc doesn&amp;rsquo;t handle that, but you can cat the files before you convert the Markdown source to PDF or ePUB documents.</description>
+      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.</description>
     </item>
     
     <item>
@@ -52,9 +44,7 @@ For that book, because it is very short, I just have a single Markdown document 
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/software/</guid>
-      <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining). I will do my best to handle issues with older software, but some of it is simply too old for me to keep track of.
-premarkdown The premarkdown project is a preprocessor for my Markdown manuscripts. It contains code for analysing and processing Markdown files and producing one or more documents from them.
-There is a command-line tool, premd, that does the processing.</description>
+      <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
     </item>
     
   </channel>

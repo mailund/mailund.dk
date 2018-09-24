@@ -17,9 +17,7 @@
       <pubDate>Mon, 10 Sep 2018 14:25:40 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/premd-plugins/</guid>
-      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.
-I write my books in Markdown and then I process them using Pandoc. If you are not familiar with that setup, then I have written a short book on the topic: The Beginner&amp;rsquo;s Guide to Markdown and Pandoc.
-For that book, because it is very short, I just have a single Markdown document containing the entire book, but usually, I have one file per chapter. Pandoc doesn&amp;rsquo;t handle that, but you can cat the files before you convert the Markdown source to PDF or ePUB documents.</description>
+      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.</description>
     </item>
     
     <item>
@@ -28,8 +26,7 @@ For that book, because it is very short, I just have a single Markdown document 
       <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/new-books-page/</guid>
-      <description>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.
-I&amp;rsquo;m thinking of putting one sample chapter per book here. I need to check with my Apress contracts, but I believe I can do this as long as it is less than 10%.</description>
+      <description>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.</description>
     </item>
     
     <item>
@@ -38,8 +35,7 @@ I&amp;rsquo;m thinking of putting one sample chapter per book here. I need to ch
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/books/</guid>
-      <description>I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.
-When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put the draft on Leanpub where you can get it for free until it is done. Once I&amp;rsquo;ve sold a book, I have to pull it from Leanpub, but it is a good way to get an early copy, and a good way for me to get feedback while writing. If you get a draft there, then please let me know what you think and how I can improve it.</description>
+      <description>I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.</description>
     </item>
     
   </channel>

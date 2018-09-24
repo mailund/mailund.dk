@@ -17,9 +17,7 @@
       <pubDate>Mon, 10 Sep 2018 14:25:40 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/premd-plugins/</guid>
-      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.
-I write my books in Markdown and then I process them using Pandoc. If you are not familiar with that setup, then I have written a short book on the topic: The Beginner&amp;rsquo;s Guide to Markdown and Pandoc.
-For that book, because it is very short, I just have a single Markdown document containing the entire book, but usually, I have one file per chapter. Pandoc doesn&amp;rsquo;t handle that, but you can cat the files before you convert the Markdown source to PDF or ePUB documents.</description>
+      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.</description>
     </item>
     
     <item>
@@ -28,8 +26,7 @@ For that book, because it is very short, I just have a single Markdown document 
       <pubDate>Mon, 10 Sep 2018 09:11:42 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/fluent-python/</guid>
-      <description>I just finished reading Fluent Python. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn. Rather, it covers Python topics you might use in day-to-day programming and explains how you would write code in the most Pythonic way.
-Well, it covers mostly stuff you would use in everyday programming. It also covers co-routines and meta-programming; topics I do not expect you would use every day. From time to time, yes, but not every day. If you find that you need it, though, the coverage in Fluent Python is excellent.</description>
+      <description>I just finished reading Fluent Python. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn.</description>
     </item>
     
   </channel>

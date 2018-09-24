@@ -10,7 +10,7 @@ googleAnalytics = "UA-10582357-1"
 disqusShortname = "mailund-dk"
 
 paginate = 10
-summaryLength = 100
+summaryLength = 20
 pygmentsCodeFences = true
 pygmentsStyle = "friendly"
 

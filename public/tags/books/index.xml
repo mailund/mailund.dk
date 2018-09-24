@@ -17,9 +17,7 @@
       <pubDate>Wed, 12 Sep 2018 08:06:58 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/the-coming-storm/</guid>
-      <description>If you are a member of Audible—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month. They call this Audible Originals, and while you only get six books to choose from, I am not complaining about getting something for free.
-I got two books, The Coming Storm by Michael Lewis—read by the author—and Emma by Jane Austen (I guess)—which I guess is an audio drama. I haven’t listened to it yet.
-I just finished The Coming Storm. It is pretty short, just a tad over two hours, so I finished it on my walk to and from work yesterday and today.</description>
+      <description>If you are a member of Audible—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month.</description>
     </item>
     
     <item>
@@ -28,8 +26,7 @@ I just finished The Coming Storm. It is pretty short, just a tad over two hours,
       <pubDate>Mon, 10 Sep 2018 09:11:42 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/fluent-python/</guid>
-      <description>I just finished reading Fluent Python. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn. Rather, it covers Python topics you might use in day-to-day programming and explains how you would write code in the most Pythonic way.
-Well, it covers mostly stuff you would use in everyday programming. It also covers co-routines and meta-programming; topics I do not expect you would use every day. From time to time, yes, but not every day. If you find that you need it, though, the coverage in Fluent Python is excellent.</description>
+      <description>I just finished reading Fluent Python. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn.</description>
     </item>
     
     <item>
@@ -38,8 +35,7 @@ Well, it covers mostly stuff you would use in everyday programming. It also cove
       <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/new-books-page/</guid>
-      <description>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.
-I&amp;rsquo;m thinking of putting one sample chapter per book here. I need to check with my Apress contracts, but I believe I can do this as long as it is less than 10%.</description>
+      <description>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.</description>
     </item>
     
     <item>
@@ -48,8 +44,7 @@ I&amp;rsquo;m thinking of putting one sample chapter per book here. I need to ch
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/books/</guid>
-      <description>I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.
-When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put the draft on Leanpub where you can get it for free until it is done. Once I&amp;rsquo;ve sold a book, I have to pull it from Leanpub, but it is a good way to get an early copy, and a good way for me to get feedback while writing. If you get a draft there, then please let me know what you think and how I can improve it.</description>
+      <description>I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.</description>
     </item>
     
   </channel>

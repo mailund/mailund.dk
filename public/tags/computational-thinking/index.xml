@@ -17,8 +17,7 @@
       <pubDate>Mon, 24 Sep 2018 07:19:28 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/ctib-exercises-chapter4/</guid>
-      <description>I think I’m done with the exercises for chapter 4 of Introduction to Computational Thinking. Which is good, because I need to put them on Blackboard for my students this week.
-I still haven’t figured out the best way to put the exercises on Blackboard. It is a truly awful system. It has as WYGIWYG (what you get is what you get) editor; the text while you edit it seems unrelated to the text it will display after you save it. It really dislike code; you can put code in pre-tags (or tell the editor to), but it considers that merely a suggestion that it can, and will, ignore at its leisure.</description>
+      <description>I think I’m done with the exercises for chapter 4 of Introduction to Computational Thinking. Which is good, because I need to put them on Blackboard for my students this week.</description>
     </item>
     
     <item>
@@ -28,9 +27,7 @@ I still haven’t figured out the best way to put the exercises on Blackboard. I
       
       <guid>https://mailund.dk/posts/ct-slides-chapter5/</guid>
       <description>I just finished make slides for chapter 5 of Introduction to Computational Thinking that covers search and sorting algorithms.
-The slides cover linear and binary search, insertion, selection and bubble sort, as well as bucket and radix sort. The chapter covers a little bit more, including how numbers are represented on a computer, and the consequences of this for bucket and radix sort.
-You can get the slides here.
- If you liked what you read, and want more like it, consider supporting me at Patreon.</description>
+The slides cover linear and binary search, insertion, selection and bubble sort, as well as bucket and radix sort.</description>
     </item>
     
     <item>
@@ -39,9 +36,7 @@ You can get the slides here.
       <pubDate>Wed, 19 Sep 2018 17:04:47 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/ctib-slides-chp3-and-4/</guid>
-      <description>I played around a little with my slides for chapter three of Introduction to Computational Thinking and made slides for chapter four.
-It takes surprisingly long to make these; I had expected to be done with the five chapters I use in my class this year a few weeks ago but I still have three chapters to go. I won’t run out of time—I have plenty of time to make slides between the first and last lecture—but it is eating into time I really should be using on The Joys of Hashing where a deadline is coming up.
-Anyway, here are the slides—let me know if you spot any obvious errors so I can fix them before my lectures.</description>
+      <description>I played around a little with my slides for chapter three of Introduction to Computational Thinking and made slides for chapter four.</description>
     </item>
     
     <item>
@@ -50,9 +45,7 @@ Anyway, here are the slides—let me know if you spot any obvious errors so I ca
       <pubDate>Wed, 19 Sep 2018 16:41:37 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/ctib-exercises-chapter3/</guid>
-      <description>I have cleaned up the exercises for chapter three of Introduction to Computational Thinking. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below. I have listed my answers below the exercises, so if you want to do the exercises, then stop in time.
-As always, if you have comments or criticisms, or just suggestions for more exercises, I’m dying to hear.
-Below or above Here&amp;rsquo;s a game you can play with a friend: one of you think of a number between 1 and 20, both 1 and 20 included.</description>
+      <description>I have cleaned up the exercises for chapter three of Introduction to Computational Thinking. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below.</description>
     </item>
     
     <item>
@@ -61,9 +54,7 @@ Below or above Here&amp;rsquo;s a game you can play with a friend: one of you th
       <pubDate>Fri, 14 Sep 2018 10:20:44 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/ctib-complexity-exercises/</guid>
-      <description>In the second lesson that I teach in our Computational Thinking in Bioinformatics I cover algorithmic complexity. It is chapter four in my (draft) book on the topic: Introduction to Computational Thinking.
-I have put exercises and my answers to them on GitHub. I still haven’t figured out the best way to give them to the students yet, but the can always read them on GitHub and download the source files where needed.
-Anyway, I know I always make mistakes both in phrasing the exercises and in answering them—not always substantial errors, but still. So if you have some time left and if you are interested in the topic, I would love to hear if there any obvious mistakes.</description>
+      <description>In the second lesson that I teach in our Computational Thinking in Bioinformatics I cover algorithmic complexity. It is chapter four in my (draft) book on the topic: Introduction to Computational Thinking.</description>
     </item>
     
     <item>
@@ -72,9 +63,7 @@ Anyway, I know I always make mistakes both in phrasing the exercises and in answ
       <pubDate>Wed, 12 Sep 2018 13:40:42 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/compbio-chapter-3-slides/</guid>
-      <description>I’m teaching four weeks of a class called Computational Thinking in Bioinformatics this year (the other weeks are taught by colleagues).
-It is this class that got me started on my book on the topic: Introduction to Computational Thinking. I have finished the chapters I need for the class—chapters three, four, five, seven and nine—but there is still a looong way to go before the book is done.
-Anyway, I am not writing on the book these days, but make slides for the lectures. That takes surprisingly long time. I have grown used to having slides to pick and choose from for any lecture, but I am starting from scratch here.</description>
+      <description>I’m teaching four weeks of a class called Computational Thinking in Bioinformatics this year (the other weeks are taught by colleagues).</description>
     </item>
     
   </channel>
