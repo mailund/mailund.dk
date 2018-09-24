@@ -6,10 +6,20 @@
     <description>Recent content on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Sat, 22 Sep 2018 12:23:09 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 24 Sep 2018 07:19:28 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Exercises (CT chapter 4)</title>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter4/</link>
+      <pubDate>Mon, 24 Sep 2018 07:19:28 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter4/</guid>
+      <description>I think I’m done with the exercises for chapter 4 of Introduction to Computational Thinking. Which is good, because I need to put them on Blackboard for my students this week.
+I still haven’t figured out the best way to put the exercises on Blackboard. It is a truly awful system. It has as WYGIWYG (what you get is what you get) editor; the text while you edit it seems unrelated to the text it will display after you save it. It really dislike code; you can put code in pre-tags (or tell the editor to), but it considers that merely a suggestion that it can, and will, ignore at its leisure.</description>
+    </item>
     
     <item>
       <title>Overscoping and eval</title>
