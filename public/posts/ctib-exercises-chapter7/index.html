@@ -1,0 +1,414 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  <meta name="generator" content="Hugo 0.37" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code'; 
+ }
+ </style>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Exercises (CT Chapter 7)</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-09-25T17:04:13&#43;02:00">Sep 25, 2018</time>
+        </li>
+        
+        
+
+        
+
+        <li>7 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>I don’t really have a lot of exercises for the chapter on recursion. I had planned to combine recursion with divide-and-conquer, but now the two topics are split over two weeks. Instead, I will have a project for the students to do while they learn about recursion; then it doesn’t matter so much that there are not that many exercises.</p>
+
+<p>Anyway, exercises below and answers below that.</p>
+
+<h1 id="exercises">Exercises</h1>
+
+<h2 id="fibonacci">Fibonacci</h2>
+
+<p><strong>Exercise:</strong> Implement a recursive function that computes the n’th Fibonacci number.</p>
+
+<p><strong>Exercise:</strong> Draw the call stack for computing the fourth Fibonacci number using the implementation you did in the previous exercise.</p>
+
+<h2 id="list-exercises">List exercises</h2>
+
+<p><strong>Exercise:</strong> To compute the sum of the elements in a list, we can obviously do this iteratively:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">result <span style="color:#666">=</span> <span style="color:#40a070">0</span>
+<span style="color:#007020;font-weight:bold">for</span> e <span style="color:#007020;font-weight:bold">in</span> x:
+  result <span style="color:#666">+=</span> e</code></pre></div>
+<p>Implement a recursive function that computes the sum of the elements of a list.</p>
+
+<p><strong>Exercise:</strong> We can find the smallest element in a non-empty list, <code>x</code>, like this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">smallest <span style="color:#666">=</span> x[<span style="color:#40a070">0</span>]
+<span style="color:#007020;font-weight:bold">for</span> e <span style="color:#007020;font-weight:bold">in</span> x:
+	smallest <span style="color:#666">=</span> <span style="color:#007020">min</span>(smallest, e)</code></pre></div>
+<p>Write a recursive function for finding the smallest element in a list. To avoid copying the list using slices, you will want to have the function take an index parameter as an argument.</p>
+
+<p><strong>Exercise:</strong> Modify your function, so it returns <code>None</code> if the list is empty. The easiest way to do this is probably to include the “smallest element seen so far” as a parameter to the function, with a default value of <code>None</code>. To compute the smallest value and still handle <code>None</code> you can use this function:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">my_min</span>(x, y):
+	<span style="color:#007020;font-weight:bold">return</span> y <span style="color:#007020;font-weight:bold">if</span> x <span style="color:#007020;font-weight:bold">is</span> None <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020">min</span>(x, y)</code></pre></div>
+<p><strong>Exercise:</strong> Write a recursive function that reverses a list.</p>
+
+<p><strong>Exercise:</strong> Recall the exercise where you had to translate a base-10 number into some other base b (where we restricted the base to be less than 16). We can get the last digit of a number i, in base b using this function:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">get_last_digit</span>(i, b):
+    <span style="color:#007020;font-weight:bold">return</span> digits[i <span style="color:#666">%</span> b]</code></pre></div>
+<p>where we defined the <code>digits</code> list as</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits <span style="color:#666">=</span> {}
+
+<span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">0</span>,<span style="color:#40a070">10</span>):
+    digits[i] <span style="color:#666">=</span> <span style="color:#007020">str</span>(i)
+
+digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;A&#39;</span>
+digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;B&#39;</span>
+digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;C&#39;</span>
+digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;D&#39;</span>
+digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;E&#39;</span>
+digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;F&#39;</span></code></pre></div>
+<p>We can then reduce the problem to the second-to-last digit by dividing i by b. Implement this idea using a recursive function.</p>
+
+<h2 id="tail-recursion">Tail-Recursion</h2>
+
+<p><strong>Exercise:</strong> Rewrite your recursive function for computing the sum of a list of numbers such that it becomes tail-recursive.</p>
+
+<p><strong>Exercise:</strong> Rewrite your recursive function for finding the smallest element in a list to a version that is tail-recursive.</p>
+
+<p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive summation function.</p>
+
+<p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive “find minimum” function.</p>
+
+<p><strong>Exercise:</strong> Consider our recursive implementation of binary search:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">bsearch</span>(x, e, low <span style="color:#666">=</span> <span style="color:#40a070">0</span>, high <span style="color:#666">=</span> <span style="color:#007020">len</span>(x)):
+	<span style="color:#007020;font-weight:bold">if</span> low <span style="color:#666">&gt;=</span> high:
+		<span style="color:#007020;font-weight:bold">return</span> False
+	mid <span style="color:#666">=</span> (low <span style="color:#666">+</span> high) <span style="color:#666">//</span> <span style="color:#40a070">2</span>
+	<span style="color:#007020;font-weight:bold">if</span> x[mid] <span style="color:#666">==</span> e:
+		<span style="color:#007020;font-weight:bold">return</span> True
+	<span style="color:#007020;font-weight:bold">elif</span> x[mid] <span style="color:#666">&lt;</span> e:
+		<span style="color:#007020;font-weight:bold">return</span> bsearch(x, e, mid <span style="color:#666">+</span> <span style="color:#40a070">1</span>, high)
+	<span style="color:#007020;font-weight:bold">else</span>:
+		<span style="color:#007020;font-weight:bold">return</span> bsearch(x, e, low, mid)</code></pre></div>
+<p>This function is tail-recursive, so use the transformation to replace it with a loop. Compare it to the iterative solution we considered before this chapter.</p>
+
+<h1 id="answers">Answers</h1>
+
+<h2 id="fibonacci-1">Fibonacci</h2>
+
+<p><strong>Exercise:</strong> Implement a recursive function that computes the n’th Fibonacci number.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">Fib</span>(n):
+    <span style="color:#007020;font-weight:bold">if</span> n <span style="color:#666">&lt;=</span> <span style="color:#40a070">2</span>: <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">1</span>
+    <span style="color:#007020;font-weight:bold">else</span>: <span style="color:#007020;font-weight:bold">return</span> Fib(n <span style="color:#666">-</span> <span style="color:#40a070">1</span>) <span style="color:#666">+</span> Fib(n <span style="color:#666">-</span> <span style="color:#40a070">2</span>)</code></pre></div>
+<p><strong>Exercise:</strong> Draw the call stack for computing the fourth Fibonacci number using the implementation you did in the previous exercise.</p>
+
+<h2 id="list-exercises-1">List exercises</h2>
+
+<p><strong>Exercise:</strong> To compute the sum of the elements in a list, we can obviously do this iteratively:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">result <span style="color:#666">=</span> <span style="color:#40a070">0</span>
+<span style="color:#007020;font-weight:bold">for</span> e <span style="color:#007020;font-weight:bold">in</span> x:
+  result <span style="color:#666">+=</span> e</code></pre></div>
+<p>Implement a recursive function that computes the sum of the elements of a list.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">recsum</span>(x):
+    <span style="color:#007020;font-weight:bold">if</span> x <span style="color:#666">==</span> []: <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>
+    <span style="color:#007020;font-weight:bold">else</span>: <span style="color:#007020;font-weight:bold">return</span> x[<span style="color:#40a070">0</span>] <span style="color:#666">+</span> recsum(x[<span style="color:#40a070">1</span>:])</code></pre></div>
+<p><strong>Exercise:</strong> We can find the smallest element in a non-empty list, <code>x</code>, like this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">smallest <span style="color:#666">=</span> x[<span style="color:#40a070">0</span>]
+<span style="color:#007020;font-weight:bold">for</span> e <span style="color:#007020;font-weight:bold">in</span> x:
+	smallest <span style="color:#666">=</span> <span style="color:#007020">min</span>(smallest, e)</code></pre></div>
+<p>Write a recursive function for finding the smallest element in a list. To avoid copying the list using slices, you will want to have the function take an index parameter as an argument.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">min_rec</span>(x, i <span style="color:#666">=</span> <span style="color:#40a070">0</span>, acc <span style="color:#666">=</span> None):
+    <span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">==</span> <span style="color:#007020">len</span>(x): <span style="color:#007020;font-weight:bold">return</span> acc
+    acc <span style="color:#666">=</span> x[i] <span style="color:#007020;font-weight:bold">if</span> acc <span style="color:#007020;font-weight:bold">is</span> None <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020">min</span>(acc, x[i])
+    <span style="color:#007020;font-weight:bold">return</span> min_rec(x, i <span style="color:#666">+</span> <span style="color:#40a070">1</span>, acc)</code></pre></div>
+<p><strong>Exercise:</strong> Modify your function, so it returns <code>None</code> if the list is empty. The easiest way to do this is probably to include the “smallest element seen so far” as a parameter to the function, with a default value of <code>None</code>. To compute the smallest value and still handle <code>None</code> you can use this function:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">my_min</span>(x, y):
+	<span style="color:#007020;font-weight:bold">return</span> y <span style="color:#007020;font-weight:bold">if</span> x <span style="color:#007020;font-weight:bold">is</span> None <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020">min</span>(x, y)</code></pre></div>
+<p>My solution from above already works this way.</p>
+
+<p><strong>Exercise:</strong> Write a recursive function that reverses a list.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">reverse_rec</span>(x, acc <span style="color:#666">=</span> []):
+    <span style="color:#007020;font-weight:bold">if</span> x <span style="color:#666">==</span> []: <span style="color:#007020;font-weight:bold">return</span> acc
+    <span style="color:#007020;font-weight:bold">return</span> reverse_rec(x[<span style="color:#40a070">1</span>:], [x[<span style="color:#40a070">0</span>]] <span style="color:#666">+</span> acc)</code></pre></div>
+<p>This implementation is very inefficient due to how Python lists are implemented. It would be very efficient if we used linked lists. With array-like vectors, we wouldn&rsquo;t usually need recursion—it is easier to solve that reversal problem iteratively.</p>
+
+<p><strong>Exercise:</strong> Recall the exercise where you had to translate a base-10 number into some other base b (where we restricted the base to be less than 16). We can get the last digit of a number i, in base b using this function:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">get_last_digit</span>(i, b):
+    <span style="color:#007020;font-weight:bold">return</span> digits[i <span style="color:#666">%</span> b]</code></pre></div>
+<p>where we defined the <code>digits</code> list as</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits <span style="color:#666">=</span> {}
+
+<span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">0</span>,<span style="color:#40a070">10</span>):
+    digits[i] <span style="color:#666">=</span> <span style="color:#007020">str</span>(i)
+
+digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;A&#39;</span>
+digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;B&#39;</span>
+digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;C&#39;</span>
+digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;D&#39;</span>
+digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;E&#39;</span>
+digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;F&#39;</span></code></pre></div>
+<p>We can then reduce the problem to the second-to-last digit by dividing i by b. Implement this idea using a recursive function.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">to_base</span>(n, b, rev_digits <span style="color:#666">=</span> None):
+    <span style="color:#60a0b0;font-style:italic"># get an empty list if argument is None</span>
+    rev_digits <span style="color:#666">=</span> rev_digits <span style="color:#007020;font-weight:bold">or</span> []
+
+    <span style="color:#007020;font-weight:bold">if</span> n <span style="color:#666">==</span> <span style="color:#40a070">0</span>:
+        <span style="color:#007020;font-weight:bold">if</span> rev_digits <span style="color:#666">==</span> []: <span style="color:#007020;font-weight:bold">return</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;0&#34;</span>
+        <span style="color:#007020;font-weight:bold">return</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(<span style="color:#007020">reversed</span>(rev_digits))
+    <span style="color:#007020;font-weight:bold">else</span>:
+        rev_digits<span style="color:#666">.</span>append(digits[n <span style="color:#666">%</span> b])
+        <span style="color:#007020;font-weight:bold">return</span> to_base(n <span style="color:#666">//</span> b, b, rev_digits)</code></pre></div>
+<h2 id="tail-recursion-1">Tail-Recursion</h2>
+
+<p><strong>Exercise:</strong> Rewrite your recursive function for computing the sum of a list of numbers such that it becomes tail-recursive.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">recsum_tr</span>(x, acc <span style="color:#666">=</span> <span style="color:#40a070">0</span>):
+    <span style="color:#007020;font-weight:bold">if</span> x <span style="color:#666">==</span> []: <span style="color:#007020;font-weight:bold">return</span> acc
+    <span style="color:#007020;font-weight:bold">else</span>: <span style="color:#007020;font-weight:bold">return</span> recsum_tr(x[<span style="color:#40a070">1</span>:], acc <span style="color:#666">+</span> x[<span style="color:#40a070">0</span>])</code></pre></div>
+<p><strong>Exercise:</strong> Rewrite your recursive function for finding the smallest element in a list to a version that is tail-recursive.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">min_rec</span>(x, i <span style="color:#666">=</span> <span style="color:#40a070">0</span>, acc <span style="color:#666">=</span> None):
+    <span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">==</span> <span style="color:#007020">len</span>(x): <span style="color:#007020;font-weight:bold">return</span> acc
+    acc <span style="color:#666">=</span> x[i] <span style="color:#007020;font-weight:bold">if</span> acc <span style="color:#007020;font-weight:bold">is</span> None <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020">min</span>(acc, x[i])
+    <span style="color:#007020;font-weight:bold">return</span> min_rec(x, i <span style="color:#666">+</span> <span style="color:#40a070">1</span>, acc)</code></pre></div>
+<p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive summation function.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">recsum_tr</span>(x, acc <span style="color:#666">=</span> <span style="color:#40a070">0</span>):
+		<span style="color:#007020;font-weight:bold">while</span> True:
+		    <span style="color:#007020;font-weight:bold">if</span> x <span style="color:#666">==</span> []: <span style="color:#007020;font-weight:bold">return</span> acc
+		    x, acc <span style="color:#666">=</span> x[<span style="color:#40a070">1</span>:], acc <span style="color:#666">+</span> x[<span style="color:#40a070">0</span>]</code></pre></div>
+<p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive “find minimum” function.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">min_rec</span>(x, i <span style="color:#666">=</span> <span style="color:#40a070">0</span>, acc <span style="color:#666">=</span> None):
+		<span style="color:#007020;font-weight:bold">while</span> True:
+		    <span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">==</span> <span style="color:#007020">len</span>(x): <span style="color:#007020;font-weight:bold">return</span> acc
+		    acc <span style="color:#666">=</span> x[i] <span style="color:#007020;font-weight:bold">if</span> acc <span style="color:#007020;font-weight:bold">is</span> None <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020">min</span>(acc, x[i])
+		    i <span style="color:#666">+=</span> <span style="color:#40a070">1</span></code></pre></div>
+<p><strong>Exercise:</strong> Consider our recursive implementation of binary search:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">bsearch</span>(x, e, low <span style="color:#666">=</span> <span style="color:#40a070">0</span>, high <span style="color:#666">=</span> <span style="color:#007020">len</span>(x)):
+	<span style="color:#007020;font-weight:bold">if</span> low <span style="color:#666">&gt;=</span> high:
+		<span style="color:#007020;font-weight:bold">return</span> False
+	mid <span style="color:#666">=</span> (low <span style="color:#666">+</span> high) <span style="color:#666">//</span> <span style="color:#40a070">2</span>
+	<span style="color:#007020;font-weight:bold">if</span> x[mid] <span style="color:#666">==</span> e:
+		<span style="color:#007020;font-weight:bold">return</span> True
+	<span style="color:#007020;font-weight:bold">elif</span> x[mid] <span style="color:#666">&lt;</span> e:
+		<span style="color:#007020;font-weight:bold">return</span> bsearch(x, e, mid <span style="color:#666">+</span> <span style="color:#40a070">1</span>, high)
+	<span style="color:#007020;font-weight:bold">else</span>:
+		<span style="color:#007020;font-weight:bold">return</span> bsearch(x, e, low, mid)</code></pre></div>
+<p>This function is tail-recursive, so use the transformation to replace it with a loop. Compare it to the iterative solution we considered before this chapter.</p>
+
+<p>The direct translation is this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">bsearch</span>(x, e, low <span style="color:#666">=</span> <span style="color:#40a070">0</span>, high <span style="color:#666">=</span> <span style="color:#007020">len</span>(x)):
+    <span style="color:#007020;font-weight:bold">while</span> True:
+	    <span style="color:#007020;font-weight:bold">if</span> low <span style="color:#666">&gt;=</span> high:
+		    <span style="color:#007020;font-weight:bold">return</span> False
+	    mid <span style="color:#666">=</span> (low <span style="color:#666">+</span> high) <span style="color:#666">//</span> <span style="color:#40a070">2</span>
+	    <span style="color:#007020;font-weight:bold">if</span> x[mid] <span style="color:#666">==</span> e:
+		    <span style="color:#007020;font-weight:bold">return</span> True
+	    <span style="color:#007020;font-weight:bold">elif</span> x[mid] <span style="color:#666">&lt;</span> e:
+		    <span style="color:#007020;font-weight:bold">return</span> bsearch(x, e, mid <span style="color:#666">+</span> <span style="color:#40a070">1</span>, high)
+	    <span style="color:#007020;font-weight:bold">else</span>:
+		    <span style="color:#007020;font-weight:bold">return</span> bsearch(x, e, low, mid)</code></pre></div>
+<p>If we just change the loop condition we get the usual function:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">bsearch</span>(x, e, low <span style="color:#666">=</span> <span style="color:#40a070">0</span>, high <span style="color:#666">=</span> <span style="color:#007020">len</span>(x)):
+    <span style="color:#007020;font-weight:bold">while</span> low <span style="color:#666">&lt;</span> high:
+	    mid <span style="color:#666">=</span> (low <span style="color:#666">+</span> high) <span style="color:#666">//</span> <span style="color:#40a070">2</span>
+	    <span style="color:#007020;font-weight:bold">if</span> x[mid] <span style="color:#666">==</span> e:
+		    <span style="color:#007020;font-weight:bold">return</span> True
+	    <span style="color:#007020;font-weight:bold">elif</span> x[mid] <span style="color:#666">&lt;</span> e:
+		    <span style="color:#007020;font-weight:bold">return</span> bsearch(x, e, mid <span style="color:#666">+</span> <span style="color:#40a070">1</span>, high)
+	    <span style="color:#007020;font-weight:bold">else</span>:
+		    <span style="color:#007020;font-weight:bold">return</span> bsearch(x, e, low, mid)
+    <span style="color:#007020;font-weight:bold">return</span> False</code></pre></div>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/ctib-slides-chapter7/"><i class="fa fa-chevron-circle-left"></i> Slides (CT Chapter 7)</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2018 - Thomas Mailund | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+</html>
