@@ -1,6 +1,7 @@
 ---
 title: "Slides (CT Chapter 7)"
 date: 2018-09-25T15:33:57+02:00
+tags: [teaching, computational-thinking]
 ---
 
 There is not a whole lot to say about recursion as such, but I've made a few slides. Half of it is just about how function calls work.
