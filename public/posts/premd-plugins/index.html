@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.37" />
+  <meta name="generator" content="Hugo 0.40.2" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -197,10 +197,10 @@ ga('send', 'pageview');
 
 <p>The &ldquo;FIXME&rdquo; plugin sees these tags:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">FIXME</span>(plugin<span style="color:#666">.</span>TagPlugin, plugin<span style="color:#666">.</span>SummaryPlugin):
-    <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;FIXMEs in document&#34;&#34;&#34;</span>
+    <span style="color:#4070a0">&#34;&#34;&#34;FIXMEs in document&#34;&#34;&#34;</span>
     supported_tags <span style="color:#666">=</span> [
-        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;FIXME&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;Fixme&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;fixme&#34;</span>,
-        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;TODO&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;Todo&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;todo&#34;</span>
+        <span style="color:#4070a0">&#34;FIXME&#34;</span>, <span style="color:#4070a0">&#34;Fixme&#34;</span>, <span style="color:#4070a0">&#34;fixme&#34;</span>,
+        <span style="color:#4070a0">&#34;TODO&#34;</span>, <span style="color:#4070a0">&#34;Todo&#34;</span>, <span style="color:#4070a0">&#34;todo&#34;</span>
     ]
 	<span style="">…</span></code></pre></div>
 <p>When <code>permed</code> is told there is a tag plugin, it gets the class-variable <code>supported_tags</code> and feed these tags to the plugin. The tags have the form <code>%% tag: …</code>, and the tag plugin is called with the text that follows the <code>tag:</code>.</p>
@@ -208,9 +208,9 @@ ga('send', 'pageview');
 <p>You can inform the <code>premd</code> too that you have a plugin for it using entry points. I have these built into the tool:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    entry_points<span style="color:#666">=</span>{
 		    <span style="">…</span>,
-        <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;premd.plugins&#39;</span>: [
-            <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;fixme = premd.plugins.fixme:FIXME&#39;</span>,
-            <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;wc = premd.plugins.wc:WC&#39;</span>
+        <span style="color:#4070a0">&#39;premd.plugins&#39;</span>: [
+            <span style="color:#4070a0">&#39;fixme = premd.plugins.fixme:FIXME&#39;</span>,
+            <span style="color:#4070a0">&#39;wc = premd.plugins.wc:WC&#39;</span>
         ]
     },</code></pre></div>
 <p>The tool figures out what kind of a plugin it is from its super-classes. I can also get these from a more protocol-oriented design using the <code>__subclasshook__</code> mechanism, but I haven&rsquo;t decided on whether that is a good idea or not.</p>
