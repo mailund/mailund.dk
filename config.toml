@@ -29,6 +29,6 @@ pygmentsStyle = "friendly"
 [params]
     tagline = "On Writing, Science, Programming and more"
     
-    googlefonts = ["Droid Sans", "Fira Code"]
+    googlefonts = ["Droid Sans", "Fira Mono"]
     fontbody = 'Droid Sans'
     fontcode = 'Fira Code'
