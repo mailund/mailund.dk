@@ -1,7 +1,7 @@
 ---
 title: "Exercises (CT chapter 5)"
 date: 2018-09-24T10:54:12+02:00
-tags: [teaching, computaitonal-thinking]
+tags: [teaching, computational-thinking]
 ---
 
 I’m on a roll today! Here are the exercises for chapter 5 of [*Introduction to Computational Thinking*](https://leanpub.com/comp-thinking).

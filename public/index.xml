@@ -6,10 +6,19 @@
     <description>Recent content on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 24 Sep 2018 10:54:12 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 25 Sep 2018 15:33:57 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Slides (CT Chapter 7)</title>
+      <link>https://mailund.dk/posts/ctib-slides-chapter7/</link>
+      <pubDate>Tue, 25 Sep 2018 15:33:57 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/ctib-slides-chapter7/</guid>
+      <description>There is not a whole lot to say about recursion as such, but I&amp;rsquo;ve made a few slides. Half of it is just about how function calls work.</description>
+    </item>
     
     <item>
       <title>Exercises (CT chapter 5)</title>
@@ -55,7 +64,7 @@ The slides cover linear and binary search, insertion, selection and bubble sort,
       <pubDate>Thu, 20 Sep 2018 05:00:15 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/scoping-rules-and-nse/</guid>
-      <description>Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do non-standard evaluation.</description>
+      <description>Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do &amp;ldquo;non-standard evaluation&amp;rdquo;.</description>
     </item>
     
     <item>
