@@ -6,10 +6,29 @@
     <description>Recent content in Rstats on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Sat, 22 Sep 2018 12:23:09 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Errata: Functional Programming in R</title>
+      <link>https://mailund.dk/errata/fpinr/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/errata/fpinr/</guid>
+      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>Environments and formulae</title>
+      <link>https://mailund.dk/posts/envs-and-formulae/</link>
+      <pubDate>Thu, 27 Sep 2018 04:41:19 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
+      <description>In my two previous posts on non-standard evaluation, Scoping rules and NSE and Overscoping and eval, I explained:
+ How R finds the bindings of variables by looking through chains of environments.</description>
+    </item>
     
     <item>
       <title>Overscoping and eval</title>
@@ -27,6 +46,15 @@
       
       <guid>https://mailund.dk/posts/scoping-rules-and-nse/</guid>
       <description>Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do &amp;ldquo;non-standard evaluation&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Errata: Functional Data-Structures in R</title>
+      <link>https://mailund.dk/errata/fdsinr/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/errata/fdsinr/</guid>
+      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book.</description>
     </item>
     
   </channel>

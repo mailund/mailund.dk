@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Errata on Mailund on the Internet</title>
+    <link>https://mailund.dk/tags/errata/</link>
+    <description>Recent content in Errata on Mailund on the Internet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
+    <lastBuildDate>Mon, 01 Oct 2018 08:43:17 +0200</lastBuildDate>
+    
+	<atom:link href="https://mailund.dk/tags/errata/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Erratas</title>
+      <link>https://mailund.dk/posts/erratas/</link>
+      <pubDate>Mon, 01 Oct 2018 08:43:17 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/erratas/</guid>
+      <description>To my utter shock, it turns out that I am not perfect. There are mistakes in my books!
+A couple of readers made me aware of a typo in Functional Programming in R.</description>
+    </item>
+    
+    <item>
+      <title>Errata: Functional Programming in R</title>
+      <link>https://mailund.dk/errata/fpinr/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/errata/fpinr/</guid>
+      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>Errata: Functional Data-Structures in R</title>
+      <link>https://mailund.dk/errata/fdsinr/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/errata/fdsinr/</guid>
+      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,30 @@
     <description>Recent content in Posts on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Tue, 25 Sep 2018 17:04:13 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 01 Oct 2018 08:43:17 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Erratas</title>
+      <link>https://mailund.dk/posts/erratas/</link>
+      <pubDate>Mon, 01 Oct 2018 08:43:17 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/erratas/</guid>
+      <description>To my utter shock, it turns out that I am not perfect. There are mistakes in my books!
+A couple of readers made me aware of a typo in Functional Programming in R.</description>
+    </item>
+    
+    <item>
+      <title>Environments and formulae</title>
+      <link>https://mailund.dk/posts/envs-and-formulae/</link>
+      <pubDate>Thu, 27 Sep 2018 04:41:19 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
+      <description>In my two previous posts on non-standard evaluation, Scoping rules and NSE and Overscoping and eval, I explained:
+ How R finds the bindings of variables by looking through chains of environments.</description>
+    </item>
     
     <item>
       <title>Exercises (CT Chapter 7)</title>

@@ -6,10 +6,19 @@
     <description>Recent content in Teaching on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Tue, 25 Sep 2018 15:33:57 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 25 Sep 2018 17:04:13 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Exercises (CT Chapter 7)</title>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter7/</link>
+      <pubDate>Tue, 25 Sep 2018 17:04:13 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter7/</guid>
+      <description>I don’t really have a lot of exercises for the chapter on recursion. I had planned to combine recursion with divide-and-conquer, but now the two topics are split over two weeks.</description>
+    </item>
     
     <item>
       <title>Slides (CT Chapter 7)</title>

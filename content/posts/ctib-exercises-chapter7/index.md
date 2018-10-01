@@ -1,6 +1,7 @@
 ---
 title: Exercises (CT Chapter 7)
 date: 2018-09-25T17:04:13+02:00
+tags: [teaching, computational-thinking]
 ---
 
 I don’t really have a lot of exercises for the chapter on recursion. I had planned to combine recursion with divide-and-conquer, but now the two topics are split over two weeks. Instead, I will have a project for the students to do while they learn about recursion; then it doesn’t matter so much that there are not that many exercises.

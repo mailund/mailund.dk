@@ -1,0 +1,312 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  <meta name="generator" content="Hugo 0.37.1" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code'; 
+ }
+ </style>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Errata: Functional Data-Structures in R</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-09-09T00:00:00Z">Sep 9, 2018</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/books/">#books</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/writing/">#writing</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/functional-programming/">#functional-programming</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/rstats/">#rstats</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/errata/">#errata</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>One big regret I have about this book is that I didn’t implement the pattern matching code from <a href="https://amzn.to/2QHMNLL"><em>Domain-Specific Languages in R</em></a> before this book. Pattern matching makes implementing data structures <em>much</em> easier.</p>
+
+<p>In the errata below, I will use it. You can read a description of how it works <a href="https://mailund.github.io/pmatch/">here</a>.</p>
+
+<p>To use it, install the <code>patch</code> package and load it</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">install.packages(<span style="color:#4070a0">&#34;pmatch&#34;</span>)
+<span style="color:#007020;font-weight:bold">library</span>(<span style="color:#007020">pmatch</span>)</code></pre></div>
+<h2 id="chapter-4">Chapter 4</h2>
+
+<h3 id="deques">Deques</h3>
+
+<p>This section is just, well, wrong. I made a mistake in the implementation, but it was cancelled out by another error, so it didn’t affect the correctness—so my tests didn’t catch it. It did break the runtime guarantees, though, and my explanation of why that happens is also incorrect.</p>
+
+<p>A correct implementation of <code>deques</code> (to the best of my knowledge), is this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue <span style="color:#666">:=</span> QUEUE(front_len, front, back_len, back)
+new_queue <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>() QUEUE(<span style="color:#40a070">0</span>, NIL, <span style="color:#40a070">0</span>, NIL)
+
+enqueue <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue, x)
+  cases(queue,
+        QUEUE(front_len, front, back_len, back) <span style="color:#666">-&gt;</span>
+          QUEUE(front_len, front, back_len <span style="color:#666">+</span> <span style="color:#40a070">1</span>, CONS(x, back)))
+
+enqueue_front <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue, x)
+  cases(queue,
+        QUEUE(front_len, front, back_len, back) <span style="color:#666">-&gt;</span>
+          QUEUE(front_len <span style="color:#666">+</span> <span style="color:#40a070">1</span>, CONS(x, front), back_len, back))
+
+split_list <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(lst, n, acc <span style="color:#666">=</span> NIL)
+  cases(<span style="color:#40a070">..</span>(n, lst),
+        <span style="color:#40a070">..</span>(<span style="color:#40a070">0</span>, lst) <span style="color:#666">-&gt;</span> PAIR(reverse(acc), lst),
+        <span style="color:#40a070">..</span>(n, CONS(car, cdr)) <span style="color:#666">-&gt;</span> split_list(cdr, n <span style="color:#666">-</span> <span style="color:#40a070">1</span>, CONS(car, acc)))
+
+move_front_to_back <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue)
+  cases(queue,
+        QUEUE(front_len, front, <span style="color:#40a070">0</span>, NIL) <span style="color:#666">-&gt;</span> {
+          n <span style="color:#666">&lt;-</span> <span style="color:#007020">floor</span>(front_len <span style="color:#666">/</span> <span style="color:#40a070">2</span>)
+          cases(split_list(front, n),
+                PAIR(first, second) <span style="color:#666">-&gt;</span>
+                  QUEUE(n,
+                        first,
+                        front_len <span style="color:#666">-</span> n,
+                        reverse(second)))
+          })
+
+move_back_to_front <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue)
+  cases(queue,
+        QUEUE(<span style="color:#40a070">0</span>, NIL, back_len, back) <span style="color:#666">-&gt;</span> {
+          n <span style="color:#666">&lt;-</span> <span style="color:#007020">floor</span>(back_len <span style="color:#666">/</span> <span style="color:#40a070">2</span>)
+          cases(split_list(back, n),
+                PAIR(first, second) <span style="color:#666">-&gt;</span>
+                  QUEUE(back_len <span style="color:#666">-</span> n, reverse(second), n, first))
+        })
+
+front <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue)
+  cases(queue,
+        QUEUE(<span style="color:#40a070">.</span>, NIL, <span style="color:#40a070">.</span>, NIL)        <span style="color:#666">-&gt;</span> <span style="color:#007020">stop</span>(<span style="color:#4070a0">&#34;Empty queue&#34;</span>),
+        QUEUE(<span style="color:#40a070">.</span>, NIL, <span style="color:#40a070">.</span>, <span style="color:#40a070">.</span>)          <span style="color:#666">-&gt;</span> front(move_back_to_front(queue)),
+        QUEUE(front_len, CONS(car, cdr), back_len, back) <span style="color:#666">-&gt;</span>
+          PAIR(car, QUEUE(front_len <span style="color:#666">-</span> <span style="color:#40a070">1</span>, cdr, back_len, back)))
+
+back <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue)
+  cases(queue,
+        QUEUE(<span style="color:#40a070">.</span>, NIL, <span style="color:#40a070">.</span>, NIL)        <span style="color:#666">-&gt;</span> <span style="color:#007020">stop</span>(<span style="color:#4070a0">&#34;Empty queue&#34;</span>),
+        QUEUE(<span style="color:#40a070">.</span>, <span style="color:#40a070">.</span>, <span style="color:#40a070">.</span>, NIL)          <span style="color:#666">-&gt;</span> back(move_front_to_back(queue)),
+        QUEUE(front_len, front, back_len, CONS(car, cdr)) <span style="color:#666">-&gt;</span>
+          PAIR(car, QUEUE(front_len, front, back_len <span style="color:#666">-</span> <span style="color:#40a070">1</span>, cdr)))   </code></pre></div>
+<p>The cost of splitting a list and moving a list is bounded by <code>2n</code></p>
+
+<p><img src="split-cost.png" alt="" /></p>
+
+<p>so put two operations in the bank each time you increase the difference in list lengths and you can pay for it when you need to.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        
+        <li>
+            <a href="https://mailund.dk/errata/fpinr/">Errata: Functional Programming in R <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2018 - Thomas Mailund | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+</html>

@@ -117,7 +117,9 @@ amzn_assoc_rows = "4";
 ## Functional Data Structures in R
 
 {{< figure link="https://amzn.to/2oUG2cP" src="functional-datastructures-in-r.jpg" class="float-right" >}}
-    
+
+[**Errata**]({{< ref "/errata/FDSinR" >}})
+
 Get an introduction to functional data structures using R and write more effective code and gain performance for your programs. This book teaches you workarounds because data in functional languages is not mutable: for example you’ll learn how to change variable-value bindings by modifying environments, which can be exploited to emulate pointers and implement traditional data structures. You’ll also see how, by abandoning traditional data structures, you can manipulate structures by building new versions rather than modifying them. You’ll discover how these so-called functional data structures are different from the traditional data structures you might know, but are worth understanding to do serious algorithmic programming in a functional language such as R.
 
 By the end of Functional Data Structures in R, you’ll understand the choices to make in order to most effectively work with data structures when you cannot modify the data itself. These techniques are especially applicable for algorithmic development important in big data, finance, and other data science applications.
@@ -235,7 +237,9 @@ amzn_assoc_rows = "4";
 ## Functional Programming in R
 
 {{< figure link="https://amzn.to/2wY4m11" src="fp-in-r.jpg" class="float-right" >}}
-    
+
+[**Errata**]({{< ref "/errata/FPinR" >}})
+
 Master functions and discover how to write functional programs in R. In this concise book, you'll make your functions pure by avoiding side-effects; you’ll write functions that manipulate other functions, and you’ll construct complex functions using simpler functions as building blocks.
 
 In Functional Programming in R, you’ll see how we can replace loops, which can have side-effects, with recursive functions that can more easily avoid them. In addition, the book covers why you shouldn't use recursion when loops are more efficient and how you can get the best of both worlds.
