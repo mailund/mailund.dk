@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538402831149.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2313028987",
+    "id" : "98ADC5",
+    "lastKnownWriteTime" : 1538728085,
+    "last_content_update" : 1538728085159,
+    "path" : "~/Dropbox/Web/r-programmer-blog/content/post/lazy-queues/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "cursorPosition" : "282,0",
+        "scrollLine" : "236"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

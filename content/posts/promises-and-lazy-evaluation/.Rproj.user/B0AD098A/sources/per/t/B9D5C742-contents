@@ -1,0 +1,37 @@
+
+f <- function(x) pryr::promise_info(x)
+f(1)
+f(2 + 3)
+f(x)
+
+g <- function(x, y) f(x + y)
+g(2, 3)
+
+h <- function(x) {
+  cat("Promise before evaluation:\n")
+  print(pryr::promise_info(x))
+  x
+  cat("\nPromise after evaluation:\n")
+  print(pryr::promise_info(x))
+}
+h(2 + 1)
+
+f <- function(x, y = 2 * x) {
+  cat("Promise x environment:\n")
+  print(pryr::promise_info(x)$env)
+  cat("\nPromise y environment:\n")
+  print(pryr::promise_info(y)$env)
+  cat("\nFunction call environment:\n")
+  print(environment())
+}
+f(2 + 3)
+
+delayedAssign("x", stop("Wait, what?"))
+# nothing to see here...
+
+# it is a promise
+pryr::is_promise(x)
+
+# if you access it, you evaluate it
+# (if you break, you buy it)
+x

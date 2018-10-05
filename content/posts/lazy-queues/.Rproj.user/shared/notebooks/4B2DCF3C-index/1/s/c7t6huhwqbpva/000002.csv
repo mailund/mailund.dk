@@ -1,0 +1,7 @@
+"0","library(pmatch)"
+"0","linked_list := NIL | CONS(car, cdr : linked_list)"
+"0","toString.linked_list <- function(llist)"
+"0","  cases(llist, NIL -> ""[]"","
+"0","        CONS(car, cdr) -> paste(car, ""::"", toString(cdr)))"
+"0","print.linked_list <- function(llist)"
+"0","  cat(toString(llist), ""\n"")"

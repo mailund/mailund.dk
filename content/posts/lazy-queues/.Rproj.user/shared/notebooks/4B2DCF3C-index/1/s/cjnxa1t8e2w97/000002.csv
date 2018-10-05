@@ -1,0 +1,2 @@
+"0","queue := QUEUE(front_len, front, back_len, back)"
+"0","new_queue <- function() QUEUE(0, LLNIL, 0, LLNIL)"

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538205447833.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "6B32EC42",
+    "lastKnownWriteTime" : 1538244088,
+    "last_content_update" : 1538244088100,
+    "path" : "~/Dropbox/Web/r-programmer-blog/content/post/promises-and-lazy-evaluation/queue.R",
+    "project_path" : "queue.R",
+    "properties" : {
+        "cursorPosition" : "12,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

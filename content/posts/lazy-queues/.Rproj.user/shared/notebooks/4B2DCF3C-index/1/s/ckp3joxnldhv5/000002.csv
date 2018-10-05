@@ -1,0 +1,8 @@
+"0","print.queue <- function(queue) {"
+"0","  cat(""Front length:\t"", queue$front_len, ""\n"")"
+"0","  cat(""Back length:\t"", queue$back_len, ""\n"")"
+"0","  cat(""Front:\t"")"
+"0","  print(queue$front)"
+"0","  cat(""Back:\t"")"
+"0","  print(queue$back)"
+"0","}"

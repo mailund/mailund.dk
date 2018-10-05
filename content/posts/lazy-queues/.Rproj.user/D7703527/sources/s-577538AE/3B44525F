@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538454380855.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3B44525F",
+    "lastKnownWriteTime" : 1538575082,
+    "last_content_update" : 1538575082,
+    "path" : "~/Dropbox/Web/r-programmer-blog/content/post/lazy-queues/lazy-lists.R",
+    "project_path" : "lazy-lists.R",
+    "properties" : {
+        "cursorPosition" : "84,28",
+        "scrollLine" : "73",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

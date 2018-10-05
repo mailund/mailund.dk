@@ -1,0 +1,59 @@
+make_thunk <- function(expr) {
+  force(expr)
+  function() expr
+}
+
+make_lazy_thunk <- function(expr) {
+  function() expr
+}
+
+cons <- function(car, cdr)
+  make_thunk(list(car = car, cdr = cdr))
+
+lazy_cons <- function(car, cdr)
+  make_lazy_thunk(list(car = car, cdr = cdr))
+
+build_list <- function(lst, cons, i = 1, acc = NULL) {
+  if (i == length(lst)) acc 
+  else build_list(lst, cons, i + 1, cons(lst[i], acc))
+}
+
+# I want to expect lists so I do not
+# define toString and print
+list_to_string <- function(lst_thunk) {
+  if (is.null(lst_thunk)) "[]"
+  else {
+    lst <- lst_thunk()
+    paste(lst$car, list_to_string(lst$cdr))
+  }
+}
+print_list <- function(lst) {
+  cat(list_to_string(lst))
+}
+
+x <- build_list(1:4, cons)
+print_list(x)
+
+y <- build_list(1:4, lazy_cons)
+print_list(y)
+
+concat <- function(x, y) {
+  if (is.null(x)) y
+  else {
+    lst <- x()
+    cons(lst$car, concat(lst$cdr, y))
+  }
+}
+z <- concat(x, y)
+print_list(z)
+
+lazy_concat <- function(x, y) {
+  if (is.null(x)) y
+  else {
+    lst <- x()
+    lazy_cons(lst$car, lazy_concat(lst$cdr, y))
+  }
+}
+
+lazy_z <- lazy_concat(x, y)
+print_list(lazy_z)

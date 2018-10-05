@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538371144236.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4187723458",
+    "id" : "EDECD10E",
+    "lastKnownWriteTime" : 1538372777,
+    "last_content_update" : 1538372777,
+    "path" : "~/Dropbox/Web/r-programmer-blog/content/post/functional-lists-and-queues/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "cursorPosition" : "475,158",
+        "scrollLine" : "461"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538411316648.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3735483133",
+    "id" : "BDD1FEB",
+    "lastKnownWriteTime" : 1538476040,
+    "last_content_update" : 1538476040,
+    "path" : "~/Dropbox/Web/r-programmer-blog/content/post/promises-and-lazy-evaluation/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "cursorPosition" : "78,185",
+        "scrollLine" : "74",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

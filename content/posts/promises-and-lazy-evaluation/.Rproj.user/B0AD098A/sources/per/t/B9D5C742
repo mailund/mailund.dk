@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538402791204.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1831248957",
+    "id" : "B9D5C742",
+    "lastKnownWriteTime" : 1538405399,
+    "last_content_update" : 1538405399983,
+    "path" : "~/Dropbox/promises-and-function-calls.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "37,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

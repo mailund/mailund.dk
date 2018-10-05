@@ -1,0 +1,6 @@
+"0","queue_to_llist <- function(queue)"
+"0","  cases(queue,"
+"0","        QUEUE(., LLNIL, ., LLNIL) -> NIL,"
+"0","        otherwise ->"
+"0","          cases(dequeue(queue),"
+"0","                PAIR(x, q) -> CONS(x, queue_to_llist(q))))"

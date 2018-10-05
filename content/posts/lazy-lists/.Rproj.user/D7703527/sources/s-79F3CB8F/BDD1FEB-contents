@@ -1,0 +1,279 @@
+---
+title: "Lazy lists and lazy queues"
+date: '2018-10-02T09:13:01+02:00'
+tags:
+  - functional-programming
+  - pmatch
+categories:
+  - Data-structures
+draft: true
+---
+
+## Lazy lists
+
+```{r}
+library(pmatch)
+
+linked_list := NIL | CONS(car, cdr)
+toString.linked_list <- function(llist)
+  cases(llist, NIL -> "[]",
+        CONS(car, cdr) -> paste(car, "::", toString(cdr)))
+#print.linked_list <- function(llist)
+#  cat(toString(llist), "\n")
+
+# lazy lists are thunks
+make_delay_thunk <- function(expr) {
+  DELAYED(function() expr)
+}
+make_lazy_thunk <- function(expr) {
+  force(expr)
+  DELAYED(function() expr)
+}
+
+lazy_list := LLNIL | DELAYED(lst)
+toString.lazy_list <- function(x)
+  cases(x,
+        LLNIL -> "<>",
+        DELAYED(y) ->
+          cases(y(),
+            NIL -> "<>",
+            CONS(car, cdr) -> paste(car, ":: <...>")))
+#print.lazy_list <- function(x)
+#  cat(toString(x), "\n")
+
+delay_cons <- function(car, cdr) make_delay_thunk(CONS(car, cdr))
+lazy_cons  <- function(car, cdr) make_lazy_thunk(CONS(car, cdr))
+```
+
+```{r}
+x <- purrr::reduce(1:5, ~ lazy_cons(.y, .x), .init = LLNIL)
+x
+```
+
+```{r}
+lazy_macro <- function(empty_pattern, nonempty_pattern, ...) {
+  
+  empty_pattern    <- substitute(empty_pattern)
+  nonempty_pattern <- substitute(nonempty_pattern)
+  extra_args <- rlang::enexprs(...)
+  
+  cases_pattern <- rlang::expr(
+    cases(.list,
+          LLNIL -> !!empty_pattern,
+          DELAYED(.list_thunk) ->
+            cases(.list_thunk(),
+                  NIL -> !!empty_pattern,
+                  CONS(car, cdr) -> !!nonempty_pattern))
+  )
+  function_expr <- rlang::expr(
+    rlang::new_function(
+      alist(.list =, !!!extra_args), 
+      cases_pattern, 
+      env = rlang::caller_env())  
+  )
+  
+  rlang::eval_bare(function_expr)
+}
+
+#toString.lazy_list <- lazy_macro("<>", paste(car, ":: <...>"))
+
+print(x)
+```
+
+```{r}
+lazy_to_llist <- lazy_macro(NIL, CONS(car, lazy_to_llist(cdr)))
+lazy_to_llist(x)
+```
+
+```{r}
+make_noise <- function(val) {
+  cat("I see", val, "\n")
+  val
+}
+y <- delay_cons(make_noise(1), delay_cons(make_noise(2), LLNIL))
+
+lazy_car <- lazy_macro(stop("Empty list"), car)
+lazy_cdr <- lazy_macro(stop("Empty list"), cdr)
+
+lazy_car(y)
+lazy_car(y)
+lazy_cdr(y)
+lazy_car(lazy_cdr(y))
+lazy_cdr(lazy_cdr(y))
+```
+
+```{r}
+lazy_length <-  lazy_macro(acc, lazy_length(cdr, acc + 1), acc = 0)
+lazy_length(x)
+lazy_length(y)
+```
+
+```{r}
+z <- delay_cons(make_noise(5), delay_cons(make_noise(6), LLNIL))
+lazy_length(z)
+```
+
+
+```{r}
+lazy_length(z)
+```
+
+```{r}
+make_lazy_thunk <- function(expr) {
+  force(expr)
+  
+  cat("in make thunk\n")
+  cat("env\n")
+  print(environment())
+  cat("expr\n")
+  print(substitute(expr))
+  cat("promise code\n")
+  print(pryr::promise_info(expr)$code)
+  cat("promise env\n")
+  print(pryr::promise_info(expr)$env)
+  cat("promise value\n")
+  print(pryr::promise_info(expr)$value)
+  
+  cat("\n")
+  
+  DELAYED(function() {
+    cat("in thunk\n")
+    cat("env\n")
+    print(environment())
+    cat("expr\n")
+    print(substitute(expr))
+    cat("promise code:\n")
+    print(pryr::promise_info(expr)$code)
+    cat("promise env:\n")
+    print(pryr::promise_info(expr)$env)
+    cat("promise value:\n")
+    print(pryr::promise_info(expr)$value)
+    cat("\n")
+    cat("env\n")
+    print(ls(environment()))
+    cat("parent\n")
+    print(ls(parent.env(environment())))
+    cat("\n")
+    
+    expr
+  })
+}
+
+make_delay_thunk <- function(expr) {
+  
+  cat("in make delayed thunk\n")
+  cat("env\n")
+  print(environment())
+  cat("expr\n")
+  print(substitute(expr))
+  cat("promise code\n")
+  print(pryr::promise_info(expr)$code)
+  cat("promise env\n")
+  print(pryr::promise_info(expr)$env)
+  cat("promise value\n")
+  print(pryr::promise_info(expr)$value)
+  
+  cat("\n")
+  
+  DELAYED(function() {
+    cat("in delayed thunk\n")
+    cat("env\n")
+    print(environment())
+    cat("expr\n")
+    print(substitute(expr))
+    cat("promise code:\n")
+    print(pryr::promise_info(expr)$code)
+    cat("promise env:\n")
+    print(pryr::promise_info(expr)$env)
+    cat("promise value:\n")
+    print(pryr::promise_info(expr)$value)
+    cat("\n")
+    cat("env\n")
+    print(ls(environment()))
+    cat("parent\n")
+    print(ls(parent.env(environment())))
+    cat("\n")
+    
+    expr
+  })
+}
+
+y <- lazy_cons(5, lazy_cons(6, LLNIL))
+#y
+str(y)
+yy <- y$lst()
+str(yy)
+yy$car
+yyy <- yy$cdr$lst()
+yyy$car
+yyy$cdr
+
+z <- delay_cons(5, delay_cons(6, LLNIL))
+str(z)
+zz <- z$lst()
+zz$car
+zzz <- zz$cdr$lst()
+zzz$car
+zzz$cdr
+```
+
+```r
+lazy_concat <- function(l1, l2) {
+  cases(l1(),
+        NIL -> l2,
+        CONS(car, cdr) -> delay_cons(car, lazy_concat(cdr, l2)))
+}
+```
+
+```{r}
+make_lazy_thunk <- function(expr) {
+  force(expr)
+  DELAYED(function() {
+    expr
+  })
+}
+
+make_delay_thunk <- function(expr) {
+  DELAYED(function() {
+    expr
+  })
+}
+
+
+lazy_concat <- lazy_macro(second, delay_cons(car, lazy_concat(cdr, second)), second =)
+lazy_concat <- lazy_macro(second, 
+                          (function(expr) DELAYED(function() expr))(CONS("car", cdr)), 
+                          second =)
+
+lazy_concat
+
+y <- lazy_cons(5, lazy_cons(6, LLNIL))
+z <- delay_cons(5, delay_cons(6, LLNIL))
+
+
+yy <- lazy_concat(y, LLNIL)
+#lazy_length(yy)
+```
+
+```{r}
+y <- delay_cons(make_noise(1), delay_cons(make_noise(2), LLNIL))
+z <- delay_cons(make_noise(5), delay_cons(make_noise(6), LLNIL))
+lazy_length(z)
+lazy_length(y)
+lazy_concat(y, z)
+lazy_concat(y, z)
+
+y <- delay_cons(make_noise(1), delay_cons(make_noise(2), LLNIL))
+lazy_length(y)
+lazy_concat(y, z)
+
+
+lazy_to_llist(y)
+lazy_to_llist(z)
+lazy_to_llist(lazy_concat(y, z))
+```
+
+
+<hr/>
+<small>If you liked what you read, and want more like it, consider supporting me at [Patreon](https://www.patreon.com/mailund).</small>
+<hr/>

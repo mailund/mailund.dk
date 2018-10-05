@@ -1,0 +1,115 @@
+library(pmatch)
+
+linked_list := NIL | CONS(car, cdr)
+toString.linked_list <- function(llist)
+  cases(llist, NIL -> "[]",
+        CONS(car, cdr) -> paste(car, "::", toString(cdr)))
+print.linked_list <- function(llist)
+  cat(toString(llist), "\n")
+
+# lazy lists are thunks
+make_delay_thunk <- function(expr) {
+  structure(function() expr, class = "lazy_list")
+}
+make_lazy_thunk <- function(expr) {
+  force(expr)
+  structure(function() expr, class = "lazy_list")
+}
+toString.lazy_list <- function(x)
+  cases(x(),
+        NIL -> "<>",
+        CONS(car, cdr) -> paste(car, ":: <...>"))
+print.lazy_list <- function(x)
+  cat(toString(x), "\n")
+
+
+lazy_nil   <- make_lazy_thunk(NIL)
+lazy_cons  <- function(car, cdr) make_lazy_thunk(CONS(car, cdr))
+delay_cons <- function(car, cdr) make_delay_thunk(CONS(car, cdr))
+
+make_noise <- function(val) {
+  cat("I see", val, "\n")
+  val
+}
+
+lazy <- lazy_cons(make_noise(1), lazy_cons(make_noise(2), lazy_nil()))
+delayed <- delay_cons(make_noise(1), delay_cons(make_noise(2), lazy_nil()))
+
+lazy
+delayed
+
+lazy_to_llist <- function(x) {
+  cases(x(),
+        NIL -> NIL,
+        CONS(car, cdr) -> CONS(car, lazy_to_llist(cdr)))
+}
+
+x <- purrr::reduce(1:5, ~ lazy_cons(.y, .x), .init = lazy_nil)
+x
+lazy_to_llist(x)
+
+x <- purrr::reduce(10:15, ~ lazy_cons(make_noise(.y), .x), .init = lazy_nil)
+# this doesn't work because of lazy eval + reduce
+#y <- purrr::reduce(1:5, ~ delay_cons(make_noise(.y), .x), .init = lazy_nil)
+y <- delay_cons(
+  make_noise(1), delay_cons(make_noise(2), delay_cons(make_noise(3), 
+                 delay_cons(make_noise(4), delay_cons(make_noise(5),
+                 lazy_nil)))))
+
+lazy_to_llist(x)
+lazy_to_llist(y)
+
+lazy_concat <- function(first, second) {
+  cases(first(),
+        NIL -> second,
+        CONS(car, cdr) -> lazy_cons(car, lazy_concat(cdr, second)))
+}
+delay_concat <- function(first, second) {
+  cases(first(),
+        NIL -> second,
+        CONS(car, cdr) -> delay_cons(car, lazy_concat(cdr, second)))
+}
+
+x <- purrr::reduce(10:15, ~ lazy_cons(make_noise(.y), .x), .init = lazy_nil)
+# this doesn't work because of lazy eval + reduce
+#y <- purrr::reduce(1:5, ~ delay_cons(make_noise(.y), .x), .init = lazy_nil)
+y <- delay_cons(
+  make_noise(1), delay_cons(make_noise(2), delay_cons(make_noise(3), 
+                 delay_cons(make_noise(4), delay_cons(make_noise(5),
+                 lazy_nil)))))
+
+# x is already evaluated, y won't be
+lazy_xy <- lazy_concat(x, y)
+
+# here y will be evaluated
+lazy_yx <- lazy_concat(y, x)
+
+x <- purrr::reduce(10:15, ~ lazy_cons(make_noise(.y), .x), .init = lazy_nil)
+y <- delay_cons(
+  make_noise(1), delay_cons(make_noise(2), delay_cons(make_noise(3), 
+                 delay_cons(make_noise(4), delay_cons(make_noise(5),
+                 lazy_nil)))))
+
+delay_xy <- delay_concat(x, y)
+delay_xy
+
+make_delay_thunk <- function(expr) {
+  caller_env <- rlang::caller_env()
+  expr_expr <- substitute(expr)
+  thunk <- function() {
+    print(expr_expr)
+    print(ls(caller_env)) # this will show that car is in env
+    caller_env$car # this will break. Where is car?
+    expr
+  }
+  structure(thunk, class = "lazy_list")
+}
+
+#y <- delay_cons(
+#  make_noise(1), delay_cons(make_noise(2), delay_cons(make_noise(3), 
+#                 delay_cons(make_noise(4), delay_cons(make_noise(5),
+#                 lazy_nil)))))
+
+delay_xy <- delay_concat(x, y)
+delay_xy
+

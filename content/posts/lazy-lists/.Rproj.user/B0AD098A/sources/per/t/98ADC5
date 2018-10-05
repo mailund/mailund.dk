@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538402831149.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1540028739",
+    "id" : "98ADC5",
+    "lastKnownWriteTime" : 1538580387,
+    "last_content_update" : 1538580387912,
+    "path" : "~/Dropbox/Web/r-programmer-blog/content/post/lazy-lists/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "cursorPosition" : "8,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

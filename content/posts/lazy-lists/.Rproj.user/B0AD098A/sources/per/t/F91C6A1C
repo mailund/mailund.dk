@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538402748950.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "72235143",
+    "id" : "F91C6A1C",
+    "lastKnownWriteTime" : 1538575082,
+    "last_content_update" : 1538575082674,
+    "path" : "~/Dropbox/Web/r-programmer-blog/content/post/lazy-lists/queue.R",
+    "project_path" : "queue.R",
+    "properties" : {
+        "cursorPosition" : "14,42",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

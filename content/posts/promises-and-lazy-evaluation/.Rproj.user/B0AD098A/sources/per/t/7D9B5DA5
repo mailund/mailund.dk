@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538575005509.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1327394397",
+    "id" : "7D9B5DA5",
+    "lastKnownWriteTime" : 1538467323,
+    "last_content_update" : 1538467323,
+    "path" : "~/Dropbox/Web/r-programmer-blog/content/post/promises-and-lazy-evaluation/lazy-lists.R",
+    "project_path" : "lazy-lists.R",
+    "properties" : {
+        "cursorPosition" : "93,16",
+        "scrollLine" : "74"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

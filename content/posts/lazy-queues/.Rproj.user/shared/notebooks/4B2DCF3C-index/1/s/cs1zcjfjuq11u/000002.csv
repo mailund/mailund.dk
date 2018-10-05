@@ -1,0 +1,2 @@
+"0","lazy_list := LLNIL | THUNK(lst)"
+"0","lazy_list_head := LLCONS(head, tail : lazy_list)"

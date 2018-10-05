@@ -3,6 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mailund.dk/posts/lazy-queues/</loc>
+    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/posts/lazy-lists/</loc>
+    <lastmod>2018-10-04T05:00:15+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/posts/promises-and-lazy-evaluation/</loc>
+    <lastmod>2018-10-03T09:10:01+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/posts/functional-lists-and-queues/</loc>
+    <lastmod>2018-10-02T05:00:10+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/seeing-further/</loc>
     <lastmod>2018-10-01T15:57:13+02:00</lastmod>
   </url>
@@ -185,19 +205,25 @@
   
   <url>
     <loc>https://mailund.dk/</loc>
-    <lastmod>2018-10-01T15:57:13+02:00</lastmod>
+    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/categories/non-standard-evaluation/</loc>
+    <lastmod>2018-10-03T09:10:01+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/posts/</loc>
-    <lastmod>2018-10-01T15:57:13+02:00</lastmod>
+    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/tags/programming/</loc>
-    <lastmod>2018-09-27T04:41:19+02:00</lastmod>
+    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -209,13 +235,19 @@
   
   <url>
     <loc>https://mailund.dk/tags/rstats/</loc>
-    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/tags/science/</loc>
     <lastmod>2018-10-01T15:57:13+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/scope-rules/</loc>
+    <lastmod>2018-10-03T09:10:01+02:00</lastmod>
     <priority>0</priority>
   </url>
   
