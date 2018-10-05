@@ -9,8 +9,8 @@ ignoreFiles = []
 googleAnalytics = "UA-10582357-1"
 disqusShortname = "mailund-dk"
 
-paginate = 10
-summaryLength = 20
+paginate = 20
+summaryLength = 30
 pygmentsCodeFences = true
 pygmentsStyle = "friendly"
 
@@ -28,7 +28,13 @@ pygmentsStyle = "friendly"
 
 [params]
     tagline = "On Writing, Science, Programming and more"
-    
+
     googlefonts = ["Droid Sans", "Fira Mono"]
     fontbody = 'Droid Sans'
     fontcode = 'Fira Code'
+
+[[menu.main]]
+  name = "Posts"
+  identifier = "post"
+  weight = 2
+  url = "/posts"

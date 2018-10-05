@@ -17,7 +17,8 @@
       <pubDate>Mon, 01 Oct 2018 15:36:05 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/ctib-exercises-chapter9/</guid>
-      <description>Exercises Missing element You are given a sorted array, A. It contains n - 1 of the numbers from 1 to n.</description>
+      <description>Exercises Missing element You are given a sorted array, A. It contains n - 1 of the numbers from 1 to n. You should find the missing number.
+You can use the property that for all numbers i less than the missing number you have A[i] == i, while for all i larger than the missing number you have A[i] == i - 1.</description>
     </item>
     
     <item>
@@ -45,7 +46,8 @@
       <pubDate>Tue, 25 Sep 2018 15:33:57 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/ctib-slides-chapter7/</guid>
-      <description>There is not a whole lot to say about recursion as such, but I&amp;rsquo;ve made a few slides. Half of it is just about how function calls work.</description>
+      <description>There is not a whole lot to say about recursion as such, but I&amp;rsquo;ve made a few slides. Half of it is just about how function calls work.
+ Slides Handouts Handouts with notes  </description>
     </item>
     
     <item>
@@ -73,7 +75,8 @@ Let me know if you spot any errors; I am known to make some from time to time.</
       <pubDate>Wed, 19 Sep 2018 17:04:47 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/ctib-slides-chp3-and-4/</guid>
-      <description>I played around a little with my slides for chapter three of Introduction to Computational Thinking and made slides for chapter four.</description>
+      <description>I played around a little with my slides for chapter three of Introduction to Computational Thinking and made slides for chapter four.
+It takes surprisingly long to make these; I had expected to be done with the five chapters I use in my class this year a few weeks ago but I still have three chapters to go.</description>
     </item>
     
     <item>
@@ -100,7 +103,8 @@ Let me know if you spot any errors; I am known to make some from time to time.</
       <pubDate>Wed, 12 Sep 2018 13:40:42 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/compbio-chapter-3-slides/</guid>
-      <description>I’m teaching four weeks of a class called Computational Thinking in Bioinformatics this year (the other weeks are taught by colleagues).</description>
+      <description>I’m teaching four weeks of a class called Computational Thinking in Bioinformatics this year (the other weeks are taught by colleagues).
+It is this class that got me started on my book on the topic: Introduction to Computational Thinking.</description>
     </item>
     
   </channel>

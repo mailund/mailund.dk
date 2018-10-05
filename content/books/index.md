@@ -3,6 +3,7 @@ title = "Books"
 date = "2018-09-09"
 menu = "main"
 tags = ["books", "writing"]
+weight = 3
 +++
 
 
@@ -39,9 +40,9 @@ Below are a complete list of my finished books (plus books that will soon be pub
 
 {{< figure src="joys-of-hashing.jpg" link="https://amzn.to/2wZEamU" class="float-right" >}}
 
-Build working implementations of hash tables, written in the C programming language. This book starts with simple first attempts devoid of collision resolution strategies, and moves through improvements and extensions illustrating different design ideas and approaches, followed by experiments to validate the choices. 
+Build working implementations of hash tables, written in the C programming language. This book starts with simple first attempts devoid of collision resolution strategies, and moves through improvements and extensions illustrating different design ideas and approaches, followed by experiments to validate the choices.
 
-Hash tables, when implemented and used appropriately, are exceptionally efficient data structures for representing sets and lookup tables, providing low overhead, constant time, insertion, deletion, and lookup operations. 
+Hash tables, when implemented and used appropriately, are exceptionally efficient data structures for representing sets and lookup tables, providing low overhead, constant time, insertion, deletion, and lookup operations.
 
 The Joys of Hashing walks you through the implementation of efficient hash tables and the pros and cons of different design choices when building tables. The source code used in the book is available on GitHub for your re-use and experiments.
 
@@ -78,8 +79,8 @@ amzn_assoc_rows = "4";
 ## Domain-Specific Languages in R
 
 {{< figure link="https://amzn.to/2CDqhAU" src="dsl-in-r.jpg" class="float-right" >}}
-    
-Gain an accelerated introduction to domain-specific languages in R, including coverage of regular expressions. This compact, in-depth book shows you how DSLs are programming languages specialized for a particular purpose, as opposed to general purpose programming languages. Along the way, you’ll learn to specify tasks you want to do in a precise way and achieve programming goals within a domain-specific context. 
+
+Gain an accelerated introduction to domain-specific languages in R, including coverage of regular expressions. This compact, in-depth book shows you how DSLs are programming languages specialized for a particular purpose, as opposed to general purpose programming languages. Along the way, you’ll learn to specify tasks you want to do in a precise way and achieve programming goals within a domain-specific context.
 
 Domain-Specific Languages in R includes examples of DSLs including large data sets or matrix multiplication; pattern matching DSLs for application in computer vision; and DSLs for continuous time Markov chains and their applications in data science. After reading and using this book, you’ll understand how to write DSLs in R and have skills you can extrapolate to other programming languages.
 
@@ -88,7 +89,7 @@ Domain-Specific Languages in R includes examples of DSLs including large data se
 * Program with domain-specific languages using R
 * Discover the components of DSLs
 * Implement metaprogramming with DSLs
-* Parse and manipulate expressions 
+* Parse and manipulate expressions
 
 ### Who This Book Is For
 
@@ -126,9 +127,9 @@ By the end of Functional Data Structures in R, you’ll understand the choices t
 
 ### What You'll Learn
 
-* Carry out algorithmic programming in R 
-* Use abstract data structures 
-* Work with both immutable and persistent data 
+* Carry out algorithmic programming in R
+* Use abstract data structures
+* Work with both immutable and persistent data
 * Emulate pointers and implement traditional data structures in R
 * Build new versions of traditional data structures that are known
 
@@ -160,16 +161,16 @@ amzn_assoc_rows = "4";
 
 {{< figure link="https://amzn.to/2x1cYUR" src="meta-programming.jpg" class="float-right" >}}
 
-Learn how to manipulate functions and expressions to modify how the R language interprets itself. This book is an introduction to metaprogramming in the R language, so you will write programs to manipulate other programs. Metaprogramming in R shows you how to treat code as data that you can generate, analyze, or modify. 
+Learn how to manipulate functions and expressions to modify how the R language interprets itself. This book is an introduction to metaprogramming in the R language, so you will write programs to manipulate other programs. Metaprogramming in R shows you how to treat code as data that you can generate, analyze, or modify.
 
-R is a very high-level language where all operations are functions and all functions are data that can be manipulated. This book shows you how to leverage R's natural flexibility in how function calls and expressions are evaluated, to create small domain-specific languages to extend R within the R language itself. 
+R is a very high-level language where all operations are functions and all functions are data that can be manipulated. This book shows you how to leverage R's natural flexibility in how function calls and expressions are evaluated, to create small domain-specific languages to extend R within the R language itself.
 
 ### What You'll Learn
-* Find out about the anatomy of a function in R 
+* Find out about the anatomy of a function in R
 * Look inside a function call
 * Work with R expressions and environments
 * Manipulate expressions in R
-* Use substitutions 
+* Use substitutions
 
 ### Who This Book Is For
 
@@ -201,14 +202,14 @@ amzn_assoc_rows = "4";
 
 Learn how to write object-oriented programs in R and how to construct classes and class hierarchies in the three object-oriented systems available in R. This book gives an introduction to object-oriented programming in the R programming language and shows you how to use and apply R in an object-oriented manner. You will then be able to use this powerful programming style in your own statistical programming projects to write flexible and extendable software.
 
-After reading Advanced Object-Oriented Programming in R, you'll come away with a practical project that you can reuse in your own analytics coding endeavors. You’ll then be able to visualize your data as objects that have state and then manipulate those objects with polymorphic or generic methods. Your projects will benefit from the high degree of flexibility provided by polymorphism, where the choice of concrete method to execute depends on the type of data being manipulated. 
+After reading Advanced Object-Oriented Programming in R, you'll come away with a practical project that you can reuse in your own analytics coding endeavors. You’ll then be able to visualize your data as objects that have state and then manipulate those objects with polymorphic or generic methods. Your projects will benefit from the high degree of flexibility provided by polymorphism, where the choice of concrete method to execute depends on the type of data being manipulated.
 
 ### What You'll Learn
-* Define and use classes and generic functions using R 
+* Define and use classes and generic functions using R
 * Work with the R class hierarchies
 * Benefit from implementation reuse
 * Handle operator overloading
-* Apply the S4 and R6 classes 
+* Apply the S4 and R6 classes
 
 ### Who This Book Is For
 
@@ -248,7 +249,7 @@ Functional programming is a style of programming, like object-oriented programmi
 
 ### What You'll Learn
 
-* Write functions in R including infix operators and replacement functions 
+* Write functions in R including infix operators and replacement functions
 * Create higher order functions
 * Pass functions to other functions and start using functions as data you can manipulate
 * Use Filer, Map and Reduce functions to express the intent behind code clearly and safely
@@ -287,9 +288,9 @@ amzn_assoc_rows = "4";
 
 Discover best practices for data analysis and software development in R and start on the path to becoming a fully-fledged data scientist. This book teaches you techniques for both data manipulation and visualization and shows you the best way for developing new software packages for R.
 
-Beginning Data Science in R details how data science is a combination of statistics, computational science, and machine learning. You’ll see how to efficiently structure and mine data to extract useful patterns and build mathematical models. This requires computational methods and programming, and R is an ideal programming language for this. 
+Beginning Data Science in R details how data science is a combination of statistics, computational science, and machine learning. You’ll see how to efficiently structure and mine data to extract useful patterns and build mathematical models. This requires computational methods and programming, and R is an ideal programming language for this.
 
-This book is based on a number of lecture notes for classes the author has taught on data science and statistical programming using the R programming language. Modern data analysis requires computational skills and usually a minimum of programming. 
+This book is based on a number of lecture notes for classes the author has taught on data science and statistical programming using the R programming language. Modern data analysis requires computational skills and usually a minimum of programming.
 
 ### What You Will Learn
 * Perform data science and analytics using statistics and the R programming language
@@ -357,7 +358,7 @@ amzn_assoc_asins = "B01DTJMQQE,113870010X,1138359335";
 </script>
 <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
 
-## The Beginner's Guide to Git and GitHub 
+## The Beginner's Guide to Git and GitHub
 
 {{< figure link="https://amzn.to/2Nt0rDY" src="github.jpg" class="float-right" >}}
 
@@ -416,4 +417,3 @@ amzn_assoc_design = "text_links";
 amzn_assoc_asins = "B01N5UG13P,B075G12ZDW,B00RPJ8AII,1534608435";
 </script>
 <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
-

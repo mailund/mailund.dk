@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mailund.dk/about/</loc>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/books/</loc>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/publications/</loc>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/software/</loc>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/posts/elegant-scipy/</loc>
+    <lastmod>2018-10-05T12:38:07+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/lazy-queues/</loc>
     <lastmod>2018-10-04T05:00:20+02:00</lastmod>
   </url>
@@ -138,27 +163,7 @@
   </url>
   
   <url>
-    <loc>https://mailund.dk/about/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/books/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mailund.dk/errata/fdsinr/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/publications/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/software/</loc>
     <lastmod>2018-09-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -170,7 +175,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/books/</loc>
-    <lastmod>2018-10-01T15:57:13+02:00</lastmod>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -205,7 +210,7 @@
   
   <url>
     <loc>https://mailund.dk/</loc>
-    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -217,19 +222,19 @@
   
   <url>
     <loc>https://mailund.dk/posts/</loc>
-    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
+    <lastmod>2018-10-05T12:38:07+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/tags/programming/</loc>
-    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/tags/python/</loc>
-    <lastmod>2018-09-10T14:25:40+02:00</lastmod>
+    <lastmod>2018-10-05T12:38:07+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -241,7 +246,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/science/</loc>
-    <lastmod>2018-10-01T15:57:13+02:00</lastmod>
+    <lastmod>2018-10-05T12:38:07+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -271,7 +276,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/writing/</loc>
-    <lastmod>2018-10-01T08:43:17+02:00</lastmod>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

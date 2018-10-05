@@ -6,10 +6,20 @@
     <description>Recent content in Writing on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 01 Oct 2018 08:43:17 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/writing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Books</title>
+      <link>https://mailund.dk/books/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/books/</guid>
+      <description>I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.
+When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put the draft on Leanpub where you can get it for free until it is done.</description>
+    </item>
     
     <item>
       <title>Erratas</title>
@@ -49,21 +59,12 @@ A couple of readers made me aware of a typo in Functional Programming in R.</des
     </item>
     
     <item>
-      <title>Books</title>
-      <link>https://mailund.dk/books/</link>
-      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/books/</guid>
-      <description>I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.</description>
-    </item>
-    
-    <item>
       <title>Errata: Functional Data-Structures in R</title>
       <link>https://mailund.dk/errata/fdsinr/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/errata/fdsinr/</guid>
-      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book.</description>
+      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book. Pattern matching makes implementing data structures much easier.</description>
     </item>
     
   </channel>

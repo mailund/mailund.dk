@@ -36,7 +36,7 @@ A couple of readers made me aware of a typo in Functional Programming in R.</des
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/errata/fdsinr/</guid>
-      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book.</description>
+      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book. Pattern matching makes implementing data structures much easier.</description>
     </item>
     
   </channel>

@@ -2,6 +2,7 @@
 title = "Publications"
 date = "2018-09-09"
 menu = "main"
+weight = 4
 +++
 
 
@@ -327,7 +328,7 @@ _S. McCauley, S. de Groot, T. Mailund, and J. Hein_ <br/>
 Bioinformatics **23**(22): 2978--2986. doi:10.1093/bioinformatics/btm472 (2007)
 
 * [**Comparative Annotation of Viral Genomes with Non-Conserved Gene Structure**](http://users-birc.au.dk/mailund/ps/deGroot2007.pdf) <br/>
-_S. de Groot, T. Mailund, and J. Hein_ 
+_S. de Groot, T. Mailund, and J. Hein_
 Bioinformatics **23**(9):1080--1089. doi:10.1093/bioinformatics/btm078 (2007)
 
 * [**Genomic relationships and speciation times of human, chimpanzee and gorilla inferred from a coalescent hidden Markov model**](http://users-birc.au.dk/mailund/ps/coalHMM-chim-human-gorilla.pdf) <br/>

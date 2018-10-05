@@ -84,6 +84,12 @@ ga('send', 'pageview');
         </li>
         
         <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
             <a class="" href="https://mailund.dk/books/">
                 <i class="fa-li fa  fa-lg"></i><span>Books</span>
             </a>
@@ -163,8 +169,8 @@ ga('send', 'pageview');
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">tree <span style="color:#666">:=</span> L(elm <span style="color:#666">:</span> <span style="color:#902000">numeric</span>) <span style="color:#666">|</span> T(left <span style="color:#666">:</span> tree, right <span style="color:#666">:</span> tree)</code></pre></div>
 <p>and then match data against it, like</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">f <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(x) {
-    cases(x, 
-          L(v) <span style="color:#666">-&gt;</span> v, 
+    cases(x,
+          L(v) <span style="color:#666">-&gt;</span> v,
           T(left,right) <span style="color:#666">-&gt;</span> <span style="color:#902000">c</span>(f(left), f(right)))
 }
 x <span style="color:#666">&lt;-</span> T(T(L(<span style="color:#40a070">1</span>),L(<span style="color:#40a070">2</span>)), T(T(L(<span style="color:#40a070">3</span>),L(<span style="color:#40a070">4</span>)),L(<span style="color:#40a070">5</span>)))
@@ -178,11 +184,11 @@ f(x)
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">f <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(x) <span style="color:#40a070">2</span> <span style="color:#666">*</span> x
 g <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(y) f(y)
 
-callbacks <span style="color:#666">&lt;-</span> rewrite_callbacks() <span style="color:#666">%&gt;%</span> 
+callbacks <span style="color:#666">&lt;-</span> rewrite_callbacks() <span style="color:#666">%&gt;%</span>
     add_call_callback(f, <span style="color:#007020;font-weight:bold">function</span>(expr, <span style="color:#007020;font-weight:bold">...</span>) <span style="color:#007020">quote</span>(<span style="color:#40a070">2</span> <span style="color:#666">*</span> x))
 
 g <span style="color:#666">%&gt;%</span> rewrite() <span style="color:#666">%&gt;%</span> rewrite_with(callbacks)
-<span style="color:#60a0b0;font-style:italic">#&gt; function (y) </span>
+<span style="color:#60a0b0;font-style:italic">#&gt; function (y)</span>
 <span style="color:#60a0b0;font-style:italic">#&gt; 2 * x</span></code></pre></div>
 <p>Check the homepage for examples such as <a href="https://mailund.github.io/foolbox/articles/partial-evaluation.html">partial evaluation</a>. (The partial evaluation there is not particularly efficient; slower than just calling functions, actually. Maybe some day I can make it faster.)</p>
 

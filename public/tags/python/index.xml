@@ -6,10 +6,19 @@
     <description>Recent content in Python on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 10 Sep 2018 14:25:40 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Oct 2018 12:38:07 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Elegant Scipy</title>
+      <link>https://mailund.dk/posts/elegant-scipy/</link>
+      <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/elegant-scipy/</guid>
+      <description>I was a little disappointed about this. I had hoped it would give a good overview of Scipy, but instead, it is a bunch of examples that use it. It is not that the examples aren&amp;rsquo;t interesting.</description>
+    </item>
     
     <item>
       <title>Premarkdown Plugins</title>

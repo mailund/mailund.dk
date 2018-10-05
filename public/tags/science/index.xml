@@ -6,10 +6,19 @@
     <description>Recent content in Science on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 01 Oct 2018 15:57:13 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Oct 2018 12:38:07 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/science/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Elegant Scipy</title>
+      <link>https://mailund.dk/posts/elegant-scipy/</link>
+      <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/elegant-scipy/</guid>
+      <description>I was a little disappointed about this. I had hoped it would give a good overview of Scipy, but instead, it is a bunch of examples that use it. It is not that the examples aren&amp;rsquo;t interesting.</description>
+    </item>
     
     <item>
       <title>Seeing Further</title>
@@ -17,7 +26,7 @@
       <pubDate>Mon, 01 Oct 2018 15:57:13 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/seeing-further/</guid>
-      <description>I also finished Seeing Further: The Story of Science, Discovery, and the Genius of the Royal Society yesterday. I found this a mixed back.</description>
+      <description>I also finished Seeing Further: The Story of Science, Discovery, and the Genius of the Royal Society yesterday. I found this a mixed back. When I bought it I thought it was a Bill Bryson book—I like those—but if I had checked the description just a little bit I would have seen that it is only edited by Bryson.</description>
     </item>
     
     <item>
@@ -36,7 +45,7 @@ This is a very interesting book. Duhigg writes about how we are run by habit to 
       <pubDate>Wed, 12 Sep 2018 08:06:58 +0200</pubDate>
       
       <guid>https://mailund.dk/posts/the-coming-storm/</guid>
-      <description>If you are a member of Audible—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month.</description>
+      <description>If you are a member of Audible—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month. They call this Audible Originals, and while you only get six books to choose from, I am not complaining about getting something for free.</description>
     </item>
     
   </channel>

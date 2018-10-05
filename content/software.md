@@ -3,6 +3,7 @@ title = "Software"
 date = "2018-09-09"
 menu = "main"
 tags = ["software", "programming"]
+weight = 5
 +++
 
 I have written various software over the years. You can get a list of most of it at [GitHub](https://github.com/mailund). Below is a list of software I have worked on recently (and I promise to still be maintaining). I will do my best to handle issues with older software, but some of it is simply too old for me to keep track of.
@@ -31,8 +32,8 @@ and then match data against it, like
 
 ```r
 f <- function(x) {
-    cases(x, 
-          L(v) -> v, 
+    cases(x,
+          L(v) -> v,
           T(left,right) -> c(f(left), f(right)))
 }
 x <- T(T(L(1),L(2)), T(T(L(3),L(4)),L(5)))
@@ -50,11 +51,11 @@ For example, you can replace the function call f(y) in the body of g with the fu
 f <- function(x) 2 * x
 g <- function(y) f(y)
 
-callbacks <- rewrite_callbacks() %>% 
+callbacks <- rewrite_callbacks() %>%
     add_call_callback(f, function(expr, ...) quote(2 * x))
 
 g %>% rewrite() %>% rewrite_with(callbacks)
-#> function (y) 
+#> function (y)
 #> 2 * x
 ```
 
