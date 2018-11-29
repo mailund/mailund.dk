@@ -51,6 +51,15 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
     </item>
     
     <item>
+      <title>Generators in C</title>
+      <link>https://mailund.dk/posts/c-generators/</link>
+      <pubDate>Fri, 23 Nov 2018 14:02:40 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/c-generators/</guid>
+      <description>Now that I am almost done with The Joys of Hashing, I am looking at the material I made last year for our Genome-scale Algorithms class. I implemented a toy read mapper as an example for the final project.</description>
+    </item>
+    
+    <item>
       <title>Elegant Scipy</title>
       <link>https://mailund.dk/posts/elegant-scipy/</link>
       <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>

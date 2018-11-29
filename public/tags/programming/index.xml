@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Generators in C</title>
+      <link>https://mailund.dk/posts/c-generators/</link>
+      <pubDate>Fri, 23 Nov 2018 14:02:40 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/c-generators/</guid>
+      <description>Now that I am almost done with The Joys of Hashing, I am looking at the material I made last year for our Genome-scale Algorithms class. I implemented a toy read mapper as an example for the final project.</description>
+    </item>
+    
+    <item>
       <title>Lazy queues</title>
       <link>https://mailund.dk/posts/lazy-queues/</link>
       <pubDate>Thu, 04 Oct 2018 05:00:20 +0200</pubDate>
