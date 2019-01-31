@@ -37,6 +37,13 @@ Apress, March 13, 2017, ISBN-10: 1484226704, ISBN-13: 978-1484226704
 
 ## Peer-reviewed publications
 
+### 2019
+
+* [**The comparative genomics and complex population history of Papio baboons**](http://advances.sciencemag.org/content/5/1/eaau6947) <br/> J Rogers, M Raveendran, RA Harris, T Mailund, K Leppälä, G Athanasiadis, MH Schierup, J Cheng, K Munch, JA Walker, MK Konkel, V Jordan, CJ Steely, TO Beckstrom, C Bergey, A Burrell, D Schrempf, A Noll, M Kothe, GH Kopp, Y Liu, S Murali, K Billis, FJ Martin, M Muffato, L Cox, J Else, T Disotell, DM Muzny, J Phillips-Conroy, B Aken, EE Eichler, T Marques-Bonet, C Kosiol, MA Batzer, MW Hahn, J Tung, D Zinner, C Roos, CJ Jolly, RA Gibbs, KC Worley <br/> Science Advances, 2019
+
+* [**Direct estimation of mutations in great apes reconciles phylogenetic dating**](https://www.nature.com/articles/s41559-018-0778-x) <br/>
+S Besenbacher, C Hvilsom, T Marques-Bonet, T Mailund and MH Schierup <br/> Nature Ecology and Evolution, 2019
+
 ### 2018
 
 * [**A comprehensive genomic history of extinct and living elephants**](http://www.pnas.org/content/early/2018/02/16/1720554115) <br/>
