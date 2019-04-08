@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.53" />
+  <meta name="generator" content="Hugo 0.37.1" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -33,17 +33,14 @@
  }
  </style>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 </head>
@@ -192,12 +189,12 @@ if (!doNotTrack) {
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">0</span>,<span style="color:#40a070">10</span>):
     digits[i] <span style="color:#666">=</span> <span style="color:#007020">str</span>(i)
 
-digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;A&#39;</span>
-digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;B&#39;</span>
-digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;C&#39;</span>
-digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;D&#39;</span>
-digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;E&#39;</span>
-digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;F&#39;</span></code></pre></div>
+digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;A&#39;</span>
+digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;B&#39;</span>
+digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;C&#39;</span>
+digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;D&#39;</span>
+digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;E&#39;</span>
+digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;F&#39;</span></code></pre></div>
 <p>We can then reduce the problem to the second-to-last digit by dividing i by b. Implement this idea using a recursive function.</p>
 
 <h2 id="tail-recursion">Tail-Recursion</h2>
@@ -274,20 +271,20 @@ digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> 
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">0</span>,<span style="color:#40a070">10</span>):
     digits[i] <span style="color:#666">=</span> <span style="color:#007020">str</span>(i)
 
-digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;A&#39;</span>
-digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;B&#39;</span>
-digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;C&#39;</span>
-digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;D&#39;</span>
-digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;E&#39;</span>
-digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;F&#39;</span></code></pre></div>
+digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;A&#39;</span>
+digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;B&#39;</span>
+digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;C&#39;</span>
+digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;D&#39;</span>
+digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;E&#39;</span>
+digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;F&#39;</span></code></pre></div>
 <p>We can then reduce the problem to the second-to-last digit by dividing i by b. Implement this idea using a recursive function.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">to_base</span>(n, b, rev_digits <span style="color:#666">=</span> None):
     <span style="color:#60a0b0;font-style:italic"># get an empty list if argument is None</span>
     rev_digits <span style="color:#666">=</span> rev_digits <span style="color:#007020;font-weight:bold">or</span> []
 
     <span style="color:#007020;font-weight:bold">if</span> n <span style="color:#666">==</span> <span style="color:#40a070">0</span>:
-        <span style="color:#007020;font-weight:bold">if</span> rev_digits <span style="color:#666">==</span> []: <span style="color:#007020;font-weight:bold">return</span> <span style="color:#4070a0">&#34;0&#34;</span>
-        <span style="color:#007020;font-weight:bold">return</span> <span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(<span style="color:#007020">reversed</span>(rev_digits))
+        <span style="color:#007020;font-weight:bold">if</span> rev_digits <span style="color:#666">==</span> []: <span style="color:#007020;font-weight:bold">return</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;0&#34;</span>
+        <span style="color:#007020;font-weight:bold">return</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(<span style="color:#007020">reversed</span>(rev_digits))
     <span style="color:#007020;font-weight:bold">else</span>:
         rev_digits<span style="color:#666">.</span>append(digits[n <span style="color:#666">%</span> b])
         <span style="color:#007020;font-weight:bold">return</span> to_base(n <span style="color:#666">//</span> b, b, rev_digits)</code></pre></div>

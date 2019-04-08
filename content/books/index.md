@@ -12,7 +12,7 @@ I enjoy writing and I've written bunch of books by now. Mostly about R programmi
 
 When I'm working on a book I haven't sold yet, I usually put the draft on [Leanpub](https://leanpub.com/u/mailund) where you can get it for free until it is done. Once I've sold a book, I have to pull it from Leanpub, but it is a good way to get an early copy, and a good way for me to get feedback while writing. If you get a draft there, then please let me know what you think and how I can improve it.
 
-Right now, I'm working on [The Joys of Hashing](https://amzn.to/2wZEamU) (see below for a description). It will be out next year and I still have some editing to do and one more chapter to write. Since I have already sold this book, you cannot get it on Leanpub any more.
+Right now, I'm working on [R Data Science Quick Reference: A Pocket Guide to APIs, Libraries, and Packages](https://amzn.to/2D4B84r) (see below for a description). It will be out in the autumn and I still have some editing to do and three more chapter to write.
 
 Another book I am working on is [Introduction to Computational Thinking](https://leanpub.com/comp-thinking). This covers various algorithms and some topics on how computers work and how you represent data on a computer. This is a longer book that started out as lecture notes. I have already written the chapters I need for my own teaching, but I still have a long way to go before the complete book is done. I upload new chapters as I finish them, so have a look at it.
 
@@ -35,6 +35,49 @@ amzn_assoc_default_browse_node = "283155";
 
 Below are a complete list of my finished books (plus books that will soon be published).
 
+
+## R Data Science Quick Reference
+
+{{< figure src="syntax-guide.jpg" link="https://amzn.to/2WN1mQy" class="float-right" >}}
+
+In this handy, practical book you will cover each concept concisely, with many illustrative examples. You'll be introduced to several R data science packages, with examples of how to use each of them. 
+
+In this book, you’ll learn about the following APIs and packages that deal specifically with data science applications: readr, dibble, forecasts, lubridate, stringr, tidyr, magnittr, dplyr, purrr, ggplot2, modelr, and more.
+
+After using this handy quick reference guide, you'll have the code, APIs, and insights to write data science-based applications in the R programming language.  You'll also be able to carry out data analysis.  
+
+
+### What You Will Learn
+
+* Import data with readr
+* Work with categories using forcats, time and dates with lubridate, and strings with stringr
+* Format data using tidyr and then transform that data using magrittr and dplyr
+* Write functions with R for data science, data mining, and analytics-based applications
+* Visualize data with ggplot2 and fit data to models using modelr
+
+### Who This Book Is For
+
+Programmers new to R's data science, data mining, and analytics packages.  Some prior coding experience with R in general is recommended.  
+
+### Shops
+
+[ [Amazon](https://amzn.to/2WN1mQy) ]
+[ [Apress](https://www.apress.com/gp/book/9781484248935) ]
+
+<script type="text/javascript">
+amzn_assoc_placement = "adunit0";
+amzn_assoc_tracking_id = "mailund07-20";
+amzn_assoc_ad_mode = "manual";
+amzn_assoc_ad_type = "smart";
+amzn_assoc_marketplace = "amazon";
+amzn_assoc_region = "US";
+amzn_assoc_title = "My Amazon Picks";
+amzn_assoc_linkid = "1eba9e06fb88670377f68bec98702461";
+amzn_assoc_asins = "149190142X,1491910399,B016DHQSM2,039334777X";
+amzn_assoc_rows = "4";
+amzn_assoc_design = "text_links";
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
 
 ## The Joys of Hashing
 
