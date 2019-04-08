@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>C on Mailund on the Internet</title>
-    <link>https://mailund.dk/tags/c/</link>
-    <description>Recent content in C on Mailund on the Internet</description>
+    <title>Writing on Mailund on the Internet</title>
+    <link>https://mailund.dk/categories/writing/</link>
+    <description>Recent content in Writing on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
     <lastBuildDate>Mon, 08 Apr 2019 14:34:13 +0200</lastBuildDate>
     
-	<atom:link href="https://mailund.dk/tags/c/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mailund.dk/categories/writing/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://mailund.dk/posts/joys-of-hashing/</guid>
       <description>I forgot to post about it when The Joys of Hashing came out, but it is never too late to blow my own horn. It is out and you should get it.</description>
-    </item>
-    
-    <item>
-      <title>Generators in C</title>
-      <link>https://mailund.dk/posts/c-generators/</link>
-      <pubDate>Fri, 23 Nov 2018 14:02:40 +0100</pubDate>
-      
-      <guid>https://mailund.dk/posts/c-generators/</guid>
-      <description>Now that I am almost done with The Joys of Hashing, I am looking at the material I made last year for our Genome-scale Algorithms class. I implemented a toy read mapper as an example for the final project.</description>
     </item>
     
   </channel>

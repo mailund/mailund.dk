@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 23 Nov 2018 14:02:40 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2019 14:34:13 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Joys of Hashing</title>
+      <link>https://mailund.dk/posts/joys-of-hashing/</link>
+      <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/joys-of-hashing/</guid>
+      <description>I forgot to post about it when The Joys of Hashing came out, but it is never too late to blow my own horn. It is out and you should get it.</description>
+    </item>
     
     <item>
       <title>Generators in C</title>
