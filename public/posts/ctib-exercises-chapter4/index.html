@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.37.1" />
+  <meta name="generator" content="Hugo 0.53" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -33,14 +33,17 @@
  }
  </style>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-10582357-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 </head>
@@ -449,7 +452,7 @@ mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</s
 numbers <span style="color:#666">=</span> <span style="color:#007020">list</span>(<span style="color:#007020">range</span>(<span style="color:#40a070">2</span>,n))
 p <span style="color:#666">=</span> <span style="color:#40a070">1</span>
 <span style="color:#007020;font-weight:bold">while</span> numbers <span style="color:#666">!=</span> []:
-	fmt <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;#numbers = {:&gt;2}, n/p = {:&gt;3.2f}&#34;</span>
+	fmt <span style="color:#666">=</span> <span style="color:#4070a0">&#34;#numbers = {:&gt;2}, n/p = {:&gt;3.2f}&#34;</span>
 	<span style="color:#007020;font-weight:bold">print</span>(fmt<span style="color:#666">.</span>format(<span style="color:#007020">len</span>(numbers), n<span style="color:#666">/</span>p))
 	p <span style="color:#666">=</span> numbers[<span style="color:#40a070">0</span>]
 	numbers <span style="color:#666">=</span> [n <span style="color:#007020;font-weight:bold">for</span> n <span style="color:#007020;font-weight:bold">in</span> numbers <span style="color:#007020;font-weight:bold">if</span> n <span style="color:#666">%</span> p <span style="color:#666">!=</span> <span style="color:#40a070">0</span>]</code></pre></div>

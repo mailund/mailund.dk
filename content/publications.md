@@ -37,7 +37,16 @@ Apress, March 13, 2017, ISBN-10: 1484226704, ISBN-13: 978-1484226704
 
 ## Peer-reviewed publications
 
+### 2020
+
+* [**Targeted conservation genetics of the endangered chimpanzee**](https://www.nature.com/articles/s41437-020-0313-0) <br/> P Frandsen, C Fontsere, SV Nielsen, K Hanghøj, N Castejon-Fernandez, E Lizano, D Hughes, J Hernandez-Rodriguez, TS Korneliussen, FC, HR Siegismund, T Mailund, T Marques-Bonet & C Hvilsom <br/>Heredity, 2020
+
+
+* [**Ancestral population genomics with Jocx, a coalescent hidden markov model**](https://link.springer.com/protocol/10.1007/978-1-0716-0199-0_8) <br/> JY Cheng & T Mailund <br/> Statistical Population Genomics pp 167-189, 2020
+
 ### 2019
+
+* [**Alu insertion polymorphisms shared by Papio baboons and Theropithecus gelada reveal an intertwined common ancestry**](https://mobilednajournal.biomedcentral.com/articles/10.1186/s13100-019-0187-y) <br/>JA Walker, VE Jordan, JM Storer, CJ Steely, P Gonzalez-Quiroga, TO Beckstrom, LC Rewerts, CP St. Romain, CE Rockwell, J Rogers, CJ Jolly, MK Konkel, The Baboon Genome Analysis Consortium & MA Batzer <br/> Mobile DNA volume 10, Article number: 46, 2019
 
 * [**The comparative genomics and complex population history of Papio baboons**](http://advances.sciencemag.org/content/5/1/eaau6947) <br/> J Rogers, M Raveendran, RA Harris, T Mailund, K Leppälä, G Athanasiadis, MH Schierup, J Cheng, K Munch, JA Walker, MK Konkel, V Jordan, CJ Steely, TO Beckstrom, C Bergey, A Burrell, D Schrempf, A Noll, M Kothe, GH Kopp, Y Liu, S Murali, K Billis, FJ Martin, M Muffato, L Cox, J Else, T Disotell, DM Muzny, J Phillips-Conroy, B Aken, EE Eichler, T Marques-Bonet, C Kosiol, MA Batzer, MW Hahn, J Tung, D Zinner, C Roos, CJ Jolly, RA Gibbs, KC Worley <br/> Science Advances, 2019
 
