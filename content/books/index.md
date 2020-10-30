@@ -35,6 +35,61 @@ amzn_assoc_default_browse_node = "283155";
 
 Below are a complete list of my finished books (plus books that will soon be published).
 
+## String Algorithms in C
+
+{{< figure src="string-algorithms.jpg" link="https://amzn.to/2VNtG7O" class="float-right" >}}
+
+Implement practical data structures and algorithms for text search and discover how it is used inside other larger applications. This unique in-depth guide explains string algorithms using the C programming language. String Algorithms in C teaches you the following algorithms and how to use them: classical exact search algorithms; tries and compact tries; suffix trees and arrays; approximative pattern searches; and more.   
+
+In this book, author Thomas Mailund provides a library with all the algorithms and applicable source code that you can use in your own programs. There are implementations of all the algorithms presented in this book so there are plenty of examples.  
+You’ll understand that string algorithms are used in various applications such as image processing, computer vision, text analytics processing from data science to web applications, information retrieval from databases, network security, and much more.  
+
+### What You Will Learn
+
+* Use classical exact search algorithms including naive search, borders/border search, Knuth-Morris-Pratt, and Boyer-Moor with or without Horspool
+* Search in trees, use tries and compact tries, and work with the Aho-Carasick algorithm
+* Process suffix trees including the use and development of McCreight’s algorithm
+* Work with suffix arrays including binary searches; sorting naive constructions; suffix tree construction; skew algorithms; and the Borrows-Wheeler transform (BWT)
+* Deal with enhanced suffix arrays including longest common prefix (LCP)
+* Carry out approximative pattern searches among suffix trees and approximative BWT searches 
+
+### Who This Book Is For 
+
+Those with at least some prior programming experience with C or Assembly and have at least prior experience with programming algorithms.  
+
+### Shops
+
+[ [Amazon](https://amzn.to/2VNtG7O) ]
+[ [Apress](https://www.apress.com/gp/book/9781484259191) ]
+
+
+## Introducing Markdown and Pandoc
+
+{{< figure src="apress-markdown.jpg" link="https://amzn.to/2W8300q" class="float-right" >}}
+
+Discover how to write manuscripts in Markdown and translate them with Pandoc into different output formats. You’ll use Markdown to annotate text formatting information with a strong focus on semantic information: you can annotate your text with information about where chapters and sections start, but not how chapter and heading captions should be formatted. As a result, you’ll decouple the structure of a text from how it is visualized and make it easier for you to produce different kinds of output. The same text can easily be formatted as HTML, PDF, or Word documents, with various visual styles, by tools that understand the markup annotations. 
+
+Finally, you’ll learn to use Pandoc, a tool for translating between different markup languages, such as LaTeX, HTML, and Markdown. This book will not describe all the functionality that Pandoc provides, but will teach you how to translate Markdown documents, how to customize your documents using templates, and how to extend Pandoc’s functionality using filters. If that is something you are interested in, Introducing Markdown and Pandoc will get you started. 
+
+With this set of skills you’ll be able to write more efficiently without worrying about needless formatting and other distractions.
+
+### What You Will Learn
+
+* Why and how to use Markdown and Pandoc
+* Write Markdown
+* Use extensions available in Pandoc and Markdown
+* Write math and code blocks
+* Use templates and produce documents
+
+### Who This Book Is For
+
+Programmers and problem solvers looking for technical documentation solutions.
+
+### Shops
+
+[ [Amazon](https://amzn.to/2W8300q) ]
+[ [Apress](https://www.apress.com/gp/book/9781484251485) ]
+
 
 ## R Data Science Quick Reference
 
