@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.53" />
+  <meta name="generator" content="Hugo 0.63.2" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -150,156 +150,116 @@ if (!doNotTrack) {
 </aside>
     
 
-    
-
-<h1 id="exercises">Exercises</h1>
-
+    <h1 id="exercises">Exercises</h1>
 <h2 id="missing-element">Missing element</h2>
-
 <p>You are given a sorted array, <code>A</code>. It contains n - 1 of the numbers from 1 to n. You should find the missing number.</p>
-
 <p>You can use the property that for all numbers <code>i</code> less than the missing number you have <code>A[i] == i</code>, while for all <code>i</code> larger than the missing number you have <code>A[i] == i - 1</code>.</p>
-
 <p>Design an algorithm to solve the problem and derive its running time.</p>
-
 <h2 id="fast-multiplication">Fast multiplication</h2>
-
 <p>It is fast to add numbers on a computer, but multiplication can be slow. The simple way to multiply two numbers, a × b, is to iteratively add, e.g.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">res <span style="color:#666">=</span> <span style="color:#40a070">1</span>
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(a):
-	res <span style="color:#666">+=</span> b</code></pre></div>
-<p>If you pick the smallest of the two numbers for the range, the complexity is O(min(alb)).</p>
-
+	res <span style="color:#666">+</span><span style="color:#666">=</span> b
+</code></pre></div><p>If you pick the smallest of the two numbers for the range, the complexity is O(min(alb)).</p>
 <p>Multiplying and dividing by two is a fast operation. It is just shifting bits. If you exploit the equations</p>
-
 <pre><code>	a × b = (a / 2) × 2b when a is even
 	a × b = (a / 2) × 2b + b when a is odd
-</code></pre>
-
-<p>can you derive an algorithm that multilines two numbers in O(log(min(a,b))).</p>
-
+</code></pre><p>can you derive an algorithm that multilines two numbers in O(log(min(a,b))).</p>
 <h2 id="largest-area-under-a-histogram">Largest area under a histogram</h2>
-
 <p>Consider a histogram with splits at integers 0 to n. You want to find the largest-area rectangle in it.</p>
-
-<p><img src="area-problem.png" alt="" /></p>
-
+<p><img src="area-problem.png" alt=""></p>
 <p>The area for the interval i to j is h(j-q) where h is the shortest block in the histogram between i and j. You can find the largest rectangle by going through all pairs (i,j), find the shortest block, and compute the area. Then pick the pair with the largest area. A naive implementation of this would take O(n³). (Why?)</p>
-
 <p>You can construct a divide-and-conquer algorithm for solving it by observing that, the largest rectangle contained in the interval i to j (not the one that goes from i to j but the largest inside it) is found in the first half, the last half, or starting before and ending after the midpoint.</p>
-
 <p>To make the algorithm efficient, you should also observe that you can compute the largest area that cuts through an index m as follows: Compute an array that, for i &lt; m, contains the minimal height between i and m, and that for j &gt; m, contains the minimal height between m and j.</p>
-
-<p><img src="area-greedy.png" alt="" /></p>
-
+<p><img src="area-greedy.png" alt=""></p>
 <p>If you extend the rectangle around m by moving i from m down to zero and j from m up to n, and you always extend in the direction with the largest height, you can compute the largest area that spans over m in linear time.</p>
-
 <p>Construct an algorithm for solving this problem and derive its running time.</p>
-
 <h2 id="skylines">Skylines</h2>
-
 <p>You are given a list of (2D) houses, represented as triplets <code>(i,h,j)</code> where <code>i</code> and <code>j</code> are the start and end coordinates and <code>h</code> is the height. This list is not sorted.</p>
-
 <p>You should compute the skyline of these houses, i.e. a representation of the height of the tallest house at each index <code>i</code>. You shouldn’t represent the skyline like this, but as triplets, <code>(i,h,j)</code>, where <code>i</code> and <code>j</code> are points where the height of the tallest house changes and <code>h</code> is the height in the range <code>i</code> to <code>j</code>.</p>
-
-<p><img src="skyline.png" alt="" /></p>
-
+<p><img src="skyline.png" alt=""></p>
 <p>Observe the following:</p>
-
 <ol>
 <li>The skyline for a single house, <code>(i,h,j)</code>, is simply the list <code>(0,0,i); (i,h,j); (j,0,n)</code>.</li>
 <li>If you have two skylines, you can merge them in linear time.</li>
 </ol>
-
 <p>Prove item 2. and use it to derive an O(n log n) divide-and-conquer algorithm for computing skyline plots.</p>
-
 <h1 id="answers">Answers</h1>
-
 <h2 id="missing-element-1">Missing element</h2>
-
 <blockquote>
 <p>You are given a sorted array, <code>A</code>. It contains n - 1 of the numbers from 1 to n. You should find the missing number.</p>
-
+</blockquote>
+<blockquote>
 <p>You can use the property that for all numbers <code>i</code> less than the missing number you have <code>A[i] == i</code>, while for all <code>i</code> larger than the missing number you have <code>A[i] == i - 1</code>.</p>
-
+</blockquote>
+<blockquote>
 <p>Design an algorithm to solve the problem and derive its running time.</p>
 </blockquote>
-
 <p>You can simply do a binary search for the first index where <code>A[i] == i - 1</code>. When you are above this index, <code>A[i] == i - 1</code> and when you are below <code>A[i] == i</code> so it is trivial to determine which half you should search in at each recursive call.</p>
-
 <h2 id="fast-multiplication-1">Fast multiplication</h2>
-
 <blockquote>
 <p>It is fast to add numbers on a computer, but multiplication can be slow. The simple way to multiply two numbers, a × b, is to iteratively add, e.g.</p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">res <span style="color:#666">=</span> <span style="color:#40a070">1</span>
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(a):
-	res <span style="color:#666">+=</span> b</code></pre></div>
-<blockquote>
+	res <span style="color:#666">+</span><span style="color:#666">=</span> b
+</code></pre></div><blockquote>
 <p>If you pick the smallest of the two numbers for the range, the complexity is O(min(alb)).</p>
-
+</blockquote>
+<blockquote>
 <p>Multiplying and dividing by two is a fast operation. It is just shifting bits. If you exploit the equations</p>
 </blockquote>
-
 <pre><code>	a × b = (a / 2) × 2b when a is even
 	a × b = (a / 2) × 2b + b when a is odd
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>can you derive an algorithm that multilines two numbers in O(log(min(a,b))).</p>
 </blockquote>
-
 <p>You apply one of the two rules in each recursion, choosing the right one best on whether a is even or not. In each recursive call we halve <code>a</code> so we will reach recursion depth O(log n). Since we only perform constant time operations per level, this gives us an O(log n) algorithm.</p>
-
 <h2 id="largest-area-under-a-histogram-1">Largest area under a histogram</h2>
-
 <blockquote>
 <p>Consider a histogram with splits at integers 0 to n. You want to find the largest-area rectangle in it.</p>
 </blockquote>
-
-<p><img src="area-problem.png" alt="" /></p>
-
+<p><img src="area-problem.png" alt=""></p>
 <blockquote>
 <p>The area for the interval i to j is h(j-q) where h is the shortest block in the histogram between i and j. You can find the largest rectangle by going through all pairs (i,j), find the shortest block, and compute the area. Then pick the pair with the largest area. A naive implementation of this would take O(n³). (Why?)</p>
-
+</blockquote>
+<blockquote>
 <p>You can construct a divide-and-conquer algorithm for solving it by observing that, the largest rectangle contained in the interval i to j (not the one that goes from i to j but the largest inside it) is found in the first half, the last half, or starting before and ending after the midpoint.</p>
-
+</blockquote>
+<blockquote>
 <p>To make the algorithm efficient, you should also observe that you can compute the largest area that cuts through an index m as follows: Compute an array that, for i &lt; m, contains the minimal height between i and m, and that for j &gt; m, contains the minimal height between m and j.</p>
 </blockquote>
-
-<p><img src="area-greedy.png" alt="" /></p>
-
+<p><img src="area-greedy.png" alt=""></p>
 <blockquote>
 <p>If you extend the rectangle around m by moving i from m down to zero and j from m up to n, and you always extend in the direction with the largest height, you can compute the largest area that spans over m in linear time.</p>
-
+</blockquote>
+<blockquote>
 <p>Construct an algorithm for solving this problem and derive its running time.</p>
 </blockquote>
-
 <p>At each recursive level, you split the interval in half. Then you recursively compute the largest area to the left and the right of the midpoint. You compute the &ldquo;minimal height&rdquo; arrays to the left and right of the midpoint and you compute the largest area crossing the midpoint in a merge-like manner.</p>
-
 <p>The time recurrence equation is <code>T(n) = 2T(n/2) + O(n)</code> which is in <code>O(n log n)</code>.</p>
-
 <h2 id="skylines-1">Skylines</h2>
-
 <blockquote>
 <p>You are given a list of (2D) houses, represented as triplets <code>(i,h,j)</code> where <code>i</code> and <code>j</code> are the start and end coordinates and <code>h</code> is the height. This list is not sorted.</p>
-
+</blockquote>
+<blockquote>
 <p>You should compute the skyline of these houses, i.e. a representation of the height of the tallest house at each index <code>i</code>. You shouldn’t represent the skyline like this, but as triplets, <code>(i,h,j)</code>, where <code>i</code> and <code>j</code> are points where the height of the tallest house changes and <code>h</code> is the height in the range <code>i</code> to <code>j</code>.</p>
 </blockquote>
-
-<p><img src="skyline.png" alt="" /></p>
-
+<p><img src="skyline.png" alt=""></p>
 <blockquote>
 <p>Observe the following:</p>
-
+</blockquote>
+<blockquote>
 <ol>
 <li>The skyline for a single house, <code>(i,h,j)</code>, is simply the list <code>(0,0,i); (i,h,j); (j,0,n)</code>.</li>
+</ol>
+</blockquote>
+<ol start="2">
 <li>If you have two skylines, you can merge them in linear time.</li>
 </ol>
-
+<blockquote>
 <p>Prove item 2. and use it to derive an O(n log n) divide-and-conquer algorithm for computing skyline plots.</p>
 </blockquote>
-
 <p>The two skylines are sorted with respect to the indices. Start by setting <code>i</code> to the first index (this will be zero) and <code>h</code> to the first height. Now pick the smallest index in the two skylines to the right of <code>i</code>; call it <code>j</code>, and let <code>k</code> be the the new height at <code>k</code>. If <code>h</code> is less than or equal <code>h</code>, discard this <code>j</code> and move to the next index in the skylines. If <code>k &gt; h</code>, add <code>(i,h,j)</code> to the new skyline, set <code>i = j</code> and <code>h = k</code> and continue the merge.</p>
 
 
@@ -381,7 +341,7 @@ if (!doNotTrack) {
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018 - Thomas Mailund | 
+        <h6>Copyright © 2018 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

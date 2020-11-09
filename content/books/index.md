@@ -12,28 +12,51 @@ I enjoy writing and I've written bunch of books by now. Mostly about R programmi
 
 When I'm working on a book I haven't sold yet, I usually put the draft on [Leanpub](https://leanpub.com/u/mailund) where you can get it for free until it is done. Once I've sold a book, I have to pull it from Leanpub, but it is a good way to get an early copy, and a good way for me to get feedback while writing. If you get a draft there, then please let me know what you think and how I can improve it.
 
-Right now, I'm working on [R Data Science Quick Reference: A Pocket Guide to APIs, Libraries, and Packages](https://amzn.to/2D4B84r) (see below for a description). It will be out in the autumn and I still have some editing to do and three more chapter to write.
-
-Another book I am working on is [Introduction to Computational Thinking](https://leanpub.com/comp-thinking). This covers various algorithms and some topics on how computers work and how you represent data on a computer. This is a longer book that started out as lecture notes. I have already written the chapters I need for my own teaching, but I still have a long way to go before the complete book is done. I upload new chapters as I finish them, so have a look at it.
-
-<script type="text/javascript">
-amzn_assoc_placement = "adunit0";
-amzn_assoc_search_bar = "true";
-amzn_assoc_tracking_id = "mailund07-20";
-amzn_assoc_search_bar_position = "bottom";
-amzn_assoc_ad_mode = "search";
-amzn_assoc_ad_type = "smart";
-amzn_assoc_marketplace = "amazon";
-amzn_assoc_region = "US";
-amzn_assoc_title = "My books on Amazon";
-amzn_assoc_default_search_phrase = "Thomas Mailund";
-amzn_assoc_default_category = "Books";
-amzn_assoc_linkid = "cb757586a4f73605963ec26a1f893f16";
-amzn_assoc_default_browse_node = "283155";
-</script>
-<script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
-
 Below are a complete list of my finished books (plus books that will soon be published).
+
+## Future Humans
+
+{{< figure src="future-humans.jpg" link="https://amzn.to/3kdDQsB" class="float-right" >}}
+
+Evolution is driven by random mutations and natural selection. Mutations add variety to a species, and natural selection takes that variety, picks the best and gets rid of the rest, to adapt the species to its environment. We cannot predict where mutations strike, but if we know what they can potentially affect, and we know a species’ environment, then we can attempt to predict where natural selection will go, and how a species might evolve.
+
+We know how the human species evolved over many millions of years, and that it evolved in an environment very different from where we are now. We live in urban areas, our ancestors did not. Medicine gives us a longer and healthier life than we had in our past. We are adapted to one environment, and we now have to adapt to a new one. Where will evolution take us over the next million years?
+
+### Shops
+
+[ [Amazon](https://amzn.to/3kdDQsB) ]
+[ [iBooks](https://books.apple.com/us/book/future-humans/id1526269923?ls=1) ]
+
+
+
+## String Algorithms in C
+
+{{< figure src="sac.jpg" link="https://amzn.to/2C1uwqf" class="float-right" >}}
+
+Implement practical data structures and algorithms for text search and discover how it is used inside other larger applications. This unique in-depth guide explains string algorithms using the C programming language. String Algorithms in C teaches you the following algorithms and how to use them: classical exact search algorithms; tries and compact tries; suffix trees and arrays; approximative pattern searches; and more.   
+
+In this book, author Thomas Mailund provides a library with all the algorithms and applicable source code that you can use in your own programs. There are implementations of all the algorithms presented in this book so there are plenty of examples.  
+You’ll understand that string algorithms are used in various applications such as image processing, computer vision, text analytics processing from data science to web applications, information retrieval from databases, network security, and much more.   
+
+
+### What You Will Learn
+
+* Use classical exact search algorithms including naive search, borders/border search, Knuth-Morris-Pratt, and Boyer-Moor with or without Horspool
+* Search in trees, use tries and compact tries, and work with the Aho-Corasick algorithm
+* Process suffix trees including the use and development of McCreight’s algorithm
+* Work with suffix arrays including binary searches; sorting naive constructions; suffix tree construction; skew algorithms; and the Borrows-Wheeler transform (BWT)
+* Deal with enhanced suffix arrays including longest common prefix (LCP)
+* Carry out approximative pattern searches among suffix trees and approximative BWT searches 
+
+### Who This Book Is For
+
+Those with at least some prior programming experience with C or Assembly and have at least prior experience with programming algorithms. 
+
+### Shops
+
+[ [Amazon](https://amzn.to/3ki0mQT) ]
+[ [Apress](https://www.apress.com/gp/book/9781484259191) ]
+
 
 
 ## R Data Science Quick Reference

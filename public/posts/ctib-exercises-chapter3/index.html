@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.53" />
+  <meta name="generator" content="Hugo 0.63.2" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -150,30 +150,24 @@ if (!doNotTrack) {
 </aside>
     
 
-    
-
-<p>I have cleaned up the exercises for chapter three of <a href="https://leanpub.com/comp-thinking">Introduction to Computational Thinking</a>. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below. I have listed my answers below the exercises, so if you want to do the exercises, then stop in time.</p>
-
+    <p>I have cleaned up the exercises for chapter three of <a href="https://leanpub.com/comp-thinking">Introduction to Computational Thinking</a>. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below. I have listed my answers below the exercises, so if you want to do the exercises, then stop in time.</p>
 <p>As always, if you have comments or criticisms, or just suggestions for more exercises, I’m dying to hear.</p>
-
 <h2 id="below-or-above">Below or above</h2>
-
 <p>Here&rsquo;s a game you can play with a friend: one of you think of a number between 1 and 20, both 1 and 20 included. The other has to figure out what that number is. He or she can guess at the number, and after guessing will be told if the guess is correct,  too high, or is too low. Unless the guess is correct, the guesser must try again until the guess <em>is</em> correct.</p>
-
 <p>The game can be implemented like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># The following code is just to setup the exercise. </span>
 <span style="color:#60a0b0;font-style:italic"># You do not need to understand but can jump to the game below.</span>
 
 <span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">numpy.random</span> <span style="color:#007020;font-weight:bold">import</span> randint
 <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">input_integer</span>(prompt):
-    <span style="color:#4070a0">&#34;&#34;&#34;Get an integer from the user.&#34;&#34;&#34;</span>
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span><span style="color:#4070a0">Get an integer from the user.</span><span style="color:#4070a0">&#34;&#34;&#34;</span>
     <span style="color:#007020;font-weight:bold">while</span> True:
         <span style="color:#007020;font-weight:bold">try</span>:
             inp <span style="color:#666">=</span> <span style="color:#007020">input</span>(prompt)
             i <span style="color:#666">=</span> <span style="color:#007020">int</span>(inp)
             <span style="color:#007020;font-weight:bold">return</span> i
         <span style="color:#007020;font-weight:bold">except</span>:
-            <span style="color:#007020;font-weight:bold">print</span>(inp, <span style="color:#4070a0">&#34;is not a valid integer.&#34;</span>)
+            <span style="color:#007020;font-weight:bold">print</span>(inp, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">is not a valid integer.</span><span style="color:#4070a0">&#34;</span>)
 
 
 <span style="color:#60a0b0;font-style:italic"># Here is an implementation of the game. The computer picks</span>
@@ -186,45 +180,40 @@ if (!doNotTrack) {
 n <span style="color:#666">=</span> randint(<span style="color:#40a070">1</span>, <span style="color:#40a070">21</span>, size<span style="color:#666">=</span><span style="color:#40a070">1</span>)
 
 <span style="color:#60a0b0;font-style:italic"># Now, repeat guessing until we get the right number.</span>
-guess <span style="color:#666">=</span> input_integer(<span style="color:#4070a0">&#34;Make a guess&gt; &#34;</span>)
+guess <span style="color:#666">=</span> input_integer(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Make a guess&gt; </span><span style="color:#4070a0">&#34;</span>)
 <span style="color:#007020;font-weight:bold">while</span> guess <span style="color:#666">!=</span> n:
     <span style="color:#007020;font-weight:bold">if</span> guess <span style="color:#666">&gt;</span> n:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Your guess is too high!&#34;</span>)
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Your guess is too high!</span><span style="color:#4070a0">&#34;</span>)
     <span style="color:#007020;font-weight:bold">else</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Your guess is too low!&#34;</span>)
-    guess <span style="color:#666">=</span> input_integer(<span style="color:#4070a0">&#34;Make a guess&gt; &#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;You got it!&#34;</span>)</code></pre></div>
-<p>In this game, the computer gets to pick the number and you need to guess it.</p>
-
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Your guess is too low!</span><span style="color:#4070a0">&#34;</span>)
+    guess <span style="color:#666">=</span> input_integer(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Make a guess&gt; </span><span style="color:#4070a0">&#34;</span>)
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">You got it!</span><span style="color:#4070a0">&#34;</span>)
+</code></pre></div><p>In this game, the computer gets to pick the number and you need to guess it.</p>
 <p>Here are three different strategies you could use to guess the number:</p>
-
 <ol>
 <li>Start with one. If it isn&rsquo;t the right number, it has to be too low&ndash;there are no smaller numbers the right one could be. So if it isn&rsquo;t one, you guess it is two. If it isn&rsquo;t, you have once again guessed too low, so now you try three. You continue by incrementing your guess by one until you get the right answer.</li>
 <li>Alternatively, you start at 20. If the correct number is 20, great, you got it in one guess, but if it is not, your guess must be too high—it cannot possibly be too small. So you try 19 instead, and this time you work your way down until you get the right answer.</li>
 <li>Tired of trying all numbers from one end to the other, you can pick this strategy: you start by guessing 10. If this is correct, you are done, if it is too high, you know the real number must be in the interval [1,9], and if the guess is too low, you know the right answer must be in the interval [11,20]—so for your next guess, you pick the middle of the interval it must be. With each new guess, you update the range where the real number can hide and choose the middle of the previous range.</li>
 </ol>
-
 <p><strong>Exercise:</strong> Prove that all three strategies terminate and with the correct answer, i.e. they are algorithms for solving this problem.</p>
-
 <p><strong>Exercise:</strong> Would you judge all three approaches to be equally efficient in finding the right number? If not, how would you order the three strategies such that the method most likely to get the correct number first is ranked highest, and the algorithm most likely to get the right number last is rated lowest. Justify your answer.</p>
-
 <p>If you do not lie to the computer when it asks you about its guess compared to the number you are thinking of, this program implements the first strategy:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># The following code is just to setup the exercise. You do not need to</span>
 <span style="color:#60a0b0;font-style:italic"># understand but can jump to the game below.</span>
 
 
 <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">input_selection</span>(prompt, options):
-    <span style="color:#4070a0">&#34;&#34;&#34;Get user input, restrict it to fixed options.&#34;&#34;&#34;</span>
-    modified_prompt <span style="color:#666">=</span> <span style="color:#4070a0">&#34;{} [{}]: &#34;</span><span style="color:#666">.</span>format(
-        prompt<span style="color:#666">.</span>strip(), <span style="color:#4070a0">&#34;, &#34;</span><span style="color:#666">.</span>join(options)
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span><span style="color:#4070a0">Get user input, restrict it to fixed options.</span><span style="color:#4070a0">&#34;&#34;&#34;</span>
+    modified_prompt <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">{} [{}]: </span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(
+        prompt<span style="color:#666">.</span>strip(), <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">, </span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(options)
     )
     <span style="color:#007020;font-weight:bold">while</span> True:
         inp <span style="color:#666">=</span> <span style="color:#007020">input</span>(modified_prompt)
         <span style="color:#007020;font-weight:bold">if</span> inp <span style="color:#007020;font-weight:bold">in</span> options:
             <span style="color:#007020;font-weight:bold">return</span> inp
         <span style="color:#60a0b0;font-style:italic"># nope, not a valid answer...</span>
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Invalid choice! Must be in [{}]&#34;</span><span style="color:#666">.</span>format(
-            <span style="color:#4070a0">&#34;, &#34;</span><span style="color:#666">.</span>join(options)
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Invalid choice! Must be in [{}]</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(
+            <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">, </span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(options)
         ))
 
 
@@ -233,176 +222,122 @@ guess <span style="color:#666">=</span> input_integer(<span style="color:#4070a0
 <span style="color:#60a0b0;font-style:italic"># computer. It won&#39;t punish you, but it will frown upon it.</span>
 <span style="color:#007020;font-weight:bold">for</span> guess <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>, <span style="color:#40a070">21</span>):
     result <span style="color:#666">=</span> input_selection(
-        <span style="color:#4070a0">&#34;I&#39;m guessing {}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">How is my guess?&#34;</span><span style="color:#666">.</span>format(guess),
-        [<span style="color:#4070a0">&#34;low&#34;</span>, <span style="color:#4070a0">&#34;hit&#34;</span>, <span style="color:#4070a0">&#34;high&#34;</span>]
+        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">I</span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">m guessing {}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">How is my guess?</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(guess),
+        [<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">low</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">hit</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">high</span><span style="color:#4070a0">&#34;</span>]
     )
-    <span style="color:#007020;font-weight:bold">if</span> result <span style="color:#666">==</span> <span style="color:#4070a0">&#34;hit&#34;</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Wuhuu!&#34;</span>)
+    <span style="color:#007020;font-weight:bold">if</span> result <span style="color:#666">==</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">hit</span><span style="color:#4070a0">&#34;</span>:
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Wuhuu!</span><span style="color:#4070a0">&#34;</span>)
         <span style="color:#007020;font-weight:bold">break</span>
     <span style="color:#007020;font-weight:bold">else</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;I must have been too low, right?&#34;</span>, result)</code></pre></div>
-<p><strong>Exercise:</strong> Implement the other two strategies and test them.</p>
-
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">I must have been too low, right?</span><span style="color:#4070a0">&#34;</span>, result)
+</code></pre></div><p><strong>Exercise:</strong> Implement the other two strategies and test them.</p>
 <p>When iterating from 20 and down, for the second strategy, you should always get the result <code>&quot;high&quot;</code> when you ask about your guess, so you can use a <code>for</code> loop and not worry about the actual result form <code>input_selection</code>. When you implement strategy number three, however, you need to keep track of a candidate interval with a lower bound, initially 1, and an upper bound, initially 20. When you guess too high, you should lower your upper bound to the value you just guessed minus one (no need to include the guess we know is too high). When you guess to low, you must increase your lower bound to the number you just guessed plus one. In both cases, after updating the interval, you should guess for the middle point in the new range. When you compute the middle value in your interval, you can use</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">guess <span style="color:#666">=</span> <span style="color:#007020">int</span>(upper_bound <span style="color:#666">+</span> lower_bound) <span style="color:#666">/</span> <span style="color:#40a070">2</span>)</code></pre></div>
-<h2 id="finding-square-roots">Finding square roots</h2>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">guess <span style="color:#666">=</span> <span style="color:#007020">int</span>(upper_bound <span style="color:#666">+</span> lower_bound) <span style="color:#666">/</span> <span style="color:#40a070">2</span>)
+</code></pre></div><h2 id="finding-square-roots">Finding square roots</h2>
 <p>Given a positive number S &gt; 0, we want to compute its positive square root, √S. We don&rsquo;t need our answer to be perfectly accurate. Using floating point numbers with a finite number of bits to represent the uncountable set of real numbers prevents this anyway. However, we want to be able to put an upper bound on the error we get, ε, such that we are guaranteed that for our result, S’, we have |S - S’| &lt; ε.</p>
-
 <p>One algorithm that solves this problem is known as the <em>Babylonian method</em> and is based on two observations. The first is this: for any x &gt; 0, if x &gt; √S then S/x &lt; √S and if S/x &gt; √S then x &lt; √S, i.e., if we guess at a value for the square root of S and the guess is too high, we have a lower bound on what it <em>could</em> be, and if the guess is too low, we have an upper bound on what it could be.</p>
-
 <p>To see that this is so, consider the case where x &gt; √S and therefore x² &gt; S. This inequality naturally also implies that S/x² &lt; x²/x², and from this we derive S = S(x²/x²) &gt; S(S / x²) = (S/x)², i.e., S/x &lt; √S. The other case is proven similarly.</p>
-
 <p>Because of this, if we start out knowing nothing about √S, it could be anywhere between 0 and S, so we can make an initial guess of some x₀ : 0 &lt; x₀ &lt; S. If |S - x₀| &lt; ε, then x₀ is an acceptable output and we are done. If not, we know that √S lies in the interval (x/S,x) (if x² &gt; S) or in the interval (x, x/s) (if x² &lt; S), and we can make a new guess inside that interval.</p>
-
 <p>The Babylonian method for finding square roots follows this idea and work as follows:</p>
-
 <ol>
-<li><p>First, make a guess for x₀, e.g. x₀ = S/2. Any number in (0,S) will do.</p></li>
-
-<li><p>Now, repeat the following, where we denote the guess we have at iteration i by xᵢ.</p>
-
+<li>
+<p>First, make a guess for x₀, e.g. x₀ = S/2. Any number in (0,S) will do.</p>
+</li>
+<li>
+<p>Now, repeat the following, where we denote the guess we have at iteration i by xᵢ.</p>
 <ol>
 <li>If S/xᵢ - xᵢ| &lt; ε report xᵢ.</li>
-<li>Otherwise, update xᵢ₊₁ = <sup>1</sup>&frasl;<sub>2</sub>(xᵢ + S/xᵢ).
-<br /></li>
-</ol></li>
+<li>Otherwise, update xᵢ₊₁ = 1/2(xᵢ + S/xᵢ).</li>
 </ol>
-
+</li>
+</ol>
 <p>The test |S/xᵢ - xᵢ| &lt; ε is different from the requirement we made about the error we would accept, which was |√S - xᵢ| &lt; ε, but since we don&rsquo;t know √S we cannot test that directly. We know, however, that √S lies in the interval (S/x,x) or the interval (x,S/x), so if we make this interval smaller than ε, we have reached at least the accuracy we want.</p>
-
-<p>The update xᵢ₊₁ = <sup>1</sup>&frasl;<sub>2</sub>(xᵢ + S/xᵢ) picks the next guess to be the average of xᵢ and S/xᵢ, which is also the midpoint in the interval (S/x,x) (for x &gt; S/x) or the interval (x,S/x) (for x &lt; S/x), so inside the interval we know must contain √S.</p>
-
+<p>The update xᵢ₊₁ = 1/2(xᵢ + S/xᵢ) picks the next guess to be the average of xᵢ and S/xᵢ, which is also the midpoint in the interval (S/x,x) (for x &gt; S/x) or the interval (x,S/x) (for x &lt; S/x), so inside the interval we know must contain √S.</p>
 <p><strong>Exercise:</strong> From this description alone you can argue that <em>if</em> the method terminates, it will report a correct answer. Prove that the algorithm is correct.</p>
-
 <p>In each iteration, we update the interval in which we know √S resides by cutting the previous interval in half.</p>
-
 <p><strong>Exercise:</strong> Use this to prove that the algorithm terminates.</p>
-
 <p><strong>Exercise:</strong> Implement and test this algorithm.</p>
-
 <h2 id="changing-base">Changing base</h2>
-
 <p>When we write a number such as 123 we usually mean this to be in base 10, that is, we implicitly understand this to be the number 3 × 10⁰ + 2 × 10¹ + 1 × 10². Starting from the right and moving towards the left, each digit represents an increasing power of tens. The number <em>could</em> also be in octal, although then we would usually write it like 123₈. If the number were in octal, each digit would represent a power of eight, and the number should be understood as 3 × 8⁰ + 2 × 8¹ + 3 × 8².</p>
-
 <p>Binary, octal and hexadecimal numbers—notation where the bases are 2, 8, and 16, respectively—are frequently used in computer science as they capture the numbers you can put in one, three and four bits. The computer works with bits, so it naturally speaks binary. For us humans, binary is a pain because it requires long sequences of ones and zeros for even relatively small numbers, and it is hard for us to readily see if we have five or six or so zeroes or ones in a row.</p>
-
 <p>Using octal and hexadecimal is more comfortable for humans than binary, and you can map the digits in octal and hexadecimal to three and four-bit numbers, respectively. Modern computers are based on bytes (and multiples of bytes) where a byte is eight bits. Since a hexadecimal number is four bits, you can write any number that fits into a byte using two hexadecimal digits rather than eight binary digits. Octal numbers are less useful on modern computers, since two octal digits, six bits, are too small for a byte while three octal digits, nine bits, are too larger. Some older systems, however, were based on 12-bits numbers, and there you had four octal numbers. Now, octal numbers are merely used for historical reasons; on modern computers, hexadecimal numbers are better.</p>
-
 <p>Leaving computer science, base 12, called duodecimal, has been proposed as a better choice than base 10 for doing arithmetic because 12 has more factors than 10 and this system would be simpler to do multiplication and division in. It is probably unlikely that this idea gets traction, but if it did, we would have to get used to converting old decimal numbers into duodecimal.</p>
-
 <p>In this exercise, we do not want to do arithmetic in different bases but want to write a function that prints an integer in different bases.</p>
-
 <p>When the base is higher than 10, we need a way to represent the digits from 10 and up. There are proposed special symbols for these, and these can be found in Unicode, but we will use letters, as is typically done for hexadecimal. We won&rsquo;t go above base 16 so we can use this table to map a number to a digit up to that base:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits <span style="color:#666">=</span> {}
 
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">0</span>,<span style="color:#40a070">10</span>):
     digits[i] <span style="color:#666">=</span> <span style="color:#007020">str</span>(i)
 
-digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;A&#39;</span>
-digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;B&#39;</span>
-digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;C&#39;</span>
-digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;D&#39;</span>
-digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;E&#39;</span>
-digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;F&#39;</span></code></pre></div>
-<p>To get the last digit in a number, in base <code>b</code>, we can take the division rest, the modulus, and map that using the <code>digits</code> table:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits[i <span style="color:#666">%</span> b]</code></pre></div>
-<p>Try it out.</p>
-
-<p>You can extract the base b representation of a number by building a list of digits starting with the smallest. You can use <code>digits[i % b]</code> to get the last digit and remember that in a list. Then we need to move on to the next digit. Now, if the number we are processing is n = b⁰ × a_0 + b¹ × a₁ + b² × a₂ + … + b<sup>n</sup> a<sub>m</sub>, then a₀ is the remainder in a division by b and the digit we just extracted. Additionally, if // denotes integer division, n // b = b⁰ × a₁ + b¹ × a₂ + … b<sup>m-1</sup>a<sub>m</sub>. So, we can get the next digit by first dividing n by b and then extract the smallest digit.</p>
-
+digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">A</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">B</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">C</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">D</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">E</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">F</span><span style="color:#4070a0">&#39;</span>
+</code></pre></div><p>To get the last digit in a number, in base <code>b</code>, we can take the division rest, the modulus, and map that using the <code>digits</code> table:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits[i <span style="color:#666">%</span> b]
+</code></pre></div><p>Try it out.</p>
+<p>You can extract the base b representation of a number by building a list of digits starting with the smallest. You can use <code>digits[i % b]</code> to get the last digit and remember that in a list. Then we need to move on to the next digit. Now, if the number we are processing is n = b⁰ × a_0 + b¹ × a₁ + b² × a₂ + … + b<!-- raw HTML omitted -->n<!-- raw HTML omitted --> a<!-- raw HTML omitted -->m<!-- raw HTML omitted -->, then a₀ is the remainder in a division by b and the digit we just extracted. Additionally, if // denotes integer division, n // b = b⁰ × a₁ + b¹ × a₂ + … b<!-- raw HTML omitted -->m-1<!-- raw HTML omitted -->a<!-- raw HTML omitted -->m<!-- raw HTML omitted -->. So, we can get the next digit by first dividing n by b and then extract the smallest digit.</p>
 <p>If you iteratively extract the lowest digit and put it in a list and then reduce the number by dividing it by b, you should eventually have a list with all the digits, although in reverse order. If your list is named <code>lst</code>, you can reverse it using this expression <code>lst[::-1]</code>. The expression says that we want <code>lst</code> from the beginning to the end—the default values of a range when we do not provide anything—in steps of minus one.</p>
-
 <p><strong>Exercise:</strong> Flesh out an algorithm, based on the observations above, that can print any integer in any base b &lt;= 16. Show that your method terminates and outputs the correct string of digits.</p>
-
 <h2 id="sieve-of-eratosthenes">Sieve of Eratosthenes</h2>
-
 <p>The <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a> is an early algorithm for computing all prime numbers less than some upper bound n. It works as follows: we start with a set of candidates for numbers that could be primes, and since we do not a priori know which numbers will be primes we start with all the natural numbers from two and up to n.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">candidates <span style="color:#666">=</span> <span style="color:#007020">list</span>(<span style="color:#007020">range</span>(<span style="color:#40a070">2</span>, n <span style="color:#666">+</span> <span style="color:#40a070">1</span>))</code></pre></div>
-<p>We are going to figure out which are primes by elimination and put the primes in another list that is initially empty.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">primes <span style="color:#666">=</span> []</code></pre></div>
-<p>The trick now is to remove from the candidates the numbers we know are not primes. We will require the following loop invariants:</p>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">candidates <span style="color:#666">=</span> <span style="color:#007020">list</span>(<span style="color:#007020">range</span>(<span style="color:#40a070">2</span>, n <span style="color:#666">+</span> <span style="color:#40a070">1</span>))
+</code></pre></div><p>We are going to figure out which are primes by elimination and put the primes in another list that is initially empty.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">primes <span style="color:#666">=</span> []
+</code></pre></div><p>The trick now is to remove from the candidates the numbers we know are not primes. We will require the following loop invariants:</p>
 <ol>
 <li>All numbers in <code>primes</code> are prime.</li>
 <li>No number in <code>candidates</code> can be divided by a number in <code>primes</code>.</li>
 <li>The smallest number in <code>candidates</code> is a prime.</li>
 </ol>
-
 <p><strong>Exercise:</strong> Prove that the invariants are true with the initial lists defined as above.</p>
-
 <p>We will now loop as long as there are candidates left. In the loop, we take the smallest number in the <code>candidates</code> list, which by the invariant must be a prime. Call it p. We then remove all candidates that are divisible by p and then add p to <code>primes</code>.</p>
-
 <p><strong>Exercise:</strong> Prove that the invariants are satisfied after these steps whenever they are satisfied before the steps.</p>
-
 <p><strong>Exercise:</strong> Prove that this algorithm terminates and is correct, i.e., that <code>primes</code> once the algorithm terminates contain all primes less than or equal to n. Correctness does not follow directly from the invariants so you might have to extend them.</p>
-
 <p><strong>Exercise:</strong> Implement and test this algorithm.</p>
-
 <h2 id="longest-increasing-substring">Longest increasing substring</h2>
-
 <p>Assume you have a list of numbers, for example</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#666">=</span> [<span style="color:#40a070">12</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">32</span>, <span style="color:#40a070">65</span>, <span style="color:#40a070">78</span>, <span style="color:#40a070">23</span>, <span style="color:#40a070">35</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">57</span>]</code></pre></div>
-<p><strong>Exercise:</strong> Design an algorithm that finds the longest sub-sequence <code>x[i:j]</code> such that consecutive numbers are increasing, i.e. <code>x[k] &lt; x[k+1]</code> for all <code>k</code> in <code>range(i,j)</code>  (or one of the longest, if there are more than one with the same length).</p>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#666">=</span> [<span style="color:#40a070">12</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">32</span>, <span style="color:#40a070">65</span>, <span style="color:#40a070">78</span>, <span style="color:#40a070">23</span>, <span style="color:#40a070">35</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">57</span>]
+</code></pre></div><p><strong>Exercise:</strong> Design an algorithm that finds the longest sub-sequence <code>x[i:j]</code> such that consecutive numbers are increasing, i.e. <code>x[k] &lt; x[k+1]</code> for all <code>k</code> in <code>range(i,j)</code>  (or one of the longest, if there are more than one with the same length).</p>
 <p><em>Hint:</em> One way to approach this is to consider the longest sequence seen so far and the longest sequence up to a given index into <code>x</code>. From this, you can formalise invariants that should get you through.</p>
-
 <h2 id="computing-power-sets">Computing power-sets</h2>
-
 <p>The <em>powerset</em> P(S) of a set S is the set that contains all possible subsets of S. For example, if S={a,b,c}, then</p>
-
 <p>P(S) = {∅, {a}, {b}, {c}, {a,b}, {a,c}, {b,c}, {a,b,c} }</p>
-
 <p><strong>Exercise:</strong> Assume that S is represented as a list. Design an algorithm that prints out all possible subsets of S. Prove that it terminates and is correct.</p>
-
 <p><em>Hint:</em> You can solve this problem by combining the numerical base algorithm with an observation about the binary representation of a number and a subset of S. We can represent any subset of S by the indices into the list representation of S. Given the indices, just pick out the elements at those indices. One way to represent a list of indices is as a binary sequence. The indices of the bits that are 1 should be included, the indices where the bits are 0 should not. If you can generate all the binary vectors of length <code>n = len(S)</code>, then you have implicitly generated all subsets of S. You can get all these bit vectors by getting all the numbers from zero to 2ⁿ and extracting the binary representation.</p>
-
 <h2 id="longest-increasing-subsequence">Longest increasing subsequence</h2>
-
-<p>Notice that this problem has a different name than &ldquo;longest increasing <em>substring</em>&rdquo;; it is a slightly different problem. Assume, again, that you have a list of numbers. We want to find the longest sub-sequence of increasing numbers, but this time we are not looking for consecutive indices <code>i:j</code>, but a sequence of indices i₀,i₁,…,i<sub>m</sub> such that i<sub>k</sub> &lt; i<sub>k + 1</sub>  and x[i<sub>k</sub>] &lt; x[i<sub>k+1</sub>].</p>
-
-<p><strong>Exercise</strong> Design an algorithm for computing the longest (or a longest) such sequence of indices i₀,i₁,…,i<sub>m</sub>.</p>
-
+<p>Notice that this problem has a different name than &ldquo;longest increasing <em>substring</em>&quot;; it is a slightly different problem. Assume, again, that you have a list of numbers. We want to find the longest sub-sequence of increasing numbers, but this time we are not looking for consecutive indices <code>i:j</code>, but a sequence of indices i₀,i₁,…,i<!-- raw HTML omitted -->m<!-- raw HTML omitted --> such that i<!-- raw HTML omitted -->k<!-- raw HTML omitted --> &lt; i<!-- raw HTML omitted -->k + 1<!-- raw HTML omitted -->  and x[i<!-- raw HTML omitted -->k<!-- raw HTML omitted -->] &lt; x[i<!-- raw HTML omitted -->k+1<!-- raw HTML omitted -->].</p>
+<p><strong>Exercise</strong> Design an algorithm for computing the longest (or a longest) such sequence of indices i₀,i₁,…,i<!-- raw HTML omitted -->m<!-- raw HTML omitted -->.</p>
 <p><em>Hint:</em> This problem is harder than the previous one, but you can brute force it by generating <em>all</em> subsequences and checking if the invariant is satisfied. This is a <em>very</em> inefficient approach, but we need to learn a little more about algorithms before we will see a more efficient solution.</p>
-
 <h2 id="merging">Merging</h2>
-
 <p>Assume you have two sorted lists, <code>x</code> and <code>y</code>, and you want to combine them into a new sequence, <code>z</code>, that contains all the elements from <code>x</code> and all the elements from <code>y</code>, in sorted order. You can create <code>z</code> by <em>merging</em> <code>x</code> and <code>y</code> as follows: have an index, <code>i</code>, into <code>x</code> and another index, <code>j</code>, into <code>y</code>—both initially zero—and compare <code>x[i]</code> to <code>y[j]</code>. If <code>x[i] &lt; y[j]</code>, then append <code>x[i]</code> to <code>z</code> and increment <code>i</code> by one. Otherwise, append <code>y[j]</code> to <code>z</code> and increment <code>j</code>. If either <code>i</code> reaches the length of <code>x</code> or <code>j</code> reaches the end of <code>y</code>, simply copy the remainder of the other list to <code>z</code>.</p>
-
 <p><strong>Exercise:</strong> Argue why this approach creates the correct <code>z</code> list and why it terminates.</p>
-
 <h1 id="answers">Answers</h1>
-
 <h2 id="below-or-above-1">Below or above</h2>
-
 <p><strong>Exercise:</strong> Prove that all three strategies terminate and with the correct answer, i.e. they are algorithms for solving this problem.</p>
-
 <p><strong>Answer:</strong> For 1: If you let <code>i</code> denote the current number you are considering, then 20 - <code>i</code> is your termination function. You never skip a number, so when you will eventually see all numbers between 1 and 20 and you will be told when you saw the right one.</p>
-
 <p><strong>Answer:</strong> For 2: Here you can use <code>i</code> - 1 as your termination function (minus one to make the termination function hit zero at the last number we consider). The argument for correctness is the same as before.</p>
-
 <p><strong>Answer:</strong> For 3: For termination we can use high - low. This interval is shrinking in each iteration and will eventually be empty. Before it is empty, though, we must have hit an interval of length 1 that contains the number we are looking for. Why? Because whenever <code>high - low &gt; 2</code>, both <code>mid - low</code> and <code>high - low</code> &gt;= 2 and when <code>high - low == 2</code> we have <code>mid = low</code> and either we have found the element at <code>mid</code> or the element is at <code>mid + 1</code> (since it must be in the interval) and the next recursion has an interval of length one where the element we are searching for is at the front.</p>
-
 <p><strong>Exercise:</strong> Would you judge all three approaches to be equally efficient in finding the right number? If not, how would you order the three strategies such that the method most likely to get the right number first is ranked highest and the algorithm most likely to get the right number last is ranked lowest. Justify your answer.</p>
-
 <p><strong>Answer:</strong> In the first two strategy we eliminate one element at a time until we find the one we are searching for. In the third strategy we eliminate half the remaining interval in each iteration. We would therefore expect the third strategy to be faster than the first two.</p>
-
 <p>If you do not lie to the computer when it asks you about its guess compared to the number you are thinking of, this program implements the first strategy:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># The following code is just to setup the exercise.</span>
 <span style="color:#60a0b0;font-style:italic"># You do not need to understand but can jump to the game below.</span>
 
 <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">input_selection</span>(prompt, options):
-    <span style="color:#4070a0">&#34;&#34;&#34;Get user input, restrict it to fixed options.&#34;&#34;&#34;</span>
-    modified_prompt <span style="color:#666">=</span> <span style="color:#4070a0">&#34;{} [{}]: &#34;</span><span style="color:#666">.</span>format(
-        prompt<span style="color:#666">.</span>strip(), <span style="color:#4070a0">&#34;, &#34;</span><span style="color:#666">.</span>join(options)
+    <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span><span style="color:#4070a0">Get user input, restrict it to fixed options.</span><span style="color:#4070a0">&#34;&#34;&#34;</span>
+    modified_prompt <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">{} [{}]: </span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(
+        prompt<span style="color:#666">.</span>strip(), <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">, </span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(options)
     )
     <span style="color:#007020;font-weight:bold">while</span> True:
         inp <span style="color:#666">=</span> <span style="color:#007020">input</span>(modified_prompt)
         <span style="color:#007020;font-weight:bold">if</span> inp <span style="color:#007020;font-weight:bold">in</span> options:
             <span style="color:#007020;font-weight:bold">return</span> inp
         <span style="color:#60a0b0;font-style:italic"># nope, not a valid answer...</span>
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Invalid choice! Must be in [{}]&#34;</span><span style="color:#666">.</span>format(
-            <span style="color:#4070a0">&#34;, &#34;</span><span style="color:#666">.</span>join(options)
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Invalid choice! Must be in [{}]</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(
+            <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">, </span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(options)
         ))
 
 <span style="color:#60a0b0;font-style:italic"># Here, we implement the computer&#39;s strategy for guessing</span>
@@ -410,68 +345,61 @@ digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> 
 <span style="color:#60a0b0;font-style:italic"># computer. It won&#39;t punish you, but it will frown upon it.</span>
 <span style="color:#007020;font-weight:bold">for</span> guess <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>, <span style="color:#40a070">21</span>):
     result <span style="color:#666">=</span> input_selection(
-        <span style="color:#4070a0">&#34;I&#39;m guessing {}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">How is my guess?&#34;</span><span style="color:#666">.</span>format(guess),
-        [<span style="color:#4070a0">&#34;low&#34;</span>, <span style="color:#4070a0">&#34;hit&#34;</span>, <span style="color:#4070a0">&#34;high&#34;</span>]
+        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">I</span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">m guessing {}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">How is my guess?</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(guess),
+        [<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">low</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">hit</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">high</span><span style="color:#4070a0">&#34;</span>]
     )
-    <span style="color:#007020;font-weight:bold">if</span> result <span style="color:#666">==</span> <span style="color:#4070a0">&#34;hit&#34;</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Wuhuu!&#34;</span>)
+    <span style="color:#007020;font-weight:bold">if</span> result <span style="color:#666">==</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">hit</span><span style="color:#4070a0">&#34;</span>:
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Wuhuu!</span><span style="color:#4070a0">&#34;</span>)
         <span style="color:#007020;font-weight:bold">break</span>
     <span style="color:#007020;font-weight:bold">else</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;I must have been too low, right?&#34;</span>, result)</code></pre></div>
-<p><strong>Exercise:</strong> Implement the other two strategies and test them.</p>
-
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">I must have been too low, right?</span><span style="color:#4070a0">&#34;</span>, result)
+</code></pre></div><p><strong>Exercise:</strong> Implement the other two strategies and test them.</p>
 <p><strong>Answer:</strong> Counting down from 20 to 1 can be implemented like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">for</span> guess <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">20</span>,<span style="color:#40a070">0</span>,<span style="color:#666">-</span><span style="color:#40a070">1</span>):
     result <span style="color:#666">=</span> input_selection(
-        <span style="color:#4070a0">&#34;How is my guess {}?&#34;</span><span style="color:#666">.</span>format(guess), 
-        [<span style="color:#4070a0">&#34;low&#34;</span>, <span style="color:#4070a0">&#34;hit&#34;</span>, <span style="color:#4070a0">&#34;high&#34;</span>]
+        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">How is my guess {}?</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(guess), 
+        [<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">low</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">hit</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">high</span><span style="color:#4070a0">&#34;</span>]
     )
-    <span style="color:#007020;font-weight:bold">if</span> result <span style="color:#666">==</span> <span style="color:#4070a0">&#34;hit&#34;</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Wuhuu!&#34;</span>)
+    <span style="color:#007020;font-weight:bold">if</span> result <span style="color:#666">==</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">hit</span><span style="color:#4070a0">&#34;</span>:
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Wuhuu!</span><span style="color:#4070a0">&#34;</span>)
         <span style="color:#007020;font-weight:bold">break</span>
     <span style="color:#007020;font-weight:bold">else</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;I must have been too hight, right? &#34;</span>, result)</code></pre></div>
-<p><strong>Answer:</strong> Cutting the interval in half in each iteration can be implemented like this:</p>
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">I must have been too hight, right? </span><span style="color:#4070a0">&#34;</span>, result)
+</code></pre></div><p><strong>Answer:</strong> Cutting the interval in half in each iteration can be implemented like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lower_bound <span style="color:#666">=</span> <span style="color:#40a070">1</span>
 upper_bound <span style="color:#666">=</span> <span style="color:#40a070">20</span>
 <span style="color:#007020;font-weight:bold">while</span> True:
-    guess <span style="color:#666">=</span> (upper_bound <span style="color:#666">+</span> lower_bound) <span style="color:#666">//</span> <span style="color:#40a070">2</span>
+    guess <span style="color:#666">=</span> (upper_bound <span style="color:#666">+</span> lower_bound) <span style="color:#666">/</span><span style="color:#666">/</span> <span style="color:#40a070">2</span>
     result <span style="color:#666">=</span> input_selection(
-        <span style="color:#4070a0">&#34;How is my guess {}?&#34;</span><span style="color:#666">.</span>format(guess),
-        [<span style="color:#4070a0">&#34;low&#34;</span>, <span style="color:#4070a0">&#34;hit&#34;</span>, <span style="color:#4070a0">&#34;high&#34;</span>]
+        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">How is my guess {}?</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(guess),
+        [<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">low</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">hit</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">high</span><span style="color:#4070a0">&#34;</span>]
     )
-    <span style="color:#007020;font-weight:bold">if</span> result <span style="color:#666">==</span> <span style="color:#4070a0">&#34;hit&#34;</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Wuhuu!&#34;</span>)
+    <span style="color:#007020;font-weight:bold">if</span> result <span style="color:#666">==</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">hit</span><span style="color:#4070a0">&#34;</span>:
+        <span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Wuhuu!</span><span style="color:#4070a0">&#34;</span>)
         <span style="color:#007020;font-weight:bold">break</span>
-    <span style="color:#007020;font-weight:bold">elif</span> result <span style="color:#666">==</span> <span style="color:#4070a0">&#34;low&#34;</span>:
+    <span style="color:#007020;font-weight:bold">elif</span> result <span style="color:#666">==</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">low</span><span style="color:#4070a0">&#34;</span>:
         lower_bound <span style="color:#666">=</span> guess <span style="color:#666">+</span> <span style="color:#40a070">1</span>
     <span style="color:#007020;font-weight:bold">else</span>:
-        upper_bound <span style="color:#666">=</span> guess <span style="color:#666">-</span> <span style="color:#40a070">1</span></code></pre></div>
-<h2 id="finding-square-roots-1">Finding square roots</h2>
-
+        upper_bound <span style="color:#666">=</span> guess <span style="color:#666">-</span> <span style="color:#40a070">1</span>
+</code></pre></div><h2 id="finding-square-roots-1">Finding square roots</h2>
 <p><strong>Exercise:</strong> From the description alone you can argue that <em>if</em> the method terminates, it will report a correct answer. Prove that the algorithm is correct.</p>
-
 <p><strong>Answer:</strong> We only terminate when |S/xᵢ - xᵢ|&lt; ε. We know that if xᵢ &lt; S/xᵢ then xᵢ_i ≤ x &lt; S/xᵢ, so xᵢ is within ε of the true value, x. If xᵢ &gt; S/xᵢ we know that S/xᵢ &lt; x ≤ xᵢ, and again we know that xᵢ is within ε\ of the true value, x.</p>
-
 <p>In each iteration, we update the interval in which we know √S resides by cutting the previous interval in half.</p>
-
 <p><strong>Exercise:</strong> Use this to prove that the algorithm terminates.</p>
-
 <p><strong>Answer:</strong> We can use |S/xᵢ - xᵢ - ε as our termination function. Each iteration decreases the |S/xᵢ - xᵢ| by one half, so the size of the interval moves asymptotically towards zero. This means that eventually it will be smaller than any ε, so the algorithm must terminate.</p>
-
 <p><strong>Exercise:</strong> Implement and test this algorithm.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lower_bound <span style="color:#666">=</span> <span style="color:#40a070">0</span>
 upper_bound <span style="color:#666">=</span> S
 x <span style="color:#666">=</span> upper_bound <span style="color:#666">/</span> <span style="color:#40a070">2</span>
 <span style="color:#007020;font-weight:bold">while</span> (upper_bound <span style="color:#666">-</span> lower_bound) <span style="color:#666">&gt;</span> <span style="">ε</span>:
     x <span style="color:#666">=</span> (lower_bound <span style="color:#666">+</span> upper_bound) <span style="color:#666">/</span> <span style="color:#40a070">2</span>
-    <span style="color:#007020;font-weight:bold">if</span> x<span style="color:#666">**</span><span style="color:#40a070">2</span> <span style="color:#666">&gt;</span> S:
+    <span style="color:#007020;font-weight:bold">if</span> x<span style="color:#666">*</span><span style="color:#666">*</span><span style="color:#40a070">2</span> <span style="color:#666">&gt;</span> S:
         lower_bound <span style="color:#666">=</span> S<span style="color:#666">/</span>x
         upper_bound <span style="color:#666">=</span> x
     <span style="color:#007020;font-weight:bold">else</span>:
         lower_bound <span style="color:#666">=</span> x
-        upper_bound <span style="color:#666">=</span> S<span style="color:#666">/</span>x</code></pre></div>
-<p>You can use this as a test run:</p>
+        upper_bound <span style="color:#666">=</span> S<span style="color:#666">/</span>x
+</code></pre></div><p>You can use this as a test run:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">math</span> <span style="color:#007020;font-weight:bold">import</span> sqrt
 
 <span style="color:#60a0b0;font-style:italic"># let us compute the square root of 2 within </span>
@@ -484,7 +412,7 @@ upper_bound <span style="color:#666">=</span> S
 x <span style="color:#666">=</span> upper_bound <span style="color:#666">/</span> <span style="color:#40a070">2</span>
 <span style="color:#007020;font-weight:bold">while</span> (upper_bound <span style="color:#666">-</span> lower_bound) <span style="color:#666">&gt;</span> <span style="">ε</span>:
     x <span style="color:#666">=</span> (lower_bound <span style="color:#666">+</span> upper_bound) <span style="color:#666">/</span> <span style="color:#40a070">2</span>
-    <span style="color:#007020;font-weight:bold">if</span> x<span style="color:#666">**</span><span style="color:#40a070">2</span> <span style="color:#666">&gt;</span> S:
+    <span style="color:#007020;font-weight:bold">if</span> x<span style="color:#666">*</span><span style="color:#666">*</span><span style="color:#40a070">2</span> <span style="color:#666">&gt;</span> S:
         lower_bound <span style="color:#666">=</span> S<span style="color:#666">/</span>x
         upper_bound <span style="color:#666">=</span> x
     <span style="color:#007020;font-weight:bold">else</span>:
@@ -492,26 +420,25 @@ x <span style="color:#666">=</span> upper_bound <span style="color:#666">/</span
         upper_bound <span style="color:#666">=</span> S<span style="color:#666">/</span>x
 
 
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;We expect to agree on the first four decimals,&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;since these are in ten-thousands, but not necessarily&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;at the fifth decimal, which is below our precision.</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Results:&#34;</span>)
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Python suggests {:.5f}&#34;</span><span style="color:#666">.</span>format(sqrt(<span style="color:#40a070">2</span>)))
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Babylonian method gave us {:.5f}&#34;</span><span style="color:#666">.</span>format(x))</code></pre></div>
-<h2 id="changing-base-1">Changing base</h2>
-
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">We expect to agree on the first four decimals,</span><span style="color:#4070a0">&#34;</span>)
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">since these are in ten-thousands, but not necessarily</span><span style="color:#4070a0">&#34;</span>)
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">at the fifth decimal, which is below our precision.</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>)
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Results:</span><span style="color:#4070a0">&#34;</span>)
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Python suggests {:.5f}</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(sqrt(<span style="color:#40a070">2</span>)))
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Babylonian method gave us {:.5f}</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>format(x))
+</code></pre></div><h2 id="changing-base-1">Changing base</h2>
 <p>My implementation looks like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits <span style="color:#666">=</span> {}
 
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">0</span>,<span style="color:#40a070">10</span>):
     digits[i] <span style="color:#666">=</span> <span style="color:#007020">str</span>(i)
 
-digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;A&#39;</span>
-digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;B&#39;</span>
-digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;C&#39;</span>
-digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;D&#39;</span>
-digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;E&#39;</span>
-digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0">&#39;F&#39;</span>
+digits[<span style="color:#40a070">10</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">A</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">11</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">B</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">12</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">C</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">13</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">D</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">14</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">E</span><span style="color:#4070a0">&#39;</span>
+digits[<span style="color:#40a070">15</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">F</span><span style="color:#4070a0">&#39;</span>
 
 m <span style="color:#666">=</span> <span style="color:#40a070">32</span>
 
@@ -520,16 +447,16 @@ base_b <span style="color:#666">=</span> []
 n <span style="color:#666">=</span> m
 <span style="color:#007020;font-weight:bold">while</span> n <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
     base_b<span style="color:#666">.</span>append(digits[n <span style="color:#666">%</span> b])
-    n <span style="color:#666">//=</span> b
-<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0">&#34;in base&#34;</span>, b, <span style="color:#4070a0">&#34;is&#34;</span>, <span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
+    n <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> b
+<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">in base</span><span style="color:#4070a0">&#34;</span>, b, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">is</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
 
 b <span style="color:#666">=</span> <span style="color:#40a070">10</span>
 n <span style="color:#666">=</span> m
 base_b <span style="color:#666">=</span> []
 <span style="color:#007020;font-weight:bold">while</span> n <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
     base_b<span style="color:#666">.</span>append(digits[n <span style="color:#666">%</span> b])
-    n <span style="color:#666">//=</span> b
-<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0">&#34;in base&#34;</span>, b, <span style="color:#4070a0">&#34;is&#34;</span>, <span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
+    n <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> b
+<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">in base</span><span style="color:#4070a0">&#34;</span>, b, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">is</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
 
 
 b <span style="color:#666">=</span> <span style="color:#40a070">8</span>
@@ -537,70 +464,58 @@ n <span style="color:#666">=</span> m
 base_b <span style="color:#666">=</span> []
 <span style="color:#007020;font-weight:bold">while</span> n <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
     base_b<span style="color:#666">.</span>append(digits[n <span style="color:#666">%</span> b])
-    n <span style="color:#666">//=</span> b
-<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0">&#34;in base&#34;</span>, b, <span style="color:#4070a0">&#34;is&#34;</span>, <span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
+    n <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> b
+<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">in base</span><span style="color:#4070a0">&#34;</span>, b, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">is</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
 
 b <span style="color:#666">=</span> <span style="color:#40a070">4</span>
 n <span style="color:#666">=</span> m
 base_b <span style="color:#666">=</span> []
 <span style="color:#007020;font-weight:bold">while</span> n <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
     base_b<span style="color:#666">.</span>append(digits[n <span style="color:#666">%</span> b])
-    n <span style="color:#666">//=</span> b
-<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0">&#34;in base&#34;</span>, b, <span style="color:#4070a0">&#34;is&#34;</span>, <span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
+    n <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> b
+<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">in base</span><span style="color:#4070a0">&#34;</span>, b, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">is</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
 
 b <span style="color:#666">=</span> <span style="color:#40a070">2</span>
 n <span style="color:#666">=</span> m
 base_b <span style="color:#666">=</span> []
 <span style="color:#007020;font-weight:bold">while</span> n <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
     base_b<span style="color:#666">.</span>append(digits[n <span style="color:#666">%</span> b])
-    n <span style="color:#666">//=</span> b
-<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0">&#34;in base&#34;</span>, b, <span style="color:#4070a0">&#34;is&#34;</span>, <span style="color:#4070a0">&#34;&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))</code></pre></div>
-<h2 id="sieve-of-eratosthenes-1">Sieve of Eratosthenes</h2>
-
+    n <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> b
+<span style="color:#007020;font-weight:bold">print</span>(m, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">in base</span><span style="color:#4070a0">&#34;</span>, b, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">is</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">&#34;</span><span style="color:#666">.</span>join(base_b[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]))
+</code></pre></div><h2 id="sieve-of-eratosthenes-1">Sieve of Eratosthenes</h2>
 <p>I will require the following loop invariants:</p>
-
 <ol>
 <li>All numbers in <code>primes</code> are prime.</li>
 <li>No number in <code>candidates</code> can be divided by a number in <code>primes</code>.</li>
 <li>The smallest number in <code>candidates</code> is a prime.</li>
 </ol>
-
 <p><strong>Exercise:</strong> Prove that the invariants are true with the initial lists defined as above.</p>
-
 <p><strong>Answer:</strong> Any properties we care to require about the elements in an empty list are true. There are no elements for which they can be false. We call this <em>vacuously</em> true.</p>
-
 <p>We will now look as long as there are candidates left. In the loop, we take the smallest number in the <code>candidates</code> list, which by the invariant must be a prime. Call it $p$. We then remove all candidates that are divisible by $p$ and then add $p$ to <code>primes</code>.</p>
-
 <p><strong>Exercise:</strong> Prove that the invariants are satisfied after these steps whenever they are satisfied before the steps.</p>
-
 <p><strong>Answer:</strong> If the front element in <code>candidates</code> was divisible by any smaller number—and we only care about smaller numbers when we consider the divisible property—then it would have been removed. It isn’t divisible by a smaller number, it must therefore be prime. When we move it to <code>primes</code> we satisfy the invariant for that list. Let <code>p</code> be the first number in <code>candidates</code> before we move it to <code>primes</code>. In <code>candidates</code>, before we remove those divisible by <code>p</code>, we have no numbers that are divisible by any of the smaller primes. We explicitly remove those divisible by <code>p</code>. We are then left with numbers that are not divisible by any of the numbers in <code>primes</code>.</p>
-
 <p><strong>Exercise:</strong> Prove that this algorithm terminates and is correct, i.e., that <code>primes</code> once the algorithm terminates contain all primes less than or equal to $n$. Correctness does not follow directly from the invariants, so you might have to extend them.</p>
-
 <p><strong>Answer:</strong> For a termination function we can use the length of the <code>candidates</code> list. It is decreased by at least one every iteration, because we move its first element to <code>primes</code>, and we terminate when it is empty. Where the invariants come up short is that they tell us that <code>primes</code> are all primes, as is <code>candidates[0]</code> when <code>candidates</code> is not empty, but they do not tell us that <code>primes</code> eventually will contain <em>all</em> the primes less than $n$. To get to there, we can modify the invariants to say that <code>primes</code> contain all primes less than <code>candidates[0]</code> when <code>candidates</code> is not empty or $n$ when it is. You can prove that this invariant is also true very similarly to how we proved the other invariants. When you have a prime in <code>p = candidates[0]</code>, <code>primes</code> contain all smaller primes (by the invariant). When we move <code>p</code> to <code>primes</code> the invariant is also true—<code>primes</code> still contain all primes less than <code>p</code>, this doesn’t change when we add <code>p</code>. From <code>candidates</code> we now remove numbers that are <em>not</em> prime, but never numbers that are. We end up with either a new <code>p = candidates[0]</code> that must be a larger prime, so we can repeat the argument for the next iteration, or we end up with an empty list. When we have an empty list we have evaluated all numbers up to and including $n$, and <code>primes</code> contain all the primes in that sequence.</p>
-
 <p><strong>Exercise:</strong> Implement and test this algorithm.</p>
-
 <p>Here’s my solution:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">candidates <span style="color:#666">=</span> <span style="color:#007020">list</span>(<span style="color:#007020">range</span>(<span style="color:#40a070">2</span>, n<span style="color:#666">+</span><span style="color:#40a070">1</span>))
 primes <span style="color:#666">=</span> []
 <span style="color:#007020;font-weight:bold">while</span> <span style="color:#007020">len</span>(candidates) <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
     p <span style="color:#666">=</span> candidates[<span style="color:#40a070">0</span>]
     candidates <span style="color:#666">=</span> [m <span style="color:#007020;font-weight:bold">for</span> m <span style="color:#007020;font-weight:bold">in</span> candidates <span style="color:#007020;font-weight:bold">if</span> m <span style="color:#666">%</span> p <span style="color:#666">!=</span> <span style="color:#40a070">0</span>]
-    primes<span style="color:#666">.</span>append(p)</code></pre></div>
-<p>Pick <code>n</code> and try it out.</p>
-
+    primes<span style="color:#666">.</span>append(p)
+</code></pre></div><p>Pick <code>n</code> and try it out.</p>
 <h2 id="longest-increasing-substring-1">Longest increasing substring</h2>
-
 <p>My implementation looks like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#666">=</span> [<span style="color:#40a070">12</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">32</span>, <span style="color:#40a070">65</span>, <span style="color:#40a070">78</span>, <span style="color:#40a070">23</span>, <span style="color:#40a070">35</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">57</span>]
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+x <span style="color:#666">=</span> [<span style="color:#40a070">12</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">32</span>, <span style="color:#40a070">65</span>, <span style="color:#40a070">78</span>, <span style="color:#40a070">23</span>, <span style="color:#40a070">35</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">57</span>]
 <span style="color:#60a0b0;font-style:italic"># We can always have a longest sequence containing just the first character</span>
 longest_from, longest_to, longest_len <span style="color:#666">=</span> <span style="color:#40a070">0</span>, <span style="color:#40a070">1</span>, <span style="color:#40a070">1</span>
 
 <span style="color:#60a0b0;font-style:italic"># Brute force solution</span>
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#007020">len</span>(x)):
 	<span style="color:#007020;font-weight:bold">for</span> j <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(i <span style="color:#666">+</span> <span style="color:#40a070">1</span>, <span style="color:#007020">len</span>(x)):
-		<span style="color:#007020;font-weight:bold">if</span> x[j] <span style="color:#666">&lt;=</span> x[j <span style="color:#666">-</span> <span style="color:#40a070">1</span>]:
+		<span style="color:#007020;font-weight:bold">if</span> x[j] <span style="color:#666">&lt;</span><span style="color:#666">=</span> x[j <span style="color:#666">-</span> <span style="color:#40a070">1</span>]:
 			<span style="color:#007020;font-weight:bold">break</span>
 	<span style="color:#007020;font-weight:bold">if</span> j <span style="color:#666">-</span> i <span style="color:#666">&gt;</span> longest_len:
 		longest_from, longest_to, longest_len <span style="color:#666">=</span> i, j, j <span style="color:#666">-</span> i
@@ -612,7 +527,7 @@ longest_from, longest_to, longest_len <span style="color:#666">=</span> <span st
 current_from <span style="color:#666">=</span> <span style="color:#40a070">0</span>
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>, <span style="color:#007020">len</span>(x)):
 	<span style="color:#60a0b0;font-style:italic"># the current interval is [current_from, i)</span>
-	<span style="color:#007020;font-weight:bold">if</span> x[i <span style="color:#666">-</span> <span style="color:#40a070">1</span>] <span style="color:#666">&gt;=</span> x[i]:
+	<span style="color:#007020;font-weight:bold">if</span> x[i <span style="color:#666">-</span> <span style="color:#40a070">1</span>] <span style="color:#666">&gt;</span><span style="color:#666">=</span> x[i]:
 		<span style="color:#60a0b0;font-style:italic"># we have to start a new interval</span>
 		current_len <span style="color:#666">=</span> i <span style="color:#666">-</span> <span style="color:#40a070">1</span> <span style="color:#666">-</span> current_from
 		<span style="color:#007020;font-weight:bold">if</span> current_len <span style="color:#666">&gt;</span> longest_len:
@@ -620,26 +535,22 @@ current_from <span style="color:#666">=</span> <span style="color:#40a070">0</sp
 		<span style="color:#60a0b0;font-style:italic"># start new interval</span>
 		current_from, current_len <span style="color:#666">=</span> i, <span style="color:#40a070">1</span>
 
-<span style="color:#007020;font-weight:bold">print</span>(longest_from, longest_to, x[longest_from:longest_to])</code></pre></div>
-<h2 id="computing-power-sets-1">Computing power-sets</h2>
-
+<span style="color:#007020;font-weight:bold">print</span>(longest_from, longest_to, x[longest_from:longest_to])
+</code></pre></div><h2 id="computing-power-sets-1">Computing power-sets</h2>
 <p>The hint tells you that there is a close correspondence between the powers of a set, S, and the binary representation of all the numbers from zero to <code>len(S)</code>.</p>
-
 <p>Consider this program:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n <span style="color:#666">=</span> <span style="color:#40a070">3</span>
-m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span style="color:#666">**</span>n
+m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span style="color:#666">*</span><span style="color:#666">*</span>n
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(m):
 	reverse_bits <span style="color:#666">=</span> [<span style="color:#40a070">0</span>] <span style="color:#666">*</span> n
 	k <span style="color:#666">=</span> <span style="color:#40a070">0</span>
 	<span style="color:#007020;font-weight:bold">while</span> i <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
 		reverse_bits[k] <span style="color:#666">=</span> i <span style="color:#666">%</span> <span style="color:#40a070">2</span>
-		i <span style="color:#666">//=</span> <span style="color:#40a070">2</span>
-		k <span style="color:#666">+=</span> <span style="color:#40a070">1</span>
-	<span style="color:#007020;font-weight:bold">print</span>(reverse_bits[::<span style="color:#666">-</span><span style="color:#40a070">1</span>])</code></pre></div>
-<p>It is a slight variation on the program from the chapter that gets the binary representation of a number. This variant always have n (binary) digits, which the algorithm in the chapter does not, but otherwise it is the same.</p>
-
+		i <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> <span style="color:#40a070">2</span>
+		k <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
+	<span style="color:#007020;font-weight:bold">print</span>(reverse_bits[::<span style="color:#666">-</span><span style="color:#40a070">1</span>])
+</code></pre></div><p>It is a slight variation on the program from the chapter that gets the binary representation of a number. This variant always have n (binary) digits, which the algorithm in the chapter does not, but otherwise it is the same.</p>
 <p>If you run it with n equal to three, as in the code listing above, you get the output</p>
-
 <pre><code>[0, 0, 0]
 [0, 0, 1]
 [0, 1, 0]
@@ -648,30 +559,27 @@ m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span st
 [1, 0, 1]
 [1, 1, 0]
 [1, 1, 1]
-</code></pre>
-
-<p>If you extract, from the list S, the indices where the bit is set, you get subsets of S, and if you extract the sets for each of these lists you have the power-set of S.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">S <span style="color:#666">=</span> [<span style="color:#4070a0">&#39;a&#39;</span>, <span style="color:#4070a0">&#39;b&#39;</span>, <span style="color:#4070a0">&#39;c&#39;</span>]
+</code></pre><p>If you extract, from the list S, the indices where the bit is set, you get subsets of S, and if you extract the sets for each of these lists you have the power-set of S.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">S <span style="color:#666">=</span> [<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">a</span><span style="color:#4070a0">&#39;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">b</span><span style="color:#4070a0">&#39;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">c</span><span style="color:#4070a0">&#39;</span>]
 powS <span style="color:#666">=</span> []
 
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;powerset of&#34;</span>, S)
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">powerset of</span><span style="color:#4070a0">&#34;</span>, S)
 n <span style="color:#666">=</span> <span style="color:#007020">len</span>(S)
-m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span style="color:#666">**</span>n
+m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span style="color:#666">*</span><span style="color:#666">*</span>n
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(m):
 	j <span style="color:#666">=</span> <span style="color:#40a070">0</span>
 	x <span style="color:#666">=</span> []
 	<span style="color:#007020;font-weight:bold">while</span> i <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
 		<span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">%</span> <span style="color:#40a070">2</span> <span style="color:#666">==</span> <span style="color:#40a070">1</span>:
 			x<span style="color:#666">.</span>append(S[j])
-		i <span style="color:#666">//=</span> <span style="color:#40a070">2</span>
-		j <span style="color:#666">+=</span> <span style="color:#40a070">1</span>
+		i <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> <span style="color:#40a070">2</span>
+		j <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
 	<span style="color:#007020;font-weight:bold">print</span>(x)
 	powS<span style="color:#666">.</span>append(x)
 <span style="color:#007020;font-weight:bold">print</span>()
 
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;powS =&#34;</span>, powS)</code></pre></div>
-<h2 id="longest-increasing-subsequence-1">Longest increasing subsequence</h2>
-
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">powS =</span><span style="color:#4070a0">&#34;</span>, powS)
+</code></pre></div><h2 id="longest-increasing-subsequence-1">Longest increasing subsequence</h2>
 <p>My solution is this implementation (I explain it below):</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#666">=</span> [<span style="color:#40a070">12</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">32</span>, <span style="color:#40a070">65</span>, <span style="color:#40a070">78</span>, <span style="color:#40a070">23</span>, <span style="color:#40a070">35</span>, <span style="color:#40a070">45</span>, <span style="color:#40a070">57</span>]
 
@@ -680,7 +588,7 @@ best_indices <span style="color:#666">=</span> []
 
 <span style="color:#60a0b0;font-style:italic"># Set up for computing all combination of indices</span>
 n <span style="color:#666">=</span> <span style="color:#007020">len</span>(x)
-m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span style="color:#666">**</span>n
+m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span style="color:#666">*</span><span style="color:#666">*</span>n
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(m):
 	<span style="color:#60a0b0;font-style:italic"># collect indices</span>
 	j <span style="color:#666">=</span> <span style="color:#40a070">0</span>
@@ -688,13 +596,13 @@ m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span st
 	<span style="color:#007020;font-weight:bold">while</span> i <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
 		<span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">%</span> <span style="color:#40a070">2</span> <span style="color:#666">==</span> <span style="color:#40a070">1</span>:
 			indices<span style="color:#666">.</span>append(j)
-		i <span style="color:#666">//=</span> <span style="color:#40a070">2</span>
-		j <span style="color:#666">+=</span> <span style="color:#40a070">1</span>
+		i <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> <span style="color:#40a070">2</span>
+		j <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
 
 	<span style="color:#60a0b0;font-style:italic"># check if indices gives us an increasing sequence</span>
 	<span style="color:#007020;font-weight:bold">for</span> k <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>, <span style="color:#007020">len</span>(indices)):
 		prev, this <span style="color:#666">=</span> indices[k<span style="color:#666">-</span><span style="color:#40a070">1</span>], indices[k]
-		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;=</span> x[this]:
+		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;</span><span style="color:#666">=</span> x[this]:
 			<span style="color:#60a0b0;font-style:italic"># not increasing, so break</span>
 			<span style="color:#007020;font-weight:bold">break</span>
 	<span style="color:#007020;font-weight:bold">else</span>:
@@ -705,7 +613,7 @@ m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span st
 			best_indices <span style="color:#666">=</span> indices
 
 vals <span style="color:#666">=</span> [x[i] <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> best_indices]
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;increasing sequence:&#34;</span>, best_indices, vals)
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">increasing sequence:</span><span style="color:#4070a0">&#34;</span>, best_indices, vals)
 
 
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(m):
@@ -715,14 +623,14 @@ vals <span style="color:#666">=</span> [x[i] <span style="color:#007020;font-wei
 	<span style="color:#007020;font-weight:bold">while</span> i <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
 		<span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">%</span> <span style="color:#40a070">2</span> <span style="color:#666">==</span> <span style="color:#40a070">1</span>:
 			indices<span style="color:#666">.</span>append(j)
-		i <span style="color:#666">//=</span> <span style="color:#40a070">2</span>
-		j <span style="color:#666">+=</span> <span style="color:#40a070">1</span>
+		i <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> <span style="color:#40a070">2</span>
+		j <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
 
 	<span style="color:#60a0b0;font-style:italic"># check if indices gives us an increasing sequence</span>
 	increasing <span style="color:#666">=</span> True
 	<span style="color:#007020;font-weight:bold">for</span> k <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>, <span style="color:#007020">len</span>(indices)):
 		prev, this <span style="color:#666">=</span> indices[k<span style="color:#666">-</span><span style="color:#40a070">1</span>], indices[k]
-		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;=</span> x[this]:
+		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;</span><span style="color:#666">=</span> x[this]:
 			<span style="color:#60a0b0;font-style:italic"># not increasing, so break</span>
 			increasing <span style="color:#666">=</span> False
 			<span style="color:#007020;font-weight:bold">break</span>
@@ -734,15 +642,14 @@ vals <span style="color:#666">=</span> [x[i] <span style="color:#007020;font-wei
 			best_indices <span style="color:#666">=</span> indices
 
 vals <span style="color:#666">=</span> [x[i] <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> best_indices]
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;increasing sequence:&#34;</span>, best_indices, vals)</code></pre></div>
-<p>We start by defining some variables to hold the best sequence we have seen so far.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">best_indices <span style="color:#666">=</span> []</code></pre></div>
-<p>We do not keep track of the length; we can always get that from <code>len(best_indices)</code>.</p>
-
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">increasing sequence:</span><span style="color:#4070a0">&#34;</span>, best_indices, vals)
+</code></pre></div><p>We start by defining some variables to hold the best sequence we have seen so far.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">best_indices <span style="color:#666">=</span> []
+</code></pre></div><p>We do not keep track of the length; we can always get that from <code>len(best_indices)</code>.</p>
 <p>Now we take the same approach as for computing power-sets. If we get the power-set of indices using the algorithm from the previous exercise, then we get the indices in increasing order.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># Set up for computing all combination of indices</span>
 n <span style="color:#666">=</span> <span style="color:#007020">len</span>(x)
-m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span style="color:#666">**</span>n
+m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span style="color:#666">*</span><span style="color:#666">*</span>n
 <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(m):
 	<span style="color:#60a0b0;font-style:italic"># collect indices</span>
 	j <span style="color:#666">=</span> <span style="color:#40a070">0</span>
@@ -750,26 +657,25 @@ m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span st
 	<span style="color:#007020;font-weight:bold">while</span> i <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
 		<span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">%</span> <span style="color:#40a070">2</span> <span style="color:#666">==</span> <span style="color:#40a070">1</span>:
 			indices<span style="color:#666">.</span>append(j)
-		i <span style="color:#666">//=</span> <span style="color:#40a070">2</span>
-		j <span style="color:#666">+=</span> <span style="color:#40a070">1</span>
+		i <span style="color:#666">/</span><span style="color:#666">/</span><span style="color:#666">=</span> <span style="color:#40a070">2</span>
+		j <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
 
 	<span style="color:#60a0b0;font-style:italic"># check if indices gives us an increasing sequence</span>
-	<span style="color:#60a0b0;font-style:italic"># …</span></code></pre></div>
-<p>This code iterates through all sets of increasing indices. We can examine each in turn and test that these indices give us an increasing sequence of x values. We can simply run through the list of indices and check that each one index a value in x that is larger than the previous one. If not, we break the loop.</p>
+	<span style="color:#60a0b0;font-style:italic"># …</span>
+</code></pre></div><p>This code iterates through all sets of increasing indices. We can examine each in turn and test that these indices give us an increasing sequence of x values. We can simply run through the list of indices and check that each one index a value in x that is larger than the previous one. If not, we break the loop.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">	<span style="color:#60a0b0;font-style:italic"># check if indices gives us an increasing sequence</span>
 	<span style="color:#007020;font-weight:bold">for</span> k <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>, <span style="color:#007020">len</span>(indices)):
 		prev, this <span style="color:#666">=</span> indices[k<span style="color:#666">-</span><span style="color:#40a070">1</span>], indices[k]
-		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;=</span> x[this]:
+		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;</span><span style="color:#666">=</span> x[this]:
 			<span style="color:#60a0b0;font-style:italic"># not increasing, so break</span>
-			<span style="color:#007020;font-weight:bold">break</span></code></pre></div>
-<p>The <code>break</code> only leaves the inner-most <code>for</code>-loop, but we actually want to leave the outermost loop—we want to move on to the next candidate list of indices.</p>
-
+			<span style="color:#007020;font-weight:bold">break</span>
+</code></pre></div><p>The <code>break</code> only leaves the inner-most <code>for</code>-loop, but we actually want to leave the outermost loop—we want to move on to the next candidate list of indices.</p>
 <p>We can use a boolean flag to help us out here. We set it to <code>True</code>, but if the candidate list of indices do not describe an increasing subsequence, then we set it to <code>False</code>. Only if it is <code>True</code> do we potentially update the best sequence.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">	<span style="color:#60a0b0;font-style:italic"># check if indices gives us an increasing sequence</span>
 	increasing <span style="color:#666">=</span> True
 	<span style="color:#007020;font-weight:bold">for</span> k <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>, <span style="color:#007020">len</span>(indices)):
 		prev, this <span style="color:#666">=</span> indices[k<span style="color:#666">-</span><span style="color:#40a070">1</span>], indices[k]
-		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;=</span> x[this]:
+		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;</span><span style="color:#666">=</span> x[this]:
 			<span style="color:#60a0b0;font-style:italic"># not increasing, so break</span>
 			increasing <span style="color:#666">=</span> False
 			<span style="color:#007020;font-weight:bold">break</span>
@@ -778,16 +684,14 @@ m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span st
 		<span style="color:#60a0b0;font-style:italic"># when we leave it by ending the loop</span>
 		<span style="color:#60a0b0;font-style:italic"># and not when breaking...</span>
 		<span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020">len</span>(indices) <span style="color:#666">&gt;</span> <span style="color:#007020">len</span>(best_indices):
-			best_indices <span style="color:#666">=</span> indices</code></pre></div>
-<p>There is actually another way to implement this. We haven’t seen this before, but loops have an <code>else</code> part, just as <code>if</code>-statements. They just behave very differently, and the name <code>else</code> is probably more confusing than the feature it implements. A keyword such as <code>completed</code> would be a better description.</p>
-
+			best_indices <span style="color:#666">=</span> indices
+</code></pre></div><p>There is actually another way to implement this. We haven’t seen this before, but loops have an <code>else</code> part, just as <code>if</code>-statements. They just behave very differently, and the name <code>else</code> is probably more confusing than the feature it implements. A keyword such as <code>completed</code> would be a better description.</p>
 <p>The <code>else</code> block of a loop is executed if you leave the loop by running it to completion, i.e. if you run through all the elements in a <code>for</code>-loop or until the condition in a <code>while</code>-loop is <code>False</code>. the <code>else</code> block is <em>not</em> executed if you break from a loop.</p>
-
 <p>So we can implement the validation of indices and the potential update of the best sequence seen so far as this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">	<span style="color:#60a0b0;font-style:italic"># check if indices gives us an increasing sequence</span>
 	<span style="color:#007020;font-weight:bold">for</span> k <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>, <span style="color:#007020">len</span>(indices)):
 		prev, this <span style="color:#666">=</span> indices[k<span style="color:#666">-</span><span style="color:#40a070">1</span>], indices[k]
-		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;=</span> x[this]:
+		<span style="color:#007020;font-weight:bold">if</span> x[prev] <span style="color:#666">&gt;</span><span style="color:#666">=</span> x[this]:
 			<span style="color:#60a0b0;font-style:italic"># not increasing, so break</span>
 			<span style="color:#007020;font-weight:bold">break</span>
 	<span style="color:#007020;font-weight:bold">else</span>:
@@ -795,12 +699,11 @@ m <span style="color:#666">=</span> <span style="color:#40a070">2</span><span st
 		<span style="color:#60a0b0;font-style:italic"># when we leave it by ending the loop</span>
 		<span style="color:#60a0b0;font-style:italic"># and not when breaking...</span>
 		<span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020">len</span>(indices) <span style="color:#666">&gt;</span> <span style="color:#007020">len</span>(best_indices):
-			best_indices <span style="color:#666">=</span> indices</code></pre></div>
-<p>When you are done, you can output the indices and corresponding values like this:</p>
+			best_indices <span style="color:#666">=</span> indices
+</code></pre></div><p>When you are done, you can output the indices and corresponding values like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vals <span style="color:#666">=</span> [x[i] <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> best_indices]
-<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;increasing sequence:&#34;</span>, best_indices, vals)</code></pre></div>
-<h2 id="merging-1">Merging</h2>
-
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">increasing sequence:</span><span style="color:#4070a0">&#34;</span>, best_indices, vals)
+</code></pre></div><h2 id="merging-1">Merging</h2>
 <p>To make the algorithm concrete, I will list it as I would implement it:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n, m <span style="color:#666">=</span> <span style="color:#007020">len</span>(x), <span style="color:#007020">len</span>(y)
 i, j <span style="color:#666">=</span> <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>
@@ -809,41 +712,30 @@ z <span style="color:#666">=</span> []
 <span style="color:#007020;font-weight:bold">while</span> i <span style="color:#666">&lt;</span> n <span style="color:#007020;font-weight:bold">and</span> j <span style="color:#666">&lt;</span> m:
 	<span style="color:#007020;font-weight:bold">if</span> x[i] <span style="color:#666">&lt;</span> y[j]:
 		z<span style="color:#666">.</span>append(x[i])
-		i <span style="color:#666">+=</span> <span style="color:#40a070">1</span>
+		i <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
 	<span style="color:#007020;font-weight:bold">else</span>:
 		z<span style="color:#666">.</span>append(y[j])
-		j <span style="color:#666">+=</span> <span style="color:#40a070">1</span>
+		j <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
 
 <span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">&lt;</span> n:
 	z<span style="color:#666">.</span>extend(x[i:])
 <span style="color:#007020;font-weight:bold">if</span> j <span style="color:#666">&lt;</span> m:
-	z<span style="color:#666">.</span>extend(y[j:])</code></pre></div>
-<p>You can find this implementation in <a href="merge.py">merge.py</a>.</p>
-
+	z<span style="color:#666">.</span>extend(y[j:])
+</code></pre></div><p>You can find this implementation in <a href="merge.py">merge.py</a>.</p>
 <p>Now, let us prove termination and correctness…</p>
-
 <h3 id="termination">Termination</h3>
-
 <p>Termination is the easiest to handle. Let <code>n = len(x)</code> and <code>m = len(y)</code>, then the termination function is <code>t(i,n,j,m) = (n-i) + (m-j)</code>. In each iteration we either increase <code>i</code> by one or we increase <code>j</code> by one; in either case we decrease <code>t(i,n,j,m)</code> by one.</p>
-
 <p>We never actually reach zero with this termination function, we will leave the loop when <em>either</em> <code>i == n</code> or <code>j == m</code>, but <em>if</em> we reached zero, then the loop-condition would be false, so <code>t</code> works as a termination function.</p>
-
 <h3 id="correctness">Correctness</h3>
-
 <p>The pre-condition for the loop is that <code>x</code> and <code>y</code> are sorted. We will use the invariant that <code>z</code> contains the elements in <code>x[:i]</code> and <code>y[:j]</code> in sorted order. NB: with this slicing notation, <code>i</code> and <code>j</code> are <em>not</em> included in the slices, so <code>x[i]</code> and <code>y[j]</code> are not yet in <code>z</code>.</p>
-
 <p>If we only left the loop when <code>i == n</code> and <code>j == m</code>, then that would suffice to guarantee that <code>z</code> would end up containing the merged lists. We break when <em>either</em> of these two conditions are met, so we need the invariant to say a bit more—and this bit more also makes it easier to show that it holds true at the end of each loop-iteration.</p>
-
 <p>We will require that <code>z</code> contains the elements in <code>x[:i]</code> and <code>y[:j]</code> in sorted order <em>and</em> that <code>z[k-1] &lt;= min(x[i:],y[j:])</code>. Since <code>x</code> and <code>y</code> are sorted, this means that we can append either <code>x[i]</code> or <code>y[j]</code> to <code>z</code> (if these exist) and still have a sorted list. It also means that when <code>x[i:]</code> is empty we can extend <code>z</code> with the elements in <code>y[j:]</code> and vice versa, that when <code>y[j:]</code> is empty we can extend <code>z</code> with <code>x[:i]</code>. So, if we guarantee this invariant for the loop, we are guaranteed that when we break the loop we have sorted items from <code>x[:i]</code> and <code>y[:j]</code>, and if we append the missing elements (from either <code>x[i:]</code> or <code>y[j:]</code>) then we still have a sorted list, and this list will now contain all the elements from <code>x</code> and <code>y</code>.</p>
-
-<p>To see that the invariant holds true, consider the two cases in the loop:
-1. <code>x[i] &lt; y[j]</code>: Here, we append <code>x[i]</code> to <code>z</code> and increase <code>i</code>. Since the invariant tells us that <code>z[k-1] &lt;= x[i]</code> we get a sorted list from this, and since <code>x[i] &lt;= x[i+1]</code> (when <code>i &lt; n</code>, since <code>x</code> is sorted) and <code>x[i] &lt; y[j]</code>, we have <code>z[k] &lt;= min(x[i+1:],y[j:])</code> so we satisfy the invariant.
-2. <code>else</code> (which means <code>x[i] &gt;= y[j]</code>): The invariant tells us that we can append <code>y[j]</code> to <code>z</code> and still have a sorted list. For the new <code>z[k] == y[j]</code> we then have <code>z[k] &lt;= x[i]</code> (from the <code>if</code>-condition) and <code>z[k] &lt;= y[j+1]</code> (because <code>y</code> is sorted), so we satisfy the invariant once more.</p>
-
-<hr/>
-
-<p><small>If you liked what you read, and want more like it, consider supporting me at <a href="https://www.patreon.com/mailund">Patreon</a>.</small>
-<hr/></p>
+<p>To see that the invariant holds true, consider the two cases in the loop:</p>
+<ol>
+<li><code>x[i] &lt; y[j]</code>: Here, we append <code>x[i]</code> to <code>z</code> and increase <code>i</code>. Since the invariant tells us that <code>z[k-1] &lt;= x[i]</code> we get a sorted list from this, and since <code>x[i] &lt;= x[i+1]</code> (when <code>i &lt; n</code>, since <code>x</code> is sorted) and <code>x[i] &lt; y[j]</code>, we have <code>z[k] &lt;= min(x[i+1:],y[j:])</code> so we satisfy the invariant.</li>
+<li><code>else</code> (which means <code>x[i] &gt;= y[j]</code>): The invariant tells us that we can append <code>y[j]</code> to <code>z</code> and still have a sorted list. For the new <code>z[k] == y[j]</code> we then have <code>z[k] &lt;= x[i]</code> (from the <code>if</code>-condition) and <code>z[k] &lt;= y[j+1]</code> (because <code>y</code> is sorted), so we satisfy the invariant once more.</li>
+</ol>
+<!-- raw HTML omitted -->
 
 
 </article>
@@ -924,7 +816,7 @@ z <span style="color:#666">=</span> []
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018 - Thomas Mailund | 
+        <h6>Copyright © 2018 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

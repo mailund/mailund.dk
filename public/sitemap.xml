@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -23,7 +23,52 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/tags/books/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/c/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/categories/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/data-structures/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/joys-of-hashing/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/posts/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/categories/writing/</loc>
+    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/writing/</loc>
     <lastmod>2019-04-08T14:34:13+02:00</lastmod>
   </url>
   
@@ -33,28 +78,28 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/categories/programming/</loc>
+    <lastmod>2018-11-23T14:02:40+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/programming/</loc>
+    <lastmod>2018-11-23T14:02:40+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/elegant-scipy/</loc>
     <lastmod>2018-10-05T12:38:07+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mailund.dk/posts/lazy-queues/</loc>
-    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
+    <loc>https://mailund.dk/tags/python/</loc>
+    <lastmod>2018-10-05T12:38:07+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://mailund.dk/posts/lazy-lists/</loc>
-    <lastmod>2018-10-04T05:00:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/posts/promises-and-lazy-evaluation/</loc>
-    <lastmod>2018-10-03T09:10:01+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/posts/functional-lists-and-queues/</loc>
-    <lastmod>2018-10-02T05:00:10+02:00</lastmod>
+    <loc>https://mailund.dk/tags/science/</loc>
+    <lastmod>2018-10-05T12:38:07+02:00</lastmod>
   </url>
   
   <url>
@@ -68,7 +113,17 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/tags/computational-thinking/</loc>
+    <lastmod>2018-10-01T15:36:05+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/ctib-exercises-chapter9/</loc>
+    <lastmod>2018-10-01T15:36:05+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/teaching/</loc>
     <lastmod>2018-10-01T15:36:05+02:00</lastmod>
   </url>
   
@@ -78,8 +133,18 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/tags/errata/</loc>
+    <lastmod>2018-10-01T08:43:17+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/erratas/</loc>
     <lastmod>2018-10-01T08:43:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/errata/</loc>
+    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -88,8 +153,13 @@
   </url>
   
   <url>
-    <loc>https://mailund.dk/posts/envs-and-formulae/</loc>
-    <lastmod>2018-09-27T04:41:19+02:00</lastmod>
+    <loc>https://mailund.dk/tags/functional-programming/</loc>
+    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/tags/rstats/</loc>
+    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -163,6 +233,11 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/tags/blog/</loc>
+    <lastmod>2018-09-10T06:32:53+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/new-books-page/</loc>
     <lastmod>2018-09-10T06:32:53+02:00</lastmod>
   </url>
@@ -178,139 +253,32 @@
   </url>
   
   <url>
-    <loc>https://mailund.dk/tags/blog/</loc>
-    <lastmod>2018-09-10T06:32:53+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/books/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/c/</loc>
-    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/computational-thinking/</loc>
-    <lastmod>2018-10-01T15:36:05+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/data-structures/</loc>
-    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/errata/</loc>
-    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/errata/</loc>
-    <lastmod>2018-10-01T08:43:17+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/functional-programming/</loc>
-    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/categories/non-standard-evaluation/</loc>
-    <lastmod>2018-10-03T09:10:01+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/posts/</loc>
-    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/programming/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/categories/programming/</loc>
-    <lastmod>2018-11-23T14:02:40+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/python/</loc>
-    <lastmod>2018-10-05T12:38:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/rstats/</loc>
-    <lastmod>2018-10-04T05:00:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/science/</loc>
-    <lastmod>2018-10-05T12:38:07+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mailund.dk/tags/scope-rules/</loc>
-    <lastmod>2018-10-03T09:10:01+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://mailund.dk/tags/software/</loc>
     <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/posts/envs-and-formulae/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mailund.dk/tags/</loc>
-    <lastmod>2018-09-10T06:32:53+02:00</lastmod>
+    <loc>https://mailund.dk/posts/functional-lists-and-queues/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mailund.dk/tags/teaching/</loc>
-    <lastmod>2018-10-01T15:36:05+02:00</lastmod>
+    <loc>https://mailund.dk/posts/lazy-lists/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mailund.dk/tags/writing/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+    <loc>https://mailund.dk/posts/lazy-queues/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://mailund.dk/categories/writing/</loc>
-    <lastmod>2019-04-08T14:34:13+02:00</lastmod>
+    <loc>https://mailund.dk/posts/promises-and-lazy-evaluation/</loc>
     <priority>0</priority>
   </url>
   

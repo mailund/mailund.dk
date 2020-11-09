@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>C on Mailund on the Internet</title>
+    <title>c on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/c/</link>
-    <description>Recent content in C on Mailund on the Internet</description>
+    <description>Recent content in c on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
     <lastBuildDate>Mon, 08 Apr 2019 14:34:13 +0200</lastBuildDate>

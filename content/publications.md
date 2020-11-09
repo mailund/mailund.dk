@@ -8,6 +8,9 @@ weight = 4
 
 ## Textbooks
 
+### 2020
+* [**String Algorithms in C: Efficient text representation and search**](https://amzn.to/2NIdAYc) <br/>Thomas Mailund<br/> Apress, Sep 30, ISBN-10: 148425919X, ISBN-13: 978-1484259191
+
 ### 2019
 * [**The Joys of Hashing: Hash Table Programming with C**](https://amzn.to/2oWoTiQ) <br/> Thomas Mailund<br/> Apress, May 14, 2019, ISBN-10: 1484240650, ISBN-13: 978-1484240656
 
@@ -52,6 +55,10 @@ Apress, March 13, 2017, ISBN-10: 1484226704, ISBN-13: 978-1484226704
 
 * [**Direct estimation of mutations in great apes reconciles phylogenetic dating**](https://www.nature.com/articles/s41559-018-0778-x) <br/>
 S Besenbacher, C Hvilsom, T Marques-Bonet, T Mailund and MH Schierup <br/> Nature Ecology and Evolution, 2019
+
+* [**Identifying loci under positive selection in complex population histories**](https://genome.cshlp.org/content/early/2019/07/30/gr.246777.118)<br/>, A Refoyo-Martinez, RR de Fonseca, K Halldorsdottir, E Arnason, T Mailund, F Racimo, <br/>Genome Research 26(9) pp 1506-1520, 2019
+
+* [**Breaking Free: The Genomics of Allopolyploidy-Facilitated Niche Expansion in White Clover**](http://www.plantcell.org/content/31/7/1466)<br/> AG Griffiths, R Moraga, M Tausen, V Gupta, TP Bilton, MA Campbell, R Ashby, I Nagy, A Khan, A Larking, C Anderson, B Franzmayr, K Hancock, A Scott, NW Ellison, MP Cox, T Asp, T Mailund, MH Schierup, SU Andersen<br/> Plant Cell 31(7) pp 1466-1487, 2019
 
 ### 2018
 

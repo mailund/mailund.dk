@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.53" />
+  <meta name="generator" content="Hugo 0.63.2" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -159,78 +159,69 @@ if (!doNotTrack) {
 </aside>
     
 
-    
-
-<p>One big regret I have about this book is that I didn’t implement the pattern matching code from <a href="https://amzn.to/2QHMNLL"><em>Domain-Specific Languages in R</em></a> before this book. Pattern matching makes implementing data structures <em>much</em> easier.</p>
-
+    <p>One big regret I have about this book is that I didn’t implement the pattern matching code from <a href="https://amzn.to/2QHMNLL"><em>Domain-Specific Languages in R</em></a> before this book. Pattern matching makes implementing data structures <em>much</em> easier.</p>
 <p>In the errata below, I will use it. You can read a description of how it works <a href="https://mailund.github.io/pmatch/">here</a>.</p>
-
 <p>To use it, install the <code>patch</code> package and load it</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">install.packages(<span style="color:#4070a0">&#34;pmatch&#34;</span>)
-<span style="color:#007020;font-weight:bold">library</span>(<span style="color:#007020">pmatch</span>)</code></pre></div>
-<h2 id="chapter-4">Chapter 4</h2>
-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#06287e">install.packages</span>(<span style="color:#4070a0">&#34;</span><span style="color:#4070a0">pmatch&#34;</span>)
+<span style="color:#06287e">library</span>(pmatch)
+</code></pre></div><h2 id="chapter-4">Chapter 4</h2>
 <h3 id="deques">Deques</h3>
-
 <p>This section is just, well, wrong. I made a mistake in the implementation, but it was cancelled out by another error, so it didn’t affect the correctness—so my tests didn’t catch it. It did break the runtime guarantees, though, and my explanation of why that happens is also incorrect.</p>
-
 <p>A correct implementation of <code>deques</code> (to the best of my knowledge), is this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue <span style="color:#666">:=</span> QUEUE(front_len, front, back_len, back)
-new_queue <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>() QUEUE(<span style="color:#40a070">0</span>, NIL, <span style="color:#40a070">0</span>, NIL)
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue <span style="color:#666">:</span><span style="color:#666">=</span> <span style="color:#06287e">QUEUE</span>(front_len, front, back_len, back)
+new_queue <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>() <span style="color:#06287e">QUEUE</span>(<span style="color:#40a070">0</span>, NIL, <span style="color:#40a070">0</span>, NIL)
 
-enqueue <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue, x)
-  cases(queue,
-        QUEUE(front_len, front, back_len, back) <span style="color:#666">-&gt;</span>
-          QUEUE(front_len, front, back_len <span style="color:#666">+</span> <span style="color:#40a070">1</span>, CONS(x, back)))
+enqueue <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(queue, x)
+  <span style="color:#06287e">cases</span>(queue,
+        <span style="color:#06287e">QUEUE</span>(front_len, front, back_len, back) <span style="color:#666">-&gt;</span>
+          <span style="color:#06287e">QUEUE</span>(front_len, front, back_len <span style="color:#666">+</span> <span style="color:#40a070">1</span>, <span style="color:#06287e">CONS</span>(x, back)))
 
-enqueue_front <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue, x)
-  cases(queue,
-        QUEUE(front_len, front, back_len, back) <span style="color:#666">-&gt;</span>
-          QUEUE(front_len <span style="color:#666">+</span> <span style="color:#40a070">1</span>, CONS(x, front), back_len, back))
+enqueue_front <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(queue, x)
+  <span style="color:#06287e">cases</span>(queue,
+        <span style="color:#06287e">QUEUE</span>(front_len, front, back_len, back) <span style="color:#666">-&gt;</span>
+          <span style="color:#06287e">QUEUE</span>(front_len <span style="color:#666">+</span> <span style="color:#40a070">1</span>, <span style="color:#06287e">CONS</span>(x, front), back_len, back))
 
-split_list <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(lst, n, acc <span style="color:#666">=</span> NIL)
-  cases(<span style="color:#40a070">..</span>(n, lst),
-        <span style="color:#40a070">..</span>(<span style="color:#40a070">0</span>, lst) <span style="color:#666">-&gt;</span> PAIR(reverse(acc), lst),
-        <span style="color:#40a070">..</span>(n, CONS(car, cdr)) <span style="color:#666">-&gt;</span> split_list(cdr, n <span style="color:#666">-</span> <span style="color:#40a070">1</span>, CONS(car, acc)))
+split_list <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(lst, n, acc <span style="color:#666">=</span> NIL)
+  <span style="color:#06287e">cases</span>(<span style="color:#06287e">..</span>(n, lst),
+        <span style="color:#06287e">..</span>(<span style="color:#40a070">0</span>, lst) <span style="color:#666">-&gt;</span> <span style="color:#06287e">PAIR</span>(<span style="color:#06287e">reverse</span>(acc), lst),
+        <span style="color:#06287e">..</span>(n, <span style="color:#06287e">CONS</span>(car, cdr)) <span style="color:#666">-&gt;</span> <span style="color:#06287e">split_list</span>(cdr, n <span style="color:#666">-</span> <span style="color:#40a070">1</span>, <span style="color:#06287e">CONS</span>(car, acc)))
 
-move_front_to_back <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue)
-  cases(queue,
-        QUEUE(front_len, front, <span style="color:#40a070">0</span>, NIL) <span style="color:#666">-&gt;</span> {
-          n <span style="color:#666">&lt;-</span> <span style="color:#007020">floor</span>(front_len <span style="color:#666">/</span> <span style="color:#40a070">2</span>)
-          cases(split_list(front, n),
-                PAIR(first, second) <span style="color:#666">-&gt;</span>
-                  QUEUE(n,
+move_front_to_back <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(queue)
+  <span style="color:#06287e">cases</span>(queue,
+        <span style="color:#06287e">QUEUE</span>(front_len, front, <span style="color:#40a070">0</span>, NIL) <span style="color:#666">-&gt;</span> {
+          n <span style="color:#666">&lt;-</span> <span style="color:#06287e">floor</span>(front_len <span style="color:#666">/</span> <span style="color:#40a070">2</span>)
+          <span style="color:#06287e">cases</span>(<span style="color:#06287e">split_list</span>(front, n),
+                <span style="color:#06287e">PAIR</span>(first, second) <span style="color:#666">-&gt;</span>
+                  <span style="color:#06287e">QUEUE</span>(n,
                         first,
                         front_len <span style="color:#666">-</span> n,
-                        reverse(second)))
+                        <span style="color:#06287e">reverse</span>(second)))
           })
 
-move_back_to_front <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue)
-  cases(queue,
-        QUEUE(<span style="color:#40a070">0</span>, NIL, back_len, back) <span style="color:#666">-&gt;</span> {
-          n <span style="color:#666">&lt;-</span> <span style="color:#007020">floor</span>(back_len <span style="color:#666">/</span> <span style="color:#40a070">2</span>)
-          cases(split_list(back, n),
-                PAIR(first, second) <span style="color:#666">-&gt;</span>
-                  QUEUE(back_len <span style="color:#666">-</span> n, reverse(second), n, first))
+move_back_to_front <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(queue)
+  <span style="color:#06287e">cases</span>(queue,
+        <span style="color:#06287e">QUEUE</span>(<span style="color:#40a070">0</span>, NIL, back_len, back) <span style="color:#666">-&gt;</span> {
+          n <span style="color:#666">&lt;-</span> <span style="color:#06287e">floor</span>(back_len <span style="color:#666">/</span> <span style="color:#40a070">2</span>)
+          <span style="color:#06287e">cases</span>(<span style="color:#06287e">split_list</span>(back, n),
+                <span style="color:#06287e">PAIR</span>(first, second) <span style="color:#666">-&gt;</span>
+                  <span style="color:#06287e">QUEUE</span>(back_len <span style="color:#666">-</span> n, <span style="color:#06287e">reverse</span>(second), n, first))
         })
 
-front <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue)
-  cases(queue,
-        QUEUE(<span style="color:#40a070">.</span>, NIL, <span style="color:#40a070">.</span>, NIL)        <span style="color:#666">-&gt;</span> <span style="color:#007020">stop</span>(<span style="color:#4070a0">&#34;Empty queue&#34;</span>),
-        QUEUE(<span style="color:#40a070">.</span>, NIL, <span style="color:#40a070">.</span>, <span style="color:#40a070">.</span>)          <span style="color:#666">-&gt;</span> front(move_back_to_front(queue)),
-        QUEUE(front_len, CONS(car, cdr), back_len, back) <span style="color:#666">-&gt;</span>
-          PAIR(car, QUEUE(front_len <span style="color:#666">-</span> <span style="color:#40a070">1</span>, cdr, back_len, back)))
+front <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(queue)
+  <span style="color:#06287e">cases</span>(queue,
+        <span style="color:#06287e">QUEUE</span>(., NIL, ., NIL)        <span style="color:#666">-&gt;</span> <span style="color:#06287e">stop</span>(<span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Empty queue&#34;</span>),
+        <span style="color:#06287e">QUEUE</span>(., NIL, ., .)          <span style="color:#666">-&gt;</span> <span style="color:#06287e">front</span>(<span style="color:#06287e">move_back_to_front</span>(queue)),
+        <span style="color:#06287e">QUEUE</span>(front_len, <span style="color:#06287e">CONS</span>(car, cdr), back_len, back) <span style="color:#666">-&gt;</span>
+          <span style="color:#06287e">PAIR</span>(car, <span style="color:#06287e">QUEUE</span>(front_len <span style="color:#666">-</span> <span style="color:#40a070">1</span>, cdr, back_len, back)))
 
-back <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weight:bold">function</span>(queue)
-  cases(queue,
-        QUEUE(<span style="color:#40a070">.</span>, NIL, <span style="color:#40a070">.</span>, NIL)        <span style="color:#666">-&gt;</span> <span style="color:#007020">stop</span>(<span style="color:#4070a0">&#34;Empty queue&#34;</span>),
-        QUEUE(<span style="color:#40a070">.</span>, <span style="color:#40a070">.</span>, <span style="color:#40a070">.</span>, NIL)          <span style="color:#666">-&gt;</span> back(move_front_to_back(queue)),
-        QUEUE(front_len, front, back_len, CONS(car, cdr)) <span style="color:#666">-&gt;</span>
-          PAIR(car, QUEUE(front_len, front, back_len <span style="color:#666">-</span> <span style="color:#40a070">1</span>, cdr)))   </code></pre></div>
-<p>The cost of splitting a list and moving a list is bounded by <code>2n</code></p>
-
-<p><img src="split-cost.png" alt="" /></p>
-
+back <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(queue)
+  <span style="color:#06287e">cases</span>(queue,
+        <span style="color:#06287e">QUEUE</span>(., NIL, ., NIL)        <span style="color:#666">-&gt;</span> <span style="color:#06287e">stop</span>(<span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Empty queue&#34;</span>),
+        <span style="color:#06287e">QUEUE</span>(., ., ., NIL)          <span style="color:#666">-&gt;</span> <span style="color:#06287e">back</span>(<span style="color:#06287e">move_front_to_back</span>(queue)),
+        <span style="color:#06287e">QUEUE</span>(front_len, front, back_len, <span style="color:#06287e">CONS</span>(car, cdr)) <span style="color:#666">-&gt;</span>
+          <span style="color:#06287e">PAIR</span>(car, <span style="color:#06287e">QUEUE</span>(front_len, front, back_len <span style="color:#666">-</span> <span style="color:#40a070">1</span>, cdr)))   
+</code></pre></div><p>The cost of splitting a list and moving a list is bounded by <code>2n</code></p>
+<p><img src="split-cost.png" alt=""></p>
 <p>so put two operations in the bank each time you increase the difference in list lengths and you can pay for it when you need to.</p>
 
 
@@ -308,7 +299,7 @@ back <span style="color:#666">&lt;-</span> <span style="color:#007020;font-weigh
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018 - Thomas Mailund | 
+        <h6>Copyright © 2018 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
