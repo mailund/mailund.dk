@@ -52,6 +52,15 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
     </item>
     
     <item>
+      <title>Reference counting lists in C</title>
+      <link>https://mailund.dk/posts/c-refcount-list/</link>
+      <pubDate>Fri, 30 Oct 2020 06:59:36 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/c-refcount-list/</guid>
+      <description>I was playing with reference counting garbage collection last week, for something I want to add to my C pointers book. That chapter is still far in the future, and moving further into the future as the book seems to grow in front of me, but one day I will get to it.</description>
+    </item>
+    
+    <item>
       <title>Joys of Hashing</title>
       <link>https://mailund.dk/posts/joys-of-hashing/</link>
       <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
