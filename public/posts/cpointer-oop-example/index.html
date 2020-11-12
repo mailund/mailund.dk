@@ -1,0 +1,550 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  <meta name="generator" content="Hugo 0.63.2" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code'; 
+ }
+ </style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>OOP example in C</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-11-12T05:08:49&#43;01:00">Nov 12, 2020</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/writing/">Writing</a>
+                
+                    , 
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/books/">#books</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/writing/">#writing</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/c/">#C</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/oop/">#OOP</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/polymorphism/">#polymorphism</a>
+                
+            </em>
+        </li>
+        
+
+        <li>8 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>I&rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.</p>
+<h2 id="casting-and-nested-structures">Casting and nested structures</h2>
+<p>The way to do it is simple enough. The C standard guarantees that the first object you put in a <code>struct</code> goes at the first memory address of instances of that <code>struct</code>, and if you have a pointer to an instance of the <code>struct</code>, then you can safely cast it to a pointer to the first element. This means that if you nest <code>structs</code>, you can cast your way into the nesting. For example, with:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> A {
+	<span style="color:#902000">int</span> a;
+};
+<span style="color:#007020;font-weight:bold">struct</span> B {
+  <span style="color:#007020;font-weight:bold">struct</span> A a;
+  <span style="color:#902000">int</span> b;
+};
+<span style="color:#007020;font-weight:bold">struct</span> C {
+  <span style="color:#007020;font-weight:bold">struct</span> B b;
+  <span style="color:#902000">int</span> c;
+};
+</code></pre></div><p>you can access members of a <code>struct C</code> as if they were members of the nested <code>struct B</code> or the nested <code>struct A</code> in the <code>struct B</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> C <span style="color:#666">*</span>x <span style="color:#666">=</span> <span style="color:#60a0b0;font-style:italic">/* some allocation */</span>;
+assert(((B<span style="color:#666">*</span>)x)<span style="color:#666">-</span><span style="color:#666">&gt;</span>b <span style="color:#666">=</span><span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>b.b);
+assert(((A<span style="color:#666">*</span>)x)<span style="color:#666">-</span><span style="color:#666">&gt;</span>a <span style="color:#666">=</span><span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>b.a.a);
+</code></pre></div><p>Anywhere you have a function that works with pointers to <code>struct A</code> or <code>struct B</code>, you can call the function with a pointer to an instance of <code>struct C</code>. (They have to be pointers, of course, because otherwise you copy members, and you will only copy members of the type the function expects).</p>
+<p>The C standard promises a little more about the memory layout of <code>struct</code>s, and you wouldn&rsquo;t have to nest them here. If the <code>struct</code>s share a prefix of members, it also works.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> A {
+  <span style="color:#902000">int</span> a;
+};
+<span style="color:#007020;font-weight:bold">struct</span> B {
+  <span style="color:#902000">int</span> a;
+  <span style="color:#902000">int</span> b;
+};
+<span style="color:#007020;font-weight:bold">struct</span> C {
+  <span style="color:#902000">int</span> a;
+  <span style="color:#902000">int</span> b;
+  <span style="color:#902000">int</span> c;
+};
+</code></pre></div><p>If you want to use one <code>struct</code> as another, though, it is easier to next them.</p>
+<h2 id="single-inheritance-objects-and-classes">Single inheritance objects and classes</h2>
+<p>We can use this to create classes and objects (or instances) in an object-oriented programming sense. It is close to how C++ was originally implemented. Use nested <code>structs</code> for objects, so derived objects contains he data their base cases have, and for virtual functions (or functions with dynamic dispatch, or whatever you want to call them), use nested <code>structs</code> for classes.</p>
+<p>For polymorphism/dynamic dispatch, have all objects carry a pointer to their class. When we need to call a polymorphic function, we can look up the concrete function in the object&rsquo;s class. We can define a class pointer as <code>void *</code>, so it can point to any structure, and define the most basic object as something that has such a pointer. I have also defined a macro, <code>basetype()</code> for the casting, just to make it explicit what we are doing. Then I have a macro, <code>vtbl</code> that gets the virtual function table, cast to a class type.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#902000">void</span> <span style="color:#666">*</span> cls;
+<span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> { cls <span style="color:#666">*</span>cls; } obj;
+
+<span style="color:#007020">#</span><span style="color:#007020">define basetype(x, base) ((base *)x)</span><span style="color:#007020">
+</span><span style="color:#007020"></span><span style="color:#007020">#</span><span style="color:#007020">define vtbl(inst, base) \</span><span style="color:#007020">
+</span><span style="color:#007020"></span><span style="color:#007020">          basetype(((obj *)inst)-&gt;cls, base)</span><span style="color:#007020">
+</span></code></pre></div><p>You can make the <code>basetype()</code> more type safe by going into the nested classes rather than casting, but it puts constraints on how the <code>struct</code>s must be nested, and if you modify the type hierarchy above a class, you would need to update the code. The cast does what it is supposed to do, if you are careful with it.</p>
+<p>Classes must be allocated and initialised before we can use them. There&rsquo;s a function and macro for that:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">alloc_cls</span>(size_t cls_size,
+                <span style="color:#902000">void</span> (<span style="color:#666">*</span>cls_init)(cls <span style="color:#666">*</span>))
+{
+  cls <span style="color:#666">*</span>cls <span style="color:#666">=</span> malloc(cls_size);
+  <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>cls) abort(); <span style="color:#60a0b0;font-style:italic">// error handling
+</span><span style="color:#60a0b0;font-style:italic"></span>  cls_init(cls);
+  <span style="color:#007020;font-weight:bold">return</span> cls;
+}
+
+<span style="color:#007020">#</span><span style="color:#007020">define INIT_CLS(p, init)                    \</span><span style="color:#007020">
+</span><span style="color:#007020"></span><span style="color:#007020">  do {                                       \</span><span style="color:#007020">
+</span><span style="color:#007020"></span><span style="color:#007020">    if (!p)                                  \</span><span style="color:#007020">
+</span><span style="color:#007020"></span><span style="color:#007020">      p = alloc_cls(                         \</span><span style="color:#007020">
+</span><span style="color:#007020"></span><span style="color:#007020">            sizeof *p, (void (*)(cls *))init \</span><span style="color:#007020">
+</span><span style="color:#007020"></span><span style="color:#007020">          );                                 \</span><span style="color:#007020">
+</span><span style="color:#007020"></span><span style="color:#007020">  } while(0)</span><span style="color:#007020">
+</span></code></pre></div><p>The <code>INIT_CLS()</code> gets a pointer to the class, which I expect is a global variable, initially NULL. If the class hasn&rsquo;t been initialised yet, we allocate it, and use the <code>init</code> function provided to initialise it.</p>
+<p>For objects, we can use</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">alloc_obj</span>(size_t obj_size, cls cls)
+{
+  obj <span style="color:#666">*</span>obj <span style="color:#666">=</span> malloc(obj_size);
+  <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>obj) abort(); <span style="color:#60a0b0;font-style:italic">// error handling
+</span><span style="color:#60a0b0;font-style:italic"></span>  obj<span style="color:#666">-</span><span style="color:#666">&gt;</span>cls <span style="color:#666">=</span> cls;
+  <span style="color:#007020;font-weight:bold">return</span> obj;
+}
+<span style="color:#007020">#</span><span style="color:#007020">define NEW_OBJ(p, cls) alloc_obj(sizeof *p, cls)</span><span style="color:#007020">
+</span></code></pre></div><p>The <code>NEW_OBJ()</code> macro creates an object and sets it class. There is not an initialisation function here, because I expect that initialisers will need arguments, so we cannot handle that generically. The same might be true for classes, but if that day arises, we can deal with it.</p>
+<h2 id="an-expression-class-hierarchy">An expression class hierarchy</h2>
+<p>For a concrete example, we can have generic arithmetic expressions. We can define their main interface as having a <code>print()</code> and an <code>eval()</code> function.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> base_expr <span style="color:#666">*</span>EXP;
+
+<span style="color:#60a0b0;font-style:italic">// Base class, class definition
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> {
+  <span style="color:#902000">void</span>   (<span style="color:#666">*</span>print)(EXP);
+  <span style="color:#902000">double</span> (<span style="color:#666">*</span>eval) (EXP);
+} base_expr_cls;
+</code></pre></div><p>The functions are generic, so the implementation dispatch to the table in the class:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">print_expr</span>(EXP e)
+{
+  vtbl(e, base_expr_cls)<span style="color:#666">-</span><span style="color:#666">&gt;</span>print(e);
+}
+<span style="color:#902000">double</span> <span style="color:#06287e">eval_expr</span>(EXP e)
+{
+  <span style="color:#007020;font-weight:bold">return</span> vtbl(e, base_expr_cls)<span style="color:#666">-</span><span style="color:#666">&gt;</span>eval(e);
+}
+</code></pre></div><p>When we initialise the class, we don&rsquo;t put any methods in there. They are abstract.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">init_base_expr_cls</span>(base_expr_cls <span style="color:#666">*</span>cls)
+{
+  cls<span style="color:#666">-</span><span style="color:#666">&gt;</span>print <span style="color:#666">=</span> <span style="color:#40a070">0</span>; <span style="color:#60a0b0;font-style:italic">// abstract method
+</span><span style="color:#60a0b0;font-style:italic"></span>  cls<span style="color:#666">-</span><span style="color:#666">&gt;</span>eval  <span style="color:#666">=</span> <span style="color:#40a070">0</span>; <span style="color:#60a0b0;font-style:italic">// abstract method
+</span><span style="color:#60a0b0;font-style:italic"></span>}
+</code></pre></div><p>There is nothing in instances of the base class (except the nested <code>obj</code> needed for the class pointer).</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#60a0b0;font-style:italic">// Base class, object definition
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> base_expr {
+  obj obj;
+} base_expr;
+
+<span style="color:#60a0b0;font-style:italic">// Base class, methods
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#902000">void</span> <span style="color:#06287e">init_base_expr</span>(base_expr <span style="color:#666">*</span>inst)
+{
+  <span style="color:#60a0b0;font-style:italic">// nothing to initialise...
+</span><span style="color:#60a0b0;font-style:italic"></span>}
+</code></pre></div><p>A concrete expression type is one that merely holds a value. It can look like this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#60a0b0;font-style:italic">// Value expressions
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span>  {
+  base_expr_cls base_expr_cls;
+} value_expr_cls;
+<span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> {
+  base_expr base_expr;
+  <span style="color:#902000">double</span> value;
+} value_expr;
+
+<span style="color:#60a0b0;font-style:italic">// Concrete class, so must have a struct
+</span><span style="color:#60a0b0;font-style:italic"></span>value_expr_cls <span style="color:#666">*</span>VALUE_EXPR_CLS <span style="color:#666">=</span> <span style="color:#40a070">0</span>; <span style="color:#60a0b0;font-style:italic">// must be initialised
+</span><span style="color:#60a0b0;font-style:italic"></span>
+<span style="color:#902000">void</span> <span style="color:#06287e">value_expr_print</span>(value_expr <span style="color:#666">*</span>val)
+{
+  printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">%.3f</span><span style="color:#4070a0">&#34;</span>, val<span style="color:#666">-</span><span style="color:#666">&gt;</span>value);
+}
+
+<span style="color:#902000">double</span> <span style="color:#06287e">value_expr_eval</span>(value_expr <span style="color:#666">*</span>val)
+{
+  <span style="color:#007020;font-weight:bold">return</span> val<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+}
+
+<span style="color:#902000">void</span> <span style="color:#06287e">init_value_expr_cls</span>(value_expr_cls <span style="color:#666">*</span>cls)
+{
+  init_base_expr_cls(basetype(cls, base_expr_cls));
+  basetype(cls, base_expr_cls)<span style="color:#666">-</span><span style="color:#666">&gt;</span>print <span style="color:#666">=</span>
+            (<span style="color:#902000">void</span> (<span style="color:#666">*</span>)(EXP))value_expr_print;
+  basetype(cls, base_expr_cls)<span style="color:#666">-</span><span style="color:#666">&gt;</span>eval  <span style="color:#666">=</span>
+            (<span style="color:#902000">double</span> (<span style="color:#666">*</span>)(EXP))value_expr_eval;
+}
+
+<span style="color:#902000">void</span> <span style="color:#06287e">init_value_expr</span>(value_expr <span style="color:#666">*</span>val, <span style="color:#902000">double</span> value)
+{
+  init_base_expr(basetype(val, base_expr));
+  val<span style="color:#666">-</span><span style="color:#666">&gt;</span>value <span style="color:#666">=</span> value;
+}
+
+<span style="color:#60a0b0;font-style:italic">// constructor
+</span><span style="color:#60a0b0;font-style:italic"></span>EXP <span style="color:#06287e">value</span>(<span style="color:#902000">double</span> value)
+{
+  INIT_CLS(VALUE_EXPR_CLS, init_value_expr_cls);
+  value_expr <span style="color:#666">*</span>val <span style="color:#666">=</span> NEW_OBJ(val, VALUE_EXPR_CLS);
+  init_value_expr(val, value);
+  <span style="color:#007020;font-weight:bold">return</span> (EXP)val;
+}
+</code></pre></div><p>The class holds the base class and nothing else. We are not introducing new virtual functions. The instance structure holds the base class&rsquo;s data and the value. Since it is a concrete class, we need a pointer to hold the class structure. We will initialise it before we create instances. We have an implementation of the two abstract virtual functions; we set them in the class initialisation code, after initialising the base class part. In the object initiations we initialise the base class part and then set the value. For a concrete class we need a constructor, here it is called <code>value()</code>, and it initialises the class (if it isn&rsquo;t already there), create a new object with the class, and then initialises object as a value.</p>
+<p>In the code below, we define binary expressions and two sub-classes, one for addition and one for subtraction. They follow the pattern we used for the values class.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#60a0b0;font-style:italic">// Binary expressions
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> {
+  base_expr_cls base_expr_cls;
+} binary_expr_cls;
+<span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> {
+  base_expr base_expr;
+  <span style="color:#902000">char</span> symb;
+  EXP left, right;
+} binary_expr;
+
+<span style="color:#902000">void</span> <span style="color:#06287e">print_binary_expr</span>(binary_expr <span style="color:#666">*</span>binop)
+{
+  putchar(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">(</span><span style="color:#4070a0">&#39;</span>);
+    print_expr(binop<span style="color:#666">-</span><span style="color:#666">&gt;</span>left);
+  putchar(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">)</span><span style="color:#4070a0">&#39;</span>);
+  putchar(binop<span style="color:#666">-</span><span style="color:#666">&gt;</span>symb);
+  putchar(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">(</span><span style="color:#4070a0">&#39;</span>);
+    print_expr(binop<span style="color:#666">-</span><span style="color:#666">&gt;</span>right);
+  putchar(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">)</span><span style="color:#4070a0">&#39;</span>);
+}
+
+<span style="color:#902000">void</span> <span style="color:#06287e">init_binary_expr_cls</span>(binary_expr_cls <span style="color:#666">*</span>cls)
+{
+  init_base_expr_cls(basetype(cls, base_expr_cls));
+  basetype(cls, base_expr_cls)<span style="color:#666">-</span><span style="color:#666">&gt;</span>print <span style="color:#666">=</span>
+          (<span style="color:#902000">void</span> (<span style="color:#666">*</span>)(EXP))print_binary_expr;
+}
+
+<span style="color:#902000">void</span> <span style="color:#06287e">init_binary_expr</span>(binary_expr <span style="color:#666">*</span>binop,
+                      <span style="color:#902000">char</span> symb, EXP left, EXP right)
+{
+  init_base_expr(basetype(binop, base_expr));
+  binop<span style="color:#666">-</span><span style="color:#666">&gt;</span>symb <span style="color:#666">=</span> symb;
+  binop<span style="color:#666">-</span><span style="color:#666">&gt;</span>left <span style="color:#666">=</span> left;
+  binop<span style="color:#666">-</span><span style="color:#666">&gt;</span>right <span style="color:#666">=</span> right;
+}
+
+<span style="color:#60a0b0;font-style:italic">// Addition
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> {
+  binary_expr_cls binary_expr_cls;
+} add_expr_cls;
+<span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> {
+  binary_expr binary_expr;
+} add_expr;
+
+<span style="color:#60a0b0;font-style:italic">// Concrete class, so must have a struct
+</span><span style="color:#60a0b0;font-style:italic"></span>add_expr_cls <span style="color:#666">*</span>ADD_EXPR_CLS <span style="color:#666">=</span> <span style="color:#40a070">0</span>; <span style="color:#60a0b0;font-style:italic">// must be initialised
+</span><span style="color:#60a0b0;font-style:italic"></span>
+
+<span style="color:#902000">double</span> <span style="color:#06287e">eval_add_expr</span>(add_expr <span style="color:#666">*</span>expr)
+{
+  <span style="color:#007020;font-weight:bold">return</span> eval_expr(basetype(expr, binary_expr)<span style="color:#666">-</span><span style="color:#666">&gt;</span>left) <span style="color:#666">+</span>
+         eval_expr(basetype(expr, binary_expr)<span style="color:#666">-</span><span style="color:#666">&gt;</span>right);
+}
+
+<span style="color:#902000">void</span> <span style="color:#06287e">init_add_expr_cls</span>(add_expr_cls <span style="color:#666">*</span>cls)
+{
+  init_binary_expr_cls(basetype(cls, binary_expr_cls));
+  basetype(cls, base_expr_cls)<span style="color:#666">-</span><span style="color:#666">&gt;</span>eval <span style="color:#666">=</span>
+          (<span style="color:#902000">double</span> (<span style="color:#666">*</span>)(EXP))eval_add_expr;
+}
+
+<span style="color:#902000">void</span> <span style="color:#06287e">init_add_expr</span>(add_expr <span style="color:#666">*</span>expr, EXP left, EXP right)
+{
+  init_binary_expr(basetype(expr, binary_expr),
+                   <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">+</span><span style="color:#4070a0">&#39;</span>, left, right);
+}
+
+<span style="color:#60a0b0;font-style:italic">// constructor
+</span><span style="color:#60a0b0;font-style:italic"></span>EXP <span style="color:#06287e">add</span>(EXP left, EXP right)
+{
+  INIT_CLS(ADD_EXPR_CLS, init_add_expr_cls);
+  add_expr <span style="color:#666">*</span>expr <span style="color:#666">=</span> NEW_OBJ(expr, ADD_EXPR_CLS);
+  init_add_expr(expr, left, right);
+  <span style="color:#007020;font-weight:bold">return</span> (EXP)expr;
+}
+
+
+<span style="color:#60a0b0;font-style:italic">// Subtraction
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> {
+  binary_expr_cls binary_expr_cls;
+} sub_expr_cls;
+<span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> {
+  binary_expr binary_expr;
+} sub_expr;
+
+<span style="color:#60a0b0;font-style:italic">// Concrete class, so must have a struct
+</span><span style="color:#60a0b0;font-style:italic"></span>sub_expr_cls <span style="color:#666">*</span>SUB_EXPR_CLS <span style="color:#666">=</span> <span style="color:#40a070">0</span>; <span style="color:#60a0b0;font-style:italic">// must be initialised
+</span><span style="color:#60a0b0;font-style:italic"></span>
+
+<span style="color:#902000">double</span> <span style="color:#06287e">eval_sub_expr</span>(sub_expr <span style="color:#666">*</span>expr)
+{
+  <span style="color:#007020;font-weight:bold">return</span> eval_expr(basetype(expr, binary_expr)<span style="color:#666">-</span><span style="color:#666">&gt;</span>left) <span style="color:#666">-</span>
+         eval_expr(basetype(expr, binary_expr)<span style="color:#666">-</span><span style="color:#666">&gt;</span>right);
+}
+
+<span style="color:#902000">void</span> <span style="color:#06287e">init_sub_expr_cls</span>(sub_expr_cls <span style="color:#666">*</span>cls)
+{
+  init_binary_expr_cls(basetype(cls, binary_expr_cls));
+  basetype(cls, base_expr_cls)<span style="color:#666">-</span><span style="color:#666">&gt;</span>eval <span style="color:#666">=</span>
+          (<span style="color:#902000">double</span> (<span style="color:#666">*</span>)(EXP))eval_sub_expr;
+}
+
+<span style="color:#902000">void</span> <span style="color:#06287e">init_sub_expr</span>(add_expr <span style="color:#666">*</span>expr, EXP left, EXP right)
+{
+  init_binary_expr(basetype(expr, binary_expr),
+                   <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">-</span><span style="color:#4070a0">&#39;</span>, left, right);
+}
+
+<span style="color:#60a0b0;font-style:italic">// constructor
+</span><span style="color:#60a0b0;font-style:italic"></span>EXP <span style="color:#06287e">sub</span>(EXP left, EXP right)
+{
+  INIT_CLS(SUB_EXPR_CLS, init_sub_expr_cls);
+  add_expr <span style="color:#666">*</span>expr <span style="color:#666">=</span> NEW_OBJ(expr, SUB_EXPR_CLS);
+  init_sub_expr(expr, left, right);
+  <span style="color:#007020;font-weight:bold">return</span> (EXP)expr;
+}
+</code></pre></div><p>You can use the expressions like this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">main</span>(<span style="color:#902000">void</span>)
+{
+  EXP expr <span style="color:#666">=</span>
+    add(value(<span style="color:#40a070">1.0</span>),
+        sub(value(<span style="color:#40a070">10.0</span>),
+            value(<span style="color:#40a070">2.0</span>))
+    );
+  print_expr(expr); putchar(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\n</span><span style="color:#4070a0">&#39;</span>);
+  printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">evaluates to %f</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>, eval_expr(expr));
+
+  <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+}
+</code></pre></div><h2 id="a-new-example">A new example?</h2>
+<p>The expressions example shows most of the ideas with implementing classes in this way, but there is not an example of adding to the interface. The abstract interface, <code>print()</code> and <code>eval()</code>, is all there is. I would like an example where I also add a virtual method to a subclass. I just cannot think of something that isn&rsquo;t entirely artificial, like &ldquo;animals are living things but can also move&hellip;&rdquo; or such things. If you have any suggestions, I would love to hear from you.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/c-refcount-list/"><i class="fa fa-chevron-circle-left"></i> Reference counting lists in C</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2018 - Thomas Mailund | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+</html>
