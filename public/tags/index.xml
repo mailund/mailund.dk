@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 08 Apr 2019 14:34:13 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2020 05:08:49 +0100</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,18 +14,54 @@
     <item>
       <title>books</title>
       <link>https://mailund.dk/tags/books/</link>
-      <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
+      <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
       
       <guid>https://mailund.dk/tags/books/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>c</title>
+      <title>C</title>
       <link>https://mailund.dk/tags/c/</link>
-      <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
+      <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
       
       <guid>https://mailund.dk/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OOP</title>
+      <link>https://mailund.dk/tags/oop/</link>
+      <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
+      
+      <guid>https://mailund.dk/tags/oop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>polymorphism</title>
+      <link>https://mailund.dk/tags/polymorphism/</link>
+      <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
+      
+      <guid>https://mailund.dk/tags/polymorphism/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>https://mailund.dk/tags/programming/</link>
+      <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
+      
+      <guid>https://mailund.dk/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>writing</title>
+      <link>https://mailund.dk/tags/writing/</link>
+      <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
+      
+      <guid>https://mailund.dk/tags/writing/</guid>
       <description></description>
     </item>
     
@@ -35,24 +71,6 @@
       <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
       
       <guid>https://mailund.dk/tags/data-structures/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>writing</title>
-      <link>https://mailund.dk/tags/writing/</link>
-      <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
-      
-      <guid>https://mailund.dk/tags/writing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>programming</title>
-      <link>https://mailund.dk/tags/programming/</link>
-      <pubDate>Fri, 23 Nov 2018 14:02:40 +0100</pubDate>
-      
-      <guid>https://mailund.dk/tags/programming/</guid>
       <description></description>
     </item>
     

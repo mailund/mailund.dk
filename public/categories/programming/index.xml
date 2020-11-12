@@ -6,10 +6,28 @@
     <description>Recent content in Programming on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 23 Nov 2018 14:02:40 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2020 05:08:49 +0100</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OOP example in C</title>
+      <link>https://mailund.dk/posts/cpointer-oop-example/</link>
+      <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/cpointer-oop-example/</guid>
+      <description>I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.</description>
+    </item>
+    
+    <item>
+      <title>Reference counting lists in C</title>
+      <link>https://mailund.dk/posts/c-refcount-list/</link>
+      <pubDate>Fri, 30 Oct 2020 06:59:36 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/c-refcount-list/</guid>
+      <description>I was playing with reference counting garbage collection last week, for something I want to add to my C pointers book. That chapter is still far in the future, and moving further into the future as the book seems to grow in front of me, but one day I will get to it.</description>
+    </item>
     
     <item>
       <title>Generators in C</title>
