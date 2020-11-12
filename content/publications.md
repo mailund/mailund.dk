@@ -12,6 +12,11 @@ weight = 4
 * [**String Algorithms in C: Efficient text representation and search**](https://amzn.to/2NIdAYc) <br/>Thomas Mailund<br/> Apress, Sep 30, ISBN-10: 148425919X, ISBN-13: 978-1484259191
 
 ### 2019
+
+* [**Introducing Markdown and Pandoc**](https://amzn.to/2W8300q) <br/>Thomas Mailund<br/> Apress, August 20, 2019, 
+
+* [**R Data Science Quick Reference: A Pocket Guide to APIs, Libraries, and Packages**](https://amzn.to/2KGaYsn) <br/> Thomas Mailund<br/> Apress, August 8, 2019, ISBN-10: 1484248937, ISBN-13: 978-1484248935
+
 * [**The Joys of Hashing: Hash Table Programming with C**](https://amzn.to/2oWoTiQ) <br/> Thomas Mailund<br/> Apress, May 14, 2019, ISBN-10: 1484240650, ISBN-13: 978-1484240656
 
 ### 2018
