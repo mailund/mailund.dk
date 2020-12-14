@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.63.2" />
+  
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -160,20 +161,20 @@ if (!doNotTrack) {
 <h1 id="exercises">Exercises</h1>
 <h2 id="counting-primitive-operations">Counting primitive operations</h2>
 <p><strong>Exercise:</strong> Consider this way of computing the mean of a sequence of numbers:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator <span style="color:#666">=</span> <span style="color:#40a070">0</span>
-<span style="color:#007020;font-weight:bold">for</span> n <span style="color:#007020;font-weight:bold">in</span> numbers:
-	accumulator <span style="color:#666">+</span><span style="color:#666">=</span> n
-mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</span> <span style="color:#007020">len</span>(numbers)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator = <span style="color:#00f">0</span>
+<span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> numbers:
+	accumulator += n
+mean = accumulator / len(numbers)
 </code></pre></div><p>Count how many primitive operations it takes. To do it correctly you need to distinguish between updating a variable and assigning a value to a new one. Updating the accumulator <code>accumulator += n</code> usually maps to a single operation on a CPU because it involves changing the value of a number that is most likely in a register. Assigning to a new variable, as in</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</span> <span style="color:#007020">len</span>(numbers)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mean = accumulator / len(numbers)
 </code></pre></div><p>doesn’t update <code>accumulator</code> with a new value, rather it needs to compute a division, which is one operation (and it needs <code>len(numbers)</code> before it can do this, which is another operation), and then write the result in a new variable, which is an additional operation.</p>
 <p><strong>Exercise:</strong> Consider this alternative algorithm for computing the mean of a sequence of numbers:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator <span style="color:#666">=</span> <span style="color:#40a070">0</span>
-length <span style="color:#666">=</span> <span style="color:#40a070">0</span>
-<span style="color:#007020;font-weight:bold">for</span> n <span style="color:#007020;font-weight:bold">in</span> numbers:
-	accumulator <span style="color:#666">+</span><span style="color:#666">=</span> n
-	length <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
-mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</span> length
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator = <span style="color:#00f">0</span>
+length = <span style="color:#00f">0</span>
+<span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> numbers:
+	accumulator += n
+	length += <span style="color:#00f">1</span>
+mean = accumulator / length
 </code></pre></div><p>How many operations are needed here? Is it more or less efficient than the previous algorithm?</p>
 <h2 id="guessing-game-complexity">Guessing-game complexity</h2>
 <p>Recall the guessing game from the previous chapter, where one player thinks a number between 1 and 20 and the other has to guess it. We had three strategies for the guesser:</p>
@@ -221,34 +222,34 @@ mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</s
 <h2 id="counting-primitive-operations-1">Counting primitive operations</h2>
 <h3 id="exercise">Exercise</h3>
 <p>Consider this way of computing the mean of a sequence of numbers:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator <span style="color:#666">=</span> <span style="color:#40a070">0</span>
-<span style="color:#007020;font-weight:bold">for</span> n <span style="color:#007020;font-weight:bold">in</span> numbers:
-	accumulator <span style="color:#666">+</span><span style="color:#666">=</span> n
-mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</span> <span style="color:#007020">len</span>(numbers)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator = <span style="color:#00f">0</span>
+<span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> numbers:
+	accumulator += n
+mean = accumulator / len(numbers)
 </code></pre></div><p>Count how many primitive operations it takes. To do it correctly you need to distinguish between updating a variable and assigning a value to a new one. Updating the accumulator <code>accumulator += n</code> usually maps to a single operation on a CPU because it involves changing the value of a number that is most likely in a register. Assigning to a new variable, as in</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</span> <span style="color:#007020">len</span>(numbers)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mean = accumulator / len(numbers)
 </code></pre></div><p>doesn’t update <code>accumulator</code> with a new value, rather it needs to compute a division, which is one operation (and it needs <code>len(numbers)</code> before it can do this, which is another operation), and then write the result in a new variable, which is an additional operation.</p>
 <h3 id="answer">Answer</h3>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator <span style="color:#666">=</span> <span style="color:#40a070">0</span>                      <span style="color:#60a0b0;font-style:italic"># 1</span>
-<span style="color:#007020;font-weight:bold">for</span> n <span style="color:#007020;font-weight:bold">in</span> numbers:                    <span style="color:#60a0b0;font-style:italic"># 5 × n + 2</span>
-	accumulator <span style="color:#666">+</span><span style="color:#666">=</span> n                 <span style="color:#60a0b0;font-style:italic"># n × 1</span>
-mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</span> <span style="color:#007020">len</span>(numbers)    <span style="color:#60a0b0;font-style:italic"># 3</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator = <span style="color:#00f">0</span>                      <span style="color:#080;font-style:italic"># 1</span>
+<span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> numbers:                    <span style="color:#080;font-style:italic"># 5 × n + 2</span>
+	accumulator += n                 <span style="color:#080;font-style:italic"># n × 1</span>
+mean = accumulator / len(numbers)    <span style="color:#080;font-style:italic"># 3</span>
 </code></pre></div><p>so (5 + 1) × n + (1 + 2 + 3) =  6 × (n + 1).</p>
 <h3 id="exercise-1">Exercise</h3>
 <p>Consider this alternative algorithm for computing the mean of a sequence of numbers:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator <span style="color:#666">=</span> <span style="color:#40a070">0</span>
-length <span style="color:#666">=</span> <span style="color:#40a070">0</span>
-<span style="color:#007020;font-weight:bold">for</span> n <span style="color:#007020;font-weight:bold">in</span> numbers:
-	accumulator <span style="color:#666">+</span><span style="color:#666">=</span> n
-	length <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
-mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</span> length
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator = <span style="color:#00f">0</span>
+length = <span style="color:#00f">0</span>
+<span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> numbers:
+	accumulator += n
+	length += <span style="color:#00f">1</span>
+mean = accumulator / length
 </code></pre></div><p>How many operations are needed here? Is it more or less efficient than the previous algorithm?</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator <span style="color:#666">=</span> <span style="color:#40a070">0</span>                  <span style="color:#60a0b0;font-style:italic"># 1</span>
-length <span style="color:#666">=</span> <span style="color:#40a070">0</span>                       <span style="color:#60a0b0;font-style:italic"># 1</span>
-<span style="color:#007020;font-weight:bold">for</span> n <span style="color:#007020;font-weight:bold">in</span> numbers:                <span style="color:#60a0b0;font-style:italic"># 5 × n + 2</span>
-	accumulator <span style="color:#666">+</span><span style="color:#666">=</span> n             <span style="color:#60a0b0;font-style:italic"># 1 × n</span>
-	length <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>                  <span style="color:#60a0b0;font-style:italic"># 1 × n</span>
-mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</span> length      <span style="color:#60a0b0;font-style:italic"># 3</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">accumulator = <span style="color:#00f">0</span>                  <span style="color:#080;font-style:italic"># 1</span>
+length = <span style="color:#00f">0</span>                       <span style="color:#080;font-style:italic"># 1</span>
+<span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> numbers:                <span style="color:#080;font-style:italic"># 5 × n + 2</span>
+	accumulator += n             <span style="color:#080;font-style:italic"># 1 × n</span>
+	length += <span style="color:#00f">1</span>                  <span style="color:#080;font-style:italic"># 1 × n</span>
+mean = accumulator / length      <span style="color:#080;font-style:italic"># 3</span>
 </code></pre></div><p>This implementation uses (5 + 1 + 1) × n + (1 + 1 + 2 + 3) = 7 × (n + 1). It is less efficient.</p>
 <h2 id="guessing-game-complexity-1">Guessing-game complexity</h2>
 <p><strong>Exercise:</strong> Identify the best- and worst-case scenarios for each strategy and derive the best-case and worst-case time usage.</p>
@@ -361,11 +362,11 @@ mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</s
 <p><strong>Exercise:</strong> Describe what the input data, <code>numbers</code>, should look like to actually achieve the worst- and best-case running times.</p>
 <p><strong>Answer:</strong></p>
 <p>Recall that the algorithm looks like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>,<span style="color:#007020">len</span>(x)):
-	j <span style="color:#666">=</span> i
-	<span style="color:#007020;font-weight:bold">while</span> j <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span> <span style="color:#007020;font-weight:bold">and</span> x[j<span style="color:#666">-</span><span style="color:#40a070">1</span>] <span style="color:#666">&gt;</span> x[j]:
-		x[j<span style="color:#666">-</span><span style="color:#40a070">1</span>], x[j] <span style="color:#666">=</span> x[j], x[j<span style="color:#666">-</span><span style="color:#40a070">1</span>]
-		j <span style="color:#666">-</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>		
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(<span style="color:#00f">1</span>,len(x)):
+	j = i
+	<span style="color:#000080;font-weight:bold">while</span> j &gt; <span style="color:#00f">0</span> <span style="font-weight:bold">and</span> x[j-<span style="color:#00f">1</span>] &gt; x[j]:
+		x[j-<span style="color:#00f">1</span>], x[j] = x[j], x[j-<span style="color:#00f">1</span>]
+		j -= <span style="color:#00f">1</span>		
 </code></pre></div><p>For each index <code>i</code> we move the element there down until we find its place in the sorted part of <code>x</code>.</p>
 <p>If <code>x</code> is sorted from the start, we never move an element down—we just discover that it is already where it should be. In that case, we get the linear running time.</p>
 <p>If the elements are sorted but in the reverse order, however, each new value will be moved through all the sorted elements. In that case, we get the quadratic running time.</p>
@@ -380,35 +381,35 @@ mean <span style="color:#666">=</span> accumulator <span style="color:#666">/</s
 <p>When p=2, we run through n-1 elements—we have all but the first to run through. After that, there are n/2 left. Then, for three we run though those n/2, but we remove every third, so now there are no more than n/3 left. We do not remove a third of those that were left after removing the even numbers—it is not a third of those that are divisible by three—but there can’t be more than a third left of the original list when we have removed those divisible by three. The same argument then goes for p = 5; there can’t be more than a fifth of the original numbers left after that.</p>
 <p>We can therefor bound the numbers of elements left after we have processed prime p by n/p.</p>
 <p>You can run this to see how n/p compares to the actual numbers:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n <span style="color:#666">=</span> <span style="color:#40a070">100</span>
-numbers <span style="color:#666">=</span> <span style="color:#007020">list</span>(<span style="color:#007020">range</span>(<span style="color:#40a070">2</span>,n))
-p <span style="color:#666">=</span> <span style="color:#40a070">1</span>
-<span style="color:#007020;font-weight:bold">while</span> numbers <span style="color:#666">!=</span> []:
-	fmt <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">#numbers = {:&gt;2}, n/p = {:&gt;3.2f}</span><span style="color:#4070a0">&#34;</span>
-	<span style="color:#007020;font-weight:bold">print</span>(fmt<span style="color:#666">.</span>format(<span style="color:#007020">len</span>(numbers), n<span style="color:#666">/</span>p))
-	p <span style="color:#666">=</span> numbers[<span style="color:#40a070">0</span>]
-	numbers <span style="color:#666">=</span> [n <span style="color:#007020;font-weight:bold">for</span> n <span style="color:#007020;font-weight:bold">in</span> numbers <span style="color:#007020;font-weight:bold">if</span> n <span style="color:#666">%</span> p <span style="color:#666">!=</span> <span style="color:#40a070">0</span>]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n = <span style="color:#00f">100</span>
+numbers = list(range(<span style="color:#00f">2</span>,n))
+p = <span style="color:#00f">1</span>
+<span style="color:#000080;font-weight:bold">while</span> numbers != []:
+	fmt = <span style="color:#00f">&#34;#numbers = {:&gt;2}, n/p = {:&gt;3.2f}&#34;</span>
+	<span style="color:#000080;font-weight:bold">print</span>(fmt.format(len(numbers), n/p))
+	p = numbers[<span style="color:#00f">0</span>]
+	numbers = [n <span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> numbers <span style="color:#000080;font-weight:bold">if</span> n % p != <span style="color:#00f">0</span>]
 </code></pre></div><p>So, an upper bound of the algorithm is O(n + n/2 + n/3 + n/5 + … ) or O(n + n × (sum of 1/p for primes less than n).</p>
 <p>The sum here is called the &ldquo;sum of reciprocals of primes&rdquo;, and this <a href="https://bit.ly/2I8cdOH">can be proven</a> to be in O(log(log(n)).</p>
 <p>So, a tighter bound on the running time is O(n × log(log(n)) ).</p>
 <h2 id="merging-1">Merging</h2>
 <p>I don’t know how you implemented the merge algorithm, but my solution looks like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n, m <span style="color:#666">=</span> <span style="color:#007020">len</span>(x), <span style="color:#007020">len</span>(y)
-i, j <span style="color:#666">=</span> <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>
-z <span style="color:#666">=</span> []
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n, m = len(x), len(y)
+i, j = <span style="color:#00f">0</span>, <span style="color:#00f">0</span>
+z = []
 
-<span style="color:#007020;font-weight:bold">while</span> i <span style="color:#666">&lt;</span> n <span style="color:#007020;font-weight:bold">and</span> j <span style="color:#666">&lt;</span> m:
-        <span style="color:#007020;font-weight:bold">if</span> x[i] <span style="color:#666">&lt;</span> y[j]:
-                z<span style="color:#666">.</span>append(x[i])
-                i <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
-        <span style="color:#007020;font-weight:bold">else</span>:
-                z<span style="color:#666">.</span>append(y[j])
-                j <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
+<span style="color:#000080;font-weight:bold">while</span> i &lt; n <span style="font-weight:bold">and</span> j &lt; m:
+        <span style="color:#000080;font-weight:bold">if</span> x[i] &lt; y[j]:
+                z.append(x[i])
+                i += <span style="color:#00f">1</span>
+        <span style="color:#000080;font-weight:bold">else</span>:
+                z.append(y[j])
+                j += <span style="color:#00f">1</span>
 
-<span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">&lt;</span> n:
-        z<span style="color:#666">.</span>extend(x[i:])
-<span style="color:#007020;font-weight:bold">if</span> j <span style="color:#666">&lt;</span> m:
-        z<span style="color:#666">.</span>extend(y[j:])
+<span style="color:#000080;font-weight:bold">if</span> i &lt; n:
+        z.extend(x[i:])
+<span style="color:#000080;font-weight:bold">if</span> j &lt; m:
+        z.extend(y[j:])
 </code></pre></div><p>The two <code>extend</code> calls run in linear time (you have to trust me that it does; it is built into Python’s list implementation). So we only need to concern ourselves with the <code>while</code>-loop. Here, the body of the loop runs in constant time—appending to a list is a constant time operation. In each iteration we increment either <code>i</code> or <code>j</code>, so the total number of iterations is bounded by <code>n + m</code>.</p>
 <!-- raw HTML omitted -->
 
@@ -491,7 +492,7 @@ z <span style="color:#666">=</span> []
 
 </main>
     <footer>
-        <h6>Copyright © 2018 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

@@ -5,11 +5,16 @@
     <link>https://mailund.dk/categories/programming/</link>
     <description>Recent content in Programming on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Thu, 12 Nov 2020 05:08:49 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/categories/programming/index.xml" rel="self" type="application/rss+xml" />
-    
+    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <lastBuildDate>Mon, 14 Dec 2020 04:48:38 +0100</lastBuildDate><atom:link href="https://mailund.dk/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advent of Code 2020 — days 01-05</title>
+      <link>https://mailund.dk/posts/aoc-2020-1/</link>
+      <pubDate>Mon, 14 Dec 2020 04:48:38 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-1/</guid>
+      <description>While I wait for comments on the last chapters of my upcoming C-pointers book, I have some time on my hands. And since corona keeps me at home, I have to find something to keep me entertained.</description>
+    </item>
     
     <item>
       <title>OOP example in C</title>

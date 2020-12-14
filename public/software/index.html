@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.63.2" />
+  
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -159,49 +160,49 @@ if (!doNotTrack) {
 <h2 id="pmatch">pmatch</h2>
 <p>The <a href="https://mailund.github.io/pmatch/">pmatch</a> R package implements pattern-matching, similar to Haskell and SML.</p>
 <p>You can define data types, for example a binary tree:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">tree <span style="color:#666">:</span><span style="color:#666">=</span> <span style="color:#06287e">L</span>(elm <span style="color:#666">:</span> numeric) <span style="color:#666">|</span> <span style="color:#06287e">T</span>(left <span style="color:#666">:</span> tree, right <span style="color:#666">:</span> tree)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">tree := L(elm : numeric) | T(left : tree, right : tree)
 </code></pre></div><p>and then match data against it, like</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">f <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(x) {
-    <span style="color:#06287e">cases</span>(x,
-          <span style="color:#06287e">L</span>(v) <span style="color:#666">-&gt;</span> v,
-          <span style="color:#06287e">T</span>(left,right) <span style="color:#666">-&gt;</span> <span style="color:#06287e">c</span>(<span style="color:#06287e">f</span>(left), <span style="color:#06287e">f</span>(right)))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">f &lt;- function(x) {
+    cases(x,
+          L(v) -&gt; v,
+          T(left,right) -&gt; c(f(left), f(right)))
 }
-x <span style="color:#666">&lt;-</span> <span style="color:#06287e">T</span>(<span style="color:#06287e">T</span>(<span style="color:#06287e">L</span>(<span style="color:#40a070">1</span>),<span style="color:#06287e">L</span>(<span style="color:#40a070">2</span>)), <span style="color:#06287e">T</span>(<span style="color:#06287e">T</span>(<span style="color:#06287e">L</span>(<span style="color:#40a070">3</span>),<span style="color:#06287e">L</span>(<span style="color:#40a070">4</span>)),<span style="color:#06287e">L</span>(<span style="color:#40a070">5</span>)))
-<span style="color:#06287e">f</span>(x)
-<span style="color:#60a0b0;font-style:italic">#&gt; [1] 1 2 3 4 5</span>
+x &lt;- T(T(L(<span style="color:#00f">1</span>),L(<span style="color:#00f">2</span>)), T(T(L(<span style="color:#00f">3</span>),L(<span style="color:#00f">4</span>)),L(<span style="color:#00f">5</span>)))
+f(x)
+<span style="color:#080;font-style:italic">#&gt; [1] 1 2 3 4 5</span>
 </code></pre></div><h2 id="foolbox">foolbox</h2>
 <p>The <a href="https://mailund.github.io/foolbox/">foolbox R package</a> is a toolbox for doing metaprogramming on R functions. It provides handles for rewriting functions using various callbacks.</p>
 <p>For example, you can replace the function call f(y) in the body of g with the function body, 2 * x like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">f <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(x) <span style="color:#40a070">2</span> <span style="color:#666">*</span> x
-g <span style="color:#666">&lt;-</span> <span style="color:#06287e">function</span>(y) <span style="color:#06287e">f</span>(y)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">f &lt;- function(x) <span style="color:#00f">2</span> * x
+g &lt;- function(y) f(y)
 
-callbacks <span style="color:#666">&lt;-</span> <span style="color:#06287e">rewrite_callbacks</span>() <span style="color:#666">%&gt;%</span>
-    <span style="color:#06287e">add_call_callback</span>(f, <span style="color:#06287e">function</span>(expr, <span style="color:#007020;font-weight:bold">...</span>) <span style="color:#06287e">quote</span>(<span style="color:#40a070">2</span> <span style="color:#666">*</span> x))
+callbacks &lt;- rewrite_callbacks() %&gt;%
+    add_call_callback(f, function(expr, <span style="color:#000080;font-weight:bold">...</span>) quote(<span style="color:#00f">2</span> * x))
 
-g <span style="color:#666">%&gt;%</span> <span style="color:#06287e">rewrite</span>() <span style="color:#666">%&gt;%</span> <span style="color:#06287e">rewrite_with</span>(callbacks)
-<span style="color:#60a0b0;font-style:italic">#&gt; function (y)</span>
-<span style="color:#60a0b0;font-style:italic">#&gt; 2 * x</span>
+g %&gt;% rewrite() %&gt;% rewrite_with(callbacks)
+<span style="color:#080;font-style:italic">#&gt; function (y)</span>
+<span style="color:#080;font-style:italic">#&gt; 2 * x</span>
 </code></pre></div><p>Check the homepage for examples such as <a href="https://mailund.github.io/foolbox/articles/partial-evaluation.html">partial evaluation</a>. (The partial evaluation there is not particularly efficient; slower than just calling functions, actually. Maybe some day I can make it faster.)</p>
 <h2 id="tailr">tailr</h2>
 <p>The <a href="https://mailund.github.io/tailr/">tailr R package</a> implements the tail-recursion optimisation in R. You don&rsquo;t really get much of a speedup if you combine <code>pmatch</code> and <code>tailr</code>—hand-written looping functions will always be faster—but you avoid errors when running out of stack space.</p>
 <p>If I could speedup the pattern matching in <code>pmatch</code>, I believe I could make this optimisation faster; using it would be easier than hand-written looping functions, so that might make the <code>tailr</code> package more interesting.</p>
 <h2 id="gwf">gwf</h2>
 <p>The <a href="https://gwf.readthedocs.io/en/latest/tutorial.html">gwf</a> program is something I wrote for handling workflows on our cluster. You can specify dependencies and such using a DSL in Python, and when you submit jobs to the cluster they will be scheduled with respect to these dependencies.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">gwf</span> <span style="color:#007020;font-weight:bold">import</span> Workflow
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">from</span> gwf <span style="color:#000080;font-weight:bold">import</span> Workflow
 
-gwf <span style="color:#666">=</span> Workflow()
+gwf = Workflow()
 
-gwf<span style="color:#666">.</span>target(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">TargetA</span><span style="color:#4070a0">&#39;</span>, inputs<span style="color:#666">=</span>[], outputs<span style="color:#666">=</span>[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">x.txt</span><span style="color:#4070a0">&#39;</span>]) <span style="color:#666">&lt;&lt;</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span><span style="color:#4070a0">
-</span><span style="color:#4070a0"></span><span style="color:#4070a0">echo </span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">this is x</span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0"> &gt; x.txt</span><span style="color:#4070a0">
-</span><span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span>
+gwf.target(<span style="color:#00f">&#39;TargetA&#39;</span>, inputs=[], outputs=[<span style="color:#00f">&#39;x.txt&#39;</span>]) &lt;&lt; <span style="color:#00f">&#34;&#34;&#34;
+</span><span style="color:#00f">echo &#34;this is x&#34; &gt; x.txt
+</span><span style="color:#00f">&#34;&#34;&#34;</span>
 
-gwf<span style="color:#666">.</span>target(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">TargetB</span><span style="color:#4070a0">&#39;</span>, inputs<span style="color:#666">=</span>[], outputs<span style="color:#666">=</span>[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">y.txt</span><span style="color:#4070a0">&#39;</span>]) <span style="color:#666">&lt;&lt;</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span><span style="color:#4070a0">
-</span><span style="color:#4070a0"></span><span style="color:#4070a0">echo </span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">this is y</span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0"> &gt; y.txt</span><span style="color:#4070a0">
-</span><span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span>
+gwf.target(<span style="color:#00f">&#39;TargetB&#39;</span>, inputs=[], outputs=[<span style="color:#00f">&#39;y.txt&#39;</span>]) &lt;&lt; <span style="color:#00f">&#34;&#34;&#34;
+</span><span style="color:#00f">echo &#34;this is y&#34; &gt; y.txt
+</span><span style="color:#00f">&#34;&#34;&#34;</span>
 
-gwf<span style="color:#666">.</span>target(<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">TargetC</span><span style="color:#4070a0">&#39;</span>, inputs<span style="color:#666">=</span>[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">x.txt</span><span style="color:#4070a0">&#39;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">y.txt</span><span style="color:#4070a0">&#39;</span>], outputs<span style="color:#666">=</span>[<span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">z.txt</span><span style="color:#4070a0">&#39;</span>]) <span style="color:#666">&lt;&lt;</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span><span style="color:#4070a0">
-</span><span style="color:#4070a0"></span><span style="color:#4070a0">cat x.txt y.txt &gt; z.txt</span><span style="color:#4070a0">
-</span><span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span>
+gwf.target(<span style="color:#00f">&#39;TargetC&#39;</span>, inputs=[<span style="color:#00f">&#39;x.txt&#39;</span>, <span style="color:#00f">&#39;y.txt&#39;</span>], outputs=[<span style="color:#00f">&#39;z.txt&#39;</span>]) &lt;&lt; <span style="color:#00f">&#34;&#34;&#34;
+</span><span style="color:#00f">cat x.txt y.txt &gt; z.txt
+</span><span style="color:#00f">&#34;&#34;&#34;</span>
 </code></pre></div><p>You can also get the status of them and such.</p>
 <p>I am no longer the main developer of <code>gwf</code>. Dan Søndergaard has taken over, and I do not contribute much to the tool any more. Mostly because I am not running a lot of jobs on clusters. I might return to it later, when I need a cluster again.</p>
 
@@ -280,7 +281,7 @@ gwf<span style="color:#666">.</span>target(<span style="color:#4070a0"></span><s
 
 </main>
     <footer>
-        <h6>Copyright © 2018 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

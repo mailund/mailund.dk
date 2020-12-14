@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.63.2" />
+  
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -158,8 +159,8 @@ if (!doNotTrack) {
 <p>For that book, because it is very short, I just have a single Markdown document containing the entire book, but usually, I have one file per chapter. Pandoc doesn&rsquo;t handle that, but you can cat the files before you convert the Markdown source to PDF or ePUB documents. That works well enough, but you need to keep track of the chapter order and such, of course.</p>
 <p>I handle that with Makefiles, but any script would work just as well. There is just one thing I don&rsquo;t particularly like with this. It is difficult to move sections around within the chapters—you have to cut and paste to do this. Plus, if you want to have some markup inside the documents, as comments, then Pandoc cannot handle that.</p>
 <p>I write using iA Writer, and there you can include other files by just writing slash and then the filename. Like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#000080;font-weight:bold"># The main title
-</span><span style="color:#000080;font-weight:bold"></span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#999"># The main title
+</span><span style="color:#999"></span>
 /chapter1.md
 /chapter2.md
 /chapter3.md
@@ -169,43 +170,43 @@ if (!doNotTrack) {
 <p>If I preprocess files to flatten the hierarchy, then I can also add tags for comments. So I decided to use <code>%%</code> to start comments, and my preprocessor does not include lines that start with that in the output.</p>
 <p>I want to do more with comments than ignore them, though. I want to be able to add writing goals and FIXME statements so I can extract meta-information while I process the document.</p>
 <p>So, I decided to use a plugin mechanism to add two ways of extracting meta-information. I have two types right now; I call them them &ldquo;tag&rdquo; plugins and &ldquo;observer&rdquo; plugins</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">TagPlugin</span>(abc<span style="color:#666">.</span>ABC):
-	<span style="color:#555;font-weight:bold">@abc.abstractmethod</span>
-	<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">handle_tag</span>(self, <span style="color:#007020">file</span>, lineno, content):
-		<span style="color:#007020;font-weight:bold">pass</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> TagPlugin(abc.ABC):
+	@abc.abstractmethod
+	<span style="color:#000080;font-weight:bold">def</span> handle_tag(self, file, lineno, content):
+		<span style="color:#000080;font-weight:bold">pass</span>
 
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">ObserverPlugin</span>(abc<span style="color:#666">.</span>ABC):
-    <span style="color:#555;font-weight:bold">@abc.abstractmethod</span>
-    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">observe_line</span>(self, filename, lineno, line):
-        <span style="color:#007020;font-weight:bold">pass</span>
+<span style="color:#000080;font-weight:bold">class</span> ObserverPlugin(abc.ABC):
+    @abc.abstractmethod
+    <span style="color:#000080;font-weight:bold">def</span> observe_line(self, filename, lineno, line):
+        <span style="color:#000080;font-weight:bold">pass</span>
 </code></pre></div><p>and those plugins I want to display summaries of the document after I have processed it (or if I just want to extract summaries) I call &ldquo;summary&rdquo; plugins</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">SummaryPlugin</span>(abc<span style="color:#666">.</span>ABC):
-    <span style="color:#555;font-weight:bold">@abc.abstractmethod</span>
-    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">summarize</span>(self, outfile):
-        <span style="color:#007020;font-weight:bold">pass</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> SummaryPlugin(abc.ABC):
+    @abc.abstractmethod
+    <span style="color:#000080;font-weight:bold">def</span> summarize(self, outfile):
+        <span style="color:#000080;font-weight:bold">pass</span>
 </code></pre></div><p>You can combine these anyway you want, and I currently have two concrete plugins: &ldquo;WC&rdquo; for word counts and &ldquo;FIXME&rdquo; for extracting &ldquo;fixme&rdquo; information.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">WC</span>(plugin<span style="color:#666">.</span>ObserverPlugin, plugin<span style="color:#666">.</span>SummaryPlugin):
-	<span style="">…</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> WC(plugin.ObserverPlugin, plugin.SummaryPlugin):
+	<span style="color:#a61717;background-color:#e3d2d2">…</span>
 	
-<span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">FIXME</span>(plugin<span style="color:#666">.</span>TagPlugin, plugin<span style="color:#666">.</span>SummaryPlugin):
-	<span style="">…</span>
+<span style="color:#000080;font-weight:bold">class</span> FIXME(plugin.TagPlugin, plugin.SummaryPlugin):
+	<span style="color:#a61717;background-color:#e3d2d2">…</span>
 </code></pre></div><p>They are both summary plugins because they should output summary information, but the word count plugin observes the entire document while the fixme plugin only observes &ldquo;tags&rdquo; and summarises data it gets from these.</p>
 <p>The observer plugins are fed all lines in the document, after it is flattened, while the tag plugins sees comment lines that starts with a tag it tells the preprocessor it wants to see.</p>
 <p>The &ldquo;FIXME&rdquo; plugin sees these tags:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">FIXME</span>(plugin<span style="color:#666">.</span>TagPlugin, plugin<span style="color:#666">.</span>SummaryPlugin):
-    <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;&#34;&#34;</span><span style="color:#4070a0">FIXMEs in document</span><span style="color:#4070a0">&#34;&#34;&#34;</span>
-    supported_tags <span style="color:#666">=</span> [
-        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">FIXME</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Fixme</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">fixme</span><span style="color:#4070a0">&#34;</span>,
-        <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">TODO</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">Todo</span><span style="color:#4070a0">&#34;</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">todo</span><span style="color:#4070a0">&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> FIXME(plugin.TagPlugin, plugin.SummaryPlugin):
+    <span style="color:#00f">&#34;&#34;&#34;FIXMEs in document&#34;&#34;&#34;</span>
+    supported_tags = [
+        <span style="color:#00f">&#34;FIXME&#34;</span>, <span style="color:#00f">&#34;Fixme&#34;</span>, <span style="color:#00f">&#34;fixme&#34;</span>,
+        <span style="color:#00f">&#34;TODO&#34;</span>, <span style="color:#00f">&#34;Todo&#34;</span>, <span style="color:#00f">&#34;todo&#34;</span>
     ]
-	<span style="">…</span>
+	<span style="color:#a61717;background-color:#e3d2d2">…</span>
 </code></pre></div><p>When <code>permed</code> is told there is a tag plugin, it gets the class-variable <code>supported_tags</code> and feed these tags to the plugin. The tags have the form <code>%% tag: …</code>, and the tag plugin is called with the text that follows the <code>tag:</code>.</p>
 <p>You can inform the <code>premd</code> too that you have a plugin for it using entry points. I have these built into the tool:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    entry_points<span style="color:#666">=</span>{
-		    <span style="">…</span>,
-        <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">premd.plugins</span><span style="color:#4070a0">&#39;</span>: [
-            <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">fixme = premd.plugins.fixme:FIXME</span><span style="color:#4070a0">&#39;</span>,
-            <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">wc = premd.plugins.wc:WC</span><span style="color:#4070a0">&#39;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    entry_points={
+		    <span style="color:#a61717;background-color:#e3d2d2">…</span>,
+        <span style="color:#00f">&#39;premd.plugins&#39;</span>: [
+            <span style="color:#00f">&#39;fixme = premd.plugins.fixme:FIXME&#39;</span>,
+            <span style="color:#00f">&#39;wc = premd.plugins.wc:WC&#39;</span>
         ]
     },
 </code></pre></div><p>The tool figures out what kind of a plugin it is from its super-classes. I can also get these from a more protocol-oriented design using the <code>__subclasshook__</code> mechanism, but I haven&rsquo;t decided on whether that is a good idea or not.</p>
@@ -213,15 +214,15 @@ if (!doNotTrack) {
 <p>There are two things I want to add to <code>premd</code> as soon as I have time: I want to handle tags in a smarter way, and I want to allow plugins to add to the document and not just read from it.</p>
 <h2 id="smarter-tag-handling">Smarter tag handling</h2>
 <p>The tag plugin mechanism is okay I guess. I can add writing goals to a section or chapter using a <code>%% goals:</code> tag, I guess, and make the word count plugin read those. It will work, but I think I can do better than that. If I use the current design, I can only call tag handlers with a string, but since I can inspect classes and methods, I think I should be able to use tags to call specific methods, for example write</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#000080;font-weight:bold"># A section
-</span><span style="color:#000080;font-weight:bold"></span>%% wordcount.set_goals: goal: 5000
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#999"># A section
+</span><span style="color:#999"></span>%% wordcount.set_goals: goal: 5000
 </code></pre></div><p>or</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#000080;font-weight:bold"># A section
-</span><span style="color:#000080;font-weight:bold"></span>%% wordcount.set_goals: at_least: 4500 at_most: 5500
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#999"># A section
+</span><span style="color:#999"></span>%% wordcount.set_goals: at_least: 4500 at_most: 5500
 </code></pre></div><p>and make those tags call the word counter plugin using keyword arguments</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plugin<span style="color:#666">.</span>get_goals(goal<span style="color:#666">=</span><span style="color:#40a070">5000</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plugin.get_goals(goal=<span style="color:#00f">5000</span>)
 </code></pre></div><p>or</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plugin<span style="color:#666">.</span>set_goals(at_least<span style="color:#666">=</span><span style="color:#40a070">4500</span>, at_most<span style="color:#666">=</span><span style="color:#40a070">5500</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plugin.set_goals(at_least=<span style="color:#00f">4500</span>, at_most=<span style="color:#00f">5500</span>)
 </code></pre></div><p>and automatically convert the arguments if the method has type annotations.</p>
 <p>This is a lot more flexible, and I don&rsquo;t think it will be terribly hard to implement. I haven&rsquo;t thought too deeply about what the design should be to make this work, but designing the interface is probably a lot harder than actually implementing it.</p>
 <h2 id="adding-to-the-output-stream-of-the-flattening">Adding to the output stream of the flattening</h2>
@@ -231,7 +232,7 @@ if (!doNotTrack) {
 <p>I think my main concerns with designing this would be how to handle the setup of plugins and how to provide multi-line input to plugins.</p>
 <p>If there is any kind of complex setup for a plugin, I want to be able to handle that in a configuration file or in the main document itself. So I need some sort of block-tag to handle that. A block-tag will also allow me to give a plugin larger chunks of input to process.</p>
 <p>R Markdown handles blocks with headers in curly braces, and if I add a similar design I could write something like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">```{pluginname, keyword=foo, arguments=bar}
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">```{pluginname, keyword=foo, arguments=bar}
 input to plugin
 </code></pre></div><p>The plugin can then do whatever it wants with the input, for example setup the state of the plugin or use it to produce output.</p>
 <p>With R Markdown, the <code>knitr</code> tool will let you execute and output R code, but with a general design I could imagine plugins that execute arbitrary code, or for example compile code into executables (for complied languages like <code>C</code> or <code>go</code>) and get the output for this. If it doesn&rsquo;t produce output, perhaps it can test code instead. With the right design for this, I can leave it up to the plugins.</p>
@@ -317,7 +318,7 @@ input to plugin
 
 </main>
     <footer>
-        <h6>Copyright © 2018 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

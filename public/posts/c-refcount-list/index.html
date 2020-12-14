@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.63.2" />
+  
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -173,70 +174,70 @@ if (!doNotTrack) {
 <h2 id="reference-counting-garbage-collection">Reference counting garbage collection</h2>
 <p>The idea is simple enough. Instead of having some designated “owner” of an object, responsible for freeing it when we no longer need it, we keep a count of how many references we have to the object. We increment the reference count when we make another reference, and we decrement it again when we remove a reference. No problem there.</p>
 <p>I have seen implementations like the one below several places, and it gives an idea about what we are aiming at (but it has some issues that I will describe below).</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
-<span style="color:#007020">#</span><span style="color:#007020">include</span> <span style="color:#007020">&lt;stdlib.h&gt;</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">#</span><span style="color:#007020">include</span> <span style="color:#007020">&lt;stdio.h&gt;</span><span style="color:#007020">
-</span><span style="color:#007020"></span>
-<span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#06287e">void</span> (<span style="color:#666">*</span>deallocator)(<span style="color:#902000">void</span> <span style="color:#666">*</span>);
-<span style="color:#007020;font-weight:bold">struct</span> refcount {
-  <span style="color:#902000">int</span> count;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+<span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdlib.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080"></span>
+<span style="color:#000080;font-weight:bold">typedef</span> void (*deallocator)(<span style="color:#000080;font-weight:bold">void</span> *);
+<span style="color:#000080;font-weight:bold">struct</span> refcount {
+  <span style="color:#000080;font-weight:bold">int</span> count;
   deallocator free;
 };
 
-<span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">rc_malloc</span>(size_t size, deallocator free)
+<span style="color:#000080;font-weight:bold">void</span> *rc_malloc(size_t size, deallocator free)
 {
-  <span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>p <span style="color:#666">=</span> malloc(<span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#007020;font-weight:bold">struct</span> refcount) <span style="color:#666">+</span> size);
-  <span style="color:#666">*</span>p <span style="color:#666">=</span> (<span style="color:#007020;font-weight:bold">struct</span> refcount){ .count <span style="color:#666">=</span> <span style="color:#40a070">1</span>, .free <span style="color:#666">=</span> free };
-  <span style="color:#007020;font-weight:bold">return</span> p <span style="color:#666">+</span> <span style="color:#40a070">1</span>;
+  <span style="color:#000080;font-weight:bold">struct</span> refcount *p = malloc(<span style="color:#000080;font-weight:bold">sizeof</span>(<span style="color:#000080;font-weight:bold">struct</span> refcount) + size);
+  *p = (<span style="color:#000080;font-weight:bold">struct</span> refcount){ .count = <span style="color:#00f">1</span>, .free = free };
+  <span style="color:#000080;font-weight:bold">return</span> p + <span style="color:#00f">1</span>;
 }
 
-<span style="color:#902000">void</span> <span style="color:#06287e">rc_free</span>(<span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>rc)
+<span style="color:#000080;font-weight:bold">void</span> rc_free(<span style="color:#000080;font-weight:bold">struct</span> refcount *rc)
 {
-  rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>free(rc <span style="color:#666">+</span> <span style="color:#40a070">1</span>);
+  rc-&gt;free(rc + <span style="color:#00f">1</span>);
 }
 
-<span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">incref</span>(<span style="color:#902000">void</span> <span style="color:#666">*</span>p)
+<span style="color:#000080;font-weight:bold">void</span> *incref(<span style="color:#000080;font-weight:bold">void</span> *p)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>p) <span style="color:#007020;font-weight:bold">return</span> p;
-  <span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>rc <span style="color:#666">=</span> (<span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>)p <span style="color:#666">-</span> <span style="color:#40a070">1</span>;
-  rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>count<span style="color:#666">+</span><span style="color:#666">+</span>;
-  <span style="color:#007020;font-weight:bold">return</span> rc <span style="color:#666">+</span> <span style="color:#40a070">1</span>;
+  <span style="color:#000080;font-weight:bold">if</span> (!p) <span style="color:#000080;font-weight:bold">return</span> p;
+  <span style="color:#000080;font-weight:bold">struct</span> refcount *rc = (<span style="color:#000080;font-weight:bold">struct</span> refcount *)p - <span style="color:#00f">1</span>;
+  rc-&gt;count++;
+  <span style="color:#000080;font-weight:bold">return</span> rc + <span style="color:#00f">1</span>;
 }
 
-<span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">decref</span>(<span style="color:#902000">void</span> <span style="color:#666">*</span>p)
+<span style="color:#000080;font-weight:bold">void</span> *decref(<span style="color:#000080;font-weight:bold">void</span> *p)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">!</span>p) <span style="color:#007020;font-weight:bold">return</span> p;
-  <span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>rc <span style="color:#666">=</span> (<span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>)p <span style="color:#666">-</span> <span style="color:#40a070">1</span>;
-  <span style="color:#007020;font-weight:bold">if</span> (rc <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> <span style="color:#666">-</span><span style="color:#666">-</span>(rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>count) <span style="color:#666">&lt;</span> <span style="color:#40a070">1</span>) {
+  <span style="color:#000080;font-weight:bold">if</span> (!p) <span style="color:#000080;font-weight:bold">return</span> p;
+  <span style="color:#000080;font-weight:bold">struct</span> refcount *rc = (<span style="color:#000080;font-weight:bold">struct</span> refcount *)p - <span style="color:#00f">1</span>;
+  <span style="color:#000080;font-weight:bold">if</span> (rc &amp;&amp; --(rc-&gt;count) &lt; <span style="color:#00f">1</span>) {
     rc_free(rc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
-  <span style="color:#007020;font-weight:bold">return</span> rc <span style="color:#666">+</span> <span style="color:#40a070">1</span>;
+  <span style="color:#000080;font-weight:bold">return</span> rc + <span style="color:#00f">1</span>;
 }
 
-<span style="color:#902000">void</span> <span style="color:#06287e">print_free</span>(<span style="color:#902000">void</span> <span style="color:#666">*</span>p)
+<span style="color:#000080;font-weight:bold">void</span> print_free(<span style="color:#000080;font-weight:bold">void</span> *p)
 {
-  <span style="color:#902000">int</span> <span style="color:#666">*</span>ip <span style="color:#666">=</span> p;
-  printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">freeing %d</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>, <span style="color:#666">*</span>ip);
+  <span style="color:#000080;font-weight:bold">int</span> *ip = p;
+  printf(<span style="color:#00f">&#34;freeing %d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, *ip);
 }
 
-<span style="color:#902000">int</span> <span style="color:#06287e">main</span>(<span style="color:#902000">void</span>)
+<span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">void</span>)
 {
-  <span style="color:#902000">int</span> <span style="color:#666">*</span>p <span style="color:#666">=</span> rc_malloc(<span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>p, print_free);
-  <span style="color:#666">*</span>p <span style="color:#666">=</span> <span style="color:#40a070">42</span>;
+  <span style="color:#000080;font-weight:bold">int</span> *p = rc_malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *p, print_free);
+  *p = <span style="color:#00f">42</span>;
 
-  <span style="color:#60a0b0;font-style:italic">// Add a reference
-</span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#902000">int</span> <span style="color:#666">*</span>p2 <span style="color:#666">=</span> incref(p);
+  <span style="color:#080;font-style:italic">// Add a reference
+</span><span style="color:#080;font-style:italic"></span>  <span style="color:#000080;font-weight:bold">int</span> *p2 = incref(p);
 
-  decref(p); <span style="color:#60a0b0;font-style:italic">// This doesn&#39;t delete the object
-</span><span style="color:#60a0b0;font-style:italic"></span>  decref(p2); <span style="color:#60a0b0;font-style:italic">// This does
-</span><span style="color:#60a0b0;font-style:italic"></span>
-  <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+  decref(p); <span style="color:#080;font-style:italic">// This doesn&#39;t delete the object
+</span><span style="color:#080;font-style:italic"></span>  decref(p2); <span style="color:#080;font-style:italic">// This does
+</span><span style="color:#080;font-style:italic"></span>
+  <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
 }
 </code></pre></div><p>An object that we manage with reference counting has a count and a function we should call when it should be freed.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#06287e">void</span> (<span style="color:#666">*</span>deallocator)(<span style="color:#902000">void</span> <span style="color:#666">*</span>);
-<span style="color:#007020;font-weight:bold">struct</span> refcount {
-  <span style="color:#902000">int</span> count;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">typedef</span> void (*deallocator)(<span style="color:#000080;font-weight:bold">void</span> *);
+<span style="color:#000080;font-weight:bold">struct</span> refcount {
+  <span style="color:#000080;font-weight:bold">int</span> count;
   deallocator free;
 };
 </code></pre></div><p>I used <code>int</code> for <code>count</code>, although it is never supposed to be negative. A signed integer makes it easier to discover if I managed to get an underflow—but an <code>assert()</code> might be in order to prevent it from happening. But there is also another reason. It can be faster to work with signed than unsigned integers in C. The standard requires that unsigned integers work with modular arithmetic, but signed integers can work as whatever the hardware says it should work like. The compiler thus might have to emit extra code if we insist on working with unsigned integers. Here, I don’t expect to reference more than I can count in the positive part of an integer (and if I did, I could go for a larger integer type), so I might as well get faster code <em>and</em> code that is easier to debug.</p>
@@ -246,139 +247,139 @@ if (!doNotTrack) {
 <p>I haven’t handled <code>malloc()</code> errors—I get to error handling much later—but that isn’t the problem. The problem is that you have no idea about whether what the user wants to put after the reference counting struct aligns there. That is what bothered me every time I saw it. Now, probably, the function pointer has maximum alignment, and then we don’t have a problem, but we do not have any guarantees here. You can align anything at the address you get from <code>malloc()</code>, but <em>not</em> anything at an arbitrary offset from it.</p>
 <p>I will probably end up with some code that looks like this, just with a fix for the alignment issue, but for everything below, I will make things simpler by embedding the <code>refcount</code> struct in data I allocate. If I explicitly put such a struct at the beginning of my data, then I can cast my data to it and get the <code>struct refcount</code>, and whatever comes after it in my memory layout is correctly aligned.</p>
 <p>So, my reference counting code, in all its simplicity, will look like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#06287e">void</span> (<span style="color:#666">*</span>deallocator)(<span style="color:#902000">void</span> <span style="color:#666">*</span>);
-<span style="color:#007020;font-weight:bold">struct</span> refcount {
-  <span style="color:#902000">int</span> count;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">typedef</span> void (*deallocator)(<span style="color:#000080;font-weight:bold">void</span> *);
+<span style="color:#000080;font-weight:bold">struct</span> refcount {
+  <span style="color:#000080;font-weight:bold">int</span> count;
   deallocator free;
 };
 
-<span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">incref</span>(<span style="color:#902000">void</span> <span style="color:#666">*</span>p)
+<span style="color:#000080;font-weight:bold">void</span> *incref(<span style="color:#000080;font-weight:bold">void</span> *p)
 {
-  <span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>rc <span style="color:#666">=</span> p;
-  <span style="color:#007020;font-weight:bold">if</span> (rc) rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>count<span style="color:#666">+</span><span style="color:#666">+</span>;
-  <span style="color:#007020;font-weight:bold">return</span> rc;
+  <span style="color:#000080;font-weight:bold">struct</span> refcount *rc = p;
+  <span style="color:#000080;font-weight:bold">if</span> (rc) rc-&gt;count++;
+  <span style="color:#000080;font-weight:bold">return</span> rc;
 }
 
-<span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">decref</span>(<span style="color:#902000">void</span> <span style="color:#666">*</span>p)
+<span style="color:#000080;font-weight:bold">void</span> *decref(<span style="color:#000080;font-weight:bold">void</span> *p)
 {
-  <span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>rc <span style="color:#666">=</span> p;
-  <span style="color:#007020;font-weight:bold">if</span> (rc <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> <span style="color:#666">-</span><span style="color:#666">-</span>(rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>count) <span style="color:#666">&lt;</span> <span style="color:#40a070">1</span>) {
-    rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>free(rc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+  <span style="color:#000080;font-weight:bold">struct</span> refcount *rc = p;
+  <span style="color:#000080;font-weight:bold">if</span> (rc &amp;&amp; --(rc-&gt;count) &lt; <span style="color:#00f">1</span>) {
+    rc-&gt;free(rc);
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
-  <span style="color:#007020;font-weight:bold">return</span> rc;
+  <span style="color:#000080;font-weight:bold">return</span> rc;
 }
 </code></pre></div><p>It is simple enough that there shouldn’t be any issues. And there isn’t, if you use it correctly. Of course, what “use it correctly” means, that is the problem.</p>
 <h2 id="lists-take-one">Lists, take one</h2>
 <p>The example I was working on for my book was a linked lists. It doesn’t get simpler than that, so it is a good starting point. Turned out, though, that this quickly got complicated—so I am happy I didn’t start with something harder, like string graphs which were my first idea.</p>
 <p>Well, it is not that lists are that complicated, not at all, but I wanted to implement something that looked like lists in a functional language, and that escalated quickly.</p>
 <p>If we completely ignore memory management, then we can define a list like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> link {
-  <span style="color:#007020;font-weight:bold">struct</span> link <span style="color:#666">*</span> <span style="color:#007020;font-weight:bold">const</span> next;
-  <span style="color:#902000">int</span>           <span style="color:#007020;font-weight:bold">const</span> value;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> link {
+  <span style="color:#000080;font-weight:bold">struct</span> link * <span style="color:#000080;font-weight:bold">const</span> next;
+  <span style="color:#000080;font-weight:bold">int</span>           <span style="color:#000080;font-weight:bold">const</span> value;
 };
 
-<span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#007020;font-weight:bold">struct</span> link <span style="color:#666">*</span>list;
-<span style="color:#007020">#</span><span style="color:#007020">define NIL 0</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">#</span><span style="color:#007020">define is_nil(x) ((x) == NIL)</span><span style="color:#007020">
-</span><span style="color:#007020"></span>
-list <span style="color:#06287e">cons</span>(<span style="color:#902000">int</span> car, list cdr)
+<span style="color:#000080;font-weight:bold">typedef</span> <span style="color:#000080;font-weight:bold">struct</span> link *list;
+<span style="color:#008080">#define NIL 0
+</span><span style="color:#008080">#define is_nil(x) ((x) == NIL)
+</span><span style="color:#008080"></span>
+list cons(<span style="color:#000080;font-weight:bold">int</span> car, list cdr)
 {
-  list new_link <span style="color:#666">=</span> malloc(<span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>new_link);
-  <span style="color:#007020;font-weight:bold">struct</span> link link_data <span style="color:#666">=</span> {
-    .next  <span style="color:#666">=</span> cdr,
-    .value <span style="color:#666">=</span> car
+  list new_link = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *new_link);
+  <span style="color:#000080;font-weight:bold">struct</span> link link_data = {
+    .next  = cdr,
+    .value = car
   };
-  memcpy(new_link, <span style="color:#666">&amp;</span>link_data, <span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>new_link);
-  <span style="color:#007020;font-weight:bold">return</span> new_link;
+  memcpy(new_link, &amp;link_data, <span style="color:#000080;font-weight:bold">sizeof</span> *new_link);
+  <span style="color:#000080;font-weight:bold">return</span> new_link;
 }
 </code></pre></div><p>I have made the two members of the <code>struct link</code> <code>const</code> because I want lists to be immutable—as they are in a pure functional language. I define the type <code>list</code> to be pointers to links, and I define the empty list, <code>NIL</code> to be the NULL pointer (something that I will change shortly). The function <code>const()</code>, with a naming convention from LISP, makes a new link, sets the value to <code>car</code> and the <code>next</code> pointer to <code>cdr</code>. The <code>link_data</code>/<code>memcpy()</code> code is there so I can write to the <code>const</code> members in the link.</p>
 <p>We could write a function to get the length of a list:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">length</span>(list x, <span style="color:#902000">int</span> acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> length(list x, <span style="color:#000080;font-weight:bold">int</span> acc)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) <span style="color:#007020;font-weight:bold">return</span> acc;
-  <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">return</span> length(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, acc <span style="color:#666">+</span> <span style="color:#40a070">1</span>);
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) <span style="color:#000080;font-weight:bold">return</span> acc;
+  <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">return</span> length(x-&gt;next, acc + <span style="color:#00f">1</span>);
 }
 </code></pre></div><p>or to reverse a list:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">reverse</span>(list x, list acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list reverse(list x, list acc)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) <span style="color:#007020;font-weight:bold">return</span> acc;
-  <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">return</span> reverse(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, acc));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) <span style="color:#000080;font-weight:bold">return</span> acc;
+  <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">return</span> reverse(x-&gt;next, cons(x-&gt;value, acc));
 }
 </code></pre></div><p>To reverse, you should start with <code>NIL</code> as the accumulator:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list y <span style="color:#666">=</span> reverse(x, NIL);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list y = reverse(x, NIL);
 </code></pre></div><p>Both are tail-recursive, and an optimising compiler will turn them into loops. The <code>length()</code> function doesn’t allocate any new links, so it should be easy to handle when we get to memory management (one would think), but the <code>reverse()</code> function creates new links. It also returns the first link in the list it creates, so we will not leak memory if we handle the memory there.</p>
 <p>You can concatenate two lists with</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">concat</span>(list x, list y)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list concat(list x, list y)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) <span style="color:#007020;font-weight:bold">return</span> y;
-  <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">return</span> cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, concat(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, y));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) <span style="color:#000080;font-weight:bold">return</span> y;
+  <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">return</span> cons(x-&gt;value, concat(x-&gt;next, y));
 }
 </code></pre></div><p>and like <code>reverse()</code> it creates new links, but it returns the first of them when it is done, so we have a handle on them if we need to free them.</p>
 <p>The <code>concat()</code> function isn’t tail recursive, but we could make it so:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">prepend_list</span>(list x, list acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list prepend_list(list x, list acc)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) <span style="color:#007020;font-weight:bold">return</span> acc;
-  <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">return</span> prepend_list(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, acc));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) <span style="color:#000080;font-weight:bold">return</span> acc;
+  <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">return</span> prepend_list(x-&gt;next, cons(x-&gt;value, acc));
 }
-list <span style="color:#06287e">concat_tr</span>(list x, list y, list acc)
+list concat_tr(list x, list y, list acc)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) <span style="color:#007020;font-weight:bold">return</span> prepend_list(acc, y);
-  <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">return</span> concat_tr(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, y, cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, acc));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) <span style="color:#000080;font-weight:bold">return</span> prepend_list(acc, y);
+  <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">return</span> concat_tr(x-&gt;next, y, cons(x-&gt;value, acc));
 }
 </code></pre></div><p>The accumulator should start as <code>NIL</code>:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list z <span style="color:#666">=</span> concat_tr(x, y, NIL);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list z = concat_tr(x, y, NIL);
 </code></pre></div><p>Here we have a bit of a problem with garbage collection. We create new links with <code>cons()</code> in <code>concat_tr()</code>, but we consume them again in <code>prepend_list()</code>. When we go from <code>x</code> to <code>x-&gt;next</code> in <code>prepend_list()</code> we lose a reference to <code>x</code>, and we do not have another reference to it, because we created it going down the recursion in <code>concat_tr()</code>.</p>
 <p>The minimum I want to handle, with reference counted lists, are functions such as these. And so far, I haven’t found a simple and elegant solution…</p>
 <h3 id="cons">cons()</h3>
 <p>The first place to dig in is of course <code>cons()</code>. This is where we create links. We can easily add reference counting to links, but as soon as we do that, we need to work out how <code>cons()</code> should behave with respect to them.</p>
 <p>We add a <code>struct refcount</code> to the links, and it has to go at the top for the memory layout to match the increment and decrement functions.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> link {
-  <span style="color:#007020;font-weight:bold">struct</span> refcount     rc;
-  <span style="color:#007020;font-weight:bold">struct</span> link <span style="color:#666">*</span> <span style="color:#007020;font-weight:bold">const</span> next;
-  <span style="color:#902000">int</span>           <span style="color:#007020;font-weight:bold">const</span> value;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> link {
+  <span style="color:#000080;font-weight:bold">struct</span> refcount     rc;
+  <span style="color:#000080;font-weight:bold">struct</span> link * <span style="color:#000080;font-weight:bold">const</span> next;
+  <span style="color:#000080;font-weight:bold">int</span>           <span style="color:#000080;font-weight:bold">const</span> value;
 };
 </code></pre></div><p>We need a function that frees a link—and decrements the <code>next</code> link—and we need to initialise the reference count in <code>cons()</code>.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">free_list</span>(list x)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> free_list(list x)
 {
-  decref(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next);
+  decref(x-&gt;next);
   free(x);
 }
 
-list <span style="color:#06287e">cons</span>(<span style="color:#902000">int</span> car, list cdr)
+list cons(<span style="color:#000080;font-weight:bold">int</span> car, list cdr)
 {
-  list new_link <span style="color:#666">=</span> malloc(<span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>new_link);
-  <span style="color:#007020;font-weight:bold">struct</span> link link_data <span style="color:#666">=</span> {
-    .rc    <span style="color:#666">=</span> (<span style="color:#007020;font-weight:bold">struct</span> refcount){
-      .count <span style="color:#666">=</span> <span style="color:#40a070">1</span>,          <span style="color:#60a0b0;font-style:italic">// Zero or one?
-</span><span style="color:#60a0b0;font-style:italic"></span>      .free  <span style="color:#666">=</span> (deallocator)free_list
+  list new_link = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *new_link);
+  <span style="color:#000080;font-weight:bold">struct</span> link link_data = {
+    .rc    = (<span style="color:#000080;font-weight:bold">struct</span> refcount){
+      .count = <span style="color:#00f">1</span>,          <span style="color:#080;font-style:italic">// Zero or one?
+</span><span style="color:#080;font-style:italic"></span>      .free  = (deallocator)free_list
     },
-    .next  <span style="color:#666">=</span> incref(cdr), <span style="color:#60a0b0;font-style:italic">// Or maybe not incref?
-</span><span style="color:#60a0b0;font-style:italic"></span>    .value <span style="color:#666">=</span> car
+    .next  = incref(cdr), <span style="color:#080;font-style:italic">// Or maybe not incref?
+</span><span style="color:#080;font-style:italic"></span>    .value = car
   };
-  memcpy(new_link, <span style="color:#666">&amp;</span>link_data, <span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>new_link);
-  <span style="color:#007020;font-weight:bold">return</span> new_link;
+  memcpy(new_link, &amp;link_data, <span style="color:#000080;font-weight:bold">sizeof</span> *new_link);
+  <span style="color:#000080;font-weight:bold">return</span> new_link;
 }
 </code></pre></div><p>The <code>free_list()</code> can start a recursive cascade of decrements/freeing, with long lists, that can exceed the stack. I think I have a solution for that, but I will ignore it for now.</p>
 <p>We have two choices to make now. Should a new link have a reference count of one or zero? We do not have a reference to it as such, which would argue that it should be zero, but on the other hand, if our idea is that objects with zero references to them should be deleted, we shouldn’t have links with zero references. And what about <code>next</code>? Should we increment its count or shouldn’t we?</p>
 <p>If we write</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x <span style="color:#666">=</span> <span style="color:#60a0b0;font-style:italic">// …some list…
-</span><span style="color:#60a0b0;font-style:italic"></span>  list y <span style="color:#666">=</span> cons(<span style="color:#40a070">42</span>, x);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x = <span style="color:#080;font-style:italic">// …some list…
+</span><span style="color:#080;font-style:italic"></span>  list y = cons(<span style="color:#00f">42</span>, x);
 </code></pre></div><p>then both <code>y</code> and <code>x</code> have access to the first link in <code>x</code>, so the link that <code>x</code> points to shouldn’t be freed before <code>y</code> is. That tells us that we probably want to add a reference to a link when it is set to the <code>next</code> link in another. But in that case, if <code>cons()</code> returns a link with a reference count of one, then</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x <span style="color:#666">=</span> cons(<span style="color:#40a070">1</span>, cons(<span style="color:#40a070">2</span>, NIL));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x = cons(<span style="color:#00f">1</span>, cons(<span style="color:#00f">2</span>, NIL));
 </code></pre></div><p>will give us a list where the first link has a reference count of one, because that is what <code>cons()</code> gives us, and the second has a reference count of two, because <code>cons(2, NIL)</code> gives us one with a count of one, and we increment it.</p>
 <p>There is no single correct solution, but the one we have now is clearly wrong. Either we add a reference to <code>cdr</code> in <code>cons()</code>, or we don’t add a reference to the link that we return.</p>
 <p>Generally, when we have a function that gets a reference, we have to decide on whether it “has a reference”, which should be reflected in the reference count, or it just has a pointer to the object. The same goes when we put a pointer into a structure, but there it is an easier choice to make. If a structure holds a reference to an object, then it should count as a reference. But it reflects back to the first choice. Does <code>cons()</code> get a reference to <code>cdr</code>, that it can then give to the new link, so <code>cdr</code>’s reference count stays the same? Or does it get a pointer ro <code>cdr</code>, but it has to increment the counter to make the new link hold a reference?</p>
 <p>Tentatively, I will say that it gets a pointer and has to increment it when it puts <code>cdr</code> in the new link. If I increment the reference count for <code>cdr</code>, then I don’t want to return a link that already has a count. If I do that, then the second link in the list <code>x</code> above has one too many references. There is only one way to get to the second link, through the first in <code>x</code>, so it is incorrect that the second link has <code>count</code> two. If I <code>decref(x)</code>, the first link goes from count one to zero, and will be freed, and then the deallocator will decrement the count of <code>next</code>, and it will go from two to one and not be freed. That is clearly a leak. So, at least as far as <code>cons()</code> is concerned: It doesn’t get references to its input, and it returns an object without references. If you get a value from <code>cons()</code>, and you want to hold on to it, you must <code>incref()</code> it. If you don’t, you must delete it. So we should have written</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x <span style="color:#666">=</span> incref(cons(<span style="color:#40a070">1</span>, cons(<span style="color:#40a070">2</span>, NIL)));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x = incref(cons(<span style="color:#00f">1</span>, cons(<span style="color:#00f">2</span>, NIL)));
 </code></pre></div><p>above. Or, if we wanted to waste time and throw away the result of the list construction, we could have written</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  decref(cons(<span style="color:#40a070">1</span>, cons(<span style="color:#40a070">2</span>, NIL)));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  decref(cons(<span style="color:#00f">1</span>, cons(<span style="color:#00f">2</span>, NIL)));
 </code></pre></div><p>Here, the reference count would go to -1, but our <code>decref()</code> can handle that if it comes to it.</p>
 <p>It is completely arbitrary that we have to increment after <code>cons()</code>, and not make <code>cons()</code> do it, and I might change my mind later, but if <code>cons()</code> add a reference to its result, then it shouldn’t increment <code>cdr</code>, and if it increments <code>cdr</code> it shouldn’t add a referent to its result.</p>
 <p>With these design choices, the <code>length()</code>, <code>reverse()</code> and <code>concat()</code> functions above will work, and not leak memory, if we use them like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x <span style="color:#666">=</span> incref(cons(<span style="color:#40a070">1</span>, cons(<span style="color:#40a070">2</span>, cons(<span style="color:#40a070">3</span>, NIL))));
-  list y <span style="color:#666">=</span> incref(reverse(x, NIL));
-  list z <span style="color:#666">=</span> incref(concat(x, y));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x = incref(cons(<span style="color:#00f">1</span>, cons(<span style="color:#00f">2</span>, cons(<span style="color:#00f">3</span>, NIL))));
+  list y = incref(reverse(x, NIL));
+  list z = incref(concat(x, y));
 
   decref(x); decref(y); decref(z);
 </code></pre></div><p>We don’t really share a lot of links here, but the last half of <code>z</code> is the list <code>y</code>, so we do share some. They are not completely independent lists.</p>
@@ -386,52 +387,52 @@ list <span style="color:#06287e">cons</span>(<span style="color:#902000">int</sp
 <h2 id="error-handling">Error handling</h2>
 <p>When we <code>malloc()</code> in <code>cons()</code> we assume that the allocation doesn’t fail. But, of course, <code>malloc()</code> can fail, and we can get a NULL pointer from it. If we do, we certainly shouldn’t write into the result.</p>
 <p>We can update <code>cons()</code> to return NULL if <code>malloc()</code> fails:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">cons</span>(<span style="color:#902000">int</span> car, list cdr)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list cons(<span style="color:#000080;font-weight:bold">int</span> car, list cdr)
 {
-  list new_link <span style="color:#666">=</span> malloc(<span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>new_link);
-  <span style="color:#007020;font-weight:bold">if</span> (new_link) {
-    <span style="color:#007020;font-weight:bold">struct</span> link link_data <span style="color:#666">=</span> {
-      .rc    <span style="color:#666">=</span> (<span style="color:#007020;font-weight:bold">struct</span> refcount){
-        .count <span style="color:#666">=</span> <span style="color:#40a070">0</span>,
-        .free  <span style="color:#666">=</span> (deallocator)free_list
+  list new_link = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *new_link);
+  <span style="color:#000080;font-weight:bold">if</span> (new_link) {
+    <span style="color:#000080;font-weight:bold">struct</span> link link_data = {
+      .rc    = (<span style="color:#000080;font-weight:bold">struct</span> refcount){
+        .count = <span style="color:#00f">0</span>,
+        .free  = (deallocator)free_list
       },
-      .next  <span style="color:#666">=</span> incref(cdr),
-      .value <span style="color:#666">=</span> car
+      .next  = incref(cdr),
+      .value = car
     };
-    memcpy(new_link, <span style="color:#666">&amp;</span>link_data, <span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>new_link);
+    memcpy(new_link, &amp;link_data, <span style="color:#000080;font-weight:bold">sizeof</span> *new_link);
   }
-  <span style="color:#007020;font-weight:bold">return</span> new_link;
+  <span style="color:#000080;font-weight:bold">return</span> new_link;
 }
 </code></pre></div><p>Easy-peasy, except that now</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x <span style="color:#666">=</span> cons(<span style="color:#40a070">1</span>, cons(<span style="color:#40a070">2</span>, cons(<span style="color:#40a070">3</span>, NIL)));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x = cons(<span style="color:#00f">1</span>, cons(<span style="color:#00f">2</span>, cons(<span style="color:#00f">3</span>, NIL)));
 </code></pre></div><p>can leak memory. If a <code>malloc()</code> fails, we have a reference to a <code>cdr</code> that should be freed. If <code>cdr</code> doesn’t have any other references, we have to get rid of it. If it does have at least one reference, we shouldn’t. If we want to be able to write expressions such as this, then <code>cons()</code> must handle <code>cdr</code>’s memory correctly.</p>
 <p>Now, errors in <code>cons()</code> leads me to another issue. I am using NULL to mean the empty list, which means that I will not be able to differentiate between a list that is empty and an allocation error. That clearly isn’t a good idea. So I will define the empty list as an actual object, and set aside NULL to mean error.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> link NIL_LINK <span style="color:#666">=</span> { .rc <span style="color:#666">=</span> { .count <span style="color:#666">=</span> <span style="color:#40a070">1</span> } };
-<span style="color:#007020">#</span><span style="color:#007020">define NIL (&amp;NIL_LINK)</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">#</span><span style="color:#007020">define is_nil(x)   ((x) == NIL)</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">#</span><span style="color:#007020">define is_error(x) ((x) == 0)</span><span style="color:#007020">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> link NIL_LINK = { .rc = { .count = <span style="color:#00f">1</span> } };
+<span style="color:#008080">#define NIL (&amp;NIL_LINK)
+</span><span style="color:#008080">#define is_nil(x)   ((x) == NIL)
+</span><span style="color:#008080">#define is_error(x) ((x) == 0)
 </span></code></pre></div><p>If the empty list link is handled correctly by all our functions, it will never be freed. Every time we add a reference to it, we increment the counter, and it starts at one and should never go below that.</p>
 <p>Now, returning NULL from <code>cons()</code> indicates that we have an error. But if we have an error, we should free <code>cdr</code>’s memory (unless there are other references to it).</p>
 <p>Our mechanism for freeing is decrementing, so that is what we should use for <code>cdr</code>. If we just go ahead and free, we get into trouble if we have the references. We can handle <code>cdr</code> both in cases of errors and success by incrementing it at the top of the function and decrementing it at the end of the function:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">cons</span>(<span style="color:#902000">int</span> car, list cdr)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list cons(<span style="color:#000080;font-weight:bold">int</span> car, list cdr)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(cdr)) <span style="color:#007020;font-weight:bold">return</span> cdr;
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(cdr)) <span style="color:#000080;font-weight:bold">return</span> cdr;
 
   incref(cdr);
-  list new_link <span style="color:#666">=</span> malloc(<span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>new_link);
-  <span style="color:#007020;font-weight:bold">if</span> (new_link) {
-    <span style="color:#007020;font-weight:bold">struct</span> link link_data <span style="color:#666">=</span> {
-      .rc    <span style="color:#666">=</span> (<span style="color:#007020;font-weight:bold">struct</span> refcount){
-        .count <span style="color:#666">=</span> <span style="color:#40a070">0</span>,
-        .free  <span style="color:#666">=</span> (deallocator)free_list
+  list new_link = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *new_link);
+  <span style="color:#000080;font-weight:bold">if</span> (new_link) {
+    <span style="color:#000080;font-weight:bold">struct</span> link link_data = {
+      .rc    = (<span style="color:#000080;font-weight:bold">struct</span> refcount){
+        .count = <span style="color:#00f">0</span>,
+        .free  = (deallocator)free_list
       },
-      .next  <span style="color:#666">=</span> incref(cdr),
-      .value <span style="color:#666">=</span> car
+      .next  = incref(cdr),
+      .value = car
     };
-    memcpy(new_link, <span style="color:#666">&amp;</span>link_data, <span style="color:#007020;font-weight:bold">sizeof</span> <span style="color:#666">*</span>new_link);
+    memcpy(new_link, &amp;link_data, <span style="color:#000080;font-weight:bold">sizeof</span> *new_link);
   }
   decref(cdr);
-  <span style="color:#007020;font-weight:bold">return</span> new_link;
+  <span style="color:#000080;font-weight:bold">return</span> new_link;
 }
 </code></pre></div><p>I added a test at the top of the function, so we abort if we start with an error. That is the easiest way to propagate errors back through function calls and not handle special cases everywhere.</p>
 <p>If we increment <code>cdr</code> and we have an error, we decrement it again, and if we didn’t have any other references to it, it is freed. If we didn’t have an error, we have incremented it twice—at the top of the function and when we inserted it into the new link—and everything is as it is supposed to be.</p>
@@ -440,274 +441,274 @@ list <span style="color:#06287e">cons</span>(<span style="color:#902000">int</sp
 <p>Can we use the same approach to handle memory management for the other functions? Maybe get error handling on top of it?</p>
 <p>Yes, but it gets a little ugly.</p>
 <p>Let us take <code>length()</code> first. It is the simplest. It takes one list input, <code>x</code>, and without error handling or memory management, it looks like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">length</span>(list x, <span style="color:#902000">int</span> acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> length(list x, <span style="color:#000080;font-weight:bold">int</span> acc)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) <span style="color:#007020;font-weight:bold">return</span> acc;
-  <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">return</span> length(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, acc <span style="color:#666">+</span> <span style="color:#40a070">1</span>);
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) <span style="color:#000080;font-weight:bold">return</span> acc;
+  <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">return</span> length(x-&gt;next, acc + <span style="color:#00f">1</span>);
 }
 </code></pre></div><p>If we have a list with a reference, it works as it should.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x <span style="color:#666">=</span> cons(<span style="color:#40a070">1</span>, cons(<span style="color:#40a070">2</span>, cons(<span style="color:#40a070">3</span>, NIL)));
-  <span style="color:#902000">int</span> len <span style="color:#666">=</span> length(x, <span style="color:#40a070">0</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x = cons(<span style="color:#00f">1</span>, cons(<span style="color:#00f">2</span>, cons(<span style="color:#00f">3</span>, NIL)));
+  <span style="color:#000080;font-weight:bold">int</span> len = length(x, <span style="color:#00f">0</span>);
 </code></pre></div><p>but what if we write</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  <span style="color:#902000">int</span> len <span style="color:#666">=</span> length(cons(<span style="color:#40a070">1</span>, cons(<span style="color:#40a070">2</span>, cons(<span style="color:#40a070">3</span>, NIL))), <span style="color:#40a070">0</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  <span style="color:#000080;font-weight:bold">int</span> len = length(cons(<span style="color:#00f">1</span>, cons(<span style="color:#00f">2</span>, cons(<span style="color:#00f">3</span>, NIL))), <span style="color:#00f">0</span>);
 </code></pre></div><p>We get the length, but we have lost all references to the links, if <code>length()</code> doesn’t free them.</p>
 <p>Ok, so we do the same with <code>length()</code> as we did with <code>cons()</code>:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">length</span>(list x, <span style="color:#902000">int</span> acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> length(list x, <span style="color:#000080;font-weight:bold">int</span> acc)
 {
-  assert(<span style="color:#666">!</span>is_error(x));
+  assert(!is_error(x));
 
   incref(x);
-  <span style="color:#902000">int</span> retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) retval <span style="color:#666">=</span> acc;
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> length(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, acc <span style="color:#666">+</span> <span style="color:#40a070">1</span>);
+  <span style="color:#000080;font-weight:bold">int</span> retval;
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) retval = acc;
+  <span style="color:#000080;font-weight:bold">else</span> retval = length(x-&gt;next, acc + <span style="color:#00f">1</span>);
   decref(x);
 
-  <span style="color:#007020;font-weight:bold">return</span> retval;
+  <span style="color:#000080;font-weight:bold">return</span> retval;
 }
 </code></pre></div><p>It is no longer tail recursive, which bothers me slightly, but it works. One of the reasons it isn’t tail recursive is that we need to decrement <code>x</code> after the recursion, and that will also be a problem if we turned the function into a loop. If we cannot easily write the function tail-recursive, then we will also have problems writing it iteratively… so we need to find a solution for that.</p>
 <p>Much worse is the next function, <code>reverse()</code>:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">reverse</span>(list x, list acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list reverse(list x, list acc)
 {
   incref(x); incref(acc);
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(acc)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(acc)) {
     decref(x); decref(acc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
   list retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) retval <span style="color:#666">=</span> acc;
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> reverse(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, acc));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) retval = acc;
+  <span style="color:#000080;font-weight:bold">else</span> retval = reverse(x-&gt;next, cons(x-&gt;value, acc));
 
   decref(x); decref(acc);
-  <span style="color:#007020;font-weight:bold">return</span> retval;
+  <span style="color:#000080;font-weight:bold">return</span> retval;
 }
 </code></pre></div><p>We have some error handling at the top, after we increment the input, but that is not the problematic part. The problem is the termination when we should return <code>acc</code>. We build <code>acc</code> using <code>cons()</code> as we go down the recursion, so it will not have any references when we call <code>reverse()</code> the last time. When we increment the count on <code>acc</code> it goes to one, which is fine, but just before we return <code>retval</code>, we decrement <code>acc</code>, which takes the count to zero, and then we free it. We are returning a pointer to freed memory. That, obviously, is a problem.</p>
 <p>Ok, no problem, we can just return <code>acc</code> without decrementing it (and only decrement <code>x</code>):</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">reverse</span>(list x, list acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list reverse(list x, list acc)
 {
   incref(x); incref(acc);
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(acc)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(acc)) {
     decref(x); decref(acc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
   list retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) { decref(x); <span style="color:#007020;font-weight:bold">return</span> acc; }
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> reverse(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, acc));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) { decref(x); <span style="color:#000080;font-weight:bold">return</span> acc; }
+  <span style="color:#000080;font-weight:bold">else</span> retval = reverse(x-&gt;next, cons(x-&gt;value, acc));
 
   decref(x); decref(acc);
-  <span style="color:#007020;font-weight:bold">return</span> retval;
+  <span style="color:#000080;font-weight:bold">return</span> retval;
 }
 </code></pre></div><p>Not so fast, though. We have incremented, but not decremented, <code>acc</code>. If it is the result of a <code>cons()</code>, the reference count was zero when we got it, but now we return it with a count of one. That is one reference too many!</p>
 <p>So, we are in the pickle that if we decrement it, we lose it, and if ew don’t, we leak memory. <strong>I don’t have a good solution for this yet!</strong> I was sort of hoping that someone would have some advice.</p>
 <p>We could think about going back and have <code>cons()</code> return objects with a reference count of one, and then have all other functions that create lists do the same. If we do that, then functions should never return a value with a reference count of zero, and then we don’t have the problem with accidentally freeing a value before we return it.</p>
 <p>It does work, but now you have to remember to <code>incref()</code> <em>every single argument</em> when you call a function. The <code>length()</code> and <code>reverse()</code> functions would look like this</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">length</span>(list x, <span style="color:#902000">int</span> acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> length(list x, <span style="color:#000080;font-weight:bold">int</span> acc)
 {
-  assert(<span style="color:#666">!</span>is_error(x));
+  assert(!is_error(x));
 
-  <span style="color:#902000">int</span> retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) retval <span style="color:#666">=</span> acc;
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> length(incref(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next), acc <span style="color:#666">+</span> <span style="color:#40a070">1</span>);
+  <span style="color:#000080;font-weight:bold">int</span> retval;
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) retval = acc;
+  <span style="color:#000080;font-weight:bold">else</span> retval = length(incref(x-&gt;next), acc + <span style="color:#00f">1</span>);
   decref(x);
 
-  <span style="color:#007020;font-weight:bold">return</span> retval;
+  <span style="color:#000080;font-weight:bold">return</span> retval;
 }
 
-list <span style="color:#06287e">reverse</span>(list x, list acc)
+list reverse(list x, list acc)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(acc)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(acc)) {
     decref(x); decref(acc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
   list retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) retval <span style="color:#666">=</span> incref(acc);
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> reverse(incref(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next), cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, incref(acc)));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) retval = incref(acc);
+  <span style="color:#000080;font-weight:bold">else</span> retval = reverse(incref(x-&gt;next), cons(x-&gt;value, incref(acc)));
 
   decref(x); decref(acc);
-  <span style="color:#007020;font-weight:bold">return</span> retval;
+  <span style="color:#000080;font-weight:bold">return</span> retval;
 }
 </code></pre></div><p>and you could use them like</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x <span style="color:#666">=</span> cons(<span style="color:#40a070">1</span>, cons(<span style="color:#40a070">2</span>, cons(<span style="color:#40a070">3</span>, incref(NIL))));
-  list y <span style="color:#666">=</span> reverse(incref(x), incref(NIL));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  list x = cons(<span style="color:#00f">1</span>, cons(<span style="color:#00f">2</span>, cons(<span style="color:#00f">3</span>, incref(NIL))));
+  list y = reverse(incref(x), incref(NIL));
 </code></pre></div><p>Notice that you <em>have</em> to increment <code>NIL</code> here, or you will attempt to free a global variable.</p>
 <p>The concatenation function would look like:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">concat</span>(list x, list y)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list concat(list x, list y)
 {
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(y)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(y)) {
     decref(x); decref(y);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
   list retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) retval <span style="color:#666">=</span> incref(y);
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, concat(incref(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next), incref(y)));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) retval = incref(y);
+  <span style="color:#000080;font-weight:bold">else</span> retval = cons(x-&gt;value, concat(incref(x-&gt;next), incref(y)));
 
   decref(x); decref(y);
-  <span style="color:#007020;font-weight:bold">return</span> retval;
+  <span style="color:#000080;font-weight:bold">return</span> retval;
 }
 </code></pre></div><p>where, again, you have to remember to <code>incref()</code> when you call a function. But only when you have a reference, and not when you use the result of another call.</p>
 <p>To me, having to remember to increment all the right places when I call a function just spells trouble. I want the functions to handle it, not the caller. And that, unfortunately, means that new objects, returned from a function, must have reference count zero, which in turn means that there is a problem when we return an argument. The function can increment the count to one, but it needs to go down to zero again when we return, and it needs to go down to zero without freeing the object.</p>
 <h2 id="protecting-and-unprotecting">Protecting (and unprotecting)</h2>
 <p>This is what I came up with (<em>and I am not happy with it</em>): Add two other operations for protecting and unprotecting objects from garbage collection.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">protect</span>(<span style="color:#902000">void</span> <span style="color:#666">*</span>p)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> *protect(<span style="color:#000080;font-weight:bold">void</span> *p)
 {
-  <span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>rc <span style="color:#666">=</span> p;
+  <span style="color:#000080;font-weight:bold">struct</span> refcount *rc = p;
   assert(rc);
-  rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>count<span style="color:#666">+</span><span style="color:#666">+</span>;
-  <span style="color:#007020;font-weight:bold">return</span> rc;
+  rc-&gt;count++;
+  <span style="color:#000080;font-weight:bold">return</span> rc;
 }
 
-<span style="color:#902000">void</span> <span style="color:#666">*</span><span style="color:#06287e">unprotect</span>(<span style="color:#902000">void</span> <span style="color:#666">*</span>p)
+<span style="color:#000080;font-weight:bold">void</span> *unprotect(<span style="color:#000080;font-weight:bold">void</span> *p)
 {
-  <span style="color:#007020;font-weight:bold">struct</span> refcount <span style="color:#666">*</span>rc <span style="color:#666">=</span> p;
-  assert(rc <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>count <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>);
-  rc<span style="color:#666">-</span><span style="color:#666">&gt;</span>count<span style="color:#666">-</span><span style="color:#666">-</span>;
-  <span style="color:#007020;font-weight:bold">return</span> rc;
+  <span style="color:#000080;font-weight:bold">struct</span> refcount *rc = p;
+  assert(rc &amp;&amp; rc-&gt;count &gt; <span style="color:#00f">0</span>);
+  rc-&gt;count--;
+  <span style="color:#000080;font-weight:bold">return</span> rc;
 }
 </code></pre></div><p>They are essentially <code>incref()</code> and <code>decref()</code>, but they should never be called with a NULL pointer, and <code>unprotect()</code> doesn’t free its input if the reference reaches zero.</p>
 <p>Now, our functions can look like</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">length</span>(list x, <span style="color:#902000">int</span> acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> length(list x, <span style="color:#000080;font-weight:bold">int</span> acc)
 {
-  assert(<span style="color:#666">!</span>is_error(x));
+  assert(!is_error(x));
   incref(x);
 
-  <span style="color:#902000">int</span> retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) retval <span style="color:#666">=</span> acc;
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> length(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, acc <span style="color:#666">+</span> <span style="color:#40a070">1</span>);
+  <span style="color:#000080;font-weight:bold">int</span> retval;
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) retval = acc;
+  <span style="color:#000080;font-weight:bold">else</span> retval = length(x-&gt;next, acc + <span style="color:#00f">1</span>);
 
   decref(x);
-  <span style="color:#007020;font-weight:bold">return</span> retval;
+  <span style="color:#000080;font-weight:bold">return</span> retval;
 }
 
-list <span style="color:#06287e">reverse</span>(list x, list acc)
+list reverse(list x, list acc)
 {
   incref(x); incref(acc);
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(acc)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(acc)) {
     decref(x); decref(acc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
   list retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) retval <span style="color:#666">=</span> protect(acc);
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> protect(reverse(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, acc)));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) retval = protect(acc);
+  <span style="color:#000080;font-weight:bold">else</span> retval = protect(reverse(x-&gt;next, cons(x-&gt;value, acc)));
 
   decref(x); decref(acc);
-  <span style="color:#007020;font-weight:bold">return</span> unprotect(retval);
+  <span style="color:#000080;font-weight:bold">return</span> unprotect(retval);
 }
 
-list <span style="color:#06287e">concat</span>(list x, list y)
+list concat(list x, list y)
 {
   incref(x); incref(y);
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(y)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(y)) {
     decref(x); decref(y);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
   list retval;
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) retval <span style="color:#666">=</span> protect(y);
-  <span style="color:#007020;font-weight:bold">else</span> retval <span style="color:#666">=</span> protect(cons(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value, concat(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next, y)));
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) retval = protect(y);
+  <span style="color:#000080;font-weight:bold">else</span> retval = protect(cons(x-&gt;value, concat(x-&gt;next, y)));
 
   decref(x); decref(y);
-  <span style="color:#007020;font-weight:bold">return</span> unprotect(retval);
+  <span style="color:#000080;font-weight:bold">return</span> unprotect(retval);
 }
 </code></pre></div><p>and they correctly handle garbage collection and errors.</p>
 <p>It still bothers me that they are not tail recursive, but with <code>protect()</code> and <code>unprotect()</code> can I make them so (and consequently, I can write a loop version if I so desired).</p>
 <p>Take <code>length()</code>:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">length</span>(list x, <span style="color:#902000">int</span> acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> length(list x, <span style="color:#000080;font-weight:bold">int</span> acc)
 {
-  assert(<span style="color:#666">!</span>is_error(x));
+  assert(!is_error(x));
   incref(x);
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> acc;
+    <span style="color:#000080;font-weight:bold">return</span> acc;
   }
-  <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> protect(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next);
+  <span style="color:#000080;font-weight:bold">else</span> {
+    list next = protect(x-&gt;next);
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> length(unprotect(next), acc <span style="color:#666">+</span> <span style="color:#40a070">1</span>);
+    <span style="color:#000080;font-weight:bold">return</span> length(unprotect(next), acc + <span style="color:#00f">1</span>);
   }
 }
 </code></pre></div><p>We have to <code>incref(x)</code> the argument, which also means that we must <code>decref(x)</code> it. Yes, incrementing and decrementing leaves us where we started, but if <code>x</code> is an object we should free, the <code>decref(x)</code> will handle it, so the alternative to counting up and then down is to check the count in <code>x</code> and freeing it. This is just as simple. The accumulator is an integer, so it is not an object we should protect or free, but for the recursive call, we need to get the <code>next</code> pointer in <code>x</code>, and we need to protect it if <code>x</code> is freed in <code>decref(x)</code>. So we protect it, decrement <code>x</code>, and then unprotect in the recursive call. Pretty it isn’t, but it works.</p>
 <p>With <code>reverse()</code> we have two input lists to increment/decrement. In case of error input, this will free them. In the base case of the recursion, we should return the accumulator, so we cannot decrement it. Instead, we unprotect it, because we do have to lower its reference count since we increased it.</p>
 <p>In the recursive case, we need the <code>next</code> link, protected of course, since we might free <code>x</code>, and in the recursive call, we must unprotect the protected <code>next</code> and the accumulator that we <code>incref()</code>’ed at the top of the function.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">reverse</span>(list x, list acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list reverse(list x, list acc)
 {
   incref(x); incref(acc);
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(acc)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(acc)) {
     decref(x); decref(acc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> unprotect(acc);
-  } <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> protect(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next);
-    <span style="color:#902000">int</span> value <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+    <span style="color:#000080;font-weight:bold">return</span> unprotect(acc);
+  } <span style="color:#000080;font-weight:bold">else</span> {
+    list next = protect(x-&gt;next);
+    <span style="color:#000080;font-weight:bold">int</span> value = x-&gt;value;
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> reverse(unprotect(next),
+    <span style="color:#000080;font-weight:bold">return</span> reverse(unprotect(next),
                    cons(value, unprotect(acc)));
   }
 }
 </code></pre></div><p>Here is <code>concat()</code>:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">concat</span>(list x, list y)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list concat(list x, list y)
 {
   incref(x); incref(y);
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(y)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(y)) {
     decref(x); decref(y);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> unprotect(y);
-  }<span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> protect(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next);
-    <span style="color:#902000">int</span> value <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+    <span style="color:#000080;font-weight:bold">return</span> unprotect(y);
+  }<span style="color:#000080;font-weight:bold">else</span> {
+    list next = protect(x-&gt;next);
+    <span style="color:#000080;font-weight:bold">int</span> value = x-&gt;value;
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> cons(value,
+    <span style="color:#000080;font-weight:bold">return</span> cons(value,
                 concat(unprotect(next),
                        unprotect(y)));
   }
 }
 </code></pre></div><p>and the tail recursive version:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">prepend_list</span>(list x, list acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list prepend_list(list x, list acc)
 {
   incref(x); incref(acc);
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(acc)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(acc)) {
     decref(x); decref(acc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> unprotect(acc);
-  } <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> protect(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next);
-    <span style="color:#902000">int</span> value <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+    <span style="color:#000080;font-weight:bold">return</span> unprotect(acc);
+  } <span style="color:#000080;font-weight:bold">else</span> {
+    list next = protect(x-&gt;next);
+    <span style="color:#000080;font-weight:bold">int</span> value = x-&gt;value;
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> prepend_list(unprotect(next),
+    <span style="color:#000080;font-weight:bold">return</span> prepend_list(unprotect(next),
                         cons(value, unprotect(acc)));
   }
 }
-list <span style="color:#06287e">concat_tr</span>(list x, list y, list acc)
+list concat_tr(list x, list y, list acc)
 {
   incref(x); incref(y); incref(acc);
-  <span style="color:#007020;font-weight:bold">if</span> (is_error(x) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(y) <span style="color:#666">|</span><span style="color:#666">|</span> is_error(acc)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_error(x) || is_error(y) || is_error(acc)) {
     decref(x); decref(y); decref(acc);
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
   }
 
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> prepend_list(unprotect(acc), unprotect(y));
-  } <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> protect(x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next);
-    <span style="color:#902000">int</span> value <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+    <span style="color:#000080;font-weight:bold">return</span> prepend_list(unprotect(acc), unprotect(y));
+  } <span style="color:#000080;font-weight:bold">else</span> {
+    list next = protect(x-&gt;next);
+    <span style="color:#000080;font-weight:bold">int</span> value = x-&gt;value;
     decref(x);
-    <span style="color:#007020;font-weight:bold">return</span> concat_tr(unprotect(next),
+    <span style="color:#000080;font-weight:bold">return</span> concat_tr(unprotect(next),
                      unprotect(y),
                      cons(value, unprotect(acc)));
   }
@@ -717,75 +718,75 @@ list <span style="color:#06287e">concat_tr</span>(list x, list y, list acc)
 <p>Aside from efficiency, I have two problems with this solution. It takes a lot of mental energy to keep track of the protection/unprotection, because you have to remember to decrement the right objects, and only the right objects. And the code is ugly.</p>
 <p>I can improve on the second, to some degree, if I go crazy with macros. My idea is this: I collect the input variables in an array, so I can automate incrementing and decrementing of those.</p>
 <p>This macro creates an array with the variables you give it. It should go at the top of a function. I know, I know, it is frowned upon to declare variables in macros, but I need it here. I picked a name with an initial underscore—which goes against the rules—but it is my way to get around the problem.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020">#</span><span style="color:#007020">define REFCOUNT_VARS(...) \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  void *_refcount_vars_[] = { __VA_ARGS__ };</span><span style="color:#007020">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define REFCOUNT_VARS(...) \
+</span><span style="color:#008080">  void *_refcount_vars_[] = { __VA_ARGS__ };
 </span></code></pre></div><p>Now I can write macros that increment and decrement all the variables.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020">#</span><span style="color:#007020">define REFCOUNT_ALL_VARS(func)              \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  do {                                       \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    for (int i = 0;                          \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">         i &lt; sizeof _refcount_vars_ </span><span style="color:#007020">/</span><span style="color:#007020">        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">             sizeof *_refcount_vars_;        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">         i++) {                              \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">      func(_refcount_vars_[i]);              \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    }                                        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  } while(0)</span><span style="color:#007020">
-</span><span style="color:#007020"></span>
-<span style="color:#007020">#</span><span style="color:#007020">define INCREF_VARS()                        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  REFCOUNT_ALL_VARS(incref)</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">#</span><span style="color:#007020">define DECREF_VARS()                        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  REFCOUNT_ALL_VARS(decref)</span><span style="color:#007020">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define REFCOUNT_ALL_VARS(func)              \
+</span><span style="color:#008080">  do {                                       \
+</span><span style="color:#008080">    for (int i = 0;                          \
+</span><span style="color:#008080">         i &lt; sizeof _refcount_vars_ /        \
+</span><span style="color:#008080">             sizeof *_refcount_vars_;        \
+</span><span style="color:#008080">         i++) {                              \
+</span><span style="color:#008080">      func(_refcount_vars_[i]);              \
+</span><span style="color:#008080">    }                                        \
+</span><span style="color:#008080">  } while(0)
+</span><span style="color:#008080"></span>
+<span style="color:#008080">#define INCREF_VARS()                        \
+</span><span style="color:#008080">  REFCOUNT_ALL_VARS(incref)
+</span><span style="color:#008080">#define DECREF_VARS()                        \
+</span><span style="color:#008080">  REFCOUNT_ALL_VARS(decref)
 </span></code></pre></div><p>I can write another that runs through them, and tests if any of them is NULL. That is how we indicate errors, so if one is NULL, we decrement all input references and return NULL.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020">#</span><span style="color:#007020">define CHECK_INPUT(func)                    \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  do {                                       \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    for (int i = 0;                          \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">         i &lt; sizeof _refcount_vars_ </span><span style="color:#007020">/</span><span style="color:#007020">        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">             sizeof *_refcount_vars_;        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">         i++) {                              \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">      if (!_refcount_vars_[i]) {             \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">        DECREF_VARS();                       \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">        return 0;                            \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">      }                                      \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    }                                        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  } while(0)</span><span style="color:#007020">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CHECK_INPUT(func)                    \
+</span><span style="color:#008080">  do {                                       \
+</span><span style="color:#008080">    for (int i = 0;                          \
+</span><span style="color:#008080">         i &lt; sizeof _refcount_vars_ /        \
+</span><span style="color:#008080">             sizeof *_refcount_vars_;        \
+</span><span style="color:#008080">         i++) {                              \
+</span><span style="color:#008080">      if (!_refcount_vars_[i]) {             \
+</span><span style="color:#008080">        DECREF_VARS();                       \
+</span><span style="color:#008080">        return 0;                            \
+</span><span style="color:#008080">      }                                      \
+</span><span style="color:#008080">    }                                        \
+</span><span style="color:#008080">  } while(0)
 </span></code></pre></div><p>We wrap these up in a macro, <code>ENTER</code>, that you should call at the beginning of all functions, with the variables you want to manage with reference counting.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020">#</span><span style="color:#007020">define ENTER(...)                           \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    REFCOUNT_VARS(__VA_ARGS__);              \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    INCREF_VARS();                           \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    CHECK_INPUT();</span><span style="color:#007020">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define ENTER(...)                           \
+</span><span style="color:#008080">    REFCOUNT_VARS(__VA_ARGS__);              \
+</span><span style="color:#008080">    INCREF_VARS();                           \
+</span><span style="color:#008080">    CHECK_INPUT();
 </span></code></pre></div><p>We should also safely return from functions, so we want some help with that as well. It is easy to write a macro that decrements the input before we return</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020">#</span><span style="color:#007020">define RETURN(expr) \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  do { DECREF_VARS(); return (expr); } while(0)</span><span style="color:#007020">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define RETURN(expr) \
+</span><span style="color:#008080">  do { DECREF_VARS(); return (expr); } while(0)
 </span></code></pre></div><p>but we can’t use it if we need to protect some of the variables. For that, here is a macro that takes variables to protect, call <code>protect()</code> on all of them, then decrement those variables we declared with <code>ENTER()</code>, and unprotect then afterwards.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020">#</span><span style="color:#007020">define REFCOUNT_ALL_PROTECTED(func)         \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  do {                                       \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    for (int i = 0;                          \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">         i &lt; sizeof _refcount_protected_ </span><span style="color:#007020">/</span><span style="color:#007020">   \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">             sizeof *_refcount_protected_;   \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">         i++) {                              \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">      func(_refcount_protected_[i]);         \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    }                                        \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  } while(0)</span><span style="color:#007020">
-</span><span style="color:#007020"></span>
-<span style="color:#007020">#</span><span style="color:#007020">define PROTECTED_EXIT(...)                          \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  do {                                               \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    void *_refcount_protected_[] = { __VA_ARGS__ };  \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    REFCOUNT_ALL_PROTECTED(protect);                 \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    DECREF_VARS();                                   \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">    REFCOUNT_ALL_PROTECTED(unprotect);               \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  } while(0)</span><span style="color:#007020">
-</span><span style="color:#007020"></span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define REFCOUNT_ALL_PROTECTED(func)         \
+</span><span style="color:#008080">  do {                                       \
+</span><span style="color:#008080">    for (int i = 0;                          \
+</span><span style="color:#008080">         i &lt; sizeof _refcount_protected_ /   \
+</span><span style="color:#008080">             sizeof *_refcount_protected_;   \
+</span><span style="color:#008080">         i++) {                              \
+</span><span style="color:#008080">      func(_refcount_protected_[i]);         \
+</span><span style="color:#008080">    }                                        \
+</span><span style="color:#008080">  } while(0)
+</span><span style="color:#008080"></span>
+<span style="color:#008080">#define PROTECTED_EXIT(...)                          \
+</span><span style="color:#008080">  do {                                               \
+</span><span style="color:#008080">    void *_refcount_protected_[] = { __VA_ARGS__ };  \
+</span><span style="color:#008080">    REFCOUNT_ALL_PROTECTED(protect);                 \
+</span><span style="color:#008080">    DECREF_VARS();                                   \
+</span><span style="color:#008080">    REFCOUNT_ALL_PROTECTED(unprotect);               \
+</span><span style="color:#008080">  } while(0)
+</span><span style="color:#008080"></span>
 </code></pre></div><p>If you want to return, you can combine the protection and return statement with:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020">#</span><span style="color:#007020">define RETURN_PROTECTED(expr, ...) \</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">  do { PROTECTED_EXIT(__VA_ARGS__); return (expr); } while(0)</span><span style="color:#007020">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define RETURN_PROTECTED(expr, ...) \
+</span><span style="color:#008080">  do { PROTECTED_EXIT(__VA_ARGS__); return (expr); } while(0)
 </span></code></pre></div><p>With these macros, the <code>length()</code> function looks like:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">length</span>(list x, <span style="color:#902000">int</span> acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> length(list x, <span style="color:#000080;font-weight:bold">int</span> acc)
 {
   ENTER(x);
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) RETURN(acc);
-  <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next;
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) RETURN(acc);
+  <span style="color:#000080;font-weight:bold">else</span> {
+    list next = x-&gt;next;
     RETURN_PROTECTED(
-      length(next, acc <span style="color:#666">+</span> <span style="color:#40a070">1</span>),
+      length(next, acc + <span style="color:#00f">1</span>),
       next
     );
   }
@@ -793,14 +794,14 @@ list <span style="color:#06287e">concat_tr</span>(list x, list y, list acc)
 </code></pre></div><p>It is far from as pretty as it was before we worried about memory management, but it is also not as bad as before we had the variables. Well, not quite. Not far from it, though.</p>
 <p>But we only have one place where we need to specify which variables should be freed by the function, and that is the <code>ENTER()</code> macro. If we use <code>RETURN()</code> or <code>RETURN_PROTECTED()</code>, the variables are automatically <code>decref()</code>’ed when we return. Yes, we still have to keep track of which variables should be protected, but that is in the same expression, RETURN_PROTECTED, as where we use them, so I tell myself that it will be easier.</p>
 <p>The <code>reverse()</code> function looks like:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">reverse</span>(list x, list acc)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list reverse(list x, list acc)
 {
   ENTER(x, acc);
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     RETURN_PROTECTED(acc, acc);
-  } <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next;
-    <span style="color:#902000">int</span> value <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+  } <span style="color:#000080;font-weight:bold">else</span> {
+    list next = x-&gt;next;
+    <span style="color:#000080;font-weight:bold">int</span> value = x-&gt;value;
     RETURN_PROTECTED(
       reverse(next, cons(value, acc)),
       next, acc
@@ -809,14 +810,14 @@ list <span style="color:#06287e">concat_tr</span>(list x, list y, list acc)
 }
 </code></pre></div><p>We still need to get the <code>next</code> and <code>value</code> from <code>x</code> before <code>RETURN_PROTECTED()</code>, because we cannot access <code>x</code> after we have decremented it, but we are not terribly far from the clean version of the function.</p>
 <p>The remaining functions are similar:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list <span style="color:#06287e">concat</span>(list x, list y)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">list concat(list x, list y)
 {
   ENTER(x, y);
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     RETURN_PROTECTED(y, y);
-  } <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next;
-    <span style="color:#902000">int</span> value <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+  } <span style="color:#000080;font-weight:bold">else</span> {
+    list next = x-&gt;next;
+    <span style="color:#000080;font-weight:bold">int</span> value = x-&gt;value;
     RETURN_PROTECTED(
       cons(value, concat(next, y)),
       next, y
@@ -824,32 +825,32 @@ list <span style="color:#06287e">concat_tr</span>(list x, list y, list acc)
   }
 }
 
-list <span style="color:#06287e">prepend_list</span>(list x, list acc)
+list prepend_list(list x, list acc)
 {
   ENTER(x, acc);
 
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     RETURN_PROTECTED(acc, acc);
-  } <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next;
-    <span style="color:#902000">int</span> value <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+  } <span style="color:#000080;font-weight:bold">else</span> {
+    list next = x-&gt;next;
+    <span style="color:#000080;font-weight:bold">int</span> value = x-&gt;value;
     RETURN_PROTECTED(
       prepend_list(next, cons(value, acc)),
       next, acc
     );
   }
 }
-list <span style="color:#06287e">concat_tr</span>(list x, list y, list acc)
+list concat_tr(list x, list y, list acc)
 {
   ENTER(x, y, acc);
-  <span style="color:#007020;font-weight:bold">if</span> (is_nil(x)) {
+  <span style="color:#000080;font-weight:bold">if</span> (is_nil(x)) {
     RETURN_PROTECTED(
       prepend_list(acc, y),
       acc, y
     );
-  } <span style="color:#007020;font-weight:bold">else</span> {
-    list next <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>next;
-    <span style="color:#902000">int</span> value <span style="color:#666">=</span> x<span style="color:#666">-</span><span style="color:#666">&gt;</span>value;
+  } <span style="color:#000080;font-weight:bold">else</span> {
+    list next = x-&gt;next;
+    <span style="color:#000080;font-weight:bold">int</span> value = x-&gt;value;
     RETURN_PROTECTED(
       concat_tr(next, y, cons(value, acc)),
       next, y, acc
@@ -942,7 +943,7 @@ list <span style="color:#06287e">concat_tr</span>(list x, list y, list acc)
 
 </main>
     <footer>
-        <h6>Copyright © 2018 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

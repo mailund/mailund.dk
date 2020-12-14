@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.63.2" />
+  
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -165,11 +166,11 @@ if (!doNotTrack) {
 <p><strong>Exercise:</strong> Insertion sort runs in O(n²) when the input is sorted in the reverse order, but can process sorted sequences in O(n). If we can recognise that the input is ordered in reverse, we could first reverse the sequence and then run the insertion sort. Show that we can reverse a sequence, in place, in O(n). Try to adapt insertion sort, so you first recognise consecutive runs of non-increasing elements, then reverse these before you run insertion sort on the result. Show that the worst-case running time is still O(n²), but try to compare the modified algorithm with the traditional insertion sort to see if it works better in practice.</p>
 <h2 id="bucket-sort">Bucket sort</h2>
 <p><strong>Exercise:</strong> Argue why the inner loop in</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">result_keys, result_values <span style="color:#666">=</span> [], []
-<span style="color:#007020;font-weight:bold">for</span> key <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(m):
-	<span style="color:#007020;font-weight:bold">for</span> val <span style="color:#007020;font-weight:bold">in</span> buckets[key]:
-		result_keys<span style="color:#666">.</span>append(key)
-		result_values<span style="color:#666">.</span>append(val)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">result_keys, result_values = [], []
+<span style="color:#000080;font-weight:bold">for</span> key <span style="font-weight:bold">in</span> range(m):
+	<span style="color:#000080;font-weight:bold">for</span> val <span style="font-weight:bold">in</span> buckets[key]:
+		result_keys.append(key)
+		result_values.append(val)
 </code></pre></div><p>only executes n times.</p>
 <p><strong>Exercise:</strong> Argue why the bucket sort actually sorts the input.</p>
 <h1 id="answers">Answers</h1>
@@ -187,37 +188,37 @@ if (!doNotTrack) {
 <h2 id="bubble-sort-1">Bubble sort</h2>
 <p><strong>Exercise:</strong> Since O₁ and O₂ tells us that the last j elements are already the largest numbers and are already sorted, we do not need to have the inner loop iterate through these last j elements. How would you exploit this to improve the running time of bubble sort? The worst-case behaviour will not improve, but you can change the running time to about half of the one we have above. Show that this is the case.</p>
 <p>We can modify the code just a little bit by replacing the outer <code>while</code> loop with a <code>for</code> loop that runs from zero to the length of the input (those are the maximum number of iterations the <code>while</code> loop could run). Since we know that after iteration <em>j</em> the last <em>j</em> elements are already sorted, we can cap the inner <code>for</code>-loop at <code>len(x) - j</code>.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">for</span> j <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#007020">len</span>(x)):
-    swapped <span style="color:#666">=</span> False
-    <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>,<span style="color:#007020">len</span>(x) <span style="color:#666">-</span> j):
-        <span style="color:#007020;font-weight:bold">if</span> x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>] <span style="color:#666">&gt;</span> x[i]:
-            x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>], x[i] <span style="color:#666">=</span> x[i], x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>]
-            swapped <span style="color:#666">=</span> True
-    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020;font-weight:bold">not</span> swapped:
-        <span style="color:#007020;font-weight:bold">break</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(len(x)):
+    swapped = False
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(<span style="color:#00f">1</span>,len(x) - j):
+        <span style="color:#000080;font-weight:bold">if</span> x[i-<span style="color:#00f">1</span>] &gt; x[i]:
+            x[i-<span style="color:#00f">1</span>], x[i] = x[i], x[i-<span style="color:#00f">1</span>]
+            swapped = True
+    <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> swapped:
+        <span style="color:#000080;font-weight:bold">break</span>
 </code></pre></div><p>Where the first version of bubble-sort ran through the entire list in each inner loop, taking time <em>n</em> always, the second version takes time <em>n</em> the first time it is run, <em>n-1</em> the second, <em>n-2</em> the third, and so on. This sum is n(n+1)/2, so about one half of the n² of the first version.</p>
 <p><strong>Exercise:</strong> With cocktail sort, after running the outer loop j times, both the first j and the last j elements are in their final positions. Show that this is the case.</p>
 <p>The argument is really the same as for bubble-sort and the last j elements. After the cocktail sort has iterated from left to right in iteration j, the j largest elements are sorted and in their right position. After iterating from right to left, the smallest j elements are sorted and at the right positions.</p>
 <p><strong>Exercise:</strong> Knowing that both the first and last j elements are already in their right position can be used to iterate over fewer elements in the inner loops. Modify the algorithm to exploit this. The worst case complexity will still be O(n²), but you will make fewer comparisons. How much do you reduce the number of comparisons by?</p>
 <p>We can modify the cocktail shaker sort the same way we did bubble sort, skip the last and the first j elements:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#666">=</span> x[:]
-<span style="color:#007020;font-weight:bold">for</span> j <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#007020">len</span>(x)):
-    swapped <span style="color:#666">=</span> False
-    <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">1</span>,<span style="color:#007020">len</span>(x) <span style="color:#666">-</span> j):
-        <span style="color:#007020;font-weight:bold">if</span> x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>] <span style="color:#666">&gt;</span> x[i]:
-            x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>], x[i] <span style="color:#666">=</span> x[i], x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>]
-            swapped <span style="color:#666">=</span> True
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x = x[:]
+<span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(len(x)):
+    swapped = False
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(<span style="color:#00f">1</span>,len(x) - j):
+        <span style="color:#000080;font-weight:bold">if</span> x[i-<span style="color:#00f">1</span>] &gt; x[i]:
+            x[i-<span style="color:#00f">1</span>], x[i] = x[i], x[i-<span style="color:#00f">1</span>]
+            swapped = True
 				
-    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020;font-weight:bold">not</span> swapped:
-        <span style="color:#007020;font-weight:bold">break</span>
+    <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> swapped:
+        <span style="color:#000080;font-weight:bold">break</span>
 
-    <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#007020">len</span>(x) <span style="color:#666">-</span> j <span style="color:#666">-</span> <span style="color:#40a070">1</span>, j <span style="color:#666">+</span> <span style="color:#40a070">1</span>, <span style="color:#666">-</span><span style="color:#40a070">1</span>):
-        <span style="color:#007020;font-weight:bold">if</span> x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>] <span style="color:#666">&gt;</span> x[i]:
-            x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>], x[i] <span style="color:#666">=</span> x[i], x[i<span style="color:#666">-</span><span style="color:#40a070">1</span>]
-            swapped <span style="color:#666">=</span> True
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(len(x) - j - <span style="color:#00f">1</span>, j + <span style="color:#00f">1</span>, -<span style="color:#00f">1</span>):
+        <span style="color:#000080;font-weight:bold">if</span> x[i-<span style="color:#00f">1</span>] &gt; x[i]:
+            x[i-<span style="color:#00f">1</span>], x[i] = x[i], x[i-<span style="color:#00f">1</span>]
+            swapped = True
 
-    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020;font-weight:bold">not</span> swapped:
-        <span style="color:#007020;font-weight:bold">break</span>
+    <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> swapped:
+        <span style="color:#000080;font-weight:bold">break</span>
 </code></pre></div><p>With this version we reduce the interval by two in each outer loop, but we run two sweeps for each outer loop, one left-to-right and one right-to-left. Therefore, if we run the outer loop n times, the running time is 2(n + (n-2) + (n-4) + … 2) which is 2 × n(n+2)/4 = n(n+2)/2.</p>
 <p>This worst-case running time of this algorithm is worse than the improved bubble sort.</p>
 <p>The idea with cocktail sort is that we run the outer loop fewer times than bubble sort does. With bubble sort, we know that we get at least one item to its correct location in each outer iteration. With cocktail sort, we get at least two items to the right position. Since we terminate as soon as we see no swaps, this means that the maximum number of iterations of the outer loop in bubble sort is n, but for cocktail sort it is n/2.</p>
@@ -226,22 +227,22 @@ if (!doNotTrack) {
 <h2 id="comparison-sort-comparison-1">Comparison sort comparison</h2>
 <p><strong>Exercise:</strong> Insertion sort runs in O(n²) when the input is sorted in the reverse order, but can process sorted sequences in O(n). If we can recognise that the input is ordered in reverse, we could first reverse the sequence and then run the insertion sort. Show that we can reverse a sequence, in place, in O(n). Try to adapt insertion sort, so you first recognise consecutive runs of non-increasing elements, then reverse these before you run insertion sort on the result. Show that the worst-case running time is still O(n²), but try to compare the modified algorithm with the traditional insertion sort to see if it works better in practice.</p>
 <p>You can reverse decreasing intervals like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">k <span style="color:#666">=</span> <span style="color:#40a070">0</span>
-<span style="color:#007020;font-weight:bold">while</span> k <span style="color:#666">&lt;</span> <span style="color:#007020">len</span>(x) <span style="color:#666">-</span> <span style="color:#40a070">1</span>:
-    <span style="color:#60a0b0;font-style:italic"># locate decreasing interval</span>
-    <span style="color:#007020;font-weight:bold">for</span> l <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(k <span style="color:#666">+</span> <span style="color:#40a070">1</span>, <span style="color:#007020">len</span>(x)):
-        <span style="color:#007020;font-weight:bold">if</span> x[l] <span style="color:#666">&gt;</span><span style="color:#666">=</span> x[l <span style="color:#666">-</span> <span style="color:#40a070">1</span>]: <span style="color:#60a0b0;font-style:italic"># no longer decreasing</span>
-            <span style="color:#007020;font-weight:bold">break</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">k = <span style="color:#00f">0</span>
+<span style="color:#000080;font-weight:bold">while</span> k &lt; len(x) - <span style="color:#00f">1</span>:
+    <span style="color:#080;font-style:italic"># locate decreasing interval</span>
+    <span style="color:#000080;font-weight:bold">for</span> l <span style="font-weight:bold">in</span> range(k + <span style="color:#00f">1</span>, len(x)):
+        <span style="color:#000080;font-weight:bold">if</span> x[l] &gt;= x[l - <span style="color:#00f">1</span>]: <span style="color:#080;font-style:italic"># no longer decreasing</span>
+            <span style="color:#000080;font-weight:bold">break</span>
     
-    <span style="color:#60a0b0;font-style:italic"># reverse it</span>
-    <span style="color:#007020;font-weight:bold">if</span> l <span style="color:#666">&gt;</span> k <span style="color:#666">+</span> <span style="color:#40a070">1</span>:
-        <span style="color:#007020;font-weight:bold">print</span>(k, l, x[k:l])
-    i, j <span style="color:#666">=</span> k, l <span style="color:#666">-</span> <span style="color:#40a070">1</span>
-    <span style="color:#007020;font-weight:bold">while</span> j <span style="color:#666">&gt;</span> i:
-        x[i], x[j] <span style="color:#666">=</span> x[j], x[i]
-        i <span style="color:#666">+</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>; j <span style="color:#666">-</span><span style="color:#666">=</span> <span style="color:#40a070">1</span>
+    <span style="color:#080;font-style:italic"># reverse it</span>
+    <span style="color:#000080;font-weight:bold">if</span> l &gt; k + <span style="color:#00f">1</span>:
+        <span style="color:#000080;font-weight:bold">print</span>(k, l, x[k:l])
+    i, j = k, l - <span style="color:#00f">1</span>
+    <span style="color:#000080;font-weight:bold">while</span> j &gt; i:
+        x[i], x[j] = x[j], x[i]
+        i += <span style="color:#00f">1</span>; j -= <span style="color:#00f">1</span>
 
-    k <span style="color:#666">=</span> l <span style="color:#60a0b0;font-style:italic"># skip past the interval we just reversed</span>
+    k = l <span style="color:#080;font-style:italic"># skip past the interval we just reversed</span>
 
 </code></pre></div><p>I use a <code>while</code> loop for <code>k</code> because I want to update it to jump past intervals we have reversed. If we do not do this, then we run through them twice, just the second time all decreasing intervals are of length one… we might as well skip them.</p>
 <p>I stop at <code>len(x) - 1</code> instead of <code>len(x)</code> because we do not need to reverse an interval of length one; it also guarantees that we never end up with <code>k == l</code>—this could happen if <code>k == len(x) - 1</code> because we then make <code>l</code> iterate over <code>range(len(x), len(x))</code>. This doesn’t change <code>l</code>, and if <code>k == len(x) - 1</code> it is because <code>l</code> had this value when we assigned it to <code>k</code>. We do not want that, so therefore this condition in the <code>while</code> loop.</p>
@@ -249,11 +250,11 @@ if (!doNotTrack) {
 <p>It should be fairly easy to see that the reversal runs in linear time (in the length of the interval we reverse). To see that the entire algorithm runs in linear time, observe that the outer loop segments the sequence into non-overlapping intervals that we reverse. In each iteration, we identify an interval <code>[k,l)</code> that we then reverse (in time <code>O(l-k)</code>), and then we increment <code>k</code> to <code>l</code> so the outer loop never sees this interval again.</p>
 <h2 id="bucket-sort-1">Bucket sort</h2>
 <p><strong>Exercise:</strong> Argue why the inner loop in</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">result_keys, result_values <span style="color:#666">=</span> [], []
-<span style="color:#007020;font-weight:bold">for</span> key <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(m):
-	<span style="color:#007020;font-weight:bold">for</span> val <span style="color:#007020;font-weight:bold">in</span> buckets[key]:
-		result_keys<span style="color:#666">.</span>append(key)
-		result_values<span style="color:#666">.</span>append(val)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">result_keys, result_values = [], []
+<span style="color:#000080;font-weight:bold">for</span> key <span style="font-weight:bold">in</span> range(m):
+	<span style="color:#000080;font-weight:bold">for</span> val <span style="font-weight:bold">in</span> buckets[key]:
+		result_keys.append(key)
+		result_values.append(val)
 </code></pre></div><p>only executes n times.</p>
 <p>This is almost trivial to see. We insert <code>n</code> elements in the various buckets <em>in total</em>. We never extract more elements from the buckets than we inserted. There you are, we do not iteration through the inner loop more than <code>n</code> times. This doesn’t mean that we never test the loop condition more than once, though. We try to iterate through <code>buckets[key]</code> for each <code>key</code>—including those buckets that are empty. This is the reason that the algorithm runs in O(n + m) and not just O(n).</p>
 <p><strong>Exercise:</strong> Argue why the bucket sort actually sorts the input.</p>
@@ -339,7 +340,7 @@ if (!doNotTrack) {
 
 </main>
     <footer>
-        <h6>Copyright © 2018 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

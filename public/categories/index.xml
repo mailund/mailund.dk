@@ -5,16 +5,12 @@
     <link>https://mailund.dk/categories/</link>
     <description>Recent content in Categories on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Thu, 12 Nov 2020 05:08:49 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <lastBuildDate>Mon, 14 Dec 2020 04:48:38 +0100</lastBuildDate><atom:link href="https://mailund.dk/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Programming</title>
       <link>https://mailund.dk/categories/programming/</link>
-      <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
+      <pubDate>Mon, 14 Dec 2020 04:48:38 +0100</pubDate>
       
       <guid>https://mailund.dk/categories/programming/</guid>
       <description></description>
@@ -26,6 +22,15 @@
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
       
       <guid>https://mailund.dk/categories/writing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Non-standard evaluation</title>
+      <link>https://mailund.dk/categories/non-standard-evaluation/</link>
+      <pubDate>Wed, 03 Oct 2018 09:10:01 +0200</pubDate>
+      
+      <guid>https://mailund.dk/categories/non-standard-evaluation/</guid>
       <description></description>
     </item>
     

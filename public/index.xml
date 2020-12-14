@@ -5,12 +5,8 @@
     <link>https://mailund.dk/</link>
     <description>Recent content on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018 - Thomas Mailund</copyright>
-    <lastBuildDate>Thu, 12 Nov 2020 05:08:49 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <lastBuildDate>Mon, 14 Dec 2020 04:48:38 +0100</lastBuildDate><atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://mailund.dk/about/</link>
@@ -48,6 +44,15 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
       
       <guid>https://mailund.dk/software/</guid>
       <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
+    </item>
+    
+    <item>
+      <title>Advent of Code 2020 — days 01-05</title>
+      <link>https://mailund.dk/posts/aoc-2020-1/</link>
+      <pubDate>Mon, 14 Dec 2020 04:48:38 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-1/</guid>
+      <description>While I wait for comments on the last chapters of my upcoming C-pointers book, I have some time on my hands. And since corona keeps me at home, I have to find something to keep me entertained.</description>
     </item>
     
     <item>
@@ -93,6 +98,42 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
       
       <guid>https://mailund.dk/posts/elegant-scipy/</guid>
       <description>I was a little disappointed about this. I had hoped it would give a good overview of Scipy, but instead, it is a bunch of examples that use it. It is not that the examples aren&amp;rsquo;t interesting.</description>
+    </item>
+    
+    <item>
+      <title>Lazy queues</title>
+      <link>https://mailund.dk/posts/lazy-queues/</link>
+      <pubDate>Thu, 04 Oct 2018 05:00:20 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/lazy-queues/</guid>
+      <description>The purpose of the lazy lists I implemented in my previous post was to build lazy queues. Lazy lists give you constant time concatenation, which can be useful in itself, but I needed it to implement persistent functional queues.</description>
+    </item>
+    
+    <item>
+      <title>Lazy lists</title>
+      <link>https://mailund.dk/posts/lazy-lists/</link>
+      <pubDate>Thu, 04 Oct 2018 05:00:15 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/lazy-lists/</guid>
+      <description>I wanted to write about lazy lists and lazy queues today, but I spent most of the day struggling with getting lazy evaluation to work. Finally, I convinced myself that something was broken in R, and I was justified in thinking that; upgrading to the most recent version resolved the issue.</description>
+    </item>
+    
+    <item>
+      <title>Promises, their environments, and how we evaluate them</title>
+      <link>https://mailund.dk/posts/promises-and-lazy-evaluation/</link>
+      <pubDate>Wed, 03 Oct 2018 09:10:01 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/promises-and-lazy-evaluation/</guid>
+      <description>Have you ever wondered how functions are evaluated? How you can have arguments that would raise errors, but do not, or how default arguments can be expressions that depend on function arguments that you haven&amp;rsquo;t seen yet when you define a function?</description>
+    </item>
+    
+    <item>
+      <title>Functional lists and queues</title>
+      <link>https://mailund.dk/posts/functional-lists-and-queues/</link>
+      <pubDate>Tue, 02 Oct 2018 05:00:10 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/functional-lists-and-queues/</guid>
+      <description>I wanted to write something about function parameters, how these are passed as so-called &amp;ldquo;promises&amp;rdquo;, how these have associated scopes (and the consequences of that), and how they give us lazy evaluation.</description>
     </item>
     
     <item>
@@ -152,6 +193,16 @@ A couple of readers made me aware of a typo in Functional Programming in R.</des
       <guid>https://mailund.dk/errata/fpinr/</guid>
       <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;
 Chapter 3 Nested Functions and Scopes, page 53ff.</description>
+    </item>
+    
+    <item>
+      <title>Environments and formulae</title>
+      <link>https://mailund.dk/posts/envs-and-formulae/</link>
+      <pubDate>Thu, 27 Sep 2018 04:41:19 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
+      <description>In my two previous posts on non-standard evaluation, Scoping rules and NSE and Overscoping and eval, I explained:
+ How R finds the bindings of variables by looking through chains of environments.</description>
     </item>
     
     <item>
@@ -310,51 +361,6 @@ It is this class that got me started on my book on the topic: Introduction to Co
       
       <guid>https://mailund.dk/errata/fdsinr/</guid>
       <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book. Pattern matching makes implementing data structures much easier.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/envs-and-formulae/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/functional-lists-and-queues/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/functional-lists-and-queues/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/lazy-lists/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/lazy-lists/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/lazy-queues/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/lazy-queues/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/promises-and-lazy-evaluation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/promises-and-lazy-evaluation/</guid>
-      <description></description>
     </item>
     
   </channel>

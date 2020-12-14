@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Thomas Mailund" />
-  <meta name="generator" content="Hugo 0.63.2" />
+  
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
@@ -169,34 +170,34 @@ if (!doNotTrack) {
 <p>I rewrote a couple of functions today to experiment with it.</p>
 <h3 id="reading-fastq-files">Reading FASTQ files</h3>
 <p>A simple example is iterating through reads in a FASTQ file. In my implementation from last year, I defined a callback that is called with each read and a function that iterates through a FASTQ file. The interface looks like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#06287e">void</span> (<span style="color:#666">*</span>fastq_read_callback_func)(
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>read_name,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>read,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>quality,
-    <span style="color:#902000">void</span> <span style="color:#666">*</span> callback_data
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">typedef</span> void (*fastq_read_callback_func)(
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *read_name,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *read,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *quality,
+    <span style="color:#000080;font-weight:bold">void</span> * callback_data
 );
 
-<span style="color:#902000">void</span> <span style="color:#06287e">scan_fastq</span>(
-    FILE <span style="color:#666">*</span>file,
+<span style="color:#000080;font-weight:bold">void</span> scan_fastq(
+    FILE *file,
     fastq_read_callback_func
     callback,
-    <span style="color:#902000">void</span> <span style="color:#666">*</span> callback_data
+    <span style="color:#000080;font-weight:bold">void</span> * callback_data
 );
 </code></pre></div><p>I implemented the function like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">scan_fastq</span>(
-    FILE <span style="color:#666">*</span>file,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> scan_fastq(
+    FILE *file,
     fastq_read_callback_func callback,
-     <span style="color:#902000">void</span> <span style="color:#666">*</span> callback_data
+     <span style="color:#000080;font-weight:bold">void</span> * callback_data
 ) {
-    <span style="color:#902000">char</span> buffer[MAX_LINE_SIZE];
+    <span style="color:#000080;font-weight:bold">char</span> buffer[MAX_LINE_SIZE];
 
-    <span style="color:#007020;font-weight:bold">while</span> (fgets(buffer, MAX_LINE_SIZE, file) <span style="color:#666">!</span><span style="color:#666">=</span> <span style="color:#40a070">0</span>) {
-        <span style="color:#902000">char</span> <span style="color:#666">*</span>name <span style="color:#666">=</span> strtok(buffer<span style="color:#666">+</span><span style="color:#40a070">1</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
+    <span style="color:#000080;font-weight:bold">while</span> (fgets(buffer, MAX_LINE_SIZE, file) != <span style="color:#00f">0</span>) {
+        <span style="color:#000080;font-weight:bold">char</span> *name = strtok(buffer+<span style="color:#00f">1</span>, <span style="color:#00f">&#34;</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>);
         fgets(buffer, MAX_LINE_SIZE, file);
-        <span style="color:#902000">char</span> <span style="color:#666">*</span>seq <span style="color:#666">=</span> strtok(buffer, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
+        <span style="color:#000080;font-weight:bold">char</span> *seq = strtok(buffer, <span style="color:#00f">&#34;</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>);
         fgets(buffer, MAX_LINE_SIZE, file);
         fgets(buffer, MAX_LINE_SIZE, file);
-        <span style="color:#902000">char</span> <span style="color:#666">*</span>qual <span style="color:#666">=</span> strtok(buffer, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
+        <span style="color:#000080;font-weight:bold">char</span> *qual = strtok(buffer, <span style="color:#00f">&#34;</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>);
 
         callback(name, seq, qual, callback_data);
 
@@ -206,355 +207,355 @@ if (!doNotTrack) {
     }
 }
 </code></pre></div><p>To get a generator instead, I need to wrap the iteration state, and I need a structure to return reads.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> fastq_iter {
-    FILE <span style="color:#666">*</span>file;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> fastq_iter {
+    FILE *file;
+    <span style="color:#000080;font-weight:bold">char</span> *buffer;
 };
-<span style="color:#007020;font-weight:bold">struct</span> fastq_record {
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>name;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>sequence;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>quality;
+<span style="color:#000080;font-weight:bold">struct</span> fastq_record {
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *name;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *sequence;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *quality;
 };
 </code></pre></div><p>I could make the second struct an opaque structure by putting it in the .c file and work with pointers to it in the interface, but so far I have put it in the header so I can allocate iterators on the stack. I expose the structure, but you are not supposed to mess with it—if you do, you will get punished if I change it. So, I might change that design.</p>
 <p>As it stands right now, I have a function that initialises the iterator and one that frees resources from it. They both take the iterator as a parameter.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">fastq_init_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> fastq_iter <span style="color:#666">*</span>iter,
-    FILE <span style="color:#666">*</span>file
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> fastq_init_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> fastq_iter *iter,
+    FILE *file
 );
-<span style="color:#902000">void</span> <span style="color:#06287e">fastq_dealloc_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> fastq_iter <span style="color:#666">*</span>iter
+<span style="color:#000080;font-weight:bold">void</span> fastq_dealloc_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> fastq_iter *iter
 );
 </code></pre></div><p>I put the file-stream in the iterator and allocate a buffer for it. Since the file object can be any stream, I do not want to allocate it for the iterator, so I do not touch it when I free iterator resources either. But, of courses, I do need to free the buffer.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">fastq_init_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> fastq_iter <span style="color:#666">*</span>iter,
-    FILE <span style="color:#666">*</span>file
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> fastq_init_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> fastq_iter *iter,
+    FILE *file
 ) {
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>file <span style="color:#666">=</span> file;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer <span style="color:#666">=</span> malloc(MAX_LINE_SIZE);
+    iter-&gt;file = file;
+    iter-&gt;buffer = malloc(MAX_LINE_SIZE);
 }
 
-<span style="color:#902000">void</span> <span style="color:#06287e">fastq_dealloc_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> fastq_iter <span style="color:#666">*</span>iter
+<span style="color:#000080;font-weight:bold">void</span> fastq_dealloc_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> fastq_iter *iter
 ) {
-    free(iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer);
+    free(iter-&gt;buffer);
 }
 </code></pre></div><p>To iterate over reads, I use this function:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">bool</span> <span style="color:#06287e">fastq_next_record</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> fastq_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">struct</span> fastq_record <span style="color:#666">*</span>record
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">bool</span> fastq_next_record(
+    <span style="color:#000080;font-weight:bold">struct</span> fastq_iter *iter,
+    <span style="color:#000080;font-weight:bold">struct</span> fastq_record *record
 ) {
-    FILE <span style="color:#666">*</span>file <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>file;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer;
-    <span style="color:#007020;font-weight:bold">if</span> (fgets(buffer, MAX_LINE_SIZE, file)) {
-        record<span style="color:#666">-</span><span style="color:#666">&gt;</span>name <span style="color:#666">=</span> string_copy(strtok(buffer<span style="color:#666">+</span><span style="color:#40a070">1</span>, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>));
+    FILE *file = iter-&gt;file;
+    <span style="color:#000080;font-weight:bold">char</span> *buffer = iter-&gt;buffer;
+    <span style="color:#000080;font-weight:bold">if</span> (fgets(buffer, MAX_LINE_SIZE, file)) {
+        record-&gt;name = string_copy(strtok(buffer+<span style="color:#00f">1</span>, <span style="color:#00f">&#34;</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>));
         fgets(buffer, MAX_LINE_SIZE, file);
-        record<span style="color:#666">-</span><span style="color:#666">&gt;</span>sequence <span style="color:#666">=</span> string_copy(strtok(buffer, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>));
+        record-&gt;sequence = string_copy(strtok(buffer, <span style="color:#00f">&#34;</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>));
         fgets(buffer, MAX_LINE_SIZE, file);
         fgets(buffer, MAX_LINE_SIZE, file);
-        record<span style="color:#666">-</span><span style="color:#666">&gt;</span>quality <span style="color:#666">=</span> string_copy(strtok(buffer, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>));
-        <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">true</span>;
+        record-&gt;quality = string_copy(strtok(buffer, <span style="color:#00f">&#34;</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>));
+        <span style="color:#000080;font-weight:bold">return</span> true;
     }
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">false</span>;
+    <span style="color:#000080;font-weight:bold">return</span> false;
 }
 </code></pre></div><p>It does the same as the callback function but it uses the iterator for all the state, and it returns <code>true</code> when it generates an object—and puts it in the <code>record</code> structure. When there are no more objects, it returns <code>false</code>.</p>
 <p>A simple program that iterates through a file of reads and prints them out again—a specialised <code>cat</code> if you will, can look like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020">#</span><span style="color:#007020">include</span> <span style="color:#007020">&lt;stdlib.h&gt;</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">#</span><span style="color:#007020">include</span> <span style="color:#007020">&lt;stdio.h&gt;</span><span style="color:#007020">
-</span><span style="color:#007020"></span><span style="color:#007020">#</span><span style="color:#007020">include</span> <span style="color:#007020">&lt;fastq.h&gt;</span><span style="color:#007020">
-</span><span style="color:#007020"></span>
-<span style="color:#902000">int</span> <span style="color:#06287e">main</span>(<span style="color:#902000">int</span> argc, <span style="color:#902000">char</span> <span style="color:#666">*</span>argv[])
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdlib.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080">#include</span> <span style="color:#008080">&lt;fastq.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080"></span>
+<span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">int</span> argc, <span style="color:#000080;font-weight:bold">char</span> *argv[])
 {
-    <span style="color:#007020;font-weight:bold">if</span> (argc <span style="color:#666">!</span><span style="color:#666">=</span> <span style="color:#40a070">2</span>) {
-        printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">needs one argument</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
-        <span style="color:#007020;font-weight:bold">return</span> EXIT_FAILURE;
+    <span style="color:#000080;font-weight:bold">if</span> (argc != <span style="color:#00f">2</span>) {
+        printf(<span style="color:#00f">&#34;needs one argument</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>);
+        <span style="color:#000080;font-weight:bold">return</span> EXIT_FAILURE;
     }
 
-    FILE <span style="color:#666">*</span>input <span style="color:#666">=</span> fopen(argv[<span style="color:#40a070">1</span>], <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">r</span><span style="color:#4070a0">&#34;</span>);
-    <span style="color:#007020;font-weight:bold">struct</span> fastq_iter iter;
-    <span style="color:#007020;font-weight:bold">struct</span> fastq_record record;
-    fastq_init_iter(<span style="color:#666">&amp;</span>iter, input);
-    <span style="color:#007020;font-weight:bold">while</span> (fastq_next_record(<span style="color:#666">&amp;</span>iter, <span style="color:#666">&amp;</span>record)) {
-        printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">@%s</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>, record.name);
-        printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">%s</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>, record.sequence);
-        printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">+</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>);
-        printf(<span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">%s</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>, record.quality);
+    FILE *input = fopen(argv[<span style="color:#00f">1</span>], <span style="color:#00f">&#34;r&#34;</span>);
+    <span style="color:#000080;font-weight:bold">struct</span> fastq_iter iter;
+    <span style="color:#000080;font-weight:bold">struct</span> fastq_record record;
+    fastq_init_iter(&amp;iter, input);
+    <span style="color:#000080;font-weight:bold">while</span> (fastq_next_record(&amp;iter, &amp;record)) {
+        printf(<span style="color:#00f">&#34;@%s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, record.name);
+        printf(<span style="color:#00f">&#34;%s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, record.sequence);
+        printf(<span style="color:#00f">&#34;+</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>);
+        printf(<span style="color:#00f">&#34;%s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, record.quality);
     }
-    fastq_dealloc_iter(<span style="color:#666">&amp;</span>iter);
+    fastq_dealloc_iter(&amp;iter);
     fclose(input);
 
-    <span style="color:#007020;font-weight:bold">return</span> EXIT_SUCCESS;
+    <span style="color:#000080;font-weight:bold">return</span> EXIT_SUCCESS;
 }
 </code></pre></div><h3 id="exact-pattern-matching">Exact pattern matching</h3>
 <p>Another example of iteration is pattern matching, i.e. finding all occurrences of one string, <code>pattern</code>, in another, <code>text</code>. I have implemented different algorithms for this. Below I have listed a naive algorithm—one that tries to match the pattern at each index in the text—and the <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">Knuth-Morris-Pratt algorithm</a>. The callback versions have the same interface.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#06287e">void</span> (<span style="color:#666">*</span>match_callback_func)(
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">typedef</span> void (*match_callback_func)(
     size_t index, 
-    <span style="color:#902000">void</span> <span style="color:#666">*</span> data
+    <span style="color:#000080;font-weight:bold">void</span> * data
 );
 
-<span style="color:#902000">void</span> <span style="color:#06287e">naive_exact_match</span>(
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text, size_t n,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, size_t m,
+<span style="color:#000080;font-weight:bold">void</span> naive_exact_match(
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text, size_t n,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, size_t m,
     match_callback_func callback, 
-    <span style="color:#902000">void</span> <span style="color:#666">*</span>callback_data
+    <span style="color:#000080;font-weight:bold">void</span> *callback_data
 );
-<span style="color:#902000">void</span> <span style="color:#06287e">knuth_morris_pratt</span>(
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text, size_t n,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, size_t m,
+<span style="color:#000080;font-weight:bold">void</span> knuth_morris_pratt(
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text, size_t n,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, size_t m,
     match_callback_func callback, 
-    <span style="color:#902000">void</span> <span style="color:#666">*</span>callback_data
+    <span style="color:#000080;font-weight:bold">void</span> *callback_data
 );
 </code></pre></div><p>The state in the iterations differs, though. The naive algorithm only needs to know the index in the text we have reached to match a pattern:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">naive_exact_match</span>(
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text, size_t n,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, size_t m,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> naive_exact_match(
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text, size_t n,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, size_t m,
     match_callback_func callback,
-    <span style="color:#902000">void</span> <span style="color:#666">*</span>callback_data
+    <span style="color:#000080;font-weight:bold">void</span> *callback_data
 ) {
-    <span style="color:#007020;font-weight:bold">if</span> (m <span style="color:#666">&gt;</span> n) {
-        <span style="color:#60a0b0;font-style:italic">// This is necessary because n and m are unsigned so the
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#60a0b0;font-style:italic">// &#34;j &lt; n - m + 1&#34; loop test can suffer from an overflow.
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#007020;font-weight:bold">return</span>;
+    <span style="color:#000080;font-weight:bold">if</span> (m &gt; n) {
+        <span style="color:#080;font-style:italic">// This is necessary because n and m are unsigned so the
+</span><span style="color:#080;font-style:italic"></span>        <span style="color:#080;font-style:italic">// &#34;j &lt; n - m + 1&#34; loop test can suffer from an overflow.
+</span><span style="color:#080;font-style:italic"></span>        <span style="color:#000080;font-weight:bold">return</span>;
     }
 
-    <span style="color:#007020;font-weight:bold">for</span> (size_t j <span style="color:#666">=</span> <span style="color:#40a070">0</span>; j <span style="color:#666">&lt;</span><span style="color:#666">=</span> n <span style="color:#666">-</span> m; j<span style="color:#666">+</span><span style="color:#666">+</span>) {
-        size_t i <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
-        <span style="color:#007020;font-weight:bold">while</span> (i <span style="color:#666">&lt;</span> m <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> text[j<span style="color:#666">+</span>i] <span style="color:#666">=</span><span style="color:#666">=</span> pattern[i]) {
-            i<span style="color:#666">+</span><span style="color:#666">+</span>;
+    <span style="color:#000080;font-weight:bold">for</span> (size_t j = <span style="color:#00f">0</span>; j &lt;= n - m; j++) {
+        size_t i = <span style="color:#00f">0</span>;
+        <span style="color:#000080;font-weight:bold">while</span> (i &lt; m &amp;&amp; text[j+i] == pattern[i]) {
+            i++;
         }
-        <span style="color:#007020;font-weight:bold">if</span> (i <span style="color:#666">=</span><span style="color:#666">=</span> m) {
+        <span style="color:#000080;font-weight:bold">if</span> (i == m) {
             callback(j, callback_data);
         }
     }
 }
 </code></pre></div><p>The KMP algorithm also needs a border array.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">knuth_morris_pratt</span>(    
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text, size_t n,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, size_t m,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> knuth_morris_pratt(    
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text, size_t n,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, size_t m,
     match_callback_func callback,
-    <span style="color:#902000">void</span> <span style="color:#666">*</span>callback_data
+    <span style="color:#000080;font-weight:bold">void</span> *callback_data
 ) {
-    <span style="color:#007020;font-weight:bold">if</span> (m <span style="color:#666">&gt;</span> n) {
-        <span style="color:#60a0b0;font-style:italic">// This is necessary because n and m are unsigned so the
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#60a0b0;font-style:italic">// &#34;j &lt; n - m + 1&#34; loop test can suffer from an overflow.
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#007020;font-weight:bold">return</span>;
+    <span style="color:#000080;font-weight:bold">if</span> (m &gt; n) {
+        <span style="color:#080;font-style:italic">// This is necessary because n and m are unsigned so the
+</span><span style="color:#080;font-style:italic"></span>        <span style="color:#080;font-style:italic">// &#34;j &lt; n - m + 1&#34; loop test can suffer from an overflow.
+</span><span style="color:#080;font-style:italic"></span>        <span style="color:#000080;font-weight:bold">return</span>;
     }
 
-    <span style="color:#60a0b0;font-style:italic">// preprocessing
-</span><span style="color:#60a0b0;font-style:italic"></span>    size_t prefixtab[m];
-    prefixtab[<span style="color:#40a070">0</span>] <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
-    <span style="color:#007020;font-weight:bold">for</span> (size_t i <span style="color:#666">=</span> <span style="color:#40a070">1</span>; i <span style="color:#666">&lt;</span> m; <span style="color:#666">+</span><span style="color:#666">+</span>i) {
-        size_t k <span style="color:#666">=</span> prefixtab[i<span style="color:#666">-</span><span style="color:#40a070">1</span>];
-        <span style="color:#007020;font-weight:bold">while</span> (k <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span> <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> pattern[i] <span style="color:#666">!</span><span style="color:#666">=</span> pattern[k])
-            k <span style="color:#666">=</span> prefixtab[k<span style="color:#666">-</span><span style="color:#40a070">1</span>];
-        prefixtab[i] <span style="color:#666">=</span> (pattern[i] <span style="color:#666">=</span><span style="color:#666">=</span> pattern[k]) <span style="color:#666">?</span> k <span style="color:#666">+</span> <span style="color:#40a070">1</span> <span style="color:#666">:</span> <span style="color:#40a070">0</span>;
+    <span style="color:#080;font-style:italic">// preprocessing
+</span><span style="color:#080;font-style:italic"></span>    size_t prefixtab[m];
+    prefixtab[<span style="color:#00f">0</span>] = <span style="color:#00f">0</span>;
+    <span style="color:#000080;font-weight:bold">for</span> (size_t i = <span style="color:#00f">1</span>; i &lt; m; ++i) {
+        size_t k = prefixtab[i-<span style="color:#00f">1</span>];
+        <span style="color:#000080;font-weight:bold">while</span> (k &gt; <span style="color:#00f">0</span> &amp;&amp; pattern[i] != pattern[k])
+            k = prefixtab[k-<span style="color:#00f">1</span>];
+        prefixtab[i] = (pattern[i] == pattern[k]) ? k + <span style="color:#00f">1</span> : <span style="color:#00f">0</span>;
     }
 
-    <span style="color:#60a0b0;font-style:italic">// matching
-</span><span style="color:#60a0b0;font-style:italic"></span>    size_t j <span style="color:#666">=</span> <span style="color:#40a070">0</span>, q <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
-    size_t max_match_len <span style="color:#666">=</span> n <span style="color:#666">-</span> m <span style="color:#666">+</span> <span style="color:#40a070">1</span>; <span style="color:#60a0b0;font-style:italic">// same as for the naive algorithm
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#60a0b0;font-style:italic">// here we compensate for j pointing q into match
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">while</span> (j <span style="color:#666">&lt;</span> max_match_len <span style="color:#666">+</span> q) {
-        <span style="color:#007020;font-weight:bold">while</span> (q <span style="color:#666">&lt;</span> m <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> text[j] <span style="color:#666">=</span><span style="color:#666">=</span> pattern[q]) {
-            q<span style="color:#666">+</span><span style="color:#666">+</span>; j<span style="color:#666">+</span><span style="color:#666">+</span>;
+    <span style="color:#080;font-style:italic">// matching
+</span><span style="color:#080;font-style:italic"></span>    size_t j = <span style="color:#00f">0</span>, q = <span style="color:#00f">0</span>;
+    size_t max_match_len = n - m + <span style="color:#00f">1</span>; <span style="color:#080;font-style:italic">// same as for the naive algorithm
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// here we compensate for j pointing q into match
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">while</span> (j &lt; max_match_len + q) {
+        <span style="color:#000080;font-weight:bold">while</span> (q &lt; m &amp;&amp; text[j] == pattern[q]) {
+            q++; j++;
         }
-        <span style="color:#007020;font-weight:bold">if</span> (q <span style="color:#666">=</span><span style="color:#666">=</span> m) {
-            callback(j <span style="color:#666">-</span> m, callback_data);
+        <span style="color:#000080;font-weight:bold">if</span> (q == m) {
+            callback(j - m, callback_data);
         }
-        <span style="color:#007020;font-weight:bold">if</span> (q <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#40a070">0</span>) {
-            j<span style="color:#666">+</span><span style="color:#666">+</span>;
-        } <span style="color:#007020;font-weight:bold">else</span> {
-            q <span style="color:#666">=</span> prefixtab[q<span style="color:#666">-</span><span style="color:#40a070">1</span>];
+        <span style="color:#000080;font-weight:bold">if</span> (q == <span style="color:#00f">0</span>) {
+            j++;
+        } <span style="color:#000080;font-weight:bold">else</span> {
+            q = prefixtab[q-<span style="color:#00f">1</span>];
         }
     }
 }
 </code></pre></div><p>The generator functions need a structure for returning each match. I could use an integer here, but for consistency, I have used a struct.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> match {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> match {
     size_t pos;
 };
 </code></pre></div><p>The interface to the two algorithms is the same but since I need more state in the KMP algorithm, the iterator structures differ, so I cannot use the same functions. So, I have these functions for the naive algorithm:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> match_naive_iter {
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text;    size_t n;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern; size_t m;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> match_naive_iter {
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text;    size_t n;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern; size_t m;
     size_t current_index;
 };
-<span style="color:#902000">void</span> <span style="color:#06287e">match_init_naive_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_naive_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text, size_t n,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, size_t m
+<span style="color:#000080;font-weight:bold">void</span> match_init_naive_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> match_naive_iter *iter,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text, size_t n,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, size_t m
 );
-<span style="color:#902000">bool</span> <span style="color:#06287e">next_naive_match</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_naive_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">struct</span> match <span style="color:#666">*</span>match
+<span style="color:#000080;font-weight:bold">bool</span> next_naive_match(
+    <span style="color:#000080;font-weight:bold">struct</span> match_naive_iter *iter,
+    <span style="color:#000080;font-weight:bold">struct</span> match *match
 );
-<span style="color:#902000">void</span> <span style="color:#06287e">match_dealloc_naive_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_naive_iter <span style="color:#666">*</span>iter
+<span style="color:#000080;font-weight:bold">void</span> match_dealloc_naive_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> match_naive_iter *iter
 );
 </code></pre></div><p>And I have these functions for KMP.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> match_kmp_iter {
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text;    size_t n;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern; size_t m;
-    size_t <span style="color:#666">*</span>prefixtab;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> match_kmp_iter {
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text;    size_t n;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern; size_t m;
+    size_t *prefixtab;
     size_t max_match_len;
     size_t j, q;
 };
-<span style="color:#902000">void</span> <span style="color:#06287e">match_init_kmp_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_kmp_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text, size_t n,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, size_t m
+<span style="color:#000080;font-weight:bold">void</span> match_init_kmp_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> match_kmp_iter *iter,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text, size_t n,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, size_t m
 );
-<span style="color:#902000">bool</span> <span style="color:#06287e">next_kmp_match</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_kmp_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">struct</span> match <span style="color:#666">*</span>match
+<span style="color:#000080;font-weight:bold">bool</span> next_kmp_match(
+    <span style="color:#000080;font-weight:bold">struct</span> match_kmp_iter *iter,
+    <span style="color:#000080;font-weight:bold">struct</span> match *match
 );
-<span style="color:#902000">void</span> <span style="color:#06287e">match_dealloc_kmp_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_kmp_iter <span style="color:#666">*</span>iter
+<span style="color:#000080;font-weight:bold">void</span> match_dealloc_kmp_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> match_kmp_iter *iter
 );
 </code></pre></div><p>I do the sanity test in the iterator initialisation instead of the generators:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">match_init_naive_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_naive_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text, size_t n,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, size_t m
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> match_init_naive_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> match_naive_iter *iter,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text, size_t n,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, size_t m
 ) {
-    <span style="color:#60a0b0;font-style:italic">// This is necessary because n and m are unsigned so the
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#60a0b0;font-style:italic">// &#34;j &lt; n - m + 1&#34; loop test can suffer from an overflow.
-</span><span style="color:#60a0b0;font-style:italic"></span>    assert(m <span style="color:#666">&lt;</span><span style="color:#666">=</span> n);
+    <span style="color:#080;font-style:italic">// This is necessary because n and m are unsigned so the
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// &#34;j &lt; n - m + 1&#34; loop test can suffer from an overflow.
+</span><span style="color:#080;font-style:italic"></span>    assert(m &lt;= n);
 
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>text <span style="color:#666">=</span> text;       iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>n <span style="color:#666">=</span> n;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern <span style="color:#666">=</span> pattern; iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>m <span style="color:#666">=</span> m;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>current_index <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
+    iter-&gt;text = text;       iter-&gt;n = n;
+    iter-&gt;pattern = pattern; iter-&gt;m = m;
+    iter-&gt;current_index = <span style="color:#00f">0</span>;
 }
 
-<span style="color:#902000">void</span> <span style="color:#06287e">match_init_kmp_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_kmp_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text, size_t n,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, size_t m
+<span style="color:#000080;font-weight:bold">void</span> match_init_kmp_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> match_kmp_iter *iter,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text, size_t n,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, size_t m
 ) {
-    <span style="color:#60a0b0;font-style:italic">// This is necessary because n and m are unsigned so the
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#60a0b0;font-style:italic">// &#34;j &lt; n - m + 1&#34; loop test can suffer from an overflow.
-</span><span style="color:#60a0b0;font-style:italic"></span>    assert(m <span style="color:#666">&lt;</span><span style="color:#666">=</span> n);
+    <span style="color:#080;font-style:italic">// This is necessary because n and m are unsigned so the
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// &#34;j &lt; n - m + 1&#34; loop test can suffer from an overflow.
+</span><span style="color:#080;font-style:italic"></span>    assert(m &lt;= n);
 
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>text <span style="color:#666">=</span> text;       iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>n <span style="color:#666">=</span> n;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern <span style="color:#666">=</span> pattern; iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>m <span style="color:#666">=</span> m;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>j <span style="color:#666">=</span> <span style="color:#40a070">0</span>;             iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>q <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_match_len <span style="color:#666">=</span> n <span style="color:#666">-</span> m <span style="color:#666">+</span> <span style="color:#40a070">1</span>;
+    iter-&gt;text = text;       iter-&gt;n = n;
+    iter-&gt;pattern = pattern; iter-&gt;m = m;
+    iter-&gt;j = <span style="color:#00f">0</span>;             iter-&gt;q = <span style="color:#00f">0</span>;
+    iter-&gt;max_match_len = n - m + <span style="color:#00f">1</span>;
 
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>prefixtab <span style="color:#666">=</span> malloc(m);
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>prefixtab[<span style="color:#40a070">0</span>] <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
-    <span style="color:#007020;font-weight:bold">for</span> (size_t i <span style="color:#666">=</span> <span style="color:#40a070">1</span>; i <span style="color:#666">&lt;</span> m; <span style="color:#666">+</span><span style="color:#666">+</span>i) {
-        size_t k <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>prefixtab[i<span style="color:#666">-</span><span style="color:#40a070">1</span>];
-        <span style="color:#007020;font-weight:bold">while</span> (k <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span> <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> pattern[i] <span style="color:#666">!</span><span style="color:#666">=</span> pattern[k])
-            k <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>prefixtab[k<span style="color:#666">-</span><span style="color:#40a070">1</span>];
-        iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>prefixtab[i] <span style="color:#666">=</span> (pattern[i] <span style="color:#666">=</span><span style="color:#666">=</span> pattern[k]) <span style="color:#666">?</span> k <span style="color:#666">+</span> <span style="color:#40a070">1</span> <span style="color:#666">:</span> <span style="color:#40a070">0</span>;
+    iter-&gt;prefixtab = malloc(m);
+    iter-&gt;prefixtab[<span style="color:#00f">0</span>] = <span style="color:#00f">0</span>;
+    <span style="color:#000080;font-weight:bold">for</span> (size_t i = <span style="color:#00f">1</span>; i &lt; m; ++i) {
+        size_t k = iter-&gt;prefixtab[i-<span style="color:#00f">1</span>];
+        <span style="color:#000080;font-weight:bold">while</span> (k &gt; <span style="color:#00f">0</span> &amp;&amp; pattern[i] != pattern[k])
+            k = iter-&gt;prefixtab[k-<span style="color:#00f">1</span>];
+        iter-&gt;prefixtab[i] = (pattern[i] == pattern[k]) ? k + <span style="color:#00f">1</span> : <span style="color:#00f">0</span>;
     }
 }
 </code></pre></div><p>In the KMP iterator initialisation, I build the border array as well.</p>
 <p>The function for freeing resources for the naive algorithm does do anything, but I have it for consistency (and in case I need to free something at a later time).</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">match_dealloc_naive_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_naive_iter <span style="color:#666">*</span>iter
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> match_dealloc_naive_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> match_naive_iter *iter
 ) {
-    <span style="color:#60a0b0;font-style:italic">// nothing to do here...
-</span><span style="color:#60a0b0;font-style:italic"></span>}
+    <span style="color:#080;font-style:italic">// nothing to do here...
+</span><span style="color:#080;font-style:italic"></span>}
 </code></pre></div><p>For the KMP deallocator, I need to free the border array.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">match_dealloc_kmp_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_kmp_iter <span style="color:#666">*</span>iter
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> match_dealloc_kmp_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> match_kmp_iter *iter
 ) {
-    free(iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>prefixtab);
+    free(iter-&gt;prefixtab);
 }
 </code></pre></div><p>With the iterator states, the generators look precisely like the callback versions.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">bool</span> <span style="color:#06287e">next_naive_match</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_naive_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">struct</span> match <span style="color:#666">*</span>match
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">bool</span> next_naive_match(
+    <span style="color:#000080;font-weight:bold">struct</span> match_naive_iter *iter,
+    <span style="color:#000080;font-weight:bold">struct</span> match *match
 ) {
-    size_t n <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>n, m <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>m;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>text;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern;
+    size_t n = iter-&gt;n, m = iter-&gt;m;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text = iter-&gt;text;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern = iter-&gt;pattern;
 
-    <span style="color:#007020;font-weight:bold">for</span> (size_t j <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>current_index; j <span style="color:#666">&lt;</span><span style="color:#666">=</span> n <span style="color:#666">-</span> m; j<span style="color:#666">+</span><span style="color:#666">+</span>) {
-        size_t i <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
-        <span style="color:#007020;font-weight:bold">while</span> (i <span style="color:#666">&lt;</span> m <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> text[j<span style="color:#666">+</span>i] <span style="color:#666">=</span><span style="color:#666">=</span> pattern[i]) {
-            i<span style="color:#666">+</span><span style="color:#666">+</span>;
+    <span style="color:#000080;font-weight:bold">for</span> (size_t j = iter-&gt;current_index; j &lt;= n - m; j++) {
+        size_t i = <span style="color:#00f">0</span>;
+        <span style="color:#000080;font-weight:bold">while</span> (i &lt; m &amp;&amp; text[j+i] == pattern[i]) {
+            i++;
         }
-        <span style="color:#007020;font-weight:bold">if</span> (i <span style="color:#666">=</span><span style="color:#666">=</span> m) {
-            <span style="color:#60a0b0;font-style:italic">//callback(j, callback_data);
-</span><span style="color:#60a0b0;font-style:italic"></span>            iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>current_index <span style="color:#666">=</span> j <span style="color:#666">+</span> <span style="color:#40a070">1</span>;
-            match<span style="color:#666">-</span><span style="color:#666">&gt;</span>pos <span style="color:#666">=</span> j;
-            <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">true</span>;
+        <span style="color:#000080;font-weight:bold">if</span> (i == m) {
+            <span style="color:#080;font-style:italic">//callback(j, callback_data);
+</span><span style="color:#080;font-style:italic"></span>            iter-&gt;current_index = j + <span style="color:#00f">1</span>;
+            match-&gt;pos = j;
+            <span style="color:#000080;font-weight:bold">return</span> true;
         }
     }
 
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">false</span>;
+    <span style="color:#000080;font-weight:bold">return</span> false;
 }
 
-<span style="color:#902000">bool</span> <span style="color:#06287e">next_kmp_match</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> match_kmp_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">struct</span> match <span style="color:#666">*</span>match
+<span style="color:#000080;font-weight:bold">bool</span> next_kmp_match(
+    <span style="color:#000080;font-weight:bold">struct</span> match_kmp_iter *iter,
+    <span style="color:#000080;font-weight:bold">struct</span> match *match
 ) {
-    <span style="color:#60a0b0;font-style:italic">// aliases to make the code easier to read... but
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#60a0b0;font-style:italic">// remember to update the actual integers before
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#60a0b0;font-style:italic">// yielding to the caller...
-</span><span style="color:#60a0b0;font-style:italic"></span>    size_t j <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>j;
-    size_t q <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>q;
-    size_t m <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>m;
-    size_t max_match_index <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_match_len;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>text <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>text;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern;
+    <span style="color:#080;font-style:italic">// aliases to make the code easier to read... but
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// remember to update the actual integers before
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// yielding to the caller...
+</span><span style="color:#080;font-style:italic"></span>    size_t j = iter-&gt;j;
+    size_t q = iter-&gt;q;
+    size_t m = iter-&gt;m;
+    size_t max_match_index = iter-&gt;max_match_len;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *text = iter-&gt;text;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern = iter-&gt;pattern;
 
-    <span style="color:#60a0b0;font-style:italic">// here we compensate for j pointing q into match
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">while</span> (j <span style="color:#666">&lt;</span> max_match_index <span style="color:#666">+</span> q) {
-        <span style="color:#007020;font-weight:bold">while</span> (q <span style="color:#666">&lt;</span> m <span style="color:#666">&amp;</span><span style="color:#666">&amp;</span> text[j] <span style="color:#666">=</span><span style="color:#666">=</span> pattern[q]) {
-            q<span style="color:#666">+</span><span style="color:#666">+</span>; j<span style="color:#666">+</span><span style="color:#666">+</span>;
+    <span style="color:#080;font-style:italic">// here we compensate for j pointing q into match
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">while</span> (j &lt; max_match_index + q) {
+        <span style="color:#000080;font-weight:bold">while</span> (q &lt; m &amp;&amp; text[j] == pattern[q]) {
+            q++; j++;
         }
-        <span style="color:#007020;font-weight:bold">if</span> (q <span style="color:#666">=</span><span style="color:#666">=</span> m) {
-            <span style="color:#60a0b0;font-style:italic">// yield
-</span><span style="color:#60a0b0;font-style:italic"></span>            <span style="color:#007020;font-weight:bold">if</span> (q <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#40a070">0</span>) j<span style="color:#666">+</span><span style="color:#666">+</span>;
-            <span style="color:#007020;font-weight:bold">else</span> q <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>prefixtab[q<span style="color:#666">-</span><span style="color:#40a070">1</span>];
-            iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>j <span style="color:#666">=</span> j; iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>q <span style="color:#666">=</span> q;
-            match<span style="color:#666">-</span><span style="color:#666">&gt;</span>pos <span style="color:#666">=</span> j <span style="color:#666">-</span> m;
-            <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">true</span>;
+        <span style="color:#000080;font-weight:bold">if</span> (q == m) {
+            <span style="color:#080;font-style:italic">// yield
+</span><span style="color:#080;font-style:italic"></span>            <span style="color:#000080;font-weight:bold">if</span> (q == <span style="color:#00f">0</span>) j++;
+            <span style="color:#000080;font-weight:bold">else</span> q = iter-&gt;prefixtab[q-<span style="color:#00f">1</span>];
+            iter-&gt;j = j; iter-&gt;q = q;
+            match-&gt;pos = j - m;
+            <span style="color:#000080;font-weight:bold">return</span> true;
         }
-        <span style="color:#007020;font-weight:bold">if</span> (q <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#40a070">0</span>) {
-            j<span style="color:#666">+</span><span style="color:#666">+</span>;
-        } <span style="color:#007020;font-weight:bold">else</span> {
-            q <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>prefixtab[q<span style="color:#666">-</span><span style="color:#40a070">1</span>];
+        <span style="color:#000080;font-weight:bold">if</span> (q == <span style="color:#00f">0</span>) {
+            j++;
+        } <span style="color:#000080;font-weight:bold">else</span> {
+            q = iter-&gt;prefixtab[q-<span style="color:#00f">1</span>];
         }
     }
-    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">false</span>;
+    <span style="color:#000080;font-weight:bold">return</span> false;
 }
 
 </code></pre></div><h3 id="handling-recursion">Handling recursion</h3>
 <p>To do approximate matching, I wrote a function that generates all strings at a maximum distance from a pattern. I know that this is a very inefficient approach to approximative matching, but I used it for pedagogical reasons.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">typedef</span> <span style="color:#06287e">void</span> (<span style="color:#666">*</span>edits_callback_func)(
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>string,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar,
-    <span style="color:#902000">void</span> <span style="color:#666">*</span> data
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">typedef</span> void (*edits_callback_func)(
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *string,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *cigar,
+    <span style="color:#000080;font-weight:bold">void</span> * data
 );
 
-<span style="color:#902000">void</span> <span style="color:#06287e">generate_all_neighbours</span>(
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>alphabet,
-    <span style="color:#902000">int</span> max_edit_distance,
+<span style="color:#000080;font-weight:bold">void</span> generate_all_neighbours(
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *alphabet,
+    <span style="color:#000080;font-weight:bold">int</span> max_edit_distance,
     edits_callback_func callback,
-    <span style="color:#902000">void</span> <span style="color:#666">*</span>callback_data
+    <span style="color:#000080;font-weight:bold">void</span> *callback_data
 );
 </code></pre></div><p>A natural way to implement the function is using recursion, and I already added a bit of state for that. I do not update most of it, however. I use it mainly to store pointers to buffers I use to generate patterns and CIGAR-strings for the edits. I modify the buffers in the recursion, and the structure keeps the beginning of the buffers so I can use them when reporting a string.</p>
 <p>The code listing below is a bit long, but it is simple enough. I try all edits in the recursion and report a string whenever I reach the base cases of the recursion.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> recursive_constant_data {
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer_front;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar_front;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>alphabet;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>simplify_cigar_buffer;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> recursive_constant_data {
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *buffer_front;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *cigar_front;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *alphabet;
+    <span style="color:#000080;font-weight:bold">char</span> *simplify_cigar_buffer;
 };
-<span style="color:#902000">void</span> <span style="color:#06287e">generate_all_neighbours</span>(
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>alphabet,
-    <span style="color:#902000">int</span> max_edit_distance,
+<span style="color:#000080;font-weight:bold">void</span> generate_all_neighbours(
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *alphabet,
+    <span style="color:#000080;font-weight:bold">int</span> max_edit_distance,
     edits_callback_func callback,
-    <span style="color:#902000">void</span> <span style="color:#666">*</span>callback_data
+    <span style="color:#000080;font-weight:bold">void</span> *callback_data
 ) {
-    size_t n <span style="color:#666">=</span> strlen(pattern) <span style="color:#666">+</span> max_edit_distance <span style="color:#666">+</span> <span style="color:#40a070">1</span>;
-    <span style="color:#902000">char</span> buffer[n];
-    <span style="color:#902000">char</span> cigar[n], cigar_buffer[n];
-    <span style="color:#007020;font-weight:bold">struct</span> recursive_constant_data data <span style="color:#666">=</span> { 
+    size_t n = strlen(pattern) + max_edit_distance + <span style="color:#00f">1</span>;
+    <span style="color:#000080;font-weight:bold">char</span> buffer[n];
+    <span style="color:#000080;font-weight:bold">char</span> cigar[n], cigar_buffer[n];
+    <span style="color:#000080;font-weight:bold">struct</span> recursive_constant_data data = { 
         buffer, cigar, alphabet, cigar_buffer 
     };
     recursive_generator(
@@ -562,65 +563,65 @@ if (!doNotTrack) {
         buffer, 
         cigar, 
         max_edit_distance, 
-        <span style="color:#666">&amp;</span>data,
+        &amp;data,
         callback, 
         callback_data
     );
 }
 
-<span style="color:#007020;font-weight:bold">static</span> <span style="color:#902000">void</span> <span style="color:#06287e">recursive_generator</span>(
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern, <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer, <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar,
-    <span style="color:#902000">int</span> max_edit_distance,
-    <span style="color:#007020;font-weight:bold">struct</span> recursive_constant_data <span style="color:#666">*</span>data,
+<span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">void</span> recursive_generator(
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern, <span style="color:#000080;font-weight:bold">char</span> *buffer, <span style="color:#000080;font-weight:bold">char</span> *cigar,
+    <span style="color:#000080;font-weight:bold">int</span> max_edit_distance,
+    <span style="color:#000080;font-weight:bold">struct</span> recursive_constant_data *data,
     edits_callback_func callback,
-    <span style="color:#902000">void</span> <span style="color:#666">*</span>callback_data
+    <span style="color:#000080;font-weight:bold">void</span> *callback_data
 ) {
-    <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">*</span>pattern <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>) {
-        <span style="color:#60a0b0;font-style:italic">// no more pattern to match ... terminate the buffer and call back
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#666">*</span>buffer <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
-        <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
-        simplify_cigar(data<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front, data<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer);
-        callback(data<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front, data<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer, callback_data);
+    <span style="color:#000080;font-weight:bold">if</span> (*pattern == <span style="color:#800080">&#39;\0&#39;</span>) {
+        <span style="color:#080;font-style:italic">// no more pattern to match ... terminate the buffer and call back
+</span><span style="color:#080;font-style:italic"></span>        *buffer = <span style="color:#800080">&#39;\0&#39;</span>;
+        *cigar = <span style="color:#800080">&#39;\0&#39;</span>;
+        simplify_cigar(data-&gt;cigar_front, data-&gt;simplify_cigar_buffer);
+        callback(data-&gt;buffer_front, data-&gt;simplify_cigar_buffer, callback_data);
 
-    } <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">if</span> (max_edit_distance <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#40a070">0</span>) {
-        <span style="color:#60a0b0;font-style:italic">// we can&#39;t edit any more, so just move pattern to buffer and call back
-</span><span style="color:#60a0b0;font-style:italic"></span>        size_t rest <span style="color:#666">=</span> strlen(pattern);
-        <span style="color:#007020;font-weight:bold">for</span> (size_t i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> rest; <span style="color:#666">+</span><span style="color:#666">+</span>i) {
-            buffer[i] <span style="color:#666">=</span> pattern[i];
-            cigar[i] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">M</span><span style="color:#4070a0">&#39;</span>;
+    } <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">if</span> (max_edit_distance == <span style="color:#00f">0</span>) {
+        <span style="color:#080;font-style:italic">// we can&#39;t edit any more, so just move pattern to buffer and call back
+</span><span style="color:#080;font-style:italic"></span>        size_t rest = strlen(pattern);
+        <span style="color:#000080;font-weight:bold">for</span> (size_t i = <span style="color:#00f">0</span>; i &lt; rest; ++i) {
+            buffer[i] = pattern[i];
+            cigar[i] = <span style="color:#800080">&#39;M&#39;</span>;
         }
-        buffer[rest] <span style="color:#666">=</span> cigar[rest] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
-        simplify_cigar(data<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front, data<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer);
-        callback(data<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front, data<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer, callback_data);
+        buffer[rest] = cigar[rest] = <span style="color:#800080">&#39;\0&#39;</span>;
+        simplify_cigar(data-&gt;cigar_front, data-&gt;simplify_cigar_buffer);
+        callback(data-&gt;buffer_front, data-&gt;simplify_cigar_buffer, callback_data);
 
-    } <span style="color:#007020;font-weight:bold">else</span> {
-        <span style="color:#60a0b0;font-style:italic">// --- time to recurse --------------------------------------
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#60a0b0;font-style:italic">// deletion
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">I</span><span style="color:#4070a0">&#39;</span>;
-        recursive_generator(pattern <span style="color:#666">+</span> <span style="color:#40a070">1</span>, buffer, cigar <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                            max_edit_distance <span style="color:#666">-</span> <span style="color:#40a070">1</span>, data,
+    } <span style="color:#000080;font-weight:bold">else</span> {
+        <span style="color:#080;font-style:italic">// --- time to recurse --------------------------------------
+</span><span style="color:#080;font-style:italic"></span>        <span style="color:#080;font-style:italic">// deletion
+</span><span style="color:#080;font-style:italic"></span>        *cigar = <span style="color:#800080">&#39;I&#39;</span>;
+        recursive_generator(pattern + <span style="color:#00f">1</span>, buffer, cigar + <span style="color:#00f">1</span>,
+                            max_edit_distance - <span style="color:#00f">1</span>, data,
                             callback, callback_data);
-        <span style="color:#60a0b0;font-style:italic">// insertion
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>a <span style="color:#666">=</span> data<span style="color:#666">-</span><span style="color:#666">&gt;</span>alphabet; <span style="color:#666">*</span>a; a<span style="color:#666">+</span><span style="color:#666">+</span>) {
-            <span style="color:#666">*</span>buffer <span style="color:#666">=</span> <span style="color:#666">*</span>a;
-            <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">D</span><span style="color:#4070a0">&#39;</span>;
-            recursive_generator(pattern, buffer <span style="color:#666">+</span> <span style="color:#40a070">1</span>, cigar <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                                max_edit_distance <span style="color:#666">-</span> <span style="color:#40a070">1</span>, data,
+        <span style="color:#080;font-style:italic">// insertion
+</span><span style="color:#080;font-style:italic"></span>        <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *a = data-&gt;alphabet; *a; a++) {
+            *buffer = *a;
+            *cigar = <span style="color:#800080">&#39;D&#39;</span>;
+            recursive_generator(pattern, buffer + <span style="color:#00f">1</span>, cigar + <span style="color:#00f">1</span>,
+                                max_edit_distance - <span style="color:#00f">1</span>, data,
                                 callback, callback_data);
         }
-        <span style="color:#60a0b0;font-style:italic">// match / substitution
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>a <span style="color:#666">=</span> data<span style="color:#666">-</span><span style="color:#666">&gt;</span>alphabet; <span style="color:#666">*</span>a; a<span style="color:#666">+</span><span style="color:#666">+</span>) {
-            <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">*</span>a <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#666">*</span>pattern) {
-                <span style="color:#666">*</span>buffer <span style="color:#666">=</span> <span style="color:#666">*</span>a;
-                <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">M</span><span style="color:#4070a0">&#39;</span>;
-                recursive_generator(pattern <span style="color:#666">+</span> <span style="color:#40a070">1</span>, buffer <span style="color:#666">+</span> <span style="color:#40a070">1</span>, cigar <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
+        <span style="color:#080;font-style:italic">// match / substitution
+</span><span style="color:#080;font-style:italic"></span>        <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *a = data-&gt;alphabet; *a; a++) {
+            <span style="color:#000080;font-weight:bold">if</span> (*a == *pattern) {
+                *buffer = *a;
+                *cigar = <span style="color:#800080">&#39;M&#39;</span>;
+                recursive_generator(pattern + <span style="color:#00f">1</span>, buffer + <span style="color:#00f">1</span>, cigar + <span style="color:#00f">1</span>,
                                     max_edit_distance, data,
                                     callback, callback_data);
-            } <span style="color:#007020;font-weight:bold">else</span> {
-                <span style="color:#666">*</span>buffer <span style="color:#666">=</span> <span style="color:#666">*</span>a;
-                <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">M</span><span style="color:#4070a0">&#39;</span>;
-                recursive_generator(pattern <span style="color:#666">+</span> <span style="color:#40a070">1</span>, buffer <span style="color:#666">+</span> <span style="color:#40a070">1</span>, cigar <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                                    max_edit_distance <span style="color:#666">-</span> <span style="color:#40a070">1</span>, data,
+            } <span style="color:#000080;font-weight:bold">else</span> {
+                *buffer = *a;
+                *cigar = <span style="color:#800080">&#39;M&#39;</span>;
+                recursive_generator(pattern + <span style="color:#00f">1</span>, buffer + <span style="color:#00f">1</span>, cigar + <span style="color:#00f">1</span>,
+                                    max_edit_distance - <span style="color:#00f">1</span>, data,
                                     callback, callback_data);
             }
         }
@@ -628,265 +629,265 @@ if (!doNotTrack) {
 }
 </code></pre></div><p>In the recursion, what I do is this: I create a pattern for all the edits, and then I construct a string that contains all the edits operations. For example, two deletions and two matches will give me the edit string <code>DDMM</code>. Yes, it looks strange that two insertions are recorded at two deletions, but this is because the operations are relative to the <code>text</code> string and not the <code>pattern</code>, so insertions and deletions are switched.</p>
 <p>What the <code>simplify_cigar</code> function does is translating the string with the individual edit operations into a CIGAR string. Maybe the name isn’t that well chosen, but that is what I called it. A better name could be <code>edits_to_cigar</code> or something like that. Anyway, in a CIGAR string, two deletions and two matches are recorded as <code>2D2M</code>. The function does that translation.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">simplify_cigar</span>(<span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar, <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> simplify_cigar(<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *cigar, <span style="color:#000080;font-weight:bold">char</span> *buffer)
 {
-    <span style="color:#007020;font-weight:bold">while</span> (<span style="color:#666">*</span>cigar) {
-        <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>next <span style="color:#666">=</span> scan(cigar);
-        buffer <span style="color:#666">=</span> buffer <span style="color:#666">+</span> sprintf(buffer, <span style="color:#4070a0"></span><span style="color:#4070a0">&#34;</span><span style="color:#4070a0">%lu%c</span><span style="color:#4070a0">&#34;</span>, next <span style="color:#666">-</span> cigar, <span style="color:#666">*</span>cigar);
-        cigar <span style="color:#666">=</span> next;
+    <span style="color:#000080;font-weight:bold">while</span> (*cigar) {
+        <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *next = scan(cigar);
+        buffer = buffer + sprintf(buffer, <span style="color:#00f">&#34;%lu%c&#34;</span>, next - cigar, *cigar);
+        cigar = next;
     }
-    <span style="color:#666">*</span>buffer <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
+    *buffer = <span style="color:#800080">&#39;\0&#39;</span>;
 }
 </code></pre></div><p>To handle recursion in an iterator, I need an explicit stack. I use a stack frame structure for this.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame;
-<span style="color:#007020;font-weight:bold">struct</span> edit_iter {
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>alphabet;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame;
+<span style="color:#000080;font-weight:bold">struct</span> edit_iter {
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *alphabet;
 
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>simplify_cigar_buffer;
+    <span style="color:#000080;font-weight:bold">char</span> *buffer;
+    <span style="color:#000080;font-weight:bold">char</span> *cigar;
+    <span style="color:#000080;font-weight:bold">char</span> *simplify_cigar_buffer;
 
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame <span style="color:#666">*</span>frames;
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame *frames;
 };
-<span style="color:#007020;font-weight:bold">struct</span> edit_pattern {
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern;
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar;
+<span style="color:#000080;font-weight:bold">struct</span> edit_pattern {
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *cigar;
 };
 
-<span style="color:#902000">void</span> <span style="color:#06287e">edit_init_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>alphabet,
-    <span style="color:#902000">int</span> max_edit_distance
+<span style="color:#000080;font-weight:bold">void</span> edit_init_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter *iter,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *alphabet,
+    <span style="color:#000080;font-weight:bold">int</span> max_edit_distance
 );
-<span style="color:#902000">bool</span> <span style="color:#06287e">edit_next_pattern</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">struct</span> edit_pattern <span style="color:#666">*</span>result
+<span style="color:#000080;font-weight:bold">bool</span> edit_next_pattern(
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter *iter,
+    <span style="color:#000080;font-weight:bold">struct</span> edit_pattern *result
 );
-<span style="color:#902000">void</span> <span style="color:#06287e">edit_dealloc_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter <span style="color:#666">*</span>iter
+<span style="color:#000080;font-weight:bold">void</span> edit_dealloc_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter *iter
 );
 </code></pre></div><p>Where it gets a little complicated is that I need several recursions when in the edit cases. If I had persistent frame data—that is, if I never modified data that would give me side effects—I could push frames to the stack. Unfortunately, that is not the case here. I modify the buffers in the recursions, so the frames I push onto the stack are modified between the push and the pop.</p>
 <p>Because of this, I need to modify the buffers just before I recurse; I cannot push a frame to the stack and handle the frames one a time.</p>
 <p>I am not sure this is the most elegant way to handle it, but what I did was this: I split the recursions into two steps. The first generates the recursive calls, and the second modifies the buffers and push a frame to the stack for running the first step recursively.</p>
 <p>I defined opcodes for the different operations and structures for storing the state of the operations like this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">enum</span> edit_op {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">enum</span> edit_op {
     EXECUTE,
     DELETION,
     INSERTION,
     MATCH
 };
-<span style="color:#007020;font-weight:bold">struct</span> deletion_info {
-    <span style="color:#60a0b0;font-style:italic">// No extra info
-</span><span style="color:#60a0b0;font-style:italic"></span>};
-<span style="color:#007020;font-weight:bold">struct</span> insertion_info {
-    <span style="color:#902000">char</span> a;
+<span style="color:#000080;font-weight:bold">struct</span> deletion_info {
+    <span style="color:#080;font-style:italic">// No extra info
+</span><span style="color:#080;font-style:italic"></span>};
+<span style="color:#000080;font-weight:bold">struct</span> insertion_info {
+    <span style="color:#000080;font-weight:bold">char</span> a;
 };
-<span style="color:#007020;font-weight:bold">struct</span> match_info {
-    <span style="color:#902000">char</span> a;
+<span style="color:#000080;font-weight:bold">struct</span> match_info {
+    <span style="color:#000080;font-weight:bold">char</span> a;
 };
 </code></pre></div><p>The <code>EXECUTE</code> operation pushes the different edits to the stack; the other operations modify the state and push the <code>EXECUTE</code> operation for the recursions onto the stack.</p>
 <p>The stack frames contain the opcodes, the data associated with them, and the program state I need for each frame:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame {
-    <span style="color:#007020;font-weight:bold">enum</span> edit_op op;
-    <span style="color:#007020;font-weight:bold">union</span> {
-        <span style="color:#007020;font-weight:bold">struct</span> deletion_info  d;
-        <span style="color:#007020;font-weight:bold">struct</span> insertion_info i;
-        <span style="color:#007020;font-weight:bold">struct</span> match_info     m;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame {
+    <span style="color:#000080;font-weight:bold">enum</span> edit_op op;
+    <span style="color:#000080;font-weight:bold">union</span> {
+        <span style="color:#000080;font-weight:bold">struct</span> deletion_info  d;
+        <span style="color:#000080;font-weight:bold">struct</span> insertion_info i;
+        <span style="color:#000080;font-weight:bold">struct</span> match_info     m;
     } op_data;
 
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern_front;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer_front;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar_front;
-    <span style="color:#902000">int</span> max_dist;
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame <span style="color:#666">*</span>next;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern_front;
+    <span style="color:#000080;font-weight:bold">char</span> *buffer_front;
+    <span style="color:#000080;font-weight:bold">char</span> *cigar_front;
+    <span style="color:#000080;font-weight:bold">int</span> max_dist;
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame *next;
 };
 </code></pre></div><p>I wrote a function for pushing stack frames. It doesn’t set the entire state for the frames—I would need separate functions for each operation if I want to add the operation data with the frame. Instead, I will update the frame after I have pushed it. Maybe not that pretty, but that is where I am right now.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">static</span> <span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame <span style="color:#666">*</span>
-<span style="color:#06287e">push_edit_iter_frame</span>(
-    <span style="color:#007020;font-weight:bold">enum</span> edit_op op,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern_front,
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer_front,
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar_front,
-    <span style="color:#902000">int</span> max_dist,
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame <span style="color:#666">*</span>next
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame *
+push_edit_iter_frame(
+    <span style="color:#000080;font-weight:bold">enum</span> edit_op op,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern_front,
+    <span style="color:#000080;font-weight:bold">char</span> *buffer_front,
+    <span style="color:#000080;font-weight:bold">char</span> *cigar_front,
+    <span style="color:#000080;font-weight:bold">int</span> max_dist,
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame *next
 ) {
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame <span style="color:#666">*</span>frame <span style="color:#666">=</span>
-        malloc(<span style="color:#007020;font-weight:bold">sizeof</span>(<span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame));
-    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>op <span style="color:#666">=</span> op;
-    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front <span style="color:#666">=</span> pattern_front;
-    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front <span style="color:#666">=</span> buffer_front;
-    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front <span style="color:#666">=</span> cigar_front,
-    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist <span style="color:#666">=</span> max_dist;
-    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>next <span style="color:#666">=</span> next;
-    <span style="color:#007020;font-weight:bold">return</span> frame;
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame *frame =
+        malloc(<span style="color:#000080;font-weight:bold">sizeof</span>(<span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame));
+    frame-&gt;op = op;
+    frame-&gt;pattern_front = pattern_front;
+    frame-&gt;buffer_front = buffer_front;
+    frame-&gt;cigar_front = cigar_front,
+    frame-&gt;max_dist = max_dist;
+    frame-&gt;next = next;
+    <span style="color:#000080;font-weight:bold">return</span> frame;
 }
 </code></pre></div><p>When I initialise the iterator, I push an <code>EXECUTE</code> frame to the stack. It will push the first operation-recursions onto the stack when I start the generator.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">edit_init_iter</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern,
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>alphabet,
-    <span style="color:#902000">int</span> max_edit_distance
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> edit_init_iter(
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter *iter,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern,
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *alphabet,
+    <span style="color:#000080;font-weight:bold">int</span> max_edit_distance
 ) {
-    size_t n <span style="color:#666">=</span> strlen(pattern) <span style="color:#666">+</span> max_edit_distance <span style="color:#666">+</span> <span style="color:#40a070">1</span>;
+    size_t n = strlen(pattern) + max_edit_distance + <span style="color:#00f">1</span>;
 
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern <span style="color:#666">=</span> pattern;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>alphabet <span style="color:#666">=</span> alphabet;
+    iter-&gt;pattern = pattern;
+    iter-&gt;alphabet = alphabet;
 
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer <span style="color:#666">=</span> malloc(n); iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer[n <span style="color:#666">-</span> <span style="color:#40a070">1</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar <span style="color:#666">=</span> malloc(n);  iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar[n <span style="color:#666">-</span> <span style="color:#40a070">1</span>] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer <span style="color:#666">=</span> malloc(n);
+    iter-&gt;buffer = malloc(n); iter-&gt;buffer[n - <span style="color:#00f">1</span>] = <span style="color:#800080">&#39;\0&#39;</span>;
+    iter-&gt;cigar = malloc(n);  iter-&gt;cigar[n - <span style="color:#00f">1</span>] = <span style="color:#800080">&#39;\0&#39;</span>;
+    iter-&gt;simplify_cigar_buffer = malloc(n);
 
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> push_edit_iter_frame(
+    iter-&gt;frames = push_edit_iter_frame(
         EXECUTE,
-        iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern,
-        iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer,
-        iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar,
+        iter-&gt;pattern,
+        iter-&gt;buffer,
+        iter-&gt;cigar,
         max_edit_distance,
-        <span style="color:#40a070">0</span>
+        <span style="color:#00f">0</span>
     );
 }
 </code></pre></div><p>When I deallocate an iterator, I free the buffers.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">edit_dealloc_iter</span>(<span style="color:#007020;font-weight:bold">struct</span> edit_iter <span style="color:#666">*</span>iter)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> edit_dealloc_iter(<span style="color:#000080;font-weight:bold">struct</span> edit_iter *iter)
 {
-    free(iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer);
-    free(iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar);
-    free(iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer);
+    free(iter-&gt;buffer);
+    free(iter-&gt;cigar);
+    free(iter-&gt;simplify_cigar_buffer);
 }
 </code></pre></div><p>Now, for the generator, I report that I am finished when there are no more stack frames. Otherwise, I check if I have reached a base case in the recursion and if so, I report a string. Otherwise, I figure out which operation I need to do in a <code>switch</code>. An <code>EXECUTE</code> operation means that I need to push the different recursion frames to the stack. The other operations mean I need to update the buffers and then push an <code>EXECUTE</code> operation to execute the operation.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
-<span style="color:#902000">bool</span> <span style="color:#06287e">edit_next_pattern</span>(
-    <span style="color:#007020;font-weight:bold">struct</span> edit_iter <span style="color:#666">*</span>iter,
-    <span style="color:#007020;font-weight:bold">struct</span> edit_pattern <span style="color:#666">*</span>result
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+<span style="color:#000080;font-weight:bold">bool</span> edit_next_pattern(
+    <span style="color:#000080;font-weight:bold">struct</span> edit_iter *iter,
+    <span style="color:#000080;font-weight:bold">struct</span> edit_pattern *result
 ) {
     assert(iter);
     assert(result);
 
-    <span style="color:#007020;font-weight:bold">if</span> (iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#40a070">0</span>) <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">false</span>;
+    <span style="color:#000080;font-weight:bold">if</span> (iter-&gt;frames == <span style="color:#00f">0</span>) <span style="color:#000080;font-weight:bold">return</span> false;
 
-    <span style="color:#60a0b0;font-style:italic">// pop top frame
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">struct</span> edit_iter_frame <span style="color:#666">*</span>frame <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames;
-    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>next;
+    <span style="color:#080;font-style:italic">// pop top frame
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">struct</span> edit_iter_frame *frame = iter-&gt;frames;
+    iter-&gt;frames = frame-&gt;next;
 
-    <span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>pattern <span style="color:#666">=</span> frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>buffer <span style="color:#666">=</span> frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front;
-    <span style="color:#902000">char</span> <span style="color:#666">*</span>cigar <span style="color:#666">=</span> frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front;
+    <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *pattern = frame-&gt;pattern_front;
+    <span style="color:#000080;font-weight:bold">char</span> *buffer = frame-&gt;buffer_front;
+    <span style="color:#000080;font-weight:bold">char</span> *cigar = frame-&gt;cigar_front;
 
-    <span style="color:#007020;font-weight:bold">if</span> (<span style="color:#666">*</span>pattern <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>) {
-        <span style="color:#60a0b0;font-style:italic">// no more pattern to match ... terminate the buffer and call back
-</span><span style="color:#60a0b0;font-style:italic"></span>        <span style="color:#666">*</span>buffer <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
-        <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
-        simplify_cigar(iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar, iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer);
-        result<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer;
-        result<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer;
+    <span style="color:#000080;font-weight:bold">if</span> (*pattern == <span style="color:#800080">&#39;\0&#39;</span>) {
+        <span style="color:#080;font-style:italic">// no more pattern to match ... terminate the buffer and call back
+</span><span style="color:#080;font-style:italic"></span>        *buffer = <span style="color:#800080">&#39;\0&#39;</span>;
+        *cigar = <span style="color:#800080">&#39;\0&#39;</span>;
+        simplify_cigar(iter-&gt;cigar, iter-&gt;simplify_cigar_buffer);
+        result-&gt;pattern = iter-&gt;buffer;
+        result-&gt;cigar = iter-&gt;simplify_cigar_buffer;
         free(frame);
-        <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">true</span>;
+        <span style="color:#000080;font-weight:bold">return</span> true;
 
-    } <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">if</span> (frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#40a070">0</span>) {
-        <span style="color:#60a0b0;font-style:italic">// we can&#39;t edit any more, so just move pattern to buffer and call back
-</span><span style="color:#60a0b0;font-style:italic"></span>        size_t rest <span style="color:#666">=</span> strlen(pattern);
-        <span style="color:#007020;font-weight:bold">for</span> (size_t i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> rest; <span style="color:#666">+</span><span style="color:#666">+</span>i) {
-              buffer[i] <span style="color:#666">=</span> pattern[i];
-              cigar[i] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">M</span><span style="color:#4070a0">&#39;</span>;
+    } <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">if</span> (frame-&gt;max_dist == <span style="color:#00f">0</span>) {
+        <span style="color:#080;font-style:italic">// we can&#39;t edit any more, so just move pattern to buffer and call back
+</span><span style="color:#080;font-style:italic"></span>        size_t rest = strlen(pattern);
+        <span style="color:#000080;font-weight:bold">for</span> (size_t i = <span style="color:#00f">0</span>; i &lt; rest; ++i) {
+              buffer[i] = pattern[i];
+              cigar[i] = <span style="color:#800080">&#39;M&#39;</span>;
         }
-        buffer[rest] <span style="color:#666">=</span> cigar[rest] <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">\0</span><span style="color:#4070a0">&#39;</span>;
-        simplify_cigar(iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar, iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer);
-        result<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer;
-        result<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>simplify_cigar_buffer;
+        buffer[rest] = cigar[rest] = <span style="color:#800080">&#39;\0&#39;</span>;
+        simplify_cigar(iter-&gt;cigar, iter-&gt;simplify_cigar_buffer);
+        result-&gt;pattern = iter-&gt;buffer;
+        result-&gt;cigar = iter-&gt;simplify_cigar_buffer;
         free(frame);
-        <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">true</span>;
+        <span style="color:#000080;font-weight:bold">return</span> true;
     }
 
-    <span style="color:#007020;font-weight:bold">switch</span> (frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>op) {
-        <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">EXECUTE</span>:
-            <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#007020;font-weight:bold">const</span> <span style="color:#902000">char</span> <span style="color:#666">*</span>a <span style="color:#666">=</span> iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>alphabet; <span style="color:#666">*</span>a; a<span style="color:#666">+</span><span style="color:#666">+</span>) {
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> push_edit_iter_frame(
+    <span style="color:#000080;font-weight:bold">switch</span> (frame-&gt;op) {
+        <span style="color:#000080;font-weight:bold">case</span> EXECUTE:
+            <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *a = iter-&gt;alphabet; *a; a++) {
+                iter-&gt;frames = push_edit_iter_frame(
                     INSERTION,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist,
-                    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames
+                    frame-&gt;pattern_front,
+                    frame-&gt;buffer_front,
+                    frame-&gt;cigar_front,
+                    frame-&gt;max_dist,
+                    iter-&gt;frames
                 );
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames<span style="color:#666">-</span><span style="color:#666">&gt;</span>op_data.i.a <span style="color:#666">=</span> <span style="color:#666">*</span>a;
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> push_edit_iter_frame(
+                iter-&gt;frames-&gt;op_data.i.a = *a;
+                iter-&gt;frames = push_edit_iter_frame(
                     MATCH,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist,
-                    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames
+                    frame-&gt;pattern_front,
+                    frame-&gt;buffer_front,
+                    frame-&gt;cigar_front,
+                    frame-&gt;max_dist,
+                    iter-&gt;frames
                 );
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames<span style="color:#666">-</span><span style="color:#666">&gt;</span>op_data.m.a <span style="color:#666">=</span> <span style="color:#666">*</span>a;
+                iter-&gt;frames-&gt;op_data.m.a = *a;
             }
-            iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> push_edit_iter_frame(
+            iter-&gt;frames = push_edit_iter_frame(
                 DELETION,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist,
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames
+                frame-&gt;pattern_front,
+                frame-&gt;buffer_front,
+                frame-&gt;cigar_front,
+                frame-&gt;max_dist,
+                iter-&gt;frames
             );
-            <span style="color:#007020;font-weight:bold">break</span>;
+            <span style="color:#000080;font-weight:bold">break</span>;
 
-        <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">DELETION</span>:
-            <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">I</span><span style="color:#4070a0">&#39;</span>;
-            iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> push_edit_iter_frame(
+        <span style="color:#000080;font-weight:bold">case</span> DELETION:
+            *cigar = <span style="color:#800080">&#39;I&#39;</span>;
+            iter-&gt;frames = push_edit_iter_frame(
                 EXECUTE,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist <span style="color:#666">-</span> <span style="color:#40a070">1</span>,
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames
+                frame-&gt;pattern_front + <span style="color:#00f">1</span>,
+                frame-&gt;buffer_front,
+                frame-&gt;cigar_front + <span style="color:#00f">1</span>,
+                frame-&gt;max_dist - <span style="color:#00f">1</span>,
+                iter-&gt;frames
             );
-            <span style="color:#007020;font-weight:bold">break</span>;
+            <span style="color:#000080;font-weight:bold">break</span>;
 
-        <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">INSERTION</span>:
-            <span style="color:#666">*</span>buffer <span style="color:#666">=</span> frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>op_data.i.a;
-            <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">D</span><span style="color:#4070a0">&#39;</span>;
-            iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> push_edit_iter_frame(
+        <span style="color:#000080;font-weight:bold">case</span> INSERTION:
+            *buffer = frame-&gt;op_data.i.a;
+            *cigar = <span style="color:#800080">&#39;D&#39;</span>;
+            iter-&gt;frames = push_edit_iter_frame(
                 EXECUTE,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist <span style="color:#666">-</span> <span style="color:#40a070">1</span>,
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames
+                frame-&gt;pattern_front,
+                frame-&gt;buffer_front + <span style="color:#00f">1</span>,
+                frame-&gt;cigar_front + <span style="color:#00f">1</span>,
+                frame-&gt;max_dist - <span style="color:#00f">1</span>,
+                iter-&gt;frames
             );
 
-            <span style="color:#007020;font-weight:bold">break</span>;
-        <span style="color:#007020;font-weight:bold">case</span> <span style="color:#002070;font-weight:bold">MATCH</span>:
-            <span style="color:#007020;font-weight:bold">if</span> (frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>op_data.m.a <span style="color:#666">=</span><span style="color:#666">=</span> <span style="color:#666">*</span>pattern) {
-                <span style="color:#666">*</span>buffer <span style="color:#666">=</span> frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>op_data.m.a;
-                <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">M</span><span style="color:#4070a0">&#39;</span>;
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> push_edit_iter_frame(
+            <span style="color:#000080;font-weight:bold">break</span>;
+        <span style="color:#000080;font-weight:bold">case</span> MATCH:
+            <span style="color:#000080;font-weight:bold">if</span> (frame-&gt;op_data.m.a == *pattern) {
+                *buffer = frame-&gt;op_data.m.a;
+                *cigar = <span style="color:#800080">&#39;M&#39;</span>;
+                iter-&gt;frames = push_edit_iter_frame(
                     EXECUTE,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist,
-                    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames
+                    frame-&gt;pattern_front + <span style="color:#00f">1</span>,
+                    frame-&gt;buffer_front + <span style="color:#00f">1</span>,
+                    frame-&gt;cigar_front + <span style="color:#00f">1</span>,
+                    frame-&gt;max_dist,
+                    iter-&gt;frames
                 );
-            } <span style="color:#007020;font-weight:bold">else</span> {
-                <span style="color:#666">*</span>buffer <span style="color:#666">=</span> frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>op_data.m.a;
-                <span style="color:#666">*</span>cigar <span style="color:#666">=</span> <span style="color:#4070a0"></span><span style="color:#4070a0">&#39;</span><span style="color:#4070a0">M</span><span style="color:#4070a0">&#39;</span>;
-                iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames <span style="color:#666">=</span> push_edit_iter_frame(
+            } <span style="color:#000080;font-weight:bold">else</span> {
+                *buffer = frame-&gt;op_data.m.a;
+                *cigar = <span style="color:#800080">&#39;M&#39;</span>;
+                iter-&gt;frames = push_edit_iter_frame(
                     EXECUTE,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>pattern_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>buffer_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>cigar_front <span style="color:#666">+</span> <span style="color:#40a070">1</span>,
-                    frame<span style="color:#666">-</span><span style="color:#666">&gt;</span>max_dist <span style="color:#666">-</span> <span style="color:#40a070">1</span>,
-                    iter<span style="color:#666">-</span><span style="color:#666">&gt;</span>frames
+                    frame-&gt;pattern_front + <span style="color:#00f">1</span>,
+                    frame-&gt;buffer_front + <span style="color:#00f">1</span>,
+                    frame-&gt;cigar_front + <span style="color:#00f">1</span>,
+                    frame-&gt;max_dist - <span style="color:#00f">1</span>,
+                    iter-&gt;frames
                 );
             }
-            <span style="color:#007020;font-weight:bold">break</span>;
+            <span style="color:#000080;font-weight:bold">break</span>;
 
-        <span style="color:#007020;font-weight:bold">default</span><span style="color:#666">:</span>
-            assert(<span style="color:#007020">false</span>);
+        <span style="color:#000080;font-weight:bold">default</span>:
+            assert(false);
     }
 
     free(frame);
-    <span style="color:#007020;font-weight:bold">return</span> edit_next_pattern(iter, result);
+    <span style="color:#000080;font-weight:bold">return</span> edit_next_pattern(iter, result);
 }
 </code></pre></div><p>I have a lot more callback functions to update, but this is how I have gotten this far. What do you think? Do you have suggestions for smarter ways to do this? How do you implement generators in C? I would love to hear from you if you have ideas or experience with this.</p>
 <!-- raw HTML omitted -->
@@ -970,7 +971,7 @@ if (!doNotTrack) {
 
 </main>
     <footer>
-        <h6>Copyright © 2018 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
