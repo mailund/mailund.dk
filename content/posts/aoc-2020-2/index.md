@@ -254,7 +254,7 @@ print(f"Puzzle #2: {explore2('shiny gold') - 1}") # -1 for the gold bag itself
 
 When I tested it, I went from 122 ms down to 45, so it gives us a little bit. Enough that it is worth it if the data was much larger, but hardly anything that matters for data of this size.
 
-It is good to have this trick in the bag when you need to recursively compute something, and it is called * memorisation*. I am not going to explain why, since you can probably guess. It is a crude version of *dynamic programming*, where you usually work out the order you need to compute something before you start, and then make sure that you have what you need when you need it. Dynamic programming solves one of the future problems much faster than careful thinking, but I will get back to that when we get there…
+It is good to have this trick in the bag when you need to recursively compute something, and it is called *memorisation*. I am not going to explain why, since you can probably guess. It is a crude version of *dynamic programming*, where you usually work out the order you need to compute something before you start, and then make sure that you have what you need when you need it. Dynamic programming solves one of the future problems much faster than careful thinking, but I will get back to that when we get there…
 
 
 ## Day 08 — Handheld Halting

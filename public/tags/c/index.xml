@@ -6,7 +6,16 @@
     <description>Recent content in C on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Tue, 15 Dec 2020 06:48:38 +0100</lastBuildDate><atom:link href="https://mailund.dk/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Dec 2020 09:48:39 +0100</lastBuildDate><atom:link href="https://mailund.dk/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advent of Code 2020 — days 09–11</title>
+      <link>https://mailund.dk/posts/aoc-2020-3/</link>
+      <pubDate>Wed, 16 Dec 2020 09:48:39 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-3/</guid>
+      <description>Another day, another post with solutions to 2020 Advent of Code. I am slowly catching up with the actual puzzles, and I will probably get there soon. After that, there will probably be one day per post, except that I expect that the 24th and 25th will be something I leave for after Christmas.</description>
+    </item>
+    
     <item>
       <title>Advent of Code 2020 — days 06–08</title>
       <link>https://mailund.dk/posts/aoc-2020-2/</link>

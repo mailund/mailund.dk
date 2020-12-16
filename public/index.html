@@ -31,9 +31,38 @@
      font-family: 'Droid Sans';
  }
  code {
-    font-family: 'Fira Code'; 
+    font-family: 'Fira Code';
  }
  </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -124,6 +153,52 @@ if (!doNotTrack) {
         <ul>
           
           <li class="first">
+            <h1><a href="https://mailund.dk/posts/aoc-2020-3/" title="Advent of Code 2020 — days 09–11">Advent of Code 2020 — days 09–11</a></h1> 
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-12-16T09:48:39&#43;01:00">Dec 16, 2020</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/python/">#python</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/c/">#c</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+            </em>
+        </li>
+        
+
+        <li>21 min read</li>
+    </ul>
+</aside>
+            <p>Another day, another post with solutions to 2020 Advent of Code. I am slowly catching up with the actual puzzles, and I will probably get there soon. After that, there will probably be one day per post, except that I expect that the 24th and 25th will be something I leave for after Christmas.</p>
+            
+            <a href="https://mailund.dk/posts/aoc-2020-3/">Read more&hellip;</a>
+            
+          </li>
+          
+          <li >
             <h1><a href="https://mailund.dk/posts/aoc-2020-2/" title="Advent of Code 2020 — days 06–08">Advent of Code 2020 — days 06–08</a></h1> 
             <aside>
     <ul>
@@ -519,46 +594,6 @@ if (!doNotTrack) {
             
           </li>
           
-          <li >
-            <h1><a href="https://mailund.dk/posts/promises-and-lazy-evaluation/" title="Promises, their environments, and how we evaluate them">Promises, their environments, and how we evaluate them</a></h1> 
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2018-10-03T09:10:01&#43;02:00">Oct 3, 2018</time>
-        </li>
-        
-        
-        <li>
-            Categories: 
-            <em>
-                
-                    
-                    <a href="https://mailund.dk/categories/non-standard-evaluation/">Non-standard evaluation</a>
-                
-            </em>
-        </li>
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="https://mailund.dk/tags/scope-rules/">#scope-rules</a>
-                
-            </em>
-        </li>
-        
-
-        <li>15 min read</li>
-    </ul>
-</aside>
-            <p>Have you ever wondered how functions are evaluated? How you can have arguments that would raise errors, but do not, or how default arguments can be expressions that depend on function arguments that you haven&rsquo;t seen yet when you define a function?</p>
-            
-            <a href="https://mailund.dk/posts/promises-and-lazy-evaluation/">Read more&hellip;</a>
-            
-          </li>
-          
         </ul>
       </section>
 
@@ -566,7 +601,7 @@ if (!doNotTrack) {
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
@@ -575,5 +610,9 @@ if (!doNotTrack) {
 </body>
 <div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
 <script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 </html>

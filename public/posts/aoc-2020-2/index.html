@@ -30,9 +30,38 @@
      font-family: 'Droid Sans';
  }
  code {
-    font-family: 'Fira Code'; 
+    font-family: 'Fira Code';
  }
  </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -341,7 +370,7 @@ bags_table = {}
     <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">1</span> + sum(n * explore2(sbag) <span style="color:#000080;font-weight:bold">for</span> sbag,n <span style="font-weight:bold">in</span> bags_table[bag])
 <span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {explore2(&#39;shiny gold&#39;) - 1}&#34;</span>) <span style="color:#080;font-style:italic"># -1 for the gold bag itself</span>
 </code></pre></div><p>When I tested it, I went from 122 ms down to 45, so it gives us a little bit. Enough that it is worth it if the data was much larger, but hardly anything that matters for data of this size.</p>
-<p>It is good to have this trick in the bag when you need to recursively compute something, and it is called * memorisation*. I am not going to explain why, since you can probably guess. It is a crude version of *dynamic programming*, where you usually work out the order you need to compute something before you start, and then make sure that you have what you need when you need it. Dynamic programming solves one of the future problems much faster than careful thinking, but I will get back to that when we get there…</p>
+<p>It is good to have this trick in the bag when you need to recursively compute something, and it is called <em>memorisation</em>. I am not going to explain why, since you can probably guess. It is a crude version of <em>dynamic programming</em>, where you usually work out the order you need to compute something before you start, and then make sure that you have what you need when you need it. Dynamic programming solves one of the future problems much faster than careful thinking, but I will get back to that when we get there…</p>
 <h2 id="day-08--handheld-halting">Day 08 — Handheld Halting</h2>
 <p><a href="https://adventofcode.com/2020/day/8">Day 8</a> was the day I enjoyed the most, so far. We get to implement a simple virtual machine.</p>
 <p>There isn’t anything difficult to interpreting the problem description. There are three operations that the machine can do, and we get a program and need to work out what the accumulator is when it enters an infinite loop.</p>
@@ -653,6 +682,10 @@ change_index(prog)
         </li>
         
         
+        <li>
+            <a href="https://mailund.dk/posts/aoc-2020-3/">Advent of Code 2020 — days 09–11 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
     </ul>
 </section>
     
@@ -716,7 +749,7 @@ change_index(prog)
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
@@ -725,5 +758,9 @@ change_index(prog)
 </body>
 <div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
 <script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 </html>

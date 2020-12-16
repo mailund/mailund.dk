@@ -30,9 +30,38 @@
      font-family: 'Droid Sans';
  }
  code {
-    font-family: 'Fira Code'; 
+    font-family: 'Fira Code';
  }
  </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -512,7 +541,7 @@ plot(new_target, new_prediction, xlab=<span style="color:#00f">&#34;Target&#34;<
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund | 
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
@@ -521,5 +550,9 @@ plot(new_target, new_prediction, xlab=<span style="color:#00f">&#34;Target&#34;<
 </body>
 <div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
 <script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 </html>
