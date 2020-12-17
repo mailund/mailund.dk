@@ -1,0 +1,520 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Advent of Code 2020 — days 14-16</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-12-17T11:01:39&#43;01:00">Dec 17, 2020</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/python/">#python</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+            </em>
+        </li>
+        
+
+        <li>17 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>My posts are almost catching up to <a href="https://adventofcode.com/2020">Advent of Code</a>, which probably means that I will fall behind in the weekend. Quit likely, actually. I probably have time for solving the puzzles, but not writing about them. If that happens—and if I were a better man, it is how I would bet—then I will make sure to catch up Monday.</p>
+<p>Anyway, today I will get through days 14 to 16. There were all straightforward puzzles, and when I tried to be clever, I would only punish myself. In all cases, I spent more time thinking about smarter ways to solve the problem, than the computer spent on the brute force solution.</p>
+<h2 id="day-14--docking-data">Day 14 — Docking Data</h2>
+<p>In <a href="https://adventofcode.com/2020/day/14">the problem description</a> there is a explanation for a bit-masking procedure. We have some integers and we have a bit-mask, and we should modify the integers according to the mask. If the mask says that there should be a zero, we must modify the number to put a zero there, and if it says that we should have a one, we should put a one there. The masks are 36 bits, so if you work in a language with 32-bit integers, you want a larger integer type. I solved the puzzles in Python, so I don’t worry about integer sizes at all.</p>
+<p>I wrote a class to handle masks. It would be easy enough to represent them as raw data, but I want to translate the masks from our input into two integers, where I can perform bit-masking directly. I will have one for setting zeros and another for setting ones.</p>
+<p>The zero mask, confusingly enough, mostly holds ones. It is a mask with ones everywhere, <em>except</em> the positions that should be zero. If I take an integer and AND it with this mask, then the positions where it holds a zero become zero; all the other bits remain the same.</p>
+<p>The one mask does the opposite of the zero mask, it is there to put ones into the input. It starts out as all zeros, but then we put 1-bits at the locations we want to translate into ones. If we OR with this mask, we set the bits at those locations.</p>
+<p>This is all standard bit-fiddling stuff, and the class looks like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> Mask(object):
+    <span style="color:#000080;font-weight:bold">def</span> __init__(self, mask):
+        self.zero_mask, self.one_mask = ~<span style="color:#00f">0</span>, <span style="color:#00f">0</span>
+        <span style="color:#000080;font-weight:bold">for</span> i,b <span style="font-weight:bold">in</span> mask:
+            <span style="color:#000080;font-weight:bold">if</span> b == <span style="color:#00f">&#39;1&#39;</span>: self.one_mask |= (<span style="color:#00f">1</span> &lt;&lt; i)
+            <span style="color:#000080;font-weight:bold">else</span>:        self.zero_mask &amp;= ~(<span style="color:#00f">1</span> &lt;&lt; i)
+    <span style="color:#000080;font-weight:bold">def</span> __call__(self, val):
+        <span style="color:#000080;font-weight:bold">return</span> (val &amp; self.zero_mask) | self.one_mask
+</code></pre></div><p>I’m not entirely sure why the method for applying the mask is <code>__call__()</code>. I think I started out with a function and then turned it into a class, and then I didn’t want to change the code where it was called. It was something like that, but it is lost from my memory.</p>
+<p>If you are familiar with bit manipulation, then there should be nothing surprising in that code. If you are not, then it won’t help much if I explain it further; you have to go and read up on that.</p>
+<p>Puzzle #1 asks us to go through a program and insert values into addresses in a fictional computer. Before we put a number in memory, however, we need to apply the mask. The computer has a 36-bit memory space, so you don’t want to use an array for this. That is about 69 giga-addresses, and if the integers are 36 bits as well, you need at least five bytes for each address. It is about 350 gigabytes of memory. That won’t fly, so I used a dictionary. The addresses are keys, and the bit-masked integers are the values.</p>
+<p>Solving the puzzle is now a simple matter of running through the instructions in the input, extract a mask when the instruction is such a fellow, or apply the mask and insert a value at an address when we see such an instruction. To solve the puzzle, we should add all the values tougher, and we can get those from the dictionary using <code>.values()</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">import</span> re
+f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/14/input.txt&#39;</span>)
+program = f.readlines()
+
+<span style="color:#000080;font-weight:bold">def</span> run_prog_1(program):
+    mask = Mask(())
+    mem = {}
+    <span style="color:#000080;font-weight:bold">for</span> inst <span style="font-weight:bold">in</span> program:
+        <span style="color:#000080;font-weight:bold">if</span> inst.startswith(<span style="color:#00f">&#39;mask&#39;</span>):
+            parsed_mask = [(i,b) <span style="color:#000080;font-weight:bold">for</span> i,b <span style="font-weight:bold">in</span> enumerate(reversed(inst.split()[-<span style="color:#00f">1</span>])) <span style="color:#000080;font-weight:bold">if</span> b != <span style="color:#00f">&#39;X&#39;</span>]
+            mask = Mask(parsed_mask)
+        <span style="color:#000080;font-weight:bold">else</span>:
+            addr, val = map(int, re.match(<span style="color:#00f">r</span><span style="color:#00f">&#34;mem\[(\d*)\] = (\d*)&#34;</span>, inst).groups())
+            mem[addr] = mask(val)
+    <span style="color:#000080;font-weight:bold">return</span> mem
+
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {sum(run_prog_1(program).values())}&#34;</span>)
+</code></pre></div><p>When I work with masked integers, and I have to go through bits, I go in reversed order. Consider binary integers 100 and 10. If I call the first bit for bit one, then bit one is different in the two numbers. It is either the second or third least-significant bit. If you always start at the lowest value, you always know what bit i is supposed to mean. In this puzzle, we have 36-bit numbers, and we could think about our values as such. But if you want the binary representation of an integer in Python, you typically translate it into a string. There, binary 101 and 10 become ‘101’ and ’10’. If you run through them from the right, you get consistent bit-indices. If you do it from the left, you don’t. Then you have to pad the representation. That is not hard to do, but it is easier to run through the bits in reverse order, and I do it several places in the code for this day.</p>
+<p>Puzzle #2 threw me in a wrong direction, I freely admit. It isn’t hard to work out what the task is. Instead of masking the values, you must mask the addresses, but each masked address is really multiple addresses, and you must insert the value at all those addresses.</p>
+<p>I always tell my students to try the simple approach first; this time I didn’t follow my own advice. I didn’t try to brute force the problem. The test input in Puzzle #1 has a mask with a huge number of X-bits (34 is huge in this context), which would map each address to \(2^{34}\) real addresses. That is more than 17 billion addresses. Clearly, brute force is never going to work.</p>
+<p>So I spent more than an hour trying to figure out another solution… I didn’t find one. So, I grudgingly decided to have a closer look at the input file. Sometimes, they give us data with more structure than they reveal in the problem descriptions. They never told us we were working with primes in day 13, but that was important for solving the second puzzle there.</p>
+<p>The input data doesn’t look like the example mask in Puzzle #1 at all! There, the masks have very few X-bits! The mask with the highest number of X’es had 8. That is \(2^8 = 256\). I iterate through that on a regular bases when I radix sort. This does not scare me at all.</p>
+<p>So, after wasting a lot of time trying to be clever, I set out to brute force the puzzle.</p>
+<p>For every input mask, we have a set of concrete masks to apply to addresses. Each X in the input can either enforce a zero or a one. To get all the combinations, all \(2^b\) when there are \(b\) X-bits, we can compute the power-set of the indices for the X-bits, and then create zero- and one-masks as above from them:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># damned it, I will brute force this shit...</span>
+<span style="color:#000080;font-weight:bold">def</span> powerset(x):
+    res = []
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(<span style="color:#00f">2</span>**len(x)):
+        s = [] <span style="color:#080;font-style:italic"># the set</span>
+        <span style="color:#000080;font-weight:bold">for</span> j, b <span style="font-weight:bold">in</span> enumerate(reversed(bin(i))):
+            <span style="color:#000080;font-weight:bold">if</span> b == <span style="color:#00f">&#39;1&#39;</span>: s.append(x[j])
+        <span style="color:#080;font-style:italic"># the complement</span>
+        c = [j <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> x <span style="color:#000080;font-weight:bold">if</span> j <span style="font-weight:bold">not</span> <span style="font-weight:bold">in</span> s]
+        <span style="color:#080;font-style:italic"># and the masks...</span>
+        ones, zeros = <span style="color:#00f">0</span>, ~<span style="color:#00f">0</span>
+        <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> s: ones |= (<span style="color:#00f">1</span> &lt;&lt; j)
+        <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> c: zeros &amp;= ~(<span style="color:#00f">1</span> &lt;&lt; j)
+        res.append((ones,zeros))
+    <span style="color:#000080;font-weight:bold">return</span> res
+</code></pre></div><p>An easy way to compute the power-set of a collection of elements is to look at binary numbers from zero to \(2^b-1\). The bits in those numbers tell you which elements to include and which to exclude. The function does that for the indices of the X-bits, and then it builds pairs of masks based on them.</p>
+<p>So, I updated my <code>Mask</code> class, to create the new kind of masks and give me a generator for addresses when applied:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> Mask(object):
+    <span style="color:#000080;font-weight:bold">def</span> __init__(self, mask):
+        self.one_mask = <span style="color:#00f">0</span>
+        self.floating = []
+        <span style="color:#000080;font-weight:bold">for</span> i,b <span style="font-weight:bold">in</span> enumerate(reversed(mask)):
+            <span style="color:#000080;font-weight:bold">if</span> b == <span style="color:#00f">&#39;1&#39;</span>: self.one_mask |= (<span style="color:#00f">1</span> &lt;&lt; i)
+            <span style="color:#000080;font-weight:bold">if</span> b == <span style="color:#00f">&#39;X&#39;</span>: self.floating.append(i)
+        self.masks = [
+            (self.one_mask | one_mask, zero_mask)
+            <span style="color:#000080;font-weight:bold">for</span> one_mask, zero_mask <span style="font-weight:bold">in</span> powerset(self.floating)
+        ]
+       
+    <span style="color:#000080;font-weight:bold">def</span> __call__(self, addr):
+        <span style="color:#000080;font-weight:bold">for</span> one_mask, zero_mask <span style="font-weight:bold">in</span> self.masks:
+            <span style="color:#000080;font-weight:bold">yield</span> (addr | one_mask) &amp; zero_mask
+</code></pre></div><p>After that, solving the puzzle is trivial:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> run_prog_2(program):
+    mask = Mask(())
+    mem = {}
+    <span style="color:#000080;font-weight:bold">for</span> inst <span style="font-weight:bold">in</span> program:
+        <span style="color:#000080;font-weight:bold">if</span> inst.startswith(<span style="color:#00f">&#39;mask&#39;</span>):
+            mask = Mask(inst.split()[-<span style="color:#00f">1</span>])
+        <span style="color:#000080;font-weight:bold">else</span>:
+            addr, val = map(int, re.match(<span style="color:#00f">r</span><span style="color:#00f">&#34;mem\[(\d*)\] = (\d*)&#34;</span>, inst).groups())
+            <span style="color:#000080;font-weight:bold">for</span> masked_addr <span style="font-weight:bold">in</span> mask(addr):
+                mem[masked_addr] = val
+    <span style="color:#000080;font-weight:bold">return</span> mem
+
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {sum(run_prog_2(program).values())}&#34;</span>)
+</code></pre></div><p>On Twitter, I saw a lot of people solving the masking puzzle by considering addresses as strings. Still generating the different addresses from a mask, but as string manipulations. That works excellently, when we use a dictionary for our addressing space, and I hadn’t considered that. If you go for computational speed, though, bit-manipulation is better than string manipulation. When you use bit-wise OR, AND, XOR, or such operations, the hardware handles the bits in parallel, and you get very quick operations.</p>
+<p>Running time, as long as you are done in a handful of seconds, is not an issue with these puzzles, though. If you can implement the solution in 10 minutes and run it in 10 seconds, you are much better off than if you implement it in 15 minutes and it runs in 5. For me, though, I think that I can implement bit-manipulation code faster than string-manipulation code. I am simply more used to it. But your milage may vary.</p>
+<p>It still bothers me that I had to solve the puzzle with brute force, so I went back and looked at it once more. The string-solutions gave me an idea. What if we could represent multiple addresses with a single dictionary key? Maybe, we could apply the masks but keep the X’es. They don’t map to any real address anyway, so they are as good for keys as zeros and ones? An address with \(b\) X’es just represent \(2^b\) real addresses, and for the solution, we should multiply the corresponding value with that.</p>
+<p>This won’t work in general—I honestly have no idea about what I would do in the completely general case—but maybe, just maybe, there is some regularity in the data that would let me do this? They are sneaky with the puzzles, after all.</p>
+<p>I didn’t dig into the data as the first step. I learn from my mistakes. I just implemented the idea and checked if it would give me the right answer. If it doesn’t, then the idea doesn’t work. If it does, then I can try to work out under which conditions it work.</p>
+<p>Well, I tried…</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> run_prog_2_(program):
+    mem = {}
+    <span style="color:#000080;font-weight:bold">for</span> inst <span style="font-weight:bold">in</span> program:
+        <span style="color:#000080;font-weight:bold">if</span> inst.startswith(<span style="color:#00f">&#39;mask&#39;</span>):
+            mask = inst.split()[-<span style="color:#00f">1</span>]
+        <span style="color:#000080;font-weight:bold">else</span>:
+            addr, val = map(int, re.match(<span style="color:#00f">r</span><span style="color:#00f">&#34;mem\[(\d*)\] = (\d*)&#34;</span>, inst).groups())
+            addr = bin(addr).zfill(<span style="color:#00f">36</span>)
+            masked_addr = <span style="color:#00f">&#39;&#39;</span>.join(m <span style="color:#000080;font-weight:bold">if</span> m <span style="font-weight:bold">in</span> <span style="color:#00f">&#39;X1&#39;</span> <span style="color:#000080;font-weight:bold">else</span> b <span style="color:#000080;font-weight:bold">for</span> m,b <span style="font-weight:bold">in</span> zip(mask, addr))
+            mem[masked_addr] = val * <span style="color:#00f">2</span>**masked_addr.count(<span style="color:#00f">&#39;X&#39;</span>)
+    <span style="color:#000080;font-weight:bold">return</span> mem
+
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {sum(run_prog_2_(program).values())}&#34;</span>)
+</code></pre></div><p>It doesn’t work. If I take small prefixes of the data it does, so it is something that could be used for a little while, but it breaks when I am a bit more than halfway through my input.</p>
+<p>If I had a way to identify that a new address will clash with my existing data, I might be able to work something out. But I didn’t have time to play with it any longer, so it will be another time…</p>
+<h2 id="day-15--rambunctious-recitation">Day 15 — Rambunctious Recitation</h2>
+<p>In <a href="https://adventofcode.com/2020/day/15">day 15</a> we get an initial sequence and a rule for how to extend it. We have to work out what number 2020 is (and when you get to Puzzle #2, what number 30-million is).</p>
+<p>Ha! They are trying to fool me into being unnecessarily clever again. Not this time. I can be lazy with the best of them and just brute force the solution. That took about 10 minutes to implement and 10 seconds to run for both puzzles.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> solve(input, n):
+    spoken = { n:(i+<span style="color:#00f">1</span>) <span style="color:#000080;font-weight:bold">for</span> i, n <span style="font-weight:bold">in</span> enumerate(input[:-<span style="color:#00f">1</span>]) }
+    last = input[-<span style="color:#00f">1</span>] <span style="color:#080;font-style:italic"># misnomer, since it is the current...</span>
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(len(input), n):
+        <span style="color:#080;font-style:italic"># we insert &#39;last&#39; *after* we check if we</span>
+        <span style="color:#080;font-style:italic"># had spoken it before. That is the only</span>
+        <span style="color:#080;font-style:italic"># tricky part to this solution...</span>
+        curr = <span style="color:#00f">0</span> <span style="color:#000080;font-weight:bold">if</span> last <span style="font-weight:bold">not</span> <span style="font-weight:bold">in</span> spoken <span style="color:#000080;font-weight:bold">else</span> i - spoken[last]
+        spoken[last] = i ; i += <span style="color:#00f">1</span> ; last = curr
+    <span style="color:#000080;font-weight:bold">return</span> last
+
+input = [<span style="color:#00f">2</span>,<span style="color:#00f">0</span>,<span style="color:#00f">6</span>,<span style="color:#00f">12</span>,<span style="color:#00f">1</span>,<span style="color:#00f">3</span>]
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {solve(input, 2020)}&#34;</span>)
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {solve(input, 30_000_000)}&#34;</span>)
+</code></pre></div><p>The rule for working out the next number tells you to look back to the previous time you saw it. That is misdirection. You don’t want to search back in a growing sequence, when all you need to know is the last time you saw a number. For something like this, you always reach out for a table instead of a sequence.</p>
+<p>The only tricky part with implementing the rule is that you need to insert the current number in the table, and determine what the next should be, based on the last time you saw the current number. That means that you must wait with inserting the current number until you have computed the next. Otherwise, it is pretty simple.</p>
+<p>This was quick, and I was much surprised when I saw that the simple solution to Puzzle #1 solve Puzzle #2 as well. It takes about nine seconds on my machine, and I was tempted to implement it in C to speed it up. But, although I do have some <a href="https://amzn.to/37scTNu">hash tables lying around</a>, I didn’t feel like spending an hour adapting one to this problem, just to go from ten to one second running time. Maybe one day when I am bored. But not today.</p>
+<p>I still feel a bit disappointed that I had to simulate the process to get the n’th number. So I asked a domesticated number theorist. It isn’t quite the <a href="https://www.numberphile.com/videos/van-eck-sequence">Van Eck Sequence</a>, but it is pretty close, so he wasn’t optimistic. Then I am not going to be either.</p>
+<h2 id="day-16--ticket-translation">Day 16 — Ticket Translation</h2>
+<p>In <a href="https://adventofcode.com/2020/day/16">day 16</a> we have to infer which fields on a ticket corresponds to which set of numbers. Our input consist of rules that the different kinds of fields must obey, our own ticket, and a set of other tickets that we can use to map the order of field-values to the field rules.</p>
+<p>Each rule is a list of ranges, with the interpretation that a field is valid for that rule if it is in one of the ranges. When I parse up the data, I put ranges and rules in classes, to make it easier to keep track of them, and easier to test if a given value obeys a given rule. Tickets, both my own and the nearby tickets, are lists of numbers.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># -- Parsing the input ---------------------------------------</span>
+f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/16/input.txt&#39;</span>)
+rules_description, ticket, nearby = f.read().strip().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>)
+
+<span style="color:#080;font-style:italic"># Parsing rules...</span>
+<span style="color:#000080;font-weight:bold">class</span> Range(object):
+    <span style="color:#000080;font-weight:bold">def</span> __init__(self, a, b):
+        self.a = a
+        self.b = b
+    <span style="color:#000080;font-weight:bold">def</span> check(self, val):
+        <span style="color:#000080;font-weight:bold">return</span> self.a &lt;= val &lt;= self.b
+    <span style="color:#000080;font-weight:bold">def</span> __repr__(self):
+        <span style="color:#000080;font-weight:bold">return</span> f<span style="color:#00f">&#34;Range({self.a}, {self.b})&#34;</span>
+
+<span style="color:#000080;font-weight:bold">class</span> Rule(object):
+    <span style="color:#000080;font-weight:bold">def</span> __init__(self, name, ranges):
+        self.name = name
+        self.ranges = ranges
+    <span style="color:#000080;font-weight:bold">def</span> check(self, val):
+        <span style="color:#000080;font-weight:bold">return</span> any(r.check(val) <span style="color:#000080;font-weight:bold">for</span> r <span style="font-weight:bold">in</span> self.ranges)
+    <span style="color:#000080;font-weight:bold">def</span> __repr__(self):
+        <span style="color:#000080;font-weight:bold">return</span> f<span style="color:#00f">&#34;Rule({self.name},{self.ranges})&#34;</span>
+
+rules = []
+<span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> rules_description.split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>):
+    rule, ranges = line.split(<span style="color:#00f">&#39;:&#39;</span>)
+    rules.append(
+        Rule(rule.strip(), [
+             Range(*map(int, x.strip().split(<span style="color:#00f">&#39;-&#39;</span>)))
+                   <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> ranges.split(<span style="color:#00f">&#39;or&#39;</span>)
+    ]))
+
+<span style="color:#080;font-style:italic"># Parsing my ticket</span>
+<span style="color:#000080;font-weight:bold">def</span> parse_ticket(ticket):
+    <span style="color:#000080;font-weight:bold">return</span> list(map(int, ticket.split(<span style="color:#00f">&#39;,&#39;</span>)))
+my_ticket = parse_ticket(ticket.split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)[<span style="color:#00f">1</span>])
+
+<span style="color:#080;font-style:italic"># Parsing nearby tickets</span>
+nearby_tickets = []
+<span style="color:#000080;font-weight:bold">for</span> ticket <span style="font-weight:bold">in</span> nearby.split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)[<span style="color:#00f">1</span>:]:
+    nearby_tickets.append(parse_ticket(ticket))
+
+</code></pre></div><p>For Puzzle #1, we need to add together all the fields that cannot satisfy any rule. With an object <code>r</code> from the <code>Rule</code> class, I can check if a field satisfy the rule with <code>r.check(field)</code>, so solving the puzzle is easy. Go through all the tickets and all the fields, identify those that do not satisfy any rule, and sum those:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Puzzle #1</span>
+<span style="color:#000080;font-weight:bold">def</span> ticket_scanning_error(tickets, rules):
+    <span style="color:#000080;font-weight:bold">return</span> sum(sum(field <span style="color:#000080;font-weight:bold">for</span> field <span style="font-weight:bold">in</span> ticket
+                   <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> any(r.check(field) <span style="color:#000080;font-weight:bold">for</span> r <span style="font-weight:bold">in</span> rules))
+               <span style="color:#000080;font-weight:bold">for</span> ticket <span style="font-weight:bold">in</span> tickets)
+
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {ticket_scanning_error(nearby_tickets, rules)}&#34;</span>)
+</code></pre></div><p>The loop is a little backwards, because that is how these generator expressions work, but it is just the double loop over tickets and fields.</p>
+<p>In Puzzle #2, we now need to work out which rule matches which field. We can do this by elimination. A rule that doesn’t satisfy all the values in a field, cannot match that field.</p>
+<p>Before we can identify which rules match which fields, we must clean up the ticket data, by removing all tickets with a field that isn’t satisfied by any rule. That is an expression similar to the one we wrote above. We go through all the tickets and check if all fields can be satisfied:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Get the valid tickets to work with...</span>
+<span style="color:#000080;font-weight:bold">def</span> check_ticket(ticket):
+    <span style="color:#000080;font-weight:bold">return</span> all(
+        any(r.check(field) <span style="color:#000080;font-weight:bold">for</span> r <span style="font-weight:bold">in</span> rules)
+        <span style="color:#000080;font-weight:bold">for</span> field <span style="font-weight:bold">in</span> ticket
+    )
+valid_tickets = [ *filter(check_ticket, nearby_tickets) ]
+</code></pre></div><p>We can work out which rules can potentially match a field by applying a variant of <a href="https://mailund.dk/posts/aoc-2020-2/">day 6</a>. In the puzzles there, we had a set of answers and we worked out the union and intersection of those across groups. Here, we have a set of rules, that are satisfied by each value, and across the fields we identify the rules that satisfy all of them using an intersection. We can do something like this (see the context below):</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> candidate_rules(field):
+    <span style="color:#000080;font-weight:bold">return</span> { r.name <span style="color:#000080;font-weight:bold">for</span> r <span style="font-weight:bold">in</span> rules <span style="color:#000080;font-weight:bold">if</span> r.check(field) }
+<span style="color:#000080;font-weight:bold">def</span> satisfying_rules(fields):
+    <span style="color:#000080;font-weight:bold">return</span> set.intersection( *map(candidate_rules, fields) )
+field_rules = [ *map(satisfying_rules, fields) ]
+</code></pre></div><p>If <code>fields</code> are the values in the tickets, collected so we have all the values that come first, then those that come second, and so forth, then we map <code>satisfying_rules</code> over them. (In the code below, we wrap this in an <code>enumerate()</code> so we get the order as well, but that is not essential here). The <code>satisfying_rules()</code> function works out which rules satisfy all the values in a field, and it does that by computing the intersection of <code>candidate_rules()</code>, that extracts the rules that a given value can satisfy. The result of it all is a list of sets, where for each index <code>i</code> in the list, you have the set of rules that can match to that field.</p>
+<p>If these are all singletons, then we are done. Then we have mapped one rule to each field. If they are not, we need to do some kind of pairing. Optimal pairing isn’t necessarily trivial, but for the data I had, this strategy worked. I took all the fields with a singleton, and then removed the rules in them from the remaining rules. If a field only satisfy a single rule, then it must be assigned to that rule. This leaves new singletons, and I do the same again. The fields that now have singletons are assigned to those rules, and I remove the rules from the remaining. Iterate this until you have a single rule for all the fields, and you are done.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Get the rules that each field can satisfy...</span>
+<span style="color:#000080;font-weight:bold">def</span> infer_rules(tickets):
+    <span style="color:#080;font-style:italic"># I want the fields, rather than the tickets, so transform...</span>
+    fields = [[ticket[j] <span style="color:#000080;font-weight:bold">for</span> ticket <span style="font-weight:bold">in</span> valid_tickets]
+              <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(len(valid_tickets[<span style="color:#00f">0</span>]))]
+
+    <span style="color:#080;font-style:italic"># For each field, identify the candidate rules</span>
+    <span style="color:#000080;font-weight:bold">def</span> candidate_rules(field):
+        <span style="color:#000080;font-weight:bold">return</span> { r.name <span style="color:#000080;font-weight:bold">for</span> r <span style="font-weight:bold">in</span> rules <span style="color:#000080;font-weight:bold">if</span> r.check(field) }
+    <span style="color:#000080;font-weight:bold">def</span> satisfying_rules(fields):
+        <span style="color:#000080;font-weight:bold">return</span> set.intersection( *map(candidate_rules, fields) )
+    field_rules = [ *enumerate(map(satisfying_rules, fields)) ]
+
+    <span style="color:#080;font-style:italic"># Now start eliminating...</span>
+    assigned_rules = []
+    <span style="color:#000080;font-weight:bold">while</span> field_rules:
+        singletons =  [ (i,r) <span style="color:#000080;font-weight:bold">for</span> i,r <span style="font-weight:bold">in</span> field_rules <span style="color:#000080;font-weight:bold">if</span> len(r) == <span style="color:#00f">1</span> ]
+        field_rules = [ (i,r) <span style="color:#000080;font-weight:bold">for</span> i,r <span style="font-weight:bold">in</span> field_rules <span style="color:#000080;font-weight:bold">if</span> len(r) &gt; <span style="color:#00f">1</span>  ]
+        assigned_rules.extend(singletons)        
+        removed = set.union( *[r <span style="color:#000080;font-weight:bold">for</span> i,r <span style="font-weight:bold">in</span> singletons] )
+        <span style="color:#000080;font-weight:bold">for</span> _,s <span style="font-weight:bold">in</span> field_rules:
+            s -= removed
+
+    assigned_rules.sort()
+    <span style="color:#000080;font-weight:bold">return</span> [ name <span style="color:#000080;font-weight:bold">for</span> _,(name,) <span style="font-weight:bold">in</span> assigned_rules ]
+</code></pre></div><p>The elimination code here will not always work. It assumes that we will always have singletons, so it will break if we for example end up with two fields left that can both satisfy the same two rules. If we are in such a situation, either assignment would be correct, but we would not have a unique solution. For these puzzles, I’m reasonably sure that there are unique solutions, so I dared assume it.</p>
+<p>To finish the puzzle, we extract the names that begin with “departure”, get the corresponding values, and multiply them:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">rule_names = infer_rules(valid_tickets)
+indices = [ i <span style="color:#000080;font-weight:bold">for</span> i,r <span style="font-weight:bold">in</span> enumerate(rule_names)
+              <span style="color:#000080;font-weight:bold">if</span> r.startswith(<span style="color:#00f">&#34;departure&#34;</span>) ]
+
+<span style="color:#000080;font-weight:bold">from</span> math <span style="color:#000080;font-weight:bold">import</span> prod
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {prod(my_ticket[i] for i in indices)}&#34;</span>)
+
+</code></pre></div>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/aoc-2020-4/"><i class="fa fa-chevron-circle-left"></i> Advent of Code 2020 — days 12-13</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>
