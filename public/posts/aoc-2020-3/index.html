@@ -203,7 +203,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> valid(i): <span style="color:#080;font-style:italic"># solution from day 01</span>
     prev, curr = x[i-p:i], x[i]
     z = { *((curr - y) <span style="color:#000080;font-weight:bold">for</span> y <span style="font-weight:bold">in</span> prev) }
-    <span style="color:#000080;font-weight:bold">return</span> any(y <span style="font-weight:bold">in</span> prev <span style="color:#000080;font-weight:bold">for</span> y <span style="font-weight:bold">in</span> z)
+    <span style="color:#000080;font-weight:bold">return</span> any(y <span style="font-weight:bold">in</span> z <span style="color:#000080;font-weight:bold">for</span> y <span style="font-weight:bold">in</span> pred)
 </code></pre></div><p>I extract the sequence of numbers from a list, <code>x</code>, and the current number as <code>x[i]</code>. Then I build the set <code>z</code> that lets me answer if I have a pair that sums to <code>x[i]</code>, and finally I use the function <code>any()</code> to check if any of the elements in the previous <code>p</code> numbers are in <code>z</code>. If so, we have a pair that sums to <code>x[i]</code>. Check Day 1 for how this works.</p>
 <p>We need to find the first number that doesn’t satisfy this, so we want to run <code>i</code> from <code>p</code> (the first index where we can get <em>p</em> previous numbers) and up, until we find one that doesn’t satisfy the <code>valid(i)</code> check. You can do this in a simple loop</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(p, len(x)):
@@ -567,6 +567,10 @@ x = [line.strip() <span style="color:#000080;font-weight:bold">for</span> line <
             <a href="https://mailund.dk/posts/aoc-2020-2/"><i class="fa fa-chevron-circle-left"></i> Advent of Code 2020 — days 06–08</a>
         </li>
         
+        
+        <li>
+            <a href="https://mailund.dk/posts/aoc-2020-4/">Advent of Code 2020 — days 12-13 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
         
     </ul>
 </section>

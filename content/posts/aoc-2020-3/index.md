@@ -25,7 +25,7 @@ This is a helper function I use, that checks if I have a pair of numbers that su
 def valid(i): # solution from day 01
     prev, curr = x[i-p:i], x[i]
     z = { *((curr - y) for y in prev) }
-    return any(y in prev for y in z)
+    return any(y in z for y in pred)
 ```
 
 I extract the sequence of numbers from a list, `x`, and the current number as `x[i]`. Then I build the set `z` that lets me answer if I have a pair that sums to `x[i]`, and finally I use the function `any()` to check if any of the elements in the previous `p` numbers are in `z`. If so, we have a pair that sums to `x[i]`. Check Day 1 for how this works.

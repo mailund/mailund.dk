@@ -1,7 +1,7 @@
 +++
 title = "Advent of Code 2020 — days 12-13"
-date = 2020-12-16T10:04:39+01:00
-draft = true
+date = 2020-12-17T10:54:39+01:00
+draft = false
 tags = ["python", "programming"]
 categories = ["Programming"]
 +++
@@ -183,12 +183,25 @@ class Ship(object):
 
 ## Day 13 — Shuttle Search
 
-This is my least favourite task in Advent of Code 2020 so far. The title should be [Chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem) instead, because the difficulty entirely depends on whether you know this result from number theory or not. But I am getting ahead of myself.
+This was my least favourite day so far, because the difficulty entirely depends on whether you happen to remember a result from number theory. I was lucky, but I dislike puzzles whose difficulty depends so crucially on whether you know a bit of trivia. But I am getting ahead of myself…
 
-Read [the program description](https://adventofcode.com/2020/day/13). If you haven’t already solved Puzzle #1, then you can’t see the part that I was hinting at with CRT, so we will quickly get the first puzzle out of our way and then get to Puzzle #2, that is either trivial or unreasonably hard, depending on your background.
+Read [the program description](https://adventofcode.com/2020/day/13). If you haven’t already solved Puzzle #1, then you can’t see the part that I was hinting at, so we will quickly get the first puzzle out of our way and then get to Puzzle #2, that is either trivial or hard, depending on your background.
 
-**FIXME**
+We get a list of busses, that depart at various frequencies. Most of the explanation is misdirection, because the only thing that matters is that bus \\(b_i\\) will depart at integers that are multiples of \\(b_i\\), i.e., \\(0b_i, 1b_i, 2b_i, \ldots\\). We then have a departure time, let’s call it \\(d\\), and we must identify the first bus that departs after \\(d\\), \\(b\\), and the waiting time between \\(d\\) and when it departs, \\(w\\), and the answer to the puzzle is \\(b\cdot w\\).
 
+Whenever you have a problem that involves something that happens at regular intervals, you want to look at modular arithmetic. It isn’t always where a solution lies, but it is more often than not.
+
+Usually, it is something simple, like “a bus leaves the station every 17 minutes, from six in the morning to six in the evening, write down the schedule”. That means it is a period of 17 minutes, but you can’t write “6:00, 6:17, 6:34, 6:51, 6:68, 6:85, …” because an hour only has 60 minutes. But you can get the minutes modulo 60, `minute = k * 17 % 60` and the hour by devision `hour = k * 17 // 60` (remember integer division, which is `//` in Python).
+
+Here, the situation is not quite that simple, but almost. We need to work out the waiting time for each bus, which isn’t the bus’ frequency modulo anything. But consider the busses’ periods, \\(\{0b_i, 1b_i, 2b_i, \ldots, kb_i, (k+1)b_i, \ldots\}\\). We can draw them like this, where the vertical line would be the departure time we are interested in.
+
+![](busses.png)
+
+The busses run in different intervals, the boxes, and when we put down a departure time, we cut one of those intervals in two (where one of the two parts could have length zero, if the departure time is a multiple of the frequency). In the picture, I have show the two parts in dark and light grey. If you do division \\(d / b_i\\) you will get the number of white boxes for bus \\(b_i\\) before the departure time. That is the whole number of times you can complete an interval before \\(d\\). The dark gray is the remaining time up to \\(d\\), or \\(d\\) mod \\(b_i\\). We are interested in the light grey, which must then be \\(b_i - d\\) mod \\(b_i\\).
+
+When you have done these kinds of problems a few times, your brain will jump to this inference faster that you can read the explanation, but if you are ever stumped, make a figure like this, and things will likely quickly click. Every time I run into a problem where the solution isn’t immediately obvious, I start drawing. It is only when I have done that enough that my subconscious programmer take over, and just tells me the solution, that I don’t draw. Drawing, and solving puzzles, are intrinsically tied for me.
+
+Anyway, when we realise that waiting times are \\(b_i - d\\) mod \\(b_i\\), finding the smallest and multiplying the waiting time with the bus frequency is trivial:
 
 ```python
 f = open('/Users/mailund/Projects/adventofcode/2020/13/input.txt')
@@ -196,11 +209,40 @@ depart = int(f.readline())
 busses = [int(bus) for bus in f.read().strip().split(',') if bus != 'x']
 
 # Puzzle #1: Get the earliest bus after departure...
-waiting = sorted((b - depart % b, b) for b in busses)
-w, b = waiting[0]
+w, b = min((b - depart % b, b) for b in busses)
 print(f"Puzzle #1: {b * w}")
 ```
 
+
+That only took a few minutes to solve, and Puzzle #2 was just as simple (although I did spend a bit longer implementing an algorithm that I didn’t find out was already in `SymPy` until later). But Puzzle #2 is only simple if you know the [Chinese Remainder Theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem), and this is why I don’t like day 13. I find it unreasonable that those who are lucky to know CRT (and lucky enough to remember it) will have a trivial problem, while those that do not, are in for the unpleasant task of reinventing it. There are always cases where knowing a trick can greatly speed up problem solving, but this is one piece of trivia that makes or breaks the problem. And it is not something you run into that often. I don’t think I have used CRT in 20 years, and it was utter undiluted luck that I recognised it here.
+
+There is lots of mathematics that I once new but couldn’t tell you what is if my life depended on it—I know there is something called a Gaussian curvature, but if you put a gun to my head and demanded that I tell you what it is, I would be dead. There are some tricks and techniques that I think every programmer should know, and things that pop up often in everyday programming is reasonable to expect people to know. While the CRT is not completely obscure, I wouldn’t put it in this category.
+
+You can expect that a mathematician will recognise it, of course. A few days later I talked to a friend from the Math department, and when I explained the puzzle I wasn’t 30 seconds in before he said “du skal bruge den kinesiske restsætning!” (He was speaking Danish; it means “you need to use the Chinese remainder theorem”—google translate will back me up on this). So yeah, for the right people, this is essential knowledge. I don’t think it is for programmers, and judging from Twitter responses to this puzzle, people who didn’t know CRT were having a tough day. I think that is unfair.
+
+Anyway, read on, and then you will also know CRT.
+
+The puzzle is now this: We consider the index at which we see busses (after compensation for “missing” busses, encoded as `”x”`). I will call them offsets, because that is how we will use them. Each bus, \\(b_i\\) has an offset \\(o_i\\), and we need to find a time, \\(t\\), such that bus \\(b_i\\) will depart at time \\(t+o_i\\) for all busses \\(b_i\\). We know that the waiting time for bus \\(b_i\\) will be \\(b_i - t\\) mod \\(b_i\\)—we just worked that out in Puzzle #1—so the task is to find \\(t\\) such that \\(b_i -t\\) mod \\(b_i = o_i\\), or \\(t\\) mod \\(b_i = b_i - o_i\\).
+
+We can then reformulate this, once more, to say that we have \\(k\\) equations: 
+
+$$t \equiv b_1-o_1 \mod b_1$$
+$$t \equiv b_2-o_2 \mod b_2$$
+$$\ldots$$
+$$t \equiv b_k-o_k \mod b_k$$
+
+That rang a bell! I freely admit that I had to look up the Chinese remainder theorem to check, but I was right. It says that for numbers \\(a_1,\ldots,a_k\\) and \\(n_1,\ldots,n_,\\) with \\(N=\prod n_i\\), there is a unique solution \\(0\leq x < N\\) to
+
+$$x \equiv a_1 \mod n_1$$
+$$x \equiv a_2 \mod n_2$$
+$$\ldots$$
+$$x \equiv a_k \mod n_k$$
+
+if the \\(n_i\\) are co-prime. The co-prime is important, and was part of what triggered my memory; I had just noticed that the busses had prime numbers, and figured there was a reason for that—which started my brain searching for such a reason.
+
+Anyway, just because we know that something exists, doesn’t mean that we can find it. We know that all integers can be factored into primes, but that doesn’t tell us what the factorisation is for any given number. With CRT, however, there is an algorithm that will give us \\(x\\). Since it is unique between 0 and \\(N\\), it is also the smallest, so it is the solution to our puzzle.
+
+I had to google around to find out how to do this, and then implement it, but you don’t have to. Because it is in `SymPy`. You can solve Puzzle #2 this easily:
 
 ```python
 f = open('/Users/mailund/Projects/adventofcode/2020/13/input.txt')
@@ -216,4 +258,8 @@ x, N = crt(n, a)
 print(f"Puzzle #2: {x}")
 ```
 
+
+The `crt()` function returns \\(x\\) and \\(N\\), and our puzzle answer is \\(x\\).
+
+If I knew I had `crt()` readily available, it would have been a 10 minutes puzzle. It was closer to 30 because I had to find the algorithm and implement it. But that is still quite a bit faster than if I had to come up with a solution from nothing.
 
