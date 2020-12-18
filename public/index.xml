@@ -6,7 +6,7 @@
     <description>Recent content on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Thu, 17 Dec 2020 18:51:39 +0100</lastBuildDate><atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Dec 2020 08:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://mailund.dk/about/</link>
@@ -44,6 +44,15 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
       
       <guid>https://mailund.dk/software/</guid>
       <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
+    </item>
+    
+    <item>
+      <title>Advent of Code 2020 — days 17-18</title>
+      <link>https://mailund.dk/posts/aoc-2020-6/</link>
+      <pubDate>Fri, 18 Dec 2020 08:51:59 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-6/</guid>
+      <description>Well, today, my blogging catches up with my Advent of Code hacking. Just in time to fall behind again in the weekend. If that happens, I should be able to write up my weekend solutions on Monday.</description>
     </item>
     
     <item>

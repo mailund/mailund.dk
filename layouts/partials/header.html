@@ -33,6 +33,8 @@
         <li><a href="https://patreon.com/{{ .Site.Author.patreon }}"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
         {{ end }} {{ if .Site.Author.goodreads }}
         <li><a href="https://www.goodreads.com/author/show/{{ .Site.Author.goodreads }}"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Author.stackoverflow }}
+        <li><a href="https://www.stackoverflow.com/users/{{ .Site.Author.stackoverflow }}"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
         {{ end }}
       </ul>
       {{ with .Site.Params.tagline }}

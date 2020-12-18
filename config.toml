@@ -22,7 +22,7 @@ pygmentsStyle = "borland"
     facebook = "mailund"
     patreon = "mailund"
     goodreads = "15484380.Thomas_Mailund"
-    stackoverflow = "mailund"
+    stackoverflow = "2170269/thomas-mailund"
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
