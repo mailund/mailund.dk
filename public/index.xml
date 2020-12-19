@@ -6,7 +6,7 @@
     <description>Recent content on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 18 Dec 2020 08:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Dec 2020 06:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://mailund.dk/about/</link>
@@ -44,6 +44,15 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
       
       <guid>https://mailund.dk/software/</guid>
       <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
+    </item>
+    
+    <item>
+      <title>Advent of Code 2020 — day 19</title>
+      <link>https://mailund.dk/posts/aoc-2020-7/</link>
+      <pubDate>Sat, 19 Dec 2020 06:51:59 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-7/</guid>
+      <description>I will make this one quick, because I don’t have much time. Today, we are given some rules for what strings should look like, and we are to validate a set of strings and count how many are valid.</description>
     </item>
     
     <item>

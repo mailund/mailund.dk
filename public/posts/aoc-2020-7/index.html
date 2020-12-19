@@ -1,0 +1,357 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.stackoverflow.com/users/2170269/thomas-mailund"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Advent of Code 2020 — day 19</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-12-19T06:51:59&#43;01:00">Dec 19, 2020</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/python/">#python</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+            </em>
+        </li>
+        
+
+        <li>4 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>I will make this one quick, because I don’t have much time. <a href="https://adventofcode.com/2020/day/19">Today, we are given some rules</a> for what strings should look like, and we are to validate a set of strings and count how many are valid. This is a bit of a mix between the parser from yesterday and the rule-validation from other days, but leaning, by far, towards the parser. The rules are a grammar, and checking the strings means we are matching them against the grammar.</p>
+<p>Yes, there are more or less standard ways to do this, but you try to be quick, and then you mess it up.</p>
+<p>In Puzzle #1, there are no cycles in the grammar rules, and I implemented a quick recursive solution, that matches each sub-rule as far as I can, and then continue from that point with the next rule. I used an exception to quickly abort when I didn’t get a match, sort of similar to the Call/CC thing I had some days ago. It was simple, and it was quick, but it broke <em>completely</em> in Puzzle #2, where there are now cycles.</p>
+<p>If there are cycles in a grammar, the easiest way to get a fast parser is often to rewrite the grammar, so it is deterministic. There isn’t any problem with cycles, that is not where the trouble enters the issue, but there is with non-determinism. If you have to parse an expression, and there are more than one rule you can apply, then simple recursion might mean that you recurse on the same part of the string indefinitely. If you have a rule that says that an expression can be:</p>
+<pre><code>expression := number | expression BINOP expression | '(' expression ')'
+</code></pre><p>then recursing on it can take you from expression to expression to expression … and you never end.</p>
+<p>You can rewrite the grammar go avoid it.</p>
+<p>That wasn’t the issue in the input we got, and my solution (below) cannot handle it. With the grammar we have, we can always make progress along the string for each rule we apply, so although an expression might contain an expression, it doesn’t <em>start</em> with an expression. There is no problem with a rule like</p>
+<pre><code>expression := number | '(' expression ')'
+</code></pre><p>because you have always read another character before you get back to the <code>expression</code> rule.</p>
+<p>When this is the case, you can parse and backtrack when you cannot apply the next rule you are trying.</p>
+<p>My code for Puzzle #1 was <em>almost</em> there, but the way I used exceptions to abort a match couldn’t handle multiple searches. With backtracking, when you give up on one rule, you go back through the parse tree and find a rule that has more options, and for all of those, you keep going until you find something that matchs. My Puzzle #1 implementation was greedy, and it did go back and retry, but it would <em>always</em> insist on matching as much as possible. In many ways, it was similar to regular expressions, and not the more general rules we have in Puzzle #2.</p>
+<p>So I had to throw everything out, and implement a new version. I didn’t try to be smart with this, because I really have to finish quickly if I want to program in a weekend, so I made every grammar rule a generator, that could give me all possible matches. Matching would then consist of applying nested rules until I have a match that captures the entire input string.</p>
+<p>The code for Puzzle #2 can handle both puzzles, and I only list it below:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> CharRule(object):
+    <span style="color:#000080;font-weight:bold">def</span> __init__(self, char):
+        self.char = char
+    <span style="color:#000080;font-weight:bold">def</span> check(self, x, i):
+        <span style="color:#000080;font-weight:bold">if</span> i &lt; len(x) <span style="font-weight:bold">and</span> x[i] == self.char:
+            <span style="color:#000080;font-weight:bold">yield</span> i + <span style="color:#00f">1</span>
+
+<span style="color:#000080;font-weight:bold">class</span> SeqRule(object):
+    <span style="color:#000080;font-weight:bold">def</span> __init__(self, seq):
+        self.seq = seq
+    <span style="color:#000080;font-weight:bold">def</span> check(self, x, i, r = <span style="color:#00f">0</span>):
+        <span style="color:#000080;font-weight:bold">if</span> r == len(self.seq):
+            <span style="color:#000080;font-weight:bold">yield</span> i
+        <span style="color:#000080;font-weight:bold">else</span>:
+            <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> RULES[self.seq[r]].check(x, i):
+                <span style="color:#000080;font-weight:bold">yield</span> <span style="color:#000080;font-weight:bold">from</span> self.check(x, j, r + <span style="color:#00f">1</span>)
+
+<span style="color:#000080;font-weight:bold">class</span> OrRule(object):
+    <span style="color:#000080;font-weight:bold">def</span> __init__(self, seq_rules):
+        self.seq_rules = seq_rules
+    <span style="color:#000080;font-weight:bold">def</span> check(self, x, i):
+        <span style="color:#000080;font-weight:bold">for</span> rule <span style="font-weight:bold">in</span> self.seq_rules:
+            <span style="color:#000080;font-weight:bold">yield</span> <span style="color:#000080;font-weight:bold">from</span> rule.check(x, i)
+
+<span style="color:#000080;font-weight:bold">import</span> re
+<span style="color:#000080;font-weight:bold">def</span> parse_rules(rules):
+    RULES = {}
+    <span style="color:#000080;font-weight:bold">for</span> rule <span style="font-weight:bold">in</span> rules.split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>):
+        m = re.match(<span style="color:#00f">r</span><span style="color:#00f">&#39;(\d+): &#34;(.)&#39;</span>, rule)
+        <span style="color:#000080;font-weight:bold">if</span> m:
+            i, char = m.groups()
+            RULES[i] = CharRule(char)
+        <span style="color:#000080;font-weight:bold">else</span>:
+            i, seqs = rule.split(<span style="color:#00f">&#39;:&#39;</span>)
+            seq_rules = []
+            <span style="color:#000080;font-weight:bold">for</span> seq <span style="font-weight:bold">in</span> seqs.split(<span style="color:#00f">&#39;|&#39;</span>):
+                seq_rules.append(SeqRule(seq.split()))
+            RULES[i] = OrRule(seq_rules)
+    <span style="color:#000080;font-weight:bold">return</span> RULES
+
+<span style="color:#000080;font-weight:bold">def</span> matches(test, RULES):
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> RULES[<span style="color:#00f">&#39;0&#39;</span>].check(test, <span style="color:#00f">0</span>):
+        <span style="color:#000080;font-weight:bold">if</span> i == len(test): <span style="color:#000080;font-weight:bold">return</span> True
+    <span style="color:#000080;font-weight:bold">return</span> False
+
+f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/19/input.txt&#39;</span>)
+rules, tests = f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>)
+RULES = parse_rules(rules)
+tests = tests.split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {sum( matches(test, RULES) for test in tests )}&#34;</span>)
+
+f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/19/input2.txt&#39;</span>)
+rules, tests = f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>)
+RULES = parse_rules(rules)
+tests = tests.split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {sum( matches(test, RULES) for test in tests )}&#34;</span>)
+
+</code></pre></div><p>You could probably clean it up a bit, but I have to stop now, or I will get in trouble…</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/aoc-2020-6/"><i class="fa fa-chevron-circle-left"></i> Advent of Code 2020 — days 17-18</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>

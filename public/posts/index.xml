@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 18 Dec 2020 08:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Dec 2020 06:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advent of Code 2020 — day 19</title>
+      <link>https://mailund.dk/posts/aoc-2020-7/</link>
+      <pubDate>Sat, 19 Dec 2020 06:51:59 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-7/</guid>
+      <description>I will make this one quick, because I don’t have much time. Today, we are given some rules for what strings should look like, and we are to validate a set of strings and count how many are valid.</description>
+    </item>
+    
     <item>
       <title>Advent of Code 2020 — days 17-18</title>
       <link>https://mailund.dk/posts/aoc-2020-6/</link>
