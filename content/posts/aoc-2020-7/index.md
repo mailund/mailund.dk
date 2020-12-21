@@ -8,11 +8,13 @@ categories = ["Programming"]
 
 I will make this one quick, because I don’t have much time. [Today, we are given some rules](https://adventofcode.com/2020/day/19) for what strings should look like, and we are to validate a set of strings and count how many are valid. This is a bit of a mix between the parser from yesterday and the rule-validation from other days, but leaning, by far, towards the parser. The rules are a grammar, and checking the strings means we are matching them against the grammar.
 
-Yes, there are more or less standard ways to do this, but you try to be quick, and then you mess it up.
+Yes, there are more or less standard ways to do this, but you try to be quick, and then you mess it up. Then you have to do it all again…
 
-In Puzzle #1, there are no cycles in the grammar rules, and I implemented a quick recursive solution, that matches each sub-rule as far as I can, and then continue from that point with the next rule. I used an exception to quickly abort when I didn’t get a match, sort of similar to the Call/CC thing I had some days ago. It was simple, and it was quick, but it broke *completely* in Puzzle #2, where there are now cycles.
+Anyway, in Puzzle #1 there are no cycles, so all derivations are finite, and if you wanted to, you could generate all strings and test them. You could also use the rules to generate regular expressions—it is essentially what they are, with they form they have—and then use a regular expression library to solve the puzzle.
 
-If there are cycles in a grammar, the easiest way to get a fast parser is often to rewrite the grammar, so it is deterministic. There isn’t any problem with cycles, that is not where the trouble enters the issue, but there is with non-determinism. If you have to parse an expression, and there are more than one rule you can apply, then simple recursion might mean that you recurse on the same part of the string indefinitely. If you have a rule that says that an expression can be:
+With Puzzle #2, you do get cycles. If you have cycles, you might have a problem, when it comes to grammar rules. A straightforward recursive function that attempts to match a string against the rules can get into an infinite loop. 
+
+If you have to parse an expression, and one of the rules has itself as the first sub-rule, blindly trying each possible match will not work. If, for example, you have a rule that says that an expression can be:
 
 ```
 expression := number | expression BINOP expression | '(' expression ')'
@@ -20,9 +22,9 @@ expression := number | expression BINOP expression | '(' expression ')'
 
 then recursing on it can take you from expression to expression to expression … and you never end.
 
-You can rewrite the grammar go avoid it.
+You can usually rewrite the grammar go avoid it, and that would be my preferred choice. Other options are hard.
 
-That wasn’t the issue in the input we got, and my solution (below) cannot handle it. With the grammar we have, we can always make progress along the string for each rule we apply, so although an expression might contain an expression, it doesn’t *start* with an expression. There is no problem with a rule like
+This wasn’t the issue in the input we got, at least for my input (we all get different input). With the grammar we have, we can always make progress along the string for each rule we apply, so although an `expression` might contain an `expression`, it doesn’t *start* with an `expression`. There is no problem with a rule like
 
 ```
 expression := number | '(' expression ')'
@@ -30,13 +32,13 @@ expression := number | '(' expression ')'
 
 because you have always read another character before you get back to the `expression` rule.
 
-When this is the case, you can parse and backtrack when you cannot apply the next rule you are trying.
+When this is the case, you can parse and backtrack when you cannot apply the next rule you are trying. The backtracking is necessary if you blindly apply rules, because somewhere, deep in a match of a rule, you might not be able to continue further, but then there might be another rule that will get you to the goal.
 
-My code for Puzzle #1 was *almost* there, but the way I used exceptions to abort a match couldn’t handle multiple searches. With backtracking, when you give up on one rule, you go back through the parse tree and find a rule that has more options, and for all of those, you keep going until you find something that matchs. My Puzzle #1 implementation was greedy, and it did go back and retry, but it would *always* insist on matching as much as possible. In many ways, it was similar to regular expressions, and not the more general rules we have in Puzzle #2.
+My first solution did this search with backtrack, but I made a mistake in it—otherwise I would have solved both puzzles at the same time. I would apply the rules in order, and pick the first that matches. This is a greedy approach, and it worked for my first data. However, with the changed rules, it failed, because you might be able to match a rule, but then later in the string, other rules can’t match. So I had to change the implementation to keep searching until I had a match to the end. In the code below, I do this search using generators; my solution to Puzzle #1 returned matches instead, or threw exceptions if they couldn’t match.
 
-So I had to throw everything out, and implement a new version. I didn’t try to be smart with this, because I really have to finish quickly if I want to program in a weekend, so I made every grammar rule a generator, that could give me all possible matches. Matching would then consist of applying nested rules until I have a match that captures the entire input string.
+If only I had done it correct the first time… that seems to be the mantra for the parsing exercises for me.
 
-The code for Puzzle #2 can handle both puzzles, and I only list it below:
+Anyway, my solution is brute-force matching rules. When there are more than one possible rule to apply, I try all of them. To get this to work, all the rule checking is done with generators.
 
 ```python
 class CharRule(object):
@@ -88,14 +90,13 @@ f = open('/Users/mailund/Projects/adventofcode/2020/19/input.txt')
 rules, tests = f.read().split('\n\n')
 RULES = parse_rules(rules)
 tests = tests.split('\n')
-print(f"Puzzle #2: {sum( matches(test, RULES) for test in tests )}")
+print(f"Puzzle #1: {sum( matches(test, RULES) for test in tests )}")
 
-f = open('/Users/mailund/Projects/adventofcode/2020/19/input2.txt')
-rules, tests = f.read().split('\n\n')
-RULES = parse_rules(rules)
-tests = tests.split('\n')
+RULES['8']  = OrRule([SeqRule(['42']),SeqRule(['42','8'])])
+RULES['11'] = OrRule([SeqRule(['42', '31']),SeqRule(['42','11', '31'])])
 print(f"Puzzle #2: {sum( matches(test, RULES) for test in tests )}")
-
 ```
 
-You could probably clean it up a bit, but I have to stop now, or I will get in trouble…
+There is probably some regularity to the rules, because the puzzle hinted at it, but this solution should work as long as you do not have any cycles of rules that do not make progress by reading at least one character.
+
+You could clean it up a bit, but I have to stop now, or I will get in trouble…
