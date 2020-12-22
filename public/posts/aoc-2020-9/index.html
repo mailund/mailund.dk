@@ -1,0 +1,336 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.stackoverflow.com/users/2170269/thomas-mailund"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Advent of Code 2020 — day 22</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-12-22T06:51:59&#43;01:00">Dec 22, 2020</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/python/">#python</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>This will be the last post I write before New Year. We have vacation in the house from tomorrow, and I won’t be hacking when I am supposed to be social—I am told. I will do the last three puzzles, and post them, after the holiday.</p>
+<p>But it was a nice and easy day today, with one small irritant that took up most of the time I spent on the puzzles. Anyway, to it!</p>
+<p><a href="https://adventofcode.com/2020/day/22">The task today is to play a game of cards.</a>. For Puzzle #1, the description of the game is straightforward, and so is the implementation.</p>
+<p>For once, parsing the data is easy:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/22/test.txt&#39;</span>)
+<span style="color:#000080;font-weight:bold">def</span> parse_player(player):
+    <span style="color:#000080;font-weight:bold">return</span> tuple(map(int, player.strip().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)[<span style="color:#00f">1</span>:]))
+player1, player2 = map(parse_player, f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>))
+</code></pre></div><p>I place player hands in a <code>tuple()</code>, and that becomes important later!</p>
+<p>The way the game is played is well described, and the simplest imaginable implementation will solve the puzzle:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> play(p1, p2):
+    <span style="color:#000080;font-weight:bold">while</span> p1 <span style="font-weight:bold">and</span> p2:
+        <span style="color:#000080;font-weight:bold">if</span> p1[<span style="color:#00f">0</span>] &gt; p2[<span style="color:#00f">0</span>]:
+            p1 += (p1[<span style="color:#00f">0</span>],p2[<span style="color:#00f">0</span>])
+        <span style="color:#000080;font-weight:bold">else</span>:
+            p2 += (p2[<span style="color:#00f">0</span>],p1[<span style="color:#00f">0</span>])
+        p1, p2 = p1[<span style="color:#00f">1</span>:], p2[<span style="color:#00f">1</span>:]
+    <span style="color:#000080;font-weight:bold">return</span> p1 <span style="color:#000080;font-weight:bold">if</span> p1 <span style="color:#000080;font-weight:bold">else</span> p2
+
+result = sum((i+<span style="color:#00f">1</span>)*x <span style="color:#000080;font-weight:bold">for</span> i,x <span style="font-weight:bold">in</span> enumerate(reversed(winner)))
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {result}&#34;</span>)
+</code></pre></div><p>I didn’t use a <code>tuple()</code> but a list in my first implementation. That will still work, because the algorithm doesn’t have to leave the function arguments unchanged, and the code works equally well with lists or tuples. But the <code>+=</code> operator will modify its left-hand side. In Puzzle #2, I changed the representation to tuples to avoid this problem. But I did not, and that lost me 20-30 minutes, changed the representation in Puzzle #1. So I spent a lot of time debugging Puzzle #2 only to later find out that the issue was the input. I gave Puzzle #2 the input after running Puzzle #1, and by then it was modified.</p>
+<p>I fixed the problem by changing from lists to tuples. You can still use <code>+=</code>, it just does something else for tuples. For lists, <code>+=</code> will in-place modify the left-hand-side. For tuples, <code>+=</code>, is syntactic sugar for addition and an assignment, so you are assigning to a variable and not modifying an object. That was frustrating.</p>
+<p>Anyway, the solution to Puzzle #2—that was working all along, it just needed the correct input—is not much more complex than Puzzle #1 (although deciphering the game description is).</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> play(p1, p2, states):
+    <span style="color:#000080;font-weight:bold">while</span> p1 <span style="font-weight:bold">and</span> p2:
+        <span style="color:#000080;font-weight:bold">if</span> (p1,p2) <span style="font-weight:bold">in</span> states:
+            <span style="color:#080;font-style:italic"># player one wins</span>
+            <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">1</span>, p1
+        states.add((p1,p2))
+
+        card1,card2 = p1[<span style="color:#00f">0</span>],p2[<span style="color:#00f">0</span>]
+        p1, p2 = p1[<span style="color:#00f">1</span>:], p2[<span style="color:#00f">1</span>:]
+
+        winner = None
+        <span style="color:#000080;font-weight:bold">if</span> card1 &gt; len(p1) <span style="font-weight:bold">or</span> card2 &gt; len(p2):
+            winner = <span style="color:#00f">1</span> <span style="color:#000080;font-weight:bold">if</span> card1 &gt; card2 <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">2</span>
+        <span style="color:#000080;font-weight:bold">else</span>:
+            winner,_ = play(p1[:card1], p2[:card2], set())
+
+        <span style="color:#000080;font-weight:bold">if</span> winner == <span style="color:#00f">1</span>:    
+            p1 += (card1,card2)
+        <span style="color:#000080;font-weight:bold">else</span>:
+            p2 += (card2,card1)
+        
+    <span style="color:#000080;font-weight:bold">return</span> (<span style="color:#00f">1</span>,p1) <span style="color:#000080;font-weight:bold">if</span> p1 <span style="color:#000080;font-weight:bold">else</span> (<span style="color:#00f">2</span>,p2)
+
+_, winner = play(player1, player2, set())
+result = sum((i+<span style="color:#00f">1</span>)*x <span style="color:#000080;font-weight:bold">for</span> i,x <span style="font-weight:bold">in</span> enumerate(reversed(winner)))
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {result}&#34;</span>)
+</code></pre></div><p>If the puzzles over Christmas are equally simple, I could get away with solving them there, and I would give it a try if I were that optimistic. I am not, however. I fear we will run into another Day 20 soon. And I know myself well enough to realise that I will not be able to let a puzzle go, so if I start, I will continue until I am done. It is best to stop now, and return in the New Year. That also gives me something to look forward to.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/aoc-2020-8/"><i class="fa fa-chevron-circle-left"></i> Advent of Code 2020 — days 20 and 21</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>

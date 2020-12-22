@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 21 Dec 2020 07:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Dec 2020 06:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advent of Code 2020 — day 22</title>
+      <link>https://mailund.dk/posts/aoc-2020-9/</link>
+      <pubDate>Tue, 22 Dec 2020 06:51:59 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-9/</guid>
+      <description>This will be the last post I write before New Year. We have vacation in the house from tomorrow, and I won’t be hacking when I am supposed to be social—I am told.</description>
+    </item>
+    
     <item>
       <title>Advent of Code 2020 — days 20 and 21</title>
       <link>https://mailund.dk/posts/aoc-2020-8/</link>
