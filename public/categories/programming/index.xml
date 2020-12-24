@@ -6,7 +6,16 @@
     <description>Recent content in Programming on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Tue, 22 Dec 2020 06:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Dec 2020 07:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advent of Code 2020 — days 23 and 24</title>
+      <link>https://mailund.dk/posts/aoc-2020-10/</link>
+      <pubDate>Thu, 24 Dec 2020 07:51:59 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-10/</guid>
+      <description>Unexpectedly, I was allowed to play today—it is Christmas, after all—as long as I didn’t spend too much time at the computer. So I hurried up and solved today’s and yesterday’s puzzles quickly.</description>
+    </item>
+    
     <item>
       <title>Advent of Code 2020 — day 22</title>
       <link>https://mailund.dk/posts/aoc-2020-9/</link>
