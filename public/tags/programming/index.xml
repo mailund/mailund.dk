@@ -6,7 +6,7 @@
     <description>Recent content in programming on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Thu, 24 Dec 2020 07:51:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Dec 2020 07:01:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Software</title>
       <link>https://mailund.dk/software/</link>
@@ -14,6 +14,16 @@
       
       <guid>https://mailund.dk/software/</guid>
       <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
+    </item>
+    
+    <item>
+      <title>Advent of Code 2020 — day 25</title>
+      <link>https://mailund.dk/posts/aoc-2020-11/</link>
+      <pubDate>Fri, 25 Dec 2020 07:01:59 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-11/</guid>
+      <description>On the last day of Christmas AoC gave to me an encryption problem, that is really a modular arithmetic problem.
+If you decode the description—that is more cryptic than the mathematics—you find that we need to find secret keys by solving equations</description>
     </item>
     
     <item>

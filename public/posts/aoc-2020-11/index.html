@@ -1,0 +1,325 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.stackoverflow.com/users/2170269/thomas-mailund"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Advent of Code 2020 — day 25</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-12-25T07:01:59&#43;01:00">Dec 25, 2020</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/python/">#python</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+            </em>
+        </li>
+        
+
+        <li>4 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>On the <a href="https://adventofcode.com/2020/day/25">last day of Christmas AoC gave to me</a> an encryption problem, that is really a modular arithmetic problem.</p>
+<p>If you decode the description—that is more cryptic than the mathematics—you find that we need to find secret keys by solving equations</p>
+<p>$$7^k \equiv b \mod N$$</p>
+<p>where \(N = 20,201,227\) and where \(b\) is part of our input (the public keys for a door and a card). Identify \(k\) and compute</p>
+<p>$$b_i^{k_j} \mod N$$</p>
+<p>for public key \(b_i\) and secrete key \(k_j\), and you are done.</p>
+<p>It is a nice little puzzle—perhaps the organisers realise how cruel it would be to make us spend hours on the Christmas Day with their puzzles—but I still managed to spend almost an hour on it.</p>
+<p>I was trying to figure out an elegant way to solve the equation for \(k\), and I tried various things, but nothing seemed to work. I am going to call my pet number-theorist a little later in the day to hear if he knows how it is done.</p>
+<p>When you can’t be smart, you can let the computer do the work, so I brute-forced a linear search for \(k\) and solved the equations that way.</p>
+<p>When you work with Python integers, you don’t have to worry about overflow, so there is nothing wrong with taking the remainders of such equations after taking the powers, but it is <em>slow</em>.</p>
+<p>Large integers are not as simple as those that fit into the computer’s registers, and you <em>really</em> pay for working with large numbers. It is not as much of a problem as when you work in a language with fixed-sized integers—where you get an overflow, and probably you don’t get a warning about it—but it does get terribly slow.</p>
+<p>Thus, for the linear search, I updated the value on the left-hand side in each iteration, and for computing the final value, I used <code>pow()</code> with a third <code>mod</code> argument, instead of <code>x ** k</code> to compute the power. You will get the right result if you use the <code>**</code> operator and <code>%</code> after taking the power, but you will have to wait longer for it.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">N = <span style="color:#00f">20201227</span>
+
+<span style="color:#080;font-style:italic"># Fuck this! I brute force it!</span>
+<span style="color:#000080;font-weight:bold">def</span> solve_k(x, b): <span style="color:#080;font-style:italic"># Find k: x**k % N == b</span>
+    k = <span style="color:#00f">0</span>
+    val = <span style="color:#00f">1</span>
+    <span style="color:#000080;font-weight:bold">while</span> True:
+        <span style="color:#000080;font-weight:bold">if</span> val == b: <span style="color:#000080;font-weight:bold">return</span> k
+        k += <span style="color:#00f">1</span>
+        val = (val * x) % N
+
+TEST_DATA = False
+DOOR_PK = <span style="color:#00f">17807724</span> <span style="color:#000080;font-weight:bold">if</span> TEST_DATA <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">3248366</span>
+CARD_PK = <span style="color:#00f">5764801</span>  <span style="color:#000080;font-weight:bold">if</span> TEST_DATA <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">4738476</span>
+
+CARD_SK = solve_k(<span style="color:#00f">7</span>, CARD_PK)
+DOOR_SK = solve_k(<span style="color:#00f">7</span>, DOOR_PK)
+
+<span style="color:#080;font-style:italic"># x ** k % N is too slow when the numbers get large,</span>
+<span style="color:#080;font-style:italic"># so we have to take the remainder along the way</span>
+ENCRYPTION_KEY = pow(DOOR_PK, CARD_SK, N)
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {ENCRYPTION_KEY}&#34;</span>)
+</code></pre></div><p>There was no Puzzle #2. If you have all the stars, you get through to the credit. If you do not, you have to go back and collect all the starts you haven’t received yet to get the last star. So Puzzle #2 is either very quick today, or potentially very hard to get.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: Pay up! You have the stars!&#34;</span>)
+</code></pre></div><p>All in all, it was fun to do Advent of Code. It’s my first year, but I expect to do it again next year. Many of the challenges took me to places I haven’t been before. I’ve never worked with hexagonal grids, for example, and I have never had to work with rotations (and we had a few days where we had to play with that). So I learned a lot. I also learned a lot just from working with such small challenges, where you get the chance to play a lot more with the problems and with different ways of solving them.</p>
+<p>All in all, I will recommend it.</p>
+<p>I might go back and work through previous year’s puzzles as well at some point. But that will be on the other side of January’s exams and February’s book deadline.</p>
+<p>Merry Christmas, everyone.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/aoc-2020-10/"><i class="fa fa-chevron-circle-left"></i> Advent of Code 2020 — days 23 and 24</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>
