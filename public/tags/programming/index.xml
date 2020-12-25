@@ -6,7 +6,7 @@
     <description>Recent content in programming on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 25 Dec 2020 07:01:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Dec 2020 07:21:59 +0100</lastBuildDate><atom:link href="https://mailund.dk/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Software</title>
       <link>https://mailund.dk/software/</link>
@@ -14,6 +14,16 @@
       
       <guid>https://mailund.dk/software/</guid>
       <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
+    </item>
+    
+    <item>
+      <title>Advent of Code 2020 — day 24 remade</title>
+      <link>https://mailund.dk/posts/aoc-2020-12/</link>
+      <pubDate>Fri, 25 Dec 2020 07:21:59 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/aoc-2020-12/</guid>
+      <description>I wanted to get back to yesterday’s puzzle, and I have a little time before I need to run off…
+Yes, I was fed up with manual parsing of strings so decided to do it using the re module for once.</description>
     </item>
     
     <item>

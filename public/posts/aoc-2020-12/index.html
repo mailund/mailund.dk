@@ -152,13 +152,13 @@ if (!doNotTrack) {
 
 <article>
 
-    <h1>Advent of Code 2020 — day 25</h1>
+    <h1>Advent of Code 2020 — day 24 remade</h1>
 
     
         <aside>
     <ul>
         <li>
-            <time class="post-date" datetime="2020-12-25T07:01:59&#43;01:00">Dec 25, 2020</time>
+            <time class="post-date" datetime="2020-12-25T07:21:59&#43;01:00">Dec 25, 2020</time>
         </li>
         
         
@@ -187,52 +187,78 @@ if (!doNotTrack) {
         </li>
         
 
-        <li>4 min read</li>
+        <li>3 min read</li>
     </ul>
 </aside>
     
 
-    <p>On the <a href="https://adventofcode.com/2020/day/25">last day of Christmas AoC gave to me</a> an encryption problem, that is really a modular arithmetic problem.</p>
-<p>If you decode the description—that is more cryptic than the mathematics—you find that we need to find secret keys by solving equations</p>
-<p>$$7^k \equiv b \mod N$$</p>
-<p>where \(N = 20,201,227\) and where \(b\) is part of our input (the public keys for a door and a card). Identify \(k\) and compute</p>
-<p>$$b_i^{k_j} \mod N$$</p>
-<p>for public key \(b_i\) and secrete key \(k_j\), and you are done.</p>
-<p>It is a nice little puzzle—perhaps the organisers realise how cruel it would be to make us spend hours on the Christmas Day with their puzzles—but I still managed to spend almost an hour on it.</p>
-<p>I was trying to figure out an elegant way to solve the equation for \(k\), and I tried various things, but nothing seemed to work. I am going to call my pet number-theorist a little later in the day to hear if he knows how it is done.</p>
-<p>When you can’t be smart, you can let the computer do the work, so I brute-forced a linear search for \(k\) and solved the equations that way.</p>
-<p>When you work with Python integers, you don’t have to worry about overflow, so there is nothing wrong with taking the remainders of such equations after taking the powers, but it is <em>slow</em>.</p>
-<p>Large integers are not as simple as those that fit into the computer’s registers, and you <em>really</em> pay for working with large numbers. It is not as much of a problem as when you work in a language with fixed-sized integers—where you get an overflow, and probably you don’t get a warning about it—but it does get terribly slow.</p>
-<p>Thus, for the linear search, I updated the value on the left-hand side in each iteration, and for computing the final value, I used <code>pow()</code> with a third <code>mod</code> argument, instead of <code>x ** k</code> to compute the power. You will get the right result if you use the <code>**</code> operator and <code>%</code> after taking the power, but you will have to wait longer for it.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">N = <span style="color:#00f">20201227</span>
+    <p>I wanted to get back to yesterday’s puzzle, and I have a little time before I need to run off…</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Yes, I was fed up with manual parsing of strings so decided to do it using the re module for once. :p<br><br>I will have a look at your cleaned code for sure. Enjoy the day. 🥳</p>&mdash; Yassine Alouini (@YassineAlouini) <a href="https://twitter.com/YassineAlouini/status/1342090691992838144?ref_src=twsrc%5Etfw">December 24, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<span style="color:#080;font-style:italic"># Fuck this! I brute force it!</span>
-<span style="color:#000080;font-weight:bold">def</span> solve_k(x, b): <span style="color:#080;font-style:italic"># Find k: x**k % N == b</span>
-    k = <span style="color:#00f">0</span>
-    val = <span style="color:#00f">1</span>
-    <span style="color:#000080;font-weight:bold">while</span> True:
-        <span style="color:#000080;font-weight:bold">if</span> val == b: <span style="color:#000080;font-weight:bold">return</span> k
-        k += <span style="color:#00f">1</span>
-        val = (val * x) % N
+<p>The use of <code>findall()</code> I refer to in the tweet is this. You can split the input using a regular expression, and then map each input code to a direction. If you combine that with a <code>reduce()</code> you get a very succinct parser:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/24/input.txt&#39;</span>)
+tiles = f.read().strip().split()
 
-TEST_DATA = False
-DOOR_PK = <span style="color:#00f">17807724</span> <span style="color:#000080;font-weight:bold">if</span> TEST_DATA <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">3248366</span>
-CARD_PK = <span style="color:#00f">5764801</span>  <span style="color:#000080;font-weight:bold">if</span> TEST_DATA <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">4738476</span>
+DIRECTIONS = {
+    <span style="color:#00f">&#39;ne&#39;</span>:  <span style="color:#00f">1</span> + <span style="color:#00f">1j</span>,
+    <span style="color:#00f">&#39;e&#39;</span>:   <span style="color:#00f">2</span>,
+    <span style="color:#00f">&#39;se&#39;</span>:  <span style="color:#00f">1</span> - <span style="color:#00f">1j</span>,
+    <span style="color:#00f">&#39;sw&#39;</span>: -<span style="color:#00f">1</span> - <span style="color:#00f">1j</span>,
+    <span style="color:#00f">&#39;w&#39;</span>:  -<span style="color:#00f">2</span>,
+    <span style="color:#00f">&#39;nw&#39;</span>: -<span style="color:#00f">1</span> + <span style="color:#00f">1j</span>
+}
 
-CARD_SK = solve_k(<span style="color:#00f">7</span>, CARD_PK)
-DOOR_SK = solve_k(<span style="color:#00f">7</span>, DOOR_PK)
+<span style="color:#000080;font-weight:bold">import</span> re
+<span style="color:#000080;font-weight:bold">from</span> functools <span style="color:#000080;font-weight:bold">import</span> reduce
 
-<span style="color:#080;font-style:italic"># x ** k % N is too slow when the numbers get large,</span>
-<span style="color:#080;font-style:italic"># so we have to take the remainder along the way</span>
-ENCRYPTION_KEY = pow(DOOR_PK, CARD_SK, N)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {ENCRYPTION_KEY}&#34;</span>)
-</code></pre></div><p>There was no Puzzle #2. If you have all the stars, you get through to the credit. If you do not, you have to go back and collect all the starts you haven’t received yet to get the last star. So Puzzle #2 is either very quick today, or potentially very hard to get.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: Pay up! You have the stars!&#34;</span>)
-</code></pre></div><p>All in all, it was fun to do Advent of Code. It’s my first year, but I expect to do it again next year. Many of the challenges took me to places I haven’t been before. I’ve never worked with hexagonal grids, for example, and I have never had to work with rotations (and we had a few days where we had to play with that). So I learned a lot. I also learned a lot just from working with such small challenges, where you get the chance to play a lot more with the problems and with different ways of solving them.</p>
-<p>All in all, I will recommend it.</p>
-<p>I might go back and work through previous year’s puzzles as well at some point. But that will be on the other side of January’s exams and February’s book deadline.</p>
-<p>Merry Christmas, everyone.</p>
+<span style="color:#000080;font-weight:bold">def</span> tile_location(tile):
+    <span style="color:#000080;font-weight:bold">return</span> reduce(
+        <span style="color:#000080;font-weight:bold">lambda</span> x, y: x + DIRECTIONS[y],
+        re.findall(<span style="color:#00f">r</span><span style="color:#00f">&#39;(ne|e|se|sw|w|nw)&#39;</span>, tile),
+        <span style="color:#00f">0</span>
+    )
+</code></pre></div><p>That piece I am shamelessly stealing. It is much nicer than my <a href="https://mailund.dk/posts/aoc-2020-10/">original code</a>.</p>
+<p>To continue solving Puzzle #1 (again), to compute the black tiles, we need the tiles that have been flipped an odd number of times. The way I used a set earlier is smarter than the code below—it is a little easier to read and a lot faster—but this was a fun way to do it:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">from</span> collections <span style="color:#000080;font-weight:bold">import</span> Counter
 
+<span style="color:#000080;font-weight:bold">def</span> flip_tiles(tiles):
+    counts = Counter(tiles)
+    <span style="color:#000080;font-weight:bold">return</span> { tile <span style="color:#000080;font-weight:bold">for</span> tile <span style="font-weight:bold">in</span> counts <span style="color:#000080;font-weight:bold">if</span> counts[tile] % <span style="color:#00f">2</span> }
+</code></pre></div><p>And that is all it takes to solve Puzzle #1:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tiles = flip_tiles(map(tile_location, tiles))
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {len(tiles)}&#34;</span>)
+</code></pre></div><p>For Puzzle #2, I had a class for tracking the floor, but since I was only keeping track of the black tiles anyway, I might as well solve everything with set operations. With a few helper functions, we can navigate the floor from the black tiles:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> neighbours(tile):
+    <span style="color:#000080;font-weight:bold">return</span> { tile + n <span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> DIRECTIONS.values() }
+<span style="color:#000080;font-weight:bold">def</span> black_neighbours(tile, black):
+    <span style="color:#000080;font-weight:bold">return</span> len(black &amp; neighbours(tile))
+
+<span style="color:#000080;font-weight:bold">def</span> black_tiles(tiles):
+    <span style="color:#000080;font-weight:bold">return</span> tiles
+<span style="color:#000080;font-weight:bold">def</span> white_tiles(tiles):
+    <span style="color:#000080;font-weight:bold">return</span> set.union( *({ x <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> neighbours(tile) <span style="color:#000080;font-weight:bold">if</span> x <span style="font-weight:bold">not</span> <span style="font-weight:bold">in</span> tiles }
+                        <span style="color:#000080;font-weight:bold">for</span> tile <span style="font-weight:bold">in</span> tiles) )
+</code></pre></div><p>When updating the floor, there are black tiles we need to remove and white tiles we need to add (by flipping them to black), and it is a simple case of mapping through the black and white tiles to compute a set of tiles to remove and a set of tiles to add:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> update(tiles):
+    to_remove = {
+        b <span style="color:#000080;font-weight:bold">for</span> b <span style="font-weight:bold">in</span> black_tiles(tiles)
+          <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> (<span style="color:#00f">1</span> &lt;= black_neighbours(b, tiles) &lt;= <span style="color:#00f">2</span>)
+    }
+    to_add = {
+        w <span style="color:#000080;font-weight:bold">for</span> w <span style="font-weight:bold">in</span> white_tiles(tiles)
+          <span style="color:#000080;font-weight:bold">if</span> black_neighbours(w, tiles) == <span style="color:#00f">2</span>
+    }
+    tiles.difference_update(to_remove)
+    tiles.update(to_add)
+
+<span style="color:#000080;font-weight:bold">def</span> evolve(tiles, n):
+    <span style="color:#000080;font-weight:bold">for</span> _ <span style="font-weight:bold">in</span> range(n):
+        update(tiles)
+    <span style="color:#000080;font-weight:bold">return</span> tiles
+</code></pre></div><p>And that solves Puzzle #2.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {len(evolve(tiles, 100))}&#34;</span>)
+</code></pre></div>
 
 </article>
 
@@ -241,13 +267,9 @@ ENCRYPTION_KEY = pow(DOOR_PK, CARD_SK, N)
     <ul>
         
         <li>
-            <a href="https://mailund.dk/posts/aoc-2020-10/"><i class="fa fa-chevron-circle-left"></i> Advent of Code 2020 — days 23 and 24</a>
+            <a href="https://mailund.dk/posts/aoc-2020-11/"><i class="fa fa-chevron-circle-left"></i> Advent of Code 2020 — day 25</a>
         </li>
         
-        
-        <li>
-            <a href="https://mailund.dk/posts/aoc-2020-12/">Advent of Code 2020 — day 24 remade <i class="fa fa-chevron-circle-right"></i> </a>
-        </li>
         
     </ul>
 </section>
