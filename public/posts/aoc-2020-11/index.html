@@ -187,7 +187,7 @@ if (!doNotTrack) {
         </li>
         
 
-        <li>4 min read</li>
+        <li>5 min read</li>
     </ul>
 </aside>
     
@@ -232,6 +232,32 @@ ENCRYPTION_KEY = pow(DOOR_PK, CARD_SK, N)
 <p>All in all, I will recommend it.</p>
 <p>I might go back and work through previous year’s puzzles as well at some point. But that will be on the other side of January’s exams and February’s book deadline.</p>
 <p>Merry Christmas, everyone.</p>
+<h3 id="update-26th-dec-2020">Update 26th Dec 2020</h3>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">from sympy.ntheory import discrete_log 😏<br>I was planning to implement it by hand then thought we might get very large numbers at part II so I looked for a ready implementation. :p</p>&mdash; Yassine Alouini (@YassineAlouini) <a href="https://twitter.com/YassineAlouini/status/1342372049445130242?ref_src=twsrc%5Etfw">December 25, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Yup, that is more elegant:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">TEST_DATA = False
+DOOR_PK = <span style="color:#00f">17807724</span> <span style="color:#000080;font-weight:bold">if</span> TEST_DATA <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">3248366</span>
+CARD_PK = <span style="color:#00f">5764801</span>  <span style="color:#000080;font-weight:bold">if</span> TEST_DATA <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">4738476</span>
+
+<span style="color:#000080;font-weight:bold">from</span> sympy.ntheory <span style="color:#000080;font-weight:bold">import</span> discrete_log
+N = <span style="color:#00f">20201227</span>
+<span style="color:#000080;font-weight:bold">def</span> solve_k(a, b):
+    <span style="color:#000080;font-weight:bold">return</span> discrete_log(N, b, a)
+
+CARD_SK = solve_k(<span style="color:#00f">7</span>, CARD_PK)
+ENCRYPTION_KEY = pow(DOOR_PK, CARD_SK, N)
+
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {ENCRYPTION_KEY}&#34;</span>)
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: Pay up! You have the stars!&#34;</span>)
+</code></pre></div><p>It is also faster. Around 700ms instead of three seconds with the brute force solution.</p>
+<p>The stuff about k-root in my tweet is nonsens. I started out looking at it like that, and it stuck in my head after I realised that I was looking for a logarithm. It must still have been in my brain when I wrote the tweet.</p>
+<p>It was pointed out to me that I shouldn’t expect a theoretically faster solution.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">This is the Diffie Helmam protocol, so it would be a surprise if you found a clever, fast solution 😉</p>&mdash; Thomas Dybdahl Ahle (@thomasahle) <a href="https://twitter.com/thomasahle/status/1342616617461702657?ref_src=twsrc%5Etfw">December 25, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>A friend of mine told me that he did have an efficient algorithm for discrete logarithm once, but forgot to write it down. I hope he remembered to write down his notes for my upcoming C pointers book, because he is currently reviewing it…</p>
 
 
 </article>

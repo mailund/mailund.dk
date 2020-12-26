@@ -69,3 +69,37 @@ All in all, I will recommend it.
 I might go back and work through previous year’s puzzles as well at some point. But that will be on the other side of January’s exams and February’s book deadline.
 
 Merry Christmas, everyone.
+
+### Update 26th Dec 2020
+
+{{< tweet 1342372049445130242 >}}
+
+Yup, that is more elegant:
+
+```python
+TEST_DATA = False
+DOOR_PK = 17807724 if TEST_DATA else 3248366
+CARD_PK = 5764801  if TEST_DATA else 4738476
+
+from sympy.ntheory import discrete_log
+N = 20201227
+def solve_k(a, b):
+    return discrete_log(N, b, a)
+
+CARD_SK = solve_k(7, CARD_PK)
+ENCRYPTION_KEY = pow(DOOR_PK, CARD_SK, N)
+
+print(f"Puzzle #1: {ENCRYPTION_KEY}")
+print(f"Puzzle #2: Pay up! You have the stars!")
+```
+
+It is also faster. Around 700ms instead of three seconds with the brute force solution.
+
+The stuff about k-root in my tweet is nonsens. I started out looking at it like that, and it stuck in my head after I realised that I was looking for a logarithm. It must still have been in my brain when I wrote the tweet.
+
+It was pointed out to me that I shouldn’t expect a theoretically faster solution.
+
+{{< tweet 1342616617461702657 >}}
+
+A friend of mine told me that he did have an efficient algorithm for discrete logarithm once, but forgot to write it down. I hope he remembered to write down his notes for my upcoming C pointers book, because he is currently reviewing it…
+
