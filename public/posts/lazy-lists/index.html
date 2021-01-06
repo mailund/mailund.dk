@@ -63,17 +63,14 @@
    });
  </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 </head>
@@ -182,212 +179,284 @@ if (!doNotTrack) {
 </aside>
     
 
-    <p>I wanted to write about lazy lists and lazy queues today, but I spent most of the day struggling with getting lazy evaluation to work. Finally, I convinced myself that something was broken in R, and I was justified in thinking that; upgrading to the most recent version resolved the issue.</p>
+    
+
+<p>I wanted to write about lazy lists and lazy queues today, but I spent most of the day struggling with getting lazy evaluation to work. Finally, I convinced myself that something was broken in R, and I was justified in thinking that; upgrading to the most recent version resolved the issue.</p>
+
 <p>Since I spent too long with this problem, I won&rsquo;t have time to implement lazy queues today, but I can tell you how lazy lists are implemented.</p>
+
 <h2 id="lazy-lists">Lazy lists</h2>
+
 <p>I described how linked lists can be implemented using my <code>pmatch</code> package <a href="https://mailund.github.io/r-programmer-blog/2018/10/01/lists-and-functional-queues/">here</a>. I won&rsquo;t repeat it here; only repeat the code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">library(pmatch)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#000080;font-weight:bold">library</span>(<span style="color:#000080;font-weight:bold">pmatch</span>)
 
 linked_list := NIL | CONS(car, cdr)
-toString.linked_list &lt;- function(llist)
+toString.linked_list &lt;- <span style="color:#000080;font-weight:bold">function</span>(llist)
   cases(llist, NIL -&gt; <span style="color:#00f">&#34;[]&#34;</span>,
-        CONS(car, cdr) -&gt; paste(car, <span style="color:#00f">&#34;::&#34;</span>, toString(cdr)))
-print.linked_list &lt;- function(llist)
-  cat(toString(llist), <span style="color:#00f">&#34;\n&#34;</span>)
-</code></pre></div><p>With these lists, we can do everything that we usually want to do with linked lists, but these are &ldquo;eager&rdquo; lists, and sometimes we want lazy lists. By this, I mean that when we write an expression that manipulates a lists, we don&rsquo;t want it evaluated until we need it. This can be achieved using thunks without any effort. However, we also want to remember the results of evaluating expressions, so we do not have to re-evaluate them. Thunks, by themselves, do not do this. R promises do.</p>
+        CONS(car, cdr) -&gt; <span style="color:#000080;font-weight:bold">paste</span>(car, <span style="color:#00f">&#34;::&#34;</span>, <span style="color:#000080;font-weight:bold">toString</span>(cdr)))
+print.linked_list &lt;- <span style="color:#000080;font-weight:bold">function</span>(llist)
+  <span style="color:#000080;font-weight:bold">cat</span>(<span style="color:#000080;font-weight:bold">toString</span>(llist), <span style="color:#00f">&#34;\n&#34;</span>)</code></pre></div>
+<p>With these lists, we can do everything that we usually want to do with linked lists, but these are &ldquo;eager&rdquo; lists, and sometimes we want lazy lists. By this, I mean that when we write an expression that manipulates a lists, we don&rsquo;t want it evaluated until we need it. This can be achieved using thunks without any effort. However, we also want to remember the results of evaluating expressions, so we do not have to re-evaluate them. Thunks, by themselves, do not do this. R promises do.</p>
+
 <p>I am going to implement lazy lists as linked lists, except that the <code>cdr</code> will always be a thunk. And to compare lazy versus eager evaluation I will use two different thunks:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">make_eager_thunk &lt;- function(expr) {
-  force(expr)
-  THUNK(function() expr)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">make_eager_thunk &lt;- <span style="color:#000080;font-weight:bold">function</span>(expr) {
+  <span style="color:#000080;font-weight:bold">force</span>(expr)
+  THUNK(<span style="color:#000080;font-weight:bold">function</span>() expr)
 }
-make_lazy_thunk &lt;- function(expr) {
-  THUNK(function() expr)
-}
-</code></pre></div><p>As you can see, the only difference is that the first force its promise while the second does not.</p>
+make_lazy_thunk &lt;- <span style="color:#000080;font-weight:bold">function</span>(expr) {
+  THUNK(<span style="color:#000080;font-weight:bold">function</span>() expr)
+}</code></pre></div>
+<p>As you can see, the only difference is that the first force its promise while the second does not.</p>
+
 <p>We can write code that assumes that a lazy list is always a thunk, and all the code below would work. We can&rsquo;t pattern match against empty and non-empty lazy lists this way, though, and when I implement lazy queues, I want to be able to do that.</p>
+
 <p>So, I define a type for lazy lists; it is either an empty lazy list or a thunk.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_list := LLNIL | THUNK(lst)
-toString.lazy_list &lt;- function(x)
+toString.lazy_list &lt;- <span style="color:#000080;font-weight:bold">function</span>(x)
   cases(x,
         LLNIL -&gt; <span style="color:#00f">&#34;&lt;&gt;&#34;</span>,
         THUNK(y) -&gt;
           cases(y(),
             NIL -&gt; <span style="color:#00f">&#34;&lt;&gt;&#34;</span>,
-            CONS(car, cdr) -&gt; paste(car, <span style="color:#00f">&#34;:: &lt;...&gt;&#34;</span>)))
-print.lazy_list &lt;- function(x)
-  cat(toString(x), <span style="color:#00f">&#34;\n&#34;</span>)
-</code></pre></div><p>We cannot use <code>NIL</code> for the empty lazy list since that constructor is already used for linked lists.</p>
+            CONS(car, cdr) -&gt; <span style="color:#000080;font-weight:bold">paste</span>(car, <span style="color:#00f">&#34;:: &lt;...&gt;&#34;</span>)))
+print.lazy_list &lt;- <span style="color:#000080;font-weight:bold">function</span>(x)
+  <span style="color:#000080;font-weight:bold">cat</span>(<span style="color:#000080;font-weight:bold">toString</span>(x), <span style="color:#00f">&#34;\n&#34;</span>)</code></pre></div>
+<p>We cannot use <code>NIL</code> for the empty lazy list since that constructor is already used for linked lists.</p>
+
 <p>The pattern matching that first checks if a lazy list is empty, evaluate it if not and then checks if the linked list is empty before dealing with non-empty lists is very tedious to write, so I will use this macro.</p>
+
 <p>It uses some tidy-evaluate so you might find it interesting if you like non-standard evaluation. If not, you can skip the function.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_macro &lt;- function(empty_pattern, nonempty_pattern, <span style="color:#000080;font-weight:bold">...</span>) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_macro &lt;- <span style="color:#000080;font-weight:bold">function</span>(empty_pattern, nonempty_pattern, <span style="color:#000080;font-weight:bold">...</span>) {
   
-  empty_pattern    &lt;- substitute(empty_pattern)
-  nonempty_pattern &lt;- substitute(nonempty_pattern)
+  empty_pattern    &lt;- <span style="color:#000080;font-weight:bold">substitute</span>(empty_pattern)
+  nonempty_pattern &lt;- <span style="color:#000080;font-weight:bold">substitute</span>(nonempty_pattern)
   extra_args       &lt;- rlang::enexprs(<span style="color:#000080;font-weight:bold">...</span>)
   
   cases_pattern &lt;- rlang::expr(
-    cases(.list,
+    cases(<span style="color:#00f">.</span><span style="color:#000080;font-weight:bold">list</span>,
           LLNIL -&gt; !!empty_pattern,
-          THUNK(.list_thunk) -&gt;
-            cases(.list_thunk(),
+          THUNK(<span style="color:#00f">.</span>list_thunk) -&gt;
+            cases(<span style="color:#00f">.</span>list_thunk(),
                   NIL -&gt; !!empty_pattern,
                   CONS(car, cdr) -&gt; !!nonempty_pattern))
   )
   function_expr &lt;- rlang::expr(
     rlang::new_function(
-      alist(.list =, !!!extra_args), 
+      <span style="color:#000080;font-weight:bold">alist</span>(<span style="color:#00f">.</span><span style="color:#000080;font-weight:bold">list</span> =, !!!extra_args), 
       cases_pattern, 
       env = rlang::caller_env())  
   )
   
   rlang::eval_bare(function_expr)
-}
-</code></pre></div><p>The macro takes two+ arguments. The first says what to do when the list is empty, the second what to do when it is not, and any additional arguments are used as arguments for the function it defines.</p>
+}</code></pre></div>
+<p>The macro takes two+ arguments. The first says what to do when the list is empty, the second what to do when it is not, and any additional arguments are used as arguments for the function it defines.</p>
+
 <p>If you add additional arguments, you cannot just provide their names, as you would for normal functions. You have to follow the names with <code>=</code>. You will see this below. That is just how it must be done to insert them in the <code>alist</code> we need to define the new function.</p>
+
 <p>We can use <code>lazy_macro</code> to redefine <code>toString</code>, and I think you will agree that this definition is easier to write.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">toString.lazy_list &lt;- lazy_macro(<span style="color:#00f">&#34;&lt;&gt;&#34;</span>, paste(car, <span style="color:#00f">&#34;:: &lt;...&gt;&#34;</span>))
-</code></pre></div><p>For constructing lists, I use these two convinience functions:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">eager_cons &lt;- function(car, cdr) make_eager_thunk(CONS(car, cdr))
-lazy_cons  &lt;- function(car, cdr) make_lazy_thunk(CONS(car, cdr))
-</code></pre></div><p>These are also useful for the example code below. I use them to avoid pattern-matching everywhere I access lists.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car &lt;- lazy_macro(stop(<span style="color:#00f">&#34;Empty list&#34;</span>), car)
-cdr &lt;- lazy_macro(stop(<span style="color:#00f">&#34;Empty list&#34;</span>), cdr)
-</code></pre></div><p>We can construct an eager list using <code>purrr::reduce</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, ~ eager_cons(.y, .x), .init = LLNIL)
-x
-</code></pre></div><pre><code>## 5 :: &lt;...&gt;
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(x)
-</code></pre></div><pre><code>## [1] 5
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cdr(x)
-</code></pre></div><pre><code>## 4 :: &lt;...&gt;
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, ~ lazy_cons(.y, .x), .init = LLNIL)
-y
-</code></pre></div><pre><code>## 5 :: &lt;...&gt;
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(y)
-</code></pre></div><pre><code>## [1] 5
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cdr(y)
-</code></pre></div><pre><code>## 5 :: &lt;...&gt;
-</code></pre><p>This doesn&rsquo;t show the difference between eager and lazy evaluation, because as soon as we look into a list, we get the evaluated results.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">toString.lazy_list &lt;- lazy_macro(<span style="color:#00f">&#34;&lt;&gt;&#34;</span>, <span style="color:#000080;font-weight:bold">paste</span>(car, <span style="color:#00f">&#34;:: &lt;...&gt;&#34;</span>))</code></pre></div>
+<p>For constructing lists, I use these two convinience functions:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">eager_cons &lt;- <span style="color:#000080;font-weight:bold">function</span>(car, cdr) make_eager_thunk(CONS(car, cdr))
+lazy_cons  &lt;- <span style="color:#000080;font-weight:bold">function</span>(car, cdr) make_lazy_thunk(CONS(car, cdr))</code></pre></div>
+<p>These are also useful for the example code below. I use them to avoid pattern-matching everywhere I access lists.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car &lt;- lazy_macro(<span style="color:#000080;font-weight:bold">stop</span>(<span style="color:#00f">&#34;Empty list&#34;</span>), car)
+cdr &lt;- lazy_macro(<span style="color:#000080;font-weight:bold">stop</span>(<span style="color:#00f">&#34;Empty list&#34;</span>), cdr)</code></pre></div>
+<p>We can construct an eager list using <code>purrr::reduce</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, ~ eager_cons(<span style="color:#00f">.</span>y, <span style="color:#00f">.</span>x), <span style="color:#00f">.i</span>nit = LLNIL)
+x</code></pre></div>
+<pre><code>## 5 :: &lt;...&gt;
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(x)</code></pre></div>
+<pre><code>## [1] 5
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cdr(x)</code></pre></div>
+<pre><code>## 4 :: &lt;...&gt;
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, ~ lazy_cons(<span style="color:#00f">.</span>y, <span style="color:#00f">.</span>x), <span style="color:#00f">.i</span>nit = LLNIL)
+y</code></pre></div>
+<pre><code>## 5 :: &lt;...&gt;
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(y)</code></pre></div>
+<pre><code>## [1] 5
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cdr(y)</code></pre></div>
+<pre><code>## 5 :: &lt;...&gt;
+</code></pre>
+
+<p>This doesn&rsquo;t show the difference between eager and lazy evaluation, because as soon as we look into a list, we get the evaluated results.</p>
+
 <p>We can reveal the evaluation by wrapping values in a &ldquo;noisy&rdquo; function:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">make_noise &lt;- function(val) {
-  cat(<span style="color:#00f">&#34;I see&#34;</span>, val, <span style="color:#00f">&#34;\n&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">make_noise &lt;- <span style="color:#000080;font-weight:bold">function</span>(val) {
+  <span style="color:#000080;font-weight:bold">cat</span>(<span style="color:#00f">&#34;I see&#34;</span>, val, <span style="color:#00f">&#34;\n&#34;</span>)
   val
-}
-</code></pre></div><p>This reveals that with the eager construction, the function is created right away.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- purrr::reduce_right(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, ~ eager_cons(make_noise(.y), .x), .init = LLNIL)
-</code></pre></div><pre><code>## I see 5 
+}</code></pre></div>
+<p>This reveals that with the eager construction, the function is created right away.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- purrr::reduce_right(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, ~ eager_cons(make_noise(<span style="color:#00f">.</span>y), <span style="color:#00f">.</span>x), <span style="color:#00f">.i</span>nit = LLNIL)</code></pre></div>
+<pre><code>## I see 5 
 ## I see 4 
 ## I see 3 
 ## I see 2 
 ## I see 1
-</code></pre><p>When we access it, we do not re-evaluate. It is already created.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(x)
-</code></pre></div><pre><code>## [1] 1
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(cdr(x))
-</code></pre></div><pre><code>## [1] 2
-</code></pre><p>With lazy constructions, we do not evaluate the list when we create it</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- purrr::reduce_right(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, ~ lazy_cons(make_noise(.y), .x), .init = LLNIL)
-</code></pre></div><p>We construct the elements when we access them.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(y)
-</code></pre></div><pre><code>## I see 1
-</code></pre><pre><code>## [1] 1
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(cdr(y))
-</code></pre></div><pre><code>## [1] 1
-</code></pre><p>Wait, what? Why do we get 1 twice here?</p>
+</code></pre>
+
+<p>When we access it, we do not re-evaluate. It is already created.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(x)</code></pre></div>
+<pre><code>## [1] 1
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(cdr(x))</code></pre></div>
+<pre><code>## [1] 2
+</code></pre>
+
+<p>With lazy constructions, we do not evaluate the list when we create it</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- purrr::reduce_right(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, ~ lazy_cons(make_noise(<span style="color:#00f">.</span>y), <span style="color:#00f">.</span>x), <span style="color:#00f">.i</span>nit = LLNIL)</code></pre></div>
+<p>We construct the elements when we access them.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(y)</code></pre></div>
+<pre><code>## I see 1
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">car(cdr(y))</code></pre></div>
+<pre><code>## [1] 1
+</code></pre>
+
+<p>Wait, what? Why do we get 1 twice here?</p>
+
 <p>This is a consequence of lazy evaluation of promises that we did <em>not</em> want here. When we use <code>purrr:reduce_right</code>, we have an environment with variables that are updated while <code>purrr::reduce_right</code> moves through <code>1:5</code>. When we evaluate the lazy thunk, that is when we evaluate the expression <code>lazy_cons(make_noise(.y), .x)</code>. This is too late; we only get the last value that the variables in the function referred to.</p>
+
 <p>It is slightly worse than it looks like here. The <code>car</code> of the list is the last value, 5, but what is worse is that <code>cdr</code> of the list is the list itself. If we tried to scan through the lazy list, we would get an infinite loop</p>
+
 <p>This function translates a lazy list into a linked list. It shows us that we can scan through the eager list</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist &lt;- lazy_macro(NIL, CONS(car, lazy_to_llist(cdr)))
-lazy_to_llist(x)
-</code></pre></div><pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: []
-</code></pre><p>But don&rsquo;t try this. You will hit the limit of the recursion stack.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(y)
-</code></pre></div><p>I cannot show the result here. You will not get a usual R error that <code>knitr</code> can show. Your R session won&rsquo;t crash or anything, so you can try it if you want to. I simply can&rsquo;t show the result here. It will look something like this, though</p>
+lazy_to_llist(x)</code></pre></div>
+<pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: []
+</code></pre>
+
+<p>But don&rsquo;t try this. You will hit the limit of the recursion stack.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(y)</code></pre></div>
+<p>I cannot show the result here. You will not get a usual R error that <code>knitr</code> can show. Your R session won&rsquo;t crash or anything, so you can try it if you want to. I simply can&rsquo;t show the result here. It will look something like this, though</p>
+
 <pre><code>Error: C stack usage  7969360 is too close to the limit
 Execution halted
-</code></pre><p>We can&rsquo;t use <code>purrr</code> to construct lazy lists, but this will work.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">list_to_lazy_list &lt;- function(lst, i = <span style="color:#00f">1</span>) {
-  if (i &gt; length(lst)) LLNIL
-  else lazy_cons(make_noise(lst[i]), list_to_lazy_list(lst, i + <span style="color:#00f">1</span>))
-}
-</code></pre></div><p>Again, we can check that the elements we give the list are not evaluated when we create it:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- list_to_lazy_list(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>)
-</code></pre></div><p>They are when we scan through the list:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(y)
-</code></pre></div><pre><code>## I see 1 
+</code></pre>
+
+<p>We can&rsquo;t use <code>purrr</code> to construct lazy lists, but this will work.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">list_to_lazy_list &lt;- <span style="color:#000080;font-weight:bold">function</span>(lst, i = <span style="color:#00f">1</span>) {
+  <span style="color:#000080;font-weight:bold">if</span> (i &gt; <span style="color:#000080;font-weight:bold">length</span>(lst)) LLNIL
+  <span style="color:#000080;font-weight:bold">else</span> lazy_cons(make_noise(lst[i]), list_to_lazy_list(lst, i + <span style="color:#00f">1</span>))
+}</code></pre></div>
+<p>Again, we can check that the elements we give the list are not evaluated when we create it:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- list_to_lazy_list(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>)</code></pre></div>
+<p>They are when we scan through the list:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(y)</code></pre></div>
+<pre><code>## I see 1 
 ## I see 2 
 ## I see 3 
 ## I see 4 
 ## I see 5
-</code></pre><pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: []
-</code></pre><p>If you want to use this function in the future, you will want to remove the <code>make_noise</code> call, but I use it here to reveal when lists are evaluated in the examples below as well.</p>
+</code></pre>
+
+<pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: []
+</code></pre>
+
+<p>If you want to use this function in the future, you will want to remove the <code>make_noise</code> call, but I use it here to reveal when lists are evaluated in the examples below as well.</p>
+
 <p>To make the examples below easier to read, I will also make a function for creating eager lists:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">list_to_eager_list &lt;- function(lst)
-  purrr::reduce_right(lst, ~ eager_cons(make_noise(.y), .x), .init = LLNIL)
-</code></pre></div><p>Eager lists are still evaluated when we construct them:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- list_to_eager_list(<span style="color:#00f">10</span>:<span style="color:#00f">15</span>)
-</code></pre></div><pre><code>## I see 15 
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">list_to_eager_list &lt;- <span style="color:#000080;font-weight:bold">function</span>(lst)
+  purrr::reduce_right(lst, ~ eager_cons(make_noise(<span style="color:#00f">.</span>y), <span style="color:#00f">.</span>x), <span style="color:#00f">.i</span>nit = LLNIL)</code></pre></div>
+<p>Eager lists are still evaluated when we construct them:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- list_to_eager_list(<span style="color:#00f">10</span>:<span style="color:#00f">15</span>)</code></pre></div>
+<pre><code>## I see 15 
 ## I see 14 
 ## I see 13 
 ## I see 12 
 ## I see 11 
 ## I see 10
-</code></pre><p>and therefore not when we scan through them:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(x)
-</code></pre></div><pre><code>## 10 :: 11 :: 12 :: 13 :: 14 :: 15 :: []
-</code></pre><p>Finally, we get to the good part. Lazy concatenation.</p>
+</code></pre>
+
+<p>and therefore not when we scan through them:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(x)</code></pre></div>
+<pre><code>## 10 :: 11 :: 12 :: 13 :: 14 :: 15 :: []
+</code></pre>
+
+<p>Finally, we get to the good part. Lazy concatenation.</p>
+
 <p>With eager lists, concatenating two lists will take time proportional to the length of the first list. With lazy evaluation, it is a constant time operation. Instead of concatenating immediately, we construct a thunk that gives us the head of a list and a thunk for concatenating the rest.</p>
+
 <p>An eager and a lazy version would look like this</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">eager_concat &lt;- lazy_macro(second, eager_cons(car, eager_concat(cdr, second)), second =)
-lazy_concat  &lt;- lazy_macro(second, lazy_cons(car, lazy_concat(cdr, second)), second =)
-</code></pre></div><p>Now, create two new lists to experiment with</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- list_to_eager_list(<span style="color:#00f">10</span>:<span style="color:#00f">15</span>)
-</code></pre></div><pre><code>## I see 15 
+lazy_concat  &lt;- lazy_macro(second, lazy_cons(car, lazy_concat(cdr, second)), second =)</code></pre></div>
+<p>Now, create two new lists to experiment with</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- list_to_eager_list(<span style="color:#00f">10</span>:<span style="color:#00f">15</span>)</code></pre></div>
+<pre><code>## I see 15 
 ## I see 14 
 ## I see 13 
 ## I see 12 
 ## I see 11 
 ## I see 10
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- list_to_lazy_list(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>)
-</code></pre></div><p>If we concatenate <code>y</code> to <code>x</code>, we do not evaluate any elements. The eager list is already constructed, and the concatenation does not scan the lazy list:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">eager_concat(x, y)
-</code></pre></div><pre><code>## 10 :: &lt;...&gt;
-</code></pre><p>In the other direction, we will evaluate the lazy list.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">eager_concat(y, x)
-</code></pre></div><pre><code>## I see 1 
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- list_to_lazy_list(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>)</code></pre></div>
+<p>If we concatenate <code>y</code> to <code>x</code>, we do not evaluate any elements. The eager list is already constructed, and the concatenation does not scan the lazy list:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">eager_concat(x, y)</code></pre></div>
+<pre><code>## 10 :: &lt;...&gt;
+</code></pre>
+
+<p>In the other direction, we will evaluate the lazy list.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">eager_concat(y, x)</code></pre></div>
+<pre><code>## I see 1 
 ## I see 2 
 ## I see 3 
 ## I see 4 
 ## I see 5
-</code></pre><pre><code>## 1 :: &lt;...&gt;
-</code></pre><p>We evaluate it because this concatenation is eager.</p>
+</code></pre>
+
+<pre><code>## 1 :: &lt;...&gt;
+</code></pre>
+
+<p>We evaluate it because this concatenation is eager.</p>
+
 <p>Now, let us try lazy concatenation. We need new lists for this; the old ones are already evaluated.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- list_to_eager_list(<span style="color:#00f">10</span>:<span style="color:#00f">15</span>)
-</code></pre></div><pre><code>## I see 15 
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- list_to_eager_list(<span style="color:#00f">10</span>:<span style="color:#00f">15</span>)</code></pre></div>
+<pre><code>## I see 15 
 ## I see 14 
 ## I see 13 
 ## I see 12 
 ## I see 11 
 ## I see 10
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- list_to_lazy_list(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>)
-</code></pre></div><p>With lazy evaluation, neither order of concatenation will evaluate the entire lazy list:</p>
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- list_to_lazy_list(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>)</code></pre></div>
+<p>With lazy evaluation, neither order of concatenation will evaluate the entire lazy list:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">xy &lt;- lazy_concat(x, y)
-yx &lt;- lazy_concat(y, x)
-</code></pre></div><pre><code>## I see 1
-</code></pre><p>We do evaluate the first element because even the lazy concatenation gets the <code>car</code> of its input.</p>
+yx &lt;- lazy_concat(y, x)</code></pre></div>
+<pre><code>## I see 1
+</code></pre>
+
+<p>We do evaluate the first element because even the lazy concatenation gets the <code>car</code> of its input.</p>
+
 <p>The eager one is already evaluated, as before.</p>
+
 <p>If we scan through the concatenated lists, we will evaluate the rest of the lazy one:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(xy)
-</code></pre></div><pre><code>## I see 2 
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(xy)</code></pre></div>
+<pre><code>## I see 2 
 ## I see 3 
 ## I see 4 
 ## I see 5
-</code></pre><pre><code>## 10 :: 11 :: 12 :: 13 :: 14 :: 15 :: 1 :: 2 :: 3 :: 4 :: 5 :: []
-</code></pre><p>We only evaluate the list once. If we scan through it again, even if it is part of another concatenated list, we have already evaluated it.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(yx)
-</code></pre></div><pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: 10 :: 11 :: 12 :: 13 :: 14 :: 15 :: []
-</code></pre><p>It is the combination of lazy evaluation and remebering results that will allow us to implement persisten functional queues with amortised constant time operations. But I am out of time today, so that will have to be in another post.</p>
-<!-- raw HTML omitted -->
+</code></pre>
+
+<pre><code>## 10 :: 11 :: 12 :: 13 :: 14 :: 15 :: 1 :: 2 :: 3 :: 4 :: 5 :: []
+</code></pre>
+
+<p>We only evaluate the list once. If we scan through it again, even if it is part of another concatenated list, we have already evaluated it.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(yx)</code></pre></div>
+<pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: 10 :: 11 :: 12 :: 13 :: 14 :: 15 :: []
+</code></pre>
+
+<p>It is the combination of lazy evaluation and remebering results that will allow us to implement persisten functional queues with amortised constant time operations. But I am out of time today, so that will have to be in another post.</p>
+
+<hr/>
+
+<p><small>If you liked what you read, and want more like it, consider supporting me at <a href="https://www.patreon.com/mailund">Patreon</a>.</small>
+<hr/></p>
 
 
 </article>
@@ -468,7 +537,7 @@ yx &lt;- lazy_concat(y, x)
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund |
+        <h6>Copyright &copy; 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

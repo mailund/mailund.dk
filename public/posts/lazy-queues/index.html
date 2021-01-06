@@ -63,17 +63,14 @@
    });
  </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 </head>
@@ -182,136 +179,177 @@ if (!doNotTrack) {
 </aside>
     
 
-    <p>The purpose of the lazy lists I implemented in <a href="https://mailund.github.io/r-programmer-blog/2018/10/03/lazy-lists/">my previous post</a> was to build lazy queues. Lazy lists give you constant time concatenation, which can be useful in itself, but I needed it to implement persistent functional queues.</p>
+    
+
+<p>The purpose of the lazy lists I implemented in <a href="https://mailund.github.io/r-programmer-blog/2018/10/03/lazy-lists/">my previous post</a> was to build lazy queues. Lazy lists give you constant time concatenation, which can be useful in itself, but I needed it to implement persistent functional queues.</p>
+
 <p>In this post, I will use the linked list implementation I made earlier, but I will make a slight change to the lazy lists. It occurred to me, after publishing yesterday&rsquo;s post, that using the <code>CONS</code> constructor to return pairs from lazy-list thunks was not a good idea. The tail of a linked list should always be another linked list, and if I put a thunk there, it isn&rsquo;t.</p>
+
 <p>With <code>pmatch</code> you can put type restrictions on constructors, and we can define a linked list where <code>cdr</code> is always another linked list, like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">linked_list := NIL | CONS(car, cdr : linked_list)
-</code></pre></div><p>All the linked list code assumes that this is what a list looks like, and it is the assumption I broke in my previous post.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">linked_list := NIL | CONS(car, cdr : linked_list)</code></pre></div>
+<p>All the linked list code assumes that this is what a list looks like, and it is the assumption I broke in my previous post.</p>
+
 <p>Instead of using <code>CONS</code> to return heads of a linked list, I will add another constructor, <code>LLCONS</code>. This isn&rsquo;t a lazy list constructor, I want those always to be empty or thunks, but it is what thunks should return.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_list := LLNIL | THUNK(lst)
-lazy_list_head := LLCONS(head, tail : lazy_list)
-</code></pre></div><p>With this data structure definition, I need to update <code>lazy_cons</code> and the <code>lazy_macro</code> from the previous post, but all the other lazy functions remain the same.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">make_lazy_thunk &lt;- function(expr) THUNK(function() expr)
-lazy_cons  &lt;- function(car, cdr) make_lazy_thunk(LLCONS(car, cdr))
+lazy_list_head := LLCONS(<span style="color:#000080;font-weight:bold">head</span>, tail : lazy_list)</code></pre></div>
+<p>With this data structure definition, I need to update <code>lazy_cons</code> and the <code>lazy_macro</code> from the previous post, but all the other lazy functions remain the same.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">make_lazy_thunk &lt;- <span style="color:#000080;font-weight:bold">function</span>(expr) THUNK(<span style="color:#000080;font-weight:bold">function</span>() expr)
+lazy_cons  &lt;- <span style="color:#000080;font-weight:bold">function</span>(car, cdr) make_lazy_thunk(LLCONS(car, cdr))
 
-lazy_macro &lt;- function(empty_pattern, nonempty_pattern, <span style="color:#000080;font-weight:bold">...</span>) {
+lazy_macro &lt;- <span style="color:#000080;font-weight:bold">function</span>(empty_pattern, nonempty_pattern, <span style="color:#000080;font-weight:bold">...</span>) {
   
-  empty_pattern    &lt;- substitute(empty_pattern)
-  nonempty_pattern &lt;- substitute(nonempty_pattern)
+  empty_pattern    &lt;- <span style="color:#000080;font-weight:bold">substitute</span>(empty_pattern)
+  nonempty_pattern &lt;- <span style="color:#000080;font-weight:bold">substitute</span>(nonempty_pattern)
   extra_args       &lt;- rlang::enexprs(<span style="color:#000080;font-weight:bold">...</span>)
   
   cases_pattern &lt;- rlang::expr(
-    cases(.list,
+    cases(<span style="color:#00f">.</span><span style="color:#000080;font-weight:bold">list</span>,
           LLNIL -&gt; !!empty_pattern,
-          THUNK(.list_thunk) -&gt;
-            cases(.list_thunk(),
+          THUNK(<span style="color:#00f">.</span>list_thunk) -&gt;
+            cases(<span style="color:#00f">.</span>list_thunk(),
                   LLCONS(car, cdr) -&gt; !!nonempty_pattern))
   )
   function_expr &lt;- rlang::expr(
     rlang::new_function(
-      alist(.list =, !!!extra_args), 
+      <span style="color:#000080;font-weight:bold">alist</span>(<span style="color:#00f">.</span><span style="color:#000080;font-weight:bold">list</span> =, !!!extra_args), 
       cases_pattern, 
       env = rlang::caller_env())  
   )
   
   rlang::eval_bare(function_expr)
-}
-</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_reverse &lt;- lazy_macro(acc, lazy_reverse(cdr, lazy_cons(car, acc)), acc = LLNIL)
-</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- list_to_lazy_list(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>)
-lazy_to_llist(x)
-</code></pre></div><pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: []
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- lazy_reverse(x)
-lazy_to_llist(y)
-</code></pre></div><pre><code>## 5 :: 4 :: 3 :: 2 :: 1 :: []
-</code></pre><h2 id="lazy-queues">Lazy queues</h2>
+}</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_reverse &lt;- lazy_macro(acc, lazy_reverse(cdr, lazy_cons(car, acc)), acc = LLNIL)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">x &lt;- list_to_lazy_list(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>)
+lazy_to_llist(x)</code></pre></div>
+<pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: []
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">y &lt;- lazy_reverse(x)
+lazy_to_llist(y)</code></pre></div>
+<pre><code>## 5 :: 4 :: 3 :: 2 :: 1 :: []
+</code></pre>
+
+<h2 id="lazy-queues">Lazy queues</h2>
+
 <p>Where <a href="https://mailund.github.io/r-programmer-blog/2018/10/01/lists-and-functional-queues/">we left queues</a>, we had a data structure with amortised constant time operations, but only as treated as an <em>ephemeral</em> structure.</p>
+
 <p>By ephemeral data structures, we mean structures where some or all operations on them modify them. We cannot merely keep copies around in the state they have before an operation.</p>
+
 <p>This is not the case for our functional queues. We do not ever modify them—they <em>are</em> persistent—but the runtime analysis will not work. If we keep copies around in a state where we have saved up for one expensive operation, and we then execute the expensive operations more than once.</p>
+
 <p>I do not mean an <code>if-else</code> statement here. If we only take one of the two branches—as we would with an <code>if-else</code> statement—then the analysis works. We only have a problem if we keep a copy around, compute using the queue for a while, and then return to the copy and do more computations with it.</p>
+
 <p>If, for example, we have inserted <code>n</code> elements into the queue—so these are all in the back-list—and then branch between two computational paths. In both paths, we dequeue an element. This triggers the reversal of the back-list, which costs <code>n</code> operations. We have money in the bank for the first of these, but in the second branch the bank is empty, and the reversal will put us in the red.</p>
-<p><img src="eager-cost.png" alt=""></p>
+
+<p><img src="eager-cost.png" alt="" /></p>
+
 <p>In a lazy queue, we will keep this invariant: The front-list must always be longer than the back-queue.</p>
+
 <p>We will reverse the back-list every time it would get longer than the front-list. This can happen both in <code>enqueue</code> and <code>dequeue</code> operations.</p>
+
 <p>This is different from the eager list, where we only reverse when we dequeue, but a lazy concatenation only cost one operation. The lazy-reversal is an O(n) operation—we cannot reverse linked lists faster than that—but we do not execute that operation until we need it. This doesn’t happen before we need to dequeue an element from it.</p>
+
 <p>If we have 2n - 1 elements in the queue, n in the front-list and n-1 in the back-list, and we enqueue one more, we concatenate the reversed back-list to the front-list. If we then branch and dequeue along two computational paths, we won’t have to reverse the back-list until we have dequeued all the elements in the front-list.</p>
+
 <p>If we pay one coin into the bank every time we do a constant time operation, we will have n coins in the bank (from enqueuing) when we do the concatenate-reverse operation. When we branch and dequeue until we need the reversal, we will have 2n in the bank before we reverse. The n coins we had before the concatenate-reversal and n from dequeuing from the front-list.</p>
+
 <p>This operation leaves n coins in the bank. Along the second branch, we also need n dequeuing operations before we reverse, so we again have 2n in the bank when we reverse. This time the reversal is free—we have already reversed that queue, and with lazy evaluation, we remember the result.</p>
+
 <p>We are not limited to two paths here. I have drawn two, but we can compute along as many branches as we wish. We will have more and more coins in the bank as long as we dequeue and do not pay more than once for the reversal.</p>
-<p><img src="lazy-cost-1.png" alt=""></p>
+
+<p><img src="lazy-cost-1.png" alt="" /></p>
+
 <p>There might be an &ldquo;off by one&rdquo; error or two in the accounting here, but it isn&rsquo;t all wrong, and I promise you that you can get it exactly right if you are more careful than I have been.</p>
+
 <p>We cannot reuse reversals that are not part of the same concatenate-reversal operation. So, if we leave the enqueuing that triggers this operation until after we branch along the two computational paths, we do not gain anything from the lazy evaluation.</p>
+
 <p>We still need to dequeue n times before we have to perform the expensive reversal, so along any alternative branches we compute, we save enough for the independent reversals.</p>
-<p><img src="lazy-cost-2.png" alt=""></p>
+
+<p><img src="lazy-cost-2.png" alt="" /></p>
+
 <p>What, then, if we branch just before we need the reversal. Here, we only have one dequeue operation before we trigger the reversal, so we do not save up n coins along the different branches.</p>
+
 <p>That is true, but as long as the concatenate-reversal operation happens before we branch, the reversal is only executed once. So this scenario is not a problem either.</p>
-<p><img src="lazy-cost-3.png" alt=""></p>
+
+<p><img src="lazy-cost-3.png" alt="" /></p>
+
 <p>Keeping copies around and using them along different computational paths isn’t a problem. Either we do the concatenation-reversal operation before a branch, and then we get all reversal operations for the cost of one, or we save up for the reversal along each computational branch leading to the reversal.</p>
+
 <p>We also have to satisfy the invariant when dequeuing, so if we had <code>enqueued</code> along one of the branches, we have had to add additional concatenation-reversals. Those, however, can be paid for with the coins we save when we perform the <code>enqueue</code> operations, so this isn&rsquo;t a problem for the time analysis either.</p>
+
 <h2 id="implementation">Implementation</h2>
+
 <p>There are not many changes to the queue data structure to make it lazy. We need to replace the eager lists with lazy lists:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue := QUEUE(front_len, front, back_len, back)
-new_queue &lt;- function() QUEUE(<span style="color:#00f">0</span>, LLNIL, <span style="color:#00f">0</span>, LLNIL)
-</code></pre></div><p>I haven’t shown the <code>print</code> function, but it is the same as before. We delegate to <code>print.lazy_list</code> calls instead of <code>print.linked_list</code>, but that is handled by R’s generic function dispatch.</p>
+new_queue &lt;- <span style="color:#000080;font-weight:bold">function</span>() QUEUE(<span style="color:#00f">0</span>, LLNIL, <span style="color:#00f">0</span>, LLNIL)</code></pre></div>
+<p>I haven’t shown the <code>print</code> function, but it is the same as before. We delegate to <code>print.lazy_list</code> calls instead of <code>print.linked_list</code>, but that is handled by R’s generic function dispatch.</p>
+
 <p>If the queue is empty, I put the first element added to the front instead of the queue. It ensures the invariant and is just common sense. I could also have done this for eager lists, but here I would technically have to reverse right after enqueueing, or I would violate the invariant.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">enqueue &lt;- function(queue, x) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">enqueue &lt;- <span style="color:#000080;font-weight:bold">function</span>(queue, x) {
   cases(queue,
         QUEUE(<span style="color:#00f">0</span>, LLNIL, <span style="color:#00f">0</span>, LLNIL) -&gt; 
           QUEUE(<span style="color:#00f">1</span>, lazy_cons(x, LLNIL), <span style="color:#00f">0</span>, LLNIL),
         QUEUE(front_len, front, back_len, back) -&gt;
           QUEUE(front_len, front, back_len + <span style="color:#00f">1</span>, lazy_cons(x, back)))
-}
-</code></pre></div><p>With lazy queues we do not have the problem with <code>purrr::reduce</code>. The call to <code>enqueue</code> creates a closure that keeps the variables we put in <code>lazy_cons</code>, so modifying variables in <code>reduce</code> doesn’t give us any problems.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">8</span>, enqueue, .init = new_queue())
-queue
-</code></pre></div><pre><code>## Front length:	 1 
+}</code></pre></div>
+<p>With lazy queues we do not have the problem with <code>purrr::reduce</code>. The call to <code>enqueue</code> creates a closure that keeps the variables we put in <code>lazy_cons</code>, so modifying variables in <code>reduce</code> doesn’t give us any problems.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">8</span>, enqueue, <span style="color:#00f">.i</span>nit = new_queue())
+queue</code></pre></div>
+<pre><code>## Front length:	 1 
 ## Back length:	 7 
 ## Front:	1 :: &lt;...&gt; 
 ## Back:	8 :: &lt;...&gt;
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(queue$front)
-</code></pre></div><pre><code>## 1 :: []
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(queue$back)
-</code></pre></div><pre><code>## 8 :: 7 :: 6 :: 5 :: 4 :: 3 :: 2 :: []
-</code></pre><p>We need to modify <code>enqueue</code> so it calls the concatenate-reversal operation</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">    lazy_concat(front, lazy_reverse(back))
-</code></pre></div><p>when the back-list gets too long. It makes the function more complicated than the eager queue, but not substantially so.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">enqueue &lt;- function(queue, x) {
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(queue$front)</code></pre></div>
+<pre><code>## 1 :: []
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(queue$back)</code></pre></div>
+<pre><code>## 8 :: 7 :: 6 :: 5 :: 4 :: 3 :: 2 :: []
+</code></pre>
+
+<p>We need to modify <code>enqueue</code> so it calls the concatenate-reversal operation</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">    lazy_concat(front, lazy_reverse(back))</code></pre></div>
+<p>when the back-list gets too long. It makes the function more complicated than the eager queue, but not substantially so.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">enqueue &lt;- <span style="color:#000080;font-weight:bold">function</span>(queue, x) {
   cases(queue,
         QUEUE(<span style="color:#00f">0</span>, LLNIL, <span style="color:#00f">0</span>, LLNIL) -&gt; 
           QUEUE(<span style="color:#00f">1</span>, lazy_cons(x, LLNIL), <span style="color:#00f">0</span>, LLNIL),
         QUEUE(front_len, front, back_len, back) -&gt; {
-          if (back_len &lt; front_len)
+          <span style="color:#000080;font-weight:bold">if</span> (back_len &lt; front_len)
             QUEUE(front_len, front, back_len + <span style="color:#00f">1</span>, lazy_cons(x, back))
-          else
+          <span style="color:#000080;font-weight:bold">else</span>
             QUEUE(front_len + back_len, 
                   lazy_concat(front, lazy_reverse(back)),
                   <span style="color:#00f">1</span>, 
                   lazy_cons(x, LLNIL))
         })
-}
-</code></pre></div><p>In action, building a queue looks like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, enqueue, .init = new_queue())
-lazy_to_llist(queue$front)
-</code></pre></div><pre><code>## 1 :: 2 :: 3 :: 4 :: []
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(queue$back)
-</code></pre></div><pre><code>## 5 :: []
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">9</span>, enqueue, .init = new_queue())
-lazy_to_llist(queue$front)
-</code></pre></div><pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: 6 :: 7 :: 8 :: []
-</code></pre><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(queue$back)
-</code></pre></div><pre><code>## 9 :: []
-</code></pre><p>The <code>dequeue</code> operation is also more complicated than for the eager queue. To get a value out of a list, we need to match a thunk and evaluate it. This is more complicated than before. Then we need to satisfy the invariant, which also adds complexity. The function looks like this:</p>
+}</code></pre></div>
+<p>In action, building a queue looks like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">5</span>, enqueue, <span style="color:#00f">.i</span>nit = new_queue())
+lazy_to_llist(queue$front)</code></pre></div>
+<pre><code>## 1 :: 2 :: 3 :: 4 :: []
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(queue$back)</code></pre></div>
+<pre><code>## 5 :: []
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">9</span>, enqueue, <span style="color:#00f">.i</span>nit = new_queue())
+lazy_to_llist(queue$front)</code></pre></div>
+<pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: 6 :: 7 :: 8 :: []
+</code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lazy_to_llist(queue$back)</code></pre></div>
+<pre><code>## 9 :: []
+</code></pre>
+
+<p>The <code>dequeue</code> operation is also more complicated than for the eager queue. To get a value out of a list, we need to match a thunk and evaluate it. This is more complicated than before. Then we need to satisfy the invariant, which also adds complexity. The function looks like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pair := PAIR(first, second)
 
-dequeue &lt;- function(queue) {
+dequeue &lt;- <span style="color:#000080;font-weight:bold">function</span>(queue) {
   cases(queue,
-        QUEUE(<span style="color:#00f">0</span>, LLNIL, <span style="color:#00f">0</span>, LLNIL) -&gt; stop(<span style="color:#00f">&#34;Empty queue&#34;</span>),
+        QUEUE(<span style="color:#00f">0</span>, LLNIL, <span style="color:#00f">0</span>, LLNIL) -&gt; <span style="color:#000080;font-weight:bold">stop</span>(<span style="color:#00f">&#34;Empty queue&#34;</span>),
         QUEUE(front_len, THUNK(front_thunk), back_len, back) -&gt; {
           cases(front_thunk(),
                 LLCONS(car, cdr) -&gt; {
                   PAIR(
                     car,
-                    if (back_len &lt; front_len) QUEUE(front_len - <span style="color:#00f">1</span>, cdr, back_len, back)
-                    else QUEUE(front_len + back_len - <span style="color:#00f">1</span>, 
+                    <span style="color:#000080;font-weight:bold">if</span> (back_len &lt; front_len) QUEUE(front_len - <span style="color:#00f">1</span>, cdr, back_len, back)
+                    <span style="color:#000080;font-weight:bold">else</span> QUEUE(front_len + back_len - <span style="color:#00f">1</span>, 
                                lazy_concat(cdr, lazy_reverse(back)),
                                <span style="color:#00f">0</span>,
                                LLNIL)
@@ -320,19 +358,24 @@ dequeue &lt;- function(queue) {
             )
           }
         )
-}
-</code></pre></div><p>The <code>queue_to_llist</code> function looks like the one we had for the eager queue. The <code>dequeue</code> function is the new one, of course, but the function doesn&rsquo;t change:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue_to_llist &lt;- function(queue)
+}</code></pre></div>
+<p>The <code>queue_to_llist</code> function looks like the one we had for the eager queue. The <code>dequeue</code> function is the new one, of course, but the function doesn&rsquo;t change:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue_to_llist &lt;- <span style="color:#000080;font-weight:bold">function</span>(queue)
   cases(queue,
-        QUEUE(., LLNIL, ., LLNIL) -&gt; NIL,
+        QUEUE(<span style="color:#00f">.</span>, LLNIL, <span style="color:#00f">.</span>, LLNIL) -&gt; NIL,
         otherwise -&gt;
           cases(dequeue(queue),
-                PAIR(x, q) -&gt; CONS(x, queue_to_llist(q))))
-</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">15</span>, enqueue, .init = new_queue())
-queue_to_llist(queue)
-</code></pre></div><pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: 6 :: 7 :: 8 :: 9 :: 10 :: 11 :: 12 :: 13 :: 14 :: 15 :: []
-</code></pre><p>I hope you can see how lazy evaluation can sometimes be useful.</p>
-<!-- raw HTML omitted -->
+                PAIR(x, <span style="color:#000080;font-weight:bold">q</span>) -&gt; CONS(x, queue_to_llist(<span style="color:#000080;font-weight:bold">q</span>))))</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">queue &lt;- purrr::reduce(<span style="color:#00f">1</span>:<span style="color:#00f">15</span>, enqueue, <span style="color:#00f">.i</span>nit = new_queue())
+queue_to_llist(queue)</code></pre></div>
+<pre><code>## 1 :: 2 :: 3 :: 4 :: 5 :: 6 :: 7 :: 8 :: 9 :: 10 :: 11 :: 12 :: 13 :: 14 :: 15 :: []
+</code></pre>
+
+<p>I hope you can see how lazy evaluation can sometimes be useful.</p>
+
+<hr/>
+
+<p><small>If you liked what you read, and want more like it, consider supporting me at <a href="https://www.patreon.com/mailund">Patreon</a>.</small>
+<hr/></p>
 
 
 </article>
@@ -413,7 +456,7 @@ queue_to_llist(queue)
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund |
+        <h6>Copyright &copy; 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
