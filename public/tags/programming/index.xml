@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Chinese Remainder in Go</title>
+      <link>https://mailund.dk/posts/crt-go/</link>
+      <pubDate>Wed, 06 Jan 2021 10:56:53 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/crt-go/</guid>
+      <description>In between exams, I plan to learn Go in January. I have a book I plan to follow, but today I wanted to get started by just jumping into it, so I picked the Chinese Remainder Theorem we used for 2020&amp;rsquo;s Advent of Code Day 13.</description>
+    </item>
+    
+    <item>
       <title>Advent of Code 2020 — day 24 remade</title>
       <link>https://mailund.dk/posts/aoc-2020-12/</link>
       <pubDate>Fri, 25 Dec 2020 07:21:59 +0100</pubDate>

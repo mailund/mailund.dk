@@ -1,7 +1,6 @@
 ---
 title: "Chinese Remainder in Go"
 date: 2021-01-06T10:56:53+01:00
-draft: true
 tags: [Go, Programming]
 categories: [go, programming]
 ---
