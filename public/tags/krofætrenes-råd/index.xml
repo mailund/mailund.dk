@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Krofætrenes Råd on Mailund on the Internet</title>
+    <link>https://mailund.dk/tags/krof%C3%A6trenes-r%C3%A5d/</link>
+    <description>Recent content in Krofætrenes Råd on Mailund on the Internet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <lastBuildDate>Sat, 09 Jan 2021 14:46:28 +0100</lastBuildDate>
+    
+	<atom:link href="https://mailund.dk/tags/krof%C3%A6trenes-r%C3%A5d/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Krofætrenes Råd — 1</title>
+      <link>https://mailund.dk/posts/krofatter-1/</link>
+      <pubDate>Sat, 09 Jan 2021 14:46:28 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/krofatter-1/</guid>
+      <description>This post will mostly be written in Danish, and there is a reason for that.
+You see, at our weekly Call of Cthulhu game, I accidentally used the plural word for “innkeeper”.</description>
+    </item>
+    
+  </channel>
+</rss>
