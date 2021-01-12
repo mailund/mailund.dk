@@ -7,7 +7,7 @@ date: 2021-01-12T06:00:13+01:00
 
 Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, [start here](https://mailund.dk/posts/krofatter-1/).
 
-
+---- 
 
 
 ## En ubehagelig opgave
@@ -136,6 +136,6 @@ Da den vigtige beslutning var blevet taget, blev Egon sendt tilbage til køkkene
 
 Så mens Egon skrællede kartofler, og tilberedte den traditionelle Jægergryde, diskuterede resten af Rådet hvordan de mente Egon skulle gribe sagen an, når han næste morgen skulle rejse til Hammel og finde den krofatter (eller kromutter) der havde fået lukket landets kroer.
 
+_Fortsættelse følger_
 
-_Fortsættelse følger…_
-
+<!-- [_Fortsættelse følger_](https://mailund.dk/posts/krofatter-3) -->
