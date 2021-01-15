@@ -63,14 +63,17 @@
    });
  </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-10582357-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 </head>
@@ -179,43 +182,31 @@ ga('send', 'pageview');
 </aside>
     
 
-    
-
-<p>I don’t really have a lot of exercises for the chapter on recursion. I had planned to combine recursion with divide-and-conquer, but now the two topics are split over two weeks. Instead, I will have a project for the students to do while they learn about recursion; then it doesn’t matter so much that there are not that many exercises.</p>
-
+    <p>I don’t really have a lot of exercises for the chapter on recursion. I had planned to combine recursion with divide-and-conquer, but now the two topics are split over two weeks. Instead, I will have a project for the students to do while they learn about recursion; then it doesn’t matter so much that there are not that many exercises.</p>
 <p>Anyway, exercises below and answers below that.</p>
-
 <h1 id="exercises">Exercises</h1>
-
 <h2 id="fibonacci">Fibonacci</h2>
-
 <p><strong>Exercise:</strong> Implement a recursive function that computes the n’th Fibonacci number.</p>
-
 <p><strong>Exercise:</strong> Draw the call stack for computing the fourth Fibonacci number using the implementation you did in the previous exercise.</p>
-
 <h2 id="list-exercises">List exercises</h2>
-
 <p><strong>Exercise:</strong> To compute the sum of the elements in a list, we can obviously do this iteratively:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">result = <span style="color:#00f">0</span>
 <span style="color:#000080;font-weight:bold">for</span> e <span style="font-weight:bold">in</span> x:
-  result += e</code></pre></div>
-<p>Implement a recursive function that computes the sum of the elements of a list.</p>
-
+  result += e
+</code></pre></div><p>Implement a recursive function that computes the sum of the elements of a list.</p>
 <p><strong>Exercise:</strong> We can find the smallest element in a non-empty list, <code>x</code>, like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">smallest = x[<span style="color:#00f">0</span>]
 <span style="color:#000080;font-weight:bold">for</span> e <span style="font-weight:bold">in</span> x:
-	smallest = min(smallest, e)</code></pre></div>
-<p>Write a recursive function for finding the smallest element in a list. To avoid copying the list using slices, you will want to have the function take an index parameter as an argument.</p>
-
+	smallest = min(smallest, e)
+</code></pre></div><p>Write a recursive function for finding the smallest element in a list. To avoid copying the list using slices, you will want to have the function take an index parameter as an argument.</p>
 <p><strong>Exercise:</strong> Modify your function, so it returns <code>None</code> if the list is empty. The easiest way to do this is probably to include the “smallest element seen so far” as a parameter to the function, with a default value of <code>None</code>. To compute the smallest value and still handle <code>None</code> you can use this function:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> my_min(x, y):
-	<span style="color:#000080;font-weight:bold">return</span> y <span style="color:#000080;font-weight:bold">if</span> x <span style="font-weight:bold">is</span> None <span style="color:#000080;font-weight:bold">else</span> min(x, y)</code></pre></div>
-<p><strong>Exercise:</strong> Write a recursive function that reverses a list.</p>
-
+	<span style="color:#000080;font-weight:bold">return</span> y <span style="color:#000080;font-weight:bold">if</span> x <span style="font-weight:bold">is</span> None <span style="color:#000080;font-weight:bold">else</span> min(x, y)
+</code></pre></div><p><strong>Exercise:</strong> Write a recursive function that reverses a list.</p>
 <p><strong>Exercise:</strong> Recall the exercise where you had to translate a base-10 number into some other base b (where we restricted the base to be less than 16). We can get the last digit of a number i, in base b using this function:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> get_last_digit(i, b):
-    <span style="color:#000080;font-weight:bold">return</span> digits[i % b]</code></pre></div>
-<p>where we defined the <code>digits</code> list as</p>
+    <span style="color:#000080;font-weight:bold">return</span> digits[i % b]
+</code></pre></div><p>where we defined the <code>digits</code> list as</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits = {}
 
 <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(<span style="color:#00f">0</span>,<span style="color:#00f">10</span>):
@@ -226,19 +217,13 @@ digits[<span style="color:#00f">11</span>] = <span style="color:#00f">&#39;B&#39
 digits[<span style="color:#00f">12</span>] = <span style="color:#00f">&#39;C&#39;</span>
 digits[<span style="color:#00f">13</span>] = <span style="color:#00f">&#39;D&#39;</span>
 digits[<span style="color:#00f">14</span>] = <span style="color:#00f">&#39;E&#39;</span>
-digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39;</span></code></pre></div>
-<p>We can then reduce the problem to the second-to-last digit by dividing i by b. Implement this idea using a recursive function.</p>
-
+digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39;</span>
+</code></pre></div><p>We can then reduce the problem to the second-to-last digit by dividing i by b. Implement this idea using a recursive function.</p>
 <h2 id="tail-recursion">Tail-Recursion</h2>
-
 <p><strong>Exercise:</strong> Rewrite your recursive function for computing the sum of a list of numbers such that it becomes tail-recursive.</p>
-
 <p><strong>Exercise:</strong> Rewrite your recursive function for finding the smallest element in a list to a version that is tail-recursive.</p>
-
 <p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive summation function.</p>
-
 <p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive “find minimum” function.</p>
-
 <p><strong>Exercise:</strong> Consider our recursive implementation of binary search:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> bsearch(x, e, low = <span style="color:#00f">0</span>, high = len(x)):
 	<span style="color:#000080;font-weight:bold">if</span> low &gt;= high:
@@ -249,55 +234,47 @@ digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39
 	<span style="color:#000080;font-weight:bold">elif</span> x[mid] &lt; e:
 		<span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, mid + <span style="color:#00f">1</span>, high)
 	<span style="color:#000080;font-weight:bold">else</span>:
-		<span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, low, mid)</code></pre></div>
-<p>This function is tail-recursive, so use the transformation to replace it with a loop. Compare it to the iterative solution we considered before this chapter.</p>
-
+		<span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, low, mid)
+</code></pre></div><p>This function is tail-recursive, so use the transformation to replace it with a loop. Compare it to the iterative solution we considered before this chapter.</p>
 <h1 id="answers">Answers</h1>
-
 <h2 id="fibonacci-1">Fibonacci</h2>
-
 <p><strong>Exercise:</strong> Implement a recursive function that computes the n’th Fibonacci number.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> Fib(n):
     <span style="color:#000080;font-weight:bold">if</span> n &lt;= <span style="color:#00f">2</span>: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">1</span>
-    <span style="color:#000080;font-weight:bold">else</span>: <span style="color:#000080;font-weight:bold">return</span> Fib(n - <span style="color:#00f">1</span>) + Fib(n - <span style="color:#00f">2</span>)</code></pre></div>
-<p><strong>Exercise:</strong> Draw the call stack for computing the fourth Fibonacci number using the implementation you did in the previous exercise.</p>
-
-<p><img src="fib.png" alt="" /></p>
-
+    <span style="color:#000080;font-weight:bold">else</span>: <span style="color:#000080;font-weight:bold">return</span> Fib(n - <span style="color:#00f">1</span>) + Fib(n - <span style="color:#00f">2</span>)
+</code></pre></div><p><strong>Exercise:</strong> Draw the call stack for computing the fourth Fibonacci number using the implementation you did in the previous exercise.</p>
+<p><img src="fib.png" alt=""></p>
 <h2 id="list-exercises-1">List exercises</h2>
-
 <p><strong>Exercise:</strong> To compute the sum of the elements in a list, we can obviously do this iteratively:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">result = <span style="color:#00f">0</span>
 <span style="color:#000080;font-weight:bold">for</span> e <span style="font-weight:bold">in</span> x:
-  result += e</code></pre></div>
-<p>Implement a recursive function that computes the sum of the elements of a list.</p>
+  result += e
+</code></pre></div><p>Implement a recursive function that computes the sum of the elements of a list.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> recsum(x):
     <span style="color:#000080;font-weight:bold">if</span> x == []: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>
-    <span style="color:#000080;font-weight:bold">else</span>: <span style="color:#000080;font-weight:bold">return</span> x[<span style="color:#00f">0</span>] + recsum(x[<span style="color:#00f">1</span>:])</code></pre></div>
-<p><strong>Exercise:</strong> We can find the smallest element in a non-empty list, <code>x</code>, like this:</p>
+    <span style="color:#000080;font-weight:bold">else</span>: <span style="color:#000080;font-weight:bold">return</span> x[<span style="color:#00f">0</span>] + recsum(x[<span style="color:#00f">1</span>:])
+</code></pre></div><p><strong>Exercise:</strong> We can find the smallest element in a non-empty list, <code>x</code>, like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">smallest = x[<span style="color:#00f">0</span>]
 <span style="color:#000080;font-weight:bold">for</span> e <span style="font-weight:bold">in</span> x:
-	smallest = min(smallest, e)</code></pre></div>
-<p>Write a recursive function for finding the smallest element in a list. To avoid copying the list using slices, you will want to have the function take an index parameter as an argument.</p>
+	smallest = min(smallest, e)
+</code></pre></div><p>Write a recursive function for finding the smallest element in a list. To avoid copying the list using slices, you will want to have the function take an index parameter as an argument.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> min_rec(x, i = <span style="color:#00f">0</span>, acc = None):
     <span style="color:#000080;font-weight:bold">if</span> i == len(x): <span style="color:#000080;font-weight:bold">return</span> acc
     acc = x[i] <span style="color:#000080;font-weight:bold">if</span> acc <span style="font-weight:bold">is</span> None <span style="color:#000080;font-weight:bold">else</span> min(acc, x[i])
-    <span style="color:#000080;font-weight:bold">return</span> min_rec(x, i + <span style="color:#00f">1</span>, acc)</code></pre></div>
-<p><strong>Exercise:</strong> Modify your function, so it returns <code>None</code> if the list is empty. The easiest way to do this is probably to include the “smallest element seen so far” as a parameter to the function, with a default value of <code>None</code>. To compute the smallest value and still handle <code>None</code> you can use this function:</p>
+    <span style="color:#000080;font-weight:bold">return</span> min_rec(x, i + <span style="color:#00f">1</span>, acc)
+</code></pre></div><p><strong>Exercise:</strong> Modify your function, so it returns <code>None</code> if the list is empty. The easiest way to do this is probably to include the “smallest element seen so far” as a parameter to the function, with a default value of <code>None</code>. To compute the smallest value and still handle <code>None</code> you can use this function:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> my_min(x, y):
-	<span style="color:#000080;font-weight:bold">return</span> y <span style="color:#000080;font-weight:bold">if</span> x <span style="font-weight:bold">is</span> None <span style="color:#000080;font-weight:bold">else</span> min(x, y)</code></pre></div>
-<p>My solution from above already works this way.</p>
-
+	<span style="color:#000080;font-weight:bold">return</span> y <span style="color:#000080;font-weight:bold">if</span> x <span style="font-weight:bold">is</span> None <span style="color:#000080;font-weight:bold">else</span> min(x, y)
+</code></pre></div><p>My solution from above already works this way.</p>
 <p><strong>Exercise:</strong> Write a recursive function that reverses a list.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> reverse_rec(x, acc = []):
     <span style="color:#000080;font-weight:bold">if</span> x == []: <span style="color:#000080;font-weight:bold">return</span> acc
-    <span style="color:#000080;font-weight:bold">return</span> reverse_rec(x[<span style="color:#00f">1</span>:], [x[<span style="color:#00f">0</span>]] + acc)</code></pre></div>
-<p>This implementation is very inefficient due to how Python lists are implemented. It would be very efficient if we used linked lists. With array-like vectors, we wouldn&rsquo;t usually need recursion—it is easier to solve that reversal problem iteratively.</p>
-
+    <span style="color:#000080;font-weight:bold">return</span> reverse_rec(x[<span style="color:#00f">1</span>:], [x[<span style="color:#00f">0</span>]] + acc)
+</code></pre></div><p>This implementation is very inefficient due to how Python lists are implemented. It would be very efficient if we used linked lists. With array-like vectors, we wouldn&rsquo;t usually need recursion—it is easier to solve that reversal problem iteratively.</p>
 <p><strong>Exercise:</strong> Recall the exercise where you had to translate a base-10 number into some other base b (where we restricted the base to be less than 16). We can get the last digit of a number i, in base b using this function:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> get_last_digit(i, b):
-    <span style="color:#000080;font-weight:bold">return</span> digits[i % b]</code></pre></div>
-<p>where we defined the <code>digits</code> list as</p>
+    <span style="color:#000080;font-weight:bold">return</span> digits[i % b]
+</code></pre></div><p>where we defined the <code>digits</code> list as</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">digits = {}
 
 <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(<span style="color:#00f">0</span>,<span style="color:#00f">10</span>):
@@ -308,8 +285,8 @@ digits[<span style="color:#00f">11</span>] = <span style="color:#00f">&#39;B&#39
 digits[<span style="color:#00f">12</span>] = <span style="color:#00f">&#39;C&#39;</span>
 digits[<span style="color:#00f">13</span>] = <span style="color:#00f">&#39;D&#39;</span>
 digits[<span style="color:#00f">14</span>] = <span style="color:#00f">&#39;E&#39;</span>
-digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39;</span></code></pre></div>
-<p>We can then reduce the problem to the second-to-last digit by dividing i by b. Implement this idea using a recursive function.</p>
+digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39;</span>
+</code></pre></div><p>We can then reduce the problem to the second-to-last digit by dividing i by b. Implement this idea using a recursive function.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> to_base(n, b, rev_digits = None):
     <span style="color:#080;font-style:italic"># get an empty list if argument is None</span>
     rev_digits = rev_digits <span style="font-weight:bold">or</span> []
@@ -319,30 +296,29 @@ digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39
         <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">&#34;&#34;</span>.join(reversed(rev_digits))
     <span style="color:#000080;font-weight:bold">else</span>:
         rev_digits.append(digits[n % b])
-        <span style="color:#000080;font-weight:bold">return</span> to_base(n // b, b, rev_digits)</code></pre></div>
-<h2 id="tail-recursion-1">Tail-Recursion</h2>
-
+        <span style="color:#000080;font-weight:bold">return</span> to_base(n // b, b, rev_digits)
+</code></pre></div><h2 id="tail-recursion-1">Tail-Recursion</h2>
 <p><strong>Exercise:</strong> Rewrite your recursive function for computing the sum of a list of numbers such that it becomes tail-recursive.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> recsum_tr(x, acc = <span style="color:#00f">0</span>):
     <span style="color:#000080;font-weight:bold">if</span> x == []: <span style="color:#000080;font-weight:bold">return</span> acc
-    <span style="color:#000080;font-weight:bold">else</span>: <span style="color:#000080;font-weight:bold">return</span> recsum_tr(x[<span style="color:#00f">1</span>:], acc + x[<span style="color:#00f">0</span>])</code></pre></div>
-<p><strong>Exercise:</strong> Rewrite your recursive function for finding the smallest element in a list to a version that is tail-recursive.</p>
+    <span style="color:#000080;font-weight:bold">else</span>: <span style="color:#000080;font-weight:bold">return</span> recsum_tr(x[<span style="color:#00f">1</span>:], acc + x[<span style="color:#00f">0</span>])
+</code></pre></div><p><strong>Exercise:</strong> Rewrite your recursive function for finding the smallest element in a list to a version that is tail-recursive.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> min_rec(x, i = <span style="color:#00f">0</span>, acc = None):
     <span style="color:#000080;font-weight:bold">if</span> i == len(x): <span style="color:#000080;font-weight:bold">return</span> acc
     acc = x[i] <span style="color:#000080;font-weight:bold">if</span> acc <span style="font-weight:bold">is</span> None <span style="color:#000080;font-weight:bold">else</span> min(acc, x[i])
-    <span style="color:#000080;font-weight:bold">return</span> min_rec(x, i + <span style="color:#00f">1</span>, acc)</code></pre></div>
-<p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive summation function.</p>
+    <span style="color:#000080;font-weight:bold">return</span> min_rec(x, i + <span style="color:#00f">1</span>, acc)
+</code></pre></div><p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive summation function.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> recsum_tr(x, acc = <span style="color:#00f">0</span>):
 		<span style="color:#000080;font-weight:bold">while</span> True:
 		    <span style="color:#000080;font-weight:bold">if</span> x == []: <span style="color:#000080;font-weight:bold">return</span> acc
-		    x, acc = x[<span style="color:#00f">1</span>:], acc + x[<span style="color:#00f">0</span>]</code></pre></div>
-<p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive “find minimum” function.</p>
+		    x, acc = x[<span style="color:#00f">1</span>:], acc + x[<span style="color:#00f">0</span>]
+</code></pre></div><p><strong>Exercise:</strong> Do the tail-recursion transformation for your tail-recursive “find minimum” function.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> min_rec(x, i = <span style="color:#00f">0</span>, acc = None):
 		<span style="color:#000080;font-weight:bold">while</span> True:
 		    <span style="color:#000080;font-weight:bold">if</span> i == len(x): <span style="color:#000080;font-weight:bold">return</span> acc
 		    acc = x[i] <span style="color:#000080;font-weight:bold">if</span> acc <span style="font-weight:bold">is</span> None <span style="color:#000080;font-weight:bold">else</span> min(acc, x[i])
-		    i += <span style="color:#00f">1</span></code></pre></div>
-<p><strong>Exercise:</strong> Consider our recursive implementation of binary search:</p>
+		    i += <span style="color:#00f">1</span>
+</code></pre></div><p><strong>Exercise:</strong> Consider our recursive implementation of binary search:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> bsearch(x, e, low = <span style="color:#00f">0</span>, high = len(x)):
 	<span style="color:#000080;font-weight:bold">if</span> low &gt;= high:
 		<span style="color:#000080;font-weight:bold">return</span> False
@@ -352,9 +328,8 @@ digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39
 	<span style="color:#000080;font-weight:bold">elif</span> x[mid] &lt; e:
 		<span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, mid + <span style="color:#00f">1</span>, high)
 	<span style="color:#000080;font-weight:bold">else</span>:
-		<span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, low, mid)</code></pre></div>
-<p>This function is tail-recursive, so use the transformation to replace it with a loop. Compare it to the iterative solution we considered before this chapter.</p>
-
+		<span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, low, mid)
+</code></pre></div><p>This function is tail-recursive, so use the transformation to replace it with a loop. Compare it to the iterative solution we considered before this chapter.</p>
 <p>The direct translation is this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> bsearch(x, e, low = <span style="color:#00f">0</span>, high = len(x)):
     <span style="color:#000080;font-weight:bold">while</span> True:
@@ -366,8 +341,8 @@ digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39
 	    <span style="color:#000080;font-weight:bold">elif</span> x[mid] &lt; e:
 		    <span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, mid + <span style="color:#00f">1</span>, high)
 	    <span style="color:#000080;font-weight:bold">else</span>:
-		    <span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, low, mid)</code></pre></div>
-<p>If we just change the loop condition we get the usual function:</p>
+		    <span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, low, mid)
+</code></pre></div><p>If we just change the loop condition we get the usual function:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> bsearch(x, e, low = <span style="color:#00f">0</span>, high = len(x)):
     <span style="color:#000080;font-weight:bold">while</span> low &lt; high:
 	    mid = (low + high) // <span style="color:#00f">2</span>
@@ -377,7 +352,8 @@ digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39
 		    <span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, mid + <span style="color:#00f">1</span>, high)
 	    <span style="color:#000080;font-weight:bold">else</span>:
 		    <span style="color:#000080;font-weight:bold">return</span> bsearch(x, e, low, mid)
-    <span style="color:#000080;font-weight:bold">return</span> False</code></pre></div>
+    <span style="color:#000080;font-weight:bold">return</span> False
+</code></pre></div>
 
 </article>
 
@@ -457,7 +433,7 @@ digits[<span style="color:#00f">15</span>] = <span style="color:#00f">&#39;F&#39
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2020 - Thomas Mailund |
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

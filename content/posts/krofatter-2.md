@@ -136,6 +136,4 @@ Da den vigtige beslutning var blevet taget, blev Egon sendt tilbage til køkkene
 
 Så mens Egon skrællede kartofler, og tilberedte den traditionelle Jægergryde, diskuterede resten af Rådet hvordan de mente Egon skulle gribe sagen an, når han næste morgen skulle rejse til Hammel og finde den krofatter (eller kromutter) der havde fået lukket landets kroer.
 
-_Fortsættelse følger_
-
-<!-- [_Fortsættelse følger_](https://mailund.dk/posts/krofatter-3) -->
+[_Fortsættelse følger_](https://mailund.dk/posts/krofatter-3) 

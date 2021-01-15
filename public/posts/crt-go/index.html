@@ -63,14 +63,17 @@
    });
  </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-10582357-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 </head>
@@ -193,11 +196,8 @@ ga('send', 'pageview');
     
 
     <p>In between exams, I plan to learn <a href="https://golang.org">Go</a> in January. I have a book I plan to follow, but today I wanted to get started by just jumping into it, so I picked the <a href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem">Chinese Remainder Theorem</a> we used for 2020&rsquo;s Advent of Code <a href="https://mailund.dk/posts/aoc-2020-4/">Day 13</a>. There, I implemented it in Python (before I found out that it was already in SymPy). It is a simple numerical algorithm, so it should be easy to implement in Go. Or so I thought.</p>
-
 <p>I only implemented the algorithm for two equations. Given numbers \(a,n,b,m\) with \(a &lt; n\) and \(b &lt; m\), find \(x\) such that \(x\) mod \(n = a\) and \(x\) mod \(m = b\). If you can do that, you can iteratively solve for any number of equations. To do that, however, I need to work out how to handle arrays in Go, and I didn&rsquo;t take it that far. I will do that later.</p>
-
 <p>One way to solve the equations is to find the Bézout coefficients \(s\) and \(t\). Those are numbers such that \(sn+tm=1\), and if you have them, then your solution is \(x = atm + bsn\). To see this, note that because \(s\) and \(t\) are Bézout coefficients, \(sn = 1 - tm\) and \(tm = 1 - sn\), so \(x\) mod \(n\) = \((atm+bsn)\) mod \(n = atm\) mod \(n\) (because \(bsn\) is divisible by \(n\)) and \(atm\) mod \(n\) = \(a(1-sn)\) mod \(n\) = \(a\) mod \(n\) and symmetrically for \(b\) and \(m\). So, to find \(x\), you need to find \(s\) and \(t\). It isn&rsquo;t the only way, I think, but it is an easy way, because the <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended Euclidian algorithm</a> will do it for you.</p>
-
 <p>The extended Euclidian algorithm works the same way as the Euclidian algorithm for computing the greatest common divisor of two numbers, you just keep track of two additional numbers in the computation. In Go, it looks like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000080;font-weight:bold">func</span> egcd(a, b <span style="color:#000080;font-weight:bold">int64</span>) (<span style="color:#000080;font-weight:bold">int64</span>, <span style="color:#000080;font-weight:bold">int64</span>, <span style="color:#000080;font-weight:bold">int64</span>) {
 	oldR, r := a, b
@@ -210,9 +210,8 @@ ga('send', 'pageview');
 		oldT, t = t, oldT-quotient*t
 	}
 	<span style="color:#000080;font-weight:bold">return</span> oldR, oldS, oldT
-}</code></pre></div>
-<p>My implementation returns three numbers. The first is the GCD of <code>a</code> and <code>b</code>—which for the Chinese Remainder Theorem is one as the input must be co-primes—and the second and third are \(s\) and \(t\).</p>
-
+}
+</code></pre></div><p>My implementation returns three numbers. The first is the GCD of <code>a</code> and <code>b</code>—which for the Chinese Remainder Theorem is one as the input must be co-primes—and the second and third are \(s\) and \(t\).</p>
 <p>That is the easy part, because now we can get the solution with</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000080;font-weight:bold">func</span> crt(a, n, b, m <span style="color:#000080;font-weight:bold">int64</span>) (<span style="color:#000080;font-weight:bold">int64</span>, <span style="color:#000080;font-weight:bold">int64</span>) {
 	K := n * m
@@ -222,14 +221,11 @@ ga('send', 'pageview');
 		x += K
 	}
 	<span style="color:#000080;font-weight:bold">return</span> x, K
-}</code></pre></div>
-<p>Here, \(K\), is the product of \(n\) and \(m\) and \(x\) should be modulo that. It might be negative, and if it is, we move it one period of \(K\) up to get the corresponding equivalence class. Adjusting a number this way, when you work modulo some number is standard. Nothing exciting here.</p>
-
+}
+</code></pre></div><p>Here, \(K\), is the product of \(n\) and \(m\) and \(x\) should be modulo that. It might be negative, and if it is, we move it one period of \(K\) up to get the corresponding equivalence class. Adjusting a number this way, when you work modulo some number is standard. Nothing exciting here.</p>
 <p>In my Python implementation, that would be it. Python works with arbitrarily large integers, and while that can hurt performance when numbers grow large, it isn&rsquo;t an issue here. The benefit of using such numbers is that we do not get overflow. But with Go (and most languages), we have a fixed size for integers. I picked 64-bit numbers, because that often suffices, but not for me. In some of my test cases, the multiplications when creating \(x\) gave me overflow.</p>
-
 <p>So I figured that I would do multiplication in 128-bit words and then take the remainder with \(K\). That way, I would avoid overflow in the individual multiplications, and if I take the remainder after each operation, I would stay in 64-bit integers. However, Go told me in friendly but no uncertain terms that <code>int128</code> was not a type. And that meant that I had to do the multiplication within the modulo group.</p>
-
-<p>You can do that with iterative addition, but it is of course very slow. It is linear in the smallest of the factors. But I figured that I should definitely be able to multiply by two without overflow, or I might as well give up, so I implemented a logarithmic multiplication.<sup class="footnote-ref" id="fnref:Well-it-depends"><a href="#fn:Well-it-depends">1</a></sup> I don&rsquo;t know what it is called, but it is a standard algorithm. You multiply by two when you have an even number, and add when you have an odd.</p>
+<p>You can do that with iterative addition, but it is of course very slow. It is linear in the smallest of the factors. But I figured that I should definitely be able to multiply by two without overflow, or I might as well give up, so I implemented a logarithmic multiplication.^[Well, it depends on how you look at the data. I suppose it is pseudo-logarithmic, because it is logarithmic in the magnitude of the input and not the size of the input. It doesn&rsquo;t really matter what you call it; it is fast enough.] I don&rsquo;t know what it is called, but it is a standard algorithm. You multiply by two when you have an even number, and add when you have an odd.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000080;font-weight:bold">func</span> multmod(a, b, m <span style="color:#000080;font-weight:bold">int64</span>) <span style="color:#000080;font-weight:bold">int64</span> {
 	<span style="color:#000080;font-weight:bold">var</span> result <span style="color:#000080;font-weight:bold">int64</span> = <span style="color:#00f">0</span>
 	a %= m
@@ -245,16 +241,16 @@ ga('send', 'pageview');
 	}
 
 	<span style="color:#000080;font-weight:bold">return</span> result
-}</code></pre></div>
-<p>I also wrote a function to handle moving a number from negative into the range \([0,\ldots,K-1]\):</p>
+}
+</code></pre></div><p>I also wrote a function to handle moving a number from negative into the range \([0,\ldots,K-1]\):</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000080;font-weight:bold">func</span> mod(a, m <span style="color:#000080;font-weight:bold">int64</span>) <span style="color:#000080;font-weight:bold">int64</span> {
 	a %= m
 	<span style="color:#000080;font-weight:bold">if</span> a &lt; <span style="color:#00f">0</span> {
 		a += m
 	}
 	<span style="color:#000080;font-weight:bold">return</span> a
-}</code></pre></div>
-<p>With those functions, a Chinese Remainder solution looks like this:</p>
+}
+</code></pre></div><p>With those functions, a Chinese Remainder solution looks like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000080;font-weight:bold">func</span> crt(a, n, b, m <span style="color:#000080;font-weight:bold">int64</span>) (<span style="color:#000080;font-weight:bold">int64</span>, <span style="color:#000080;font-weight:bold">int64</span>) {
 	K := n * m
 	_, s, t := egcd(n, m)
@@ -262,16 +258,8 @@ ga('send', 'pageview');
 	bsn := multmod(multmod(b, mod(s, K), K), n, K)
 	x := mod(atm+bsn, K)
 	<span style="color:#000080;font-weight:bold">return</span> x, K
-}</code></pre></div>
-<p>Somehow, I miss operator overloading right here, but I don&rsquo;t think Go has them. I should get started with my book so I can figure out what you can actually do in Go.</p>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:Well-it-depends">Well, it depends on how you look at the data. I suppose it is pseudo-logarithmic, because it is logarithmic in the magnitude of the input and not the size of the input. It doesn&rsquo;t really matter what you call it; it is fast enough. <a class="footnote-return" href="#fnref:Well-it-depends"><sup>[return]</sup></a></li>
-</ol>
-</div>
+}
+</code></pre></div><p>Somehow, I miss operator overloading right here, but I don&rsquo;t think Go has them. I should get started with my book so I can figure out what you can actually do in Go.</p>
 
 
 </article>
@@ -352,7 +340,7 @@ ga('send', 'pageview');
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2020 - Thomas Mailund |
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

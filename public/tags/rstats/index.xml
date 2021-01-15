@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rstats on Mailund on the Internet</title>
+    <title>rstats on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/rstats/</link>
-    <description>Recent content in Rstats on Mailund on the Internet</description>
+    <description>Recent content in rstats on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 05:00:20 +0200</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 04 Oct 2018 05:00:20 +0200</lastBuildDate><atom:link href="https://mailund.dk/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lazy queues</title>
       <link>https://mailund.dk/posts/lazy-queues/</link>
@@ -44,7 +40,8 @@
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/errata/fpinr/</guid>
-      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;</description>
+      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;
+Chapter 3 Nested Functions and Scopes, page 53ff.</description>
     </item>
     
     <item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Mailund on the Internet</title>
@@ -6,11 +6,7 @@
     <description>Recent content in R on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Tue, 15 Dec 2020 06:48:38 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/r/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 15 Dec 2020 06:48:38 +0100</lastBuildDate><atom:link href="https://mailund.dk/tags/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Advent of Code 2020 — days 06–08</title>
       <link>https://mailund.dk/posts/aoc-2020-2/</link>

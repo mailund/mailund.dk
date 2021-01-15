@@ -63,14 +63,17 @@
    });
  </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-10582357-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 </head>
@@ -195,31 +198,21 @@ ga('send', 'pageview');
 </aside>
     
 
-    
-
-<p>Ok, now that today’s puzzles are solved, I can go back and look at solutions to the previous days. Today, I will show you my solutions for days six through eight. There is some fun stuff in these days, with graph algorithms, memorisation, and virtual machines, the latter which I found particularly fun to play with.</p>
-
-<h2 id="day-06-custom-customs">Day 06 — Custom Customs</h2>
-
+    <p>Ok, now that today’s puzzles are solved, I can go back and look at solutions to the previous days. Today, I will show you my solutions for days six through eight. There is some fun stuff in these days, with graph algorithms, memorisation, and virtual machines, the latter which I found particularly fun to play with.</p>
+<h2 id="day-06--custom-customs">Day 06 — Custom Customs</h2>
 <p>As always, <a href="https://adventofcode.com/2020/day/6">read the puzzle description</a> before we continue…</p>
-
 <p>We are given answers from groups of people, where</p>
-
 <blockquote>
-<p>However, the person sitting next to you seems to be experiencing a language barrier and asks if you can help. For each of the people in their group, you write down the questions for which they answer &ldquo;yes&rdquo;, one per line. <a href="Duplicate answers to the same question don't count extra; each question counts at most once.">…</a></p>
+<p>However, the person sitting next to you seems to be experiencing a language barrier and asks if you can help. For each of the people in their group, you write down the questions for which they answer &ldquo;yes&rdquo;, one per line. […] (Duplicate answers to the same question don&rsquo;t count extra; each question counts at most once.)</p>
 </blockquote>
-
 <p>We have more than one group, and</p>
-
 <blockquote>
 <p>Each group&rsquo;s answers are separated by a blank line, and within each group, each person&rsquo;s answers are on a single line. For example:</p>
 </blockquote>
-
 <p>This tells us that we have one of those blank-line separated files again, so I will go for</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/06/test.txt&#39;</span>)
-groups = f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>)</code></pre></div>
-<p>to read the groups, so I do not have to handle the last group as a special case. The part about duplicated answers counting as one tells us that we should think of the answers as sets. In each group, we want each of the unique answers, with no duplicates, and an easy way to get that is to use a set.</p>
-
+groups = f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>)
+</code></pre></div><p>to read the groups, so I do not have to handle the last group as a special case. The part about duplicated answers counting as one tells us that we should think of the answers as sets. In each group, we want each of the unique answers, with no duplicates, and an easy way to get that is to use a set.</p>
 <p>Our task is to count how many unique answers we have for each group, and then add these together. A straightforward solution could look like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">res = <span style="color:#00f">0</span>
 <span style="color:#000080;font-weight:bold">for</span> group <span style="font-weight:bold">in</span> groups:
@@ -227,16 +220,13 @@ groups = f.read().split(<span style="color:#00f">&#39;</span><span style="color:
     <span style="color:#000080;font-weight:bold">for</span> answer <span style="font-weight:bold">in</span> group.split():
         unique.update(answer)
     res += len(unique)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #1: {res}&#39;</span>)</code></pre></div>
-<p>We can also create a set of all the unique answers in a group by splitting the group—which gives us the strings there—then joining them to get a sequence of all the characters and then remove duplicates by putting that into a set. This gives us a more concise (but a little less readable) solution:</p>
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #1: {res}&#39;</span>)
+</code></pre></div><p>We can also create a set of all the unique answers in a group by splitting the group—which gives us the strings there—then joining them to get a sequence of all the characters and then remove duplicates by putting that into a set. This gives us a more concise (but a little less readable) solution:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">res = sum( len(set(<span style="color:#00f">&#39;&#39;</span>.join(group.split()))) <span style="color:#000080;font-weight:bold">for</span> group <span style="font-weight:bold">in</span> groups )
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #1: {res}&#39;</span>)</code></pre></div>
-<p>We are flattening each group into one string, and then we use a set to count the unique letters.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #1: {res}&#39;</span>)
+</code></pre></div><p>We are flattening each group into one string, and then we use a set to count the unique letters.</p>
 <p>With Puzzle #2, we need to count the unique letters that occur in <em>all</em>, instead of <em>any</em> of the answers in a group. Where Puzzle #1 was set union, we now have set-intersection.</p>
-
 <p>The two puzzles are so alike that we should be able to refactor our code to solve both puzzles. For Puzzle #1, we should do set union on all the answers, and for Puzzle #2, we should do set intersection, and immediately I thought <code>reduce()</code> as the functional way to do this. The <code>reduce()</code> function will apply a function over a sequence, taking the result of the previous application as the input of the next. So if you have a sequence <code>x = [a,b,c]</code> and a function <code>f()</code>, then <code>reduce(f,x)</code> will give you <code>f(a,f(b,f(c)))</code> (or possibly applied in the other direction, depending on the implementation). So, we should be able to apply set union and set intersection and be done with that.</p>
-
 <p>Well, almost. The input sequence to our <code>reduce()</code> is a list of strings, the individual answers in the group, and we can’t do union/intersection on strings. So for my first attempt, I used a third argument to <code>reduce()</code> that works as an initial value. If you do <code>reduce(f,x,i)</code> you get <code>f(f(a,f(b,f(c,i))))</code>. The initial value for union should be the empty set, that we continuously add to, and for intersection we should use the full set of letters, that we subtract from. My implementation looked like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">from</span> functools <span style="color:#000080;font-weight:bold">import</span> reduce
 <span style="color:#000080;font-weight:bold">from</span> operator <span style="color:#000080;font-weight:bold">import</span> or_, and_
@@ -257,9 +247,8 @@ groups = f.read().split(<span style="color:#00f">&#39;</span><span style="color:
     <span style="color:#000080;font-weight:bold">return</span> solve_puzzle(infile, and_, set(string.ascii_lowercase))
 
 <span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #1: {puzzle1(groups)}&#39;</span>)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #2: {puzzle2(groups)}&#39;</span>)</code></pre></div>
-<p>We still have a loop—well, generator expression—over the groups, and in each group, we have a reduce over the split group. In each reduce call, I translate the string part into a set using a lambda-expression. I use <code>or_</code> and <code>and_</code> for the operators <code>|</code> and <code>&amp;</code>, that works as union and intersection in Python.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #2: {puzzle2(groups)}&#39;</span>)
+</code></pre></div><p>We still have a loop—well, generator expression—over the groups, and in each group, we have a reduce over the split group. In each reduce call, I translate the string part into a set using a lambda-expression. I use <code>or_</code> and <code>and_</code> for the operators <code>|</code> and <code>&amp;</code>, that works as union and intersection in Python.</p>
 <p>But this is a pretty stupid solution. The reason I need the initial sets and the lambda expression is that I am working on strings and not sets for one of the parameters. I could just as well translate all the strings into sets before I <code>reduce()</code>, and simplify the code that way. So I changed it into this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> solve_puzzle(groups, set_update):
     <span style="color:#000080;font-weight:bold">return</span> sum(map(len, (reduce(set_update, map(set, group.split()))
@@ -271,45 +260,38 @@ groups = f.read().split(<span style="color:#00f">&#39;</span><span style="color:
     <span style="color:#000080;font-weight:bold">return</span> solve_puzzle(infile, and_)
 
 <span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #1: {puzzle1(groups)}&#39;</span>)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #2: {puzzle2(groups)}&#39;</span>)</code></pre></div>
-<p>The <code>map(set, group.split())</code> code translates all the strings into sets, and the sequence of sets is then the input to <code>reduce()</code>. This means that we can use the <code>set_update()</code> function directly, and we don’t need an initial value—<code>reduce()</code> can take that from the sequence.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #2: {puzzle2(groups)}&#39;</span>)
+</code></pre></div><p>The <code>map(set, group.split())</code> code translates all the strings into sets, and the sequence of sets is then the input to <code>reduce()</code>. This means that we can use the <code>set_update()</code> function directly, and we don’t need an initial value—<code>reduce()</code> can take that from the sequence.</p>
 <p>I like this solution, and if you are used to functional programming, it will be natural to you. However, the flow of data in it can be hard to read. This is not particular to this solution, but the way that mapping and reducing often works. The same as for generator expressions and list comprehensions that we have to read backwards, you have to read expressions that work as arguments to function calls in a nested way.</p>
-
 <p>If you use a pipeline syntax, as they have in R or Elixir, the flow of data is easier to read. You read it from left to right, as a series of transformations. (If you use function composition as in Haskell, it is the same idea, you just read it from right to left). So I wanted to try a version with that as well.</p>
-
 <p>In R, we have had pipes for some years through the <code>magrittr</code> package, but if you get the development version of R, you get a new syntax for functions and pipelines. For functions, you can write <code>\(…) …</code> for <code>function(…) …</code> and you can use <code>|&gt;</code> for pipelines. I haven’t used those yet and now is my chance.</p>
-
 <p>I used exactly the same idea. Split the groups by double newlines, then split the answers inside a group by newlines. Here, I had to discard empty strings, because the last group would have one, and I got the annoying special case back. Then, for each group, you split the answers into individual letters, make those into a set, and use <code>reduce()</code> to combine them, with a function parameter to handle Puzzle #1 and #2. Map this procedure through all the groups, get the size of the sets, and sum them. My code looks like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#000080;font-weight:bold">library</span>(tidyverse)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">library(tidyverse)
 
 <span style="color:#080;font-style:italic"># Separate functions because string handling is a mess in R</span>
-split_groups  &lt;- \(x) str_split(x, <span style="color:#00f">&#34;\n\n&#34;</span>)[[<span style="color:#00f">1</span>]]
-split_answers &lt;- \(x) str_split(x, <span style="color:#00f">&#34;\n&#34;</span>)[[<span style="color:#00f">1</span>]] |&gt; discard(\(x) x == <span style="color:#00f">&#34;&#34;</span>)
-make_set      &lt;- \(x) str_split(x, <span style="color:#00f">&#34;&#34;</span>)[[<span style="color:#00f">1</span>]]
+split_groups  &lt;- \(x) str_split(x, <span style="color:#00f">&#34;\n\n&#34;</span>)[[1]]
+split_answers &lt;- \(x) str_split(x, <span style="color:#00f">&#34;\n&#34;</span>)[[1]] |&gt; discard(\(x) x == <span style="color:#00f">&#34;&#34;</span>)
+make_set      &lt;- \(x) str_split(x, <span style="color:#00f">&#34;&#34;</span>)[[1]]
 
 fname  &lt;- <span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/06/test.txt&#39;</span>
 groups &lt;- read_file(fname) |&gt; split_groups()
 
-solve_puzzle &lt;- <span style="color:#000080;font-weight:bold">function</span>(upd) {
+solve_puzzle &lt;- function(upd) {
   group_answers &lt;-
 	  \(x) x |&gt; split_answers() |&gt; map(make_set) |&gt; reduce(upd)
   solve_puzzle  &lt;-
-	  \(x) x |&gt; map(group_answers) |&gt; map_dbl(<span style="color:#000080;font-weight:bold">length</span>) |&gt; <span style="color:#000080;font-weight:bold">sum</span>()
+	  \(x) x |&gt; map(group_answers) |&gt; map_dbl(length) |&gt; sum()
   solve_puzzle
 }
 
-puzzle1 &lt;- solve_puzzle(<span style="color:#000080;font-weight:bold">union</span>)
-puzzle2 &lt;- solve_puzzle(<span style="color:#000080;font-weight:bold">intersect</span>)
+puzzle1 &lt;- solve_puzzle(union)
+puzzle2 &lt;- solve_puzzle(intersect)
 
 puzzle1(groups)
-puzzle2(groups)</code></pre></div>
-<p>The string handling at the top is just a nuisance. I always feel that way when working with strings in R. Don’t get me wrong, I love programming in R, but I don’t want to work with strings there if I can at all avoid it.</p>
-
+puzzle2(groups)
+</code></pre></div><p>The string handling at the top is just a nuisance. I always feel that way when working with strings in R. Don’t get me wrong, I love programming in R, but I don’t want to work with strings there if I can at all avoid it.</p>
 <p>I could simplify it a bit if I used the old <code>%&gt;%</code> pipes because I didn&rsquo;t need to make the <code>\(x)</code> functions and could have used <code>. %&gt;%</code> instead, but I wanted to try the new syntax.</p>
-
 <p>It is not an entirely fair comparison with the Python code when I split the code into two functions, but even if I hadn’t, reading the pipeline from left to right, instead of inside out, is easier.</p>
-
 <p>Since it is such an easy puzzle this day, I decided to try handling it in C as well. You can use bit-vectors to represent the sets. We only have lower-case English letters, so we can pack the 26 letters into an <code>int</code> (which is unlikely to be smaller than 32 bits on any desktop platform), and then all the set manipulation becomes bit manipulation. Bitwise OR and AND on an integer is lightning fast, so it is a good solution. The size of a set is the number of set bits, and if you go outside of the C standard just a tiny big, you can use your compiler’s <code>__builtin_popcount()</code> if you have it (or something similar). On an x86-64 you can get the number of set bits with a single instruction, and that is what you get through this operation.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
 </span><span style="color:#008080"></span>
@@ -337,8 +319,8 @@ puzzle2(groups)</code></pre></div>
     };
     printf(<span style="color:#00f">&#34;%d %d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, count_un, count_inter);
     <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-}</code></pre></div>
-<p>After playing around long enough, it dawned on me that even the functional solution to the problem wasn’t as Pythonic as I would expect. Surely, we could do even better! Of course, we can; there is always a good solution after you have tried everything else. And for Python, you can use <code>set.union</code> and <code>set.intersection</code> with a sequence of sets, so we don’t need the <code>reduce()</code>. The rest is the same, we still map over the groups and the answers to make them into sets, but those two set functions handle the <code>reduce()</code> part:</p>
+}
+</code></pre></div><p>After playing around long enough, it dawned on me that even the functional solution to the problem wasn’t as Pythonic as I would expect. Surely, we could do even better! Of course, we can; there is always a good solution after you have tried everything else. And for Python, you can use <code>set.union</code> and <code>set.intersection</code> with a sequence of sets, so we don’t need the <code>reduce()</code>. The rest is the same, we still map over the groups and the answers to make them into sets, but those two set functions handle the <code>reduce()</code> part:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> puzzle(f):
     <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">lambda</span> groups: sum(
         len(f(*map(set, group.split())))
@@ -347,11 +329,9 @@ puzzle2(groups)</code></pre></div>
 puzzle1 = puzzle(set.union)
 puzzle2 = puzzle(set.intersection)
 <span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #1: {puzzle1(groups)}&#39;</span>)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #2: {puzzle2(groups)}&#39;</span>)</code></pre></div>
-<h2 id="day-07-handy-haversacks">Day 07 — Handy Haversacks</h2>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#39;Puzzle #2: {puzzle2(groups)}&#39;</span>)
+</code></pre></div><h2 id="day-07--handy-haversacks">Day 07 — Handy Haversacks</h2>
 <p>The <a href="https://adventofcode.com/2020/day/7">problem description</a> speaks of bags containing bags, but you should quickly see that we are looking at a graph problem, where the bags are nodes and containment is direct edges.</p>
-
 <p>Parsing the input is the hardest this day, but a little <code>split()</code>’ing and a little regular expression quickly get us there. I parsed the bags into a table, where each back holds a list of the bags it can contain, together with how many of each bag it can hold. We don’t need the latter for Puzzle #1, but I suspected, rightly, that it would be needed for Puzzle #2.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">import</span> re
 bags_table = {}
@@ -361,25 +341,23 @@ bags_table = {}
     <span style="color:#000080;font-weight:bold">if</span> subbags == <span style="color:#00f">&#34;no other bags.&#34;</span>: <span style="color:#000080;font-weight:bold">continue</span>
     <span style="color:#000080;font-weight:bold">for</span> sbag <span style="font-weight:bold">in</span> [bag.strip() <span style="color:#000080;font-weight:bold">for</span> bag <span style="font-weight:bold">in</span> subbags.split(<span style="color:#00f">&#39;,&#39;</span>)]:
         no, bagtype = re.match(<span style="color:#00f">r</span><span style="color:#00f">&#34;(\d+) (.+) bag.*&#34;</span>, sbag).groups()
-        bags_table[bag].append((bagtype,int(no)))</code></pre></div>
-<p>For Puzzle #1, we need to work out how many bags can hold a shiny golden bag. If we see the puzzle as a graph problem, the question is how many nodes have a path to the shiny golden node. In a general graph problem, we would have to worry about cycles, but here we have a <em>directed acyclic graph</em> (DAG), so we can explore recursively from each node, without keeping track of already visited nodes. The base case is the shiny golden bag, which is obviously reachable from itself, and the recursive case checks if any of the neighbours can reach the golden bag:</p>
+        bags_table[bag].append((bagtype,int(no)))
+</code></pre></div><p>For Puzzle #1, we need to work out how many bags can hold a shiny golden bag. If we see the puzzle as a graph problem, the question is how many nodes have a path to the shiny golden node. In a general graph problem, we would have to worry about cycles, but here we have a <em>directed acyclic graph</em> (DAG), so we can explore recursively from each node, without keeping track of already visited nodes. The base case is the shiny golden bag, which is obviously reachable from itself, and the recursive case checks if any of the neighbours can reach the golden bag:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic">## Puzzle 1</span>
 <span style="color:#000080;font-weight:bold">def</span> explore1(bag):
     <span style="color:#000080;font-weight:bold">if</span> bag == <span style="color:#00f">&#39;shiny gold&#39;</span>: <span style="color:#000080;font-weight:bold">return</span> True
     <span style="color:#000080;font-weight:bold">return</span> any(explore1(sbag) <span style="color:#000080;font-weight:bold">for</span> sbag,_ <span style="font-weight:bold">in</span> bags_table[bag])
 <span style="color:#080;font-style:italic"># subtract one from the sum for the gold bag itself</span>
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {sum(explore1(bag) for bag in bags_table) - 1}&#34;</span>)</code></pre></div>
-<p>We are not supposed to include the golden bag itself when we count, so subtract one from the result.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {sum(explore1(bag) for bag in bags_table) - 1}&#34;</span>)
+</code></pre></div><p>We are not supposed to include the golden bag itself when we count, so subtract one from the result.</p>
 <p>For Puzzle #2, we have a single-source problem—we explore paths out of the single shiny golden bag. We have to count how many other bags it can hold, and this is once again a simple graph exploration. For each bag, count itself as one, and then add how many bags it can hold recursively. For each immediate neighbour, we know the weight of the edge, it is the number of the given bag we can put into the current one, and we multiply the answer from the recursion with that. Again, we subtract the gold bag itself.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic">## Puzzle 2</span>
 <span style="color:#000080;font-weight:bold">def</span> explore2(bag):
     <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">1</span> + sum(n * explore2(sbag) <span style="color:#000080;font-weight:bold">for</span> sbag,n <span style="font-weight:bold">in</span> bags_table[bag])
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {explore2(&#39;shiny gold&#39;) - 1}&#34;</span>) <span style="color:#080;font-style:italic"># -1 for the gold bag itself</span></code></pre></div>
-<p>While we don’t need to worry about an infinite recursion because of a cycle in the graph, we do have the possibility of reaching the same node via multiple paths. When this happens, we recompute values, and we waste time on that. An easy solution to that is to remember previous function calls and return a cached value. We can do this explicitly using set, but in the <code>functools</code> module, you can find decorators that can handle it for you. One such is <code>cache</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">from</span> functools <span style="color:#000080;font-weight:bold">import</span> cache</code></pre></div>
-<p>There are others, where you have more control over how long the function will remember a call, but <code>cache</code> will work for us. There are similar functions in many other languages, but sometimes you have to implement it yourself. It is usually not much of a problem if you have a dictionary/table structure to work with.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {explore2(&#39;shiny gold&#39;) - 1}&#34;</span>) <span style="color:#080;font-style:italic"># -1 for the gold bag itself</span>
+</code></pre></div><p>While we don’t need to worry about an infinite recursion because of a cycle in the graph, we do have the possibility of reaching the same node via multiple paths. When this happens, we recompute values, and we waste time on that. An easy solution to that is to remember previous function calls and return a cached value. We can do this explicitly using set, but in the <code>functools</code> module, you can find decorators that can handle it for you. One such is <code>cache</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">from</span> functools <span style="color:#000080;font-weight:bold">import</span> cache
+</code></pre></div><p>There are others, where you have more control over how long the function will remember a call, but <code>cache</code> will work for us. There are similar functions in many other languages, but sometimes you have to implement it yourself. It is usually not much of a problem if you have a dictionary/table structure to work with.</p>
 <p>In Python, we can use <code>cache</code> as a decorator, so we get functions that only compute a value once, and remember it for later, by putting <code>@cachd</code> in front of the function definitions:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic">## Puzzle 1</span>
 @cache
@@ -392,23 +370,15 @@ bags_table = {}
 @cache
 <span style="color:#000080;font-weight:bold">def</span> explore2(bag):
     <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">1</span> + sum(n * explore2(sbag) <span style="color:#000080;font-weight:bold">for</span> sbag,n <span style="font-weight:bold">in</span> bags_table[bag])
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {explore2(&#39;shiny gold&#39;) - 1}&#34;</span>) <span style="color:#080;font-style:italic"># -1 for the gold bag itself</span></code></pre></div>
-<p>When I tested it, I went from 122 ms down to 45, so it gives us a little bit. Enough that it is worth it if the data was much larger, but hardly anything that matters for data of this size.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {explore2(&#39;shiny gold&#39;) - 1}&#34;</span>) <span style="color:#080;font-style:italic"># -1 for the gold bag itself</span>
+</code></pre></div><p>When I tested it, I went from 122 ms down to 45, so it gives us a little bit. Enough that it is worth it if the data was much larger, but hardly anything that matters for data of this size.</p>
 <p>It is good to have this trick in the bag when you need to recursively compute something, and it is called <em>memorisation</em>. I am not going to explain why, since you can probably guess. It is a crude version of <em>dynamic programming</em>, where you usually work out the order you need to compute something before you start, and then make sure that you have what you need when you need it. Dynamic programming solves one of the future problems much faster than careful thinking, but I will get back to that when we get there…</p>
-
-<h2 id="day-08-handheld-halting">Day 08 — Handheld Halting</h2>
-
+<h2 id="day-08--handheld-halting">Day 08 — Handheld Halting</h2>
 <p><a href="https://adventofcode.com/2020/day/8">Day 8</a> was the day I enjoyed the most, so far. We get to implement a simple virtual machine.</p>
-
 <p>There isn’t anything difficult to interpreting the problem description. There are three operations that the machine can do, and we get a program and need to work out what the accumulator is when it enters an infinite loop.</p>
-
 <p>It is a little funny that the problem we should solve is the <a href="https://en.wikipedia.org/wiki/Halting_problem">halting problem</a>, considering that this is undecidable. No problem, however clever, can solve the general case. Of course, we are nowhere near the general case. We have a virtual machine, but it is extremely limited in what it can do. We can jump from operation to operation, but those jumps are independent of the accumulator. This makes the machine a deterministic finite automaton, and finding a cycle in <em>those</em> is trivial.</p>
-
 <p>The simples solution to Puzzle #1 is to just run the program. For each instruction, you can immediately see how you should update the accumulator and how you should move the instruction pointer—the position in the program where the next instruction is.</p>
-
 <p>I have implemented finite state machines many times before, and simple virtual machines a handful of times, so I had a good idea about how I wanted to attack the problem. I probably wrote a little too much code for this particular case, where a few if-statements in a loop would do the trick, but I just fell back to habits.</p>
-
 <p>For the machine, I wrote a state class. It holds the instruction pointer and the accumulator. For each instruction, I gave it a method that performed the action. That is the part that would work just as well with if or switch statements. Then, again because of habits, I put the methods in a table to switch on in the program. After that, it is just getting an instruction from the program, use the opcode to get the method in the state object and apply it. We need to stop when we enter an infinite loop, which happens when we see the same instruction a second time, and I use a set for that. It is the last part that makes the “halting problem” easy for finite state machines. It doesn’t matter what the accumulator is when we return to an instruction. The program will repeat the instructions it ran since the last time it was here. That isn’t guaranteed if jumps are conditioned on the accumulator’s value, and in that case, we cannot solve the problem at all. Luckily, we were not asked to solve the general case…</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">with</span> open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/08/input.txt&#39;</span>) <span style="color:#000080;font-weight:bold">as</span> f:
     prog = [tuple(cast(x) <span style="color:#000080;font-weight:bold">for</span> cast,x <span style="font-weight:bold">in</span> zip((str,int), inst.split()))
@@ -436,11 +406,9 @@ bags_table = {}
         op, operand = prog[state.instp]
         ops[op](operand)
 
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {run_prog(prog)}&#34;</span>)</code></pre></div>
-<p>For Puzzle #2, we get to modify the program to fix the infinite loop. We are allowed to change one <code>nop</code> into a <code>jmp</code>, or one <code>jmp</code> into a <code>nop</code>. Successful completion of the program is defined as one that takes us to the instruction address one past the program length.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {run_prog(prog)}&#34;</span>)
+</code></pre></div><p>For Puzzle #2, we get to modify the program to fix the infinite loop. We are allowed to change one <code>nop</code> into a <code>jmp</code>, or one <code>jmp</code> into a <code>nop</code>. Successful completion of the program is defined as one that takes us to the instruction address one past the program length.</p>
 <p>The easiest solution is probably to just try modifying the program. If you can iterate through all the changes you are allowed, you can run each modified program, and if you get a successful run, you have your program. If that happens, you should return the accumulator value, but you already have that from the run.</p>
-
 <p>We can modify the program from above, so it detects both loops and successful termination:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> run_prog(prog):
     visited = set()
@@ -451,8 +419,8 @@ bags_table = {}
         visited.add(state.instp)
         op, operand = prog[state.instp]
         ops[op](operand)
-    <span style="color:#000080;font-weight:bold">return</span> (<span style="color:#00f">&#39;Success&#39;</span>, state.acc_)</code></pre></div>
-<p>Then we can modify the program in a generator, and keep modifying until we get a success:</p>
+    <span style="color:#000080;font-weight:bold">return</span> (<span style="color:#00f">&#39;Success&#39;</span>, state.acc_)
+</code></pre></div><p>Then we can modify the program in a generator, and keep modifying until we get a success:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> alternative_progs(prog):
     <span style="color:#000080;font-weight:bold">for</span> i, (op, operand) <span style="font-weight:bold">in</span> enumerate(prog):
         <span style="color:#000080;font-weight:bold">if</span> op == <span style="color:#00f">&#39;nop&#39;</span>:
@@ -468,21 +436,14 @@ bags_table = {}
     res, acc = run_prog(alt_prog)
     <span style="color:#000080;font-weight:bold">if</span> res == <span style="color:#00f">&#39;Success&#39;</span>:
         <span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {acc}&#34;</span>)
-        <span style="color:#000080;font-weight:bold">break</span></code></pre></div>
-<p>It is reasonably fast, so there is no need to come up with a better solution. However, I have never really liked brute force when I know that there must be something smarter. So I also tried to look at the program as a graph problem. (You don’t gain anything from it, speed-wise, it turns out, but we are doing this for fun, so who cares?)</p>
-
+        <span style="color:#000080;font-weight:bold">break</span>
+</code></pre></div><p>It is reasonably fast, so there is no need to come up with a better solution. However, I have never really liked brute force when I know that there must be something smarter. So I also tried to look at the program as a graph problem. (You don’t gain anything from it, speed-wise, it turns out, but we are doing this for fun, so who cares?)</p>
 <p>Think about your program as a graph. Each instruction is a node, and they all have edges to the next instruction. That is the next in the program for <code>nop</code> and <code>acc</code>, and it is the address you jump to for <code>jmp</code>. If we allow modifications, then jump and nop nodes now have nodes they can go to, where one of them is the modified program. You need to find a path from the first instruction to one past the last, that goes through exactly one modification edge.</p>
-
 <p>This problem is not that different from the recursive graph problems for the previous day, but this time we can return to a node we have already seen. That is, after all, how we determine that we have an infinite loop. If you want to traverse a graph in such a case, you should keep track of visited nodes. Often, you will have a graph representation where you can put a tag in a node, but otherwise, a set or a dictionary will get the job done. We can use a set as we did above.</p>
-
 <p>We will write a function, <code>def locate_index(prog, seen, i, j)</code>, that explores node <code>i</code> in program <code>prog</code>, where <code>seen</code> contains the nodes we have already explored, and where <code>j</code> is the instruction we have modified, if any. The traversal will be recursive as before, but with two base cases. If we reach the end of the program, we will return <code>j</code>—we are looking for the instruction to modify, and we can return it when we have a successful modification. If we return to a previously visited instruction, we also return, but we return to the caller that will explore other options. For the recursive cases, we explore the next node. For an <code>acc</code> opcode, that is always <code>i+1</code>, but for the other two opcodes, there are two next nodes. We are only allowed one change to the program, so one of the options is only open of <code>j</code> is not already set.</p>
-
 <p>The recursion is relatively straightforward, but I implemented a hack to handle successful program termination. If we reach the end of the program, we want to return <code>j</code>, but we want to return it all the way to the initial call of the function. If not, we would have to test, everywhere in the recursive function, if we already had the result that we are searching for, and then return that instead of traversing further.</p>
-
 <p>In some languages, you have “call/cc”, or <em>call with current continuation</em>. Even in C, where it is called <code>longjmp()</code> and is an insanely powerful <code>goto</code>. It is a way of returning from a function, all the way up the stack to some previously set program state. You don’t return through all the function calls along the way, but go directly where you need to go.</p>
-
 <p>We also have it in Python, but it is hidden very well. We have such “non-local” returns when we use exceptions. They are not usually exploited to simplify (and speed up) recursive functions, but it works just fine. We will use an exception to return from the recursive function. If we get to the end of the program, we raise the exception, and where we call the function the first time, we are ready to catch it. This way, we circumvent the functions waiting on the stack.</p>
-
 <p>My implementation looks like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># hack for non-local return</span>
 <span style="color:#000080;font-weight:bold">class</span> CallCC(Exception):
@@ -522,9 +483,8 @@ bags_table = {}
     <span style="color:#000080;font-weight:bold">else</span>:           prog[idx] = <span style="color:#00f">&#39;nop&#39;</span>, operand
 
 change_index(prog)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {run_prog(prog)}&#34;</span>)</code></pre></div>
-<p>It doesn’t speed up anything, to be honest. It doesn’t find the instruction to modify much faster than if I run all the modified programs. For larger programs, I suspect it would. But we are not in a world where we get larger programs for this machine (I suspect), so if I wasn’t actively trying to avoid real work, this would have been a waste of time.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {run_prog(prog)}&#34;</span>)
+</code></pre></div><p>It doesn’t speed up anything, to be honest. It doesn’t find the instruction to modify much faster than if I run all the modified programs. For larger programs, I suspect it would. But we are not in a world where we get larger programs for this machine (I suspect), so if I wasn’t actively trying to avoid real work, this would have been a waste of time.</p>
 <p>I wanted to play some more with the virtual machine, so I also implemented it in C. Compared with the Python solution to Puzzle #1, there isn’t anything new. I use a byte-vector instead of a set since C doesn’t have builtin sets and I didn’t feel like writing one. It is a global variable, and those are initialised as all zeros, so it was an easy choice.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
 </span><span style="color:#008080">#include</span> <span style="color:#008080">&lt;string.h&gt;</span><span style="color:#008080">
@@ -532,8 +492,8 @@ change_index(prog)
 <span style="color:#000080;font-weight:bold">struct</span> command { <span style="color:#000080;font-weight:bold">int</span> inc_instp; <span style="color:#000080;font-weight:bold">int</span> inc_acc; };
 <span style="color:#000080;font-weight:bold">struct</span> state   { <span style="color:#000080;font-weight:bold">int</span> instp;     <span style="color:#000080;font-weight:bold">int</span> acc;     };
 <span style="color:#008080">#define CMD(ii, ia) \
-</span><span style="color:#008080"></span>  (<span style="color:#000080;font-weight:bold">struct</span> command){ .inc_instp = (ii), .inc_acc = (ia) }
-
+</span><span style="color:#008080">  (struct command){ .inc_instp = (ii), .inc_acc = (ia) }
+</span><span style="color:#008080"></span>
 <span style="color:#008080">#define N 1000 </span><span style="color:#080;font-style:italic">// the program is shorter than this...
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">struct</span> command PROG[N];
 <span style="color:#000080;font-weight:bold">char</span> visited[N];
@@ -554,8 +514,8 @@ change_index(prog)
 </span><span style="color:#008080">#define FAIL(state) (struct res){ .status = FAILURE, .res = state.acc }
 </span><span style="color:#008080"></span>
 <span style="color:#008080">#define UPD(s, cmd) </span><span style="color:#080;font-style:italic">/* important to upd acc before instp */</span><span style="color:#008080"> \
-</span><span style="color:#008080"></span>  <span style="color:#000080;font-weight:bold">do</span> { s.acc += cmd.inc_acc; s.instp += cmd.inc_instp; } <span style="color:#000080;font-weight:bold">while</span>(<span style="color:#00f">0</span>)
-
+</span><span style="color:#008080">  do { s.acc += cmd.inc_acc; s.instp += cmd.inc_instp; } while(0)
+</span><span style="color:#008080"></span>
 <span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">struct</span> res run(<span style="color:#000080;font-weight:bold">int</span> n)
 {
     <span style="color:#000080;font-weight:bold">struct</span> state state = { .instp = <span style="color:#00f">0</span>, .acc = <span style="color:#00f">0</span> };
@@ -575,17 +535,12 @@ change_index(prog)
         <span style="color:#000080;font-weight:bold">case</span> FAILURE: printf(<span style="color:#00f">&#34;FAILURE: %d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, res.res); <span style="color:#000080;font-weight:bold">break</span>;
     }
     <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-}</code></pre></div>
-<p>I didn’t use a class and dispatch on opcodes, because I can’t do that in C. There are no classes. I could have made a table of function pointers, but by now, I had realised that all three operations could be considered pairs of numbers. What do they add to the accumulator and what do they add to the instruction pointer. This doesn’t quite work for Puzzle #2, because you cannot differentiate between, for example, <code>acc 0</code> and <code>nop 42</code>, since both add zero to the accumulator and add one to the instruction pointer, and only one of them can be modified. But I don’t care about Puzzle #2 that much; it was the first puzzle and the virtual machine I wanted to play with. So I just represent the program as pairs of numbers, and I update the state by adding one number to the instruction pointer and one to the accumulator.</p>
-
+}
+</code></pre></div><p>I didn’t use a class and dispatch on opcodes, because I can’t do that in C. There are no classes. I could have made a table of function pointers, but by now, I had realised that all three operations could be considered pairs of numbers. What do they add to the accumulator and what do they add to the instruction pointer. This doesn’t quite work for Puzzle #2, because you cannot differentiate between, for example, <code>acc 0</code> and <code>nop 42</code>, since both add zero to the accumulator and add one to the instruction pointer, and only one of them can be modified. But I don’t care about Puzzle #2 that much; it was the first puzzle and the virtual machine I wanted to play with. So I just represent the program as pairs of numbers, and I update the state by adding one number to the instruction pointer and one to the accumulator.</p>
 <p>Because I have been playing a little with <em>just in time</em> (JIT) compilation for my upcoming book, I thought it could also be fun trying something like that. The idea would be to translate the program we have in our input into machine code, and run the program directly on the hardware. I quickly dismissed it, because I would still have to keep track of the previously seen instructions, and most of the code would be updating a bit-vector, and nothing was interesting in that.</p>
-
 <p>However! We don’t actually have to keep track of which instructions we have seen, as long as we stop executing as soon as we see an instruction again. So we can write <em>self-modifying code</em>. This is a no-no and not something you should ever do. On many OSes, you can’t. They will not allow you to have memory that you can both write to and execute at the same time. Well, macOS allows me to, and I will exploit it.</p>
-
 <p>The idea is this: every instruction will start with code that turns itself into a return. Then, if we ever come back to an instruction, the function will automatically return. Easy. Well, the idea is. There is some work to be done.</p>
-
 <p>If you haven’t generated code before, there are a few things you should know. First, your memory has access permission, and memory you get from <code>malloc()</code> is read/write, but to execute it, you need to add an execution bit. How you do that differs between operating systems, but on UNIX machines, you can use <code>mprotect()</code>. That only works if your memory is page-aligned, however, and to allocate page-aligned memory, you should use <code>mmap()</code>. I am lazy here, so I allocate memory that already has the execution bit set, but you are not necessarily allowed to. Sometimes, you must first write the code you generate, with write permissions, and then switch to read/execute afterwards. This won’t work with self-modifying code, though.</p>
-
 <p>I used this code to allocate a buffer for machine code. The program is around a thousand instructions long, but I will use 16 bytes per instruction (for reasons I explain below), so I allocated four pages. The page size on my machine is 4096. I put a counter at the bottom of the allocated memory so I can keep track of how much code I have emitted.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
 </span><span style="color:#008080">#include</span> <span style="color:#008080">&lt;string.h&gt;</span><span style="color:#008080">
@@ -607,8 +562,8 @@ change_index(prog)
     <span style="color:#000080;font-weight:bold">if</span> (!buf) <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
     buf-&gt;next_inst = <span style="color:#00f">0</span>;
     <span style="color:#000080;font-weight:bold">return</span> buf;
-}</code></pre></div>
-<p>Then I wrote some generic doe for emitting bytes and integers, and for emitting “padding” code. It is the instruction NOP, opcode 0x90, but it is a NOP in x86-64 assembler and not in our input code. That also relates to those 16 bytes that I get back to.</p>
+}
+</code></pre></div><p>Then I wrote some generic doe for emitting bytes and integers, and for emitting “padding” code. It is the instruction NOP, opcode 0x90, but it is a NOP in x86-64 assembler and not in our input code. That also relates to those 16 bytes that I get back to.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// General code emission functions
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span>
 <span style="color:#000080;font-weight:bold">void</span> emit_byte(<span style="color:#000080;font-weight:bold">struct</span> jit_buf *buf, <span style="color:#000080;font-weight:bold">char</span> byte)
@@ -625,40 +580,36 @@ change_index(prog)
 </span><span style="color:#080;font-style:italic">// jmp instruction. Instructions start at multiples of 16
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span>
 <span style="color:#000080;font-weight:bold">void</span> pad(<span style="color:#000080;font-weight:bold">struct</span> jit_buf *buf, <span style="color:#000080;font-weight:bold">int</span> bytes)
-{ <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> i = <span style="color:#00f">0</span>; i &lt; bytes; i++) emit_byte(buf, <span style="color:#00f">0x90</span>); <span style="color:#080;font-style:italic">/* nop */</span> }</code></pre></div>
-<p>With the System V ABI, the return value of a function is in register <code>rax</code>, so I will keep the accumulator there. That way, when the generated code returns, I have my accumulator value. The first instruction I emit will set this register to zero. It is the instruction <code>xor rax, rax</code> and that is the machine code <code>0x48, 0x31, 0xc0</code>.</p>
+{ <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> i = <span style="color:#00f">0</span>; i &lt; bytes; i++) emit_byte(buf, <span style="color:#00f">0x90</span>); <span style="color:#080;font-style:italic">/* nop */</span> }
+</code></pre></div><p>With the System V ABI, the return value of a function is in register <code>rax</code>, so I will keep the accumulator there. That way, when the generated code returns, I have my accumulator value. The first instruction I emit will set this register to zero. It is the instruction <code>xor rax, rax</code> and that is the machine code <code>0x48, 0x31, 0xc0</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// For setting up the JIT function -- we need to start with acc = 0
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">void</span> zero_acc(<span style="color:#000080;font-weight:bold">struct</span> jit_buf *buf)
 {   <span style="color:#080;font-style:italic">// xor rax, rax
 </span><span style="color:#080;font-style:italic"></span>    emit_byte(buf, <span style="color:#00f">0x48</span>); emit_byte(buf, <span style="color:#00f">0x31</span>); emit_byte(buf, <span style="color:#00f">0xc0</span>);
-}</code></pre></div>
-<p>The return instruction, <code>ret</code> is opcode <code>0xc3</code>, and we have a function for emitting that as well:</p>
+}
+</code></pre></div><p>The return instruction, <code>ret</code> is opcode <code>0xc3</code>, and we have a function for emitting that as well:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// If we reach the end of the program, use this to return
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">void</span> ret(<span style="color:#000080;font-weight:bold">struct</span> jit_buf *buf)
 {
     emit_byte(buf, <span style="color:#00f">0xc3</span>); 
-}</code></pre></div>
-<p>Now for translating the input instructions, and why I use 16 bytes for each. The addresses we jump to with the input <code>jmp</code> instructions are relative to the position in the input program, and each instruction has length one there. But in the code we generate, instructions do not have the same size. So index <code>i</code> in our input must be translated into some address <code>a</code> in the generated code. With a bit of bookkeeping and analysing the program, we could calculate the correct positions, but I am lazy, so I decided to give all the instructions the same size in the emitted code. That way, I can compute the target address when I need it, without analysing the program.</p>
-
+}
+</code></pre></div><p>Now for translating the input instructions, and why I use 16 bytes for each. The addresses we jump to with the input <code>jmp</code> instructions are relative to the position in the input program, and each instruction has length one there. But in the code we generate, instructions do not have the same size. So index <code>i</code> in our input must be translated into some address <code>a</code> in the generated code. With a bit of bookkeeping and analysing the program, we could calculate the correct positions, but I am lazy, so I decided to give all the instructions the same size in the emitted code. That way, I can compute the target address when I need it, without analysing the program.</p>
 <p>How many bytes do I need, then? Each instruction will start with the code the modifies the program. It looks like</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm">	mov byte[rip - <span style="color:#00f">7</span>], byte <span style="color:#00f">0xc3</span></code></pre></div>
-<p>It is not valid <code>nasm</code> assembler because of the <code>rip</code> (register instruction pointer) there, but it is close. It tells the machine to put 0xc3 into the address that is 7 before the instruction pointer. The opcodes for the instruction are <code>0xc6, 0x05</code>, then -7 as twos-complement, little-endian, and finally <code>cxc3</code>. It is seven bytes in total (first two instruction bytes, then a four byte integer, and then the <code>ret</code> instruction, which is one byte). The -7 is because we write relative to the address after we have read the instruction, so it refers to the position of the first opcode.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm">	mov byte[rip - <span style="color:#00f">7</span>], byte <span style="color:#00f">0xc3</span>
+</code></pre></div><p>It is not valid <code>nasm</code> assembler because of the <code>rip</code> (register instruction pointer) there, but it is close. It tells the machine to put 0xc3 into the address that is 7 before the instruction pointer. The opcodes for the instruction are <code>0xc6, 0x05</code>, then -7 as twos-complement, little-endian, and finally <code>cxc3</code>. It is seven bytes in total (first two instruction bytes, then a four byte integer, and then the <code>ret</code> instruction, which is one byte). The -7 is because we write relative to the address after we have read the instruction, so it refers to the position of the first opcode.</p>
 <p>After this guard code, the <code>acc</code> instruction must add to the <code>rax</code> register</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm">acc:
 	mov byte[rip - <span style="color:#00f">7</span>], byte <span style="color:#00f">0xc3</span> <span style="color:#080;font-style:italic">; 7 bytes
-</span><span style="color:#080;font-style:italic"></span>	add rax, <span style="color:#00f">dword</span> &lt;n&gt;           <span style="color:#a61717;background-color:#e3d2d2">;</span> <span style="color:#00f">6</span> bytes</code></pre></div>
-<p>where <code>&lt;n&gt;</code> is a 4-byte integer.</p>
-
+</span><span style="color:#080;font-style:italic"></span>	add rax, <span style="color:#00f">dword</span> &lt;n&gt;           <span style="color:#080;font-style:italic">; 6 bytes
+</span></code></pre></div><p>where <code>&lt;n&gt;</code> is a 4-byte integer.</p>
 <p>For <code>jmp</code> we must do</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm">jmp:
 	mov byte[rip - <span style="color:#00f">7</span>], byte <span style="color:#00f">0xc3</span> <span style="color:#080;font-style:italic">; 7 bytes
-</span><span style="color:#080;font-style:italic"></span>	<span style="color:#00f">jmp</span> &lt;n&gt;                      <span style="color:#a61717;background-color:#e3d2d2">;</span> <span style="color:#00f">5</span> bytes</code></pre></div>
-<p>Our <code>nop</code> shouldn’t do anything, except the guard</p>
+</span><span style="color:#080;font-style:italic"></span>	<span style="color:#00f">jmp</span> &lt;n&gt;                      <span style="color:#080;font-style:italic">; 5 bytes
+</span></code></pre></div><p>Our <code>nop</code> shouldn’t do anything, except the guard</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm">nop:
-	mov byte[rip - <span style="color:#00f">7</span>], byte <span style="color:#00f">0xc3</span> <span style="color:#a61717;background-color:#e3d2d2">;</span> <span style="color:#00f">7</span> bytes</code></pre></div>
-<p>So the base code is 7 byte for <code>nop</code>, 12 for <code>jmp</code>, and 13 for <code>acc</code>. Computers really like powers of 2, so I rounded the largest up to 16. It isn’t strictly necessary here, I think, but I was hacking it together rather quickly. It means that I need to put some padding after all the instructions, but so be it.</p>
-
+	mov byte[rip - <span style="color:#00f">7</span>], byte <span style="color:#00f">0xc3</span> <span style="color:#080;font-style:italic">; 7 bytes
+</span></code></pre></div><p>So the base code is 7 byte for <code>nop</code>, 12 for <code>jmp</code>, and 13 for <code>acc</code>. Computers really like powers of 2, so I rounded the largest up to 16. It isn’t strictly necessary here, I think, but I was hacking it together rather quickly. It means that I need to put some padding after all the instructions, but so be it.</p>
 <p>The functions below emit the three types of instructions we have in our virtual machine:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Here we write some self-modifying code that
 </span><span style="color:#080;font-style:italic">// will return from the function if we ever return
@@ -695,9 +646,8 @@ change_index(prog)
     <span style="color:#000080;font-weight:bold">if</span> (n &gt; <span style="color:#00f">0</span>) emit_int(buf, <span style="color:#00f">16</span> * (n - <span style="color:#00f">1</span>) + <span style="color:#00f">4</span>);
     <span style="color:#000080;font-weight:bold">else</span>       emit_int(buf, <span style="color:#00f">16</span> * n - <span style="color:#00f">12</span>);
     pad(buf, <span style="color:#00f">4</span>);
-}</code></pre></div>
-<p>The <code>jmp</code> instruction is a little complicated, even with the rule about instructions having length 16, since the actual <code>jmp</code> opcode doesn’t sit at the beginning of a virtual machine instruction. It sits after the guard code and is relative to the opcode there. But it is just a question of adjusting for the position, and it means that you have to compute the address differently when you jump forwards and backwards. Because the instruction doesn’t sit in the middle of the virtual machine instruction either, so it is not the same distance that you need to jump.</p>
-
+}
+</code></pre></div><p>The <code>jmp</code> instruction is a little complicated, even with the rule about instructions having length 16, since the actual <code>jmp</code> opcode doesn’t sit at the beginning of a virtual machine instruction. It sits after the guard code and is relative to the opcode there. But it is just a question of adjusting for the position, and it means that you have to compute the address differently when you jump forwards and backwards. Because the instruction doesn’t sit in the middle of the virtual machine instruction either, so it is not the same distance that you need to jump.</p>
 <p>From here on, the code looks like the first C version. Read in the input string, emit the corresponding code, and then execute it:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">static</span> int (*parse_asm(<span style="color:#000080;font-weight:bold">void</span>))(<span style="color:#000080;font-weight:bold">void</span>)
 {
@@ -719,8 +669,8 @@ change_index(prog)
     <span style="color:#000080;font-weight:bold">int</span> (*prog)(<span style="color:#000080;font-weight:bold">void</span>) = parse_asm();
     printf(<span style="color:#00f">&#34;%d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, prog());
     <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-}</code></pre></div>
-<p>There was nothing algorithmic to it, but it was a lot of fun nevertheless.</p>
+}
+</code></pre></div><p>There was nothing algorithmic to it, but it was a lot of fun nevertheless.</p>
 
 
 </article>
@@ -801,7 +751,7 @@ change_index(prog)
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2020 - Thomas Mailund |
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

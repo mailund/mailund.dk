@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Errata on Mailund on the Internet</title>
@@ -6,18 +6,15 @@
     <description>Recent content in Errata on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/errata/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mailund.dk/errata/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Errata: Functional Programming in R</title>
       <link>https://mailund.dk/errata/fpinr/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/errata/fpinr/</guid>
-      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;</description>
+      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;
+Chapter 3 Nested Functions and Scopes, page 53ff.</description>
     </item>
     
     <item>
