@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>writing on Mailund on the Internet</title>
+    <title>Writing on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/writing/</link>
-    <description>Recent content in writing on Mailund on the Internet</description>
+    <description>Recent content in Writing on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 15 Jan 2021 08:12:38 +0100</lastBuildDate><atom:link href="https://mailund.dk/tags/writing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mailund.dk/tags/writing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Books</title>
       <link>https://mailund.dk/books/</link>
@@ -18,13 +22,23 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
     </item>
     
     <item>
+      <title>Krofatter Egon og Hjælpepakken — 4</title>
+      <link>https://mailund.dk/posts/krofatter-4/</link>
+      <pubDate>Mon, 25 Jan 2021 09:35:53 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/krofatter-4/</guid>
+      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
+Spionage i sneen Det var blevet sent natten før.</description>
+    </item>
+    
+    <item>
       <title>Krofatter Egon og Hjælpepakken — 3</title>
       <link>https://mailund.dk/posts/krofatter-3/</link>
       <pubDate>Fri, 15 Jan 2021 08:12:38 +0100</pubDate>
       
       <guid>https://mailund.dk/posts/krofatter-3/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Pitstop på Pøt Mølle Næste morgen, lidt blårøjet, for der var røget mange øl ned over natten, kørte Egon nordpå mod Hammel.</description>
+Pitstop på Pøt Mølle Næste morgen, lidt blårøjet, for der var røget mange øl ned over natten, kørte Egon nordpå mod Hammel.</description>
     </item>
     
     <item>
@@ -43,7 +57,7 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
       
       <guid>https://mailund.dk/posts/krofatter-2/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- En ubehagelig opgave Rådsmedlemmerne steg ud af deres respektive biler og begyndte at gå imod Østbjerg Kros hoveddør i afmålte skridt, der garanterede at de ville ankomme nøjagtigt fem minutter i syv, altså fem minutter før de skulle møde, og derfor præcist til tiden.</description>
+En ubehagelig opgave Rådsmedlemmerne steg ud af deres respektive biler og begyndte at gå imod Østbjerg Kros hoveddør i afmålte skridt, der garanterede at de ville ankomme nøjagtigt fem minutter i syv, altså fem minutter før de skulle møde, og derfor præcist til tiden.</description>
     </item>
     
     <item>
@@ -99,8 +113,7 @@ A couple of readers made me aware of a typo in Functional Programming in R.</des
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/errata/fpinr/</guid>
-      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;
-Chapter 3 Nested Functions and Scopes, page 53ff.</description>
+      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;</description>
     </item>
     
     <item>

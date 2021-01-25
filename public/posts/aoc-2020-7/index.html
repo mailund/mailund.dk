@@ -63,17 +63,14 @@
    });
  </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 </head>
@@ -193,19 +190,35 @@ if (!doNotTrack) {
     
 
     <p>I will make this one quick, because I don’t have much time. <a href="https://adventofcode.com/2020/day/19">Today, we are given some rules</a> for what strings should look like, and we are to validate a set of strings and count how many are valid. This is a bit of a mix between the parser from yesterday and the rule-validation from other days, but leaning, by far, towards the parser. The rules are a grammar, and checking the strings means we are matching them against the grammar.</p>
+
 <p>Yes, there are more or less standard ways to do this, but you try to be quick, and then you mess it up. Then you have to do it all again…</p>
+
 <p>Anyway, in Puzzle #1 there are no cycles, so all derivations are finite, and if you wanted to, you could generate all strings and test them. You could also use the rules to generate regular expressions—it is essentially what they are, with they form they have—and then use a regular expression library to solve the puzzle.</p>
+
 <p>With Puzzle #2, you do get cycles. If you have cycles, you might have a problem, when it comes to grammar rules. A straightforward recursive function that attempts to match a string against the rules can get into an infinite loop.</p>
+
 <p>If you have to parse an expression, and one of the rules has itself as the first sub-rule, blindly trying each possible match will not work. If, for example, you have a rule that says that an expression can be:</p>
+
 <pre><code>expression := number | expression BINOP expression | '(' expression ')'
-</code></pre><p>then recursing on it can take you from expression to expression to expression … and you never end.</p>
+</code></pre>
+
+<p>then recursing on it can take you from expression to expression to expression … and you never end.</p>
+
 <p>You can usually rewrite the grammar go avoid it, and that would be my preferred choice. Other options are hard.</p>
+
 <p>This wasn’t the issue in the input we got, at least for my input (we all get different input). With the grammar we have, we can always make progress along the string for each rule we apply, so although an <code>expression</code> might contain an <code>expression</code>, it doesn’t <em>start</em> with an <code>expression</code>. There is no problem with a rule like</p>
+
 <pre><code>expression := number | '(' expression ')'
-</code></pre><p>because you have always read another character before you get back to the <code>expression</code> rule.</p>
+</code></pre>
+
+<p>because you have always read another character before you get back to the <code>expression</code> rule.</p>
+
 <p>When this is the case, you can parse and backtrack when you cannot apply the next rule you are trying. The backtracking is necessary if you blindly apply rules, because somewhere, deep in a match of a rule, you might not be able to continue further, but then there might be another rule that will get you to the goal.</p>
+
 <p>My first solution did this search with backtrack, but I made a mistake in it—otherwise I would have solved both puzzles at the same time. I would apply the rules in order, and pick the first that matches. This is a greedy approach, and it worked for my first data. However, with the changed rules, it failed, because you might be able to match a rule, but then later in the string, other rules can’t match. So I had to change the implementation to keep searching until I had a match to the end. In the code below, I do this search using generators; my solution to Puzzle #1 returned matches instead, or threw exceptions if they couldn’t match.</p>
+
 <p>If only I had done it correct the first time… that seems to be the mantra for the parsing exercises for me.</p>
+
 <p>Anyway, my solution is brute-force matching rules. When there are more than one possible rule to apply, I try all of them. To get this to work, all the rule checking is done with generators.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> CharRule(object):
     <span style="color:#000080;font-weight:bold">def</span> __init__(self, char):
@@ -260,8 +273,9 @@ tests = tests.split(<span style="color:#00f">&#39;</span><span style="color:#00f
 
 RULES[<span style="color:#00f">&#39;8&#39;</span>]  = OrRule([SeqRule([<span style="color:#00f">&#39;42&#39;</span>]),SeqRule([<span style="color:#00f">&#39;42&#39;</span>,<span style="color:#00f">&#39;8&#39;</span>])])
 RULES[<span style="color:#00f">&#39;11&#39;</span>] = OrRule([SeqRule([<span style="color:#00f">&#39;42&#39;</span>, <span style="color:#00f">&#39;31&#39;</span>]),SeqRule([<span style="color:#00f">&#39;42&#39;</span>,<span style="color:#00f">&#39;11&#39;</span>, <span style="color:#00f">&#39;31&#39;</span>])])
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {sum( matches(test, RULES) for test in tests )}&#34;</span>)
-</code></pre></div><p>There is probably some regularity to the rules, because the puzzle hinted at it, but this solution should work as long as you do not have any cycles of rules that do not make progress by reading at least one character.</p>
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {sum( matches(test, RULES) for test in tests )}&#34;</span>)</code></pre></div>
+<p>There is probably some regularity to the rules, because the puzzle hinted at it, but this solution should work as long as you do not have any cycles of rules that do not make progress by reading at least one character.</p>
+
 <p>You could clean it up a bit, but I have to stop now, or I will get in trouble…</p>
 
 
@@ -343,7 +357,7 @@ RULES[<span style="color:#00f">&#39;11&#39;</span>] = OrRule([SeqRule([<span sty
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund |
+        <h6>Copyright &copy; 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

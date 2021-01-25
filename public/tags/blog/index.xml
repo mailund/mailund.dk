@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>blog on Mailund on the Internet</title>
+    <title>Blog on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/blog/</link>
-    <description>Recent content in blog on Mailund on the Internet</description>
+    <description>Recent content in Blog on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 10 Sep 2018 06:32:53 +0200</lastBuildDate><atom:link href="https://mailund.dk/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Sep 2018 06:32:53 +0200</lastBuildDate>
+    
+	<atom:link href="https://mailund.dk/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>New Books Page</title>
       <link>https://mailund.dk/posts/new-books-page/</link>

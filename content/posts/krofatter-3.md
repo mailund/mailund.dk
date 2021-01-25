@@ -147,7 +147,7 @@ Flemming kendte imidlertid Agnes aldeles godt. Hun var en fast gæst på kroen, 
 
 Han kom tilbage til bordet med aftenens anden flaske. Det ville ikke blive den sidste. Slet, slet ikke den sidste. Mens regnen udenfor blev til slud og så til sne drøftede de hvad de skulle gøre for at komme tilbunds i sagen.
 
-_Fortsættelse følger_
+[_Fortsættelse følger_](https://mailund.dk/posts/krofatter-4/)
 
 [^1]:	Ikke med vilje i hvert fald—selv ikke vært-gæst-forholdet beskytter mod uduelighed, dårskab og uheld.
 

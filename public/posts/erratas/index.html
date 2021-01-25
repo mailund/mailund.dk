@@ -63,17 +63,14 @@
    });
  </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 </head>
@@ -186,8 +183,11 @@ if (!doNotTrack) {
     
 
     <p>To my utter shock, it turns out that I am not perfect. There are mistakes in my books!</p>
+
 <p>A couple of readers made me aware of a typo in <a href="https://mailund.dk/errata/fpinr/"><strong>Functional Programming in R</strong></a>. It is just a typo, but I can easily see why it can confuse readers.</p>
+
 <p>Much much worse is an error in <a href="https://mailund.dk/errata/fdsinr/"><strong>Functional Data-Structures in R</strong></a>. An entire section is utter rubbish. Please don’t read the section on dequeus. The errata has a correct implementation and <a href="https://mailund.github.io/r-programmer-blog/2018/10/01/lists-and-functional-queues/">this post</a> has a much better explanation than the book.</p>
+
 <p>If you find errors in my books, then <em>please</em> let me know so I can update the errata lists and fix them if there are more editions.</p>
 
 
@@ -269,7 +269,7 @@ if (!doNotTrack) {
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund |
+        <h6>Copyright &copy; 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
