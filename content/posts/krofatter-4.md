@@ -5,14 +5,12 @@ tags: [writing, "Krofatter Egon"]
 date: 2021-01-25T09:35:53+01:00
 ---
 
-
-
 Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, [start here](https://mailund.dk/posts/krofatter-1/).
 
 ---- 
 
 
-## Spionage i sneen
+## Snigen i sneen
 
 Det var blevet sent natten før. Og så var det blevet tidligt igen. Da de to krofætre havde sagt godnat, var det teknisk set en god morgen, for nattens sne var ophørt, og solen var netop kravlet over horisonten og oplyste det snedækkede landskab.
 
@@ -79,9 +77,9 @@ Selv hvis hun havde holdt mere øje, og selv hvis Egon ikke havde gemt sig bag e
 
 Men det finder vi aldrig ud af, for hun kikkede sig ikke grundigt nok omkring, og Egon var som sagt godt gemt den ene gang hun gjorde det.
 
-Da Agnes havde forvisset sig om at ingen så hende, skred hun hurtigt ned langs siden af bygningen. Egon sprang op fra sit skjulested og løb en til muren hun var gået ned langs, men da han kikkede om hjørnet var hun væk.
+Da Agnes havde forvisset sig om at ingen så hende, skred hun hurtigt ned langs siden af bygningen. Egon sprang op fra sit skjulested og løb hen til muren hun var gået ned langs, men da han kikkede om hjørnet var hun væk.
 
-_Fortsættelse følger_
+[_Fortsættelse følger_](https://mailund.dk/posts/krofatter-5)
 
 [^1]:	Efterretningstjenester verden over har efterhånden indset dette, og er ved at omdanne sig selv til sociale netværk, modelleret på krofætre, og væk fra den ældre nisse-model.
 
