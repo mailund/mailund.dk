@@ -157,7 +157,7 @@ Egon lod øjnene løbe over tegningerne. Flemmings opfindelse var ikke bare farl
 Han slog Egon entusiastisk på skulderen. Egon delte ikke entusiasmen.
 
 
-_Fortsættelse følger…_
+[_Fortsættelse følger_](https://mailund.dk/posts/krofatter-6)
 
 
 
