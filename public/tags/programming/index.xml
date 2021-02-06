@@ -21,6 +21,16 @@
     </item>
     
     <item>
+      <title>Starting Up Exercises: Burrows-Wheeler Transform</title>
+      <link>https://mailund.dk/posts/starting-up-exercises-bwt/</link>
+      <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/starting-up-exercises-bwt/</guid>
+      <description>I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.
+There is nothing new there, I have a class every year where we do that, but now it is individual projects.</description>
+    </item>
+    
+    <item>
       <title>Book update: Pointers in C and and Computational Thinking</title>
       <link>https://mailund.dk/posts/book-update-cptr-ct/</link>
       <pubDate>Tue, 12 Jan 2021 08:27:09 +0100</pubDate>

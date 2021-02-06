@@ -23,6 +23,16 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/posts/krofatter-11/</loc>
+    <lastmod>2021-02-06T15:03:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/posts/starting-up-exercises-bwt/</loc>
+    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/krofatter-10/</loc>
     <lastmod>2021-02-04T10:56:40+01:00</lastmod>
   </url>
@@ -331,7 +341,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/c/</loc>
-    <lastmod>2021-01-12T08:27:09+01:00</lastmod>
+    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -372,7 +382,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/go/</loc>
-    <lastmod>2021-01-06T10:56:53+01:00</lastmod>
+    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -384,7 +394,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/krofatter-egon/</loc>
-    <lastmod>2021-02-04T10:56:40+01:00</lastmod>
+    <lastmod>2021-02-06T15:03:11+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -414,7 +424,7 @@
   
   <url>
     <loc>https://mailund.dk/posts/</loc>
-    <lastmod>2021-02-04T10:56:40+01:00</lastmod>
+    <lastmod>2021-02-06T15:03:11+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -426,13 +436,13 @@
   
   <url>
     <loc>https://mailund.dk/categories/programming/</loc>
-    <lastmod>2021-01-06T10:56:53+01:00</lastmod>
+    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/tags/python/</loc>
-    <lastmod>2020-12-25T07:21:59+01:00</lastmod>
+    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -467,6 +477,12 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/tags/string-algorithms/</loc>
+    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/tags/</loc>
     <lastmod>2018-09-10T06:32:53+02:00</lastmod>
     <priority>0</priority>
@@ -474,7 +490,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/teaching/</loc>
-    <lastmod>2018-10-01T15:36:05+02:00</lastmod>
+    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -486,7 +502,7 @@
   
   <url>
     <loc>https://mailund.dk/categories/writing/</loc>
-    <lastmod>2021-02-04T10:56:40+01:00</lastmod>
+    <lastmod>2021-02-06T15:03:11+01:00</lastmod>
     <priority>0</priority>
   </url>
   

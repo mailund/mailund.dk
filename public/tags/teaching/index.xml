@@ -6,10 +6,20 @@
     <description>Recent content in Teaching on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 01 Oct 2018 15:36:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 Feb 2021 10:19:43 +0100</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Starting Up Exercises: Burrows-Wheeler Transform</title>
+      <link>https://mailund.dk/posts/starting-up-exercises-bwt/</link>
+      <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/starting-up-exercises-bwt/</guid>
+      <description>I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.
+There is nothing new there, I have a class every year where we do that, but now it is individual projects.</description>
+    </item>
     
     <item>
       <title>Exercises (CT Chapter 9)</title>

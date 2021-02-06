@@ -271,4 +271,5 @@ Tilbage stod Egon, på en skovvej langt fra alting, uden nogen idé om hvor han 
 Han vidste ikke hvilken retning han skulle gå i, men det kunne han bekymre sig om senere. Så længe Den Store Mand med Den Mørke Stemme lå der, så skulle han bare væk. Han fandt en krone i en lomme. Plat for retningen bilen var kørt i, krone for retningen de var kommet fra. Det blev krone.
 
 
-_Fortsættelse følger…_
+[_Fortsættelse følger…_](https://mailund.dk/posts/krofatter-11)
+
