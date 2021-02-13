@@ -1,5 +1,5 @@
 ---
-title: "Krofatter Egon og Hjælpepakken — 10"
+title: "Krofatter Egon og Hjælpepakken — 11"
 categories: ["Writing"]
 tags: [writing, "Krofatter Egon"]
 date: 2021-02-06T15:03:11+01:00
@@ -135,4 +135,4 @@ Han fortsatte ned ad vejen, og inden længe begyndte det at tynde ud i træerne,
 
 Egon var reddet.
 
-_Fortsættelse følger…_
+[_Fortsættelse følger…_](https://mailund.dk/posts/krofatter-12)
