@@ -282,6 +282,13 @@ a {
   box-shadow: 0 3px 3px #bbbbbb;
 }
 
+.thumbnail, figure.thumbnail img, img[src*="float-right"] {
+  float: right;
+  width: 80px;
+  margin: 0 -1em 1em 1em;
+
+}
+
 @media only screen and (max-width: 800px) {
   .float-image-right, figure.float-right img, img[src*="float-right"] {
     float: none;

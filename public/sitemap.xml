@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/fiction/</loc>
+    <lastmod>2021-02-25T09:30:35+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/publications/</loc>
     <lastmod>2018-09-09T00:00:00+00:00</lastmod>
   </url>
@@ -20,6 +25,11 @@
   <url>
     <loc>https://mailund.dk/software/</loc>
     <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mailund.dk/posts/krofatter-egon-samlet/</loc>
+    <lastmod>2021-02-13T11:55:35+01:00</lastmod>
   </url>
   
   <url>
@@ -390,6 +400,12 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/tags/fiction/</loc>
+    <lastmod>2021-02-25T09:30:35+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/tags/functional-programming/</loc>
     <lastmod>2018-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -439,7 +455,7 @@
   
   <url>
     <loc>https://mailund.dk/posts/</loc>
-    <lastmod>2021-02-13T09:25:20+01:00</lastmod>
+    <lastmod>2021-02-13T11:55:35+01:00</lastmod>
     <priority>0</priority>
   </url>
   

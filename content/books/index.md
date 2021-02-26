@@ -29,6 +29,35 @@ We know how the human species evolved over many millions of years, and that it e
 
 
 
+## Pointers in C programming
+
+{{< figure src="c-pointers.jpg" link="https://amzn.to/2ZS0RYM" class="float-right" >}}
+
+Gain a better understanding of pointers, from the basics of how pointers function at the machine level, to using them for a variety of common and advanced scenarios. This short contemporary guide book on pointers in C programming provides a resource for professionals and advanced students needing in-depth hands-on coverage of pointer basics and advanced features. It includes the latest versions of the C language, C20, C17, and C14.  
+
+You’ll see how pointers are used to provide vital C features, such as strings, arrays, higher-order functions and polymorphic data structures. Along the way, you’ll cover how pointers can optimize a program to run faster or use less memory than it would otherwise.
+
+There are plenty of code examples in the book to emulate and adapt to meet your specific needs. 
+
+
+### What You Will Learn
+
+* Work effectively with pointers in your C programming
+* Learn how to effectively manage dynamic memory
+* Program with strings and arrays
+* Create recursive data structures
+
+
+### Who This Book Is For
+
+Intermediate to advanced level professional programmers, software developers, and advanced students or researchers. Prior experience with C programming is expected. 
+
+### Shops
+
+[ [Amazon](https://amzn.to/2ZS0RYM) ]
+[ [Apress](https://www.apress.com/gp/book/9781484269268) ]
+
+
 ## String Algorithms in C
 
 {{< figure src="sac.jpg" link="https://amzn.to/2C1uwqf" class="float-right" >}}
@@ -56,6 +85,7 @@ Those with at least some prior programming experience with C or Assembly and hav
 
 [ [Amazon](https://amzn.to/3ki0mQT) ]
 [ [Apress](https://www.apress.com/gp/book/9781484259191) ]
+
 
 
 ## String Algorithms in C
