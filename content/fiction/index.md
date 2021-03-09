@@ -36,8 +36,8 @@ I also have an account on [Wattpad](https://www.wattpad.com/user/mailund). If I 
 When the situation seems hopeless, what can you do but set out to find a genie? Three wishes are what you need. But if all you can get is a demon, that must work just as well, right?
 
 [ [Amazon](https://amzn.to/3spXMeP) ]
-[ [Apple](http://books.apple.com/us/book/id1554718804) ]
-[ [Gumroad](https://gum.co/three-wishes) ]
+<!--[ [Apple](http://books.apple.com/us/book/id1554718804) ]
+[ [Gumroad](https://gum.co/three-wishes) ]-->
 
 
 ## A painting of a dying world
@@ -49,8 +49,8 @@ The day we decided to explore Old Man Peaslee’s place was the day we opened th
 A painting of a dying world is a Lovecraftian horror short story that follows four young teenagers as they break into the home of the towns recently deceased recluse, where they find more than they had bargained for.
 
 [ [Amazon](https://amzn.to/383cwsD) ]
-[ [Apple](http://books.apple.com/us/book/id1555415511) ]
-[ [Gumroad](https://gum.co/HWDqi) ]
+<!--[ [Apple](http://books.apple.com/us/book/id1555415511) ]
+[ [Gumroad](https://gum.co/HWDqi) ]-->
 
 
 # Krofatter Egon
