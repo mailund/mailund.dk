@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mailund on the Internet</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Sep 2021 07:59:33 +0200</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     
@@ -47,7 +47,7 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/publications/</guid>
-      <description>Textbooks 2020  String Algorithms in C: Efficient text representation and search Thomas Mailund Apress, Sep 30, ISBN-10: 148425919X, ISBN-13: 978-1484259191  2019  Introducing Markdown and Pandoc Thomas Mailund Apress, August 20, 2019,</description>
+      <description>Textbooks 2020  String Algorithms in C: Efficient text representation and search Thomas MailundApress, Sep 30, ISBN-10: 148425919X, ISBN-13: 978-1484259191  2019   Introducing Markdown and Pandoc Thomas MailundApress, August 20, 2019,</description>
     </item>
     
     <item>
@@ -57,6 +57,15 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
       
       <guid>https://mailund.dk/software/</guid>
       <description>I have written various software over the years. You can get a list of most of it at GitHub. Below is a list of software I have worked on recently (and I promise to still be maintaining).</description>
+    </item>
+    
+    <item>
+      <title>&#39;Witness&#39; arrays</title>
+      <link>https://mailund.dk/posts/witness-array/</link>
+      <pubDate>Wed, 15 Sep 2021 07:59:33 +0200</pubDate>
+      
+      <guid>https://mailund.dk/posts/witness-array/</guid>
+      <description>The other day I was reminded of an exercises we got first or second year when I studied computer science. It is a cool little trick, that I&amp;rsquo;ve never seen outside of that exercise, so I thought I&amp;rsquo;d share it.</description>
     </item>
     
     <item>
@@ -75,7 +84,7 @@ When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put
       
       <guid>https://mailund.dk/posts/krofatter-14/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Afsked med Hammel Det var midt på eftermiddagen næste dag, at Egon vågnede ved at det bankede på døren.</description>
+ Afsked med Hammel Det var midt på eftermiddagen næste dag, at Egon vågnede ved at det bankede på døren.</description>
     </item>
     
     <item>
@@ -85,7 +94,7 @@ Afsked med Hammel Det var midt på eftermiddagen næste dag, at Egon vågnede ve
       
       <guid>https://mailund.dk/posts/krofatter-13/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Opgøret Da de stadigvæk var langt fra skovbrynet kunne Uffe og Egon gennem forrude se en stor søjle af røg stige op fra et sted inde i skoven.</description>
+ Opgøret Da de stadigvæk var langt fra skovbrynet kunne Uffe og Egon gennem forrude se en stor søjle af røg stige op fra et sted inde i skoven.</description>
     </item>
     
     <item>
@@ -95,7 +104,7 @@ Opgøret Da de stadigvæk var langt fra skovbrynet kunne Uffe og Egon gennem for
       
       <guid>https://mailund.dk/posts/krofatter-12/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Rådet kommer til undsætning Egon løb imod bilen mens han vinkede med begge arme efter bedste evne.</description>
+ Rådet kommer til undsætning Egon løb imod bilen mens han vinkede med begge arme efter bedste evne.</description>
     </item>
     
     <item>
@@ -105,7 +114,7 @@ Rådet kommer til undsætning Egon løb imod bilen mens han vinkede med begge ar
       
       <guid>https://mailund.dk/posts/krofatter-11/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-En smugkro i skoven Egon løb.</description>
+ En smugkro i skoven Egon løb.</description>
     </item>
     
     <item>
@@ -125,7 +134,7 @@ There is nothing new there, I have a class every year where we do that, but now 
       
       <guid>https://mailund.dk/posts/krofatter-10/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Bagbundet i bagagerummet Æter?</description>
+ Bagbundet i bagagerummet Æter?</description>
     </item>
     
     <item>
@@ -135,7 +144,7 @@ Bagbundet i bagagerummet Æter?</description>
       
       <guid>https://mailund.dk/posts/krofatter-9/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Hammels hemmelighed Med Portner Jørgens nøgle i lommen stod Egon på fortovet på den anden side af vejen fra Hammel Neurocenter.</description>
+ Hammels hemmelighed Med Portner Jørgens nøgle i lommen stod Egon på fortovet på den anden side af vejen fra Hammel Neurocenter.</description>
     </item>
     
     <item>
@@ -145,7 +154,7 @@ Hammels hemmelighed Med Portner Jørgens nøgle i lommen stod Egon på fortovet 
       
       <guid>https://mailund.dk/posts/krofatter-8/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Rottefængeren fra Hammel “Det er den forkert type dyr” påpegede Egon.</description>
+ Rottefængeren fra Hammel “Det er den forkert type dyr” påpegede Egon.</description>
     </item>
     
     <item>
@@ -175,7 +184,7 @@ I have written a lot over the years.</description>
       
       <guid>https://mailund.dk/posts/krofatter-7/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-En stor kattepine Portner Jørgens kat var løbet bort, og da portnere ikke er meget for at forlade deres bygninger, så ville han se det som en stor tjeneste—stor nok til at låne en nøgle ud—hvis Egon ville finde den og bringe den tilbage.</description>
+ En stor kattepine Portner Jørgens kat var løbet bort, og da portnere ikke er meget for at forlade deres bygninger, så ville han se det som en stor tjeneste—stor nok til at låne en nøgle ud—hvis Egon ville finde den og bringe den tilbage.</description>
     </item>
     
     <item>
@@ -185,7 +194,7 @@ En stor kattepine Portner Jørgens kat var løbet bort, og da portnere ikke er m
       
       <guid>https://mailund.dk/posts/krofatter-6/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Portner Jørgen Tidligt næste morgen blev Egon vækket af et voldsomt rabalder inde fra krostuen.</description>
+ Portner Jørgen Tidligt næste morgen blev Egon vækket af et voldsomt rabalder inde fra krostuen.</description>
     </item>
     
     <item>
@@ -195,7 +204,7 @@ Portner Jørgen Tidligt næste morgen blev Egon vækket af et voldsomt rabalder 
       
       <guid>https://mailund.dk/posts/krofatter-5/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Portner portalen Egon var måske ikke den skarpeste kniv i skuffen, men selv for ham var det oplagt hvor Agnes var forsvundet hen.</description>
+ Portner portalen Egon var måske ikke den skarpeste kniv i skuffen, men selv for ham var det oplagt hvor Agnes var forsvundet hen.</description>
     </item>
     
     <item>
@@ -205,7 +214,7 @@ Portner portalen Egon var måske ikke den skarpeste kniv i skuffen, men selv for
       
       <guid>https://mailund.dk/posts/krofatter-4/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Snigen i sneen Det var blevet sent natten før.</description>
+ Snigen i sneen Det var blevet sent natten før.</description>
     </item>
     
     <item>
@@ -215,7 +224,7 @@ Snigen i sneen Det var blevet sent natten før.</description>
       
       <guid>https://mailund.dk/posts/krofatter-3/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Pitstop på Pøt Mølle Næste morgen, lidt blårøjet, for der var røget mange øl ned over natten, kørte Egon nordpå mod Hammel.</description>
+ Pitstop på Pøt Mølle Næste morgen, lidt blårøjet, for der var røget mange øl ned over natten, kørte Egon nordpå mod Hammel.</description>
     </item>
     
     <item>
@@ -234,7 +243,7 @@ Pitstop på Pøt Mølle Næste morgen, lidt blårøjet, for der var røget mange
       
       <guid>https://mailund.dk/posts/krofatter-2/</guid>
       <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-En ubehagelig opgave Rådsmedlemmerne steg ud af deres respektive biler og begyndte at gå imod Østbjerg Kros hoveddør i afmålte skridt, der garanterede at de ville ankomme nøjagtigt fem minutter i syv, altså fem minutter før de skulle møde, og derfor præcist til tiden.</description>
+ En ubehagelig opgave Rådsmedlemmerne steg ud af deres respektive biler og begyndte at gå imod Østbjerg Kros hoveddør i afmålte skridt, der garanterede at de ville ankomme nøjagtigt fem minutter i syv, altså fem minutter før de skulle møde, og derfor præcist til tiden.</description>
     </item>
     
     <item>
@@ -412,42 +421,6 @@ If you decode the description—that is more cryptic than the mathematics—you 
     </item>
     
     <item>
-      <title>Lazy queues</title>
-      <link>https://mailund.dk/posts/lazy-queues/</link>
-      <pubDate>Thu, 04 Oct 2018 05:00:20 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/lazy-queues/</guid>
-      <description>The purpose of the lazy lists I implemented in my previous post was to build lazy queues. Lazy lists give you constant time concatenation, which can be useful in itself, but I needed it to implement persistent functional queues.</description>
-    </item>
-    
-    <item>
-      <title>Lazy lists</title>
-      <link>https://mailund.dk/posts/lazy-lists/</link>
-      <pubDate>Thu, 04 Oct 2018 05:00:15 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/lazy-lists/</guid>
-      <description>I wanted to write about lazy lists and lazy queues today, but I spent most of the day struggling with getting lazy evaluation to work. Finally, I convinced myself that something was broken in R, and I was justified in thinking that; upgrading to the most recent version resolved the issue.</description>
-    </item>
-    
-    <item>
-      <title>Promises, their environments, and how we evaluate them</title>
-      <link>https://mailund.dk/posts/promises-and-lazy-evaluation/</link>
-      <pubDate>Wed, 03 Oct 2018 09:10:01 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/promises-and-lazy-evaluation/</guid>
-      <description>Have you ever wondered how functions are evaluated? How you can have arguments that would raise errors, but do not, or how default arguments can be expressions that depend on function arguments that you haven&amp;rsquo;t seen yet when you define a function?</description>
-    </item>
-    
-    <item>
-      <title>Functional lists and queues</title>
-      <link>https://mailund.dk/posts/functional-lists-and-queues/</link>
-      <pubDate>Tue, 02 Oct 2018 05:00:10 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/functional-lists-and-queues/</guid>
-      <description>I wanted to write something about function parameters, how these are passed as so-called &amp;ldquo;promises&amp;rdquo;, how these have associated scopes (and the consequences of that), and how they give us lazy evaluation.</description>
-    </item>
-    
-    <item>
       <title>Seeing Further</title>
       <link>https://mailund.dk/posts/seeing-further/</link>
       <pubDate>Mon, 01 Oct 2018 15:57:13 +0200</pubDate>
@@ -502,17 +475,8 @@ A couple of readers made me aware of a typo in Functional Programming in R.</des
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mailund.dk/errata/fpinr/</guid>
-      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;</description>
-    </item>
-    
-    <item>
-      <title>Environments and formulae</title>
-      <link>https://mailund.dk/posts/envs-and-formulae/</link>
-      <pubDate>Thu, 27 Sep 2018 04:41:19 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
-      <description>In my two previous posts on non-standard evaluation, Scoping rules and NSE and Overscoping and eval, I explained:
- How R finds the bindings of variables by looking through chains of environments.</description>
+      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;
+Chapter 3 Nested Functions and Scopes, page 53ff.</description>
     </item>
     
     <item>
@@ -671,6 +635,51 @@ It is this class that got me started on my book on the topic: Introduction to Co
       
       <guid>https://mailund.dk/errata/fdsinr/</guid>
       <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book. Pattern matching makes implementing data structures much easier.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://mailund.dk/posts/envs-and-formulae/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://mailund.dk/posts/functional-lists-and-queues/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/posts/functional-lists-and-queues/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://mailund.dk/posts/lazy-lists/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/posts/lazy-lists/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://mailund.dk/posts/lazy-queues/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/posts/lazy-queues/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://mailund.dk/posts/promises-and-lazy-evaluation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mailund.dk/posts/promises-and-lazy-evaluation/</guid>
+      <description></description>
     </item>
     
   </channel>

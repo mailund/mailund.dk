@@ -63,14 +63,17 @@
    });
  </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-10582357-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 </head>
@@ -195,16 +198,11 @@ ga('send', 'pageview');
 </aside>
     
 
-    
-
-<p>Unexpectedly, I was allowed to play today—it <em>is</em> Christmas, after all—as long as I didn’t spend too much time at the computer. So I hurried up and solved today’s and yesterday’s puzzles quickly.</p>
-
-<h2 id="day-23-crab-cups">Day 23 — Crab Cups</h2>
-
+    <p>Unexpectedly, I was allowed to play today—it <em>is</em> Christmas, after all—as long as I didn’t spend too much time at the computer. So I hurried up and solved today’s and yesterday’s puzzles quickly.</p>
+<h2 id="day-23--crab-cups">Day 23 — Crab Cups</h2>
 <p>On <a href="https://adventofcode.com/2020/day/23">Day 23</a>, we get another game. It is a game of shuffling cups around, and it reads very much like a circular list of cups. And mostly it is.</p>
-
 <p>You have to take three cups to the right of the current and move it to elsewhere in your circular list, based on the index of the current cup. The rules are not that hard to decode, and you can implement the solution using Python’s lists and a little bit of modular arithmetic.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">inp = <span style="color:#00f">&#34;389125467&#34;</span> <span style="color:#080;font-style:italic"># test data</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">inp = <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">389125467</span><span style="color:#00f">&#34;</span> <span style="color:#080;font-style:italic"># test data</span>
 cups = list(map(int, inp))
 min_cup = min(cups)
 max_cup = max(cups)
@@ -237,19 +235,14 @@ n = len(cups)
 
 <span style="color:#000080;font-weight:bold">def</span> rotation(cups, start):
     i = cups.index(start)
-    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">&#39;&#39;</span>.join(str(cups[ (i+j+<span style="color:#00f">1</span>) % n ]) <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(n))[:-<span style="color:#00f">1</span>]
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">&#39;</span>.join(str(cups[ (i+j+<span style="color:#00f">1</span>) % n ]) <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(n))[:-<span style="color:#00f">1</span>]
 
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {rotation(play(cups[:], 100), 1)}&#34;</span>)</code></pre></div>
-<p>When it comes to lists, linked lists and Python’s lists (which are arrays for all practical purposes), there are different performance tradeoffs. There always is with different data structures.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {rotation(play(cups[:], 100), 1)}</span><span style="color:#00f">&#34;</span>)
+</code></pre></div><p>When it comes to lists, linked lists and Python’s lists (which are arrays for all practical purposes), there are different performance tradeoffs. There always is with different data structures.</p>
 <p>Linked lists will let us move a sub-list to another location in constant time (if we can extract the list in constant time, which we can here), but with arrays, we must copy the entire list to achieve this. Copying everything sounds slow, but it isn’t for small data sizes. Arrays sit in contiguous memory, and modern computer’s caches are really good at dealing with things like that. Add to this, that a linked list implemented in Python is bound to be much slower than Python’s own lists implemented in C. So for small data, slicing and composing the built-in lists is usually faster than rolling out a linked list.</p>
-
 <p>For Puzzle #2, however, the size of the problem grows to a list of length one million, and we need to run ten million iterations of the game. Here, we enter a size where slow linked lists will outperform arrays for certain.</p>
-
 <p>The solution above will run in time \( O(mn) \) where \( m \) is the number of rounds and \( n \) is the size of the list. This is far too slow if \(m\) is ten million and \(n\) is a million. With linked lists, we can make each iteration take constant time, and go down to \(m\), which is more manable.</p>
-
 <p>To get there, we need to represent the cups in a circular linked list, and to get the destination, we need a constant time approach to get the destination from its number. If we have that, then we have a solution to the puzzle.</p>
-
 <p>So, I implemented a cyclic doubly-linked list:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">class</span> Link(object):
     <span style="color:#000080;font-weight:bold">def</span> __init__(self, val, prev = None, next = None):
@@ -274,20 +267,20 @@ n = len(cups)
             <span style="color:#000080;font-weight:bold">if</span> link <span style="font-weight:bold">is</span> self: <span style="color:#000080;font-weight:bold">return</span> False
 
     <span style="color:#000080;font-weight:bold">def</span> __str__(self):
-        links = [f<span style="color:#00f">&#34;{self.val}&#34;</span>]
+        links = [f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">{self.val}</span><span style="color:#00f">&#34;</span>]
         link = self.next
         <span style="color:#000080;font-weight:bold">while</span> link != self:
-            links.append(f<span style="color:#00f">&#34;{link.val}&#34;</span>)
+            links.append(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">{link.val}</span><span style="color:#00f">&#34;</span>)
             link = link.next
-        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">&#34; -&gt; &#34;</span>.join(links)</code></pre></div>
-<p>Write a function for creating a linked list from a Python list, solely for convenience:</p>
+        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f"> -&gt; </span><span style="color:#00f">&#34;</span>.join(links)
+</code></pre></div><p>Write a function for creating a linked list from a Python list, solely for convenience:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> make_linked_list(x):
     link = Link(x[<span style="color:#00f">0</span>])
     link.next = link.prev = link
     <span style="color:#000080;font-weight:bold">for</span> y <span style="font-weight:bold">in</span> x[<span style="color:#00f">1</span>:]:
         Link(y, link.prev, link) <span style="color:#080;font-style:italic"># appending</span>
-    <span style="color:#000080;font-weight:bold">return</span> link</code></pre></div>
-<p>And then I wrote functions for moving the three cups in the game:</p>
+    <span style="color:#000080;font-weight:bold">return</span> link
+</code></pre></div><p>And then I wrote functions for moving the three cups in the game:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> take_three(link):
     start = link.next
     end = start.next.next
@@ -301,8 +294,8 @@ n = len(cups)
 <span style="color:#000080;font-weight:bold">def</span> insert_after(link, lst):
     lst.prev.next = link.next
     lst.prev.next.prev = lst.prev
-    link.next = lst ; lst.prev = link</code></pre></div>
-<p>Playing the game in Puzzle #2 works the same way as in Puzzle #1, but first we build the linked list, and we create a map from cup names to links, so we can get the destination cup in constant time.</p>
+    link.next = lst ; lst.prev = link
+</code></pre></div><p>Playing the game in Puzzle #2 works the same way as in Puzzle #1, but first we build the linked list, and we create a map from cup names to links, so we can get the destination cup in constant time.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">min_cup = <span style="color:#00f">1</span>
 max_cup = <span style="color:#00f">1</span>_000_000
 <span style="color:#000080;font-weight:bold">def</span> dec(i):
@@ -336,19 +329,14 @@ max_cup = <span style="color:#00f">1</span>_000_000
 
     <span style="color:#000080;font-weight:bold">return</span> LINK_MAP[<span style="color:#00f">1</span>].next.val * LINK_MAP[<span style="color:#00f">1</span>].next.next.val
 
-inp = <span style="color:#00f">&#34;389125467&#34;</span> <span style="color:#080;font-style:italic"># test data</span>
+inp = <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">389125467</span><span style="color:#00f">&#34;</span> <span style="color:#080;font-style:italic"># test data</span>
 cups = make_linked_list(list(map(int, inp)))
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {play(cups)}&#34;</span>)</code></pre></div>
-<p>The lists are doubly-linked, but they do not have to be. It makes it easier to insert one list into another, because the first link in a list also contains a pointer to the last, but since we only move lists of length three, we could hardwire it and save a little space.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {play(cups)}</span><span style="color:#00f">&#34;</span>)
+</code></pre></div><p>The lists are doubly-linked, but they do not have to be. It makes it easier to insert one list into another, because the first link in a list also contains a pointer to the last, but since we only move lists of length three, we could hardwire it and save a little space.</p>
 <p>I reached for doubly-linked lists right away, because the problem screams for them, and I knew I could solve it that way. But it is actually overkill. We can easily handle the the problem without a new class. After all, the only thing we need to make the algorithm fast is an indirect way to handle the “next” relationship. And an array will work just fine for that.</p>
-
 <p>We can add another array to our data, where index \(i\) gives us the index of the cup clockwise from the cup with index \(i\), i.e., if the cup at index \(i\) has the cup with index \(j\) to its right, then <code>next[i] == j</code>. That is all we need to make it work.</p>
-
 <p>This is easiest to do if all the indices up to the length of the array is in use, so I subtracted one from all the cup identifiers. They start at one and go to one million, but now they start at zero and go to 999,999. At the end, I have to get the two cups following cup zero instead of one, and I need to add one to their values before I multiply them. I still need a map from cup ids to indices, because the first ten are out of order, but I <em>only</em> need a map for the first ten indices. After that, each cup identity is also its index.</p>
-
 <p>There is a little bit of bookkeeping to look up the next cup—you need to get the cup index and then the value in the <code>next</code> array—but it is nothing worse than we have seen many times before in our lives.</p>
-
 <p>This approach gives us code like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">min_cup = <span style="color:#00f">1</span>
 max_cup = <span style="color:#00f">1</span>_000_000
@@ -387,42 +375,38 @@ max_cup = <span style="color:#00f">1</span>_000_000
         
         cup = next_cup(cup)
 
-    <span style="color:#000080;font-weight:bold">return</span> (<span style="color:#00f">1</span> + next_cup(<span style="color:#00f">0</span>)) * (<span style="color:#00f">1</span> + next_cup(next_cup(<span style="color:#00f">0</span>)))</code></pre></div>
-<h2 id="day-24-lobby-layout">Day 24 — Lobby Layout</h2>
-
-<p><a href="https://adventofcode.com/2020/day/24">On the 24th</a>, we get to play with hexagonal floor tiles. There is not much to those, except that you have to be a little careful with coordinates. If you move to a tile next to you, you have moved twice as far as if you go to the tile to the upper right of you. But other than that, you can think of tiles as their coordinates. If the center of a floor os (0,0), you can encode the tile to the right of you as (1,0) the one to your left as (-1,0), the one to the north-east as (<sup>1</sup>&frasl;<sub>2</sub>,<sup>1</sup>&frasl;<sub>2</sub>), the one to the south-east as (<sup>1</sup>&frasl;<sub>2</sub>,-<sup>1</sup>&frasl;<sub>2</sub>), and so on. Or, if you don’t like using floating point numbers, use (0,0) for the center, (2,0) for the tile to the East, (-2,0) for the tile to the West,  (-1,1) and (1,1) for the tiles above you, and (-1,-1) and (1,-1) for the tiles below you.</p>
-
+    <span style="color:#000080;font-weight:bold">return</span> (<span style="color:#00f">1</span> + next_cup(<span style="color:#00f">0</span>)) * (<span style="color:#00f">1</span> + next_cup(next_cup(<span style="color:#00f">0</span>)))
+</code></pre></div><h2 id="day-24--lobby-layout">Day 24 — Lobby Layout</h2>
+<p><a href="https://adventofcode.com/2020/day/24">On the 24th</a>, we get to play with hexagonal floor tiles. There is not much to those, except that you have to be a little careful with coordinates. If you move to a tile next to you, you have moved twice as far as if you go to the tile to the upper right of you. But other than that, you can think of tiles as their coordinates. If the center of a floor os (0,0), you can encode the tile to the right of you as (1,0) the one to your left as (-1,0), the one to the north-east as (1/2,1/2), the one to the south-east as (1/2,-1/2), and so on. Or, if you don’t like using floating point numbers, use (0,0) for the center, (2,0) for the tile to the East, (-2,0) for the tile to the West,  (-1,1) and (1,1) for the tiles above you, and (-1,-1) and (1,-1) for the tiles below you.</p>
 <p>That is what I did, except that I used complex numbers. I figured that we might be in for a Puzzle #2 where we needed rotations or something, and complex numbers are easier there. I think something like that was going through my brain. But it doesn’t matter, I can use complex numbers as 2D vectors if I want to, and that was all I needed.</p>
-
 <p>That being said, if this was code that should survive longer than this puzzle, I would change it back now. It is confusing to use complex numbers in this context.</p>
-
 <p>Anyway, for Puzzle #1, we need to work out how many tiles have flipped to black from a path to the tiles. Decoding the path is straightforward. Keep an index into the string you are parsing, and if it points to a <code>n</code> or <code>s</code>, you are looking at half of a direction, and you have to go up or down (<code>1j</code> or <code>-1j</code>). After that, we work out how far to the left or right we need to go. If we don’t go up and down, the direction to the East or West should be a distance of 2, but if we go up or down, it should be a distance of 1, so I correct that when I see <code>n</code> or <code>s</code>. Otherwise, there is really nothing to it.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/24/input.txt&#39;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/24/input.txt</span><span style="color:#00f">&#39;</span>)
 tiles = f.read().strip().split()
 
 <span style="color:#000080;font-weight:bold">def</span> identify_tile(x):
     i, tile = <span style="color:#00f">0</span>, <span style="color:#00f">0</span> + <span style="color:#00f">0j</span>
     <span style="color:#000080;font-weight:bold">while</span> i &lt; len(x):
         ew_step = <span style="color:#00f">2</span>
-        <span style="color:#000080;font-weight:bold">if</span> x[i] == <span style="color:#00f">&#39;n&#39;</span>:
+        <span style="color:#000080;font-weight:bold">if</span> x[i] == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">n</span><span style="color:#00f">&#39;</span>:
             tile += <span style="color:#00f">1j</span>
             i += <span style="color:#00f">1</span>
             ew_step = <span style="color:#00f">1</span>
-        <span style="color:#000080;font-weight:bold">elif</span> x[i] == <span style="color:#00f">&#39;s&#39;</span>:
+        <span style="color:#000080;font-weight:bold">elif</span> x[i] == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">s</span><span style="color:#00f">&#39;</span>:
             tile -= <span style="color:#00f">1j</span>
             i += <span style="color:#00f">1</span>
             ew_step = <span style="color:#00f">1</span>
 
-        <span style="color:#000080;font-weight:bold">if</span> x[i] == <span style="color:#00f">&#39;e&#39;</span>:
+        <span style="color:#000080;font-weight:bold">if</span> x[i] == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">e</span><span style="color:#00f">&#39;</span>:
             tile += ew_step
             i += <span style="color:#00f">1</span>
         <span style="color:#000080;font-weight:bold">else</span>:
-            <span style="color:#000080;font-weight:bold">assert</span> x[i] == <span style="color:#00f">&#39;w&#39;</span>
+            <span style="color:#000080;font-weight:bold">assert</span> x[i] == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">w</span><span style="color:#00f">&#39;</span>
             tile -= ew_step
             i += <span style="color:#00f">1</span>
 
-    <span style="color:#000080;font-weight:bold">return</span> tile</code></pre></div>
-<p>When we have all the tile positions, we insert or remove them from a set of black tiles, and the size of the set when we are done is the answer to Puzzle #1:</p>
+    <span style="color:#000080;font-weight:bold">return</span> tile
+</code></pre></div><p>When we have all the tile positions, we insert or remove them from a set of black tiles, and the size of the set when we are done is the answer to Puzzle #1:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> collect_black(tiles):
     black_tiles = set()
     <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> tiles:
@@ -433,9 +417,8 @@ tiles = f.read().strip().split()
             black_tiles.add(tile)
     <span style="color:#000080;font-weight:bold">return</span> black_tiles
 
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #1: {len(collect_black(tiles))}&#34;</span>)</code></pre></div>
-<p>For Puzzle #2, we have a Game of Life-like puzzle, and we have seen many of those already. It is, in principle, on an infinite floor, so we can use the trick we used on <a href="https://mailund.dk/posts/aoc-2020-6/">Day 17</a>, of only keeping track of the tiles we need for the rules. We need to update tiles based on their black neighbours, so we can store the coordinate of black tiles only. When we need to update the floor, we iterate through the black tiles and their neighbours, and those are the only coordinates that might change into or remain black.</p>
-
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {len(collect_black(tiles))}</span><span style="color:#00f">&#34;</span>)
+</code></pre></div><p>For Puzzle #2, we have a Game of Life-like puzzle, and we have seen many of those already. It is, in principle, on an infinite floor, so we can use the trick we used on <a href="https://mailund.dk/posts/aoc-2020-6/">Day 17</a>, of only keeping track of the tiles we need for the rules. We need to update tiles based on their black neighbours, so we can store the coordinate of black tiles only. When we need to update the floor, we iterate through the black tiles and their neighbours, and those are the only coordinates that might change into or remain black.</p>
 <p>I wrote a class for that, although it wouldn’t have been harder to work with a set direction to be honest.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">NEIGHBOURS = [ <span style="color:#00f">1</span>+<span style="color:#00f">1j</span>, <span style="color:#00f">2</span>, <span style="color:#00f">1</span>-<span style="color:#00f">1j</span>, -<span style="color:#00f">1</span>-<span style="color:#00f">1j</span>, -<span style="color:#00f">2</span>, -<span style="color:#00f">1</span>+<span style="color:#00f">1j</span> ]
 <span style="color:#000080;font-weight:bold">class</span> Floor(object):
@@ -447,23 +430,23 @@ tiles = f.read().strip().split()
 
     <span style="color:#000080;font-weight:bold">def</span> __iter__(self):
         <span style="color:#000080;font-weight:bold">for</span> tile <span style="font-weight:bold">in</span> self.blacks:
-            <span style="color:#000080;font-weight:bold">yield</span> <span style="color:#00f">&#39;B&#39;</span>, tile, self.black_neighbours(tile)
+            <span style="color:#000080;font-weight:bold">yield</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">B</span><span style="color:#00f">&#39;</span>, tile, self.black_neighbours(tile)
             <span style="color:#000080;font-weight:bold">for</span> n <span style="font-weight:bold">in</span> NEIGHBOURS:
                 <span style="color:#000080;font-weight:bold">if</span> tile + n <span style="font-weight:bold">not</span> <span style="font-weight:bold">in</span> self.blacks:
-                    <span style="color:#000080;font-weight:bold">yield</span> <span style="color:#00f">&#39;W&#39;</span>, tile + n, \
+                    <span style="color:#000080;font-weight:bold">yield</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">W</span><span style="color:#00f">&#39;</span>, tile + n, \
                           self.black_neighbours(tile + n)
 
     <span style="color:#000080;font-weight:bold">def</span> next_floor(self):
         floor = Floor()
         <span style="color:#000080;font-weight:bold">for</span> col, coord, black_n <span style="font-weight:bold">in</span> self:
-            <span style="color:#000080;font-weight:bold">if</span> col == <span style="color:#00f">&#39;W&#39;</span> <span style="font-weight:bold">and</span> black_n == <span style="color:#00f">2</span>:
+            <span style="color:#000080;font-weight:bold">if</span> col == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">W</span><span style="color:#00f">&#39;</span> <span style="font-weight:bold">and</span> black_n == <span style="color:#00f">2</span>:
                 floor.blacks.add(coord)
-            <span style="color:#000080;font-weight:bold">elif</span> col == <span style="color:#00f">&#39;B&#39;</span> <span style="font-weight:bold">and</span> <span style="color:#00f">1</span> &lt;= black_n &lt;= <span style="color:#00f">2</span>:
+            <span style="color:#000080;font-weight:bold">elif</span> col == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">B</span><span style="color:#00f">&#39;</span> <span style="font-weight:bold">and</span> <span style="color:#00f">1</span> &lt;= black_n &lt;= <span style="color:#00f">2</span>:
                 floor.blacks.add(coord)
         <span style="color:#000080;font-weight:bold">return</span> floor
 
-    <span style="color:#000080;font-weight:bold">def</span> __len__(self): <span style="color:#000080;font-weight:bold">return</span> len(self.blacks)</code></pre></div>
-<p>Evolving the floor works exactly as the other Game of Life puzzles this year, so nothing new here either:</p>
+    <span style="color:#000080;font-weight:bold">def</span> __len__(self): <span style="color:#000080;font-weight:bold">return</span> len(self.blacks)
+</code></pre></div><p>Evolving the floor works exactly as the other Game of Life puzzles this year, so nothing new here either:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">floor = Floor(tiles)
 <span style="color:#000080;font-weight:bold">def</span> evolve(tiles, days):
     floor = Floor(tiles)
@@ -471,8 +454,8 @@ tiles = f.read().strip().split()
         floor = floor.next_floor()
     <span style="color:#000080;font-weight:bold">return</span> floor
 
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f">&#34;Puzzle #2: {len(evolve(tiles, 100))}&#34;</span>)</code></pre></div>
-<p>So all in all, this was a very easy day. Maybe, if I am lucky, I am allowed to play tomorrow again, and if it is just as simple, I will finish the puzzles on time.</p>
+<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {len(evolve(tiles, 100))}</span><span style="color:#00f">&#34;</span>)
+</code></pre></div><p>So all in all, this was a very easy day. Maybe, if I am lucky, I am allowed to play tomorrow again, and if it is just as simple, I will finish the puzzles on time.</p>
 
 
 </article>
@@ -553,7 +536,7 @@ tiles = f.read().strip().split()
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2020 - Thomas Mailund |
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
