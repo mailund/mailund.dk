@@ -63,17 +63,14 @@
    });
  </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 </head>
@@ -210,15 +207,26 @@ if (!doNotTrack) {
 </aside>
     
 
-    <p>I am supervising some projects this spring, on algorithms for read-mapping. It&rsquo;s different projects that all involve implementing a working, but primitive, read mapper.</p>
+    
+
+<p>I am supervising some projects this spring, on algorithms for read-mapping. It&rsquo;s different projects that all involve implementing a working, but primitive, read mapper.</p>
+
 <p>There is nothing new there, I have a class every year where we do that, but now it is individual projects. The content doesn&rsquo;t change much; just the teaching format.</p>
+
 <p>They are free to implement the algorithms in any language they like, and in my class, they usually chose Python, and on occasion C. That makes it easy for me because I am fluent in those languages.</p>
+
 <p>But this time, the groups are from the computer science department, and that isn&rsquo;t good enough for them, oh no. They want to use Go—which I&rsquo;m okay with because I have played with it enough to see how that would work—and Rust—which might be a problem for me.</p>
+
 <p>I had planned to learn both languages in spring anyway, so I guess it adds extra motivation.</p>
-<p>An excellent way to get started on the project is to build a <a href="https://en.wikipedia.org/wiki/Suffix_array">suffix array</a> and the <a href="https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform">Burrows-Wheeler transform</a> as naïvely as you can.</p>
+
+<p>An excellent way to get started on the project is to build a <a href="https://en.wikipedia.org/wiki/Suffix_array">suffix array</a> and the <a href="https://en.wikipedia.org/wiki/Burrows–Wheeler_transform">Burrows-Wheeler transform</a> as naïvely as you can.</p>
+
 <p>The suffix array is an array of indices into the string, such that if you go through them in order, you get the suffixes in lexicographical order. So think about it as an efficient representation of all the sorted suffixes. Suffixes are just represented by their index into the string.</p>
+
 <h2 id="c-implementation">C implementation</h2>
+
 <p>The simplest I can think of for constructing it, with my limited abilities, is to use C&rsquo;s builtin <code>qsort()</code> function. Build an array of all the suffixes of a string and sort them. Building the array is cheap because you just collect pointers into the string you build the array over. Sorting is expensive, though. Comparing two suffixes take time \( O(n) \) and you need to make \( O(n \log n) \) comparisons, so you end up with \( O(n^2\log n) \).</p>
+
 <p>In practice, it is not that bad, though. Comparisons do not take linear time unless you are in a worst-case situation where you have a string of identical characters. If you have a random string, you spend constant time (that depends on the alphabet size, though, but not the string length). So it is close to \( O(n\log n) \) in practise.  Not as good as the linear time construction algorithms, of course, but those come later. The simplest approach is a good place to start, and it looks like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">static</span> <span style="color:#080;font-style:italic">// Wrapper of strcmp needed for qsort
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">int</span> construction_cmpfunc(<span style="color:#000080;font-weight:bold">void</span> <span style="color:#000080;font-weight:bold">const</span> * a, <span style="color:#000080;font-weight:bold">void</span> <span style="color:#000080;font-weight:bold">const</span> * b)
@@ -247,15 +255,19 @@ if (!doNotTrack) {
 
     free(suffixes);
     <span style="color:#000080;font-weight:bold">return</span> sa;
-}
-</code></pre></div><p>For the Burrows-Wheeler Transform, BWT, think of the suffixes but as rotations. All the suffixes of &ldquo;foobar&rdquo; are</p>
+}</code></pre></div>
+<p>For the Burrows-Wheeler Transform, BWT, think of the suffixes but as rotations. All the suffixes of &ldquo;foobar&rdquo; are</p>
+
 <pre><code>foobar
  oobar
   obar
    bar
     ar
      r
-</code></pre><p>But we typically append a &ldquo;sentinel&rdquo; character to the string, smaller than all others. It helps simplify a <em>lot</em> of algorithms by ensuring that no suffix is a prefix of another suffix, so we would write instead:</p>
+</code></pre>
+
+<p>But we typically append a &ldquo;sentinel&rdquo; character to the string, smaller than all others. It helps simplify a <em>lot</em> of algorithms by ensuring that no suffix is a prefix of another suffix, so we would write instead:</p>
+
 <pre><code>foobar$
  oobar$
   obar$
@@ -263,8 +275,12 @@ if (!doNotTrack) {
     ar$
      r$
       $
-</code></pre><p>Those are the suffixes we sort when we build the suffix array.</p>
+</code></pre>
+
+<p>Those are the suffixes we sort when we build the suffix array.</p>
+
 <p>But, as I said, for the BWT, you want to think about <em>rotations</em> instead. Whatever we remove from the beginning of the string to get a suffix, we append to the end.</p>
+
 <pre><code>foobar$
 oobar$f
 obar$fo
@@ -272,7 +288,10 @@ bar$foo
 ar$foob
 r$fooba
 $foobar
-</code></pre><p>Sort them, as we did with the suffix array, and you get the <em>BWT matrix</em>.</p>
+</code></pre>
+
+<p>Sort them, as we did with the suffix array, and you get the <em>BWT matrix</em>.</p>
+
 <pre><code>$foobar
 ar$foob
 bar$foo
@@ -280,50 +299,61 @@ foobar$
 oobar$f
 obar$fo
 r$fooba
-</code></pre><p>It is just all the rotations, sorted.</p>
+</code></pre>
+
+<p>It is just all the rotations, sorted.</p>
+
 <p>The <em>Burrows-Wheeler transform</em> is the last column in the matrix. It has various properties that make it suitable for compression and efficient searching.</p>
+
 <p>If you have the suffix array, you get the BWT almost for free. Well, in linear time, but free enough.</p>
+
 <p>The BWT is the last column in the BWT matrix. The character in the first column is the index where a suffix starts, and since the rotations are sorted, at row \(i\), you have the suffix of rank \(i\). So to get the first character in row \(i\), you find out which suffix has rank \(i\), and the suffix array gives you that: <code>sa[i]</code>. You don&rsquo;t want that character, for the BWT, but the one that came before it. The one that came before it is the last column&rsquo;s character because the rows are rotations.</p>
+
 <p>So to get the last column, run through the rows, get the index of the rank \(i\) suffix, <code>sa[i]</code>, and get the character before that index, <code>x[sa[i]-1]</code>.</p>
+
 <p>There is a special case when the <code>sa[i]</code> is the first suffix, of course, because you cannot look to the left of that, but in that case, it is the last character in the string, which is always the sentinel.</p>
+
 <p>In C, we can compute the BWT like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">char</span> *bwt(<span style="color:#000080;font-weight:bold">char</span> <span style="color:#000080;font-weight:bold">const</span> * x, <span style="color:#000080;font-weight:bold">int</span> *sa, size_t n)
 {
     <span style="color:#000080;font-weight:bold">char</span> *bwt = malloc(n * <span style="color:#000080;font-weight:bold">sizeof</span> *bwt);
     <span style="color:#000080;font-weight:bold">if</span> (bwt) {
         <span style="color:#000080;font-weight:bold">for</span> (size_t i = <span style="color:#00f">0</span>; i &lt; n; i++) {
-            bwt[i] = (sa[i] == <span style="color:#00f">0</span>) ? <span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">\0</span><span style="color:#800080">&#39;</span> : x[sa[i] - <span style="color:#00f">1</span>];
+            bwt[i] = (sa[i] == <span style="color:#00f">0</span>) ? <span style="color:#800080">&#39;\0&#39;</span> : x[sa[i] - <span style="color:#00f">1</span>];
         }
     }
     <span style="color:#000080;font-weight:bold">return</span> bwt;
-}
-</code></pre></div><p>I&rsquo;m using the zero-character for sentinel because we want one that is smaller than all other letters (and because it is already used as a sentinel in C). In the literature, you always use $, but the zero-character is a better choice in an implementation.</p>
+}</code></pre></div>
+<p>I&rsquo;m using the zero-character for sentinel because we want one that is smaller than all other letters (and because it is already used as a sentinel in C). In the literature, you always use $, but the zero-character is a better choice in an implementation.</p>
+
 <p>We can use the two functions like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">void</span>)
 {
-    <span style="color:#000080;font-weight:bold">char</span> *x = <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">foobar</span><span style="color:#00f">&#34;</span>;
+    <span style="color:#000080;font-weight:bold">char</span> *x = <span style="color:#00f">&#34;foobar&#34;</span>;
     size_t n = strlen(x) + <span style="color:#00f">1</span>;
     <span style="color:#000080;font-weight:bold">int</span> *sa = suffix_array(x, n);
-    <span style="color:#000080;font-weight:bold">if</span> (!sa) perror(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Couldn&#39;t allocate suffix array.</span><span style="color:#00f">&#34;</span>);
+    <span style="color:#000080;font-weight:bold">if</span> (!sa) perror(<span style="color:#00f">&#34;Couldn&#39;t allocate suffix array.&#34;</span>);
 
     <span style="color:#000080;font-weight:bold">for</span> (size_t i = <span style="color:#00f">0</span>; i &lt; n; i++) {
-        printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">%d %s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, sa[i], x + sa[i]);
+        printf(<span style="color:#00f">&#34;%d %s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, sa[i], x + sa[i]);
     }
 
     <span style="color:#000080;font-weight:bold">char</span> *b = bwt(x, sa, n);
-    <span style="color:#000080;font-weight:bold">if</span> (!b) perror(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Couldn&#39;t construct BWT.</span><span style="color:#00f">&#34;</span>);
+    <span style="color:#000080;font-weight:bold">if</span> (!b) perror(<span style="color:#00f">&#34;Couldn&#39;t construct BWT.&#34;</span>);
 
     <span style="color:#000080;font-weight:bold">for</span> (size_t i = <span style="color:#00f">0</span>; i &lt; n; i++) {
-        putchar((b[i] == <span style="color:#00f">0</span>) ? <span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">$</span><span style="color:#800080">&#39;</span> : b[i]);
+        putchar((b[i] == <span style="color:#00f">0</span>) ? <span style="color:#800080">&#39;$&#39;</span> : b[i]);
     }
-    putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">\n</span><span style="color:#800080">&#39;</span>);
+    putchar(<span style="color:#800080">&#39;\n&#39;</span>);
 
     free(sa);
     free(b);
     <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-}
-</code></pre></div><p>For the output, I translate the zero byte into the dollar-sign to see it in the terminal.</p>
+}</code></pre></div>
+<p>For the output, I translate the zero byte into the dollar-sign to see it in the terminal.</p>
+
 <h2 id="python-implementation">Python implementation</h2>
+
 <p>For Python, where getting sub-strings means slicing, which means copying, building the same kind of array of suffixes is inefficient. Of course, you can use your own comparison algorithm for comparing substrings using indices, but it is just as easy to implement another approach. Take all the strings, and radix sort them:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">import</span> itertools
 
@@ -338,7 +368,7 @@ r$fooba
     <span style="color:#000080;font-weight:bold">return</span> itertools.chain(*buckets)
 
 <span style="color:#000080;font-weight:bold">def</span> suffix_array(x):
-    <span style="color:#00f"></span><span style="color:#00f">&#34;&#34;&#34;</span><span style="color:#00f">Computes the suffix array with a radix sort</span><span style="color:#00f">&#34;&#34;&#34;</span>
+    <span style="color:#00f">&#34;&#34;&#34;Computes the suffix array with a radix sort&#34;&#34;&#34;</span>
     alphabet = set(x)
     symbol_map = dict(
         (symb,i) <span style="color:#000080;font-weight:bold">for</span> i,symb <span style="font-weight:bold">in</span> enumerate(sorted(alphabet))
@@ -347,25 +377,29 @@ r$fooba
     mapped_x = [symbol_map[symb] <span style="color:#000080;font-weight:bold">for</span> symb <span style="font-weight:bold">in</span> x]
     <span style="color:#000080;font-weight:bold">for</span> offset <span style="font-weight:bold">in</span> range(len(x) - <span style="color:#00f">1</span>, -<span style="color:#00f">1</span>, -<span style="color:#00f">1</span>):
         suffixes = bucket_sort(mapped_x, suffixes, offset, alphabet)
-    <span style="color:#000080;font-weight:bold">return</span> list(suffixes)
-</code></pre></div><p>There is a little more code, but it isn&rsquo;t horrible.</p>
+    <span style="color:#000080;font-weight:bold">return</span> list(suffixes)</code></pre></div>
+<p>There is a little more code, but it isn&rsquo;t horrible.</p>
+
 <p>The complexity is \( O(n^2) \) so better than the worst-case for the C solution, but worse than the expected case for the comparison based sorting approach.</p>
+
 <p>BWT in Python can be written succinctly like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> bwt(x, sa):
-    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">&#39;</span>.join(
-        <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">\x00</span><span style="color:#00f">&#34;</span> <span style="color:#000080;font-weight:bold">if</span> (sa[i] == <span style="color:#00f">0</span>) <span style="color:#000080;font-weight:bold">else</span> x[sa[i] - <span style="color:#00f">1</span>]
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">&#39;&#39;</span>.join(
+        <span style="color:#00f">&#34;</span><span style="color:#00f">\x00</span><span style="color:#00f">&#34;</span> <span style="color:#000080;font-weight:bold">if</span> (sa[i] == <span style="color:#00f">0</span>) <span style="color:#000080;font-weight:bold">else</span> x[sa[i] - <span style="color:#00f">1</span>]
         <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(len(x))
-    )
-</code></pre></div><p>This, then, is how you would use the functions in Python:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x = <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">foobar</span><span style="color:#00f">\x00</span><span style="color:#00f">&#34;</span>
+    )</code></pre></div>
+<p>This, then, is how you would use the functions in Python:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x = <span style="color:#00f">&#34;foobar</span><span style="color:#00f">\x00</span><span style="color:#00f">&#34;</span>
 sa = suffix_array(x)
 <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> sa:
     <span style="color:#000080;font-weight:bold">print</span>(i, x[i:])
 
-b = bwt(x, sa).replace(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">\x00</span><span style="color:#00f">&#34;</span>, <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">$</span><span style="color:#00f">&#34;</span>)
-<span style="color:#000080;font-weight:bold">print</span>(b)
-</code></pre></div><p>I explicitly add the zero-byte as a sentinel to the string because Python strings are not zero-terminated the way that C strings are.</p>
+b = bwt(x, sa).replace(<span style="color:#00f">&#34;</span><span style="color:#00f">\x00</span><span style="color:#00f">&#34;</span>, <span style="color:#00f">&#34;$&#34;</span>)
+<span style="color:#000080;font-weight:bold">print</span>(b)</code></pre></div>
+<p>I explicitly add the zero-byte as a sentinel to the string because Python strings are not zero-terminated the way that C strings are.</p>
+
 <h2 id="go-implementation">Go implementation</h2>
+
 <p>I am only half-way into my Go book, so I don&rsquo;t know if this is horrible or the way to do it in that language, but constructing the suffix array certainly can be done in a similar way as with C:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000080;font-weight:bold">func</span> SuffixArray(x <span style="color:#000080;font-weight:bold">string</span>) []<span style="color:#000080;font-weight:bold">int</span> {
 	sa := make([]<span style="color:#000080;font-weight:bold">int</span>, len(x))
@@ -376,8 +410,9 @@ b = bwt(x, sa).replace(<span style="color:#00f"></span><span style="color:#00f">
 		<span style="color:#000080;font-weight:bold">return</span> x[sa[i]:] &lt; x[sa[j]:]
 	})
 	<span style="color:#000080;font-weight:bold">return</span> sa
-}
-</code></pre></div><p>As I understand it, the slicing is constant time, so the comparison function only spends the time it takes to compare the two strings, and no extra time on copying, which is what I needed to avoid with the radix sort in Python.</p>
+}</code></pre></div>
+<p>As I understand it, the slicing is constant time, so the comparison function only spends the time it takes to compare the two strings, and no extra time on copying, which is what I needed to avoid with the radix sort in Python.</p>
+
 <p>I am not sure if this is the right way to construct a string in Go:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000080;font-weight:bold">func</span> BWT(x <span style="color:#000080;font-weight:bold">string</span>, sa []<span style="color:#000080;font-weight:bold">int</span>) <span style="color:#000080;font-weight:bold">string</span> {
 	bwt := make([]<span style="color:#000080;font-weight:bold">byte</span>, len(x)) <span style="color:#080;font-style:italic">// FIXME: is this the proper type?
@@ -389,8 +424,9 @@ b = bwt(x, sa).replace(<span style="color:#00f"></span><span style="color:#00f">
 		}
 	}
 	<span style="color:#000080;font-weight:bold">return</span> string(bwt)
-}
-</code></pre></div><p>I am making a byte slice and creating the BWT string in that, and then casting it at the end. Strings are immutable in Go, and this is how I figured you are supposed to do it. But someone with Go experience, please let me know!</p>
+}</code></pre></div>
+<p>I am making a byte slice and creating the BWT string in that, and then casting it at the end. Strings are immutable in Go, and this is how I figured you are supposed to do it. But someone with Go experience, please let me know!</p>
+
 <p>You can use the functions like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000080;font-weight:bold">func</span> main() {
 	x := <span style="color:#00f">&#34;foobar\x00&#34;</span>
@@ -401,10 +437,13 @@ b = bwt(x, sa).replace(<span style="color:#00f"></span><span style="color:#00f">
 	bwt := BWT(x, sa)
 	bwt = strings.Replace(bwt, <span style="color:#00f">&#34;\x00&#34;</span>, <span style="color:#00f">&#34;$&#34;</span>, <span style="color:#00f">1</span>)
 	fmt.Println(bwt)
-}
-</code></pre></div><h2 id="rust">Rust?</h2>
+}</code></pre></div>
+<h2 id="rust">Rust?</h2>
+
 <p>And then I got to Rust and hit a wall right away. I don&rsquo;t know the language, so of course, I would hit a wall, but it was rather quickly.</p>
+
 <p>I don&rsquo;t know how to even make an array of a size that isn&rsquo;t a compile-time constant.</p>
+
 <p>So, I suppose I&rsquo;d better finish the Go book and move on to learning Rust next week before I need it.</p>
 
 
@@ -486,7 +525,7 @@ b = bwt(x, sa).replace(<span style="color:#00f"></span><span style="color:#00f">
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund |
+        <h6>Copyright &copy; 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>
