@@ -503,3 +503,45 @@ And I don't think it is. Adding it to this simple string library will make the c
 
 But it could be fun.
 
+## UPDATE
+
+Ok, I was stupid. I was thinking that to specify the slice types one place only, I would have to map a function over a list of types. Well, I do have to do that, but it is easier to write a macro that applies a function to each type than a macro that can map a function over them…
+
+If I define a macro like this:
+
+```c
+#define CSTR_MAP_SLICE_TYPES(F, SEP, ...) \
+  F (sslice, char, __VA_ARGS__) SEP       \
+  F (islice, int, __VA_ARGS__) SEP        \
+  F (uislice, unsigned int, __VA_ARGS__)
+#define CSTR_COMMA_SEP() ,
+```
+
+I can apply any macro `F` over all the slice types. I allow additional arguments (because I need those for dispatching), and I have a separator between applications, because I need space when defining types and I need a comma when I dispatch. The `CSTR_COMMA_SEP()` macro expands to a comma, so I can use it when calling `CSTR_MAP_SLICE_TYPES()` (you cannot directly use a comma, since that is a argument separator, but you can call the macro with `CSTR_COMMA_SEP()`.
+
+Now, I can generate the code for all types using
+
+```c
+CSTR_MAP_SLICE_TYPES(CSTR_DEFINE_SLICE, /* no sep */)
+```
+
+where I don't need to list the various types again, and with a little bit of macro hacking
+
+```c
+#define CSTR_DISPATCH_MAP_BASE(STYPE, BTYPE, FUNC) \
+  BTYPE * : cstr_##FUNC##_##STYPE
+#define CSTR_DISPATCH_MAP_SLICE(STYPE, BTYPE, FUNC) \
+  cstr_##STYPE : cstr_##FUNC##_##STYPE
+#define CSTR_DISPATCH_MAP(STYPE, BTYPE, FUNC, MAP_TYPE) \
+  CSTR_DISPATCH_MAP_##MAP_TYPE(STYPE, BTYPE, FUNC)
+
+#define CSTR_DISPATCH_TABLE(FUNC, MAP_TYPE) \
+  CSTR_MAP_SLICE_TYPES(CSTR_DISPATCH_MAP, CSTR_COMMA_SEP(), FUNC, MAP_TYPE)
+
+// Dispatch a function based on the type of X
+#define CSTR_SLICE_DISPATCH(X, MAP_TYPE, FUNC, ...) \
+  _Generic((X), CSTR_DISPATCH_TABLE(FUNC, MAP_TYPE))(__VA_ARGS__)
+```
+
+I can generate the dispatch tables using `CSTR_MAP_SLICE_TYPES()` again. Now, the only place I need to modify if I want to change the slice types is in `CSTR_MAP_SLICE_TYPES()`.
+

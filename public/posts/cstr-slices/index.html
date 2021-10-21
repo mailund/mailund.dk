@@ -1,0 +1,718 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-10582357-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.stackoverflow.com/users/2170269/thomas-mailund"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/fiction/">
+                <i class="fa-li fa  fa-lg"></i><span>Fiction</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>C Slices</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-10-19T04:25:05&#43;02:00">Oct 19, 2021</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/c/">#C</a>
+                
+            </em>
+        </li>
+        
+
+        <li>23 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>About those slices <a href="https://mailund.dk/posts/macro-metaprogramming/">I mentioned yesterday</a>, here&rsquo;s what&rsquo;s that about.</p>
+
+<p>I&rsquo;m working on some string algorithms and more straightforward C implementations than those I put in <a href="https://amzn.to/3pfzvdd">my book</a>.</p>
+
+<p>I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,<sup class="footnote-ref" id="fnref:I-m-toying-with"><a href="#fn:I-m-toying-with">1</a></sup> and I plan to implement them in Rust as soon as I get the time. Still, I&rsquo;m also playing with the idea of reimplementing everything in C in a (perhaps) more accessible form.</p>
+
+<p>Next time I teach my class, I would like to make one language mandatory for the projects. I get a range of weird stuff in the hand-ins, and it is a bit of a hassle since that makes automatic testing less automatic than I would like.</p>
+
+<p>I have a set of scripts that generates test data, and I can plug in the students&rsquo; programs after I adapt them to the interface the projects require (which is usually quite different from what I get). Still, I would much prefer if I could set up automatic testing <em>before</em> I get the reports.</p>
+
+<p>In earlier classes, when I was teaching data science, I used GitHub and Travis to run automatic tests when the students handed in their solutions in the form of pull requests, and I would like to do something similar again. That way, I don&rsquo;t have to review their code until after the automatic tests have vouched for it. Right now, my tests fail half or more of the hand-ins, and I have to send error reports back to get updates. That is something that could be automated.</p>
+
+<p>It is just a bit difficult to automate when they can use any language and any setup they want for the projects. I don&rsquo;t want to spend hours working out how to run Scalar or C# on Travis, and the students shouldn&rsquo;t spend their time on that either when they should be implementing suffix trees and Burrows-Wheeler transforms. No, it would be better if everyone used the same language, and I could give them a test suite.<sup class="footnote-ref" id="fnref:I-am-not-entirel"><a href="#fn:I-am-not-entirel">2</a></sup></p>
+
+<p>About <sup>3</sup>&frasl;<sub>4</sub> of the solutions I get today are in Python, so the natural choice for a mandatory language would be C.</p>
+
+<p>No, hear me out. Python is a beautiful language, it is my language of choice for most of what I do, but it is not a good language for algorithmic programming.</p>
+
+<p>It is slow, which I could live with, and the mix of user-defined functions written in Python and language extensions written in C makes reasoning about the performance a headache. A O(n<sup>2</sup>) algorithm that extensively uses calls to C code is usually faster than an O(n) algorithm in pure Python, at least for the range of input they test their code on, and that gives them a highly mistaken idea about performance.</p>
+
+<p>Add to this that the performance of various operators is not immediately apparent. You and I know, of course, that <code>x[i]</code> is usually O(1) while <code>x[i:j]</code> is O(n), but it isn&rsquo;t obvious when the syntax is almost the same. And I see <em>a lot</em> of slicing in suffix trees, even though I have threatened physical violence to those who do it. (It doesn&rsquo;t stop them; I appear to be less intimidating than I had thought).</p>
+
+<p>The strengths of Python make it the wrong choice for learning how to implement algorithms, in my opinion. The high-order features are hard to reason about computationally, and you have next to no control over the low-level representation of your data.</p>
+
+<p>With Go or Rust or such, you get a language that is perhaps a little closer to the iron, and certainly where the performance is better, but they are not as close to the metal as I would like.</p>
+
+<p>C is a simple language, the basic features you can learn in half an hour. The only difficulty with it for a novice, as I see it, is resource management, and they bloody-well need to learn about that at some point. Even if they never use a language without garbage collection ever again, knowing about resource management gives anyone a better understanding of how a program works and the costs of allocating and deallocating resources.</p>
+
+<p>So, yeah, I&rsquo;m thinking about making C a mandatory language for my class. I&rsquo;ll provide templates for each project, so it isn&rsquo;t too overwhelming and then let them implement the core of our algorithms.</p>
+
+<p>Since the class is about string algorithms, the most important data structure would be strings. However, 0-terminated C strings are a bit tricky for pretty much all the algorithms we look at in class because we need to work on sub-strings. And while they might fool themselves into thinking that slicing in Python is efficient, I think that they can work out that explicitly allocating and copying strings to get sub-strings is not. And you cannot create 0-terminated strings any other way unless you destroy the string they sit inside.</p>
+
+<p>No, a better representation for substrings is needed, something like those I wrote about in <a href="https://amzn.to/3n61cT3">Pointers in C</a>. And this time, I want a kind of strings that I can slice (but in constant time, like in Go), and just to keep it familiar to the Python programmers, I want to be able to index from the right using negative numbers. Also, I need these features for more than just strings; when I build suffix arrays, for example, I need to slice arrays of integers.</p>
+
+<h1 id="slices-as-wrapped-buffers">Slices as wrapped buffers</h1>
+
+<p>I want my slices to be lightweight. I don&rsquo;t plan to allocate them on the heap but pass them around as values. That makes the memory-management much easier. Slices will just be wrappers around a buffer of allocated memory, and while that buffer must be managed, of course, the slices themselves do not.</p>
+
+<p>Slices will just consist of a pointer into a buffer and a length. To get a sub-slice of such a beast, you can simply move the pointer and update the length in constant time. This is practically how slices are implemented in Go, except that Go also has a capacity for slices and allow them to be extended. I don&rsquo;t want any kind of <code>realloc()</code> on buffers I have pointers into, so that will be a no-no for my slices.</p>
+
+<p><img src="slices.png" alt="Slices over a buffer" /></p>
+
+<p>With slices over different types, I have a macro for defining them:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE_TYPE(TYPE) \
+</span><span style="color:#008080"></span>    <span style="color:#000080;font-weight:bold">struct</span>                    \
+    {                         \
+        <span style="color:#000080;font-weight:bold">signed</span> <span style="color:#000080;font-weight:bold">long</span> <span style="color:#000080;font-weight:bold">long</span> len; \
+        TYPE *buf;            \
+    }</code></pre></div>
+<p>You might wonder why I use a (signed) <code>long long</code> for the length, where <code>size_t</code> might be more natural. It has to do with how I want to index into them. I will allow indexing the way Python does it, where -1 is the last element, -2 is the second-to-last element, etc. There, I need signed indices, and <code>long long</code> is the longest signed integer I have. If I made the slice length <code>unsigned long long</code> (or <code>size_t</code>), the slices could be larger than I can index, which would be silly.</p>
+
+<p>You can immediately create a slice from a buffer with something like:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">typedef</span> CSTR_SLICE_TYPE(<span style="color:#000080;font-weight:bold">char</span>) sslice;
+
+<span style="color:#000080;font-weight:bold">void</span> foo(<span style="color:#000080;font-weight:bold">char</span> *str)
+{
+   sslice x = { .buf = str, .len = strlen(str) }
+   <span style="color:#080;font-style:italic">// use x for something
+</span><span style="color:#080;font-style:italic"></span>}</code></pre></div>
+<p>Here, <code>str</code> is supposed to be a 0-terminated C string, so we can get the length with <code>strlen(str)</code>, and we create a <code>sslice</code> (a slice over <code>char</code>) by setting the buffer and length.</p>
+
+<p>A macro would be nice, so we wouldn&rsquo;t have to type in the struct every time we assign a slice</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE_INIT(BUF, LEN)  \
+</span><span style="color:#008080"></span>    {                              \
+        .buf = (BUF), .len = (LEN) \
+    }</code></pre></div>
+<p>which we could use as</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    sslice x = CSTR_SLICE_INIT(str, strlen(str));</code></pre></div>
+<p>No problem here, but if you want to assign to (not just initialise) a slice, you need to cast</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    sslice z;
+    z = (sslice)CSTR_SLICE_INIT(x.buf, x.len / <span style="color:#00f">2</span>);</code></pre></div>
+<p>Not a big problem, of course, but I don&rsquo;t like this kind of redundancy. I have already provided the type for z; I also know that <code>x.buf</code> is <code>char</code>, and I don&rsquo;t want to give this information again.</p>
+
+<p>I know how this will go if I want to change the type later. I will have to change a gazillion lines just because I changed a type, even though there is no change in the actual code.</p>
+
+<p>I want a generic call</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">   z = CSTR_SLICE(x.buf, x.len / <span style="color:#00f">2</span>);</code></pre></div>
+<p>that infers the type from <code>x.buf</code> (and of course checks that it matches <code>z</code>, but that will happen with the normal C type-check if <code>CSTR_SLICE()</code> returns the right type.</p>
+
+<p>We want type-dispatch, picking the code to run based on the type information in the <code>buf</code> argument.</p>
+
+<p>That is something we get for free with C++ templates, but it is not something that C supports.</p>
+
+<p>The <code>_Generic()</code> feature (from C11) can do a little bit (very little) to help, though.</p>
+
+<p>With <code>_Generic()</code>, you can write expressions such as</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  _Generic(x, type1: val1, type2: val2, <span style="color:#a61717;background-color:#e3d2d2">…</span>)</code></pre></div>
+<p>and based on <code>x</code>, you get the value that matches <code>x</code>&rsquo;s type.</p>
+
+<p>You cannot use a type for <code>x</code>, it has to be an expression, and all the values needs to be expressions as well. So, you cannot write</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE_TYPE(BUF) \
+</span><span style="color:#008080"></span>  _Generic(BUF, <span style="color:#000080;font-weight:bold">char</span> *: sslice, <span style="color:#000080;font-weight:bold">int</span> *: islice, <span style="color:#a61717;background-color:#e3d2d2">…</span>)</code></pre></div>
+<p>and use it in</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE(BUF, LEN) \
+</span><span style="color:#008080"></span>  (CSTR_SLICE_TYPE(BUF))CSTR_SLICE_INIT(BUF, LEN)</code></pre></div>
+<p>Because <code>sslice</code> and <code>islice</code> are types, the <code>_Generic()</code> call doesn&rsquo;t handle them.</p>
+
+<p>Then, of course, you could try something like</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE(BUF, LEN)                    \
+</span><span style="color:#008080"></span>  _Generic((BUF),                               \
+	  <span style="color:#000080;font-weight:bold">char</span> *:(sslice)CSTR_SLICE_INIT(BUF, LEN), \
+	  <span style="color:#000080;font-weight:bold">int</span> *: (islice)CSTR_SLICE_INIT(BUF, LEN))</code></pre></div>
+<p>but here, <code>_Generic()</code> is downright mean. It requires that all the branches in the choices are semantically correct, meaning, among other things, that the type checker should be happy with them. If we give it a <code>char *</code> buffer, the <code>char *</code> branch creates a <code>sslice</code> struct, and all is good, but the <code>int *</code> branch creates an <code>islice</code> struct <em>from a <code>char *</code> buffer</em>, and that is a type error. So no go.</p>
+
+<p>I think this is idiotic; the <code>_Generic()</code> call will only ever evaluate the right branch, so why does the type checking matter on the others? But it does, so this doesn&rsquo;t work.</p>
+
+<p>You can do this instead:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE(BUF, LEN)                             \
+</span><span style="color:#008080"></span>  _Generic((BUF),                                        \
+	  <span style="color:#000080;font-weight:bold">char</span> *:(sslice)CSTR_SLICE_INIT((<span style="color:#000080;font-weight:bold">void</span>*)(BUF), LEN), \
+	  <span style="color:#000080;font-weight:bold">int</span> *: (islice)CSTR_SLICE_INIT((<span style="color:#000080;font-weight:bold">void</span>*)(BUF), LEN))</code></pre></div>
+<p>We still dispatch on the type of <code>BUF</code>, but in the expressions, we cast it to <code>void *</code>. We can do that for all pointer types, and we can cast <code>void *</code> back to any pointer type again, so the type checker is happy with this (but only because we essentially throw away all the type information).</p>
+
+<p>That was my first (working) solution, but I abandoned it again a little later. I thought I could do similar things with the indexing and slicing operations I wanted, using macros and dispatching using <code>_Generic()</code>, but I ran into two issues.</p>
+
+<p>The first is well-known to anyone who writes macros: the arguments are evaluated multiple times if you use them more than once in the expansion. I have a test suite that generates random sub-slices, and throwing <code>rand()</code> into macro expansions means that we get a new value each time we evaluate the argument.</p>
+
+<p>That was an unpleasant experience (I had thought that multiple evaluations wouldn&rsquo;t be a problem since I had checked that the compiler optimised them away when the expressions were constant, but they weren&rsquo;t here).</p>
+
+<p>The second issue is that if I want multiple macros for type-dispatching, I need to update all of them every time I add a new slice type. You don&rsquo;t get any help from the compiler; you just have to hunt down and find all the <code>_Generic()</code> dispatch macros.</p>
+
+<p>To get around the first problem, evaluating parameters more than once, there are only functions. They don&rsquo;t re-evaluate arguments. It isn&rsquo;t an issue with the macro above, but for consistency, I changed <code>CSTR_SLICE()</code> when I added the other operations, so it dispatches to functions instead.</p>
+
+<p>If you have a function for each slice, doing what <code>CSTR_SLICE()</code> does above, but for a specific type, you can use <code>_Generic()</code> to pick the right function.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE(BUF, LEN)       \
+</span><span style="color:#008080"></span>   _Generic((BUF),                 \
+       <span style="color:#000080;font-weight:bold">char</span> *: cstr_new_sslice,    \
+       <span style="color:#000080;font-weight:bold">int</span> *:  cstr_new_islice)(BUF, LEN)</code></pre></div>
+<p>Here, we pick a function, <code>cstr_new_sslice</code> or <code>cstr_new_islice</code>, based on the type of <code>BUF</code>. The functions have different types; the first takes a <code>char *</code> as its first argument and the second an <code>int *</code>, but <code>_Generic()</code> doesn&rsquo;t care about that (for some reason, but it is good).</p>
+
+<p>We do not call the functions inside the <code>_Generic()</code>, so we don&rsquo;t have to adapt the <code>BUF</code> type to the function with the <code>void *</code> trick. The <code>_Generic()</code> expression will only give us the function that matches the type of <code>BUF</code>, and then we apply that function <em>outside</em> the <code>_Generic()</code>, where we don&rsquo;t have to worry about the branches not taken.</p>
+
+<p>This trick means that we need a function per slice type, but we can generate those:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE_NEW_GENERATOR(NAME, TYPE)           \
+</span><span style="color:#008080"></span>    INLINE cstr_<span style="color:#008080">##NAME                                 \
+</span><span style="color:#008080"></span>        cstr_new_<span style="color:#008080">##NAME(TYPE *buf, long long len)      \
+</span><span style="color:#008080"></span>    {                                                  \
+        <span style="color:#000080;font-weight:bold">return</span> (cstr_<span style="color:#008080">##NAME)CSTR_SLICE_INIT(buf, len); \
+</span><span style="color:#008080"></span>    }
+    
+<span style="color:#008080">#define CSTR_DEFINE_SLICE(NAME, TYPE)          \
+</span><span style="color:#008080"></span>    <span style="color:#000080;font-weight:bold">typedef</span> CSTR_SLICE_TYPE(TYPE) cstr_<span style="color:#008080">##NAME; \
+</span><span style="color:#008080"></span>    CSTR_SLICE_NEW_GENERATOR(NAME, TYPE)
+    
+CSTR_DEFINE_SLICE(sslice, <span style="color:#000080;font-weight:bold">char</span>)
+CSTR_DEFINE_SLICE(islice, <span style="color:#000080;font-weight:bold">int</span>)
+CSTR_DEFINE_SLICE(uislice, <span style="color:#000080;font-weight:bold">unsigned</span> <span style="color:#000080;font-weight:bold">int</span>)</code></pre></div>
+<p>I&rsquo;ll get to how I ended up dispatching on types without too much redundancy a little later. First, let&rsquo;s add a bit more functionality.</p>
+
+<h2 id="allocating-and-deallocating-buffers">Allocating and deallocating buffers</h2>
+
+<p>Now, the slices are supposed to just wrap buffers, so we can pass sub-strings and sub-arrays around in function calls. But we do, on occasions, have to allocate the underlying buffers.</p>
+
+<p>I thought about keeping that entirely separated from slices. Still, it does make sense to me to keep the information about buffer lengths around when I allocate them (if, for nothing else, to make sure that I don&rsquo;t make a slice that goes beyond the end), and the slices are doing exactly that.</p>
+
+<p>So, I added functionality for allocating and deallocating buffers. I generated functions for allocation, where I don&rsquo;t want the length argument to be evaluated more than once. When I deallocate, I want to set a slice&rsquo;s buffer to <code>NULL</code>, so I don&rsquo;t accidentally access memory that I&rsquo;m no longer in charge of, so I use a macro for that.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_BUFFER_ALLOC_GENERATOR(TYPE)                         \
+</span><span style="color:#008080"></span>    INLINE cstr_<span style="color:#008080">##TYPE cstr_alloc_buffer_##TYPE(long long len)    \
+</span><span style="color:#008080"></span>    {                                                             \
+        cstr_<span style="color:#008080">##TYPE dummy; </span><span style="color:#080;font-style:italic">/* use dummy to get underlying type */</span><span style="color:#008080"> \
+</span><span style="color:#008080"></span>        <span style="color:#000080;font-weight:bold">return</span> (cstr_<span style="color:#008080">##TYPE)CSTR_SLICE_INIT(                      \
+</span><span style="color:#008080"></span>            cstr_malloc_buffer(<span style="color:#000080;font-weight:bold">sizeof</span> dummy.buf[<span style="color:#00f">0</span>], (size_t)len), \
+            len);                                                 \
+    }
+
+<span style="color:#008080">#define CSTR_FREE_SLICE_BUFFER(SLICE) \
+</span><span style="color:#008080"></span>    <span style="color:#000080;font-weight:bold">do</span>                                \
+    {                                 \
+        free((SLICE).buf);            \
+        (SLICE).buf = <span style="color:#00f">0</span>;              \
+        (SLICE).len = <span style="color:#00f">0</span>;              \
+    } <span style="color:#000080;font-weight:bold">while</span> (<span style="color:#00f">0</span>)</code></pre></div>
+<p>Below, I will also add a type dispatch to allocation with the same <code>_Generic()</code> approach as for <code>CSTR_SLICE()</code>. Notice the similarities in the names for the functions that create a new slice and that allocate a buffer, <code>cstr_[function name]_##TYPE</code>, where <code>[function name]</code> was <code>new</code> for <code>CSTR_SLICE()</code> and <code>alloc_buffer</code> for allocating buffers. I will rely on this convention when I generate the type dispatch code.</p>
+
+<p>All types and functions have a <code>cstr_</code> prefix, so I don&rsquo;t pollute anyone else&rsquo;s namespace, and slice-specific functions will have a <code>_[slice type]</code> suffix, e.g., <code>_sslice</code> or <code>_islice</code>.</p>
+
+<p>The generated allocator will look like this, for <code>sslice</code> and <code>char *</code> buffers:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">INLINE cstr_sslice
+cstr_alloc_buffer_sslice(<span style="color:#000080;font-weight:bold">long</span> <span style="color:#000080;font-weight:bold">long</span> len)
+{
+    cstr_sslice dummy;
+    <span style="color:#000080;font-weight:bold">return</span> (cstr_sslice)CSTR_SLICE_INIT(
+            cstr_malloc_buffer(
+	            <span style="color:#000080;font-weight:bold">sizeof</span> dummy.buf[<span style="color:#00f">0</span>], (size_t)len),
+            len);
+}</code></pre></div>
+<p>The <code>cstr_malloc_buffer()</code> function (see below) takes two arguments, the size of objects in a buffer and the length of the buffer. I want the size of objects to always match what is in the slice type, so I get it from there. I cannot get a member from a type, but I can create a local variable that I don&rsquo;t use (except at compile time) and get the size of buffer elements from that. It will be optimised away by the compiler.</p>
+
+<p>The allocation function is part of a trio I used to 1) abort the program if <code>malloc()</code> fails (it is unlikely, but I don&rsquo;t want to check allocation success everywhere, as that is a major hassle) and 2) compute the size of memory chunks based on the data I need.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> *cstr_malloc(size_t size)
+{
+    <span style="color:#000080;font-weight:bold">void</span> *buf = malloc(size);
+    <span style="color:#000080;font-weight:bold">if</span> (!buf)
+    {
+        fprintf(stderr, <span style="color:#00f">&#34;Allocation error, terminating</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>);
+        exit(<span style="color:#00f">2</span>);
+    }
+    <span style="color:#000080;font-weight:bold">return</span> buf;
+}
+
+<span style="color:#000080;font-weight:bold">void</span> *cstr_malloc_header_array(size_t base_size,
+                               size_t elm_size,
+                               size_t len)
+{
+    <span style="color:#000080;font-weight:bold">if</span> ((SIZE_MAX - base_size) / elm_size &lt; len) {
+        fprintf(stderr, 
+                <span style="color:#00f">&#34;Trying to allocte a buffer longer than SIZE_MAX</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>);
+        exit(<span style="color:#00f">2</span>);
+    }
+    <span style="color:#000080;font-weight:bold">return</span> cstr_malloc(base_size + elm_size * len);
+}
+
+<span style="color:#000080;font-weight:bold">void</span> *cstr_malloc_buffer(size_t obj_size, size_t len)
+{
+    <span style="color:#080;font-style:italic">// a buffer is just a flexible array in a struct that
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// has zero header...
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">return</span> cstr_malloc_header_array(<span style="color:#00f">0</span>, obj_size, len);
+}</code></pre></div>
+<p>The <code>cstr_malloc_header_array()</code> function is for dealing with flexible array members and is not important right now. It is for structs such as</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> X {
+  <span style="color:#000080;font-weight:bold">int</span> some;
+  <span style="color:#000080;font-weight:bold">char</span> variables;
+  <span style="color:#000080;font-weight:bold">float</span> data[]; <span style="color:#080;font-style:italic">// flexible array member
+</span><span style="color:#080;font-style:italic"></span>};</code></pre></div>
+<p>where <code>data</code> can be a variable number of elements. The &ldquo;header&rdquo; for the allocation is the space from the top of the struct down to where <code>data</code> sits. That is the minimal space such a struct needs. After that, it needs some number of objects of size <code>sizeof data[0]</code>, (i.e., <code>sizeof(float)</code>).</p>
+
+<p>You can get all the information you need from the struct, of course, and I have a macro for allocating flexible array structs:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Macro for getting the offset of a flexible member array
+</span><span style="color:#080;font-style:italic">// from an instance rather than a type (as for
+</span><span style="color:#080;font-style:italic">// offsetof(type,member)). This ensures we get the right
+</span><span style="color:#080;font-style:italic">// type, to match the instance. The macro destroys the
+</span><span style="color:#080;font-style:italic">// pointer variable by setting it to NULL, so use with care.
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_OFFSETOF_INST(PTR, MEMBER) \
+</span><span style="color:#008080"></span>    (size_t)(&amp;(PTR = <span style="color:#00f">0</span>)-&gt;MEMBER)
+
+<span style="color:#080;font-style:italic">// Macro for allocating a struct with a flexible array
+</span><span style="color:#080;font-style:italic">// element. Gets the offset of the array from a varialble,
+</span><span style="color:#080;font-style:italic">// which requires less redundancy and potential for errors
+</span><span style="color:#080;font-style:italic">// than offsetof() which requires a type.
+</span><span style="color:#080;font-style:italic">// VAR is the struct variable (must be a pointer), FLEX_ARRAY
+</span><span style="color:#080;font-style:italic">// is the name of the flexible array member.
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_MALLOC_FLEX_ARRAY(VAR, FLEX_ARRAY, LEN) \
+</span><span style="color:#008080"></span>    cstr_malloc_header_array(                        \
+        CSTR_OFFSETOF_INST(VAR, FLEX_ARRAY),         \
+        <span style="color:#000080;font-weight:bold">sizeof</span>(VAR-&gt;FLEX_ARRAY[<span style="color:#00f">0</span>]), LEN)</code></pre></div>
+<p>Normally, you would get the header space as either <code>sizeof(struc X)</code>—which gives you the space <code>X</code> new without <code>data</code>, but which might be too much because of alignment—or <code>offsetof(struct X, data)</code>.</p>
+
+<p>In <code>CSTR_MALLOC_FLEX_ARRAY()</code>, I could get <code>sizeof()</code> the struct from a variable of the type, but as I said, that might waste some memory. I cannot use <code>offsetof()</code> because it needs a type. If <code>VAR</code> is a <code>struct X *</code> variable, I could use <code>offsetof(*typeof(VAR), data)</code> or something to that effect, but <code>typeof()</code> is a compiler extension, so I won&rsquo;t necessarily have it.</p>
+
+<p>The trick in <code>CSTR_OFFSETOF_INST()</code> gets me the offset of <code>data</code> from a pointer to the struct. It only works because I assign 0 to the pointer in the process, so it is destructive in a sense, but I only intend to use it when I assign to <code>VAR</code>, so it will be fine.</p>
+
+<p>Anyway, I got side-tracked there. Back to slices.</p>
+
+<h2 id="indexing-and-slicing">Indexing and slicing</h2>
+
+<p>For indexing and extracting sub-slices, we first need to handle negative indices the right way. There is nothing complicated to it; if you use a negative index, add the length to it to move it into a positive range:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// When indexing x[i], if 0 &lt;= i &lt; x.len, we get x.buf[i], and
+</span><span style="color:#080;font-style:italic">// if x.len &lt; i &lt;= -1 we get x.buf[x.len - abs(i)], i.e., we
+</span><span style="color:#080;font-style:italic">// index from the back.
+</span><span style="color:#080;font-style:italic"></span>INLINE <span style="color:#000080;font-weight:bold">long</span> <span style="color:#000080;font-weight:bold">long</span> cstr_idx(<span style="color:#000080;font-weight:bold">long</span> <span style="color:#000080;font-weight:bold">long</span> i, <span style="color:#000080;font-weight:bold">long</span> <span style="color:#000080;font-weight:bold">long</span> len)
+{
+    <span style="color:#080;font-style:italic">// When i is negative we add it to len to get len - abs(i).
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">long</span> <span style="color:#000080;font-weight:bold">long</span> j = i &gt;= <span style="color:#00f">0</span> ? i : len + i;
+    assert(<span style="color:#00f">0</span> &lt;= j &amp;&amp; j &lt;= len);
+    <span style="color:#000080;font-weight:bold">return</span> j;
+}</code></pre></div>
+<p>This is the same indexing code for all slices, but the remaining operations vary by type, so we need to generate them.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">define CSTR_INDEX_AND_SLICING_GENERATOR(NAME, TYPE)                     \
+    INLINE TYPE                                                          \
+        cstr_idx_<span style="color:#008080">##NAME(cstr_##NAME x, long long i)                      \
+</span><span style="color:#008080"></span>    {                                                                    \
+        <span style="color:#000080;font-weight:bold">return</span> x.buf[cstr_idx(i, x.len)];                                \
+    }                                                                    \
+    INLINE cstr_<span style="color:#008080">##NAME                                                   \
+</span><span style="color:#008080"></span>        cstr_subslice_<span style="color:#008080">##NAME(cstr_##NAME x,                              \
+</span><span style="color:#008080"></span>                             <span style="color:#000080;font-weight:bold">long</span> <span style="color:#000080;font-weight:bold">long</span> i, <span style="color:#000080;font-weight:bold">long</span> <span style="color:#000080;font-weight:bold">long</span> j)                   \
+    {                                                                    \
+        i = cstr_idx(i, x.len);                                          \
+        j = cstr_idx(j, x.len);                                          \
+        assert(i &lt;= j);                                                  \
+        <span style="color:#000080;font-weight:bold">return</span> (cstr_<span style="color:#008080">##NAME)CSTR_SLICE_INIT(x.buf + i, j - i);           \
+</span><span style="color:#008080"></span>    }                                                                    \
+    INLINE cstr_<span style="color:#008080">##NAME                                                   \
+</span><span style="color:#008080"></span>        cstr_prefix_<span style="color:#008080">##NAME(cstr_##NAME x, long long i)                   \
+</span><span style="color:#008080"></span>    {                                                                    \
+        <span style="color:#000080;font-weight:bold">return</span> (cstr_<span style="color:#008080">##NAME)CSTR_SLICE_INIT(x.buf, cstr_idx(i, x.len));  \
+</span><span style="color:#008080"></span>    }                                                                    \
+    INLINE cstr_<span style="color:#008080">##NAME                                                   \
+</span><span style="color:#008080"></span>        cstr_suffix_<span style="color:#008080">##NAME(cstr_##NAME x, long long i)                   \
+</span><span style="color:#008080"></span>    {                                                                    \
+        <span style="color:#000080;font-weight:bold">return</span> (cstr_<span style="color:#008080">##NAME)CSTR_SLICE_INIT(x.buf + cstr_idx(i, x.len),  \
+</span><span style="color:#008080"></span>                                            x.len - cstr_idx(i, x.len)); \
+    }</code></pre></div>
+<p>You get <code>cstr_idx_[type]</code> for getting an index, <code>cstr_subslice_[type]</code> for getting a sub-sequence, <code>x[i:j]</code> in Python or Go, <code>cstr_prefix_[type]</code> for getting a prefix, <code>x[:i]</code>, and <code>cstr_suffix_[type]</code> for getting a suffix, <code>x[i:]</code>. The need the prefix and suffix functions because I cannot easily leave an index undefined as in Python or Go, it is <code>x[i:j]</code> and never <code>x[i:]</code> or <code>x[:j]</code> (unless you have some idea for how I could do that?)</p>
+
+<p>There are also functions for printing and comparing slices. They are all generated the same way, so I don&rsquo;t think there is anything new to that, and I won&rsquo;t show the code. Let&rsquo;s just stop here, create some slices</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_DEFINE_SLICE(NAME, TYPE)          \
+</span><span style="color:#008080"></span>    <span style="color:#000080;font-weight:bold">typedef</span> CSTR_SLICE_TYPE(TYPE) cstr_<span style="color:#008080">##NAME</span>; \
+    CSTR_SLICE_NEW_GENERATOR(NAME, TYPE)       \
+    CSTR_BUFFER_ALLOC_GENERATOR(NAME)          \
+    CSTR_INDEX_AND_SLICING_GENERATOR(NAME, TYPE)
+
+CSTR_DEFINE_SLICE(sslice, <span style="color:#000080;font-weight:bold">char</span>)
+CSTR_DEFINE_SLICE(islice, <span style="color:#000080;font-weight:bold">int</span>)
+CSTR_DEFINE_SLICE(uislice, <span style="color:#000080;font-weight:bold">unsigned</span> <span style="color:#000080;font-weight:bold">int</span>)</code></pre></div>
+<p>and move on to how I dispatch on types.</p>
+
+<h1 id="type-dispatching">Type dispatching</h1>
+
+<p>We want operations, <code>M(x, y, z)</code>, where <code>M</code> dispatches to the right function based on <code>x</code>, and then call that function. So, for example, we should be able to generate a new slice from a buffer and a length as</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">char</span> *c_buf = <span style="color:#080;font-style:italic">/* something */</span>;
+<span style="color:#000080;font-weight:bold">int</span> *i_buf = <span style="color:#080;font-style:italic">/* something */</span>;
+
+cstr_sslice x = CSTR_SLICE(c_buf, <span style="color:#00f">42</span>);
+cstr_islice y = CSTR_SLICE(i_buf, <span style="color:#00f">42</span>);</code></pre></div>
+<p>where <code>CSTR_SLICE(c_buf, 42)</code> becomes <code>cstr_new_sslice(c_buf, 42)</code> because <code>c_buf</code> is <code>char *</code> and <code>CSTR_SLICE(i_buf, 42)</code> becomes <code>cstr_new_islice(i_buf, 42)</code> because <code>i_buf</code> is <code>int *</code>, and we should be able to write</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">cstr_sslice z = CSTR_SUBSLICE(x, <span style="color:#00f">13</span>, <span style="color:#00f">31</span>);
+cstr_islice w = CSTR_SUBSLICE(y, <span style="color:#00f">13</span>, <span style="color:#00f">31</span>);</code></pre></div>
+<p>where <code>CSTR_SUBSLICE(x, 13, 31)</code> becomes <code>cstr_subslice_sslice(x, 13, 31)</code> because <code>x</code> has type <code>cstr_sslice</code> and <code>CSTR_SUBSLICE(y, 13, 31)</code> becomes <code>cstr_subslice_islice(y, 13, 31)</code> because <code>y</code> has type <code>cstr_islice</code>.</p>
+
+<p>Yes, we could just use the functions directly, but if you change the type of a slice later, there are a <em>lot</em> of places where you need to change function names. The compiler helps you find them because the type checker will complain, but it is still a hassle, and we <em>can</em> dispatch based on the type, so we don&rsquo;t need to pick the right functions ourselves.</p>
+
+<p>We need to use <code>_Generic()</code>, and we will use it to pick an appropriate function based on the first argument. The main macro for achieving this looks like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE_DISPATCH(X, MAP_TYPE, FUNC, ...) \
+</span><span style="color:#008080"></span>    _Generic((X), CSTR_DISPATCH_TABLE(FUNC, MAP_TYPE))(__VA_ARGS__)</code></pre></div>
+<p>The <code>X</code> parameter is the object we dispatch on. The <code>MAP_TYPE</code> will determine whether we are dispatching on a slice (with <code>MAP_TYPE = SLICE</code>) or the underlying base type (with <code>MAP_TYPE = BASE</code>). So, for <code>CSTR_SLICE(buf, len)</code> we want to use <code>MAP_TYPE = BASE</code> because <code>buf</code> will have the base type, e.g., <code>char *</code> or <code>int *</code>, but for <code>CSTR_SUBSLICE(x, i, j)</code> we will dispatch on the slice type, <code>MAP_TYPE = SLICE</code> because <code>x</code> should be a slice.</p>
+
+<p>The <code>FUNC</code> argument defines the function. For <code>cstr_new_sslice</code> or <code>cstr_alloc_buffer_sslice</code>, <code>FUNC</code> would be <code>new</code> and <code>alloc_buffer</code>, respectively. The remaining parameters, <code>…</code>, are passed to the function we dispatch to.</p>
+
+<p>This is how we would use <code>CSTR_DISPATCH</code> to define operations:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Dispatch on base type to call the &#34;new&#34; function
+</span><span style="color:#080;font-style:italic">// with arguments (BUF, LEN)
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_SLICE(BUF, LEN) \
+</span><span style="color:#008080"></span>    CSTR_SLICE_DISPATCH(BUF, BASE, new, BUF, LEN)
+
+<span style="color:#080;font-style:italic">// Dispatch on slice type to call &#34;alloc_buffer&#34;
+</span><span style="color:#080;font-style:italic">// with argument LEN
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_ALLOC_SLICE_BUFFER(S, LEN) \
+</span><span style="color:#008080"></span>    CSTR_SLICE_DISPATCH(S, SLICE, alloc_buffer, LEN)
+    
+<span style="color:#080;font-style:italic">// Dispatch on slice type to index and sub-slice
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_IDX(S, I) \
+</span><span style="color:#008080"></span>    CSTR_SLICE_DISPATCH(S, SLICE, idx, S, I)
+<span style="color:#008080">#define CSTR_SUBSLICE(S, I, J) \
+</span><span style="color:#008080"></span>    CSTR_SLICE_DISPATCH(S, SLICE, subslice, S, I, J)
+<span style="color:#008080">#define CSTR_PREFIX(S, I) \
+</span><span style="color:#008080"></span>    CSTR_SLICE_DISPATCH(S, SLICE, prefix, S, I)
+<span style="color:#008080">#define CSTR_SUFFIX(S, I) \
+</span><span style="color:#008080"></span>    CSTR_SLICE_DISPATCH(S, SLICE, suffix, S, I)</code></pre></div>
+<p>We need to provide <code>_Generic()</code> with the type-to-function table to make the dispatching code work, which is what the <code>CSTR_DISPATCH_TABLE()</code> macro does.</p>
+
+<p>It needs a mapping from each type, slice or base, to a function, and the different slice types are hardwired in it. I&rsquo;m not happy with that but see below.</p>
+
+<p>Anyway, this is what it looks like:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_DISPATCH_TABLE(FUNC, MAP_TYPE)             \
+</span><span style="color:#008080"></span>    CSTR_DISPATCH_MAP(sslice, <span style="color:#000080;font-weight:bold">char</span>, FUNC, MAP_TYPE),    \
+    CSTR_DISPATCH_MAP(islice, <span style="color:#000080;font-weight:bold">int</span>, FUNC, MAP_TYPE),     \
+    CSTR_DISPATCH_MAP(uislice, <span style="color:#000080;font-weight:bold">unsigned</span> <span style="color:#000080;font-weight:bold">int</span>, FUNC, MAP_TYPE)</code></pre></div>
+<p>There is a call to <code>CSTR_DISPATCH_MAP()</code> for each slice type. The first two arguments are the slice type and the base type, then it gets the <code>FUNC</code> name and the mapping type (which should be <code>BASE</code> or <code>SLICE</code>).</p>
+
+<p>We can then dispatch to separate macros based on the mapping type using concatenation:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_DISPATCH_MAP(STYPE, BTYPE, FUNC, MAP_TYPE) \
+</span><span style="color:#008080"></span>    CSTR_DISPATCH_MAP_<span style="color:#008080">##MAP_TYPE(STYPE, BTYPE, FUNC)</span></code></pre></div>
+<p>so we will either call <code>CSTR_DISPATCH_MAP_BASE(STYPE, BTYPE)</code> or <code>CSTR_DISPATCH_MAP_SLICE(STYPE, BTYPE)</code> based on what <code>MAP_TYPE</code> was. Those macros, fortunately, are quite simple. We need a slice or base type (<code>STYPE</code> or <code>BTYPE</code> on the left of a colon and the function we dispatch to (<code>cstr_[FUNC]_[STYPE]</code>) on the right:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_DISPATCH_MAP_BASE(STYPE, BTYPE, FUNC) \
+</span><span style="color:#008080"></span>    BTYPE * : cstr_<span style="color:#008080">##FUNC##_##STYPE
+</span><span style="color:#008080">#define CSTR_DISPATCH_MAP_SLICE(STYPE, BTYPE, FUNC) \
+</span><span style="color:#008080"></span>    cstr_<span style="color:#008080">##STYPE : cstr_##FUNC##_##STYPE</span></code></pre></div>
+<p>That&rsquo;s it; that&rsquo;s static type dispatching for slices.</p>
+
+<p>I am reasonably satisfied with this solution. Generating functions is always a bit tricky, in the unlikely event of a bug, because debugging it is annoying. But I try to avoid making mistakes, and then it shouldn&rsquo;t be a problem.</p>
+
+<p>What really annoys me isn&rsquo;t that, though, but the redundancy in defining slice types and dispatching. I need to define all the types and generate all the code in one place, and then I also need to add the same information to the <code>CSTR_DISPATCH_TABLE()</code>. It isn&rsquo;t a major problem; I define the table right after the <code>CSTR_DEFINE_SLICE()</code> calls, so I have the code in the same place, but it still annoys me.</p>
+
+<p>I would love to generate the types <em>and</em> the dispatch table in the same macro call, but it isn&rsquo;t easy. You cannot define new macros inside macro expansions, so I cannot build <code>CSTR_DISPATCH_TABLE()</code>.</p>
+
+<p>I could, however, define the slice names and base types in a macro, use meta-programming to run through that to generate the type, and use meta-programming to generate the dispatch table when I need it. That way, I would get the information from the same place for each, and there would only be one place to add or change slice types.</p>
+
+<p>That is where I went down the meta-programming rabbit hole <a href="https://mailund.dk/posts/macro-metaprogramming/">I wrote about yesterday</a>.</p>
+
+<p>I&rsquo;m pretty sure that it can be done, but mapping over pairs of values, parsing along function and mapping type, and all that jive gave me some pretty nasty code, and I decided that it wasn&rsquo;t worth it.</p>
+
+<p>And I don&rsquo;t think it is. Adding it to this simple string library will make the code infinitely more complicated with practically no gain to it. I would love to figure out a solution anyway, but it is probably something I will just do for fun.</p>
+
+<p>But it could be fun.</p>
+
+<h2 id="update">UPDATE</h2>
+
+<p>Ok, I was stupid. I was thinking that to specify the slice types one place only, I would have to map a function over a list of types. Well, I do have to do that, but it is easier to write a macro that applies a function to each type than a macro that can map a function over them…</p>
+
+<p>If I define a macro like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_MAP_SLICE_TYPES(F, SEP, ...) \
+</span><span style="color:#008080"></span>  F (sslice, <span style="color:#000080;font-weight:bold">char</span>, __VA_ARGS__) SEP       \
+  F (islice, <span style="color:#000080;font-weight:bold">int</span>, __VA_ARGS__) SEP        \
+  F (uislice, <span style="color:#000080;font-weight:bold">unsigned</span> <span style="color:#000080;font-weight:bold">int</span>, __VA_ARGS__)
+<span style="color:#008080">#define CSTR_COMMA_SEP() ,</span></code></pre></div>
+<p>I can apply any macro <code>F</code> over all the slice types. I allow additional arguments (because I need those for dispatching), and I have a separator between applications, because I need space when defining types and I need a comma when I dispatch. The <code>CSTR_COMMA_SEP()</code> macro expands to a comma, so I can use it when calling <code>CSTR_MAP_SLICE_TYPES()</code> (you cannot directly use a comma, since that is a argument separator, but you can call the macro with <code>CSTR_COMMA_SEP()</code>.</p>
+
+<p>Now, I can generate the code for all types using</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">CSTR_MAP_SLICE_TYPES(CSTR_DEFINE_SLICE, <span style="color:#080;font-style:italic">/* no sep */</span>)</code></pre></div>
+<p>where I don&rsquo;t need to list the various types again, and with a little bit of macro hacking</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_DISPATCH_MAP_BASE(STYPE, BTYPE, FUNC) \
+</span><span style="color:#008080"></span>  BTYPE * : cstr_<span style="color:#008080">##FUNC##_##STYPE
+</span><span style="color:#008080">#define CSTR_DISPATCH_MAP_SLICE(STYPE, BTYPE, FUNC) \
+</span><span style="color:#008080"></span>  cstr_<span style="color:#008080">##STYPE : cstr_##FUNC##_##STYPE
+</span><span style="color:#008080">#define CSTR_DISPATCH_MAP(STYPE, BTYPE, FUNC, MAP_TYPE) \
+</span><span style="color:#008080"></span>  CSTR_DISPATCH_MAP_<span style="color:#008080">##MAP_TYPE(STYPE, BTYPE, FUNC)
+</span><span style="color:#008080"></span>
+<span style="color:#008080">#define CSTR_DISPATCH_TABLE(FUNC, MAP_TYPE) \
+</span><span style="color:#008080"></span>  CSTR_MAP_SLICE_TYPES(CSTR_DISPATCH_MAP, CSTR_COMMA_SEP(), FUNC, MAP_TYPE)
+
+<span style="color:#080;font-style:italic">// Dispatch a function based on the type of X
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_SLICE_DISPATCH(X, MAP_TYPE, FUNC, ...) \
+</span><span style="color:#008080"></span>  _Generic((X), CSTR_DISPATCH_TABLE(FUNC, MAP_TYPE))(__VA_ARGS__)</code></pre></div>
+<p>I can generate the dispatch tables using <code>CSTR_MAP_SLICE_TYPES()</code> again. Now, the only place I need to modify if I want to change the slice types is in <code>CSTR_MAP_SLICE_TYPES()</code>.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:I-m-toying-with">I&rsquo;m toying with the idea of writing string algorithms books for those languages, but I have a long list of writing obligations, so I don&rsquo;t know if that will ever happen. <a class="footnote-return" href="#fnref:I-m-toying-with"><sup>[return]</sup></a></li>
+<li id="fn:I-am-not-entirel">I am not entirely happy with the idea of me providing the tests because I know that they will consider those the only tests they need then. I would like them to learn how to write good tests, and we do discuss it in class (with varying results). If I provide tests, they won&rsquo;t think about it. Still, it is better than the current setup, I think. <a class="footnote-return" href="#fnref:I-am-not-entirel"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/macro-metaprogramming/"><i class="fa fa-chevron-circle-left"></i> Macro Metaprogramming</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://mailund.dk/posts/cps-and-iterators-in-c/">CPS and Iterators in C <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2020 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>
