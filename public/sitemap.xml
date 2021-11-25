@@ -28,6 +28,11 @@
   </url>
   
   <url>
+    <loc>https://mailund.dk/posts/prefix-doubling-attemps/</loc>
+    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mailund.dk/posts/cps-and-iterators-in-c/</loc>
     <lastmod>2021-10-21T04:50:01+02:00</lastmod>
   </url>
@@ -374,7 +379,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/algorithms/</loc>
-    <lastmod>2021-09-15T07:59:33+02:00</lastmod>
+    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -392,7 +397,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/c/</loc>
-    <lastmod>2021-10-21T04:50:01+02:00</lastmod>
+    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -481,7 +486,7 @@
   
   <url>
     <loc>https://mailund.dk/posts/</loc>
-    <lastmod>2021-10-21T04:50:01+02:00</lastmod>
+    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -493,13 +498,13 @@
   
   <url>
     <loc>https://mailund.dk/categories/programming/</loc>
-    <lastmod>2021-10-21T04:50:01+02:00</lastmod>
+    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mailund.dk/tags/python/</loc>
-    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
+    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -541,7 +546,7 @@
   
   <url>
     <loc>https://mailund.dk/tags/</loc>
-    <lastmod>2021-09-15T07:59:33+02:00</lastmod>
+    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   

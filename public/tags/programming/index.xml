@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Prefix Doubling Attempts</title>
+      <link>https://mailund.dk/posts/prefix-doubling-attemps/</link>
+      <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
+      
+      <guid>https://mailund.dk/posts/prefix-doubling-attemps/</guid>
+      <description>I&amp;rsquo;ve been working on an algorithm for suffix array construction today. It&amp;rsquo;s called prefix doubling, but I don&amp;rsquo;t have a link, sorry. I think it comes from this paper but I don&amp;rsquo;t have access to it at home.</description>
+    </item>
+    
+    <item>
       <title>CPS and Iterators in C</title>
       <link>https://mailund.dk/posts/cps-and-iterators-in-c/</link>
       <pubDate>Thu, 21 Oct 2021 04:50:01 +0200</pubDate>
