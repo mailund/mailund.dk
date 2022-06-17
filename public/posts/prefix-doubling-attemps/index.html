@@ -1,0 +1,627 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Thomas Mailund" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+         
+        <li><a href="https://www.stackoverflow.com/users/2170269/thomas-mailund"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
+        
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/fiction/">
+                <i class="fa-li fa  fa-lg"></i><span>Fiction</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Prefix Doubling Attempts</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-11-25T14:08:34&#43;01:00">Nov 25, 2021</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/algorithms/">#algorithms</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/c/">#C</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/python/">#Python</a>
+                
+            </em>
+        </li>
+        
+
+        <li>10 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>I&rsquo;ve been working on an algorithm for suffix array construction today. It&rsquo;s called <em>prefix doubling</em>, but I don&rsquo;t have a link, sorry. I think it comes from <a href="https://dl.acm.org/doi/10.1145/800152.804905">this paper</a> but I don&rsquo;t have access to it at home.</p>
+<p>Anyway, from what I can work out from Wikipedia, you iteratively do a two-level radix sort of your suffixes.</p>
+<p>You start out with what will become your suffix array—it is just the indices into <code>x</code>—and the &ldquo;rank&rdquo; these suffixes have. They are not true ranks, i.e. the position they have in their sorted order, because we haven&rsquo;t sorted them yet, but it is a rank we update until we have them sorted.</p>
+<p>The initial suffix array, the way I implemented it, is just the indices in increasing order, e.g. <code>sa = [0, 1, 2, 3, 4, 5]</code> and the rank is their order with respect to just the first letter in the string <code>x</code>, e.g. <code>x = acabab</code>, so <code>rank = [1, 3, 1, 2, 1, 2]</code> (rank 0 is reserved for empty strings, so we start at 1).</p>
+<pre><code>sa suffix   rank
+ 0   acabab    1
+ 1    cabab    3
+ 2     abab    1
+ 3      bab    2
+ 4       ab    1
+ 5        b    2
+</code></pre><p>We can rearrange the <code>sa</code> according to the sorted rank to gett</p>
+<pre><code>sa suffix   rank
+ 0   acabab    1
+ 2     abab    1
+ 4       ab    1
+ 3      bab    2
+ 5        b    2
+ 1    cabab    3
+</code></pre><p>which is a bit closer to sorted, but not quite there; the first three suffixes are out of order, as are the next two, because we never looked beyond the first character.</p>
+<p>Now, the idea is this. Sort <code>sa</code> according to <code>rank[sa[i]]</code> and <code>rank[sa[i]+1]</code>, i.e. two consecutive ranks. This amounts to sorting with respect to the first two letters. We can do this using two bucket sorts and it amounts to giving each suffix a pair of numbers as its &ldquo;rank&rdquo;. Since empty strings are smaller than any non-empty strings, we add the rules that <code>rank[k]</code> is zero if <code>k</code> is beyond the bound of <code>rank</code>.</p>
+<pre><code>sa   = [0, 2, 4, 3, 5, 1]
+rank = [1, 3, 1, 2, 1, 2]
+
+sa suffix   rank[sa[i]]  rank[sa[i]+1]
+ 0   acabab       1         3    
+ 2     abab       1         2
+ 4       ab       1         2
+ 3      bab       2         1
+ 5        b       2         0
+ 1    cabab       3         1
+</code></pre><p>The pairs are <code>(1,3), (1,2), (1,2), (2,1), (2,0), (3,1)</code> and we can sort these and give them a rank</p>
+<pre><code>(1,2) = 1
+(1,3) = 2
+(2,0) = 3
+(2,1) = 4
+(3,1) = 5
+</code></pre><p>Then, we can update our <code>rank</code> list so each suffix get the rank it has in this pair-rank. That will be the rank each suffix would have if we only sorted by the first two characters.</p>
+<pre><code>suffix     pair   rank
+acabab   (1,3)   2
+ cabab   (3,1)   5
+  abab   (1,2)   1
+   bab   (2,1)   4
+    ab   (1,2)   1
+     b   (2,0)   3
+</code></pre><p>or, in sorted order according to the suffix array</p>
+<pre><code>sa suffix     pair   rank
+ 2     abab   (1,2)   1
+ 4       ab   (1,2)   1
+ 0   acabab   (1,3)   2
+ 5        b   (2,0)   3
+ 3      bab   (2,1)   4
+ 1    cabab   (3,1)   5
+</code></pre><p>We are almost done, but the first two suffixes are still out of order; they share the first two characters so we haven&rsquo;t been able to order them correctly.</p>
+<p>We now do the same thing again, look at pairs of ranks, but this time we don&rsquo;t look at two consecutive ranks, <code>rank[sa[i]]</code> and <code>rank[sa[i]+1]</code>, but ranks that are two characters apart, <code>rank[sa[i]]</code> and <code>rank[sa[i]+2]</code>. We already know the relative rank of strings based on their first two characters, so if we now look at ranks that are two indices apart, we are comparing prefixes of length four.</p>
+<p>I won&rsquo;t do the full thing, but just the two suffixes that are out of order, suffix 2 and 4.</p>
+<pre><code>(rank[2], rank[2+2]) = (1, 1)
+(rank[4], rank[4+2]) = (1, 0)
+</code></pre><p>Assigning ranks and reordering will see these two as different ranks, with the first (string <code>abab</code>) coming after the second <code>ab</code>.</p>
+<p>At this point, all the suffixes in the example are sorted, and we could recognise this by looking at the ranks. The ranks would all be unique, which means that we must have sorted the suffixes; we have sorted them up to prefixes of four characters, and here they are apparently all unique.</p>
+<p>If we didn&rsquo;t have unique ranks here, we would do the same thing again, but this time use an offset of 4 instead of 2, in effect sorting with respect the prefixes of length eight. In general, we would use offers of <code>k</code>, sorting the suffixes with respect to prefixes of length <code>2k</code>. That is where the doubling comes in, and it ensures that we can&rsquo;t do more than log n iterations. Each iteration takes O(n) for the bucket sorts, so the total running time is O(n \log n). It is possible to construct suffix arrays in O(n), of course, so why is this interesting? Well, I want to see if the low overhead means that this algorithm can still beat the linear time algorithms.</p>
+<p>I prototyped the algorithm in Python. My implementation looks like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> remap(x: str) -&gt; tuple[list[int], int]:
+    <span style="color:#00f"></span><span style="color:#00f">&#34;&#34;&#34;</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    Translate a string, x, into a list of ranks.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    The ranks start at 1, leaving 0 for a sentinel value.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    </span><span style="color:#00f">&#34;&#34;&#34;</span>
+    <span style="color:#a61717;background-color:#e3d2d2">Σ</span> = {a: i+<span style="color:#00f">1</span> <span style="color:#000080;font-weight:bold">for</span> i, a <span style="font-weight:bold">in</span> enumerate(sorted(set(x)))}
+    <span style="color:#000080;font-weight:bold">return</span> [<span style="color:#a61717;background-color:#e3d2d2">Σ</span>[a] <span style="color:#000080;font-weight:bold">for</span> a <span style="font-weight:bold">in</span> x], len(<span style="color:#a61717;background-color:#e3d2d2">Σ</span>) + <span style="color:#00f">1</span>
+
+
+<span style="color:#000080;font-weight:bold">def</span> get_rank(rank: list[int], i: int) -&gt; int:
+    <span style="color:#00f"></span><span style="color:#00f">&#34;&#34;&#34;</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    Get the rank of the element at index i.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    Index into rank but returning sentinel when indexing</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    beyond the end.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    </span><span style="color:#00f">&#34;&#34;&#34;</span>
+    <span style="color:#000080;font-weight:bold">return</span> rank[i] <span style="color:#000080;font-weight:bold">if</span> i &lt; len(rank) <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">0</span>
+
+
+<span style="color:#000080;font-weight:bold">def</span> bsort(sa: list[int], rank: list[int], out: list[int],
+          k: int, <span style="color:#a61717;background-color:#e3d2d2">σ</span>: int) -&gt; None:
+    <span style="color:#00f"></span><span style="color:#00f">&#34;&#34;&#34;</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    Bucket sort.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    Bucket sort sa with keys in rank at offset k.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    The result is put in out.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    </span><span style="color:#00f">&#34;&#34;&#34;</span>
+    buckets = [<span style="color:#00f">0</span>] * <span style="color:#a61717;background-color:#e3d2d2">σ</span>
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> sa:
+        r = get_rank(rank, i + k)
+        buckets[r] += <span style="color:#00f">1</span>
+    acc = <span style="color:#00f">0</span>
+    <span style="color:#000080;font-weight:bold">for</span> i, b <span style="font-weight:bold">in</span> enumerate(buckets):
+        buckets[i] = acc
+        acc += b
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> sa:
+        r = get_rank(rank, i + k)
+        out[buckets[r]] = i
+        buckets[r] += <span style="color:#00f">1</span>
+
+
+<span style="color:#000080;font-weight:bold">def</span> update_rank(sa: list[int], rank: list[int],
+                out: list[int], k: int) -&gt; int:
+    <span style="color:#00f"></span><span style="color:#00f">&#34;&#34;&#34;</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    Compute new rank after sorting.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    Update rank to reflect the order we have at</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    (rank[sa[i]], rank[sa[i]+k]) and put the result in rank.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    Return the new alphabet size.</span><span style="color:#00f">
+</span><span style="color:#00f"></span><span style="color:#00f">    </span><span style="color:#00f">&#34;&#34;&#34;</span>
+    <span style="color:#a61717;background-color:#e3d2d2">σ</span> = <span style="color:#00f">1</span>  <span style="color:#080;font-style:italic"># leave 0 for sentinel</span>
+    out[sa[<span style="color:#00f">0</span>]] = <span style="color:#a61717;background-color:#e3d2d2">σ</span>
+    prev_rank = (rank[sa[<span style="color:#00f">0</span>]], get_rank(rank, sa[<span style="color:#00f">0</span>] + k))
+    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> sa[<span style="color:#00f">1</span>:]:
+        this_rank = (rank[i], get_rank(rank, i + k))
+        <span style="color:#a61717;background-color:#e3d2d2">σ</span> += (prev_rank != this_rank)
+        prev_rank = this_rank
+        out[i] = <span style="color:#a61717;background-color:#e3d2d2">σ</span>
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#a61717;background-color:#e3d2d2">σ</span> + <span style="color:#00f">1</span>
+
+
+<span style="color:#000080;font-weight:bold">def</span> prefix_doubling_construction(x: str) -&gt; list[int]:
+    <span style="color:#00f"></span><span style="color:#00f">&#34;&#34;&#34;</span><span style="color:#00f">Construct a suffix array for x using prefix doubling.</span><span style="color:#00f">&#34;&#34;&#34;</span>
+    rank, <span style="color:#a61717;background-color:#e3d2d2">σ</span> = remap(x)
+    sa = list(range(len(x)))
+    buf = [<span style="color:#00f">0</span>] * len(x)
+
+    k = <span style="color:#00f">1</span>
+    <span style="color:#000080;font-weight:bold">while</span> <span style="color:#a61717;background-color:#e3d2d2">σ</span> &lt; len(x) + <span style="color:#00f">1</span>:
+        <span style="color:#080;font-style:italic"># radix sort with offset k</span>
+        bsort(sa, rank, buf, k, <span style="color:#a61717;background-color:#e3d2d2">σ</span>)
+        bsort(buf, rank, sa, <span style="color:#00f">0</span>, <span style="color:#a61717;background-color:#e3d2d2">σ</span>)
+
+        <span style="color:#080;font-style:italic"># compute the new ranks</span>
+        <span style="color:#a61717;background-color:#e3d2d2">σ</span> = update_rank(sa, rank, buf, k)
+        rank, buf = buf, rank  <span style="color:#080;font-style:italic"># switch buffers to get new ranks in ranks</span>
+
+        <span style="color:#080;font-style:italic"># next iteration with twice the offset</span>
+        k *= <span style="color:#00f">2</span>
+
+    <span style="color:#000080;font-weight:bold">return</span> sa
+
+
+x = <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">mississippimississippimississippi</span><span style="color:#00f">&#34;</span>
+sa = prefix_doubling_construction(x)
+<span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> sa:
+    <span style="color:#000080;font-weight:bold">print</span>(x[i:])
+</code></pre></div><p>It is close enough to working that I decided to implement it in C. I want the speed of C before I do any benchmarking and comparison.</p>
+<p>I ended up with this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">include</span> <span style="color:#008080">&lt;limits.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">include</span> <span style="color:#008080">&lt;stdint.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">include</span> <span style="color:#008080">&lt;stdlib.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">include</span> <span style="color:#008080">&lt;string.h&gt;</span><span style="color:#008080">
+</span><span style="color:#008080"></span>
+<span style="color:#008080">#</span><span style="color:#008080">define NO_CHARS (1 &lt;&lt; CHAR_BIT)</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define SWAP(a, b)             \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    do                         \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    {                          \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">        __typeof__(a) tmp = a; \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">        a = b;                 \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">        b = tmp;               \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    } while (0)</span><span style="color:#008080">
+</span><span style="color:#008080"></span>
+<span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">void</span> *faultless_malloc(size_t size)
+{
+    <span style="color:#000080;font-weight:bold">void</span> *mem = malloc(size);
+    <span style="color:#000080;font-weight:bold">if</span> (!mem)
+        abort(); <span style="color:#080;font-style:italic">// no error handling for me today!
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">return</span> mem;
+}
+
+<span style="color:#080;font-style:italic">// maps the letters in x to integers in the range [0, ..., sigma - 1]
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// Stores the length of n in *n and the alphabet size in *sigma.
+</span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> uint32_t *remap(<span style="color:#000080;font-weight:bold">char</span> <span style="color:#000080;font-weight:bold">const</span> *x, uint32_t *n, uint32_t *sigma)
+{
+    uint32_t alphabet[NO_CHARS] = {<span style="color:#00f">0</span>};
+
+    <span style="color:#080;font-style:italic">// run through x and tag occurring letters
+</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">unsigned</span> <span style="color:#000080;font-weight:bold">char</span> <span style="color:#000080;font-weight:bold">const</span> *unsigned_x = (<span style="color:#000080;font-weight:bold">unsigned</span> <span style="color:#000080;font-weight:bold">char</span> <span style="color:#000080;font-weight:bold">const</span> *)x, *s;
+    <span style="color:#000080;font-weight:bold">for</span> (s = unsigned_x; *s; s++)
+        alphabet[*s] = <span style="color:#00f">1</span>;
+    *n = s - unsigned_x; <span style="color:#080;font-style:italic">// length of x, not including &#39;\0&#39;
+</span><span style="color:#080;font-style:italic"></span>
+    <span style="color:#080;font-style:italic">// assign numbers to each occurring letter
+</span><span style="color:#080;font-style:italic"></span>    *sigma = <span style="color:#00f">1</span>;
+    <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> a = <span style="color:#00f">0</span>; a &lt; NO_CHARS; a++)
+    {
+        <span style="color:#000080;font-weight:bold">if</span> (alphabet[a])
+            alphabet[a] = (*sigma)++;
+    }
+
+    <span style="color:#080;font-style:italic">// map each letter from x to its number and place them in mapped
+</span><span style="color:#080;font-style:italic"></span>    uint32_t *mapped = faultless_malloc(*n * <span style="color:#000080;font-weight:bold">sizeof</span> *mapped), *a;
+    <span style="color:#000080;font-weight:bold">for</span> (a = mapped, s = unsigned_x; *s; a++, s++)
+        *a = alphabet[*s];
+
+    <span style="color:#000080;font-weight:bold">return</span> mapped;
+}
+
+<span style="color:#080;font-style:italic">// Allocate and initialise what will eventually become the suffix array
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// with indices [0, 1, 2, ..., n - 1].
+</span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> uint32_t *alloc_sa(uint32_t n)
+{
+    uint32_t *sa = faultless_malloc(n * <span style="color:#000080;font-weight:bold">sizeof</span> *sa);
+    <span style="color:#000080;font-weight:bold">for</span> (uint32_t i = <span style="color:#00f">0</span>; i &lt; n; i++)
+    {
+        sa[i] = i;
+    }
+    <span style="color:#000080;font-weight:bold">return</span> sa;
+}
+
+<span style="color:#080;font-style:italic">// Get the rank from array rank, but if you index beyond the end,
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// you get the sentinel letter 0.
+</span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span> <span style="color:#000080;font-weight:bold">int</span> get_rank(uint32_t n,
+                           uint32_t rank[<span style="color:#000080;font-weight:bold">static</span> n],
+                           <span style="color:#000080;font-weight:bold">int</span> i)
+{
+    <span style="color:#000080;font-weight:bold">return</span> (i &lt; n) ? rank[i] : <span style="color:#00f">0</span>;
+}
+
+<span style="color:#080;font-style:italic">// Bucket sort the elements sa according to the rank[sa[i]+k]
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// (with padded zero sentinels). The result goes to out.
+</span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">void</span> bsort(uint32_t n,
+                  uint32_t sa[<span style="color:#000080;font-weight:bold">static</span> n],
+                  uint32_t rank[<span style="color:#000080;font-weight:bold">static</span> n],
+                  uint32_t out[<span style="color:#000080;font-weight:bold">static</span> n],
+                  uint32_t k,
+                  uint32_t buckets[<span style="color:#000080;font-weight:bold">static</span> n],
+                  uint32_t sigma)
+{
+    memset(buckets, <span style="color:#00f">0</span>, sigma * <span style="color:#000080;font-weight:bold">sizeof</span> *buckets);
+
+    <span style="color:#000080;font-weight:bold">for</span> (uint32_t i = <span style="color:#00f">0</span>; i &lt; n; i++)
+    {
+        buckets[get_rank(n, rank, sa[i] + k)]++;
+    }
+    <span style="color:#000080;font-weight:bold">for</span> (uint32_t acc = <span style="color:#00f">0</span>, i = <span style="color:#00f">0</span>; i &lt; sigma; i++)
+    {
+        uint32_t b = buckets[i];
+        buckets[i] = acc;
+        acc += b;
+    }
+    <span style="color:#000080;font-weight:bold">for</span> (uint32_t i = <span style="color:#00f">0</span>; i &lt; n; i++)
+    {
+        uint32_t j = sa[i];
+        uint32_t r = get_rank(n, rank, j + k);
+        out[buckets[r]++] = j;
+    }
+}
+
+<span style="color:#080;font-style:italic">// For each element in sa, assumed sorted according to
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// rank[sa[i]],rank[sa[i]+k], work out what rank
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// (order of rank[sa[i]],rank[sa[i]+k]) each element has
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// and put the result in out.
+</span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">static</span> uint32_t update_rank(uint32_t n,
+                            uint32_t sa[<span style="color:#000080;font-weight:bold">static</span> n],
+                            uint32_t rank[<span style="color:#000080;font-weight:bold">static</span> n],
+                            uint32_t out[<span style="color:#000080;font-weight:bold">static</span> n],
+                            uint32_t k)
+{
+<span style="color:#008080">#</span><span style="color:#008080">define PAIR(i, k) (((uint64_t)rank[sa[i]] &lt;&lt; 32) | \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">                    (uint64_t)get_rank(n, rank, sa[i] + k))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>
+    uint32_t sigma = <span style="color:#00f">1</span>; <span style="color:#080;font-style:italic">// leave zero for sentinel
+</span><span style="color:#080;font-style:italic"></span>    out[sa[<span style="color:#00f">0</span>]] = sigma;
+
+    uint64_t prev_pair = PAIR(<span style="color:#00f">0</span>, k);
+    <span style="color:#000080;font-weight:bold">for</span> (uint32_t i = <span style="color:#00f">1</span>; i &lt; n; i++)
+    {
+        uint64_t cur_pair = PAIR(i, k);
+        sigma += (prev_pair != cur_pair);
+        prev_pair = cur_pair;
+        out[sa[i]] = sigma;
+    }
+
+    <span style="color:#000080;font-weight:bold">return</span> sigma + <span style="color:#00f">1</span>;
+
+<span style="color:#008080">#</span><span style="color:#008080">undef PAIR</span><span style="color:#008080">
+</span><span style="color:#008080"></span>}
+
+<span style="color:#000080;font-weight:bold">struct</span> suffix_array
+{
+    uint32_t len;
+    uint32_t *buf;
+};
+
+<span style="color:#080;font-style:italic">// Construct a suffix array using prefix-doubling
+</span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">struct</span> suffix_array prefix_doubling_sa_construction(<span style="color:#000080;font-weight:bold">char</span> <span style="color:#000080;font-weight:bold">const</span> *x)
+{
+    uint32_t n, sigma;
+    uint32_t *rank = remap(x, &amp;n, &amp;sigma);
+    uint32_t *sa = alloc_sa(n);
+    uint32_t *buckets = faultless_malloc(n * <span style="color:#000080;font-weight:bold">sizeof</span> *buckets);
+    uint32_t *buf = faultless_malloc(n * <span style="color:#000080;font-weight:bold">sizeof</span> *buf);
+
+    <span style="color:#000080;font-weight:bold">for</span> (uint32_t k = <span style="color:#00f">1</span>; sigma &lt; n + <span style="color:#00f">1</span>; k *= <span style="color:#00f">2</span>)
+    {
+        bsort(n, sa, rank, buf, k, buckets, sigma); <span style="color:#080;font-style:italic">// result in buf
+</span><span style="color:#080;font-style:italic"></span>        bsort(n, buf, rank, sa, <span style="color:#00f">0</span>, buckets, sigma); <span style="color:#080;font-style:italic">// result back in sa
+</span><span style="color:#080;font-style:italic"></span>        sigma = update_rank(n, sa, rank, buf, k);   <span style="color:#080;font-style:italic">// new rank in buf
+</span><span style="color:#080;font-style:italic"></span>        SWAP(rank, buf);                            <span style="color:#080;font-style:italic">// now new rank is back in rank
+</span><span style="color:#080;font-style:italic"></span>    }
+
+    free(rank);
+    free(buf);
+
+    <span style="color:#000080;font-weight:bold">return</span> (<span style="color:#000080;font-weight:bold">struct</span> suffix_array){.len = n, .buf = sa};
+}
+
+<span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">void</span>)
+{
+    <span style="color:#000080;font-weight:bold">char</span> *x = <span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">mississippimississippimississippi</span><span style="color:#00f">&#34;</span>;
+    <span style="color:#000080;font-weight:bold">struct</span> suffix_array sa = prefix_doubling_sa_construction(x);
+
+    <span style="color:#000080;font-weight:bold">for</span> (uint32_t i = <span style="color:#00f">0</span>; i &lt; sa.len; i++)
+    {
+        printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">%s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, x + sa.buf[i]);
+    }
+    free(sa.buf);
+
+    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
+}
+</code></pre></div><p>And then I sorta stopped.</p>
+<p>I think it works; it is a fairly straightforward translation of the Python code, and if it works on three mississippis it must be working.</p>
+<p>But I use 3n integers in addition to the suffix array, and that feels excessive. I just don&rsquo;t know how to make the sorting and ranking in-place.</p>
+<p>Any ideas?</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/cps-and-iterators-in-c/"><i class="fa fa-chevron-circle-left"></i> CPS and Iterators in C</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'mailund-dk';
+            var disqus_button = document.getElementById("show-comments");
+
+            disqus_button.style.display = "";
+            disqus_button.addEventListener("click", disqus, false);
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>

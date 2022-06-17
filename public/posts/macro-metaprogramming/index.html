@@ -63,14 +63,17 @@
    });
  </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-10582357-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 </head>
@@ -195,66 +198,47 @@ ga('send', 'pageview');
 </aside>
     
 
-    
-
-<p>I&rsquo;ve been working on a small C library for Python- or Go-like slices the last couple of weeks. Essentially arrays, but where I can index from the end using negative numbers (like in Python) and where I can extract a sub-slice, <code>x[i:j]</code>, in constant time (like in Go; I implement them the same way as Go does).</p>
-
+    <p>I&rsquo;ve been working on a small C library for Python- or Go-like slices the last couple of weeks. Essentially arrays, but where I can index from the end using negative numbers (like in Python) and where I can extract a sub-slice, <code>x[i:j]</code>, in constant time (like in Go; I implement them the same way as Go does).</p>
 <p>There is nothing complicated in implementing such slices. You need a pointer to an underlying buffer and a length (and maybe a capacity), and that&rsquo;s that. The only thing that makes it difficult is that I need slices of different types. They all behave exactly the same, even with the same code, except for the type of the underlying buffer. That varies, and thus so does the return type of indexing, some initialisation code (where the user provides the buffer that must be of the correct type) and a few other things.</p>
-
 <p>Nothing in the source code really changes, just the type information. But that is bad enough. C doesn&rsquo;t do generic types, and there are a couple of places where you need to provide type information. Composite expressions, for example. So, I figured macros would get me most of the way, with <code>_Generic()</code> expressions for static type dispatch. And it did; I have a solution I am reasonably satisfied with. Except that there is some redundancy in what code I must generate from macros to make it work.</p>
-
 <p>I wasted a lot of time not quite getting there—the final realisation that I wouldn&rsquo;t make it was that I needed to generate macros, and you cannot do that in other macros. I gave up (but I will tell you about the solution I ended up with some other time; it isn&rsquo;t bad, just not quite what I wanted). Before I gave up, however, I went deep down the rabbit hole of macro meta-programming, and it is now my intent to drag you down with me.</p>
-
 <p>Ph&rsquo;nglui mglw&rsquo;nafh Cthulhu R&rsquo;lyeh wgah&rsquo;nagl fhtagn!</p>
-
 <h1 id="basic-macro-expansion">Basic macro expansion</h1>
-
 <p>You haven&rsquo;t used C for long before you learn how to define and use macros. You use <code>#define</code> to, well, define a macro,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo 42</span></code></pre></div>
-<p>and then you can use the token <code>foo</code> anywhere in your code, and it will be expanded to 42 before the compiler sees it.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">f(foo);</code></pre></div>
-<p>becomes</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">f(<span style="color:#00f">42</span>);</code></pre></div>
-<p>after the preprocessor has swept through the code.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo 42</span><span style="color:#008080">
+</span></code></pre></div><p>and then you can use the token <code>foo</code> anywhere in your code, and it will be expanded to 42 before the compiler sees it.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">f(foo);
+</code></pre></div><p>becomes</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">f(<span style="color:#00f">42</span>);
+</code></pre></div><p>after the preprocessor has swept through the code.</p>
 <p>You have two kinds of macros, the simple ones like <code>foo</code> above, called object-like, and then so-called function-like macros. The latter, you define with parentheses after the name and with zero or more arguments between the parentheses.</p>
-
 <p>For example, we can define</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo() 42</span></code></pre></div>
-<p>to get a function-like macro that doesn&rsquo;t take any arguments but expands to 42. For function-like macros, you have to provide the parentheses to expand the macro. The macro name alone, <code>foo</code>, isn&rsquo;t expanded.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo() 42
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo() 42</span><span style="color:#008080">
+</span></code></pre></div><p>to get a function-like macro that doesn&rsquo;t take any arguments but expands to 42. For function-like macros, you have to provide the parentheses to expand the macro. The macro name alone, <code>foo</code>, isn&rsquo;t expanded.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo() 42</span><span style="color:#008080">
 </span><span style="color:#008080"></span>foo <span style="color:#080;font-style:italic">// not expanded
-</span><span style="color:#080;font-style:italic"></span>foo() // expanded</code></pre></div>
-<p>If you provide parameters to a function-like macro, you can use them inside the expansion:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define bar(x, y) x(y)
-</span><span style="color:#008080"></span>bar(foo, <span style="color:#00f">42</span>) // expands to foo(<span style="color:#00f">42</span>)</code></pre></div>
-<p>Macro expansion is purely textual. The preprocessor doesn&rsquo;t understand the C language, so it would never guess that in</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define expr(x) x
-</span><span style="color:#008080"></span>expr((<span style="color:#000080;font-weight:bold">struct</span> foo){ .bar = a, .baz = b })</code></pre></div>
-<p>you are trying to give <code>expr()</code> a composite expression. It sees two arguments because there is a comma in the arguments you give <code>expr</code>, so you are calling <code>expr()</code> with <code>(struct foo){ .bar = a</code> and <code>.baz = b}</code>, and not a single token.</p>
-
+</span><span style="color:#080;font-style:italic"></span>foo() <span style="color:#080;font-style:italic">// expanded
+</span></code></pre></div><p>If you provide parameters to a function-like macro, you can use them inside the expansion:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define bar(x, y) x(y)</span><span style="color:#008080">
+</span><span style="color:#008080"></span>bar(foo, <span style="color:#00f">42</span>) <span style="color:#080;font-style:italic">// expands to foo(42)
+</span></code></pre></div><p>Macro expansion is purely textual. The preprocessor doesn&rsquo;t understand the C language, so it would never guess that in</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define expr(x) x</span><span style="color:#008080">
+</span><span style="color:#008080"></span>expr((<span style="color:#000080;font-weight:bold">struct</span> foo){ .bar = a, .baz = b })
+</code></pre></div><p>you are trying to give <code>expr()</code> a composite expression. It sees two arguments because there is a comma in the arguments you give <code>expr</code>, so you are calling <code>expr()</code> with <code>(struct foo){ .bar = a</code> and <code>.baz = b}</code>, and not a single token.</p>
 <p>The preprocessor is rather dumb. It does text substitution, nothing more. It is annoying at times, but this can also allow you to manipulate parts of expressions if you so desire, so there is some sense to it.</p>
-
-<p>That is something you will know after spending an afternoon learning C, but there is a bit more to macros and the rules for how they expand, and while pure text substitution isn&rsquo;t much of a programming language, you <em>can</em> do some meta-programming. Especially if you get to use variadic macros in ways that they were never intended to be used.<sup class="footnote-ref" id="fnref:We-didn-t-have-v"><a href="#fn:We-didn-t-have-v">1</a></sup></p>
-
+<p>That is something you will know after spending an afternoon learning C, but there is a bit more to macros and the rules for how they expand, and while pure text substitution isn&rsquo;t much of a programming language, you <em>can</em> do some meta-programming. Especially if you get to use variadic macros in ways that they were never intended to be used.^[We didn&rsquo;t have variadic macros when I learned C, but they&rsquo;ve been in the standard since C99, so you should have them now.]</p>
 <p>When hacking away on macro meta-programming, I learned a lot of tricks from these two blog posts:</p>
-
 <ul>
 <li><a href="http://jhnet.co.uk/articles/cpp_magic">C preprocessor magic</a></li>
 <li><a href="https://github.com/pfultz2/Cloak/wiki/C-Preprocessor-tricks,-tips,-and-idioms">C Preprocessor tricks, tips, and idioms</a></li>
 </ul>
-
 <p>You might as well, but I will give my own twist on it below.</p>
-
 <p>But we are getting ahead of ourselves. We need to dig a little further into how function-like macros are expanded before we move on.</p>
-
 <h1 id="macro-expansion">Macro expansion</h1>
-
 <p>When you expand a function-like macro,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#008080">#define FOO(a, b, c) </span><span style="color:#080;font-style:italic">/* macro body */</span><span style="color:#008080">
-</span><span style="color:#008080"></span>FOO(foo(), bar(x, y), baz)</code></pre></div>
-<p>you have some intuition about what you expect to happen, but that intuition is probably from programming in C (or similar languages). You want <code>a</code> to get the value of evaluating <code>foo()</code> and then be used with that value in the body of <code>FOO</code>. Likewise for <code>b &lt;- bar(x, y)</code> and <code>c &lt;- baz</code>. And mostly, that is what happens. But this isn&rsquo;t C, and macros do not behave the same way. The rules for expanding a function-like macro, and the order in which they are applied, are:</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#008080">#</span><span style="color:#008080">define FOO(a, b, c) </span><span style="color:#080;font-style:italic">/* macro body */</span><span style="color:#008080">
+</span><span style="color:#008080"></span>FOO(foo(), bar(x, y), baz)
+</code></pre></div><p>you have some intuition about what you expect to happen, but that intuition is probably from programming in C (or similar languages). You want <code>a</code> to get the value of evaluating <code>foo()</code> and then be used with that value in the body of <code>FOO</code>. Likewise for <code>b &lt;- bar(x, y)</code> and <code>c &lt;- baz</code>. And mostly, that is what happens. But this isn&rsquo;t C, and macros do not behave the same way. The rules for expanding a function-like macro, and the order in which they are applied, are:</p>
 <ol>
 <li>Stringification.</li>
 <li>Parameters substituted with replacement list (without performing expansion).</li>
@@ -262,451 +246,369 @@ ga('send', 'pageview');
 <li>Parameter tokens are expanded.</li>
 <li>Rescan and expand the result</li>
 </ol>
-
 <p>For object-like macros, jump to step 5.</p>
-
 <h2 id="stringification">Stringification</h2>
-
 <p>If you put a single <code>#</code> in front of a macro parameter, that parameter is turned into a string. The string contains the verbatim argument you provided.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo(x, y) #x #y
-</span><span style="color:#008080"></span>foo(bar(<span style="color:#00f">42</span>), baz(x, z)) // <span style="color:#00f">&#34;bar(42)&#34;</span> <span style="color:#00f">&#34;baz(x, z)&#34;</span></code></pre></div>
-<p>There is no substitution and no further expansion, you get the argument as a string, and that&rsquo;s that. This is the first thing that happens, so such stringified arguments are not processed further.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo(x, y) #x #y</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo(bar(<span style="color:#00f">42</span>), baz(x, z)) <span style="color:#080;font-style:italic">// &#34;bar(42)&#34; &#34;baz(x, z)&#34;
+</span></code></pre></div><p>There is no substitution and no further expansion, you get the argument as a string, and that&rsquo;s that. This is the first thing that happens, so such stringified arguments are not processed further.</p>
 <p>We won&rsquo;t need stringification in the hacking below, so we won&rsquo;t need this rule for what follows, except that it can be a helpful trick to work out what macro calls expand to.</p>
-
 <p>If you want to know what <code>f(x)</code> evaluates to in</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define bar(x) 2 * x
-</span><span style="color:#008080">#define foo(f, x) f(x)
-</span><span style="color:#008080"></span>foo(bar, <span style="color:#00f">42</span>)</code></pre></div>
-<p>you can use a macro that stringify its input and then get the result verbatim:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define s(x) #x
-</span><span style="color:#008080">#define bar(x) 2 * x
-</span><span style="color:#008080">#define foo(f, x) s(f(x))
-</span><span style="color:#008080"></span>foo(bar, <span style="color:#00f">42</span>)</code></pre></div>
-<p>Wrapping <code>f(x)</code> in <code>s(f(x))</code> will turn the substituted value for <code>f(x)</code> into a string (it will be <code>&quot;bar(42)&quot;</code>) and you can inspect it.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define bar(x) 2 * x</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo(f, x) f(x)</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo(bar, <span style="color:#00f">42</span>)
+</code></pre></div><p>you can use a macro that stringify its input and then get the result verbatim:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define s(x) #x</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define bar(x) 2 * x</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo(f, x) s(f(x))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo(bar, <span style="color:#00f">42</span>)
+</code></pre></div><p>Wrapping <code>f(x)</code> in <code>s(f(x))</code> will turn the substituted value for <code>f(x)</code> into a string (it will be <code>&quot;bar(42)&quot;</code>) and you can inspect it.</p>
 <p>(Without the <code>s(-)</code> wrapper, you get <code>bar(42)</code>, which will be expanded to <code>2 * 42</code>. If you were hoping that the preprocessor would give you 84, you forgot that it only does text substitution; it will not evaluate expressions).</p>
-
 <h2 id="parameters-substituted-with-replacement-list">Parameters substituted with replacement list</h2>
-
 <p>This bit is simple enough. With</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo(f, x) f(x)
-</span><span style="color:#008080"></span>foo(bar, <span style="color:#00f">42</span>)</code></pre></div>
-<p>that step translates <code>f(x)</code> into <code>bar(42)</code>, substituting <code>f</code> for the argument <code>bar</code> and <code>x</code> for the argument <code>42</code>. It just puts in the raw arguments again, just as for stringification. At this point, we don&rsquo;t expand the arguments.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo(f, x) f(x)</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo(bar, <span style="color:#00f">42</span>)
+</code></pre></div><p>that step translates <code>f(x)</code> into <code>bar(42)</code>, substituting <code>f</code> for the argument <code>bar</code> and <code>x</code> for the argument <code>42</code>. It just puts in the raw arguments again, just as for stringification. At this point, we don&rsquo;t expand the arguments.</p>
 <p>Not that you can tell, because unless you do step 3, concatenation, they will be expanded in step 4 before you see any results.</p>
-
 <p>But you can see the difference between not-substituting and substitution+evaluation with stringification:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define s(x) #x
-</span><span style="color:#008080">#define bar(x) 2 * x
-</span><span style="color:#008080">#define baz() bar
-</span><span style="color:#008080">#define foo(f, x) #f s(f) #x s(x)
-</span><span style="color:#008080"></span>foo(baz(), <span style="color:#00f">42</span>)</code></pre></div>
-<p>Here, when you evaluate <code>foo(baz(), 42)</code> you can see that the argument for <code>f</code> is <code>baz()</code> (because we stringify first, but it will be substituted into <code>f</code> and evaluated in <code>s(f)</code> (substituted <code>s(f)</code> to <code>s(baz())</code> and then evaluated to <code>s(bar)</code>).</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define s(x) #x</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define bar(x) 2 * x</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define baz() bar</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo(f, x) #f s(f) #x s(x)</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo(baz(), <span style="color:#00f">42</span>)
+</code></pre></div><p>Here, when you evaluate <code>foo(baz(), 42)</code> you can see that the argument for <code>f</code> is <code>baz()</code> (because we stringify first, but it will be substituted into <code>f</code> and evaluated in <code>s(f)</code> (substituted <code>s(f)</code> to <code>s(baz())</code> and then evaluated to <code>s(bar)</code>).</p>
 <p>The two-step substitution plus evaluation is something you only notice if you concatenate…</p>
-
 <h2 id="concatenation">Concatenation</h2>
-
 <p>If you place two <code>##</code> between two tokens, you concatenate them. The tokens are just text, as always, so this means that <code>A ## B</code> becomes <code>AB</code> (unless we have substituted something in for <code>A</code> or <code>B</code>).</p>
-
 <p>Consider these macros:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo(f, x) foo ## f(x)
-</span><span style="color:#008080">#define qux(x) bar
-</span><span style="color:#008080"></span>foo(qux, <span style="color:#00f">42</span>)</code></pre></div>
-<p>When we call <code>foo(qux, 42)</code>, we might expect this to become <code>foo ## qux(42)</code> where <code>qux(42)</code> evaluates to <code>bar</code>, so the result should be <code>foobar</code>. But the rule is that we first substitute</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo(qux, <span style="color:#00f">42</span>) =&gt; foo <span style="color:#008080">## qux(42)</span></code></pre></div>
-<p>then we concatenate</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo <span style="color:#008080">## qux(42) =&gt; fooqux(42)</span></code></pre></div>
-<p>and assuming we do not have a <code>fooqux</code> macro, that is the end result. Concatenation binds tighter than evaluation, just like stringification binds tighter than substitution and concatenation.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo(f, x) foo ## f(x)</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define qux(x) bar</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo(qux, <span style="color:#00f">42</span>)
+</code></pre></div><p>When we call <code>foo(qux, 42)</code>, we might expect this to become <code>foo ## qux(42)</code> where <code>qux(42)</code> evaluates to <code>bar</code>, so the result should be <code>foobar</code>. But the rule is that we first substitute</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo(qux, <span style="color:#00f">42</span>) =&gt; foo <span style="color:#a61717;background-color:#e3d2d2">#</span><span style="color:#a61717;background-color:#e3d2d2">#</span> qux(<span style="color:#00f">42</span>)
+</code></pre></div><p>then we concatenate</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo <span style="color:#a61717;background-color:#e3d2d2">#</span><span style="color:#a61717;background-color:#e3d2d2">#</span> qux(<span style="color:#00f">42</span>) =&gt; fooqux(<span style="color:#00f">42</span>)
+</code></pre></div><p>and assuming we do not have a <code>fooqux</code> macro, that is the end result. Concatenation binds tighter than evaluation, just like stringification binds tighter than substitution and concatenation.</p>
 <p>You might think that one level of indirection will change this. After all, with</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define s(x) #x</span></code></pre></div>
-<p>we delayed stringification one step.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define s(x) #x</span><span style="color:#008080">
+</span></code></pre></div><p>we delayed stringification one step.</p>
 <p>So maybe we could do:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define cat(x, y) x ## y
-</span><span style="color:#008080">#define foo2(f, x) cat(foo, f(x))
-</span><span style="color:#008080"></span>foo2(qux, <span style="color:#00f">42</span>)</code></pre></div>
-<p>The &ldquo;might think&rdquo; was a hint that this doesn&rsquo;t work, and it doesn&rsquo;t. And for the same reason that</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define s(x) #x
-</span><span style="color:#008080">#define bar(f,x) s(f(x))
-</span><span style="color:#008080"></span>bar(qux, <span style="color:#00f">42</span>)</code></pre></div>
-<p>gives us <code>&quot;qux(42)&quot;</code> and not <code>&quot;bar&quot;</code>. We don&rsquo;t expand the expression quite enough.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define cat(x, y) x ## y</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo2(f, x) cat(foo, f(x))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo2(qux, <span style="color:#00f">42</span>)
+</code></pre></div><p>The &ldquo;might think&rdquo; was a hint that this doesn&rsquo;t work, and it doesn&rsquo;t. And for the same reason that</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define s(x) #x</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define bar(f,x) s(f(x))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>bar(qux, <span style="color:#00f">42</span>)
+</code></pre></div><p>gives us <code>&quot;qux(42)&quot;</code> and not <code>&quot;bar&quot;</code>. We don&rsquo;t expand the expression quite enough.</p>
 <h2 id="parameter-tokens-are-expanded">Parameter tokens are expanded</h2>
-
 <p>After we have stringified, substituted and concatenated, we expand parameter tokens. That just means that we expand the parameters we got if they are macros.</p>
-
 <p>Take the concatenation example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define cat(x, y) x ## y
-</span><span style="color:#008080">#define foo2(f, x) cat(foo, f(x))
-</span><span style="color:#008080"></span>foo2(qux, <span style="color:#00f">42</span>)</code></pre></div>
-<p>We expand <code>foo2(qux, 42)</code> by substituting the arguments to get <code>cat(foo, [f=qux]([x=42]))</code> where I have put the substitution in square brackets. In this step, we need to expand the macros in those substituted expressions, but <code>qux</code> evaluates to <code>qux</code>. It is a function-like macro, so <code>qux()</code> evaluates to something (it evaluates to <code>bar</code>), but <code>qux</code> without parentheses doesn&rsquo;t. And 42, of course, evaluates to 42. The result is <code>cat(foo, qux(42))</code> so the arguments to cat, which it will concatenate without evaluation, are <code>foo</code> and <code>qux(42)</code>. We do not evaluate <code>qux(42)</code> because that expression wasn&rsquo;t part of a parameter; we created it from two separate arguments.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define cat(x, y) x ## y</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo2(f, x) cat(foo, f(x))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo2(qux, <span style="color:#00f">42</span>)
+</code></pre></div><p>We expand <code>foo2(qux, 42)</code> by substituting the arguments to get <code>cat(foo, [f=qux]([x=42]))</code> where I have put the substitution in square brackets. In this step, we need to expand the macros in those substituted expressions, but <code>qux</code> evaluates to <code>qux</code>. It is a function-like macro, so <code>qux()</code> evaluates to something (it evaluates to <code>bar</code>), but <code>qux</code> without parentheses doesn&rsquo;t. And 42, of course, evaluates to 42. The result is <code>cat(foo, qux(42))</code> so the arguments to cat, which it will concatenate without evaluation, are <code>foo</code> and <code>qux(42)</code>. We do not evaluate <code>qux(42)</code> because that expression wasn&rsquo;t part of a parameter; we created it from two separate arguments.</p>
 <p>Likewise, for</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define s(x) #x
-</span><span style="color:#008080">#define bar(f,x) s(f(x))
-</span><span style="color:#008080"></span>bar(qux, <span style="color:#00f">42</span>)</code></pre></div>
-<p>we expand <code>bar(qux, 42) =&gt; s([f=qux]([x=42])) =&gt; s(qux(42))</code> and <code>s()</code> makes the argument into a verbatim string without expanding it.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define s(x) #x</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define bar(f,x) s(f(x))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>bar(qux, <span style="color:#00f">42</span>)
+</code></pre></div><p>we expand <code>bar(qux, 42) =&gt; s([f=qux]([x=42])) =&gt; s(qux(42))</code> and <code>s()</code> makes the argument into a verbatim string without expanding it.</p>
 <p>Macros in arguments are expanded in this step; it is not that this step isn&rsquo;t doing anything. It is just that in these two examples, the expansion is to the verbatim input, <code>qux</code> to <code>qux</code> (and not <code>qux()</code> and <code>42</code> to <code>42</code>).</p>
-
 <p>If the argument was something we could evaluate, then there would be an expansion at this step.</p>
-
 <p>Consider this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define qax() qux
-</span><span style="color:#008080"></span>bar(qax(), <span style="color:#00f">42</span>)</code></pre></div>
-<p>Here, the substitution gives us <code>bar(qax(), 42) =&gt; s([f=qax()]([x=42]))</code> and <code>[f=qax()]</code> is evaluated, <code>qax() =&gt; qux</code>, so the result is <code>s(qux(42)) =&gt; &quot;qux(42)&quot;</code>.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define qax() qux</span><span style="color:#008080">
+</span><span style="color:#008080"></span>bar(qax(), <span style="color:#00f">42</span>)
+</code></pre></div><p>Here, the substitution gives us <code>bar(qax(), 42) =&gt; s([f=qax()]([x=42]))</code> and <code>[f=qax()]</code> is evaluated, <code>qax() =&gt; qux</code>, so the result is <code>s(qux(42)) =&gt; &quot;qux(42)&quot;</code>.</p>
 <p>But if we do not evaluate something like <code>qux(42)</code>, then why do we evaluate <code>s(qux(42))</code> to get <code>&quot;qux(42)&quot;</code>?</p>
-
 <p>That&rsquo;s the last step of the expansion.</p>
-
 <h2 id="rescan-and-expand-the-result">Rescan and expand the result</h2>
-
 <p>Once the stringification, substitution, concatenation and parameter-expansion is done, the preprocessor goes through the result once more, expanding the macros it finds.</p>
-
 <p>If we take <code>bar(qux, 42)</code> up to this step, we have substituted to get <code>s(qux(42))</code>. The same with <code>bar(qax(), 42)</code> because <code>qax()</code> will have been evaluated, expanding to <code>qux</code>. So <code>s(qux(42))</code> is the expression the preprocessor has before the last step, and the last step is just going through this expression and substituting all the macros it finds. It goes left-to-right, so if <code>.</code> is the current position, it will go</p>
-
 <pre><code>	. s(qux(42))
-</code></pre>
-
-<p>see that there is a function-like macro, <code>s()</code>, evaluate it (following the same rules as we are following now, and replace the call with the result</p>
-
+</code></pre><p>see that there is a function-like macro, <code>s()</code>, evaluate it (following the same rules as we are following now, and replace the call with the result</p>
 <pre><code>	. s(qux(42)) =&gt; &quot;qux(42)&quot; .
-</code></pre>
-
-<p>We don&rsquo;t evaluate <code>qux(42)</code> because <code>s()</code> doesn&rsquo;t evaluate its input, it stringify it, and once we are past expanding <code>s</code>, we don&rsquo;t attempt to evaluate the result.</p>
-
+</code></pre><p>We don&rsquo;t evaluate <code>qux(42)</code> because <code>s()</code> doesn&rsquo;t evaluate its input, it stringify it, and once we are past expanding <code>s</code>, we don&rsquo;t attempt to evaluate the result.</p>
 <p>It is the same with</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define cat(x, y) x ## y
-</span><span style="color:#008080">#define foo2(f, x) cat(foo, f(x))
-</span><span style="color:#008080"></span>foo2(qux, <span style="color:#00f">42</span>)</code></pre></div>
-<p>After all the substitution brouhaha, <code>foo2(qux, 42)</code> was turned into <code>cat(foo, qux(42))</code>, so that is what we scan.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define cat(x, y) x ## y</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo2(f, x) cat(foo, f(x))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo2(qux, <span style="color:#00f">42</span>)
+</code></pre></div><p>After all the substitution brouhaha, <code>foo2(qux, 42)</code> was turned into <code>cat(foo, qux(42))</code>, so that is what we scan.</p>
 <pre><code>	. cat(foo, qux(42)) =&gt; fooqux(42) .
-</code></pre>
-
-<p>Since <code>cat</code> concatenates its input verbatim, we do not evaluate <code>qux(42)</code>.</p>
-
+</code></pre><p>Since <code>cat</code> concatenates its input verbatim, we do not evaluate <code>qux(42)</code>.</p>
 <p>Is there then no way to evaluate before concatenating? Of course, there is; we just need to cheat the preprocessor into doing it. If one level of indirection doesn&rsquo;t work, try two:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define cat(x, y) x ## y
-</span><span style="color:#008080">#define cat2(x, y) cat(x, y)
-</span><span style="color:#008080">#define foo3(f, x) cat2(foo, f(x))
-</span><span style="color:#008080"></span>foo3(qux, <span style="color:#00f">42</span>)</code></pre></div>
-<p>Here, <code>foo3(qux, 42)</code> is transformed into <code>cat2(foo, [f=qux]([x=42]))</code> and which gives us <code>cat2(foo, qux(42))</code>, and that is what we need to evaluate. It&rsquo;s a macro call, so same procedure as always.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define cat(x, y) x ## y</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define cat2(x, y) cat(x, y)</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo3(f, x) cat2(foo, f(x))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>foo3(qux, <span style="color:#00f">42</span>)
+</code></pre></div><p>Here, <code>foo3(qux, 42)</code> is transformed into <code>cat2(foo, [f=qux]([x=42]))</code> and which gives us <code>cat2(foo, qux(42))</code>, and that is what we need to evaluate. It&rsquo;s a macro call, so same procedure as always.</p>
 <p>We substitute to go from <code>cat2(foo, qux(42))</code> to <code>cat([x=foo],[y=qux(42)])</code> and notice that this time, when we evaluate the parameters, we have an expression to evaluate: <code>qux(42) =&gt; bar</code>! That means that after the substitution we get <code>cat(foo, bar)</code> and when we do the second scan we will evaluate <code>cat(foo, bar) =&gt; foobar</code>.</p>
-
 <p>Anyone who says that C&rsquo;s preprocessor macros are easy to use probably hasn&rsquo;t used them that much… the rules are simple, perhaps, but they are tricky.</p>
-
 <p>And there is more to them. Otherwise, we couldn&rsquo;t do half the meta-programming we can. But I think it is time for a little break to see how we can do something useful with what we&rsquo;ve got so far.</p>
-
 <h1 id="macros-and-choices">Macros and choices</h1>
-
 <p>While the preprocessor has if/else statements</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#if FOO
-</span><span style="color:#008080"># define BAR &#34;foo&#34;
-</span><span style="color:#008080">#else
-</span><span style="color:#008080"># define BAR &#34;baz&#34;
-</span><span style="color:#008080">#endif</span></code></pre></div>
-<p>you cannot use those in macro expressions. You cannot write</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">type x = <span style="color:#000080;font-weight:bold">if</span>(foo)(bar)(baz);</code></pre></div>
-<p>and assign <code>bar</code> to <code>x</code> if <code>foo</code> is true and <code>baz</code> otherwise. Maybe that is not something you want to do, and that&rsquo;s okay, but it is something that you <em>can</em> do, with a bit of hacking.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">if FOO</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080"> define BAR &#34;foo&#34;</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">else</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080"> define BAR &#34;baz&#34;</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">endif</span><span style="color:#008080">
+</span></code></pre></div><p>you cannot use those in macro expressions. You cannot write</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">type x = <span style="color:#000080;font-weight:bold">if</span>(foo)(bar)(baz);
+</code></pre></div><p>and assign <code>bar</code> to <code>x</code> if <code>foo</code> is true and <code>baz</code> otherwise. Maybe that is not something you want to do, and that&rsquo;s okay, but it is something that you <em>can</em> do, with a bit of hacking.</p>
 <p>The first bit to the trick is to use one macro to select another…</p>
-
 <h2 id="tables-with-macros">Tables with macros</h2>
-
 <p>There&rsquo;s a trick that I have used a lot, and most recently with the slices I mentioned at the beginning of this post. If you have to choose between different expansions based on a type or a value, you can define macros for each choice and write another macro that picks the appropriate one.</p>
-
 <p>It is roughly what you can do with <code>_Generic()</code> for types, but that feature is somewhat limited. You can only expand values to values and not, for example, types.</p>
-
 <p>In my slice code, I use <code>_Generic()</code> to dispatch on types, but sometimes I must dispatch on a slice type and sometimes on an underlying type. So I defined macros that map from a slice type to the underlying type like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE_BASE_sslice char
-</span><span style="color:#008080">#define CSTR_SLICE_BASE_islice int
-</span><span style="color:#008080">#define CSTR_SLICE_BASE_uislice unsigned int
-</span><span style="color:#008080">#define CSTR_SLICE_BASE(TYPE) CSTR_SLICE_BASE_##TYPE</span></code></pre></div>
-<p>For each slice type, there is a <code>CSTR_SLICE_BASE_</code><em><underlying></em> macro, and the <code>CSTR_SLICE_BASE(TYPE)</code> picks the right one by concatenating <code>CSTR_SLICE_BASE_</code> with <code>TYPE</code>.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define CSTR_SLICE_BASE_sslice char</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_SLICE_BASE_islice int</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_SLICE_BASE_uislice unsigned int</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_SLICE_BASE(TYPE) CSTR_SLICE_BASE_##TYPE</span><span style="color:#008080">
+</span></code></pre></div><p>For each slice type, there is a <code>CSTR_SLICE_BASE_</code><em><!-- raw HTML omitted --></em> macro, and the <code>CSTR_SLICE_BASE(TYPE)</code> picks the right one by concatenating <code>CSTR_SLICE_BASE_</code> with <code>TYPE</code>.</p>
 <p>I use it to generate dispatch tables for the various generic macros I have:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// This macro needs a dispatch map for each slice type
-</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_DISPATCH_TABLE(FUNC, MTYPE)        \
-</span><span style="color:#008080"></span>    CSTR_DISPATCH_MAP(sslice, FUNC, MTYPE),     \
-    CSTR_DISPATCH_MAP(islice, FUNC, MTYPE), \
-    CSTR_DISPATCH_MAP(uislice, FUNC, MTYPE)
-
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_DISPATCH_TABLE(FUNC, MTYPE)        \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    CSTR_DISPATCH_MAP(sslice, FUNC, MTYPE),     \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    CSTR_DISPATCH_MAP(islice, FUNC, MTYPE), \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    CSTR_DISPATCH_MAP(uislice, FUNC, MTYPE)</span><span style="color:#008080">
+</span><span style="color:#008080"></span>
 <span style="color:#080;font-style:italic">// Type-based static dispatch.
-</span><span style="color:#080;font-style:italic">// ---------------------------
-</span><span style="color:#080;font-style:italic">// Select a function based on the type of S and
-</span><span style="color:#080;font-style:italic">// the dispatch table in, then call it with the
-</span><span style="color:#080;font-style:italic">// remaining arguments.
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// ---------------------------
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// Select a function based on the type of S and
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// the dispatch table in, then call it with the
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">// remaining arguments.
 </span><span style="color:#080;font-style:italic"></span>
 <span style="color:#080;font-style:italic">// Maps a type to the corresponding function
-</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_DISPATCH_MAP_(TYPE, FUNC) \
-</span><span style="color:#008080"></span>    cstr_<span style="color:#008080">##TYPE : cstr_##FUNC##_##TYPE
-</span><span style="color:#008080">#define CSTR_DISPATCH_MAP_B(TYPE, FUNC) \
-</span><span style="color:#008080"></span>    CSTR_SLICE_BASE(TYPE) * : cstr_<span style="color:#008080">##FUNC##_##TYPE
-</span><span style="color:#008080">#define CSTR_DISPATCH_MAP(TYPE, FUNC, MTYPE) \
-</span><span style="color:#008080"></span>    CSTR_DISPATCH_MAP_<span style="color:#008080">##MTYPE(TYPE, FUNC)
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_DISPATCH_MAP_(TYPE, FUNC) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    cstr_##TYPE : cstr_##FUNC##_##TYPE</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_DISPATCH_MAP_B(TYPE, FUNC) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    CSTR_SLICE_BASE(TYPE) * : cstr_##FUNC##_##TYPE</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_DISPATCH_MAP(TYPE, FUNC, MTYPE) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    CSTR_DISPATCH_MAP_##MTYPE(TYPE, FUNC)</span><span style="color:#008080">
 </span><span style="color:#008080"></span>
 <span style="color:#080;font-style:italic">// Dispatch a function based on the type of X
-</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_SLICE_DISPATCH(X, B, FUNC, ...) \
-</span><span style="color:#008080"></span>    _Generic((X), CSTR_DISPATCH_TABLE(FUNC, B))(__VA_ARGS__)</code></pre></div>
-<p>It is a bit messy, but I will explain it some other time. The point is that I can, for example, write a generic macro that creates a slice from a buffer and a length, where I need the underlying base-type to dispatch on:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define CSTR_SLICE(BUF, LEN) \
-</span><span style="color:#008080"></span>    CSTR_SLICE_DISPATCH(BUF, B, new, BUF, LEN)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Dispatching on underlying type
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_SLICE_DISPATCH(X, B, FUNC, ...) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    _Generic((X), CSTR_DISPATCH_TABLE(FUNC, B))(__VA_ARGS__)</span><span style="color:#008080">
+</span></code></pre></div><p>It is a bit messy, but I will explain it some other time. The point is that I can, for example, write a generic macro that creates a slice from a buffer and a length, where I need the underlying base-type to dispatch on:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define CSTR_SLICE(BUF, LEN) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    CSTR_SLICE_DISPATCH(BUF, B, new, BUF, LEN)</span><span style="color:#008080">
+</span></code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Dispatching on underlying type
 </span><span style="color:#080;font-style:italic"></span>cstr_sslice x = CSTR_SLICE(sbuf, <span style="color:#00f">1024</span>);
-cstr_islice y = CSTR_SLICE(ybuf, <span style="color:#00f">1024</span>);</code></pre></div>
-<p>Or I can dispatch on a slice type to, for example, extract a sub-slice.</p>
+cstr_islice y = CSTR_SLICE(ybuf, <span style="color:#00f">1024</span>);
+</code></pre></div><p>Or I can dispatch on a slice type to, for example, extract a sub-slice.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// subslice: x =&gt; x[i:j]
-</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define CSTR_SUBSLICE(S, I, J) \
-</span><span style="color:#008080"></span>    CSTR_SLICE_DISPATCH(S, , subslice, S, I, J)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">cstr_sslice z = CSTR_SUBSLICE(x, <span style="color:#00f">13</span>, <span style="color:#00f">42</span>);
-cstr_islice w = CSTR_SUBSLICE(y, <span style="color:#00f">13</span>, <span style="color:#00f">42</span>);</code></pre></div>
-<p>What is relevant here is that you can write a macro</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo(x) foo_ ## x</span></code></pre></div>
-<p>that lets you pick other macros</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo_bar qux
-</span><span style="color:#008080">#define foo_baz qax</span></code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo(bar) <span style="color:#080;font-style:italic">// =&gt; foo_bar =&gt; qux
-</span><span style="color:#080;font-style:italic"></span>foo(baz) // =&gt; foo_baz =&gt; qax</code></pre></div>
-<h2 id="if-statements">If-statements</h2>
-
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#</span><span style="color:#008080">define CSTR_SUBSLICE(S, I, J) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    CSTR_SLICE_DISPATCH(S, , subslice, S, I, J)</span><span style="color:#008080">
+</span></code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">cstr_sslice z = CSTR_SUBSLICE(x, <span style="color:#00f">13</span>, <span style="color:#00f">42</span>);
+cstr_islice w = CSTR_SUBSLICE(y, <span style="color:#00f">13</span>, <span style="color:#00f">42</span>);
+</code></pre></div><p>What is relevant here is that you can write a macro</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo(x) foo_ ## x</span><span style="color:#008080">
+</span></code></pre></div><p>that lets you pick other macros</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo_bar qux</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo_baz qax</span><span style="color:#008080">
+</span></code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo(bar) <span style="color:#080;font-style:italic">// =&gt; foo_bar =&gt; qux
+</span><span style="color:#080;font-style:italic"></span>foo(baz) <span style="color:#080;font-style:italic">// =&gt; foo_baz =&gt; qax
+</span></code></pre></div><h2 id="if-statements">If-statements</h2>
 <p>Picking macros via concatenation also works for function-like macros. For example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define if_else(b) if_##b
-</span><span style="color:#008080">#define if_0(...) else_0
-</span><span style="color:#008080">#define if_1(...) __VA_ARGS__ else_1
-</span><span style="color:#008080">#define else_0(...) __VA_ARGS__
-</span><span style="color:#008080">#define else_1(...)</span></code></pre></div>
-<p>Here, we define <code>if_else(b)</code>, where <code>b</code> must be 0 or 1, such that it either picks <code>if_0</code> (where <code>b</code> is 0) that will ignore its parameters but evaluate to <code>else_0</code>, or it evaluates to <code>if_1</code> that will expand its parameters and follow them with <code>else_1</code>. The idea is that you would call <code>if_else()</code> followed by an if-part in parentheses, thus invoking either <code>if_0</code> or <code>if_1</code>, and then they provide an else part that you invoke with a second set of arguments. It could look like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">if_else(<span style="color:#00f">0</span>)(abort())(printf(<span style="color:#00f">&#34;yeah!</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>));
-if_else(<span style="color:#00f">1</span>)(printf(<span style="color:#00f">&#34;also yeah!</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>))(abort());</code></pre></div>
-<p>If <code>b</code> is 1, we get the arguments in the if-part and then an else part that throws the second set of parameters away. If we call with <code>b</code> equal to 0, we throw away the first part and provide an else part that will include the parameters there. Both if and else parts use variadic arguments, <code>…</code> and <code>__VA_ARGS__</code> to handle any set of arguments.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define if_else(b) if_##b</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define if_0(...) else_0</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define if_1(...) __VA_ARGS__ else_1</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define else_0(...) __VA_ARGS__</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define else_1(...)</span><span style="color:#008080">
+</span></code></pre></div><p>Here, we define <code>if_else(b)</code>, where <code>b</code> must be 0 or 1, such that it either picks <code>if_0</code> (where <code>b</code> is 0) that will ignore its parameters but evaluate to <code>else_0</code>, or it evaluates to <code>if_1</code> that will expand its parameters and follow them with <code>else_1</code>. The idea is that you would call <code>if_else()</code> followed by an if-part in parentheses, thus invoking either <code>if_0</code> or <code>if_1</code>, and then they provide an else part that you invoke with a second set of arguments. It could look like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">if_else(<span style="color:#00f">0</span>)(abort())(printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">yeah!</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>));
+if_else(<span style="color:#00f">1</span>)(printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">also yeah!</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>))(abort());
+</code></pre></div><p>If <code>b</code> is 1, we get the arguments in the if-part and then an else part that throws the second set of parameters away. If we call with <code>b</code> equal to 0, we throw away the first part and provide an else part that will include the parameters there. Both if and else parts use variadic arguments, <code>…</code> and <code>__VA_ARGS__</code> to handle any set of arguments.</p>
 <p>It is simple, and it works, but it is also pretty useless. You have to provide verbatim 0 or 1 to the <code>if_else</code> macro, or it doesn&rsquo;t pick <code>if_0</code> or <code>if_1</code>, it will simply expand to some <code>if_foo</code> token that likely isn&rsquo;t even defined. Unless we can evaluate <code>b</code> as some sort of test expression, we might as well just choose <code>if_0</code> or <code>if_1</code> direction.</p>
-
 <h2 id="testing-expressions">Testing expressions</h2>
-
 <p>It gets a little hairy now, but once you get the trick, it is pretty neat.</p>
-
 <p>We can use variadic macros to pick true or false values. It goes like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define second(a, b, ...) b
-</span><span style="color:#008080">#define test(p) second(p, 0)
-</span><span style="color:#008080">#define is_true() -, 1</span></code></pre></div>
-<p>The <code>second()</code> macro gives you the second value in its input, and if <code>second(p, 0)</code> expands to something where <code>p</code> doesn&rsquo;t contain any commas, that will be zero. If, however, we call <code>test(is_true())</code>, then <code>p</code> expands to <code>-, 1</code>, so <code>second(p, 0)</code> becomes <code>second(-, 1, 0)</code> which evaluates to 1. In other words, <code>test(is_true())</code> is 1, and <code>test(xxx)</code> for any <code>xxx</code> that doesn&rsquo;t expand to something with a comma in it, will be 0.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define second(a, b, ...) b</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define test(p) second(p, 0)</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define is_true() -, 1</span><span style="color:#008080">
+</span></code></pre></div><p>The <code>second()</code> macro gives you the second value in its input, and if <code>second(p, 0)</code> expands to something where <code>p</code> doesn&rsquo;t contain any commas, that will be zero. If, however, we call <code>test(is_true())</code>, then <code>p</code> expands to <code>-, 1</code>, so <code>second(p, 0)</code> becomes <code>second(-, 1, 0)</code> which evaluates to 1. In other words, <code>test(is_true())</code> is 1, and <code>test(xxx)</code> for any <code>xxx</code> that doesn&rsquo;t expand to something with a comma in it, will be 0.</p>
 <p>We cannot guard against someone shoving some macro into <code>test()</code> that expands the way that <code>is_true()</code> does, but this is C, and nothing is ever safe. It is good enough.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">test(x) <span style="color:#080;font-style:italic">// 0
-</span><span style="color:#080;font-style:italic"></span>test(is_true()) // <span style="color:#00f">1</span></code></pre></div>
-<p>So, anyway, we can write macros that either expand to <code>is_true()</code> or not, and if they expand to <code>is_true()</code> we can use that to get a truth-value out of them.</p>
-
+</span><span style="color:#080;font-style:italic"></span>test(is_true()) <span style="color:#080;font-style:italic">// 1
+</span></code></pre></div><p>So, anyway, we can write macros that either expand to <code>is_true()</code> or not, and if they expand to <code>is_true()</code> we can use that to get a truth-value out of them.</p>
 <p>We can use it to define a not operator, <code>x =&gt; !x</code>:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// 0 =&gt; 1, everything else is 0
-</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define cat(a,b) a##b
-</span><span style="color:#008080">#define not(b) test(cat(not_,b))
-</span><span style="color:#008080">#define not_0 is_true()</span></code></pre></div>
-<p>We use <code>cat(not_,b)</code> to expand <code>b</code> into 0/something and then call <code>test</code> with the result of the expansion. If <code>cat(not_,b)</code> is <code>not_0</code> that will expand to <code>not_0 =&gt; is_true()</code> so the call to <code>test(p)</code> gives us 1. If <code>b</code> is not 0, then <code>cat(not_,b)</code> becomes some single token, <code>not_xxx</code>, which becomes the first token in <code>second(p, 0)</code> and we get 0.</p>
-
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#</span><span style="color:#008080">define cat(a,b) a##b</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define not(b) test(cat(not_,b))</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define not_0 is_true()</span><span style="color:#008080">
+</span></code></pre></div><p>We use <code>cat(not_,b)</code> to expand <code>b</code> into 0/something and then call <code>test</code> with the result of the expansion. If <code>cat(not_,b)</code> is <code>not_0</code> that will expand to <code>not_0 =&gt; is_true()</code> so the call to <code>test(p)</code> gives us 1. If <code>b</code> is not 0, then <code>cat(not_,b)</code> becomes some single token, <code>not_xxx</code>, which becomes the first token in <code>second(p, 0)</code> and we get 0.</p>
 <p>So, we can test for 0 now, and from that we can test for non-zero using the familiar <code>!!x</code> operation to translate any <code>x</code> into its truthiness boolean.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// 0 =&gt; 0, everything else 1
-</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#define truthiness(b) not(not(b))
+</span><span style="color:#080;font-style:italic"></span><span style="color:#008080">#</span><span style="color:#008080">define truthiness(b) not(not(b))</span><span style="color:#008080">
 </span><span style="color:#008080"></span>
 truthiness(foo) <span style="color:#080;font-style:italic">// =&gt; 1
 </span><span style="color:#080;font-style:italic"></span>truthiness(<span style="color:#00f">0</span>)   <span style="color:#080;font-style:italic">// =&gt; 0
-</span><span style="color:#080;font-style:italic"></span>truthiness(<span style="color:#00f">1</span>)   // =&gt; <span style="color:#00f">1</span></code></pre></div>
-<p>We can use <code>truthiness()</code> in our <code>if_else</code> to handle more general input. Zero will still mean false, but everything else will be true.</p>
-
+</span><span style="color:#080;font-style:italic"></span>truthiness(<span style="color:#00f">1</span>)   <span style="color:#080;font-style:italic">// =&gt; 1
+</span></code></pre></div><p>We can use <code>truthiness()</code> in our <code>if_else</code> to handle more general input. Zero will still mean false, but everything else will be true.</p>
 <p>This will not work:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define if_else(b) cat(if_,truthiness(b))</span></code></pre></div>
-<p>because evaluating <code>if_else(xxx)</code> will substitute to <code>cat(if_,truthiness([b=xxx])) =&gt; cat(if_,truthiness([xxx]))</code> and the <code>xxx</code> is the end of the parameter evaluation. That means that on the scan of the expression after substitution we see <code>cat(if_,truthiness(xxx))</code> which we call <code>cat()</code> with, and it will translate it into <code>if_truthiness(xxx)</code> which isn&rsquo;t what we want. We need to make sure that the <code>truthiness(b)</code> expression is evaluated before we invoke <code>cat</code>, and we can do that by one level of indirection:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define if_else(b) if_else_(truthiness(b))
-</span><span style="color:#008080">#define if_else_(b) cat(if_,b)</span></code></pre></div>
-<p>Now <code>if_else(xxx)</code> gets expanded to <code>if_else_(truthiness([b=xxx])) = if_else_(truthiness(xxx))</code> and inside <code>if_else_</code> we get <code>cat(if_,[b=truthiness(xxx)])</code> where <code>truthiness(xxx)</code> is evaluated before we call <code>cat</code>.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define if_else(b) cat(if_,truthiness(b))</span><span style="color:#008080">
+</span></code></pre></div><p>because evaluating <code>if_else(xxx)</code> will substitute to <code>cat(if_,truthiness([b=xxx])) =&gt; cat(if_,truthiness([xxx]))</code> and the <code>xxx</code> is the end of the parameter evaluation. That means that on the scan of the expression after substitution we see <code>cat(if_,truthiness(xxx))</code> which we call <code>cat()</code> with, and it will translate it into <code>if_truthiness(xxx)</code> which isn&rsquo;t what we want. We need to make sure that the <code>truthiness(b)</code> expression is evaluated before we invoke <code>cat</code>, and we can do that by one level of indirection:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define if_else(b) if_else_(truthiness(b))</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define if_else_(b) cat(if_,b)</span><span style="color:#008080">
+</span></code></pre></div><p>Now <code>if_else(xxx)</code> gets expanded to <code>if_else_(truthiness([b=xxx])) = if_else_(truthiness(xxx))</code> and inside <code>if_else_</code> we get <code>cat(if_,[b=truthiness(xxx)])</code> where <code>truthiness(xxx)</code> is evaluated before we call <code>cat</code>.</p>
 <p>You can also use a similar trick to check if a macro received any arguments:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define first(a, ...) a
-</span><span style="color:#008080">#define is_nil(...) test(first(is_true __VA_ARGS__)())</span></code></pre></div>
-<p>The trick to this is that <code>first(is_true __VA_ARGS__)</code> will be <code>first(is_true) = is_true</code> if <code>__VA_ARGS__</code> is empty, but if <code>__VA_ARGS__ = x, y, z</code> then <code>first(is_true __VA_ARGS__) = first(is_true x, y, z) is_true x</code> (notice no comma between <code>is_true</code> and <code>x</code>). So</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define first(a, ...) a</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define is_nil(...) test(first(is_true __VA_ARGS__)())</span><span style="color:#008080">
+</span></code></pre></div><p>The trick to this is that <code>first(is_true __VA_ARGS__)</code> will be <code>first(is_true) = is_true</code> if <code>__VA_ARGS__</code> is empty, but if <code>__VA_ARGS__ = x, y, z</code> then <code>first(is_true __VA_ARGS__) = first(is_true x, y, z) is_true x</code> (notice no comma between <code>is_true</code> and <code>x</code>). So</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	first(is_true __VA_ARGS__)() [substitute] =&gt;
 	first(is_true)() [eval first() in scan] =&gt;
-	is_true()</code></pre></div>
-<p>which will be true when we give it to <code>test()</code>, while</p>
+	is_true()
+</code></pre></div><p>which will be true when we give it to <code>test()</code>, while</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">  first(is_true __VA_ARGS__)() [substitute] =&gt;
   first(is_true x, y, z)() [eval first()] =&gt;
-  is_true x()</code></pre></div>
-<p>which, as long as <code>x()</code> doesn&rsquo;t expand to something with a comma when we give it to <code>test()</code>, will be false.</p>
-
+  is_true x()
+</code></pre></div><p>which, as long as <code>x()</code> doesn&rsquo;t expand to something with a comma when we give it to <code>test()</code>, will be false.</p>
 <h1 id="macros-and-recursion">Macros and recursion</h1>
-
 <p>So we have the power to create if-statements, but can we also iterate over arguments? We could use variadic parameters as a kind of list</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define head(a, ...) a
-</span><span style="color:#008080">#define tail(a, ...) __VA_ARGS__
-</span><span style="color:#008080">#define is_nil(...) test(first(is_true __VA_ARGS__)())</span></code></pre></div>
-<p>so could we write a <code>map()</code> function?</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define map(f, ...)                    \
-</span><span style="color:#008080"></span>    if_else(is_nil(__VA_ARGS__)).      \
-    () <span style="color:#080;font-style:italic">/* do nothing, we are done */</span>   \
-    (  <span style="color:#080;font-style:italic">/* apply to head and recurse */</span> \
-      f(head(__VA_ARGS__))             \
-      map(f, tail(__VA_ARGS__))        \
-    )
-
-<span style="color:#008080">#define foo(x) f(x)
-</span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">int</span> x[] = { map(foo, x, y, z) };</code></pre></div>
-<p>It looks so right, and yet,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> x[] = { map(foo, x, y, z) };</code></pre></div>
-<p>only expands to</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> x[] = { f(x) map(foo, y, z) };</code></pre></div>
-<p>It looks like the recursive call simply isn&rsquo;t expanded.</p>
-
-<h2 id="the-preprocessor-really-doesn-t-like-recursion">The preprocessor really doesn&rsquo;t like recursion</h2>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define head(a, ...) a</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define tail(a, ...) __VA_ARGS__</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define is_nil(...) test(first(is_true __VA_ARGS__)())</span><span style="color:#008080">
+</span></code></pre></div><p>so could we write a <code>map()</code> function?</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define map(f, ...)                    \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    if_else(is_nil(__VA_ARGS__)).      \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    () </span><span style="color:#080;font-style:italic">/* do nothing, we are done */</span><span style="color:#008080">   \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    (  </span><span style="color:#080;font-style:italic">/* apply to head and recurse */</span><span style="color:#008080"> \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">      f(head(__VA_ARGS__))             \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">      map(f, tail(__VA_ARGS__))        \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    )</span><span style="color:#008080">
+</span><span style="color:#008080"></span>
+<span style="color:#008080">#</span><span style="color:#008080">define foo(x) f(x)</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">int</span> x[] = { map(foo, x, y, z) };
+</code></pre></div><p>It looks so right, and yet,</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> x[] = { map(foo, x, y, z) };
+</code></pre></div><p>only expands to</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> x[] = { f(x) map(foo, y, z) };
+</code></pre></div><p>It looks like the recursive call simply isn&rsquo;t expanded.</p>
+<h2 id="the-preprocessor-really-doesnt-like-recursion">The preprocessor really doesn&rsquo;t like recursion</h2>
 <p>The preprocessor doesn&rsquo;t immediately allow recursion. It actually works hard to disable it. This is to avoid issues such as <code>foo</code> and <code>bar</code>, here, that if you tried to expand them would give you an infinite expansion.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo F bar
-</span><span style="color:#008080">#define bar B foo</span></code></pre></div>
-<p>The way it works is, the preprocessor knows which macros it is in the process of expanding, and if it sees any of those during the expansion, the expansion there is tagged (painted blue, in the parlance), and that expansion is forever left as is.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo F bar</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define bar B foo</span><span style="color:#008080">
+</span></code></pre></div><p>The way it works is, the preprocessor knows which macros it is in the process of expanding, and if it sees any of those during the expansion, the expansion there is tagged (painted blue, in the parlance), and that expansion is forever left as is.</p>
 <p>Say you want to expand <code>foo</code> above. Then you enter a state that knows that it is expanding <code>foo</code>, it handles the token <code>F</code> without any issues (it is not a macro, so it is left as it is)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo // foo =&gt; [foo] F . bar</code></pre></div>
-<p>but when it needs to expand <code>bar</code> it expands the tokens there and remembers that it is now expanding both <code>foo</code> and <code>bar</code>. Then it scans alone, past <code>B</code> that doesn&rsquo;t require any special handling, and it runs into <code>foo</code>. Since it is in the process of expanding a <code>foo</code>, this <code>foo</code> cannot be expanded. It is tagged, and in any future processing, it will be left alone.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo <span style="color:#080;font-style:italic">// foo =&gt; [foo] F . bar
+</span></code></pre></div><p>but when it needs to expand <code>bar</code> it expands the tokens there and remembers that it is now expanding both <code>foo</code> and <code>bar</code>. Then it scans alone, past <code>B</code> that doesn&rsquo;t require any special handling, and it runs into <code>foo</code>. Since it is in the process of expanding a <code>foo</code>, this <code>foo</code> cannot be expanded. It is tagged, and in any future processing, it will be left alone.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">//     =&gt; [foo, bar] F B . foo&lt;tagged&gt;
-</span><span style="color:#080;font-style:italic"></span>//     =&gt; F B foo&lt;tagged&gt;</code></pre></div>
-<p>Expanding <code>bar</code> is similar: you are in a context where you are expanding <code>bar</code>, you can easily handle <code>B</code>, but you need to expand <code>foo</code>. Inside <code>foo</code>, you can handle <code>F</code>, but when you see <code>bar</code>, you must tag it, and it cannot be expanded any further.</p>
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">//     =&gt; F B foo&lt;tagged&gt;
+</span></code></pre></div><p>Expanding <code>bar</code> is similar: you are in a context where you are expanding <code>bar</code>, you can easily handle <code>B</code>, but you need to expand <code>foo</code>. Inside <code>foo</code>, you can handle <code>F</code>, but when you see <code>bar</code>, you must tag it, and it cannot be expanded any further.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">bar
 <span style="color:#080;font-style:italic">// bar =&gt; [bar] B . foo
-</span><span style="color:#080;font-style:italic">//     =&gt; [bar, foo] B F . bar&lt;tagged&gt;
-</span><span style="color:#080;font-style:italic"></span>//     =&gt; B F bar&lt;tagged&gt;</code></pre></div>
-<p>We can define <code>foobar</code> as first a <code>foo</code> and then a <code>bar</code>, and see that it is the recursive expansions that disable some expansions, not consecutive ones.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foobar foo bar</span></code></pre></div>
-<p>If we expand <code>foobar</code>, we first have to expand <code>foo</code>, so now we will be in a context where we are expanding <code>foobar</code> and <code>foo</code>. Inside <code>foo</code>, things progress as above, we leave <code>F</code> alone, we expand <code>bar</code>, then get a <code>B</code> and then a tagged <code>foo</code> because we cannot expand recursively.</p>
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">//     =&gt; [bar, foo] B F . bar&lt;tagged&gt;
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">//     =&gt; B F bar&lt;tagged&gt;
+</span></code></pre></div><p>We can define <code>foobar</code> as first a <code>foo</code> and then a <code>bar</code>, and see that it is the recursive expansions that disable some expansions, not consecutive ones.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foobar foo bar</span><span style="color:#008080">
+</span></code></pre></div><p>If we expand <code>foobar</code>, we first have to expand <code>foo</code>, so now we will be in a context where we are expanding <code>foobar</code> and <code>foo</code>. Inside <code>foo</code>, things progress as above, we leave <code>F</code> alone, we expand <code>bar</code>, then get a <code>B</code> and then a tagged <code>foo</code> because we cannot expand recursively.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foobar
 <span style="color:#080;font-style:italic">// foobar =&gt; [foobar] . foo bar
-</span><span style="color:#080;font-style:italic">//        =&gt; [foobar,foo] F . bar bar
-</span><span style="color:#080;font-style:italic"></span>//        =&gt; [foobar,foo,bar] F B . foo&lt;tagged&gt; bar</code></pre></div>
-<p>After handling <code>foo</code>, we have another <code>bar</code> to handle. While we expanded <code>foo</code>, we were in a <code>bar</code> context where expansions of <code>bar</code> were disabled, but we are no longer in that context, and we can expand <code>bar</code> again, which we do.</p>
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">//        =&gt; [foobar,foo] F . bar bar
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">//        =&gt; [foobar,foo,bar] F B . foo&lt;tagged&gt; bar
+</span></code></pre></div><p>After handling <code>foo</code>, we have another <code>bar</code> to handle. While we expanded <code>foo</code>, we were in a <code>bar</code> context where expansions of <code>bar</code> were disabled, but we are no longer in that context, and we can expand <code>bar</code> again, which we do.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">//        =&gt; [foobar] F B foo&lt;tagged&gt; . bar
-</span><span style="color:#080;font-style:italic"></span>//        =&gt; [foobar,bar] F B foo&lt;tagged&gt; B . foo</code></pre></div>
-<p>In the expansion of <code>bar</code>, we see <code>foo</code>, which is no longer disabled, so we can expand that, and the whole <code>bar</code> processing progresses as earlier.</p>
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">//        =&gt; [foobar,bar] F B foo&lt;tagged&gt; B . foo
+</span></code></pre></div><p>In the expansion of <code>bar</code>, we see <code>foo</code>, which is no longer disabled, so we can expand that, and the whole <code>bar</code> processing progresses as earlier.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">//        =&gt; [foobar,bar,foo] F B foo&lt;tagged&gt; B F . bar&lt;tagged&gt;
-</span><span style="color:#080;font-style:italic"></span>//        =&gt; F B foo&lt;tagged&gt; B F bar&lt;tagged&gt;</code></pre></div>
-<p>Expansion works as you would expect, with the same rules we have discussed earlier if we are working with function-like macros, except that recursion isn&rsquo;t allowed.</p>
-
+</span><span style="color:#080;font-style:italic"></span><span style="color:#080;font-style:italic">//        =&gt; F B foo&lt;tagged&gt; B F bar&lt;tagged&gt;
+</span></code></pre></div><p>Expansion works as you would expect, with the same rules we have discussed earlier if we are working with function-like macros, except that recursion isn&rsquo;t allowed.</p>
 <p>What&rsquo;s with the tagging, though? Why is that done? Couldn&rsquo;t we just leave the expansion alone?</p>
-
 <p>I suppose we could, but they must have a reason for tagging macros that way, and it does make a difference.</p>
-
 <p>Let&rsquo;s say we define this <code>foo</code> macro:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo(x) [x] foo</span></code></pre></div>
-<p>If we call it as</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>)</code></pre></div>
-<p>it expands to</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[<span style="color:#00f">42</span>] foo(<span style="color:#00f">32</span>)</code></pre></div>
-<p>and we should be able to evaluate this expression again to get</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[<span style="color:#00f">42</span>] [<span style="color:#00f">32</span>] foo</code></pre></div>
-<p>for example with:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define eval(...) __VA_ARGS__
-</span><span style="color:#008080"></span>eval(foo(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>))</code></pre></div>
-<p>We won&rsquo;t get <code>[42] [32] foo</code>, though; <code>eval()</code> leaves <code>foo(32)</code> alone in the expansion. Because we saw that <code>foo</code> inside the expansion of <code>foo</code>, it is tagged. It doesn&rsquo;t matter that we didn&rsquo;t see it as a function-like macro; that just prevented us from expanding it; we saw it, and it is now impossible to expand.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo(x) [x] foo</span><span style="color:#008080">
+</span></code></pre></div><p>If we call it as</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>)
+</code></pre></div><p>it expands to</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[<span style="color:#00f">42</span>] foo(<span style="color:#00f">32</span>)
+</code></pre></div><p>and we should be able to evaluate this expression again to get</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[<span style="color:#00f">42</span>] [<span style="color:#00f">32</span>] foo
+</code></pre></div><p>for example with:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define eval(...) __VA_ARGS__</span><span style="color:#008080">
+</span><span style="color:#008080"></span>eval(foo(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>))
+</code></pre></div><p>We won&rsquo;t get <code>[42] [32] foo</code>, though; <code>eval()</code> leaves <code>foo(32)</code> alone in the expansion. Because we saw that <code>foo</code> inside the expansion of <code>foo</code>, it is tagged. It doesn&rsquo;t matter that we didn&rsquo;t see it as a function-like macro; that just prevented us from expanding it; we saw it, and it is now impossible to expand.</p>
 <p>It doesn&rsquo;t have to be this way. We can trick the preprocessor to expand to someing that that doesn&rsquo;t contain a forbidden name, and then we can evaluate at a later time.</p>
-
 <p>For example,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define bar(x) &lt;x&gt; bar_
-</span><span style="color:#008080">#define bar_(x) bar(x)</span></code></pre></div>
-<p>Here, <code>bar(42)</code> will expand to <code>&lt;42&gt; bar_</code>, not seing any recursive expansion and so it will not tag anything. That means that we can evaluate</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">bar(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>)</code></pre></div>
-<p>to get</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">&lt;<span style="color:#00f">42</span>&gt; bar_(<span style="color:#00f">32</span>) =&gt; &lt;<span style="color:#00f">42</span>&gt; bar(<span style="color:#00f">32</span>) =&gt; &lt;<span style="color:#00f">42</span>&gt; &lt;<span style="color:#00f">32</span>&gt; bar_</code></pre></div>
-<p>It looks promising, but we are not out of the woods. The last expansion, which gave us the third <code>bar_</code>, happened inside an expansion of <code>bar_</code>, so it is tagged, and we won&rsquo;t expand further.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define bar(x) &lt;x&gt; bar_</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define bar_(x) bar(x)</span><span style="color:#008080">
+</span></code></pre></div><p>Here, <code>bar(42)</code> will expand to <code>&lt;42&gt; bar_</code>, not seing any recursive expansion and so it will not tag anything. That means that we can evaluate</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">bar(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>)
+</code></pre></div><p>to get</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">&lt;<span style="color:#00f">42</span>&gt; bar_(<span style="color:#00f">32</span>) =&gt; &lt;<span style="color:#00f">42</span>&gt; bar(<span style="color:#00f">32</span>) =&gt; &lt;<span style="color:#00f">42</span>&gt; &lt;<span style="color:#00f">32</span>&gt; bar_
+</code></pre></div><p>It looks promising, but we are not out of the woods. The last expansion, which gave us the third <code>bar_</code>, happened inside an expansion of <code>bar_</code>, so it is tagged, and we won&rsquo;t expand further.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">bar(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>)         <span style="color:#080;font-style:italic">// =&gt; &lt;42&gt; &lt;32&gt; bar_
 </span><span style="color:#080;font-style:italic"></span>bar(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>)(<span style="color:#00f">22</span>)     <span style="color:#080;font-style:italic">// =&gt; &lt;42&gt; &lt;32&gt; bar_(22)
-</span><span style="color:#080;font-style:italic"></span>bar(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>)(<span style="color:#00f">22</span>)(<span style="color:#00f">11</span>) // =&gt; &lt;<span style="color:#00f">42</span>&gt; &lt;<span style="color:#00f">32</span>&gt; bar_(<span style="color:#00f">22</span>)(<span style="color:#00f">11</span>)</code></pre></div>
-<p>The preprocessor figured out that we were trying to cheat it.</p>
-
+</span><span style="color:#080;font-style:italic"></span>bar(<span style="color:#00f">42</span>)(<span style="color:#00f">32</span>)(<span style="color:#00f">22</span>)(<span style="color:#00f">11</span>) <span style="color:#080;font-style:italic">// =&gt; &lt;42&gt; &lt;32&gt; bar_(22)(11)
+</span></code></pre></div><p>The preprocessor figured out that we were trying to cheat it.</p>
 <p>Still, the idea is sound. If we can avoid expanding to a forbidden token while we evaluate a macro, we should be able to get an expression back that we can evaluate to get the next step of a recursion.</p>
-
 <p>We just got <code>bar_</code> expanded too early, while we were still expanding a <code>bar_</code>.</p>
-
 <p>We can delay an evaluation by putting something between the name of a function-like macro and the parentheses that causes its expansion.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define empty()
-</span><span style="color:#008080">#define delay(f) f empty()</span></code></pre></div>
-<p>If you evaluate <code>delay(foo)</code> you expand to <code>foo empty()</code>, since there are no parentheses after <code>foo</code> it isn&rsquo;t expanded, but <code>empty()</code> is expanded, and to the empty string, so the result is an unevaluated <code>foo</code>. If you write <code>delay(foo)()</code>, then it evaluates to <code>foo()</code>, a macro call waiting to happen. As long as <code>foo</code> isn&rsquo;t forbidden itself, it can expand to something that is at a later point, and in that way circumvent the recursion protection.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define empty()</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define delay(f) f empty()</span><span style="color:#008080">
+</span></code></pre></div><p>If you evaluate <code>delay(foo)</code> you expand to <code>foo empty()</code>, since there are no parentheses after <code>foo</code> it isn&rsquo;t expanded, but <code>empty()</code> is expanded, and to the empty string, so the result is an unevaluated <code>foo</code>. If you write <code>delay(foo)()</code>, then it evaluates to <code>foo()</code>, a macro call waiting to happen. As long as <code>foo</code> isn&rsquo;t forbidden itself, it can expand to something that is at a later point, and in that way circumvent the recursion protection.</p>
 <p>Try defining</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo_() foo
-</span><span style="color:#008080">#define foo(x) [x] delay(foo_)() (x)</span></code></pre></div>
-<p>Then</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo(<span style="color:#00f">42</span>)</code></pre></div>
-<p>expands to</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[<span style="color:#00f">42</span>] foo_ () (<span style="color:#00f">42</span>)</code></pre></div>
-<p>where <code>foo_</code> isn&rsquo;t tagged and can be evaluated, so</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">eval(foo(<span style="color:#00f">42</span>))</code></pre></div>
-<p>expands</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo_() foo</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define foo(x) [x] delay(foo_)() (x)</span><span style="color:#008080">
+</span></code></pre></div><p>Then</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foo(<span style="color:#00f">42</span>)
+</code></pre></div><p>expands to</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[<span style="color:#00f">42</span>] foo_ () (<span style="color:#00f">42</span>)
+</code></pre></div><p>where <code>foo_</code> isn&rsquo;t tagged and can be evaluated, so</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">eval(foo(<span style="color:#00f">42</span>))
+</code></pre></div><p>expands</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">eval(foo(<span style="color:#00f">42</span>)) 
   =&gt; [<span style="color:#a61717;background-color:#e3d2d2">…</span>=[<span style="color:#00f">42</span>] foo_() (<span style="color:#00f">42</span>)]
   =&gt; [<span style="color:#00f">42</span>] foo(<span style="color:#00f">42</span>)
-  =&gt; [<span style="color:#00f">42</span>] [<span style="color:#00f">42</span>] foo_() (<span style="color:#00f">42</span>)</code></pre></div>
-<p>ready for another expansion.</p>
-
+  =&gt; [<span style="color:#00f">42</span>] [<span style="color:#00f">42</span>] foo_() (<span style="color:#00f">42</span>)
+</code></pre></div><p>ready for another expansion.</p>
 <p>Let&rsquo;s try to put that into the recursive <code>map()</code> macro:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define map_() map
-</span><span style="color:#008080">#define map(f, ...) \
-</span><span style="color:#008080"></span>    if_else(is_nil(__VA_ARGS__))\
-    ()\
-    (f(head(__VA_ARGS__)) \
-     delay(map_)()(f, tail(__VA_ARGS__)))</code></pre></div>
-<p>It doesn&rsquo;t work. We still only get the first item handled.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define map_() map</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define map(f, ...) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    if_else(is_nil(__VA_ARGS__))\</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    ()\</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    (f(head(__VA_ARGS__)) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">     delay(map_)()(f, tail(__VA_ARGS__)))</span><span style="color:#008080">
+</span></code></pre></div><p>It doesn&rsquo;t work. We still only get the first item handled.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">map(foo, x, y, z)             <span style="color:#080;font-style:italic">// f(x) map(foo, y, z)
 </span><span style="color:#080;font-style:italic"></span>eval(map(foo, x, y, z))       <span style="color:#080;font-style:italic">// f(x) map(foo, y, z)
-</span><span style="color:#080;font-style:italic"></span>eval(eval(map(foo, x, y, z))) // f(x) map(foo, y, z)</code></pre></div>
-<p>What gives?</p>
-
+</span><span style="color:#080;font-style:italic"></span>eval(eval(map(foo, x, y, z))) <span style="color:#080;font-style:italic">// f(x) map(foo, y, z)
+</span></code></pre></div><p>What gives?</p>
 <p>The problem is, once again, that we reveal our intentions to do recursion a bit too early. The <code>delay()</code> macro prevents expansion for one attempt, but we have two here. One for the <code>map()</code> macro and another for the <code>else_0</code> function that handles the recursive case. If we want to implement recursion this way, we need to prevent two attempts at expansion.</p>
-
 <p>This is, fortunately, quite easy to fix. If we write <code>empty empty() ()</code>, then the first expansion will remove the middle <code>empty()</code> leaving <code>empty()</code> for the next expansion.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define delay2(f) f empty empty()()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define delay2(f) f empty empty()()</span><span style="color:#008080">
 </span><span style="color:#008080"></span>
-<span style="color:#008080">#define map(f, ...) \
-</span><span style="color:#008080"></span>    if_else(is_nil(__VA_ARGS__))\
-    ()\
-    (f(head(__VA_ARGS__)) \
-     delay2(map_)()(f, tail(__VA_ARGS__)))
-
+<span style="color:#008080">#</span><span style="color:#008080">define map(f, ...) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    if_else(is_nil(__VA_ARGS__))\</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    ()\</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    (f(head(__VA_ARGS__)) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">     delay2(map_)()(f, tail(__VA_ARGS__)))</span><span style="color:#008080">
+</span><span style="color:#008080"></span>
 map(foo, x, y, z) <span style="color:#080;font-style:italic">// =&gt; f(x) map_ ()(foo, y, z)
 </span><span style="color:#080;font-style:italic"></span>eval(map(foo, x, y, z)) <span style="color:#080;font-style:italic">// =&gt; f(x) f(y) map_ ()(foo, z)
 </span><span style="color:#080;font-style:italic"></span>eval(eval(map(foo, x, y, z))) <span style="color:#080;font-style:italic">// =&gt; f(x) f(y) f(z) map_ ()(foo, )
-</span><span style="color:#080;font-style:italic"></span>eval(eval(eval(map(foo, x, y, z)))) // =&gt; f(x) f(y) f(z)</code></pre></div>
-<p>It is not much fun, of course, if we have to explicitly evaluate for each expansion of the recursion, but we we can build exponentially larger number of expansions like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define expand_1(...) __VA_ARGS__
-</span><span style="color:#008080">#define expand_2(...) expand_1(expand_1(__VA_ARGS__))
-</span><span style="color:#008080">#define expand_4(...) expand_2(expand_2(__VA_ARGS__))
-</span><span style="color:#008080">#define expand_8(...) expand_4(expand_4(__VA_ARGS__))
-</span><span style="color:#008080">#define expand_16(...) expand_8(expand_8(__VA_ARGS__))</span></code></pre></div>
-<p>and pick one level, high enough, for our evaluation function. (16 probably isn&rsquo;t, but it is good enough here).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define eval expand_16</span></code></pre></div>
-<p>Then we can add <code>eval()</code> to the macro, at the outermost layer, to get this map function:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define map(f, ...) \
-</span><span style="color:#008080"></span>    eval(map_(f, __VA_ARGS__))
-<span style="color:#008080">#define map__() map_
-</span><span style="color:#008080">#define map_(f, ...) \
-</span><span style="color:#008080"></span>    if_else(is_nil(__VA_ARGS__))\
-    ()\
-    (f(head(__VA_ARGS__)) \
-     delay2(map__)()(f, tail(__VA_ARGS__)))</code></pre></div>
-<p>and presto:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#define foo(x) f(x), 
-</span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">int</span> x[] = { map(foo, x, y, z) };</code></pre></div>
-<p>gives us</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> x[] = { f(x), f(y), f(z), };</code></pre></div>
-<p>I find it a bit scary that you can program this way with C&rsquo;s preprocessor. It is pretty cool, but I am happy that I ended up not using too crazy things for my slices. It was bad enough where that code landed.</p>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:We-didn-t-have-v">We didn&rsquo;t have variadic macros when I learned C, but they&rsquo;ve been in the standard since C99, so you should have them now. <a class="footnote-return" href="#fnref:We-didn-t-have-v"><sup>[return]</sup></a></li>
-</ol>
-</div>
+</span><span style="color:#080;font-style:italic"></span>eval(eval(eval(map(foo, x, y, z)))) <span style="color:#080;font-style:italic">// =&gt; f(x) f(y) f(z)
+</span></code></pre></div><p>It is not much fun, of course, if we have to explicitly evaluate for each expansion of the recursion, but we we can build exponentially larger number of expansions like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define expand_1(...) __VA_ARGS__</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define expand_2(...) expand_1(expand_1(__VA_ARGS__))</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define expand_4(...) expand_2(expand_2(__VA_ARGS__))</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define expand_8(...) expand_4(expand_4(__VA_ARGS__))</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define expand_16(...) expand_8(expand_8(__VA_ARGS__))</span><span style="color:#008080">
+</span></code></pre></div><p>and pick one level, high enough, for our evaluation function. (16 probably isn&rsquo;t, but it is good enough here).</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define eval expand_16</span><span style="color:#008080">
+</span></code></pre></div><p>Then we can add <code>eval()</code> to the macro, at the outermost layer, to get this map function:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define map(f, ...) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    eval(map_(f, __VA_ARGS__))</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define map__() map_</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define map_(f, ...) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    if_else(is_nil(__VA_ARGS__))\</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    ()\</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    (f(head(__VA_ARGS__)) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">     delay2(map__)()(f, tail(__VA_ARGS__)))</span><span style="color:#008080">
+</span></code></pre></div><p>and presto:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">define foo(x) f(x), </span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">int</span> x[] = { map(foo, x, y, z) };
+</code></pre></div><p>gives us</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> x[] = { f(x), f(y), f(z), };
+</code></pre></div><p>I find it a bit scary that you can program this way with C&rsquo;s preprocessor. It is pretty cool, but I am happy that I ended up not using too crazy things for my slices. It was bad enough where that code landed.</p>
 
 
 </article>
@@ -787,7 +689,7 @@ map(foo, x, y, z) <span style="color:#080;font-style:italic">// =&gt; f(x) map_ 
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2020 - Thomas Mailund |
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

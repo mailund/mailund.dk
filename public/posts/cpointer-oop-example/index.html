@@ -63,14 +63,17 @@
    });
  </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-10582357-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 </head>
@@ -210,12 +213,8 @@ ga('send', 'pageview');
 </aside>
     
 
-    
-
-<p>I&rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.</p>
-
+    <p>I&rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.</p>
 <h2 id="casting-and-nested-structures">Casting and nested structures</h2>
-
 <p>The way to do it is simple enough. The C standard guarantees that the first object you put in a <code>struct</code> goes at the first memory address of instances of that <code>struct</code>, and if you have a pointer to an instance of the <code>struct</code>, then you can safely cast it to a pointer to the first element. This means that if you nest <code>structs</code>, you can cast your way into the nesting. For example, with:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> A {
 	<span style="color:#000080;font-weight:bold">int</span> a;
@@ -227,13 +226,12 @@ ga('send', 'pageview');
 <span style="color:#000080;font-weight:bold">struct</span> C {
   <span style="color:#000080;font-weight:bold">struct</span> B b;
   <span style="color:#000080;font-weight:bold">int</span> c;
-};</code></pre></div>
-<p>you can access members of a <code>struct C</code> as if they were members of the nested <code>struct B</code> or the nested <code>struct A</code> in the <code>struct B</code>.</p>
+};
+</code></pre></div><p>you can access members of a <code>struct C</code> as if they were members of the nested <code>struct B</code> or the nested <code>struct A</code> in the <code>struct B</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> C *x = <span style="color:#080;font-style:italic">/* some allocation */</span>;
 assert(((B*)x)-&gt;b == x-&gt;b.b);
-assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
-<p>Anywhere you have a function that works with pointers to <code>struct A</code> or <code>struct B</code>, you can call the function with a pointer to an instance of <code>struct C</code>. (They have to be pointers, of course, because otherwise you copy members, and you will only copy members of the type the function expects).</p>
-
+assert(((A*)x)-&gt;a == x-&gt;b.a.a);
+</code></pre></div><p>Anywhere you have a function that works with pointers to <code>struct A</code> or <code>struct B</code>, you can call the function with a pointer to an instance of <code>struct C</code>. (They have to be pointers, of course, because otherwise you copy members, and you will only copy members of the type the function expects).</p>
 <p>The C standard promises a little more about the memory layout of <code>struct</code>s, and you wouldn&rsquo;t have to nest them here. If the <code>struct</code>s share a prefix of members, it also works.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> A {
   <span style="color:#000080;font-weight:bold">int</span> a;
@@ -246,22 +244,18 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
   <span style="color:#000080;font-weight:bold">int</span> a;
   <span style="color:#000080;font-weight:bold">int</span> b;
   <span style="color:#000080;font-weight:bold">int</span> c;
-};</code></pre></div>
-<p>If you want to use one <code>struct</code> as another, though, it is easier to next them.</p>
-
+};
+</code></pre></div><p>If you want to use one <code>struct</code> as another, though, it is easier to next them.</p>
 <h2 id="single-inheritance-objects-and-classes">Single inheritance objects and classes</h2>
-
 <p>We can use this to create classes and objects (or instances) in an object-oriented programming sense. It is close to how C++ was originally implemented. Use nested <code>structs</code> for objects, so derived objects contains he data their base cases have, and for virtual functions (or functions with dynamic dispatch, or whatever you want to call them), use nested <code>structs</code> for classes.</p>
-
 <p>For polymorphism/dynamic dispatch, have all objects carry a pointer to their class. When we need to call a polymorphic function, we can look up the concrete function in the object&rsquo;s class. We can define a class pointer as <code>void *</code>, so it can point to any structure, and define the most basic object as something that has such a pointer. I have also defined a macro, <code>basetype()</code> for the casting, just to make it explicit what we are doing. Then I have a macro, <code>vtbl</code> that gets the virtual function table, cast to a class type.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">typedef</span> <span style="color:#000080;font-weight:bold">void</span> * cls;
 <span style="color:#000080;font-weight:bold">typedef</span> <span style="color:#000080;font-weight:bold">struct</span> { cls *cls; } obj;
 
-<span style="color:#008080">#define basetype(x, base) ((base *)x)
-</span><span style="color:#008080">#define vtbl(inst, base) \
-</span><span style="color:#008080"></span>          basetype(((obj *)inst)-&gt;cls, base)</code></pre></div>
-<p>You can make the <code>basetype()</code> more type safe by going into the nested classes rather than casting, but it puts constraints on how the <code>struct</code>s must be nested, and if you modify the type hierarchy above a class, you would need to update the code. The cast does what it is supposed to do, if you are careful with it.</p>
-
+<span style="color:#008080">#</span><span style="color:#008080">define basetype(x, base) ((base *)x)</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define vtbl(inst, base) \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">          basetype(((obj *)inst)-&gt;cls, base)</span><span style="color:#008080">
+</span></code></pre></div><p>You can make the <code>basetype()</code> more type safe by going into the nested classes rather than casting, but it puts constraints on how the <code>struct</code>s must be nested, and if you modify the type hierarchy above a class, you would need to update the code. The cast does what it is supposed to do, if you are careful with it.</p>
 <p>Classes must be allocated and initialised before we can use them. There&rsquo;s a function and macro for that:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> *alloc_cls(size_t cls_size,
                 <span style="color:#000080;font-weight:bold">void</span> (*cls_init)(cls *))
@@ -272,15 +266,14 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
   <span style="color:#000080;font-weight:bold">return</span> cls;
 }
 
-<span style="color:#008080">#define INIT_CLS(p, init)                    \
-</span><span style="color:#008080"></span>  <span style="color:#000080;font-weight:bold">do</span> {                                       \
-    <span style="color:#000080;font-weight:bold">if</span> (!p)                                  \
-      p = alloc_cls(                         \
-            <span style="color:#000080;font-weight:bold">sizeof</span> *p, (<span style="color:#000080;font-weight:bold">void</span> (*)(cls *))init \
-          );                                 \
-  } <span style="color:#000080;font-weight:bold">while</span>(<span style="color:#00f">0</span>)</code></pre></div>
-<p>The <code>INIT_CLS()</code> gets a pointer to the class, which I expect is a global variable, initially NULL. If the class hasn&rsquo;t been initialised yet, we allocate it, and use the <code>init</code> function provided to initialise it.</p>
-
+<span style="color:#008080">#</span><span style="color:#008080">define INIT_CLS(p, init)                    \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">  do {                                       \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">    if (!p)                                  \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">      p = alloc_cls(                         \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">            sizeof *p, (void (*)(cls *))init \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">          );                                 \</span><span style="color:#008080">
+</span><span style="color:#008080"></span><span style="color:#008080">  } while(0)</span><span style="color:#008080">
+</span></code></pre></div><p>The <code>INIT_CLS()</code> gets a pointer to the class, which I expect is a global variable, initially NULL. If the class hasn&rsquo;t been initialised yet, we allocate it, and use the <code>init</code> function provided to initialise it.</p>
 <p>For objects, we can use</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> *alloc_obj(size_t obj_size, cls cls)
 {
@@ -289,11 +282,9 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 </span><span style="color:#080;font-style:italic"></span>  obj-&gt;cls = cls;
   <span style="color:#000080;font-weight:bold">return</span> obj;
 }
-<span style="color:#008080">#define NEW_OBJ(p, cls) alloc_obj(sizeof *p, cls)</span></code></pre></div>
-<p>The <code>NEW_OBJ()</code> macro creates an object and sets it class. There is not an initialisation function here, because I expect that initialisers will need arguments, so we cannot handle that generically. The same might be true for classes, but if that day arises, we can deal with it.</p>
-
+<span style="color:#008080">#</span><span style="color:#008080">define NEW_OBJ(p, cls) alloc_obj(sizeof *p, cls)</span><span style="color:#008080">
+</span></code></pre></div><p>The <code>NEW_OBJ()</code> macro creates an object and sets it class. There is not an initialisation function here, because I expect that initialisers will need arguments, so we cannot handle that generically. The same might be true for classes, but if that day arises, we can deal with it.</p>
 <h2 id="an-expression-class-hierarchy">An expression class hierarchy</h2>
-
 <p>For a concrete example, we can have generic arithmetic expressions. We can define their main interface as having a <code>print()</code> and an <code>eval()</code> function.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">typedef</span> <span style="color:#000080;font-weight:bold">struct</span> base_expr *EXP;
 
@@ -301,8 +292,8 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">typedef</span> <span style="color:#000080;font-weight:bold">struct</span> {
   <span style="color:#000080;font-weight:bold">void</span>   (*print)(EXP);
   <span style="color:#000080;font-weight:bold">double</span> (*eval) (EXP);
-} base_expr_cls;</code></pre></div>
-<p>The functions are generic, so the implementation dispatch to the table in the class:</p>
+} base_expr_cls;
+</code></pre></div><p>The functions are generic, so the implementation dispatch to the table in the class:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> print_expr(EXP e)
 {
   vtbl(e, base_expr_cls)-&gt;print(e);
@@ -310,14 +301,14 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 <span style="color:#000080;font-weight:bold">double</span> eval_expr(EXP e)
 {
   <span style="color:#000080;font-weight:bold">return</span> vtbl(e, base_expr_cls)-&gt;eval(e);
-}</code></pre></div>
-<p>When we initialise the class, we don&rsquo;t put any methods in there. They are abstract.</p>
+}
+</code></pre></div><p>When we initialise the class, we don&rsquo;t put any methods in there. They are abstract.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">void</span> init_base_expr_cls(base_expr_cls *cls)
 {
   cls-&gt;print = <span style="color:#00f">0</span>; <span style="color:#080;font-style:italic">// abstract method
 </span><span style="color:#080;font-style:italic"></span>  cls-&gt;eval  = <span style="color:#00f">0</span>; <span style="color:#080;font-style:italic">// abstract method
-</span><span style="color:#080;font-style:italic"></span>}</code></pre></div>
-<p>There is nothing in instances of the base class (except the nested <code>obj</code> needed for the class pointer).</p>
+</span><span style="color:#080;font-style:italic"></span>}
+</code></pre></div><p>There is nothing in instances of the base class (except the nested <code>obj</code> needed for the class pointer).</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Base class, object definition
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">typedef</span> <span style="color:#000080;font-weight:bold">struct</span> base_expr {
   obj obj;
@@ -327,8 +318,8 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">void</span> init_base_expr(base_expr *inst)
 {
   <span style="color:#080;font-style:italic">// nothing to initialise...
-</span><span style="color:#080;font-style:italic"></span>}</code></pre></div>
-<p>A concrete expression type is one that merely holds a value. It can look like this:</p>
+</span><span style="color:#080;font-style:italic"></span>}
+</code></pre></div><p>A concrete expression type is one that merely holds a value. It can look like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Value expressions
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">typedef</span> <span style="color:#000080;font-weight:bold">struct</span>  {
   base_expr_cls base_expr_cls;
@@ -343,7 +334,7 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 </span><span style="color:#080;font-style:italic"></span>
 <span style="color:#000080;font-weight:bold">void</span> value_expr_print(value_expr *val)
 {
-  printf(<span style="color:#00f">&#34;%.3f&#34;</span>, val-&gt;value);
+  printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">%.3f</span><span style="color:#00f">&#34;</span>, val-&gt;value);
 }
 
 <span style="color:#000080;font-weight:bold">double</span> value_expr_eval(value_expr *val)
@@ -373,9 +364,8 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
   value_expr *val = NEW_OBJ(val, VALUE_EXPR_CLS);
   init_value_expr(val, value);
   <span style="color:#000080;font-weight:bold">return</span> (EXP)val;
-}</code></pre></div>
-<p>The class holds the base class and nothing else. We are not introducing new virtual functions. The instance structure holds the base class&rsquo;s data and the value. Since it is a concrete class, we need a pointer to hold the class structure. We will initialise it before we create instances. We have an implementation of the two abstract virtual functions; we set them in the class initialisation code, after initialising the base class part. In the object initiations we initialise the base class part and then set the value. For a concrete class we need a constructor, here it is called <code>value()</code>, and it initialises the class (if it isn&rsquo;t already there), create a new object with the class, and then initialises object as a value.</p>
-
+}
+</code></pre></div><p>The class holds the base class and nothing else. We are not introducing new virtual functions. The instance structure holds the base class&rsquo;s data and the value. Since it is a concrete class, we need a pointer to hold the class structure. We will initialise it before we create instances. We have an implementation of the two abstract virtual functions; we set them in the class initialisation code, after initialising the base class part. In the object initiations we initialise the base class part and then set the value. For a concrete class we need a constructor, here it is called <code>value()</code>, and it initialises the class (if it isn&rsquo;t already there), create a new object with the class, and then initialises object as a value.</p>
 <p>In the code below, we define binary expressions and two sub-classes, one for addition and one for subtraction. They follow the pattern we used for the values class.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Binary expressions
 </span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">typedef</span> <span style="color:#000080;font-weight:bold">struct</span> {
@@ -389,13 +379,13 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 
 <span style="color:#000080;font-weight:bold">void</span> print_binary_expr(binary_expr *binop)
 {
-  putchar(<span style="color:#800080">&#39;(&#39;</span>);
+  putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">(</span><span style="color:#800080">&#39;</span>);
     print_expr(binop-&gt;left);
-  putchar(<span style="color:#800080">&#39;)&#39;</span>);
+  putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">)</span><span style="color:#800080">&#39;</span>);
   putchar(binop-&gt;symb);
-  putchar(<span style="color:#800080">&#39;(&#39;</span>);
+  putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">(</span><span style="color:#800080">&#39;</span>);
     print_expr(binop-&gt;right);
-  putchar(<span style="color:#800080">&#39;)&#39;</span>);
+  putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">)</span><span style="color:#800080">&#39;</span>);
 }
 
 <span style="color:#000080;font-weight:bold">void</span> init_binary_expr_cls(binary_expr_cls *cls)
@@ -442,7 +432,7 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 <span style="color:#000080;font-weight:bold">void</span> init_add_expr(add_expr *expr, EXP left, EXP right)
 {
   init_binary_expr(basetype(expr, binary_expr),
-                   <span style="color:#800080">&#39;+&#39;</span>, left, right);
+                   <span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">+</span><span style="color:#800080">&#39;</span>, left, right);
 }
 
 <span style="color:#080;font-style:italic">// constructor
@@ -483,7 +473,7 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 <span style="color:#000080;font-weight:bold">void</span> init_sub_expr(add_expr *expr, EXP left, EXP right)
 {
   init_binary_expr(basetype(expr, binary_expr),
-                   <span style="color:#800080">&#39;-&#39;</span>, left, right);
+                   <span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">-</span><span style="color:#800080">&#39;</span>, left, right);
 }
 
 <span style="color:#080;font-style:italic">// constructor
@@ -493,8 +483,8 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
   add_expr *expr = NEW_OBJ(expr, SUB_EXPR_CLS);
   init_sub_expr(expr, left, right);
   <span style="color:#000080;font-weight:bold">return</span> (EXP)expr;
-}</code></pre></div>
-<p>You can use the expressions like this:</p>
+}
+</code></pre></div><p>You can use the expressions like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">void</span>)
 {
   EXP expr =
@@ -502,13 +492,12 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
         sub(value(<span style="color:#00f">10.0</span>),
             value(<span style="color:#00f">2.0</span>))
     );
-  print_expr(expr); putchar(<span style="color:#800080">&#39;\n&#39;</span>);
-  printf(<span style="color:#00f">&#34;evaluates to %f</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, eval_expr(expr));
+  print_expr(expr); putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">\n</span><span style="color:#800080">&#39;</span>);
+  printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">evaluates to %f</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, eval_expr(expr));
 
   <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-}</code></pre></div>
-<h2 id="a-new-example">A new example?</h2>
-
+}
+</code></pre></div><h2 id="a-new-example">A new example?</h2>
 <p>The expressions example shows most of the ideas with implementing classes in this way, but there is not an example of adding to the interface. The abstract interface, <code>print()</code> and <code>eval()</code>, is all there is. I would like an example where I also add a virtual method to a subclass. I just cannot think of something that isn&rsquo;t entirely artificial, like &ldquo;animals are living things but can also move&hellip;&rdquo; or such things. If you have any suggestions, I would love to hear from you.</p>
 
 
@@ -590,7 +579,7 @@ assert(((A*)x)-&gt;a == x-&gt;b.a.a);</code></pre></div>
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2020 - Thomas Mailund |
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

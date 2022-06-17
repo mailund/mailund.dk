@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.40.2" />
+	<meta name="generator" content="Hugo 0.63.2" />
   <title>Mailund on the Internet</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -64,14 +64,17 @@
    });
  </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-10582357-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-10582357-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 </head>
@@ -290,7 +293,7 @@ A tail-call is when a function calls another function as the last thing it does.
 </aside>
             <p>About those slices I mentioned yesterday, here&rsquo;s what&rsquo;s that about.
 I&rsquo;m working on some string algorithms and more straightforward C implementations than those I put in my book.
-I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,1 and I plan to implement them in Rust as soon as I get the time.</p>
+I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,^[I&rsquo;m toying with the idea of writing string algorithms books for those languages, but I have a long list of writing obligations, so I don&rsquo;t know if that will ever happen.</p>
             
             <a href="https://mailund.dk/posts/cstr-slices/">Read more&hellip;</a>
             
@@ -444,7 +447,7 @@ I implemented all the algorithms and data structures I use in my string algorith
     </ul>
 </aside>
             <p>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Afsked med Hammel Det var midt på eftermiddagen næste dag, at Egon vågnede ved at det bankede på døren.</p>
+ Afsked med Hammel Det var midt på eftermiddagen næste dag, at Egon vågnede ved at det bankede på døren.</p>
             
             <a href="https://mailund.dk/posts/krofatter-14/">Read more&hellip;</a>
             
@@ -488,7 +491,7 @@ Afsked med Hammel Det var midt på eftermiddagen næste dag, at Egon vågnede ve
     </ul>
 </aside>
             <p>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Opgøret Da de stadigvæk var langt fra skovbrynet kunne Uffe og Egon gennem forrude se en stor søjle af røg stige op fra et sted inde i skoven.</p>
+ Opgøret Da de stadigvæk var langt fra skovbrynet kunne Uffe og Egon gennem forrude se en stor søjle af røg stige op fra et sted inde i skoven.</p>
             
             <a href="https://mailund.dk/posts/krofatter-13/">Read more&hellip;</a>
             
@@ -532,7 +535,7 @@ Opgøret Da de stadigvæk var langt fra skovbrynet kunne Uffe og Egon gennem for
     </ul>
 </aside>
             <p>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-Rådet kommer til undsætning Egon løb imod bilen mens han vinkede med begge arme efter bedste evne.</p>
+ Rådet kommer til undsætning Egon løb imod bilen mens han vinkede med begge arme efter bedste evne.</p>
             
             <a href="https://mailund.dk/posts/krofatter-12/">Read more&hellip;</a>
             
@@ -576,7 +579,7 @@ Rådet kommer til undsætning Egon løb imod bilen mens han vinkede med begge ar
     </ul>
 </aside>
             <p>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
-En smugkro i skoven Egon løb.</p>
+ En smugkro i skoven Egon løb.</p>
             
             <a href="https://mailund.dk/posts/krofatter-11/">Read more&hellip;</a>
             
@@ -589,7 +592,7 @@ En smugkro i skoven Egon løb.</p>
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2020 - Thomas Mailund |
+        <h6>Copyright © 2020 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

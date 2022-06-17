@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Programming on Mailund on the Internet</title>
+    <title>programming on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/programming/</link>
-    <description>Recent content in Programming on Mailund on the Internet</description>
+    <description>Recent content in programming on Mailund on the Internet</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Nov 2021 14:08:34 +0100</lastBuildDate>
     
 	<atom:link href="https://mailund.dk/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
@@ -48,7 +48,7 @@ A tail-call is when a function calls another function as the last thing it does.
       <guid>https://mailund.dk/posts/cstr-slices/</guid>
       <description>About those slices I mentioned yesterday, here&amp;rsquo;s what&amp;rsquo;s that about.
 I&amp;rsquo;m working on some string algorithms and more straightforward C implementations than those I put in my book.
-I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,1 and I plan to implement them in Rust as soon as I get the time.</description>
+I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,^[I&amp;rsquo;m toying with the idea of writing string algorithms books for those languages, but I have a long list of writing obligations, so I don&amp;rsquo;t know if that will ever happen.</description>
     </item>
     
     <item>
@@ -232,43 +232,6 @@ If you decode the description—that is more cryptic than the mathematics—you 
       
       <guid>https://mailund.dk/posts/c-generators/</guid>
       <description>Now that I am almost done with The Joys of Hashing, I am looking at the material I made last year for our Genome-scale Algorithms class. I implemented a toy read mapper as an example for the final project.</description>
-    </item>
-    
-    <item>
-      <title>Lazy queues</title>
-      <link>https://mailund.dk/posts/lazy-queues/</link>
-      <pubDate>Thu, 04 Oct 2018 05:00:20 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/lazy-queues/</guid>
-      <description>The purpose of the lazy lists I implemented in my previous post was to build lazy queues. Lazy lists give you constant time concatenation, which can be useful in itself, but I needed it to implement persistent functional queues.</description>
-    </item>
-    
-    <item>
-      <title>Lazy lists</title>
-      <link>https://mailund.dk/posts/lazy-lists/</link>
-      <pubDate>Thu, 04 Oct 2018 05:00:15 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/lazy-lists/</guid>
-      <description>I wanted to write about lazy lists and lazy queues today, but I spent most of the day struggling with getting lazy evaluation to work. Finally, I convinced myself that something was broken in R, and I was justified in thinking that; upgrading to the most recent version resolved the issue.</description>
-    </item>
-    
-    <item>
-      <title>Functional lists and queues</title>
-      <link>https://mailund.dk/posts/functional-lists-and-queues/</link>
-      <pubDate>Tue, 02 Oct 2018 05:00:10 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/functional-lists-and-queues/</guid>
-      <description>I wanted to write something about function parameters, how these are passed as so-called &amp;ldquo;promises&amp;rdquo;, how these have associated scopes (and the consequences of that), and how they give us lazy evaluation.</description>
-    </item>
-    
-    <item>
-      <title>Environments and formulae</title>
-      <link>https://mailund.dk/posts/envs-and-formulae/</link>
-      <pubDate>Thu, 27 Sep 2018 04:41:19 +0200</pubDate>
-      
-      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
-      <description>In my two previous posts on non-standard evaluation, Scoping rules and NSE and Overscoping and eval, I explained:
- How R finds the bindings of variables by looking through chains of environments.</description>
     </item>
     
     <item>
