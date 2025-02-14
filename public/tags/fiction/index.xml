@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>fiction on Mailund on the Internet</title>
+    <title>Fiction on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/fiction/</link>
-    <description>Recent content in fiction on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <description>Recent content in Fiction on Mailund on the Internet</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Thu, 25 Feb 2021 09:30:35 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/fiction/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mailund.dk/tags/fiction/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fiction</title>
       <link>https://mailund.dk/fiction/</link>
       <pubDate>Thu, 25 Feb 2021 09:30:35 +0100</pubDate>
-      
       <guid>https://mailund.dk/fiction/</guid>
-      <description>During lockdown and on a dare, I wrote a piece of fiction (Krofatter Egon og hjælpepakken below). That was kinda fun, so I wrote a bit more, and I guess I am writing fiction now.</description>
+      <description>&lt;p&gt;During lockdown and on a dare, I wrote a piece of fiction (Krofatter Egon og hjælpepakken below). That was kinda fun, so I wrote a bit more, and I guess I am writing fiction now.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

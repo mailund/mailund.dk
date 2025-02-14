@@ -84,7 +84,7 @@ If the puzzles over Christmas are equally simple, I could get away with solving 
 
 Since the puzzles were so simple, I was challenged to implement them in C as well.
 
-{{< tweet 1341267688241422336 >}}
+{{< x user="@mortenkj" id="1341267688241422336" >}}
 
 
 The first puzzle is easy enough, but I needed a set for Puzzle #2, so there was a little more work to that.

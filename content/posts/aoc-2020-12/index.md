@@ -8,7 +8,7 @@ categories = ["Programming"]
 
 I wanted to get back to yesterday’s puzzle, and I have a little time before I need to run off…
 
-{{< tweet 1342090691992838144 >}}
+{{< x user="@YassineAlouini" id="1342090691992838144" >}}
 
 The use of `findall()` I refer to in the tweet is this. You can split the input using a regular expression, and then map each input code to a direction. If you combine that with a `reduce()` you get a very succinct parser:
 

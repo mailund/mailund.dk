@@ -4,210 +4,171 @@
     <title>Tags on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/</link>
     <description>Recent content in Tags on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Thu, 25 Nov 2021 14:08:34 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mailund.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>algorithms</title>
+      <title>Algorithms</title>
       <link>https://mailund.dk/tags/algorithms/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/algorithms/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>C</title>
       <link>https://mailund.dk/tags/c/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/c/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>programming</title>
+      <title>Programming</title>
       <link>https://mailund.dk/tags/programming/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/programming/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Python</title>
       <link>https://mailund.dk/tags/python/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/python/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>books</title>
+      <title>Books</title>
       <link>https://mailund.dk/tags/books/</link>
       <pubDate>Thu, 25 Feb 2021 09:30:35 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/books/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>fiction</title>
+      <title>Fiction</title>
       <link>https://mailund.dk/tags/fiction/</link>
       <pubDate>Thu, 25 Feb 2021 09:30:35 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/fiction/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>writing</title>
+      <title>Writing</title>
       <link>https://mailund.dk/tags/writing/</link>
       <pubDate>Thu, 25 Feb 2021 09:30:35 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/writing/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Krofatter Egon</title>
       <link>https://mailund.dk/tags/krofatter-egon/</link>
       <pubDate>Sat, 13 Feb 2021 09:25:20 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/krofatter-egon/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>go</title>
+      <title>Go</title>
       <link>https://mailund.dk/tags/go/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/go/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>string algorithms</title>
+      <title>String Algorithms</title>
       <link>https://mailund.dk/tags/string-algorithms/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/string-algorithms/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>teaching</title>
+      <title>Teaching</title>
       <link>https://mailund.dk/tags/teaching/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/teaching/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>computational-thinking</title>
+      <title>Computational-Thinking</title>
       <link>https://mailund.dk/tags/computational-thinking/</link>
       <pubDate>Tue, 12 Jan 2021 08:27:09 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/computational-thinking/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>R</title>
       <link>https://mailund.dk/tags/r/</link>
       <pubDate>Tue, 15 Dec 2020 06:48:38 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/r/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>OOP</title>
       <link>https://mailund.dk/tags/oop/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/oop/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>polymorphism</title>
+      <title>Polymorphism</title>
       <link>https://mailund.dk/tags/polymorphism/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      
       <guid>https://mailund.dk/tags/polymorphism/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>data-structures</title>
+      <title>Data-Structures</title>
       <link>https://mailund.dk/tags/data-structures/</link>
       <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
-      
       <guid>https://mailund.dk/tags/data-structures/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>science</title>
+      <title>Science</title>
       <link>https://mailund.dk/tags/science/</link>
       <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>
-      
       <guid>https://mailund.dk/tags/science/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>errata</title>
-      <link>https://mailund.dk/tags/errata/</link>
-      <pubDate>Mon, 01 Oct 2018 08:43:17 +0200</pubDate>
-      
-      <guid>https://mailund.dk/tags/errata/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>functional-programming</title>
-      <link>https://mailund.dk/tags/functional-programming/</link>
-      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/tags/functional-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rstats</title>
+      <title>Rstats</title>
       <link>https://mailund.dk/tags/rstats/</link>
-      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      
+      <pubDate>Thu, 04 Oct 2018 05:00:20 +0200</pubDate>
       <guid>https://mailund.dk/tags/rstats/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>blog</title>
+      <title>Scope-Rules</title>
+      <link>https://mailund.dk/tags/scope-rules/</link>
+      <pubDate>Wed, 03 Oct 2018 09:10:01 +0200</pubDate>
+      <guid>https://mailund.dk/tags/scope-rules/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Errata</title>
+      <link>https://mailund.dk/tags/errata/</link>
+      <pubDate>Mon, 01 Oct 2018 08:43:17 +0200</pubDate>
+      <guid>https://mailund.dk/tags/errata/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Functional-Programming</title>
+      <link>https://mailund.dk/tags/functional-programming/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>https://mailund.dk/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blog</title>
       <link>https://mailund.dk/tags/blog/</link>
       <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
-      
       <guid>https://mailund.dk/tags/blog/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>software</title>
+      <title>Software</title>
       <link>https://mailund.dk/tags/software/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://mailund.dk/tags/software/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

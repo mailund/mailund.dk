@@ -7,7 +7,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
-  <meta name="author" content="Thomas Mailund" />
+  <meta name="author" content="" />
   
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -63,19 +63,6 @@
    });
  </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
 </head>
 
 <body>
@@ -86,21 +73,7 @@ if (!doNotTrack) {
             </h1>
 
       <ul id="social-media">
-        
-        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
-          
-        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-          
-        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.stackoverflow.com/users/2170269/thomas-mailund"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
-        
+                
       </ul>
       
       <p><em>On Writing, Science, Programming and more</em></p>
@@ -202,355 +175,353 @@ if (!doNotTrack) {
 <p>But it was a nice and easy day today, with one small irritant that took up most of the time I spent on the puzzles. Anyway, to it!</p>
 <p><a href="https://adventofcode.com/2020/day/22">The task today is to play a game of cards.</a>. For Puzzle #1, the description of the game is straightforward, and so is the implementation.</p>
 <p>For once, parsing the data is easy:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/22/test.txt</span><span style="color:#00f">&#39;</span>)
-<span style="color:#000080;font-weight:bold">def</span> parse_player(player):
-    <span style="color:#000080;font-weight:bold">return</span> tuple(map(int, player.strip().split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)[<span style="color:#00f">1</span>:]))
-player1, player2 = map(parse_player, f.read().split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>))
-</code></pre></div><p>I place player hands in a <code>tuple()</code>, and that becomes important later!</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/22/test.txt&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> parse_player(player):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> tuple(map(int, player.strip().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)[<span style="color:#00f">1</span>:]))
+</span></span><span style="display:flex;"><span>player1, player2 = map(parse_player, f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>))
+</span></span></code></pre></div><p>I place player hands in a <code>tuple()</code>, and that becomes important later!</p>
 <p>The way the game is played is well described, and the simplest imaginable implementation will solve the puzzle:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> play(p1, p2):
-    <span style="color:#000080;font-weight:bold">while</span> p1 <span style="font-weight:bold">and</span> p2:
-        <span style="color:#000080;font-weight:bold">if</span> p1[<span style="color:#00f">0</span>] &gt; p2[<span style="color:#00f">0</span>]:
-            p1 += (p1[<span style="color:#00f">0</span>],p2[<span style="color:#00f">0</span>])
-        <span style="color:#000080;font-weight:bold">else</span>:
-            p2 += (p2[<span style="color:#00f">0</span>],p1[<span style="color:#00f">0</span>])
-        p1, p2 = p1[<span style="color:#00f">1</span>:], p2[<span style="color:#00f">1</span>:]
-    <span style="color:#000080;font-weight:bold">return</span> p1 <span style="color:#000080;font-weight:bold">if</span> p1 <span style="color:#000080;font-weight:bold">else</span> p2
-
-result = sum((i+<span style="color:#00f">1</span>)*x <span style="color:#000080;font-weight:bold">for</span> i,x <span style="font-weight:bold">in</span> enumerate(reversed(winner)))
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {result}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>I didn’t use a <code>tuple()</code> but a list in my first implementation. That will still work, because the algorithm doesn’t have to leave the function arguments unchanged, and the code works equally well with lists or tuples. But the <code>+=</code> operator will modify its left-hand side. In Puzzle #2, I changed the representation to tuples to avoid this problem. But I did not, and that lost me 20-30 minutes, changed the representation in Puzzle #1. So I spent a lot of time debugging Puzzle #2 only to later find out that the issue was the input. I gave Puzzle #2 the input after running Puzzle #1, and by then it was modified.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> play(p1, p2):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> p1 <span style="font-weight:bold">and</span> p2:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> p1[<span style="color:#00f">0</span>] &gt; p2[<span style="color:#00f">0</span>]:
+</span></span><span style="display:flex;"><span>            p1 += (p1[<span style="color:#00f">0</span>],p2[<span style="color:#00f">0</span>])
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>            p2 += (p2[<span style="color:#00f">0</span>],p1[<span style="color:#00f">0</span>])
+</span></span><span style="display:flex;"><span>        p1, p2 = p1[<span style="color:#00f">1</span>:], p2[<span style="color:#00f">1</span>:]
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> p1 <span style="color:#000080;font-weight:bold">if</span> p1 <span style="color:#000080;font-weight:bold">else</span> p2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result = sum((i+<span style="color:#00f">1</span>)*x <span style="color:#000080;font-weight:bold">for</span> i,x <span style="font-weight:bold">in</span> enumerate(reversed(winner)))
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>result<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>I didn’t use a <code>tuple()</code> but a list in my first implementation. That will still work, because the algorithm doesn’t have to leave the function arguments unchanged, and the code works equally well with lists or tuples. But the <code>+=</code> operator will modify its left-hand side. In Puzzle #2, I changed the representation to tuples to avoid this problem. But I did not, and that lost me 20-30 minutes, changed the representation in Puzzle #1. So I spent a lot of time debugging Puzzle #2 only to later find out that the issue was the input. I gave Puzzle #2 the input after running Puzzle #1, and by then it was modified.</p>
 <p>I fixed the problem by changing from lists to tuples. You can still use <code>+=</code>, it just does something else for tuples. For lists, <code>+=</code> will in-place modify the left-hand-side. For tuples, <code>+=</code>, is syntactic sugar for addition and an assignment, so you are assigning to a variable and not modifying an object. That was frustrating.</p>
 <p>Anyway, the solution to Puzzle #2—that was working all along, it just needed the correct input—is not much more complex than Puzzle #1 (although deciphering the game description is).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> play(p1, p2, s1, s2):
-    <span style="color:#000080;font-weight:bold">while</span> p1 <span style="font-weight:bold">and</span> p2:
-        <span style="color:#000080;font-weight:bold">if</span> p1 <span style="font-weight:bold">in</span> s1 <span style="font-weight:bold">or</span> p2 <span style="font-weight:bold">in</span> s2:
-            <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">1</span>, p1
-        s1.add(p1)
-        s2.add(p2)
-
-        card1,card2 = p1[<span style="color:#00f">0</span>],p2[<span style="color:#00f">0</span>]
-        p1, p2 = p1[<span style="color:#00f">1</span>:], p2[<span style="color:#00f">1</span>:]
-
-        winner = None
-        <span style="color:#000080;font-weight:bold">if</span> card1 &gt; len(p1) <span style="font-weight:bold">or</span> card2 &gt; len(p2):
-            winner = <span style="color:#00f">1</span> <span style="color:#000080;font-weight:bold">if</span> card1 &gt; card2 <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">2</span>
-        <span style="color:#000080;font-weight:bold">else</span>:
-            winner,_ = play(p1[:card1], p2[:card2], set(), set())
-
-        <span style="color:#000080;font-weight:bold">if</span> winner == <span style="color:#00f">1</span>:    
-            p1 += (card1,card2)
-        <span style="color:#000080;font-weight:bold">else</span>:
-            p2 += (card2,card1)
-        
-    <span style="color:#000080;font-weight:bold">return</span> (<span style="color:#00f">1</span>,p1) <span style="color:#000080;font-weight:bold">if</span> p1 <span style="color:#000080;font-weight:bold">else</span> (<span style="color:#00f">2</span>,p2)
-
-_, winner = play(player1, player2, set())
-result = sum((i+<span style="color:#00f">1</span>)*x <span style="color:#000080;font-weight:bold">for</span> i,x <span style="font-weight:bold">in</span> enumerate(reversed(winner)))
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {result}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>If the puzzles over Christmas are equally simple, I could get away with solving them there, and I would give it a try if I were that optimistic. I am not, however. I fear we will run into another Day 20 soon. And I know myself well enough to realise that I will not be able to let a puzzle go, so if I start, I will continue until I am done. It is best to stop now, and return in the New Year. That also gives me something to look forward to.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> play(p1, p2, s1, s2):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> p1 <span style="font-weight:bold">and</span> p2:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> p1 <span style="font-weight:bold">in</span> s1 <span style="font-weight:bold">or</span> p2 <span style="font-weight:bold">in</span> s2:
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">1</span>, p1
+</span></span><span style="display:flex;"><span>        s1.add(p1)
+</span></span><span style="display:flex;"><span>        s2.add(p2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        card1,card2 = p1[<span style="color:#00f">0</span>],p2[<span style="color:#00f">0</span>]
+</span></span><span style="display:flex;"><span>        p1, p2 = p1[<span style="color:#00f">1</span>:], p2[<span style="color:#00f">1</span>:]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        winner = <span style="color:#000080;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> card1 &gt; len(p1) <span style="font-weight:bold">or</span> card2 &gt; len(p2):
+</span></span><span style="display:flex;"><span>            winner = <span style="color:#00f">1</span> <span style="color:#000080;font-weight:bold">if</span> card1 &gt; card2 <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>            winner,_ = play(p1[:card1], p2[:card2], set(), set())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> winner == <span style="color:#00f">1</span>:    
+</span></span><span style="display:flex;"><span>            p1 += (card1,card2)
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>            p2 += (card2,card1)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> (<span style="color:#00f">1</span>,p1) <span style="color:#000080;font-weight:bold">if</span> p1 <span style="color:#000080;font-weight:bold">else</span> (<span style="color:#00f">2</span>,p2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>_, winner = play(player1, player2, set())
+</span></span><span style="display:flex;"><span>result = sum((i+<span style="color:#00f">1</span>)*x <span style="color:#000080;font-weight:bold">for</span> i,x <span style="font-weight:bold">in</span> enumerate(reversed(winner)))
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #2: </span><span style="color:#00f">{</span>result<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>If the puzzles over Christmas are equally simple, I could get away with solving them there, and I would give it a try if I were that optimistic. I am not, however. I fear we will run into another Day 20 soon. And I know myself well enough to realise that I will not be able to let a puzzle go, so if I start, I will continue until I am done. It is best to stop now, and return in the New Year. That also gives me something to look forward to.</p>
 <h2 id="update-a-c-implementation">Update: A C implementation</h2>
 <p>Since the puzzles were so simple, I was challenged to implement them in C as well.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Now code it in C.</p>&mdash; Morten Kjeldgaard (@mortenkj) <a href="https://twitter.com/mortenkj/status/1341267688241422336?ref_src=twsrc%5Etfw">December 22, 2020</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>The first puzzle is easy enough, but I needed a set for Puzzle #2, so there was a little more work to that.</p>
 <p>We don’t have any built-in data structures in C, so you have to roll your own of everything, but I have a list and a search tree implementation lying around from my upcoming book, and I adapted those.</p>
 <h3 id="a-linked-list">A linked list</h3>
 <p>The linked list is a circular list, where I added an integer to the head, to keep track of the length. We need to know the length for Puzzle #2, to check if we should recurse. I added a function for taking the first link out of a list, for when we need to extract the top card, but otherwise it is all generic stuff.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Linked list -----------------------------------------
-</span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">struct</span> link {
-  <span style="color:#000080;font-weight:bold">int</span> value;
-  <span style="color:#000080;font-weight:bold">struct</span> link *prev;
-  <span style="color:#000080;font-weight:bold">struct</span> link *next;
-};
-
-<span style="color:#000080;font-weight:bold">struct</span> link *new_link(<span style="color:#000080;font-weight:bold">int</span> val)
-{
-  <span style="color:#000080;font-weight:bold">struct</span> link *link = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *link);
-  <span style="color:#000080;font-weight:bold">if</span> (!link) abort();
-  link-&gt;value = val;
-  link-&gt;prev = link-&gt;next = <span style="color:#00f">0</span>;
-  <span style="color:#000080;font-weight:bold">return</span> link;
-}
-
-<span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span>
-<span style="color:#000080;font-weight:bold">void</span> connect_neighbours(<span style="color:#000080;font-weight:bold">struct</span> link *x)
-{ x-&gt;next-&gt;prev = x; x-&gt;prev-&gt;next = x; }
-
-<span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span>
-<span style="color:#000080;font-weight:bold">void</span> link_after(<span style="color:#000080;font-weight:bold">struct</span> link *x, <span style="color:#000080;font-weight:bold">struct</span> link *y)
-{ y-&gt;prev = x; y-&gt;next = x-&gt;next; connect_neighbours(y); }
-
-<span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span>
-<span style="color:#000080;font-weight:bold">void</span> unlink(<span style="color:#000080;font-weight:bold">struct</span> link *x)
-{ x-&gt;next-&gt;prev = x-&gt;prev; x-&gt;prev-&gt;next = x-&gt;next; }
-
-
-
-<span style="color:#000080;font-weight:bold">struct</span> list {
-    <span style="color:#000080;font-weight:bold">int</span> len;
-    <span style="color:#000080;font-weight:bold">struct</span> link head;
-};
-
-<span style="color:#008080">#</span><span style="color:#008080">define head(x)     (&amp;((x)-&gt;head))</span><span style="color:#008080">
-</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define front(x)    (head(x)-&gt;next)</span><span style="color:#008080">
-</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define back(x)     (head(x)-&gt;prev)</span><span style="color:#008080">
-</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define is_empty(x) ( head(x) == front(x) )</span><span style="color:#008080">
-</span><span style="color:#008080"></span><span style="color:#008080">#</span><span style="color:#008080">define length(x)   ((x)-&gt;len)</span><span style="color:#008080">
-</span><span style="color:#008080"></span>
-<span style="color:#000080;font-weight:bold">struct</span> list *new_list(<span style="color:#000080;font-weight:bold">void</span>)
-{
-    <span style="color:#000080;font-weight:bold">struct</span> list *x = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *x);
-    <span style="color:#000080;font-weight:bold">if</span> (!x) abort();
-    x-&gt;head.next = x-&gt;head.prev = &amp;x-&gt;head;
-    x-&gt;len = <span style="color:#00f">0</span>;
-    <span style="color:#000080;font-weight:bold">return</span> x;
-}
-
-<span style="color:#000080;font-weight:bold">void</span> free_list(<span style="color:#000080;font-weight:bold">struct</span> list *x)
-{
-    <span style="color:#000080;font-weight:bold">struct</span> link *link = front(x);
-    <span style="color:#000080;font-weight:bold">while</span> (link != head(x)) {
-        <span style="color:#000080;font-weight:bold">struct</span> link *next = link-&gt;next;
-        free(link);
-        link = next;
-    }
-    free(x);
-}
-
-
-<span style="color:#000080;font-weight:bold">void</span> append(<span style="color:#000080;font-weight:bold">struct</span> list *x, <span style="color:#000080;font-weight:bold">struct</span> link *link)
-{
-    link_after(back(x), link);
-    x-&gt;len++;
-}
-
-<span style="color:#000080;font-weight:bold">struct</span> link *pop_front(<span style="color:#000080;font-weight:bold">struct</span> list *x)
-{
-    assert(!is_empty(x));
-    <span style="color:#000080;font-weight:bold">struct</span> link *link = front(x);
-    unlink(link); x-&gt;len--;
-    <span style="color:#000080;font-weight:bold">return</span> link;
-}
-
-<span style="color:#000080;font-weight:bold">struct</span> list *make_list(<span style="color:#000080;font-weight:bold">int</span> n, <span style="color:#000080;font-weight:bold">int</span> array[n])
-{
-    <span style="color:#000080;font-weight:bold">struct</span> list *x = new_list();
-    <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> i = <span style="color:#00f">0</span>; i &lt; n; i++) {
-        append(x, new_link(array[i]));
-    }
-    <span style="color:#000080;font-weight:bold">return</span> x;
-}
-
-<span style="color:#000080;font-weight:bold">struct</span> list *copy_prefix(<span style="color:#000080;font-weight:bold">struct</span> list *x, <span style="color:#000080;font-weight:bold">int</span> n)
-{
-    <span style="color:#000080;font-weight:bold">struct</span> list *copy = new_list();
-    <span style="color:#000080;font-weight:bold">struct</span> link *link = front(x);
-    <span style="color:#000080;font-weight:bold">while</span> (link != head(x) &amp;&amp; n) {
-        append(copy, new_link(link-&gt;value));
-        link = link-&gt;next;
-        n--;
-    }
-    <span style="color:#000080;font-weight:bold">return</span> copy;
-}
-<span style="color:#008080">#</span><span style="color:#008080">define copy_list(x) copy_prefix(x, length(x))</span><span style="color:#008080">
-</span></code></pre></div><h3 id="binary-search-tree">Binary search tree</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// Linked list -----------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">struct</span> link {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">int</span> value;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> link *prev;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> link *next;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> link *new_link(<span style="color:#000080;font-weight:bold">int</span> val)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> link *link = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *link);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (!link) abort();
+</span></span><span style="display:flex;"><span>  link-&gt;value = val;
+</span></span><span style="display:flex;"><span>  link-&gt;prev = link-&gt;next = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> link;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> connect_neighbours(<span style="color:#000080;font-weight:bold">struct</span> link *x)
+</span></span><span style="display:flex;"><span>{ x-&gt;next-&gt;prev = x; x-&gt;prev-&gt;next = x; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> link_after(<span style="color:#000080;font-weight:bold">struct</span> link *x, <span style="color:#000080;font-weight:bold">struct</span> link *y)
+</span></span><span style="display:flex;"><span>{ y-&gt;prev = x; y-&gt;next = x-&gt;next; connect_neighbours(y); }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">inline</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> unlink(<span style="color:#000080;font-weight:bold">struct</span> link *x)
+</span></span><span style="display:flex;"><span>{ x-&gt;next-&gt;prev = x-&gt;prev; x-&gt;prev-&gt;next = x-&gt;next; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> list {
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">int</span> len;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> link head;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">#define head(x)     (&amp;((x)-&gt;head))
+</span></span></span><span style="display:flex;"><span><span style="color:#008080">#define front(x)    (head(x)-&gt;next)
+</span></span></span><span style="display:flex;"><span><span style="color:#008080">#define back(x)     (head(x)-&gt;prev)
+</span></span></span><span style="display:flex;"><span><span style="color:#008080">#define is_empty(x) ( head(x) == front(x) )
+</span></span></span><span style="display:flex;"><span><span style="color:#008080">#define length(x)   ((x)-&gt;len)
+</span></span></span><span style="display:flex;"><span><span style="color:#008080"></span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> list *new_list(<span style="color:#000080;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *x = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *x);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (!x) abort();
+</span></span><span style="display:flex;"><span>    x-&gt;head.next = x-&gt;head.prev = &amp;x-&gt;head;
+</span></span><span style="display:flex;"><span>    x-&gt;len = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> x;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> free_list(<span style="color:#000080;font-weight:bold">struct</span> list *x)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> link *link = front(x);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> (link != head(x)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">struct</span> link *next = link-&gt;next;
+</span></span><span style="display:flex;"><span>        free(link);
+</span></span><span style="display:flex;"><span>        link = next;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    free(x);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> append(<span style="color:#000080;font-weight:bold">struct</span> list *x, <span style="color:#000080;font-weight:bold">struct</span> link *link)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    link_after(back(x), link);
+</span></span><span style="display:flex;"><span>    x-&gt;len++;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> link *pop_front(<span style="color:#000080;font-weight:bold">struct</span> list *x)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    assert(!is_empty(x));
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> link *link = front(x);
+</span></span><span style="display:flex;"><span>    unlink(link); x-&gt;len--;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> link;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> list *make_list(<span style="color:#000080;font-weight:bold">int</span> n, <span style="color:#000080;font-weight:bold">int</span> array[n])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *x = new_list();
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> i = <span style="color:#00f">0</span>; i &lt; n; i++) {
+</span></span><span style="display:flex;"><span>        append(x, new_link(array[i]));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> x;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> list *copy_prefix(<span style="color:#000080;font-weight:bold">struct</span> list *x, <span style="color:#000080;font-weight:bold">int</span> n)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *copy = new_list();
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> link *link = front(x);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> (link != head(x) &amp;&amp; n) {
+</span></span><span style="display:flex;"><span>        append(copy, new_link(link-&gt;value));
+</span></span><span style="display:flex;"><span>        link = link-&gt;next;
+</span></span><span style="display:flex;"><span>        n--;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> copy;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#008080">#define copy_list(x) copy_prefix(x, length(x))
+</span></span></span></code></pre></div><h3 id="binary-search-tree">Binary search tree</h3>
 <p>For the set in Puzzle #2, I used a binary search tree.</p>
 <p>To use a binary search tree, we need an order on the elements, so I needed a comparison on lists. There doesn’t have to be any sensible order on the lists, as long as it is a total order, but it is natural to use lexicographical order. That means that we compare the prefixes on the lists until there is a difference, and then that difference determines which is the smaller. If one list is a prefix of another, then the shorter list is the smaller list as well.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">int</span> compare_lists(<span style="color:#000080;font-weight:bold">struct</span> list *x, <span style="color:#000080;font-weight:bold">struct</span> list *y)
-{
-    <span style="color:#000080;font-weight:bold">struct</span> link *lx = front(x);
-    <span style="color:#000080;font-weight:bold">struct</span> link *ly = front(y);
-    <span style="color:#000080;font-weight:bold">while</span> (lx != head(x) &amp;&amp; ly != head(y)) {
-        <span style="color:#000080;font-weight:bold">if</span> (lx-&gt;value != ly-&gt;value) <span style="color:#000080;font-weight:bold">return</span> lx-&gt;value - ly-&gt;value;
-        lx = lx-&gt;next; ly = ly-&gt;next;
-    }
-    <span style="color:#080;font-style:italic">// maybe they are equal?
-</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">if</span> (lx == head(x) &amp;&amp; ly == head(y)) <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-    <span style="color:#080;font-style:italic">// One is a prefix of another -- the shorter is the smallest
-</span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">return</span> (lx == head(x)) ? -<span style="color:#00f">1</span> : <span style="color:#00f">1</span>;
-}
-</code></pre></div><p>I don’t balance it, and I don’t need to delete elements, so it is a particularly simple implementation:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#080;font-style:italic">// Search tree -----------------------------------------
-</span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">struct</span> node {
-  <span style="color:#000080;font-weight:bold">struct</span> list *value;
-  <span style="color:#000080;font-weight:bold">struct</span> node *left;
-  <span style="color:#000080;font-weight:bold">struct</span> node *right;
-};
-
-<span style="color:#000080;font-weight:bold">struct</span> node *node(<span style="color:#000080;font-weight:bold">struct</span> list *value, 
-                  <span style="color:#000080;font-weight:bold">struct</span> node *left, <span style="color:#000080;font-weight:bold">struct</span> node *right)
-{
-  <span style="color:#000080;font-weight:bold">struct</span> node *t = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *t);
-  <span style="color:#000080;font-weight:bold">if</span> (!t) abort();
-  *t = (<span style="color:#000080;font-weight:bold">struct</span> node){
-    .value = copy_list(value), 
-    .left = left, .right = right
-  };
-  <span style="color:#000080;font-weight:bold">return</span> t;
-}
-<span style="color:#008080">#</span><span style="color:#008080">define leaf(V) node(V, 0, 0)</span><span style="color:#008080">
-</span><span style="color:#008080"></span>
-<span style="color:#000080;font-weight:bold">bool</span> contains(<span style="color:#000080;font-weight:bold">struct</span> node *t, <span style="color:#000080;font-weight:bold">struct</span> list *x)
-{
-  <span style="color:#000080;font-weight:bold">if</span> (!t) <span style="color:#000080;font-weight:bold">return</span> false;
-  <span style="color:#000080;font-weight:bold">int</span> cmp = compare_lists(x, t-&gt;value);
-  <span style="color:#000080;font-weight:bold">if</span> (cmp == <span style="color:#00f">0</span>) <span style="color:#000080;font-weight:bold">return</span> true;
-  <span style="color:#000080;font-weight:bold">if</span> (cmp &lt; <span style="color:#00f">0</span>)  <span style="color:#000080;font-weight:bold">return</span> contains(t-&gt;left, x);
-  <span style="color:#000080;font-weight:bold">else</span>          <span style="color:#000080;font-weight:bold">return</span> contains(t-&gt;right, x);
-}
-
-
-<span style="color:#000080;font-weight:bold">struct</span> node *insert_node(<span style="color:#000080;font-weight:bold">struct</span> node *t, <span style="color:#000080;font-weight:bold">struct</span> node *n)
-{
-  <span style="color:#000080;font-weight:bold">if</span> (!t) <span style="color:#000080;font-weight:bold">return</span> n;
-  <span style="color:#000080;font-weight:bold">int</span> cmp = compare_lists(n-&gt;value, t-&gt;value);
-  <span style="color:#000080;font-weight:bold">if</span> (cmp == <span style="color:#00f">0</span>) {
-    free(n); <span style="color:#080;font-style:italic">// it was already here
-</span><span style="color:#080;font-style:italic"></span>  } <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">if</span> (cmp &lt; <span style="color:#00f">0</span>) {
-    t-&gt;left = insert_node(t-&gt;left, n);
-  } <span style="color:#000080;font-weight:bold">else</span> {
-    t-&gt;right = insert_node(t-&gt;right, n);
-  }
-  <span style="color:#000080;font-weight:bold">return</span> t;
-}
-
-<span style="color:#000080;font-weight:bold">struct</span> node *insert(<span style="color:#000080;font-weight:bold">struct</span> node *t, <span style="color:#000080;font-weight:bold">struct</span> list *x)
-{
-  <span style="color:#000080;font-weight:bold">struct</span> node *n = leaf(x);
-  <span style="color:#000080;font-weight:bold">if</span> (!n) <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-  <span style="color:#000080;font-weight:bold">return</span> insert_node(t, n);
-}
-
-<span style="color:#000080;font-weight:bold">void</span> print_stree(<span style="color:#000080;font-weight:bold">struct</span> node *t)
-{
-  <span style="color:#000080;font-weight:bold">if</span> (!t) <span style="color:#000080;font-weight:bold">return</span>;
-  putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">(</span><span style="color:#800080">&#39;</span>);
-    print_stree(t-&gt;left);
-    putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">,</span><span style="color:#800080">&#39;</span>);putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">[</span><span style="color:#800080">&#39;</span>);
-    print_list(t-&gt;value);
-    putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">]</span><span style="color:#800080">&#39;</span>);putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">,</span><span style="color:#800080">&#39;</span>);
-    print_stree(t-&gt;right);
-  putchar(<span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">)</span><span style="color:#800080">&#39;</span>);
-}
-
-<span style="color:#000080;font-weight:bold">void</span> free_stree(<span style="color:#000080;font-weight:bold">struct</span> node *t)
-{
-  <span style="color:#000080;font-weight:bold">if</span> (!t) <span style="color:#000080;font-weight:bold">return</span>;
-  free_stree(t-&gt;left);
-  free_stree(t-&gt;right);
-  free_list(t-&gt;value);
-  free(t);
-}
-</code></pre></div><p>It is not the smartest search tree I have lying around, but it is the simplest, and it suffices for this day’s challenge.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">int</span> compare_lists(<span style="color:#000080;font-weight:bold">struct</span> list *x, <span style="color:#000080;font-weight:bold">struct</span> list *y)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> link *lx = front(x);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> link *ly = front(y);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> (lx != head(x) &amp;&amp; ly != head(y)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> (lx-&gt;value != ly-&gt;value) <span style="color:#000080;font-weight:bold">return</span> lx-&gt;value - ly-&gt;value;
+</span></span><span style="display:flex;"><span>        lx = lx-&gt;next; ly = ly-&gt;next;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// maybe they are equal?
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">if</span> (lx == head(x) &amp;&amp; ly == head(y)) <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// One is a prefix of another -- the shorter is the smallest
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">return</span> (lx == head(x)) ? -<span style="color:#00f">1</span> : <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I don’t balance it, and I don’t need to delete elements, so it is a particularly simple implementation:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// Search tree -----------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">struct</span> node {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> list *value;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> node *left;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> node *right;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> node *node(<span style="color:#000080;font-weight:bold">struct</span> list *value, 
+</span></span><span style="display:flex;"><span>                  <span style="color:#000080;font-weight:bold">struct</span> node *left, <span style="color:#000080;font-weight:bold">struct</span> node *right)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> node *t = malloc(<span style="color:#000080;font-weight:bold">sizeof</span> *t);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (!t) abort();
+</span></span><span style="display:flex;"><span>  *t = (<span style="color:#000080;font-weight:bold">struct</span> node){
+</span></span><span style="display:flex;"><span>    .value = copy_list(value), 
+</span></span><span style="display:flex;"><span>    .left = left, .right = right
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> t;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#008080">#define leaf(V) node(V, 0, 0)
+</span></span></span><span style="display:flex;"><span><span style="color:#008080"></span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">bool</span> contains(<span style="color:#000080;font-weight:bold">struct</span> node *t, <span style="color:#000080;font-weight:bold">struct</span> list *x)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (!t) <span style="color:#000080;font-weight:bold">return</span> false;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">int</span> cmp = compare_lists(x, t-&gt;value);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (cmp == <span style="color:#00f">0</span>) <span style="color:#000080;font-weight:bold">return</span> true;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (cmp &lt; <span style="color:#00f">0</span>)  <span style="color:#000080;font-weight:bold">return</span> contains(t-&gt;left, x);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">else</span>          <span style="color:#000080;font-weight:bold">return</span> contains(t-&gt;right, x);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> node *insert_node(<span style="color:#000080;font-weight:bold">struct</span> node *t, <span style="color:#000080;font-weight:bold">struct</span> node *n)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (!t) <span style="color:#000080;font-weight:bold">return</span> n;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">int</span> cmp = compare_lists(n-&gt;value, t-&gt;value);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (cmp == <span style="color:#00f">0</span>) {
+</span></span><span style="display:flex;"><span>    free(n); <span style="color:#080;font-style:italic">// it was already here
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  } <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">if</span> (cmp &lt; <span style="color:#00f">0</span>) {
+</span></span><span style="display:flex;"><span>    t-&gt;left = insert_node(t-&gt;left, n);
+</span></span><span style="display:flex;"><span>  } <span style="color:#000080;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>    t-&gt;right = insert_node(t-&gt;right, n);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> t;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> node *insert(<span style="color:#000080;font-weight:bold">struct</span> node *t, <span style="color:#000080;font-weight:bold">struct</span> list *x)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> node *n = leaf(x);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (!n) <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> insert_node(t, n);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> print_stree(<span style="color:#000080;font-weight:bold">struct</span> node *t)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (!t) <span style="color:#000080;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>  putchar(<span style="color:#800080">&#39;(&#39;</span>);
+</span></span><span style="display:flex;"><span>    print_stree(t-&gt;left);
+</span></span><span style="display:flex;"><span>    putchar(<span style="color:#800080">&#39;,&#39;</span>);putchar(<span style="color:#800080">&#39;[&#39;</span>);
+</span></span><span style="display:flex;"><span>    print_list(t-&gt;value);
+</span></span><span style="display:flex;"><span>    putchar(<span style="color:#800080">&#39;]&#39;</span>);putchar(<span style="color:#800080">&#39;,&#39;</span>);
+</span></span><span style="display:flex;"><span>    print_stree(t-&gt;right);
+</span></span><span style="display:flex;"><span>  putchar(<span style="color:#800080">&#39;)&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> free_stree(<span style="color:#000080;font-weight:bold">struct</span> node *t)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (!t) <span style="color:#000080;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>  free_stree(t-&gt;left);
+</span></span><span style="display:flex;"><span>  free_stree(t-&gt;right);
+</span></span><span style="display:flex;"><span>  free_list(t-&gt;value);
+</span></span><span style="display:flex;"><span>  free(t);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It is not the smartest search tree I have lying around, but it is the simplest, and it suffices for this day’s challenge.</p>
 <h3 id="solving-the-puzzles">Solving the puzzles</h3>
 <p>With the data structures in place, implementing the puzzle solutions is a straightforward translation from the Python solution:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000080;font-weight:bold">struct</span> list *play(<span style="color:#000080;font-weight:bold">struct</span> list *p1, <span style="color:#000080;font-weight:bold">struct</span> list *p2)
-{
-    <span style="color:#000080;font-weight:bold">while</span> (!is_empty(p1) &amp;&amp; !is_empty(p2)) {
-        <span style="color:#000080;font-weight:bold">struct</span> link *card1 = pop_front(p1);
-        <span style="color:#000080;font-weight:bold">struct</span> link *card2 = pop_front(p2);
-        <span style="color:#000080;font-weight:bold">if</span> (card1-&gt;value &gt; card2-&gt;value) {
-            append(p1, card1); append(p1, card2);
-        } <span style="color:#000080;font-weight:bold">else</span> {
-            append(p2, card2); append(p2, card1);
-        }
-    }
-    <span style="color:#000080;font-weight:bold">return</span> is_empty(p1) ? p2 : p1;
-}
-
-<span style="color:#000080;font-weight:bold">struct</span> game2_res {
-    <span style="color:#000080;font-weight:bold">int</span> winner;
-    <span style="color:#000080;font-weight:bold">struct</span> list *winner_hand;
-};
-<span style="color:#008080">#</span><span style="color:#008080">define WIN(w,wh) \</span><span style="color:#008080">
-</span><span style="color:#008080"></span><span style="color:#008080">    (struct game2_res){ .winner = (w), .winner_hand = (wh) }</span><span style="color:#008080">
-</span><span style="color:#008080"></span>
-<span style="color:#000080;font-weight:bold">struct</span> game2_res play2(<span style="color:#000080;font-weight:bold">struct</span> list *p1, <span style="color:#000080;font-weight:bold">struct</span> list *p2)
-                       
-{
-    <span style="color:#000080;font-weight:bold">struct</span> node *s1 = <span style="color:#00f">0</span>;
-    <span style="color:#000080;font-weight:bold">struct</span> node *s2 = <span style="color:#00f">0</span>;
-    <span style="color:#000080;font-weight:bold">struct</span> game2_res winner;
-
-    <span style="color:#000080;font-weight:bold">while</span> (!is_empty(p1) &amp;&amp; !is_empty(p2)) {
-        <span style="color:#000080;font-weight:bold">if</span> (contains(s1, p1) || contains(s2, p2)) {
-            winner = WIN(<span style="color:#00f">1</span>, p1);
-            <span style="color:#000080;font-weight:bold">goto</span> finish;
-        }
-        s1 = insert(s1, p1);
-        s2 = insert(s2, p2);
-
-        <span style="color:#000080;font-weight:bold">struct</span> link *card1 = pop_front(p1);
-        <span style="color:#000080;font-weight:bold">struct</span> link *card2 = pop_front(p2);
-        <span style="color:#000080;font-weight:bold">int</span> w;
-        <span style="color:#000080;font-weight:bold">if</span> (card1-&gt;value &gt; length(p1) || card2-&gt;value &gt; length(p2)) {
-            w = (card1-&gt;value &gt; card2-&gt;value) ? <span style="color:#00f">1</span> : <span style="color:#00f">2</span>;
-        } <span style="color:#000080;font-weight:bold">else</span> {
-            <span style="color:#000080;font-weight:bold">struct</span> game2_res rec_res;
-            <span style="color:#000080;font-weight:bold">struct</span> list *p1_copy = copy_prefix(p1, card1-&gt;value);
-            <span style="color:#000080;font-weight:bold">struct</span> list *p2_copy = copy_prefix(p2, card2-&gt;value);
-            rec_res = play2(p1_copy, p2_copy);
-            w = rec_res.winner;
-            free_list(p1_copy);
-            free_list(p2_copy);
-        }
-
-        <span style="color:#000080;font-weight:bold">if</span> (w == <span style="color:#00f">1</span>) {
-            append(p1, card1); append(p1, card2);
-        } <span style="color:#000080;font-weight:bold">else</span> {
-            append(p2, card2); append(p2, card1);
-        }
-    }
-
-
-    winner = is_empty(p1) ? WIN(<span style="color:#00f">2</span>,p2) : WIN(<span style="color:#00f">1</span>,p1);
-finish:
-    free_stree(s1);
-    free_stree(s2);
-    <span style="color:#000080;font-weight:bold">return</span> winner;
-}
-
-<span style="color:#000080;font-weight:bold">int</span> hand_score(<span style="color:#000080;font-weight:bold">struct</span> list *hand)
-{
-    <span style="color:#000080;font-weight:bold">int</span> res = <span style="color:#00f">0</span>;
-    <span style="color:#000080;font-weight:bold">int</span> multiple = <span style="color:#00f">1</span>;
-    <span style="color:#000080;font-weight:bold">struct</span> link *link = back(hand);
-    <span style="color:#000080;font-weight:bold">while</span> (link != head(hand)) {
-        res += multiple * link-&gt;value;
-        multiple += <span style="color:#00f">1</span>;
-        link = link-&gt;prev;
-    }
-    <span style="color:#000080;font-weight:bold">return</span> res;
-}
-
-<span style="color:#000080;font-weight:bold">void</span> puzzle1(<span style="color:#000080;font-weight:bold">struct</span> list *p1, <span style="color:#000080;font-weight:bold">struct</span> list *p2)
-{
-    <span style="color:#000080;font-weight:bold">struct</span> list *p1c = copy_list(p1);
-    <span style="color:#000080;font-weight:bold">struct</span> list *p2c = copy_list(p2);
-    
-    <span style="color:#000080;font-weight:bold">struct</span> list *winner = play(p1c, p2c);
-    printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Score: %d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, hand_score(winner));
-    
-    free_list(p1c);
-    free_list(p2c);
-    <span style="color:#080;font-style:italic">// winner is a copy of one of them, so it should not
-</span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// be freed.
-</span><span style="color:#080;font-style:italic"></span>}
-
-<span style="color:#000080;font-weight:bold">void</span> puzzle2(<span style="color:#000080;font-weight:bold">struct</span> list *p1, <span style="color:#000080;font-weight:bold">struct</span> list *p2)
-{
-    <span style="color:#000080;font-weight:bold">struct</span> list *p1c = copy_list(p1);
-    <span style="color:#000080;font-weight:bold">struct</span> list *p2c = copy_list(p2);
-    
-    <span style="color:#000080;font-weight:bold">struct</span> game2_res res = play2(p1c, p2c);
-    printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Score: %d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, hand_score(res.winner_hand));
-    
-    free_list(p1c);
-    free_list(p2c);
-}
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> list *play(<span style="color:#000080;font-weight:bold">struct</span> list *p1, <span style="color:#000080;font-weight:bold">struct</span> list *p2)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> (!is_empty(p1) &amp;&amp; !is_empty(p2)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">struct</span> link *card1 = pop_front(p1);
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">struct</span> link *card2 = pop_front(p2);
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> (card1-&gt;value &gt; card2-&gt;value) {
+</span></span><span style="display:flex;"><span>            append(p1, card1); append(p1, card2);
+</span></span><span style="display:flex;"><span>        } <span style="color:#000080;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            append(p2, card2); append(p2, card1);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> is_empty(p1) ? p2 : p1;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> game2_res {
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">int</span> winner;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *winner_hand;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#008080">#define WIN(w,wh) \
+</span></span></span><span style="display:flex;"><span><span style="color:#008080">    (struct game2_res){ .winner = (w), .winner_hand = (wh) }
+</span></span></span><span style="display:flex;"><span><span style="color:#008080"></span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> game2_res play2(<span style="color:#000080;font-weight:bold">struct</span> list *p1, <span style="color:#000080;font-weight:bold">struct</span> list *p2)
+</span></span><span style="display:flex;"><span>                       
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> node *s1 = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> node *s2 = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> game2_res winner;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> (!is_empty(p1) &amp;&amp; !is_empty(p2)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> (contains(s1, p1) || contains(s2, p2)) {
+</span></span><span style="display:flex;"><span>            winner = WIN(<span style="color:#00f">1</span>, p1);
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">goto</span> finish;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        s1 = insert(s1, p1);
+</span></span><span style="display:flex;"><span>        s2 = insert(s2, p2);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">struct</span> link *card1 = pop_front(p1);
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">struct</span> link *card2 = pop_front(p2);
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">int</span> w;
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> (card1-&gt;value &gt; length(p1) || card2-&gt;value &gt; length(p2)) {
+</span></span><span style="display:flex;"><span>            w = (card1-&gt;value &gt; card2-&gt;value) ? <span style="color:#00f">1</span> : <span style="color:#00f">2</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#000080;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">struct</span> game2_res rec_res;
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">struct</span> list *p1_copy = copy_prefix(p1, card1-&gt;value);
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">struct</span> list *p2_copy = copy_prefix(p2, card2-&gt;value);
+</span></span><span style="display:flex;"><span>            rec_res = play2(p1_copy, p2_copy);
+</span></span><span style="display:flex;"><span>            w = rec_res.winner;
+</span></span><span style="display:flex;"><span>            free_list(p1_copy);
+</span></span><span style="display:flex;"><span>            free_list(p2_copy);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> (w == <span style="color:#00f">1</span>) {
+</span></span><span style="display:flex;"><span>            append(p1, card1); append(p1, card2);
+</span></span><span style="display:flex;"><span>        } <span style="color:#000080;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            append(p2, card2); append(p2, card1);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    winner = is_empty(p1) ? WIN(<span style="color:#00f">2</span>,p2) : WIN(<span style="color:#00f">1</span>,p1);
+</span></span><span style="display:flex;"><span>finish:
+</span></span><span style="display:flex;"><span>    free_stree(s1);
+</span></span><span style="display:flex;"><span>    free_stree(s2);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> winner;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">int</span> hand_score(<span style="color:#000080;font-weight:bold">struct</span> list *hand)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">int</span> res = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">int</span> multiple = <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> link *link = back(hand);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> (link != head(hand)) {
+</span></span><span style="display:flex;"><span>        res += multiple * link-&gt;value;
+</span></span><span style="display:flex;"><span>        multiple += <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>        link = link-&gt;prev;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> puzzle1(<span style="color:#000080;font-weight:bold">struct</span> list *p1, <span style="color:#000080;font-weight:bold">struct</span> list *p2)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *p1c = copy_list(p1);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *p2c = copy_list(p2);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *winner = play(p1c, p2c);
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#00f">&#34;Score: %d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, hand_score(winner));
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    free_list(p1c);
+</span></span><span style="display:flex;"><span>    free_list(p2c);
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// winner is a copy of one of them, so it should not
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#080;font-style:italic">// be freed.
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> puzzle2(<span style="color:#000080;font-weight:bold">struct</span> list *p1, <span style="color:#000080;font-weight:bold">struct</span> list *p2)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *p1c = copy_list(p1);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> list *p2c = copy_list(p2);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">struct</span> game2_res res = play2(p1c, p2c);
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#00f">&#34;Score: %d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, hand_score(res.winner_hand));
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    free_list(p1c);
+</span></span><span style="display:flex;"><span>    free_list(p2c);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </article>
 
@@ -570,59 +541,6 @@ finish:
     </ul>
 </section>
     
-        <section class="comments-block">
-      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
-</section>
-
-<section id="disqus_thread"></section>
-
-<script>
-      (function () {
-            
-            
-            if (window.location.hostname == "localhost")
-                  return;
-
-            var disqus_loaded = false;
-            var disqus_shortname = 'mailund-dk';
-            var disqus_button = document.getElementById("show-comments");
-
-            disqus_button.style.display = "";
-            disqus_button.addEventListener("click", disqus, false);
-
-            function disqus() {
-
-                  if (!disqus_loaded) {
-                        disqus_loaded = true;
-
-                        var e = document.createElement("script");
-                        e.type = "text/javascript";
-                        e.async = true;
-                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
-                        (document.getElementsByTagName("head")[0] ||
-                              document.getElementsByTagName("body")[0])
-                        .appendChild(e);
-
-                        
-                        document.getElementById("show-comments").style.display = "none";
-                  }
-            }
-
-            
-            var hash = window.location.hash.substr(1);
-            if (hash.length > 8) {
-                  if (hash.substring(0, 8) == "comment-") {
-                        disqus();
-                  }
-            }
-
-            
-            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
-                  disqus();
-            }
-      })();
-</script>
-    
 
 
 
@@ -630,7 +548,7 @@ finish:
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund |
+        <h6>Copyright © 2020-2025 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

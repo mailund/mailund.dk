@@ -17,24 +17,24 @@
             </h1>
 
       <ul id="social-media">
-        {{ if .Site.Author.twitter }}
-        <li><a href="https://twitter.com/{{ .Site.Author.twitter }}"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-        {{ end }} {{ if .Site.Author.linkedin }}
-        <li><a href="https://www.linkedin.com/in/{{ .Site.Author.linkedin }}"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-        {{ end }} {{ if .Site.Author.github }}
-        <li><a href="https://github.com/{{ .Site.Author.github }}"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
-        {{ end }} {{ if .Site.Author.gitlab }}
-        <li><a href="https://gitlab.com/{{ .Site.Author.gitlab }}"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a></li>
-        {{ end }} {{ if .Site.Author.facebook }}
-        <li><a href="https://www.facebook.com/{{ .Site.Author.facebook }}"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-        {{ end }} {{ if .Site.Author.instagram }}
-        <li><a href="https://instagram.com/{{ .Site.Author.instagram }}"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a></li>
-        {{ end }} {{ if .Site.Author.patreon }}
-        <li><a href="https://patreon.com/{{ .Site.Author.patreon }}"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
-        {{ end }} {{ if .Site.Author.goodreads }}
-        <li><a href="https://www.goodreads.com/author/show/{{ .Site.Author.goodreads }}"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
-        {{ end }} {{ if .Site.Author.stackoverflow }}
-        <li><a href="https://www.stackoverflow.com/users/{{ .Site.Author.stackoverflow }}"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
+        {{ if .Site.Params.Author.twitter }}
+        <li><a href="https://twitter.com/{{ .Site.Params.Author.twitter }}"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Params.Author.linkedin }}
+        <li><a href="https://www.linkedin.com/in/{{ .Site.Params.Author.linkedin }}"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Params.Author.github }}
+        <li><a href="https://github.com/{{ .Site.Params.Author.github }}"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Params.Author.gitlab }}
+        <li><a href="https://gitlab.com/{{ .Site.Params.Author.gitlab }}"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Params.Author.facebook }}
+        <li><a href="https://www.facebook.com/{{ .Site.Params.Author.facebook }}"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Params.Author.instagram }}
+        <li><a href="https://instagram.com/{{ .Site.Params.Author.instagram }}"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Params.Author.patreon }}
+        <li><a href="https://patreon.com/{{ .Site.Params.Author.patreon }}"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Params.Author.goodreads }}
+        <li><a href="https://www.goodreads.com/author/show/{{ .Site.Params.Author.goodreads }}"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
+        {{ end }} {{ if .Site.Params.Author.stackoverflow }}
+        <li><a href="https://www.stackoverflow.com/users/{{ .Site.Params.Author.stackoverflow }}"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
         {{ end }}
       </ul>
       {{ with .Site.Params.tagline }}

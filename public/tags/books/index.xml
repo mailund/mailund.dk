@@ -1,154 +1,118 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>books on Mailund on the Internet</title>
+    <title>Books on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/books/</link>
-    <description>Recent content in books on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <description>Recent content in Books on Mailund on the Internet</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Thu, 25 Feb 2021 09:30:35 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/books/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mailund.dk/tags/books/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Books</title>
       <link>https://mailund.dk/books/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://mailund.dk/books/</guid>
-      <description>I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.
-When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put the draft on Leanpub where you can get it for free until it is done.</description>
+      <description>&lt;p&gt;I enjoy writing and I&amp;rsquo;ve written bunch of books by now. Mostly about R programming, but also on a few other topics.&lt;/p&gt;&#xA;&lt;p&gt;When I&amp;rsquo;m working on a book I haven&amp;rsquo;t sold yet, I usually put the draft on &lt;a href=&#34;https://leanpub.com/u/mailund&#34;&gt;Leanpub&lt;/a&gt; where you can get it for free until it is done. Once I&amp;rsquo;ve sold a book, I have to pull it from Leanpub, but it is a good way to get an early copy, and a good way for me to get feedback while writing. If you get a draft there, then please let me know what you think and how I can improve it.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Fiction</title>
       <link>https://mailund.dk/fiction/</link>
       <pubDate>Thu, 25 Feb 2021 09:30:35 +0100</pubDate>
-      
       <guid>https://mailund.dk/fiction/</guid>
-      <description>During lockdown and on a dare, I wrote a piece of fiction (Krofatter Egon og hjælpepakken below). That was kinda fun, so I wrote a bit more, and I guess I am writing fiction now.</description>
+      <description>&lt;p&gt;During lockdown and on a dare, I wrote a piece of fiction (Krofatter Egon og hjælpepakken below). That was kinda fun, so I wrote a bit more, and I guess I am writing fiction now.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Book update: Pointers in C and and Computational Thinking</title>
       <link>https://mailund.dk/posts/book-update-cptr-ct/</link>
       <pubDate>Tue, 12 Jan 2021 08:27:09 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/book-update-cptr-ct/</guid>
-      <description>So, my C pointers book apparently has a cover now. Before you complain, I don&amp;rsquo;t write the titles (although I don&amp;rsquo;t disagree with the title for this book), nor the subtitles (where I do for this one).</description>
+      <description>&lt;figure class=&#34;float-right&#34;&gt;&lt;a href=&#34;https://amzn.to/35vpSfI&#34;&gt;&lt;img src=&#34;https://mailund.dk/posts/book-update-cptr-ct/cptrs.jpg&#34;&gt;&lt;/a&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;So, my C pointers book apparently has a cover now. Before you complain, I don&amp;rsquo;t write the titles (although I don&amp;rsquo;t disagree with the title for this book), nor the subtitles (where I do for this one). I don&amp;rsquo;t know what they mean by &amp;ldquo;modern approach to memory management&amp;rdquo;. It&amp;rsquo;s &lt;code&gt;malloc()&lt;/code&gt; and &lt;code&gt;free()&lt;/code&gt; and some tricks for that, like reference counting and allocation pools.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OOP example in C</title>
       <link>https://mailund.dk/posts/cpointer-oop-example/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/cpointer-oop-example/</guid>
-      <description>I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Reference counting lists in C</title>
       <link>https://mailund.dk/posts/c-refcount-list/</link>
       <pubDate>Fri, 30 Oct 2020 06:59:36 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/c-refcount-list/</guid>
-      <description>I was playing with reference counting garbage collection last week, for something I want to add to my C pointers book. That chapter is still far in the future, and moving further into the future as the book seems to grow in front of me, but one day I will get to it.</description>
+      <description>&lt;p&gt;I was playing with reference counting garbage collection last week, for something I want to add to my C pointers book. That chapter is still far in the future, and moving further into the future as the book seems to grow in front of me, but one day I will get to it. And by then, I have to have figured out some design issues that I ran into.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Joys of Hashing</title>
       <link>https://mailund.dk/posts/joys-of-hashing/</link>
       <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/joys-of-hashing/</guid>
-      <description>I forgot to post about it when The Joys of Hashing came out, but it is never too late to blow my own horn. It is out and you should get it.</description>
+      <description>&lt;p&gt;I forgot to post about it when The Joys of Hashing came out, but it is never too late to blow my own horn. It is out and you should get it.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Elegant Scipy</title>
       <link>https://mailund.dk/posts/elegant-scipy/</link>
       <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/elegant-scipy/</guid>
-      <description>I was a little disappointed about this. I had hoped it would give a good overview of Scipy, but instead, it is a bunch of examples that use it. It is not that the examples aren&amp;rsquo;t interesting.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2pz1kNE&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I was a little disappointed about this. I had hoped it would give a good overview of &lt;code&gt;Scipy&lt;/code&gt;, but instead, it is a bunch of examples that use it.  It is not that the examples aren&amp;rsquo;t interesting. They are. They just drown out features of &lt;code&gt;Scipy&lt;/code&gt;, so I didn&amp;rsquo;t learn much about that.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Seeing Further</title>
       <link>https://mailund.dk/posts/seeing-further/</link>
       <pubDate>Mon, 01 Oct 2018 15:57:13 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/seeing-further/</guid>
-      <description>I also finished Seeing Further: The Story of Science, Discovery, and the Genius of the Royal Society yesterday. I found this a mixed back. When I bought it I thought it was a Bill Bryson book—I like those—but if I had checked the description just a little bit I would have seen that it is only edited by Bryson.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2xPc4f4&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I also finished &lt;a href=&#34;https://amzn.to/2xPc4f4&#34;&gt;&lt;em&gt;Seeing Further: The Story of Science, Discovery, and the Genius of the Royal Society&lt;/em&gt;&lt;/a&gt; yesterday. I found this a mixed back. When I bought it I thought it was a Bill Bryson book—I like those—but if I had checked the description just a little bit I would have seen that it is only edited by Bryson.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Power of Habit</title>
       <link>https://mailund.dk/posts/the-power-of-habit/</link>
       <pubDate>Mon, 01 Oct 2018 15:45:36 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/the-power-of-habit/</guid>
-      <description>In the weekend I finished The Power of Habit.
-This is a very interesting book. Duhigg writes about how we are run by habit to a degree I had not imagined.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2xO0QHW&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;In the weekend I finished &lt;a href=&#34;https://amzn.to/2xO0QHW&#34;&gt;&lt;em&gt;The Power of Habit&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is a very interesting book. Duhigg writes about how we are run by habit to a degree I had not imagined. How we react to triggers where we have learned, unconsciously, to expect some rewards, and how our brains turn out and runs on routine when that happens. How advertisement exploits this, how sports-teams and companies  can hook into the habit loop for good or for evil.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Erratas</title>
       <link>https://mailund.dk/posts/erratas/</link>
       <pubDate>Mon, 01 Oct 2018 08:43:17 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/erratas/</guid>
-      <description>To my utter shock, it turns out that I am not perfect. There are mistakes in my books!
-A couple of readers made me aware of a typo in Functional Programming in R.</description>
+      <description>&lt;p&gt;To my utter shock, it turns out that I am not perfect. There are mistakes in my books!&lt;/p&gt;&#xA;&lt;p&gt;A couple of readers made me aware of a typo in &lt;a href=&#34;https://mailund.dk/errata/fpinr/&#34;&gt;&lt;strong&gt;Functional Programming in R&lt;/strong&gt;&lt;/a&gt;. It is just a typo, but I can easily see why it can confuse readers.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Errata: Functional Programming in R</title>
       <link>https://mailund.dk/errata/fpinr/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://mailund.dk/errata/fpinr/</guid>
-      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;
-Chapter 3 Nested Functions and Scopes, page 53ff.</description>
+      <description>&lt;h2 id=&#34;chapter-2&#34;&gt;Chapter 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;the-structure-of-a-recursive-function-page-32&#34;&gt;The Structure of a Recursive Function, page 32:&lt;/h3&gt;&#xA;&lt;p&gt;&amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;&lt;/p&gt;&#xA;&lt;h2 id=&#34;chapter-3&#34;&gt;Chapter 3&lt;/h2&gt;&#xA;&lt;h3 id=&#34;nested-functions-and-scopes-page-53ff&#34;&gt;Nested Functions and Scopes, page 53ff.&lt;/h3&gt;&#xA;&lt;p&gt;The code defines function g as &lt;code&gt;g &amp;lt;- function(y) x + y&lt;/code&gt; but in the environment chains g is defined as &lt;code&gt;g &amp;lt;- function(y) x + 1&lt;/code&gt;; that should also be &lt;code&gt;g &amp;lt;- function(y) x + y&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Coming Storm</title>
       <link>https://mailund.dk/posts/the-coming-storm/</link>
       <pubDate>Wed, 12 Sep 2018 08:06:58 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/the-coming-storm/</guid>
-      <description>If you are a member of Audible—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month. They call this Audible Originals, and while you only get six books to choose from, I am not complaining about getting something for free.</description>
+      <description>&lt;p&gt;If you are a member of &lt;a href=&#34;https://amzn.to/2NFCFop&#34;&gt;Audible&lt;/a&gt;—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month. They call this &lt;a href=&#34;https://www.audible.com/ep/audible-originals-member-benefit&#34;&gt;Audible Originals&lt;/a&gt;, and while you only get six books to choose from, I am not complaining about getting something for free.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Fluent Python</title>
       <link>https://mailund.dk/posts/fluent-python/</link>
       <pubDate>Mon, 10 Sep 2018 09:11:42 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/fluent-python/</guid>
-      <description>I just finished reading Fluent Python. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn.</description>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;I just finished reading &lt;a href=&#34;https://amzn.to/2Nw7cEQ&#34;&gt;&lt;em&gt;Fluent Python&lt;/em&gt;&lt;/a&gt;. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn. Rather, it covers Python topics you might use in day-to-day programming and explains how you would write code in the most Pythonic way.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>New Books Page</title>
       <link>https://mailund.dk/posts/new-books-page/</link>
       <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/new-books-page/</guid>
-      <description>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.</description>
+      <description>&lt;p&gt;I have set up a page for the &lt;a href=&#34;https://mailund.dk/books/&#34;&gt;books I have written&lt;/a&gt;. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Errata: Functional Data-Structures in R</title>
       <link>https://mailund.dk/errata/fdsinr/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://mailund.dk/errata/fdsinr/</guid>
-      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book. Pattern matching makes implementing data structures much easier.</description>
+      <description>&lt;p&gt;One big regret I have about this book is that I didn’t implement the pattern matching code from &lt;a href=&#34;https://amzn.to/2QHMNLL&#34;&gt;&lt;em&gt;Domain-Specific Languages in R&lt;/em&gt;&lt;/a&gt; before this book. Pattern matching makes implementing data structures &lt;em&gt;much&lt;/em&gt; easier.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

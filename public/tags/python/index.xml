@@ -4,168 +4,129 @@
     <title>Python on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/python/</link>
     <description>Recent content in Python on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Thu, 25 Nov 2021 14:08:34 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mailund.dk/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Prefix Doubling Attempts</title>
       <link>https://mailund.dk/posts/prefix-doubling-attemps/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/prefix-doubling-attemps/</guid>
-      <description>I&amp;rsquo;ve been working on an algorithm for suffix array construction today. It&amp;rsquo;s called prefix doubling, but I don&amp;rsquo;t have a link, sorry. I think it comes from this paper but I don&amp;rsquo;t have access to it at home.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been working on an algorithm for suffix array construction today. It&amp;rsquo;s called &lt;em&gt;prefix doubling&lt;/em&gt;, but I don&amp;rsquo;t have a link, sorry. I think it comes from &lt;a href=&#34;https://dl.acm.org/doi/10.1145/800152.804905&#34;&gt;this paper&lt;/a&gt; but I don&amp;rsquo;t have access to it at home.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Starting Up Exercises: Burrows-Wheeler Transform</title>
       <link>https://mailund.dk/posts/starting-up-exercises-bwt/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/starting-up-exercises-bwt/</guid>
-      <description>I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.
-There is nothing new there, I have a class every year where we do that, but now it is individual projects.</description>
+      <description>&lt;p&gt;I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.&lt;/p&gt;&#xA;&lt;p&gt;There is nothing new there, I have a class every year where we do that, but now it is individual projects. The content doesn&amp;rsquo;t change much; just the teaching format.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — day 24 remade</title>
       <link>https://mailund.dk/posts/aoc-2020-12/</link>
       <pubDate>Fri, 25 Dec 2020 07:21:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-12/</guid>
-      <description>I wanted to get back to yesterday’s puzzle, and I have a little time before I need to run off…
-Yes, I was fed up with manual parsing of strings so decided to do it using the re module for once.</description>
+      <description>&lt;p&gt;I wanted to get back to yesterday’s puzzle, and I have a little time before I need to run off…&lt;/p&gt;&#xA;&#xA;&lt;p&gt;The use of &lt;code&gt;findall()&lt;/code&gt; I refer to in the tweet is this. You can split the input using a regular expression, and then map each input code to a direction. If you combine that with a &lt;code&gt;reduce()&lt;/code&gt; you get a very succinct parser:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — day 25</title>
       <link>https://mailund.dk/posts/aoc-2020-11/</link>
       <pubDate>Fri, 25 Dec 2020 07:01:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-11/</guid>
-      <description>On the last day of Christmas AoC gave to me an encryption problem, that is really a modular arithmetic problem.
-If you decode the description—that is more cryptic than the mathematics—you find that we need to find secret keys by solving equations</description>
+      <description>&lt;p&gt;On the &lt;a href=&#34;https://adventofcode.com/2020/day/25&#34;&gt;last day of Christmas AoC gave to me&lt;/a&gt; an encryption problem, that is really a modular arithmetic problem.&lt;/p&gt;&#xA;&lt;p&gt;If you decode the description—that is more cryptic than the mathematics—you find that we need to find secret keys by solving equations&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 23 and 24</title>
       <link>https://mailund.dk/posts/aoc-2020-10/</link>
       <pubDate>Thu, 24 Dec 2020 07:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-10/</guid>
-      <description>Unexpectedly, I was allowed to play today—it is Christmas, after all—as long as I didn’t spend too much time at the computer. So I hurried up and solved today’s and yesterday’s puzzles quickly.</description>
+      <description>&lt;p&gt;Unexpectedly, I was allowed to play today—it &lt;em&gt;is&lt;/em&gt; Christmas, after all—as long as I didn’t spend too much time at the computer. So I hurried up and solved today’s and yesterday’s puzzles quickly.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — day 22</title>
       <link>https://mailund.dk/posts/aoc-2020-9/</link>
       <pubDate>Tue, 22 Dec 2020 06:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-9/</guid>
-      <description>This will be the last post I write before New Year. We have vacation in the house from tomorrow, and I won’t be hacking when I am supposed to be social—I am told.</description>
+      <description>&lt;p&gt;This will be the last post I write before New Year. We have vacation in the house from tomorrow, and I won’t be hacking when I am supposed to be social—I am told. I will do the last three puzzles, and post them, after the holiday.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 20 and 21</title>
       <link>https://mailund.dk/posts/aoc-2020-8/</link>
       <pubDate>Mon, 21 Dec 2020 07:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-8/</guid>
-      <description>Day 20: Jurassic Jigsaw Day 20 we get tiles for a puzzle, and we have to work out the puzzle from them. The tiles can be rotated or flipped, but we can connect them by identifying how edges match.</description>
+      <description>&lt;h2 id=&#34;day-20-jurassic-jigsaw&#34;&gt;Day 20: Jurassic Jigsaw&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://adventofcode.com/2020/day/20&#34;&gt;Day 20&lt;/a&gt; we get tiles for a puzzle, and we have to work out the puzzle from them. The tiles can be rotated or flipped, but we can connect them by identifying how edges match.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — day 19</title>
       <link>https://mailund.dk/posts/aoc-2020-7/</link>
       <pubDate>Sat, 19 Dec 2020 06:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-7/</guid>
-      <description>I will make this one quick, because I don’t have much time. Today, we are given some rules for what strings should look like, and we are to validate a set of strings and count how many are valid.</description>
+      <description>&lt;p&gt;I will make this one quick, because I don’t have much time. &lt;a href=&#34;https://adventofcode.com/2020/day/19&#34;&gt;Today, we are given some rules&lt;/a&gt; for what strings should look like, and we are to validate a set of strings and count how many are valid. This is a bit of a mix between the parser from yesterday and the rule-validation from other days, but leaning, by far, towards the parser. The rules are a grammar, and checking the strings means we are matching them against the grammar.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 17-18</title>
       <link>https://mailund.dk/posts/aoc-2020-6/</link>
       <pubDate>Fri, 18 Dec 2020 08:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-6/</guid>
-      <description>Well, today, my blogging catches up with my Advent of Code hacking. Just in time to fall behind again in the weekend. If that happens, I should be able to write up my weekend solutions on Monday.</description>
+      <description>&lt;p&gt;Well, today, my blogging catches up with my &lt;a href=&#34;https://adventofcode.com/&#34;&gt;Advent of Code&lt;/a&gt; hacking. Just in time to fall behind again in the weekend. If that happens, I should be able to write up my weekend solutions on Monday. I don’t think I have that much work waiting for me then.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 14-16</title>
       <link>https://mailund.dk/posts/aoc-2020-5/</link>
       <pubDate>Thu, 17 Dec 2020 18:51:39 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-5/</guid>
-      <description>My posts are almost catching up to Advent of Code, which probably means that I will fall behind in the weekend. Quite likely, actually. I probably have time for solving the puzzles, but not writing about them.</description>
+      <description>&lt;p&gt;My posts are almost catching up to &lt;a href=&#34;https://adventofcode.com/2020&#34;&gt;Advent of Code&lt;/a&gt;, which probably means that I will fall behind in the weekend. Quite likely, actually. I probably have time for solving the puzzles, but not writing about them. If that happens—and if I were a better man, it is how I would bet—then I will make sure to catch up Monday.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 12-13</title>
       <link>https://mailund.dk/posts/aoc-2020-4/</link>
       <pubDate>Thu, 17 Dec 2020 10:54:39 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-4/</guid>
-      <description>I don’t have a lot of time today, so I will only describe the solutions for two days. I promise that I will catch up to the day the puzzles are released, but it probably won’t be until after the weekend…</description>
+      <description>&lt;p&gt;I don’t have a lot of time today, so I will only describe the solutions for two days. I promise that I will catch up to the day the puzzles are released, but it probably won’t be until after the weekend…&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 09–11</title>
       <link>https://mailund.dk/posts/aoc-2020-3/</link>
       <pubDate>Wed, 16 Dec 2020 09:48:39 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-3/</guid>
-      <description>Another day, another post with solutions to 2020 Advent of Code. I am slowly catching up with the actual puzzles, and I will probably get there soon. After that, there will probably be one day per post, except that I expect that the 24th and 25th will be something I leave for after Christmas.</description>
+      <description>&lt;p&gt;Another day, another post with solutions to 2020 &lt;a href=&#34;https://adventofcode.com&#34;&gt;Advent of Code&lt;/a&gt;. I am slowly catching up with the actual puzzles, and I will probably get there soon. After that, there will probably be one day per post, except that I expect that the 24th and 25th will be something I leave for after Christmas. I’m not sure I will be allowed to sit and write over Christmas. We will see.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 06–08</title>
       <link>https://mailund.dk/posts/aoc-2020-2/</link>
       <pubDate>Tue, 15 Dec 2020 06:48:38 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-2/</guid>
-      <description>Ok, now that today’s puzzles are solved, I can go back and look at solutions to the previous days. Today, I will show you my solutions for days six through eight.</description>
+      <description>&lt;p&gt;Ok, now that today’s puzzles are solved, I can go back and look at solutions to the previous days. Today, I will show you my solutions for days six through eight. There is some fun stuff in these days, with graph algorithms, memorisation, and virtual machines, the latter which I found particularly fun to play with.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 01-05</title>
       <link>https://mailund.dk/posts/aoc-2020-1/</link>
       <pubDate>Mon, 14 Dec 2020 04:48:38 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-1/</guid>
-      <description>While I wait for comments on the last chapters of my upcoming C-pointers book, I have some time on my hands. And since corona keeps me at home, I have to find something to keep me entertained.</description>
+      <description>&lt;p&gt;While I wait for comments on the last chapters of my upcoming C-pointers book, I have some time on my hands. And since corona keeps me at home, I have to find something to keep me entertained. So I thought I would write a little about the &lt;a href=&#34;https://adventofcode.com&#34;&gt;Advent of Code&lt;/a&gt; puzzles I’m solving this year, and how I am solving them.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Elegant Scipy</title>
       <link>https://mailund.dk/posts/elegant-scipy/</link>
       <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/elegant-scipy/</guid>
-      <description>I was a little disappointed about this. I had hoped it would give a good overview of Scipy, but instead, it is a bunch of examples that use it. It is not that the examples aren&amp;rsquo;t interesting.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2pz1kNE&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I was a little disappointed about this. I had hoped it would give a good overview of &lt;code&gt;Scipy&lt;/code&gt;, but instead, it is a bunch of examples that use it.  It is not that the examples aren&amp;rsquo;t interesting. They are. They just drown out features of &lt;code&gt;Scipy&lt;/code&gt;, so I didn&amp;rsquo;t learn much about that.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Premarkdown Plugins</title>
       <link>https://mailund.dk/posts/premd-plugins/</link>
       <pubDate>Mon, 10 Sep 2018 14:25:40 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/premd-plugins/</guid>
-      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Fluent Python</title>
       <link>https://mailund.dk/posts/fluent-python/</link>
       <pubDate>Mon, 10 Sep 2018 09:11:42 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/fluent-python/</guid>
-      <description>I just finished reading Fluent Python. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn.</description>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;I just finished reading &lt;a href=&#34;https://amzn.to/2Nw7cEQ&#34;&gt;&lt;em&gt;Fluent Python&lt;/em&gt;&lt;/a&gt;. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn. Rather, it covers Python topics you might use in day-to-day programming and explains how you would write code in the most Pythonic way.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

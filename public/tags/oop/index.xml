@@ -4,21 +4,17 @@
     <title>OOP on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/oop/</link>
     <description>Recent content in OOP on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Thu, 12 Nov 2020 05:08:49 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/oop/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mailund.dk/tags/oop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OOP example in C</title>
       <link>https://mailund.dk/posts/cpointer-oop-example/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/cpointer-oop-example/</guid>
-      <description>I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

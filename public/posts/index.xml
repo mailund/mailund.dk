@@ -4,656 +4,486 @@
     <title>Posts on Mailund on the Internet</title>
     <link>https://mailund.dk/posts/</link>
     <description>Recent content in Posts on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Thu, 25 Nov 2021 14:08:34 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mailund.dk/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Prefix Doubling Attempts</title>
       <link>https://mailund.dk/posts/prefix-doubling-attemps/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/prefix-doubling-attemps/</guid>
-      <description>I&amp;rsquo;ve been working on an algorithm for suffix array construction today. It&amp;rsquo;s called prefix doubling, but I don&amp;rsquo;t have a link, sorry. I think it comes from this paper but I don&amp;rsquo;t have access to it at home.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been working on an algorithm for suffix array construction today. It&amp;rsquo;s called &lt;em&gt;prefix doubling&lt;/em&gt;, but I don&amp;rsquo;t have a link, sorry. I think it comes from &lt;a href=&#34;https://dl.acm.org/doi/10.1145/800152.804905&#34;&gt;this paper&lt;/a&gt; but I don&amp;rsquo;t have access to it at home.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>CPS and Iterators in C</title>
       <link>https://mailund.dk/posts/cps-and-iterators-in-c/</link>
       <pubDate>Thu, 21 Oct 2021 04:50:01 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/cps-and-iterators-in-c/</guid>
-      <description>Today, I want to talk about continuation-passing-style (CSP). This is a general approach you can use to translate recursions into tail-calls.
-What&amp;rsquo;s tail-calls, I (imagine hearing) you ask?
-A tail-call is when a function calls another function as the last thing it does.</description>
+      <description>&lt;p&gt;Today, I want to talk about &lt;em&gt;continuation-passing-style&lt;/em&gt; (CSP). This is a general approach you can use to translate recursions into tail-calls.&lt;/p&gt;&#xA;&lt;p&gt;What&amp;rsquo;s tail-calls, I (imagine hearing) you ask?&lt;/p&gt;&#xA;&lt;p&gt;A &lt;a href=&#34;https://en.wikipedia.org/wiki/Tail_call&#34;&gt;tail-call&lt;/a&gt; is when a function calls another function as the last thing it does. Tail-recursion is when that last call is a recursive call, but that is just a special case of tail-calls.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>C Slices</title>
       <link>https://mailund.dk/posts/cstr-slices/</link>
       <pubDate>Tue, 19 Oct 2021 04:25:05 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/cstr-slices/</guid>
-      <description>About those slices I mentioned yesterday, here&amp;rsquo;s what&amp;rsquo;s that about.
-I&amp;rsquo;m working on some string algorithms and more straightforward C implementations than those I put in my book.
-I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,^[I&amp;rsquo;m toying with the idea of writing string algorithms books for those languages, but I have a long list of writing obligations, so I don&amp;rsquo;t know if that will ever happen.</description>
+      <description>&lt;p&gt;About those slices &lt;a href=&#34;https://mailund.dk/posts/macro-metaprogramming/&#34;&gt;I mentioned yesterday&lt;/a&gt;, here&amp;rsquo;s what&amp;rsquo;s that about.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m working on some string algorithms and more straightforward C implementations than those I put in &lt;a href=&#34;https://amzn.to/3pfzvdd&#34;&gt;my book&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,^[I&amp;rsquo;m toying with the idea of writing string algorithms books for those languages, but I have a long list of writing obligations, so I don&amp;rsquo;t know if that will ever happen.] and I plan to implement them in Rust as soon as I get the time. Still, I&amp;rsquo;m also playing with the idea of reimplementing everything in C in a (perhaps) more accessible form.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Macro Metaprogramming</title>
       <link>https://mailund.dk/posts/macro-metaprogramming/</link>
       <pubDate>Mon, 18 Oct 2021 04:43:09 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/macro-metaprogramming/</guid>
-      <description>I&amp;rsquo;ve been working on a small C library for Python- or Go-like slices the last couple of weeks. Essentially arrays, but where I can index from the end using negative numbers (like in Python) and where I can extract a sub-slice, x[i:j], in constant time (like in Go; I implement them the same way as Go does).</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been working on a small C library for Python- or Go-like slices the last couple of weeks. Essentially arrays, but where I can index from the end using negative numbers (like in Python) and where I can extract a sub-slice, &lt;code&gt;x[i:j]&lt;/code&gt;, in constant time (like in Go; I implement them the same way as Go does).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>&#39;Witness&#39; arrays</title>
       <link>https://mailund.dk/posts/witness-array/</link>
       <pubDate>Wed, 15 Sep 2021 07:59:33 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/witness-array/</guid>
-      <description>The other day I was reminded of an exercises we got first or second year when I studied computer science. It is a cool little trick, that I&amp;rsquo;ve never seen outside of that exercise, so I thought I&amp;rsquo;d share it.</description>
+      <description>&lt;p&gt;The other day I was reminded of an exercises we got first or second year when I studied computer science. It is a cool little trick, that I&amp;rsquo;ve never seen outside of that exercise, so I thought I&amp;rsquo;d share it.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon Samlet</title>
       <link>https://mailund.dk/posts/krofatter-egon-samlet/</link>
       <pubDate>Sat, 13 Feb 2021 11:55:35 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-egon-samlet/</guid>
-      <description>Hvis nogen imod al forvendtning skulle få lyst til at læse Krofatter Egon og hjælpepakken som en samlet pakke, så har jeg lavet en EPUB og PDF version som man ganske nemt kan hente ved at klikke på de links.</description>
+      <description>&lt;p&gt;Hvis nogen imod al forvendtning skulle få lyst til at læse &lt;em&gt;Krofatter Egon og hjælpepakken&lt;/em&gt; som en samlet pakke, så har jeg lavet en &lt;a href=&#34;https://mailund.dk/books/Egon/Krofatter_Egon_og_hj%C3%A6lpepakken.epub&#34;&gt;EPUB&lt;/a&gt; og &lt;a href=&#34;https://mailund.dk/books/Egon/Krofatter_Egon_og_hj%C3%A6lpepakken.pdf&#34;&gt;PDF&lt;/a&gt; version som man ganske nemt kan hente ved at klikke på de links.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 14</title>
       <link>https://mailund.dk/posts/krofatter-14/</link>
       <pubDate>Sat, 13 Feb 2021 09:25:20 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-14/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Afsked med Hammel Det var midt på eftermiddagen næste dag, at Egon vågnede ved at det bankede på døren.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;afsked-med-hammel&#34;&gt;Afsked med Hammel&lt;/h2&gt;&#xA;&lt;p&gt;Det var midt på eftermiddagen næste dag, at Egon vågnede ved at det bankede på døren.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 13</title>
       <link>https://mailund.dk/posts/krofatter-13/</link>
       <pubDate>Fri, 12 Feb 2021 13:19:54 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-13/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Opgøret Da de stadigvæk var langt fra skovbrynet kunne Uffe og Egon gennem forrude se en stor søjle af røg stige op fra et sted inde i skoven.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;opgøret&#34;&gt;Opgøret&lt;/h2&gt;&#xA;&lt;p&gt;Da de stadigvæk var langt fra skovbrynet kunne Uffe og Egon gennem forrude se en stor søjle af røg stige op fra et sted inde i skoven.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 12</title>
       <link>https://mailund.dk/posts/krofatter-12/</link>
       <pubDate>Tue, 09 Feb 2021 14:32:26 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-12/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Rådet kommer til undsætning Egon løb imod bilen mens han vinkede med begge arme efter bedste evne.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;rådet-kommer-til-undsætning&#34;&gt;Rådet kommer til undsætning&lt;/h1&gt;&#xA;&lt;p&gt;Egon løb imod bilen mens han vinkede med begge arme efter bedste evne.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 11</title>
       <link>https://mailund.dk/posts/krofatter-11/</link>
       <pubDate>Sat, 06 Feb 2021 15:03:11 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-11/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- En smugkro i skoven Egon løb.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;en-smugkro-i-skoven&#34;&gt;En smugkro i skoven&lt;/h1&gt;&#xA;&lt;p&gt;Egon løb.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Starting Up Exercises: Burrows-Wheeler Transform</title>
       <link>https://mailund.dk/posts/starting-up-exercises-bwt/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/starting-up-exercises-bwt/</guid>
-      <description>I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.
-There is nothing new there, I have a class every year where we do that, but now it is individual projects.</description>
+      <description>&lt;p&gt;I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.&lt;/p&gt;&#xA;&lt;p&gt;There is nothing new there, I have a class every year where we do that, but now it is individual projects. The content doesn&amp;rsquo;t change much; just the teaching format.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 10</title>
       <link>https://mailund.dk/posts/krofatter-10/</link>
       <pubDate>Thu, 04 Feb 2021 10:56:40 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-10/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Bagbundet i bagagerummet Æter?</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;bagbundet-i-bagagerummet&#34;&gt;Bagbundet i bagagerummet&lt;/h1&gt;&#xA;&lt;p&gt;Æter? Hvem helvede render rundt med æter disse dage?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 9</title>
       <link>https://mailund.dk/posts/krofatter-9/</link>
       <pubDate>Wed, 03 Feb 2021 07:30:24 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-9/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Hammels hemmelighed Med Portner Jørgens nøgle i lommen stod Egon på fortovet på den anden side af vejen fra Hammel Neurocenter.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;hammels-hemmelighed&#34;&gt;Hammels hemmelighed&lt;/h1&gt;&#xA;&lt;p&gt;Med Portner Jørgens nøgle i lommen stod Egon på fortovet på den anden side af vejen fra Hammel Neurocenter. Det var blevet mørkt igen—hvilket ikke siger meget i den danske vinter—og sneen faldt omkring ham.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 8</title>
       <link>https://mailund.dk/posts/krofatter-8/</link>
       <pubDate>Tue, 02 Feb 2021 13:09:54 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-8/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Rottefængeren fra Hammel “Det er den forkert type dyr” påpegede Egon.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;rottefængeren-fra-hammel&#34;&gt;Rottefængeren fra Hammel&lt;/h1&gt;&#xA;&lt;p&gt;“Det er den forkert type dyr” påpegede Egon. “Katte og rotter er slet ikke det samme. De ligner hinanden lidt, med en snude, fire ben, og en hale, men ellers har de ikke meget tilfældes.”&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Trauma Counselling (writing exercise)</title>
       <link>https://mailund.dk/posts/traua-councelling/</link>
       <pubDate>Tue, 02 Feb 2021 06:48:46 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/traua-councelling/</guid>
-      <description>This is an attempt at another of Neil Gaiman&amp;rsquo;s exercises: write about a fairy tale character in a therapy session.
-It is not particularly exciting because I didn&amp;rsquo;t have any story in mind, just the scene, but at least it is an attempt.</description>
+      <description>&lt;p&gt;This is an attempt at &lt;a href=&#34;https://mailund.dk/posts/red-ridinghood/&#34;&gt;another of Neil Gaiman&amp;rsquo;s exercises&lt;/a&gt;: write about a fairy tale character in a therapy session.&lt;/p&gt;&#xA;&lt;p&gt;It is not particularly exciting because I didn&amp;rsquo;t have any story in mind, just the scene, but at least it is an attempt.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Little Red Ridinghood (writing exercise)</title>
       <link>https://mailund.dk/posts/red-ridinghood/</link>
       <pubDate>Sun, 31 Jan 2021 11:02:41 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/red-ridinghood/</guid>
-      <description>My birthday is coming up, and since I cannot do anything interesting during lockdown, I got myself a subscription to MasterClass to look at some writing classes.
-I have written a lot over the years.</description>
+      <description>&lt;p&gt;My birthday is coming up, and since I cannot do anything interesting during lockdown, I got myself a subscription to MasterClass to look at some writing classes.&lt;/p&gt;&#xA;&lt;p&gt;I have written a lot over the years. More than &lt;a href=&#34;https://mailund.dk/publications/&#34;&gt;a hundred articles&lt;/a&gt; and &lt;a href=&#34;https://mailund.dk/books/&#34;&gt;15 textbooks&lt;/a&gt;, but until I started &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;this story&lt;/a&gt; as a bet, I had never written fiction.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 7</title>
       <link>https://mailund.dk/posts/krofatter-7/</link>
       <pubDate>Fri, 29 Jan 2021 14:02:27 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-7/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- En stor kattepine Portner Jørgens kat var løbet bort, og da portnere ikke er meget for at forlade deres bygninger, så ville han se det som en stor tjeneste—stor nok til at låne en nøgle ud—hvis Egon ville finde den og bringe den tilbage.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;en-stor-kattepine&#34;&gt;En stor kattepine&lt;/h1&gt;&#xA;&lt;p&gt;Portner Jørgens kat var løbet bort, og da portnere ikke er meget for at forlade deres bygninger, så ville han se det som en stor tjeneste—stor nok til at låne en nøgle ud—hvis Egon ville finde den og bringe den tilbage.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 6</title>
       <link>https://mailund.dk/posts/krofatter-6/</link>
       <pubDate>Wed, 27 Jan 2021 13:50:28 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-6/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Portner Jørgen Tidligt næste morgen blev Egon vækket af et voldsomt rabalder inde fra krostuen.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;portner-jørgen&#34;&gt;Portner Jørgen&lt;/h1&gt;&#xA;&lt;p&gt;Tidligt næste morgen blev Egon vækket af et voldsomt rabalder inde fra krostuen. Det lød som om nogen havde smidt en større mænge blandet metal på gulvet, og det var netop hvad Krofatter Flemming havde gjort.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 5</title>
       <link>https://mailund.dk/posts/krofatter-5/</link>
       <pubDate>Tue, 26 Jan 2021 13:44:31 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-5/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Portner portalen Egon var måske ikke den skarpeste kniv i skuffen, men selv for ham var det oplagt hvor Agnes var forsvundet hen.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;portner-portalen&#34;&gt;Portner portalen&lt;/h2&gt;&#xA;&lt;p&gt;Egon var måske ikke den skarpeste kniv i skuffen, men selv for ham var det oplagt hvor Agnes var forsvundet hen. I sneen var der tydelige fodspor langs den første del af muren, og derefter forsvandt de &lt;em&gt;ind&lt;/em&gt; i muren. Fodspor forsvinder typisk ikke ind i en mur uden nogen er gået ind i selvsamme mur, og da det var Agnes fodspor, så kunne Egon nok regne ud at Agnes måtte have fulgt med.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 4</title>
       <link>https://mailund.dk/posts/krofatter-4/</link>
       <pubDate>Mon, 25 Jan 2021 09:35:53 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-4/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Snigen i sneen Det var blevet sent natten før.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;snigen-i-sneen&#34;&gt;Snigen i sneen&lt;/h2&gt;&#xA;&lt;p&gt;Det var blevet sent natten før. Og så var det blevet tidligt igen. Da de to krofætre havde sagt godnat, var det teknisk set en god morgen, for nattens sne var ophørt, og solen var netop kravlet over horisonten og oplyste det snedækkede landskab.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 3</title>
       <link>https://mailund.dk/posts/krofatter-3/</link>
       <pubDate>Fri, 15 Jan 2021 08:12:38 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-3/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- Pitstop på Pøt Mølle Næste morgen, lidt blårøjet, for der var røget mange øl ned over natten, kørte Egon nordpå mod Hammel.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;pitstop-på-pøt-mølle&#34;&gt;Pitstop på Pøt Mølle&lt;/h2&gt;&#xA;&lt;p&gt;Næste morgen, lidt blårøjet, for der var røget mange øl ned over natten, kørte Egon nordpå mod Hammel. Det Hvide Lyn kæmpede med at komme op ad bakkerne, og han skulle da ud at skubbe et par gange, men da der ikke var noget bestemt tidspunkt han skulle ankomme på, bekymrede det ikke Egon. Under alle omstændigheder havde han nok af bekymringer, og han var ikke sikker på at han ville kunne klare flere af slagsen.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Book update: Pointers in C and and Computational Thinking</title>
       <link>https://mailund.dk/posts/book-update-cptr-ct/</link>
       <pubDate>Tue, 12 Jan 2021 08:27:09 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/book-update-cptr-ct/</guid>
-      <description>So, my C pointers book apparently has a cover now. Before you complain, I don&amp;rsquo;t write the titles (although I don&amp;rsquo;t disagree with the title for this book), nor the subtitles (where I do for this one).</description>
+      <description>&lt;figure class=&#34;float-right&#34;&gt;&lt;a href=&#34;https://amzn.to/35vpSfI&#34;&gt;&lt;img src=&#34;https://mailund.dk/posts/book-update-cptr-ct/cptrs.jpg&#34;&gt;&lt;/a&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;So, my C pointers book apparently has a cover now. Before you complain, I don&amp;rsquo;t write the titles (although I don&amp;rsquo;t disagree with the title for this book), nor the subtitles (where I do for this one). I don&amp;rsquo;t know what they mean by &amp;ldquo;modern approach to memory management&amp;rdquo;. It&amp;rsquo;s &lt;code&gt;malloc()&lt;/code&gt; and &lt;code&gt;free()&lt;/code&gt; and some tricks for that, like reference counting and allocation pools.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 2</title>
       <link>https://mailund.dk/posts/krofatter-2/</link>
       <pubDate>Tue, 12 Jan 2021 06:00:13 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-2/</guid>
-      <description>Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, start here.
- En ubehagelig opgave Rådsmedlemmerne steg ud af deres respektive biler og begyndte at gå imod Østbjerg Kros hoveddør i afmålte skridt, der garanterede at de ville ankomme nøjagtigt fem minutter i syv, altså fem minutter før de skulle møde, og derfor præcist til tiden.</description>
+      <description>&lt;p&gt;Is this not making any sense to you? You are not alone. If you don’t know what’s going on, or why I write in Danish, &lt;a href=&#34;https://mailund.dk/posts/krofatter-1/&#34;&gt;start here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;en-ubehagelig-opgave&#34;&gt;En ubehagelig opgave&lt;/h2&gt;&#xA;&lt;p&gt;Rådsmedlemmerne steg ud af deres respektive biler og begyndte at gå imod Østbjerg Kros hoveddør i afmålte skridt, der garanterede at de ville ankomme nøjagtigt fem minutter i syv, altså fem minutter før de skulle møde, og derfor præcist til tiden.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Krofatter Egon og Hjælpepakken — 1</title>
       <link>https://mailund.dk/posts/krofatter-1/</link>
       <pubDate>Sat, 09 Jan 2021 14:46:28 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/krofatter-1/</guid>
-      <description>This post will mostly be written in Danish, and there is a reason for that.
-You see, at our weekly Call of Cthulhu game, I accidentally used the plural word for “innkeeper”.</description>
+      <description>&lt;p&gt;This post will mostly be written in Danish, and there is a reason for that.&lt;/p&gt;&#xA;&lt;p&gt;You see, at our weekly Call of Cthulhu game, I accidentally used the plural word for “innkeeper”. I did it in Danish, however, and as it turns out, there was a problem: there isn’t a plural form of innkeeper, krofatter, in Danish. I know, because we contacted Dansk Sprognævn, the organisation that tracks the Danish language and its usage. They didn’t have the word in their corpus. They offered to research it further, but also suggested that the easiest way to get a plural form is to use one. If a word is used sufficiently frequent, it will eventually enter the official language. So that is what I now plan to do.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Chinese Remainder in Go</title>
       <link>https://mailund.dk/posts/crt-go/</link>
       <pubDate>Wed, 06 Jan 2021 10:56:53 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/crt-go/</guid>
-      <description>In between exams, I plan to learn Go in January. I have a book I plan to follow, but today I wanted to get started by just jumping into it, so I picked the Chinese Remainder Theorem we used for 2020&amp;rsquo;s Advent of Code Day 13.</description>
+      <description>&lt;p&gt;In between exams, I plan to learn &lt;a href=&#34;https://golang.org&#34;&gt;Go&lt;/a&gt; in January. I have a book I plan to follow, but today I wanted to get started by just jumping into it, so I picked the &lt;a href=&#34;https://en.wikipedia.org/wiki/Chinese_remainder_theorem&#34;&gt;Chinese Remainder Theorem&lt;/a&gt; we used for 2020&amp;rsquo;s Advent of Code &lt;a href=&#34;https://mailund.dk/posts/aoc-2020-4/&#34;&gt;Day 13&lt;/a&gt;. There, I implemented it in Python (before I found out that it was already in SymPy). It is a simple numerical algorithm, so it should be easy to implement in Go. Or so I thought.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — day 24 remade</title>
       <link>https://mailund.dk/posts/aoc-2020-12/</link>
       <pubDate>Fri, 25 Dec 2020 07:21:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-12/</guid>
-      <description>I wanted to get back to yesterday’s puzzle, and I have a little time before I need to run off…
-Yes, I was fed up with manual parsing of strings so decided to do it using the re module for once.</description>
+      <description>&lt;p&gt;I wanted to get back to yesterday’s puzzle, and I have a little time before I need to run off…&lt;/p&gt;&#xA;&#xA;&lt;p&gt;The use of &lt;code&gt;findall()&lt;/code&gt; I refer to in the tweet is this. You can split the input using a regular expression, and then map each input code to a direction. If you combine that with a &lt;code&gt;reduce()&lt;/code&gt; you get a very succinct parser:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — day 25</title>
       <link>https://mailund.dk/posts/aoc-2020-11/</link>
       <pubDate>Fri, 25 Dec 2020 07:01:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-11/</guid>
-      <description>On the last day of Christmas AoC gave to me an encryption problem, that is really a modular arithmetic problem.
-If you decode the description—that is more cryptic than the mathematics—you find that we need to find secret keys by solving equations</description>
+      <description>&lt;p&gt;On the &lt;a href=&#34;https://adventofcode.com/2020/day/25&#34;&gt;last day of Christmas AoC gave to me&lt;/a&gt; an encryption problem, that is really a modular arithmetic problem.&lt;/p&gt;&#xA;&lt;p&gt;If you decode the description—that is more cryptic than the mathematics—you find that we need to find secret keys by solving equations&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 23 and 24</title>
       <link>https://mailund.dk/posts/aoc-2020-10/</link>
       <pubDate>Thu, 24 Dec 2020 07:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-10/</guid>
-      <description>Unexpectedly, I was allowed to play today—it is Christmas, after all—as long as I didn’t spend too much time at the computer. So I hurried up and solved today’s and yesterday’s puzzles quickly.</description>
+      <description>&lt;p&gt;Unexpectedly, I was allowed to play today—it &lt;em&gt;is&lt;/em&gt; Christmas, after all—as long as I didn’t spend too much time at the computer. So I hurried up and solved today’s and yesterday’s puzzles quickly.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — day 22</title>
       <link>https://mailund.dk/posts/aoc-2020-9/</link>
       <pubDate>Tue, 22 Dec 2020 06:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-9/</guid>
-      <description>This will be the last post I write before New Year. We have vacation in the house from tomorrow, and I won’t be hacking when I am supposed to be social—I am told.</description>
+      <description>&lt;p&gt;This will be the last post I write before New Year. We have vacation in the house from tomorrow, and I won’t be hacking when I am supposed to be social—I am told. I will do the last three puzzles, and post them, after the holiday.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 20 and 21</title>
       <link>https://mailund.dk/posts/aoc-2020-8/</link>
       <pubDate>Mon, 21 Dec 2020 07:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-8/</guid>
-      <description>Day 20: Jurassic Jigsaw Day 20 we get tiles for a puzzle, and we have to work out the puzzle from them. The tiles can be rotated or flipped, but we can connect them by identifying how edges match.</description>
+      <description>&lt;h2 id=&#34;day-20-jurassic-jigsaw&#34;&gt;Day 20: Jurassic Jigsaw&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://adventofcode.com/2020/day/20&#34;&gt;Day 20&lt;/a&gt; we get tiles for a puzzle, and we have to work out the puzzle from them. The tiles can be rotated or flipped, but we can connect them by identifying how edges match.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — day 19</title>
       <link>https://mailund.dk/posts/aoc-2020-7/</link>
       <pubDate>Sat, 19 Dec 2020 06:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-7/</guid>
-      <description>I will make this one quick, because I don’t have much time. Today, we are given some rules for what strings should look like, and we are to validate a set of strings and count how many are valid.</description>
+      <description>&lt;p&gt;I will make this one quick, because I don’t have much time. &lt;a href=&#34;https://adventofcode.com/2020/day/19&#34;&gt;Today, we are given some rules&lt;/a&gt; for what strings should look like, and we are to validate a set of strings and count how many are valid. This is a bit of a mix between the parser from yesterday and the rule-validation from other days, but leaning, by far, towards the parser. The rules are a grammar, and checking the strings means we are matching them against the grammar.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 17-18</title>
       <link>https://mailund.dk/posts/aoc-2020-6/</link>
       <pubDate>Fri, 18 Dec 2020 08:51:59 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-6/</guid>
-      <description>Well, today, my blogging catches up with my Advent of Code hacking. Just in time to fall behind again in the weekend. If that happens, I should be able to write up my weekend solutions on Monday.</description>
+      <description>&lt;p&gt;Well, today, my blogging catches up with my &lt;a href=&#34;https://adventofcode.com/&#34;&gt;Advent of Code&lt;/a&gt; hacking. Just in time to fall behind again in the weekend. If that happens, I should be able to write up my weekend solutions on Monday. I don’t think I have that much work waiting for me then.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 14-16</title>
       <link>https://mailund.dk/posts/aoc-2020-5/</link>
       <pubDate>Thu, 17 Dec 2020 18:51:39 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-5/</guid>
-      <description>My posts are almost catching up to Advent of Code, which probably means that I will fall behind in the weekend. Quite likely, actually. I probably have time for solving the puzzles, but not writing about them.</description>
+      <description>&lt;p&gt;My posts are almost catching up to &lt;a href=&#34;https://adventofcode.com/2020&#34;&gt;Advent of Code&lt;/a&gt;, which probably means that I will fall behind in the weekend. Quite likely, actually. I probably have time for solving the puzzles, but not writing about them. If that happens—and if I were a better man, it is how I would bet—then I will make sure to catch up Monday.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 12-13</title>
       <link>https://mailund.dk/posts/aoc-2020-4/</link>
       <pubDate>Thu, 17 Dec 2020 10:54:39 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-4/</guid>
-      <description>I don’t have a lot of time today, so I will only describe the solutions for two days. I promise that I will catch up to the day the puzzles are released, but it probably won’t be until after the weekend…</description>
+      <description>&lt;p&gt;I don’t have a lot of time today, so I will only describe the solutions for two days. I promise that I will catch up to the day the puzzles are released, but it probably won’t be until after the weekend…&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 09–11</title>
       <link>https://mailund.dk/posts/aoc-2020-3/</link>
       <pubDate>Wed, 16 Dec 2020 09:48:39 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-3/</guid>
-      <description>Another day, another post with solutions to 2020 Advent of Code. I am slowly catching up with the actual puzzles, and I will probably get there soon. After that, there will probably be one day per post, except that I expect that the 24th and 25th will be something I leave for after Christmas.</description>
+      <description>&lt;p&gt;Another day, another post with solutions to 2020 &lt;a href=&#34;https://adventofcode.com&#34;&gt;Advent of Code&lt;/a&gt;. I am slowly catching up with the actual puzzles, and I will probably get there soon. After that, there will probably be one day per post, except that I expect that the 24th and 25th will be something I leave for after Christmas. I’m not sure I will be allowed to sit and write over Christmas. We will see.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 06–08</title>
       <link>https://mailund.dk/posts/aoc-2020-2/</link>
       <pubDate>Tue, 15 Dec 2020 06:48:38 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-2/</guid>
-      <description>Ok, now that today’s puzzles are solved, I can go back and look at solutions to the previous days. Today, I will show you my solutions for days six through eight.</description>
+      <description>&lt;p&gt;Ok, now that today’s puzzles are solved, I can go back and look at solutions to the previous days. Today, I will show you my solutions for days six through eight. There is some fun stuff in these days, with graph algorithms, memorisation, and virtual machines, the latter which I found particularly fun to play with.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Advent of Code 2020 — days 01-05</title>
       <link>https://mailund.dk/posts/aoc-2020-1/</link>
       <pubDate>Mon, 14 Dec 2020 04:48:38 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/aoc-2020-1/</guid>
-      <description>While I wait for comments on the last chapters of my upcoming C-pointers book, I have some time on my hands. And since corona keeps me at home, I have to find something to keep me entertained.</description>
+      <description>&lt;p&gt;While I wait for comments on the last chapters of my upcoming C-pointers book, I have some time on my hands. And since corona keeps me at home, I have to find something to keep me entertained. So I thought I would write a little about the &lt;a href=&#34;https://adventofcode.com&#34;&gt;Advent of Code&lt;/a&gt; puzzles I’m solving this year, and how I am solving them.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OOP example in C</title>
       <link>https://mailund.dk/posts/cpointer-oop-example/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/cpointer-oop-example/</guid>
-      <description>I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Reference counting lists in C</title>
       <link>https://mailund.dk/posts/c-refcount-list/</link>
       <pubDate>Fri, 30 Oct 2020 06:59:36 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/c-refcount-list/</guid>
-      <description>I was playing with reference counting garbage collection last week, for something I want to add to my C pointers book. That chapter is still far in the future, and moving further into the future as the book seems to grow in front of me, but one day I will get to it.</description>
+      <description>&lt;p&gt;I was playing with reference counting garbage collection last week, for something I want to add to my C pointers book. That chapter is still far in the future, and moving further into the future as the book seems to grow in front of me, but one day I will get to it. And by then, I have to have figured out some design issues that I ran into.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Joys of Hashing</title>
       <link>https://mailund.dk/posts/joys-of-hashing/</link>
       <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/joys-of-hashing/</guid>
-      <description>I forgot to post about it when The Joys of Hashing came out, but it is never too late to blow my own horn. It is out and you should get it.</description>
+      <description>&lt;p&gt;I forgot to post about it when The Joys of Hashing came out, but it is never too late to blow my own horn. It is out and you should get it.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Generators in C</title>
       <link>https://mailund.dk/posts/c-generators/</link>
       <pubDate>Fri, 23 Nov 2018 14:02:40 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/c-generators/</guid>
-      <description>Now that I am almost done with The Joys of Hashing, I am looking at the material I made last year for our Genome-scale Algorithms class. I implemented a toy read mapper as an example for the final project.</description>
+      <description>&lt;p&gt;Now that I am almost done with &lt;a href=&#34;https://amzn.to/2pngZQ0&#34;&gt;&lt;em&gt;The Joys of Hashing&lt;/em&gt;&lt;/a&gt;, I am looking at the material I made last year for our &lt;a href=&#34;https://kursuskatalog.au.dk/da/course/72431/Genome-Scale-Algorithms&#34;&gt;&lt;em&gt;Genome-scale Algorithms&lt;/em&gt; class&lt;/a&gt;. I implemented a toy read mapper as an example for the final project. I wrote several different approaches to mapping, from generating all strings at a certain edit distance to a read and doing exact matching to branch-and-bound using BWT.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Elegant Scipy</title>
       <link>https://mailund.dk/posts/elegant-scipy/</link>
       <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/elegant-scipy/</guid>
-      <description>I was a little disappointed about this. I had hoped it would give a good overview of Scipy, but instead, it is a bunch of examples that use it. It is not that the examples aren&amp;rsquo;t interesting.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2pz1kNE&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I was a little disappointed about this. I had hoped it would give a good overview of &lt;code&gt;Scipy&lt;/code&gt;, but instead, it is a bunch of examples that use it.  It is not that the examples aren&amp;rsquo;t interesting. They are. They just drown out features of &lt;code&gt;Scipy&lt;/code&gt;, so I didn&amp;rsquo;t learn much about that.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Lazy queues</title>
+      <link>https://mailund.dk/posts/lazy-queues/</link>
+      <pubDate>Thu, 04 Oct 2018 05:00:20 +0200</pubDate>
+      <guid>https://mailund.dk/posts/lazy-queues/</guid>
+      <description>&lt;p&gt;The purpose of the lazy lists I implemented in &lt;a href=&#34;https://mailund.github.io/r-programmer-blog/2018/10/03/lazy-lists/&#34;&gt;my previous post&lt;/a&gt; was to build lazy queues. Lazy lists give you constant time concatenation, which can be useful in itself, but I needed it to implement persistent functional queues.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lazy lists</title>
+      <link>https://mailund.dk/posts/lazy-lists/</link>
+      <pubDate>Thu, 04 Oct 2018 05:00:15 +0200</pubDate>
+      <guid>https://mailund.dk/posts/lazy-lists/</guid>
+      <description>&lt;p&gt;I wanted to write about lazy lists and lazy queues today, but I spent most of the day struggling with getting lazy evaluation to work. Finally, I convinced myself that something was broken in R, and I was justified in thinking that; upgrading to the most recent version resolved the issue.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Promises, their environments, and how we evaluate them</title>
+      <link>https://mailund.dk/posts/promises-and-lazy-evaluation/</link>
+      <pubDate>Wed, 03 Oct 2018 09:10:01 +0200</pubDate>
+      <guid>https://mailund.dk/posts/promises-and-lazy-evaluation/</guid>
+      <description>&lt;p&gt;Have you ever wondered how functions are evaluated? How you can have arguments that would raise errors, but do not, or how default arguments can be expressions that depend on function arguments that you haven&amp;rsquo;t seen yet when you define a function?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Functional lists and queues</title>
+      <link>https://mailund.dk/posts/functional-lists-and-queues/</link>
+      <pubDate>Tue, 02 Oct 2018 05:00:10 +0200</pubDate>
+      <guid>https://mailund.dk/posts/functional-lists-and-queues/</guid>
+      <description>&lt;p&gt;I wanted to write something about function parameters, how these are passed as so-called &amp;ldquo;promises&amp;rdquo;, how these have associated scopes (and the consequences of that), and how they give us lazy evaluation.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Seeing Further</title>
       <link>https://mailund.dk/posts/seeing-further/</link>
       <pubDate>Mon, 01 Oct 2018 15:57:13 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/seeing-further/</guid>
-      <description>I also finished Seeing Further: The Story of Science, Discovery, and the Genius of the Royal Society yesterday. I found this a mixed back. When I bought it I thought it was a Bill Bryson book—I like those—but if I had checked the description just a little bit I would have seen that it is only edited by Bryson.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2xPc4f4&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I also finished &lt;a href=&#34;https://amzn.to/2xPc4f4&#34;&gt;&lt;em&gt;Seeing Further: The Story of Science, Discovery, and the Genius of the Royal Society&lt;/em&gt;&lt;/a&gt; yesterday. I found this a mixed back. When I bought it I thought it was a Bill Bryson book—I like those—but if I had checked the description just a little bit I would have seen that it is only edited by Bryson.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Power of Habit</title>
       <link>https://mailund.dk/posts/the-power-of-habit/</link>
       <pubDate>Mon, 01 Oct 2018 15:45:36 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/the-power-of-habit/</guid>
-      <description>In the weekend I finished The Power of Habit.
-This is a very interesting book. Duhigg writes about how we are run by habit to a degree I had not imagined.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2xO0QHW&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;In the weekend I finished &lt;a href=&#34;https://amzn.to/2xO0QHW&#34;&gt;&lt;em&gt;The Power of Habit&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is a very interesting book. Duhigg writes about how we are run by habit to a degree I had not imagined. How we react to triggers where we have learned, unconsciously, to expect some rewards, and how our brains turn out and runs on routine when that happens. How advertisement exploits this, how sports-teams and companies  can hook into the habit loop for good or for evil.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Exercises (CT Chapter 9)</title>
       <link>https://mailund.dk/posts/ctib-exercises-chapter9/</link>
       <pubDate>Mon, 01 Oct 2018 15:36:05 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-exercises-chapter9/</guid>
-      <description>Exercises Missing element You are given a sorted array, A. It contains n - 1 of the numbers from 1 to n. You should find the missing number.
-You can use the property that for all numbers i less than the missing number you have A[i] == i, while for all i larger than the missing number you have A[i] == i - 1.</description>
+      <description>&lt;h1 id=&#34;exercises&#34;&gt;Exercises&lt;/h1&gt;&#xA;&lt;h2 id=&#34;missing-element&#34;&gt;Missing element&lt;/h2&gt;&#xA;&lt;p&gt;You are given a sorted array, &lt;code&gt;A&lt;/code&gt;. It contains n - 1 of the numbers from 1 to n. You should find the missing number.&lt;/p&gt;&#xA;&lt;p&gt;You can use the property that for all numbers &lt;code&gt;i&lt;/code&gt; less than the missing number you have &lt;code&gt;A[i] == i&lt;/code&gt;, while for all &lt;code&gt;i&lt;/code&gt; larger than the missing number you have &lt;code&gt;A[i] == i - 1&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Slides (CT Chapter 9)</title>
       <link>https://mailund.dk/posts/ctib-slides-chapter9/</link>
       <pubDate>Mon, 01 Oct 2018 08:54:19 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-slides-chapter9/</guid>
-      <description>Here are some slides for chapter 9 of Introduction to Computational Thinking.
- Slides Handouts Handouts with notes  </description>
+      <description>&lt;p&gt;Here are some slides for chapter 9 of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%209%20-%20Divide%20and%20conquer/Chapter%209%20-%20Divide%20and%20Conquer.pdf&#34;&gt;Slides&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%209%20-%20Divide%20and%20conquer/Chapter%209%20-%20Divide%20and%20Conquer%20handouts.pdf&#34;&gt;Handouts&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%209%20-%20Divide%20and%20conquer/Chapter%209%20-%20Divide%20and%20Conquer%20handouts%20with%20notes.pdf&#34;&gt;Handouts with notes&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
     <item>
       <title>Erratas</title>
       <link>https://mailund.dk/posts/erratas/</link>
       <pubDate>Mon, 01 Oct 2018 08:43:17 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/erratas/</guid>
-      <description>To my utter shock, it turns out that I am not perfect. There are mistakes in my books!
-A couple of readers made me aware of a typo in Functional Programming in R.</description>
+      <description>&lt;p&gt;To my utter shock, it turns out that I am not perfect. There are mistakes in my books!&lt;/p&gt;&#xA;&lt;p&gt;A couple of readers made me aware of a typo in &lt;a href=&#34;https://mailund.dk/errata/fpinr/&#34;&gt;&lt;strong&gt;Functional Programming in R&lt;/strong&gt;&lt;/a&gt;. It is just a typo, but I can easily see why it can confuse readers.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Environments and formulae</title>
+      <link>https://mailund.dk/posts/envs-and-formulae/</link>
+      <pubDate>Thu, 27 Sep 2018 04:41:19 +0200</pubDate>
+      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
+      <description>&lt;p&gt;In my two previous posts on non-standard evaluation, &lt;a href=&#34;https://mailund.github.io/r-programmer-blog/2018/09/20/scoping-rules-and-nse/&#34;&gt;&lt;em&gt;Scoping rules and NSE&lt;/em&gt;&lt;/a&gt; and &lt;a href=&#34;https://mailund.github.io/r-programmer-blog/2018/09/22/overscoping-and-eval/&#34;&gt;&lt;em&gt;Overscoping and eval&lt;/em&gt;&lt;/a&gt;, I explained:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;How R finds the bindings of variables by looking through chains of environments.&lt;/li&gt;&#xA;&lt;li&gt;How you can manipulate these environments to evaluate expressions in a non-standard way.&lt;/li&gt;&#xA;&lt;li&gt;How you can evaluate expressions where lists or data-frames overscope variables that would otherwise be found in environments.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I finished the last post with a model-fitting example, where the &lt;code&gt;lm&lt;/code&gt; function fits data to a formula, by saying that &lt;em&gt;this&lt;/em&gt; particular example had more going on than you might expect. When we write something like&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Exercises (CT Chapter 7)</title>
       <link>https://mailund.dk/posts/ctib-exercises-chapter7/</link>
       <pubDate>Tue, 25 Sep 2018 17:04:13 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-exercises-chapter7/</guid>
-      <description>I don’t really have a lot of exercises for the chapter on recursion. I had planned to combine recursion with divide-and-conquer, but now the two topics are split over two weeks.</description>
+      <description>&lt;p&gt;I don’t really have a lot of exercises for the chapter on recursion. I had planned to combine recursion with divide-and-conquer, but now the two topics are split over two weeks. Instead, I will have a project for the students to do while they learn about recursion; then it doesn’t matter so much that there are not that many exercises.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Slides (CT Chapter 7)</title>
       <link>https://mailund.dk/posts/ctib-slides-chapter7/</link>
       <pubDate>Tue, 25 Sep 2018 15:33:57 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-slides-chapter7/</guid>
-      <description>There is not a whole lot to say about recursion as such, but I&amp;rsquo;ve made a few slides. Half of it is just about how function calls work.
- Slides Handouts Handouts with notes  </description>
+      <description>&lt;p&gt;There is not a whole lot to say about recursion as such, but I&amp;rsquo;ve made a few slides. Half of it is just about how function calls work.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%207%20-%20Recursion/Chapter%207%20-%20Recursion.pdf&#34;&gt;Slides&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%207%20-%20Recursion/Chapter%207%20-%20Recursion%20handouts.pdf&#34;&gt;Handouts&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%207%20-%20Recursion/Chapter%207%20-%20Recursion%20handouts%20with%20notes.pdf&#34;&gt;Handouts with notes&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
     <item>
       <title>Exercises (CT chapter 5)</title>
       <link>https://mailund.dk/posts/ctib-exercises-chapter5/</link>
       <pubDate>Mon, 24 Sep 2018 10:54:12 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-exercises-chapter5/</guid>
-      <description>I’m on a roll today! Here are the exercises for chapter 5 of Introduction to Computational Thinking.
-Let me know if you spot any errors; I am known to make some from time to time.</description>
+      <description>&lt;p&gt;I’m on a roll today! Here are the exercises for chapter 5 of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Let me know if you spot any errors; I am known to make some from time to time.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Exercises (CT chapter 4)</title>
       <link>https://mailund.dk/posts/ctib-exercises-chapter4/</link>
       <pubDate>Mon, 24 Sep 2018 07:19:28 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-exercises-chapter4/</guid>
-      <description>I think I’m done with the exercises for chapter 4 of Introduction to Computational Thinking. Which is good, because I need to put them on Blackboard for my students this week.</description>
+      <description>&lt;p&gt;I think I’m done with the exercises for chapter 4 of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;. Which is good, because I need to put them on Blackboard for my students this week.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Overscoping and eval</title>
       <link>https://mailund.dk/posts/eval-and-overscoping/</link>
       <pubDate>Sat, 22 Sep 2018 12:23:09 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/eval-and-overscoping/</guid>
-      <description>In my previous post I used the lm function for an example of scope rules, but I left a few details out. I didn&amp;rsquo;t want to muddy the example with too many details, so I chose to lie a little.</description>
+      <description>&lt;p&gt;In my &lt;a href=&#34;https://mailund.github.io/r-programmer-blog/2018/09/20/scoping-rules-and-nse/&#34;&gt;previous post&lt;/a&gt; I used the &lt;code&gt;lm&lt;/code&gt; function for an example of scope rules, but I left a few details out. I didn&amp;rsquo;t want to muddy the example with too many details, so I chose to lie a little.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Slides for Computational Thinking (Chapter 5)</title>
       <link>https://mailund.dk/posts/ct-slides-chapter5/</link>
       <pubDate>Sat, 22 Sep 2018 12:12:45 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ct-slides-chapter5/</guid>
-      <description>I just finished make slides for chapter 5 of Introduction to Computational Thinking that covers search and sorting algorithms.
-The slides cover linear and binary search, insertion, selection and bubble sort, as well as bucket and radix sort.</description>
+      <description>&lt;p&gt;I just finished make slides for chapter 5 of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt; that covers search and sorting algorithms.&lt;/p&gt;&#xA;&lt;p&gt;The slides cover linear and binary search, insertion, selection and bubble sort, as well as bucket and radix sort. The chapter covers a little bit more, including how numbers are represented on a computer, and the consequences of this for bucket and radix sort.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Scoping Rules and NSE</title>
       <link>https://mailund.dk/posts/scoping-rules-and-nse/</link>
       <pubDate>Thu, 20 Sep 2018 05:00:15 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/scoping-rules-and-nse/</guid>
-      <description>Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do &amp;ldquo;non-standard evaluation&amp;rdquo;. I cover this in both Metaprogramming in R and Domain-Specific Languages in R, but this tweet</description>
+      <description>&lt;p&gt;Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do &amp;ldquo;non-standard evaluation&amp;rdquo;. I cover this in both &lt;a href=&#34;https://amzn.to/2QHONDT&#34;&gt;&lt;em&gt;Metaprogramming in R&lt;/em&gt;&lt;/a&gt; and &lt;a href=&#34;https://amzn.to/2QHMNLL&#34;&gt;&lt;em&gt;Domain-Specific Languages in R&lt;/em&gt;&lt;/a&gt;, but this tweet&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Slides (CT chapters 3 and 4)</title>
       <link>https://mailund.dk/posts/ctib-slides-chp3-and-4/</link>
       <pubDate>Wed, 19 Sep 2018 17:04:47 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-slides-chp3-and-4/</guid>
-      <description>I played around a little with my slides for chapter three of Introduction to Computational Thinking and made slides for chapter four.
-It takes surprisingly long to make these; I had expected to be done with the five chapters I use in my class this year a few weeks ago but I still have three chapters to go.</description>
+      <description>&lt;p&gt;I played around a little with my slides for chapter three of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt; and made slides for chapter four.&lt;/p&gt;&#xA;&lt;p&gt;It takes surprisingly long to make these; I had expected to be done with the five chapters I use in my class this year a few weeks ago but I still have three chapters to go. I won’t run out of time—I have plenty of time to make slides between the first and last lecture—but it is eating into time I really should be using on &lt;a href=&#34;https://amzn.to/2pngZQ0&#34;&gt;&lt;em&gt;The Joys of Hashing&lt;/em&gt;&lt;/a&gt; where a deadline is coming up.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Exercises (CT chapter 3)</title>
       <link>https://mailund.dk/posts/ctib-exercises-chapter3/</link>
       <pubDate>Wed, 19 Sep 2018 16:41:37 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-exercises-chapter3/</guid>
-      <description>I have cleaned up the exercises for chapter three of Introduction to Computational Thinking. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below.</description>
+      <description>&lt;p&gt;I have cleaned up the exercises for chapter three of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;Introduction to Computational Thinking&lt;/a&gt;. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below. I have listed my answers below the exercises, so if you want to do the exercises, then stop in time.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Complexity Exercises</title>
       <link>https://mailund.dk/posts/ctib-complexity-exercises/</link>
       <pubDate>Fri, 14 Sep 2018 10:20:44 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/ctib-complexity-exercises/</guid>
-      <description>In the second lesson that I teach in our Computational Thinking in Bioinformatics I cover algorithmic complexity. It is chapter four in my (draft) book on the topic: Introduction to Computational Thinking.</description>
+      <description>&lt;p&gt;In the second lesson that I teach in our &lt;a href=&#34;https://kursuskatalog.au.dk/da/course/82773/Computational-Thinking-in-Bioinformatics&#34;&gt;Computational Thinking in Bioinformatics&lt;/a&gt; I cover algorithmic complexity. It is chapter four in my (draft) book on the topic: &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Slides for Computational Thinking (Chapter 3)</title>
       <link>https://mailund.dk/posts/compbio-chapter-3-slides/</link>
       <pubDate>Wed, 12 Sep 2018 13:40:42 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/compbio-chapter-3-slides/</guid>
-      <description>I’m teaching four weeks of a class called Computational Thinking in Bioinformatics this year (the other weeks are taught by colleagues).
-It is this class that got me started on my book on the topic: Introduction to Computational Thinking.</description>
+      <description>&lt;p&gt;I’m teaching four weeks of a class called &lt;em&gt;Computational Thinking in Bioinformatics&lt;/em&gt; this year (the other weeks are taught by colleagues).&lt;/p&gt;&#xA;&lt;p&gt;It is this class that got me started on my book on the topic: &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;. I have finished the chapters I need for the class—chapters three, four, five, seven and nine—but there is still a &lt;em&gt;looong&lt;/em&gt; way to go before the book is done.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Coming Storm</title>
       <link>https://mailund.dk/posts/the-coming-storm/</link>
       <pubDate>Wed, 12 Sep 2018 08:06:58 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/the-coming-storm/</guid>
-      <description>If you are a member of Audible—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month. They call this Audible Originals, and while you only get six books to choose from, I am not complaining about getting something for free.</description>
+      <description>&lt;p&gt;If you are a member of &lt;a href=&#34;https://amzn.to/2NFCFop&#34;&gt;Audible&lt;/a&gt;—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month. They call this &lt;a href=&#34;https://www.audible.com/ep/audible-originals-member-benefit&#34;&gt;Audible Originals&lt;/a&gt;, and while you only get six books to choose from, I am not complaining about getting something for free.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Premarkdown Plugins</title>
       <link>https://mailund.dk/posts/premd-plugins/</link>
       <pubDate>Mon, 10 Sep 2018 14:25:40 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/premd-plugins/</guid>
-      <description>I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m working on a preprocessor for Markdown documents. I write all my books in Markdown, so this is something I have wanted to do for a while, to scratch a few itches I have.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Fluent Python</title>
       <link>https://mailund.dk/posts/fluent-python/</link>
       <pubDate>Mon, 10 Sep 2018 09:11:42 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/fluent-python/</guid>
-      <description>I just finished reading Fluent Python. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn.</description>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;I just finished reading &lt;a href=&#34;https://amzn.to/2Nw7cEQ&#34;&gt;&lt;em&gt;Fluent Python&lt;/em&gt;&lt;/a&gt;. This is a really nice book on Python programming. It is not an introduction to Python programming, and it is not about specific packages, such as SciPy or Scikit-learn. Rather, it covers Python topics you might use in day-to-day programming and explains how you would write code in the most Pythonic way.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>New Books Page</title>
       <link>https://mailund.dk/posts/new-books-page/</link>
       <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/new-books-page/</guid>
-      <description>I have set up a page for the books I have written. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.</description>
+      <description>&lt;p&gt;I have set up a page for the &lt;a href=&#34;https://mailund.dk/books/&#34;&gt;books I have written&lt;/a&gt;. Nothing fancy there, it is just a list together with the cover text, but it does collect all my books on one single page.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>New Blog</title>
       <link>https://mailund.dk/posts/new-blog/</link>
       <pubDate>Sun, 09 Sep 2018 08:02:17 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/new-blog/</guid>
-      <description>Ok, so, I have had a lot of problems with keeping Wordpress and various plugins up to date on my old mailund.dk blog. Considering that I don&amp;rsquo;t write a whole lot of posts there, I decided that it simply wasn&amp;rsquo;t worth the effort.</description>
+      <description>&lt;p&gt;Ok, so, I have had a lot of problems with keeping Wordpress and various plugins up to date on my old mailund.dk blog. Considering that I don&amp;rsquo;t write a whole lot of posts there, I decided that it simply wasn&amp;rsquo;t worth the effort.&lt;/p&gt;</description>
     </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/envs-and-formulae/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/functional-lists-and-queues/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/functional-lists-and-queues/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/lazy-lists/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/lazy-lists/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/lazy-queues/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/lazy-queues/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mailund.dk/posts/promises-and-lazy-evaluation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mailund.dk/posts/promises-and-lazy-evaluation/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

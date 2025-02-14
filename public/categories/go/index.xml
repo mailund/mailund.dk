@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>go on Mailund on the Internet</title>
+    <title>Go on Mailund on the Internet</title>
     <link>https://mailund.dk/categories/go/</link>
-    <description>Recent content in go on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <description>Recent content in Go on Mailund on the Internet</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Wed, 06 Jan 2021 10:56:53 +0100</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/categories/go/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mailund.dk/categories/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chinese Remainder in Go</title>
       <link>https://mailund.dk/posts/crt-go/</link>
       <pubDate>Wed, 06 Jan 2021 10:56:53 +0100</pubDate>
-      
       <guid>https://mailund.dk/posts/crt-go/</guid>
-      <description>In between exams, I plan to learn Go in January. I have a book I plan to follow, but today I wanted to get started by just jumping into it, so I picked the Chinese Remainder Theorem we used for 2020&amp;rsquo;s Advent of Code Day 13.</description>
+      <description>&lt;p&gt;In between exams, I plan to learn &lt;a href=&#34;https://golang.org&#34;&gt;Go&lt;/a&gt; in January. I have a book I plan to follow, but today I wanted to get started by just jumping into it, so I picked the &lt;a href=&#34;https://en.wikipedia.org/wiki/Chinese_remainder_theorem&#34;&gt;Chinese Remainder Theorem&lt;/a&gt; we used for 2020&amp;rsquo;s Advent of Code &lt;a href=&#34;https://mailund.dk/posts/aoc-2020-4/&#34;&gt;Day 13&lt;/a&gt;. There, I implemented it in Python (before I found out that it was already in SymPy). It is a simple numerical algorithm, so it should be easy to implement in Go. Or so I thought.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

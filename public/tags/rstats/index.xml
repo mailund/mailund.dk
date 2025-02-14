@@ -1,52 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>rstats on Mailund on the Internet</title>
+    <title>Rstats on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/rstats/</link>
-    <description>Recent content in rstats on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <description>Recent content in Rstats on Mailund on the Internet</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
+    <lastBuildDate>Thu, 04 Oct 2018 05:00:20 +0200</lastBuildDate>
+    <atom:link href="https://mailund.dk/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lazy queues</title>
+      <link>https://mailund.dk/posts/lazy-queues/</link>
+      <pubDate>Thu, 04 Oct 2018 05:00:20 +0200</pubDate>
+      <guid>https://mailund.dk/posts/lazy-queues/</guid>
+      <description>&lt;p&gt;The purpose of the lazy lists I implemented in &lt;a href=&#34;https://mailund.github.io/r-programmer-blog/2018/10/03/lazy-lists/&#34;&gt;my previous post&lt;/a&gt; was to build lazy queues. Lazy lists give you constant time concatenation, which can be useful in itself, but I needed it to implement persistent functional queues.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lazy lists</title>
+      <link>https://mailund.dk/posts/lazy-lists/</link>
+      <pubDate>Thu, 04 Oct 2018 05:00:15 +0200</pubDate>
+      <guid>https://mailund.dk/posts/lazy-lists/</guid>
+      <description>&lt;p&gt;I wanted to write about lazy lists and lazy queues today, but I spent most of the day struggling with getting lazy evaluation to work. Finally, I convinced myself that something was broken in R, and I was justified in thinking that; upgrading to the most recent version resolved the issue.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Functional lists and queues</title>
+      <link>https://mailund.dk/posts/functional-lists-and-queues/</link>
+      <pubDate>Tue, 02 Oct 2018 05:00:10 +0200</pubDate>
+      <guid>https://mailund.dk/posts/functional-lists-and-queues/</guid>
+      <description>&lt;p&gt;I wanted to write something about function parameters, how these are passed as so-called &amp;ldquo;promises&amp;rdquo;, how these have associated scopes (and the consequences of that), and how they give us lazy evaluation.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Errata: Functional Programming in R</title>
       <link>https://mailund.dk/errata/fpinr/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://mailund.dk/errata/fpinr/</guid>
-      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;
-Chapter 3 Nested Functions and Scopes, page 53ff.</description>
+      <description>&lt;h2 id=&#34;chapter-2&#34;&gt;Chapter 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;the-structure-of-a-recursive-function-page-32&#34;&gt;The Structure of a Recursive Function, page 32:&lt;/h3&gt;&#xA;&lt;p&gt;&amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;&lt;/p&gt;&#xA;&lt;h2 id=&#34;chapter-3&#34;&gt;Chapter 3&lt;/h2&gt;&#xA;&lt;h3 id=&#34;nested-functions-and-scopes-page-53ff&#34;&gt;Nested Functions and Scopes, page 53ff.&lt;/h3&gt;&#xA;&lt;p&gt;The code defines function g as &lt;code&gt;g &amp;lt;- function(y) x + y&lt;/code&gt; but in the environment chains g is defined as &lt;code&gt;g &amp;lt;- function(y) x + 1&lt;/code&gt;; that should also be &lt;code&gt;g &amp;lt;- function(y) x + y&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Environments and formulae</title>
+      <link>https://mailund.dk/posts/envs-and-formulae/</link>
+      <pubDate>Thu, 27 Sep 2018 04:41:19 +0200</pubDate>
+      <guid>https://mailund.dk/posts/envs-and-formulae/</guid>
+      <description>&lt;p&gt;In my two previous posts on non-standard evaluation, &lt;a href=&#34;https://mailund.github.io/r-programmer-blog/2018/09/20/scoping-rules-and-nse/&#34;&gt;&lt;em&gt;Scoping rules and NSE&lt;/em&gt;&lt;/a&gt; and &lt;a href=&#34;https://mailund.github.io/r-programmer-blog/2018/09/22/overscoping-and-eval/&#34;&gt;&lt;em&gt;Overscoping and eval&lt;/em&gt;&lt;/a&gt;, I explained:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;How R finds the bindings of variables by looking through chains of environments.&lt;/li&gt;&#xA;&lt;li&gt;How you can manipulate these environments to evaluate expressions in a non-standard way.&lt;/li&gt;&#xA;&lt;li&gt;How you can evaluate expressions where lists or data-frames overscope variables that would otherwise be found in environments.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I finished the last post with a model-fitting example, where the &lt;code&gt;lm&lt;/code&gt; function fits data to a formula, by saying that &lt;em&gt;this&lt;/em&gt; particular example had more going on than you might expect. When we write something like&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Overscoping and eval</title>
       <link>https://mailund.dk/posts/eval-and-overscoping/</link>
       <pubDate>Sat, 22 Sep 2018 12:23:09 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/eval-and-overscoping/</guid>
-      <description>In my previous post I used the lm function for an example of scope rules, but I left a few details out. I didn&amp;rsquo;t want to muddy the example with too many details, so I chose to lie a little.</description>
+      <description>&lt;p&gt;In my &lt;a href=&#34;https://mailund.github.io/r-programmer-blog/2018/09/20/scoping-rules-and-nse/&#34;&gt;previous post&lt;/a&gt; I used the &lt;code&gt;lm&lt;/code&gt; function for an example of scope rules, but I left a few details out. I didn&amp;rsquo;t want to muddy the example with too many details, so I chose to lie a little.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Scoping Rules and NSE</title>
       <link>https://mailund.dk/posts/scoping-rules-and-nse/</link>
       <pubDate>Thu, 20 Sep 2018 05:00:15 +0200</pubDate>
-      
       <guid>https://mailund.dk/posts/scoping-rules-and-nse/</guid>
-      <description>Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do &amp;ldquo;non-standard evaluation&amp;rdquo;. I cover this in both Metaprogramming in R and Domain-Specific Languages in R, but this tweet</description>
+      <description>&lt;p&gt;Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do &amp;ldquo;non-standard evaluation&amp;rdquo;. I cover this in both &lt;a href=&#34;https://amzn.to/2QHONDT&#34;&gt;&lt;em&gt;Metaprogramming in R&lt;/em&gt;&lt;/a&gt; and &lt;a href=&#34;https://amzn.to/2QHMNLL&#34;&gt;&lt;em&gt;Domain-Specific Languages in R&lt;/em&gt;&lt;/a&gt;, but this tweet&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Errata: Functional Data-Structures in R</title>
       <link>https://mailund.dk/errata/fdsinr/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://mailund.dk/errata/fdsinr/</guid>
-      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book. Pattern matching makes implementing data structures much easier.</description>
+      <description>&lt;p&gt;One big regret I have about this book is that I didn’t implement the pattern matching code from &lt;a href=&#34;https://amzn.to/2QHMNLL&#34;&gt;&lt;em&gt;Domain-Specific Languages in R&lt;/em&gt;&lt;/a&gt; before this book. Pattern matching makes implementing data structures &lt;em&gt;much&lt;/em&gt; easier.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

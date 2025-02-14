@@ -7,7 +7,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
-  <meta name="author" content="Thomas Mailund" />
+  <meta name="author" content="" />
   
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -63,19 +63,6 @@
    });
  </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
 </head>
 
 <body>
@@ -86,21 +73,7 @@ if (!doNotTrack) {
             </h1>
 
       <ul id="social-media">
-        
-        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
-          
-        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-          
-        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.stackoverflow.com/users/2170269/thomas-mailund"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
-        
+                
       </ul>
       
       <p><em>On Writing, Science, Programming and more</em></p>
@@ -213,124 +186,124 @@ if (!doNotTrack) {
 <h2 id="day-01--report-repair">Day 01 — Report Repair</h2>
 <p>In <a href="https://adventofcode.com/2020/day/1">Day 1</a>, there is a straightforward “puzzle”, and I put it in quotes because there isn’t much of a puzzle to it. Read it yourself, and you will quickly see that the task is spelt out very clearly. Puzzle #1 asks you to find two numbers that add to 2020 and then multiply them. I promise that it gets more interesting later.</p>
 <p>It is always a good idea to try the simplest you can think of first, to see if that can get you there. Sometimes, the simplest solution will be too slow, and if it is obviously an exponential running time approach, you might want to think a little harder, but that isn’t the case here. You can just run through all pairs of input, add them to test if they sum to 2020, and if they do, you return their product. Easy.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/01/input.txt</span><span style="color:#00f">&#39;</span>)
-x = list(map(int, f.read().split()))
-
-<span style="color:#000080;font-weight:bold">def</span> brute_force(x):
-    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(len(x)):
-        <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(i):
-            <span style="color:#000080;font-weight:bold">if</span> x[i] + x[j] == <span style="color:#00f">2020</span>:
-                <span style="color:#000080;font-weight:bold">return</span> x[i] * x[j]
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {brute_force(x)}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>I solve most of the problems in Python, as it is my go-to language for most problems. For high-speed solutions, I use C, and for data analysis, I use R, but for problems such as this, Python is always my first choice. Not because it is a better language, but just because I am familiar with it and have used it for many years.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/01/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>x = list(map(int, f.read().split()))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> brute_force(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(len(x)):
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(i):
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">if</span> x[i] + x[j] == <span style="color:#00f">2020</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#000080;font-weight:bold">return</span> x[i] * x[j]
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>brute_force(x)<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>I solve most of the problems in Python, as it is my go-to language for most problems. For high-speed solutions, I use C, and for data analysis, I use R, but for problems such as this, Python is always my first choice. Not because it is a better language, but just because I am familiar with it and have used it for many years.</p>
 <p>The input is in a text file, and I need it as integers. The easiest way to get that is to read everything into memory, split the resulting string, so you get each integer as a separate item in a list, and then translate those strings into integers. The <code>f.read().split()</code> does the reading and splitting, and <code>map(int, …)</code> applies the function <code>int()</code> to every item in the list, giving us a new list as result. Since <code>int()</code> will turn the strings into integers, we get what we want. Since Python 3, <code>map()</code> gives us an iterator object rather than a list, but we want to index into <code>x</code>, so we turn it into a list with the call to <code>list()</code>. This isn’t the most readable code for I/O, but it isn’t unusually terse either. For quick and dirty code, I write something like this. If I had to be more careful with input data, for example, to validate it or such, I would be more careful. I will not be more careful for any of the puzzles in Advent of Code.</p>
 <p>The two nested for-loops are self-explanatory, I think. It is a quadratic time algorithm, but on the data we get, it runs in milliseconds.</p>
 <p>For Puzzle #2, you have to do the same with triplets, and it is just as simple:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> brute_force(x):
-    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(len(x)):
-        <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(i):
-            <span style="color:#000080;font-weight:bold">for</span> k <span style="font-weight:bold">in</span> range(j):
-                <span style="color:#000080;font-weight:bold">if</span> x[i] + x[j] + x[k] == <span style="color:#00f">2020</span>:
-                    <span style="color:#000080;font-weight:bold">return</span> x[i] * x[j] * x[k]
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {brute_force(x)}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>Now the running time is cubic, but I can still manage both puzzles in 200 milliseconds on my five-years-old iMac, so it isn’t a problem.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> brute_force(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(len(x)):
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(i):
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">for</span> k <span style="font-weight:bold">in</span> range(j):
+</span></span><span style="display:flex;"><span>                <span style="color:#000080;font-weight:bold">if</span> x[i] + x[j] + x[k] == <span style="color:#00f">2020</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#000080;font-weight:bold">return</span> x[i] * x[j] * x[k]
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #2: </span><span style="color:#00f">{</span>brute_force(x)<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>Now the running time is cubic, but I can still manage both puzzles in 200 milliseconds on my five-years-old iMac, so it isn’t a problem.</p>
 <p>Sometimes, brute force is fast enough, and then you go with that. There is nothing wrong with that. In today’s problem, Day 14, I spent almost an hour and a half trying to see a trick to go from exponential running time to something better and failing. When I gave up and implemented the brute force solution, I could analyse the data in 172 milliseconds. And I feel a little stupid about that because I always tell my students (and readers in general) to go for the simple solution first, and then check if it is fast enough before you try to be clever. You have to consider the tradeoff between programmer time and running time. If it takes you two minutes to implement a slow algorithm, but one that is fast enough for your purposes, don’t waste any time on making it faster with a smarter algorithm, that may take you an hour or day to implement. It isn’t worth it.</p>
 <p>My students will do bioinformatics later in life, at least most of them, and a lot of that is data science where you need to massage some data and then throw it at a pipeline. If you expect to massage this particular data a couple of times, it doesn’t matter much if it takes an hour to do. Make the computer run overnight. Your own time is more important than the computer’s, and you can do something useful while it churns the data. If, on the other hand, and this is what they sometimes forget is part of the message, you need to handle a lot of data, or you give your program to a lot of people who have to run it, then you do want to make it fast. I’m pretty sure that we could cut our computing cluster in half if people spent a little more time on implementing better algorithms. But it always is a tradeoff, and you need to consider it.</p>
 <p>With Advent of Code, you immediately see how fast the brute force solution is, and if it is fast enough, there really is no point in speeding it up. You need one answer, and once you have it, you are only optimising the code for fun. Not because you need it. (Of course, it is fun, so you should still do it if you have some ideas for making it faster).</p>
 <p>Still, because the brute force solution is exponential on Day 14, I didn’t follow my own advice, and I suffered from it. The day 1 puzzles are clearly simple enough that brute force is the way to go.</p>
 <p>You can speed the first puzzle up with a rather simple trick, though. If you use a set, you can check if it contains a number you want in constant time. Python’s sets are hash tables, and they give you that performance. If you put <code>2020 - y</code> for all <code>y</code> in the input into a set, you can check if there is a number you can use there, and then get the product:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> hash_trick(x):
-    s = { <span style="color:#00f">2020</span> - y <span style="color:#000080;font-weight:bold">for</span> y <span style="font-weight:bold">in</span> x }
-    <span style="color:#000080;font-weight:bold">for</span> y <span style="font-weight:bold">in</span> x:
-        <span style="color:#000080;font-weight:bold">if</span> y <span style="font-weight:bold">in</span> s:
-            <span style="color:#000080;font-weight:bold">return</span> y * (<span style="color:#00f">2020</span> - y)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {hash_trick(x)}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>It is a linear time solution because you spend linear time building the set and linear time searching for the number you want, so better than the quadratic time we had. In walltime, however, I see a reduction from 50 milliseconds to 45, so hardly something I would spend any more time on.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> hash_trick(x):
+</span></span><span style="display:flex;"><span>    s = { <span style="color:#00f">2020</span> - y <span style="color:#000080;font-weight:bold">for</span> y <span style="font-weight:bold">in</span> x }
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> y <span style="font-weight:bold">in</span> x:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> y <span style="font-weight:bold">in</span> s:
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">return</span> y * (<span style="color:#00f">2020</span> - y)
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>hash_trick(x)<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>It is a linear time solution because you spend linear time building the set and linear time searching for the number you want, so better than the quadratic time we had. In walltime, however, I see a reduction from 50 milliseconds to 45, so hardly something I would spend any more time on.</p>
 <h2 id="day-02--password-philosophy">Day 02 — Password Philosophy</h2>
 <p>Go to the <a href="https://adventofcode.com/2020/day/2">puzzle page</a> and read the description before we continue…</p>
 <p>So, the puzzles involve checking passwords. The input is on the form</p>
-<pre><code>1-3 a: abcde
+<pre tabindex="0"><code>1-3 a: abcde
 1-3 b: cdefg
 2-9 c: ccccccccc
 </code></pre><p>where we first have a range of integers, then a letter, and then a password, and we need to count how many passwords are valid, according to some rules. For Puzzle #1, the rule is that the number of occurrences of the letter is in the range.</p>
 <p>If you want to count the number of occurrences of various items in a sequence, such as a list or string, you want to use <code>Counter</code> in the <code>collections</code> module. In the puzzle, we only need to count the number of occurrences of one letter, and <code>Counter</code> will give us a table of all of them, so we might be able to write something faster ourselves, but it won’t be faster by much, and we will have wasted a lot of time on it. So just use <code>Counter</code>.</p>
 <p>If we use <code>Counter</code>, we can run through each line in the input, parse the line, and count. My solution looks like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/02/input.txt</span><span style="color:#00f">&#39;</span>)
-data = f.readlines()
-
-<span style="color:#000080;font-weight:bold">from</span> collections <span style="color:#000080;font-weight:bold">import</span> Counter
-
-count = <span style="color:#00f">0</span>
-<span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> data:
-    intv, let, x = line.split()
-    let = let[<span style="color:#00f">0</span>]
-    a,b = map(int, intv.split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">-</span><span style="color:#00f">&#39;</span>))
-    <span style="color:#000080;font-weight:bold">if</span> a &lt;= Counter(x)[let] &lt;= b:
-        count += <span style="color:#00f">1</span>
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {count}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>The first three lines in the loop parse the line. First, I split on whitespace. The first line in the input above is <code>1-3 a: abcde</code>, so the result of splitting is <code>[“1-3”, “a:”, “abcde”]</code>. Then I extract the letter as the first character in the middle token (so I get rid of the colon), and I split the range on <code>-</code> to get the two integers, that I convert into integers using the <code>map(int, …)</code> construction. It might have been easier to use a regular expression here, but those are never my first choice. I use them when I feel that it makes things easier, but I don’t find them that easy to read or write, so more often than not, I write code like this instead. This is a case, however, where a regular expression might have been easier…</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/02/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>data = f.readlines()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">from</span> collections <span style="color:#000080;font-weight:bold">import</span> Counter
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>count = <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> data:
+</span></span><span style="display:flex;"><span>    intv, let, x = line.split()
+</span></span><span style="display:flex;"><span>    let = let[<span style="color:#00f">0</span>]
+</span></span><span style="display:flex;"><span>    a,b = map(int, intv.split(<span style="color:#00f">&#39;-&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> a &lt;= Counter(x)[let] &lt;= b:
+</span></span><span style="display:flex;"><span>        count += <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>count<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>The first three lines in the loop parse the line. First, I split on whitespace. The first line in the input above is <code>1-3 a: abcde</code>, so the result of splitting is <code>[“1-3”, “a:”, “abcde”]</code>. Then I extract the letter as the first character in the middle token (so I get rid of the colon), and I split the range on <code>-</code> to get the two integers, that I convert into integers using the <code>map(int, …)</code> construction. It might have been easier to use a regular expression here, but those are never my first choice. I use them when I feel that it makes things easier, but I don’t find them that easy to read or write, so more often than not, I write code like this instead. This is a case, however, where a regular expression might have been easier…</p>
 <p>Once we have parsed the data, we use <code>Counter()</code> to get a table of how many times each character appear in the password. We can look up the count for letter <code>let</code> using sub-scripting, and we check if it is in the valid range. I love that Python let’s us chain comparisons like <code>a &lt;= x &lt;= b</code>, but of course it isn’t much harder to split it into <code>a &lt;= x and x &lt;= b</code> if you use a language that doesn’t.</p>
 <p>Puzzle #2 changes the task, so instead of checking if the occurrence of <code>let</code> is in a range, we need to check that <code>let</code> occurs at one, and only one, of the indices <code>a</code> or <code>b</code>.</p>
 <p>Parsing the data is the same, but the task clearly uses 1-indexing while Python uses 0-indexing, so we need to adjust <code>a</code> and <code>b</code>. To check if <code>let</code> occurs exactly once on index <code>a</code> or <code>b</code> we could count how many times it occurs, we could explicitly check that <code>let</code> is at index <code>a</code> and not <code>b</code> or vice versa, or any other number of things. I used XOR, the <code>^</code> operator in Python:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">count = <span style="color:#00f">0</span>
-<span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> data:
-    intv, let, x = line.split()
-    let = let[<span style="color:#00f">0</span>]
-    a,b = map(int, intv.split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">-</span><span style="color:#00f">&#39;</span>))
-    a, b = a - <span style="color:#00f">1</span>, b - <span style="color:#00f">1</span>
-    <span style="color:#000080;font-weight:bold">if</span> (x[a] == let) ^ (x[b] == let):
-        count += <span style="color:#00f">1</span>
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {count}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>If you write a lot of code in R, the <code>^</code> operator is dangerous for you. It exponentiates in R and does XOR in Python. Use <code>**</code> both places if you want to avoid confusing the two.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>count = <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> data:
+</span></span><span style="display:flex;"><span>    intv, let, x = line.split()
+</span></span><span style="display:flex;"><span>    let = let[<span style="color:#00f">0</span>]
+</span></span><span style="display:flex;"><span>    a,b = map(int, intv.split(<span style="color:#00f">&#39;-&#39;</span>))
+</span></span><span style="display:flex;"><span>    a, b = a - <span style="color:#00f">1</span>, b - <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (x[a] == let) ^ (x[b] == let):
+</span></span><span style="display:flex;"><span>        count += <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #2: </span><span style="color:#00f">{</span>count<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>If you write a lot of code in R, the <code>^</code> operator is dangerous for you. It exponentiates in R and does XOR in Python. Use <code>**</code> both places if you want to avoid confusing the two.</p>
 <p>Now, XOR is a bit-wise operator, so you also want to be careful when you use it. It works as logical xor when you use it on <code>bool</code>, but a lot of non-boolean objects can be interpreted as “falsy” and “truthy”, including integers. If you use <code>^</code> on integers, you get xor, but not the xor that you want. There are many ways to get logical xor, but the easiest is to cast your objects to <code>bool</code>: <code>bool(a) ^ bool(b)</code>. We don’t need to here, of course, because the result of the <code>==</code> comparison is boolean already, so it all works out.</p>
 <p>I also find this solution equally readable:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">count = <span style="color:#00f">0</span>
-<span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> data:
-    intv, let, x = line.split()
-    let = let[<span style="color:#00f">0</span>]
-    a,b = map(int, intv.split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">-</span><span style="color:#00f">&#39;</span>))
-    a, b = a - <span style="color:#00f">1</span>, b - <span style="color:#00f">1</span>
-    <span style="color:#000080;font-weight:bold">if</span> (x[a] == let) + (x[b] == let) == <span style="color:#00f">1</span>:
-        count += <span style="color:#00f">1</span>
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {count}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>It makes it explicit that we are counting the number of matches and requiring that it is exactly one. But it is mostly a matter of taste, I guess.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>count = <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> data:
+</span></span><span style="display:flex;"><span>    intv, let, x = line.split()
+</span></span><span style="display:flex;"><span>    let = let[<span style="color:#00f">0</span>]
+</span></span><span style="display:flex;"><span>    a,b = map(int, intv.split(<span style="color:#00f">&#39;-&#39;</span>))
+</span></span><span style="display:flex;"><span>    a, b = a - <span style="color:#00f">1</span>, b - <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (x[a] == let) + (x[b] == let) == <span style="color:#00f">1</span>:
+</span></span><span style="display:flex;"><span>        count += <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #2: </span><span style="color:#00f">{</span>count<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>It makes it explicit that we are counting the number of matches and requiring that it is exactly one. But it is mostly a matter of taste, I guess.</p>
 <h2 id="day-03--toboggan-trajectory">Day 03 — Toboggan Trajectory</h2>
 <p>Read the <a href="https://adventofcode.com/2020/day/3">problem description</a> before you continue…</p>
 <p>We are still in the stage of Advent of Code where the problem descriptions very explicitly tell you what to do, and here the description tells you to move through a map, in steps that are integral numbers in the x and y coordinate, in Puzzle #1, you go 3 right and 1 down in each step. And you have to count how many trees you will encounter when you do this. The description about how the map continues repeating itself is the kind of obfuscation you often see in puzzles, but if a map repeats itself like this, it means that you should be workmen with indices modulo the size of the map. Since the map only repeats itself in the horizontal direction, we don’t have to do this as we go down, but any index you have for a horizontal coordinate, you take the index modulo the width when you need to check the map. I saw solutions on Twitter where people expanded the map by copying rows to some sufficiently large number, but it isn’t necessary. Your old friend, the <code>%</code>-operator, will do it for you.</p>
 <p>To read the map, I got all the lines in the input using <code>readlines()</code> and then got rid of the newline characters with <code>strip()</code>. It is not the only way, but I think that it is the easiest. If we read the data this way, then we directly have the map as a list of strings, and we can index into these to get the trees. If <code>tree_map</code> is our list, then <code>tree_map[i]</code> is row <code>i</code>, the row distance <code>i</code> from the top, and <code>tree_map[i][j]</code> is the symbol at index <code>j</code> in that row.</p>
 <p>Then, to do the wrapping with modulo, we need the width of the map, which is the length of the lines. You can get that from the length of any of them as they are the same. We also need to know how deep the map goes in the vertical direction, so we can stop when we have reached the end, and that is just the length of the map.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/03/input.txt</span><span style="color:#00f">&#39;</span>)
-tree_map = [line.strip() <span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> f.readlines()]
-n, m = len(tree_map), len(tree_map[<span style="color:#00f">0</span>])
-</code></pre></div><p>To count the trees you can just iteratively apply the steps, adding to coordinates <code>i</code> and <code>j</code>, until you reach the bottom of the map. In each iteration, you check if you hit a tree, and if you do, you increment a count:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> count_trees(right, down):
-    i, j = <span style="color:#00f">0</span>, <span style="color:#00f">0</span>
-    count = <span style="color:#00f">0</span>
-    <span style="color:#000080;font-weight:bold">while</span> i &lt; n:
-        <span style="color:#000080;font-weight:bold">if</span> tree_map[i][j] == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">#</span><span style="color:#00f">&#39;</span>:
-            count += <span style="color:#00f">1</span>
-        i += down
-        j = (j + right) % m
-    <span style="color:#000080;font-weight:bold">return</span> count
-</code></pre></div><p>The function is parameterised with the step sizes since we need those in Puzzle #2. When you do the puzzles, you don’t know what comes later, but I was lucky enough to write the function this way in the first go. Usually, I am not and have to go back and refactor.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/03/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>tree_map = [line.strip() <span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> f.readlines()]
+</span></span><span style="display:flex;"><span>n, m = len(tree_map), len(tree_map[<span style="color:#00f">0</span>])
+</span></span></code></pre></div><p>To count the trees you can just iteratively apply the steps, adding to coordinates <code>i</code> and <code>j</code>, until you reach the bottom of the map. In each iteration, you check if you hit a tree, and if you do, you increment a count:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> count_trees(right, down):
+</span></span><span style="display:flex;"><span>    i, j = <span style="color:#00f">0</span>, <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span>    count = <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> i &lt; n:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> tree_map[i][j] == <span style="color:#00f">&#39;#&#39;</span>:
+</span></span><span style="display:flex;"><span>            count += <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>        i += down
+</span></span><span style="display:flex;"><span>        j = (j + right) % m
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> count
+</span></span></code></pre></div><p>The function is parameterised with the step sizes since we need those in Puzzle #2. When you do the puzzles, you don’t know what comes later, but I was lucky enough to write the function this way in the first go. Usually, I am not and have to go back and refactor.</p>
 <p>For Puzzle #1, we count the trees on a path that goes three right and one down, so this is our solution:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {count_trees(3,1)}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>For Puzzle #2, you get several paths and have to compute the product of the result. We can make a list of paths and apply <code>count_trees()</code> to each path like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">paths = [(<span style="color:#00f">1</span>,<span style="color:#00f">1</span>), (<span style="color:#00f">3</span>,<span style="color:#00f">1</span>), (<span style="color:#00f">5</span>,<span style="color:#00f">1</span>), (<span style="color:#00f">7</span>,<span style="color:#00f">1</span>), (<span style="color:#00f">1</span>,<span style="color:#00f">2</span>)]
-counts = [count_trees(*p) <span style="color:#000080;font-weight:bold">for</span> p <span style="font-weight:bold">in</span> paths]
-</code></pre></div><p>The <code>count_trees(*p)</code> calls the function with the arguments in path <code>p</code>. The function takes two arguments and not a single tuple-argument, which is what we have in <code>p</code>, so the <code>*</code> makes the function consider the tuple as arguments.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>count_trees(<span style="color:#00f">3</span>,<span style="color:#00f">1</span>)<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>For Puzzle #2, you get several paths and have to compute the product of the result. We can make a list of paths and apply <code>count_trees()</code> to each path like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>paths = [(<span style="color:#00f">1</span>,<span style="color:#00f">1</span>), (<span style="color:#00f">3</span>,<span style="color:#00f">1</span>), (<span style="color:#00f">5</span>,<span style="color:#00f">1</span>), (<span style="color:#00f">7</span>,<span style="color:#00f">1</span>), (<span style="color:#00f">1</span>,<span style="color:#00f">2</span>)]
+</span></span><span style="display:flex;"><span>counts = [count_trees(*p) <span style="color:#000080;font-weight:bold">for</span> p <span style="font-weight:bold">in</span> paths]
+</span></span></code></pre></div><p>The <code>count_trees(*p)</code> calls the function with the arguments in path <code>p</code>. The function takes two arguments and not a single tuple-argument, which is what we have in <code>p</code>, so the <code>*</code> makes the function consider the tuple as arguments.</p>
 <p>We need the product over all paths. We have the function <code>sum()</code> that would be useful if we had to add them, but we don’t have a builtin <code>prod()</code> function that does the same for multiplication. There is one in the <code>math</code> module, however, so get that one, and you are done:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">import</span> math
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {math.prod(counts)}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><h2 id="day-04--passport-processing">Day 04 — Passport Processing</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">import</span> math
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #2: </span><span style="color:#00f">{</span>math.prod(counts)<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><h2 id="day-04--passport-processing">Day 04 — Passport Processing</h2>
 <p><a href="https://adventofcode.com/2020/day/4">Day four</a> is the first where I think the problem description doesn’t directly give you the solution as well. Read the description, and then we look at a solution.</p>
 <p>So, we are tasked with validating passports, and for Puzzle #1, we need to check if a passport has at least seven mandatory fields and optionally an eight. I couldn’t read from the description how passports might be invalid in ways other than having missing fields, so I read it to mean that we needed to check if we had these exact fields. Still, looking at the data later I suspect you could cheat a little… anyway, I will solve the problem as if we had to check for either having seven or eight fields and that these fields should be exactly those we allow.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> valid_passport(fields):
-    <span style="color:#000080;font-weight:bold">return</span> fields == {<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">byr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">iyr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">eyr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hgt</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hcl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">ecl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">pid</span><span style="color:#00f">&#39;</span>} \
-        <span style="font-weight:bold">or</span> fields == {<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">byr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">iyr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">eyr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hgt</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hcl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">ecl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">pid</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">cid</span><span style="color:#00f">&#39;</span>}
-</code></pre></div><p>This isn’t an optimal solution, of course. We compare sets, and we compare the same fields against two sets with overlapping fields, so we could optimise it. But I think the function is very clear in what it is doing, and it will be fast enough, so I am happy with it as it is.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> valid_passport(fields):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> fields == {<span style="color:#00f">&#39;byr&#39;</span>, <span style="color:#00f">&#39;iyr&#39;</span>, <span style="color:#00f">&#39;eyr&#39;</span>, <span style="color:#00f">&#39;hgt&#39;</span>, <span style="color:#00f">&#39;hcl&#39;</span>, <span style="color:#00f">&#39;ecl&#39;</span>, <span style="color:#00f">&#39;pid&#39;</span>} \
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">or</span> fields == {<span style="color:#00f">&#39;byr&#39;</span>, <span style="color:#00f">&#39;iyr&#39;</span>, <span style="color:#00f">&#39;eyr&#39;</span>, <span style="color:#00f">&#39;hgt&#39;</span>, <span style="color:#00f">&#39;hcl&#39;</span>, <span style="color:#00f">&#39;ecl&#39;</span>, <span style="color:#00f">&#39;pid&#39;</span>, <span style="color:#00f">&#39;cid&#39;</span>}
+</span></span></code></pre></div><p>This isn’t an optimal solution, of course. We compare sets, and we compare the same fields against two sets with overlapping fields, so we could optimise it. But I think the function is very clear in what it is doing, and it will be fast enough, so I am happy with it as it is.</p>
 <p>That means that to solve Puzzle #1, we merely need to collect all passports and throw this validation function at them. The input comes in lines with one or more fields, with a blank line between passports. The fields have a key, a colon, and then the key’s value:</p>
-<pre><code>ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+<pre tabindex="0"><code>ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 
 iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
@@ -344,185 +317,185 @@ hgt:179cm
 hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in
 </code></pre><p>A straightforward solution could look like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/04/input.txt</span><span style="color:#00f">&#39;</span>)
-passport_fields = set()
-no_valid = <span style="color:#00f">0</span>
-<span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> (line.strip() <span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> f):
-    <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> line:
-        <span style="color:#000080;font-weight:bold">if</span> valid_passport(passport_fields):
-            no_valid += <span style="color:#00f">1</span>
-        passport_fields = set()
-        <span style="color:#000080;font-weight:bold">continue</span>
-
-    <span style="color:#000080;font-weight:bold">for</span> key, val <span style="font-weight:bold">in</span> (x.split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">:</span><span style="color:#00f">&#39;</span>) <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> line.split()):
-        passport_fields.add(key)
-<span style="color:#000080;font-weight:bold">if</span> valid_passport(passport_fields):
-    no_valid += <span style="color:#00f">1</span>
-
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {no_valid}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>We process each line in turn, and we use a set of fields, <code>passport_fields</code>, where we collect the fields from the current passport. If we see a blank line, we are done with the passport we are currently handling, so we validate it, and reset the <code>passport_fields</code> set to empty. Otherwise, we split the fields in the line using <code>split()</code> (it splits on whitespace), and then we split in <code>:</code> to separate the key from the value. We only need the key in this puzzle, so we put it in our set.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/04/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>passport_fields = set()
+</span></span><span style="display:flex;"><span>no_valid = <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> (line.strip() <span style="color:#000080;font-weight:bold">for</span> line <span style="font-weight:bold">in</span> f):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> line:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> valid_passport(passport_fields):
+</span></span><span style="display:flex;"><span>            no_valid += <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>        passport_fields = set()
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> key, val <span style="font-weight:bold">in</span> (x.split(<span style="color:#00f">&#39;:&#39;</span>) <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> line.split()):
+</span></span><span style="display:flex;"><span>        passport_fields.add(key)
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">if</span> valid_passport(passport_fields):
+</span></span><span style="display:flex;"><span>    no_valid += <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>no_valid<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>We process each line in turn, and we use a set of fields, <code>passport_fields</code>, where we collect the fields from the current passport. If we see a blank line, we are done with the passport we are currently handling, so we validate it, and reset the <code>passport_fields</code> set to empty. Otherwise, we split the fields in the line using <code>split()</code> (it splits on whitespace), and then we split in <code>:</code> to separate the key from the value. We only need the key in this puzzle, so we put it in our set.</p>
 <p>I don’t like this approach much, because I always forget to handle the last item in a line-separated file. If we had terminal blank lines, we wouldn’t have a special case here, but we have separators instead, and I don’t like those. I cannot always avoid them, but if my input is small enough—and with tiny data from toy examples like this it is—I can split the passports in a simpler way, that better matches my way of coding.</p>
 <p>If I do this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/04/input.txt</span><span style="color:#00f">&#39;</span>)
-passports = f.read().split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)
-</code></pre></div><p>I get a list of the passports. I split on blank lines, and that will give me all the individual passports, without a special case at the end. If I want the fields in a passport, I can split on whitespace:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">for</span> passport <span style="font-weight:bold">in</span> passports:
-    fields = passport.split()
-</code></pre></div><p>and with a little bit of generator comprehension, I can get myself the set of fields</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">for</span> passport <span style="font-weight:bold">in</span> passports:
-    fields = { key <span style="color:#000080;font-weight:bold">for</span> key,val <span style="font-weight:bold">in</span> (field.split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">:</span><span style="color:#00f">&#39;</span>) <span style="color:#000080;font-weight:bold">for</span> field <span style="font-weight:bold">in</span> passport.split()) }
-</code></pre></div><p>Here, I split the passport string to get the fields, split each field in key and value, and build a set of the keys. The puzzle tells us to count how many of them are valid, and if we interpret the result of <code>valid_passport()</code> as integers, zero or one, we can use <code>sum()</code> to get it:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/04/input.txt</span><span style="color:#00f">&#39;</span>)
-passports = f.read().split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)
-no_valid = sum(
-  valid_passport({ field.split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">:</span><span style="color:#00f">&#39;</span>)[<span style="color:#00f">0</span>] <span style="color:#000080;font-weight:bold">for</span> field <span style="font-weight:bold">in</span> passport.split() })
-  <span style="color:#000080;font-weight:bold">for</span> passport <span style="font-weight:bold">in</span> passports
-)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {no_valid}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>I like these kinds of expressions because they let me write concise code, and in my opinion, succinct (as long as not directly obfuscating) code is easier to read and maintain. The only thing that I do not like about them is that you have to read them backwards. Sometimes, that feels natural to me. A <code>sum(f(x) for x in y)</code> reads like mathematical notation, and I don’t have any problem with following the logic. But when you process several loops in one expression, as we do above, something like R’s (new) pipelines, or tidyverse’s existing ones would make the code much clearer.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/04/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>passports = f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>)
+</span></span></code></pre></div><p>I get a list of the passports. I split on blank lines, and that will give me all the individual passports, without a special case at the end. If I want the fields in a passport, I can split on whitespace:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> passport <span style="font-weight:bold">in</span> passports:
+</span></span><span style="display:flex;"><span>    fields = passport.split()
+</span></span></code></pre></div><p>and with a little bit of generator comprehension, I can get myself the set of fields</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> passport <span style="font-weight:bold">in</span> passports:
+</span></span><span style="display:flex;"><span>    fields = { key <span style="color:#000080;font-weight:bold">for</span> key,val <span style="font-weight:bold">in</span> (field.split(<span style="color:#00f">&#39;:&#39;</span>) <span style="color:#000080;font-weight:bold">for</span> field <span style="font-weight:bold">in</span> passport.split()) }
+</span></span></code></pre></div><p>Here, I split the passport string to get the fields, split each field in key and value, and build a set of the keys. The puzzle tells us to count how many of them are valid, and if we interpret the result of <code>valid_passport()</code> as integers, zero or one, we can use <code>sum()</code> to get it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/04/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>passports = f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>)
+</span></span><span style="display:flex;"><span>no_valid = sum(
+</span></span><span style="display:flex;"><span>  valid_passport({ field.split(<span style="color:#00f">&#39;:&#39;</span>)[<span style="color:#00f">0</span>] <span style="color:#000080;font-weight:bold">for</span> field <span style="font-weight:bold">in</span> passport.split() })
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> passport <span style="font-weight:bold">in</span> passports
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>no_valid<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>I like these kinds of expressions because they let me write concise code, and in my opinion, succinct (as long as not directly obfuscating) code is easier to read and maintain. The only thing that I do not like about them is that you have to read them backwards. Sometimes, that feels natural to me. A <code>sum(f(x) for x in y)</code> reads like mathematical notation, and I don’t have any problem with following the logic. But when you process several loops in one expression, as we do above, something like R’s (new) pipelines, or tidyverse’s existing ones would make the code much clearer.</p>
 <p>I didn’t feel up to implementing my own notation for pipelines, and even if I did, it wouldn’t be easier for others to read, since they would need to learn a new domain-specific language to do so, so I didn’t take it further. I played a little with using generators, but that didn’t make it more elegant either. Splitting the code into functions to make it clearer that way didn’t do anything for me either. You just split the same functionality over multiple lines, which means that there is more that you need to read and understand to follow the code. So this is as good as I could make it, and it isn’t that bad, I think.</p>
 <p>For Puzzle #2, we have to validate each field following different rules. This is a simple exercise in reading and implementing rules. I wrote a function per field, with a little bit of reuse for checking ranges, and put them into a map, from where I could get the function that matches a field.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> year_validator(year, x, y):
-    year = int(year)
-    <span style="color:#000080;font-weight:bold">return</span> x &lt;= year &lt;= y
-
-<span style="color:#000080;font-weight:bold">def</span> height_validator(height):
-    <span style="color:#000080;font-weight:bold">if</span> height.endswith(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">in</span><span style="color:#00f">&#34;</span>):
-        height = int(height[:-<span style="color:#00f">2</span>])
-        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">59</span> &lt;= height &lt;= <span style="color:#00f">76</span>
-    <span style="color:#000080;font-weight:bold">elif</span> height.endswith(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">cm</span><span style="color:#00f">&#34;</span>):
-        height = int(height[:-<span style="color:#00f">2</span>])
-        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">150</span> &lt;= height &lt;= <span style="color:#00f">193</span>
-    <span style="color:#000080;font-weight:bold">else</span>:
-        <span style="color:#000080;font-weight:bold">return</span> False
-
-valid_hair_chars = { *<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">abcdef0123456789</span><span style="color:#00f">&#39;</span> }
-<span style="color:#000080;font-weight:bold">def</span> hair_colour_validator(hair):
-    <span style="color:#000080;font-weight:bold">if</span> hair[<span style="color:#00f">0</span>] != <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">#</span><span style="color:#00f">&#39;</span>: <span style="color:#000080;font-weight:bold">return</span> False
-    hair = hair[<span style="color:#00f">1</span>:]
-    <span style="color:#000080;font-weight:bold">if</span> len(hair) != <span style="color:#00f">6</span>: <span style="color:#000080;font-weight:bold">return</span> False
-    <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> hair:
-        <span style="color:#000080;font-weight:bold">if</span> x <span style="font-weight:bold">not</span> <span style="font-weight:bold">in</span> valid_hair_chars:
-            <span style="color:#000080;font-weight:bold">return</span> False
-    <span style="color:#000080;font-weight:bold">return</span> True
-
-valid_eye_colour = {<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">amb</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">blu</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">brn</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">gry</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">grn</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hzl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">oth</span><span style="color:#00f">&#39;</span>}
-<span style="color:#000080;font-weight:bold">def</span> eye_colour_validator(eyes):
-    <span style="color:#000080;font-weight:bold">return</span> eyes <span style="font-weight:bold">in</span> valid_eye_colour
-
-<span style="color:#000080;font-weight:bold">def</span> pid_validator(pid):
-    <span style="color:#000080;font-weight:bold">if</span> len(pid) != <span style="color:#00f">9</span>: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>
-    <span style="color:#000080;font-weight:bold">try</span>:
-        int(pid)
-        <span style="color:#000080;font-weight:bold">return</span> True
-    <span style="color:#000080;font-weight:bold">except</span>:
-        <span style="color:#000080;font-weight:bold">return</span> False
-
-validators = {
-    <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">byr</span><span style="color:#00f">&#39;</span>: <span style="color:#000080;font-weight:bold">lambda</span> year: year_validator(year, <span style="color:#00f">1920</span>, <span style="color:#00f">2002</span>),
-    <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">iyr</span><span style="color:#00f">&#39;</span>: <span style="color:#000080;font-weight:bold">lambda</span> year: year_validator(year, <span style="color:#00f">2010</span>, <span style="color:#00f">2020</span>),
-    <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">eyr</span><span style="color:#00f">&#39;</span>: <span style="color:#000080;font-weight:bold">lambda</span> year: year_validator(year, <span style="color:#00f">2020</span>, <span style="color:#00f">2030</span>),
-    <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hgt</span><span style="color:#00f">&#39;</span>: height_validator,
-    <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hcl</span><span style="color:#00f">&#39;</span>: hair_colour_validator,
-    <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">ecl</span><span style="color:#00f">&#39;</span>: eye_colour_validator,
-    <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">pid</span><span style="color:#00f">&#39;</span>: pid_validator,
-    <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">cid</span><span style="color:#00f">&#39;</span>: <span style="color:#000080;font-weight:bold">lambda</span> x: True
-}
-</code></pre></div><p>Given a passport, you now run through its fields, if there is a field not in the table the passport is invalid, and otherwise you use the corresponding function to validate it.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">valid1 = {<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">byr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">iyr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">eyr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hgt</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hcl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">ecl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">pid</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">cid</span><span style="color:#00f">&#39;</span>}
-valid2 = {<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">byr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">iyr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">eyr</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hgt</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">hcl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">ecl</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">pid</span><span style="color:#00f">&#39;</span>}
-<span style="color:#000080;font-weight:bold">def</span> valid_passport(fields):
-    keys = set(fields)
-    <span style="color:#000080;font-weight:bold">if</span> keys != valid1 <span style="font-weight:bold">and</span> keys != valid2: <span style="color:#000080;font-weight:bold">return</span> False
-    <span style="color:#000080;font-weight:bold">for</span> key, val <span style="font-weight:bold">in</span> fields.items():
-        <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> validators[key](val):
-            <span style="color:#000080;font-weight:bold">return</span> False
-    <span style="color:#000080;font-weight:bold">return</span> True
-</code></pre></div><p>When parsing the input, we need to build a dictionary for the fields instead of a set. We can do this by simply putting the expression in a call to <code>dict()</code> and using the full result of <code>field.split(‘:’)</code> instead of just the first value.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/04/input.txt</span><span style="color:#00f">&#39;</span>)
-passports = f.read().split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)
-no_valid = sum(
-    valid_passport(dict(field.split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">:</span><span style="color:#00f">&#39;</span>) <span style="color:#000080;font-weight:bold">for</span> field <span style="font-weight:bold">in</span> passport.split()))
-    <span style="color:#000080;font-weight:bold">for</span> passport <span style="font-weight:bold">in</span> passports
-)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {no_valid}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><h2 id="day-05--binary-boarding">Day 05 — Binary Boarding</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> year_validator(year, x, y):
+</span></span><span style="display:flex;"><span>    year = int(year)
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> x &lt;= year &lt;= y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> height_validator(height):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> height.endswith(<span style="color:#00f">&#34;in&#34;</span>):
+</span></span><span style="display:flex;"><span>        height = int(height[:-<span style="color:#00f">2</span>])
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">59</span> &lt;= height &lt;= <span style="color:#00f">76</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">elif</span> height.endswith(<span style="color:#00f">&#34;cm&#34;</span>):
+</span></span><span style="display:flex;"><span>        height = int(height[:-<span style="color:#00f">2</span>])
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">150</span> &lt;= height &lt;= <span style="color:#00f">193</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>valid_hair_chars = { *<span style="color:#00f">&#39;abcdef0123456789&#39;</span> }
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> hair_colour_validator(hair):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> hair[<span style="color:#00f">0</span>] != <span style="color:#00f">&#39;#&#39;</span>: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">False</span>
+</span></span><span style="display:flex;"><span>    hair = hair[<span style="color:#00f">1</span>:]
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> len(hair) != <span style="color:#00f">6</span>: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> hair:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> x <span style="font-weight:bold">not</span> <span style="font-weight:bold">in</span> valid_hair_chars:
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>valid_eye_colour = {<span style="color:#00f">&#39;amb&#39;</span>, <span style="color:#00f">&#39;blu&#39;</span>, <span style="color:#00f">&#39;brn&#39;</span>, <span style="color:#00f">&#39;gry&#39;</span>, <span style="color:#00f">&#39;grn&#39;</span>, <span style="color:#00f">&#39;hzl&#39;</span>, <span style="color:#00f">&#39;oth&#39;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> eye_colour_validator(eyes):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> eyes <span style="font-weight:bold">in</span> valid_eye_colour
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> pid_validator(pid):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> len(pid) != <span style="color:#00f">9</span>: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>        int(pid)
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">except</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>validators = {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#39;byr&#39;</span>: <span style="color:#000080;font-weight:bold">lambda</span> year: year_validator(year, <span style="color:#00f">1920</span>, <span style="color:#00f">2002</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#39;iyr&#39;</span>: <span style="color:#000080;font-weight:bold">lambda</span> year: year_validator(year, <span style="color:#00f">2010</span>, <span style="color:#00f">2020</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#39;eyr&#39;</span>: <span style="color:#000080;font-weight:bold">lambda</span> year: year_validator(year, <span style="color:#00f">2020</span>, <span style="color:#00f">2030</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#39;hgt&#39;</span>: height_validator,
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#39;hcl&#39;</span>: hair_colour_validator,
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#39;ecl&#39;</span>: eye_colour_validator,
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#39;pid&#39;</span>: pid_validator,
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#39;cid&#39;</span>: <span style="color:#000080;font-weight:bold">lambda</span> x: <span style="color:#000080;font-weight:bold">True</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Given a passport, you now run through its fields, if there is a field not in the table the passport is invalid, and otherwise you use the corresponding function to validate it.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>valid1 = {<span style="color:#00f">&#39;byr&#39;</span>, <span style="color:#00f">&#39;iyr&#39;</span>, <span style="color:#00f">&#39;eyr&#39;</span>, <span style="color:#00f">&#39;hgt&#39;</span>, <span style="color:#00f">&#39;hcl&#39;</span>, <span style="color:#00f">&#39;ecl&#39;</span>, <span style="color:#00f">&#39;pid&#39;</span>, <span style="color:#00f">&#39;cid&#39;</span>}
+</span></span><span style="display:flex;"><span>valid2 = {<span style="color:#00f">&#39;byr&#39;</span>, <span style="color:#00f">&#39;iyr&#39;</span>, <span style="color:#00f">&#39;eyr&#39;</span>, <span style="color:#00f">&#39;hgt&#39;</span>, <span style="color:#00f">&#39;hcl&#39;</span>, <span style="color:#00f">&#39;ecl&#39;</span>, <span style="color:#00f">&#39;pid&#39;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> valid_passport(fields):
+</span></span><span style="display:flex;"><span>    keys = set(fields)
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> keys != valid1 <span style="font-weight:bold">and</span> keys != valid2: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> key, val <span style="font-weight:bold">in</span> fields.items():
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> <span style="font-weight:bold">not</span> validators[key](val):
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">True</span>
+</span></span></code></pre></div><p>When parsing the input, we need to build a dictionary for the fields instead of a set. We can do this by simply putting the expression in a call to <code>dict()</code> and using the full result of <code>field.split(‘:’)</code> instead of just the first value.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/04/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>passports = f.read().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n\n</span><span style="color:#00f">&#39;</span>)
+</span></span><span style="display:flex;"><span>no_valid = sum(
+</span></span><span style="display:flex;"><span>    valid_passport(dict(field.split(<span style="color:#00f">&#39;:&#39;</span>) <span style="color:#000080;font-weight:bold">for</span> field <span style="font-weight:bold">in</span> passport.split()))
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> passport <span style="font-weight:bold">in</span> passports
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #2: </span><span style="color:#00f">{</span>no_valid<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><h2 id="day-05--binary-boarding">Day 05 — Binary Boarding</h2>
 <p>Read the <a href="https://adventofcode.com/2020/day/5">puzzle description</a>, and pay attention to the title of the day, <em>binary</em> boarding.</p>
 <p>In this puzzle, we have to figure out what to do ourselves again, and to add insult to injury, the description is likely to mislead you into solving the problem using binary search. You can use a binary search, but it is far from the easiest or fastest solution, so I consider the seat decoding description as pure misdirection.</p>
 <p>The description sounds like a binary search. If you see ‘F’ you are in this interval, and if you see ‘B’ you are in that, and then if you are in this interval ‘F’ sends you here, and ‘B’ sends you there, etc. Don’t let this fool you. The ‘F’ and ‘B’ encoding tells you where you go if you were doing a binary search. However, if you performed a binary search and wrote down the directions you took as bits, you would have written down the index you ended up at in binary (well, plus/minus one depending on how you index). So what the encoding really is, is a binary number. You just have to decode this particular encoding. The ‘F’ and ‘B’ characters are bits, ‘F’ is zero and ‘B’ is one.</p>
 <p>There is another bit of misdirection. The description tells you to decode row and column separately, but a column is a three-bit number, and you are to multiply the row by 8 and then add the two. Well, multiplying by 8 is the same as shifting the number by three bits, so <em>really</em> both row and column encode a single binary number. For the row part, ‘F’ is zero and ‘B’ is one, and for the column ‘L’ is zero, and ‘R’ is one. That is all there is to Puzzle #1: taking the sequence and interpret it as a binary number. Getting the largest number once you have decoded them is trivial.</p>
 <p>I have a mental deficiency: when I think low-level code, I think C, so I implemented the solution there first:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
-</span><span style="color:#008080"></span>
-<span style="color:#008080">#</span><span style="color:#008080">define N 10</span><span style="color:#008080">
-</span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">char</span> buf[N];
-
-<span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">int</span> encode(<span style="color:#000080;font-weight:bold">char</span> *start, <span style="color:#000080;font-weight:bold">char</span> *end)
-{
-  <span style="color:#000080;font-weight:bold">int</span> val = <span style="color:#00f">0</span>;
-  <span style="color:#000080;font-weight:bold">for</span> (; start != end; start++) {
-    val &lt;&lt;= <span style="color:#00f">1</span>;
-    <span style="color:#000080;font-weight:bold">if</span> (*start == <span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">B</span><span style="color:#800080">&#39;</span> || *start == <span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">R</span><span style="color:#800080">&#39;</span>) val |= <span style="color:#00f">1</span>;
-  }
-  <span style="color:#000080;font-weight:bold">return</span> val;
-}
-
-<span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">void</span>)
-{
-  <span style="color:#000080;font-weight:bold">int</span> max = <span style="color:#00f">0</span>;
-  <span style="color:#000080;font-weight:bold">while</span> (scanf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">%s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, buf) == <span style="color:#00f">1</span>) {
-    <span style="color:#000080;font-weight:bold">int</span> pass = encode(buf, buf + <span style="color:#00f">10</span>);
-    <span style="color:#000080;font-weight:bold">if</span> (pass &gt; max) max = pass;
-  }
-  printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">%d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, max);
-  <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-}
-</code></pre></div><p>Well, it is faster than Python, but that is in computing time. Not programmer time. The Python solution is much simpler:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">trans_table = str.maketrans({<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">F</span><span style="color:#00f">&#39;</span>: <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">0</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">B</span><span style="color:#00f">&#39;</span>: <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">1</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">L</span><span style="color:#00f">&#39;</span>: <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">0</span><span style="color:#00f">&#39;</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">R</span><span style="color:#00f">&#39;</span>: <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">1</span><span style="color:#00f">&#39;</span>})
-<span style="color:#000080;font-weight:bold">def</span> decode(x):
-    <span style="color:#000080;font-weight:bold">return</span> int(x.translate(trans_table), base = <span style="color:#00f">2</span>)
-
-f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/05/input.txt</span><span style="color:#00f">&#39;</span>)
-x = [decode(x.strip()) <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> f]
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {max(x)}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>I use the string <code>translate()</code> method. It needs a translation table that we build with <code>str.maketrans()</code>, and then it maps the relevant characters there. It is faster than if we replaced the characters call by calls to <code>x.replace()</code>, because it only makes one new string and not one per replacement. Anyway, replace the different FBLR characters to bits, and tell Python that you want an integer encoded in binary using <code>int(x, base = 2)</code>, and there you are.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
+</span></span></span><span style="display:flex;"><span><span style="color:#008080"></span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">#define N 10
+</span></span></span><span style="display:flex;"><span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">char</span> buf[N];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">int</span> encode(<span style="color:#000080;font-weight:bold">char</span> *start, <span style="color:#000080;font-weight:bold">char</span> *end)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">int</span> val = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> (; start != end; start++) {
+</span></span><span style="display:flex;"><span>    val &lt;&lt;= <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (*start == <span style="color:#800080">&#39;B&#39;</span> || *start == <span style="color:#800080">&#39;R&#39;</span>) val |= <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> val;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">int</span> max = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">while</span> (scanf(<span style="color:#00f">&#34;%s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, buf) == <span style="color:#00f">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">int</span> pass = encode(buf, buf + <span style="color:#00f">10</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (pass &gt; max) max = pass;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  printf(<span style="color:#00f">&#34;%d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, max);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Well, it is faster than Python, but that is in computing time. Not programmer time. The Python solution is much simpler:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>trans_table = str.maketrans({<span style="color:#00f">&#39;F&#39;</span>: <span style="color:#00f">&#39;0&#39;</span>, <span style="color:#00f">&#39;B&#39;</span>: <span style="color:#00f">&#39;1&#39;</span>, <span style="color:#00f">&#39;L&#39;</span>: <span style="color:#00f">&#39;0&#39;</span>, <span style="color:#00f">&#39;R&#39;</span>: <span style="color:#00f">&#39;1&#39;</span>})
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> decode(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> int(x.translate(trans_table), base = <span style="color:#00f">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/05/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>x = [decode(x.strip()) <span style="color:#000080;font-weight:bold">for</span> x <span style="font-weight:bold">in</span> f]
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>max(x)<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>I use the string <code>translate()</code> method. It needs a translation table that we build with <code>str.maketrans()</code>, and then it maps the relevant characters there. It is faster than if we replaced the characters call by calls to <code>x.replace()</code>, because it only makes one new string and not one per replacement. Anyway, replace the different FBLR characters to bits, and tell Python that you want an integer encoded in binary using <code>int(x, base = 2)</code>, and there you are.</p>
 <p>For Puzzle #2, we need to find a missing seat. If you decode the description, you see that between the smallest and the largest passport, there is one empty seat. I didn’t read it that way, and only got that there would be some seat with the one before and the one after occupied, so my C solution looks like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#008080">#</span><span style="color:#008080">include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
-</span><span style="color:#008080"></span>
-<span style="color:#008080">#</span><span style="color:#008080">define N 10</span><span style="color:#008080">
-</span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">char</span> buf[N];
-
-<span style="color:#008080">#</span><span style="color:#008080">define NO_SEATS (1 &lt;&lt; N)</span><span style="color:#008080">
-</span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">int</span> seats[NO_SEATS]; <span style="color:#080;font-style:italic">// zero initialised
-</span><span style="color:#080;font-style:italic"></span>
-<span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">int</span> encode(<span style="color:#000080;font-weight:bold">char</span> *start, <span style="color:#000080;font-weight:bold">char</span> *end)
-{
-  <span style="color:#000080;font-weight:bold">int</span> val = <span style="color:#00f">0</span>;
-  <span style="color:#000080;font-weight:bold">for</span> (; start != end; start++) {
-    val &lt;&lt;= <span style="color:#00f">1</span>;
-    <span style="color:#000080;font-weight:bold">if</span> (*start == <span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">B</span><span style="color:#800080">&#39;</span> || *start == <span style="color:#00f"></span><span style="color:#800080">&#39;</span><span style="color:#800080">R</span><span style="color:#800080">&#39;</span>) val |= <span style="color:#00f">1</span>;
-  }
-  <span style="color:#000080;font-weight:bold">return</span> val;
-}
-
-<span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">void</span>)
-{
-  <span style="color:#000080;font-weight:bold">while</span> (scanf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">%s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, buf) == <span style="color:#00f">1</span>) {
-    seats[encode(buf, buf + <span style="color:#00f">10</span>)] = <span style="color:#00f">1</span>;
-  }
-  <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> i = <span style="color:#00f">1</span>; i &lt; NO_SEATS - <span style="color:#00f">1</span>; i++) {
-    <span style="color:#000080;font-weight:bold">if</span> (seats[i - <span style="color:#00f">1</span>] == <span style="color:#00f">1</span> &amp;&amp; seats[i] == <span style="color:#00f">0</span> &amp;&amp; seats[i + <span style="color:#00f">1</span>] == <span style="color:#00f">1</span>) {
-      printf(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">%d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, i);
-      <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-    }
-  }
-  <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
-}
-</code></pre></div><p>It is plenty fast enough, but one you discover that you are looking for one such index you can also do:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">occ_seats = set(x)
-all_seats = { *range(min(x),max(x)+<span style="color:#00f">1</span>) }
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {(all_seats - occ_seats)}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>Here, <code>occ_seats</code> contains all the occupied seats and <code>all_seats</code> contains all seats between the smallest and the largest, and their difference is the one available seat. The <code>*</code> in the definition of <code>all_seats</code> is rather important, so don’t forget it. We create a set from the elements in the iterator we get out of the call to <code>range()</code>, not a set that contains the iterator.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#008080">#include</span> <span style="color:#008080">&lt;stdio.h&gt;</span><span style="color:#008080">
+</span></span></span><span style="display:flex;"><span><span style="color:#008080"></span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">#define N 10
+</span></span></span><span style="display:flex;"><span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">char</span> buf[N];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">#define NO_SEATS (1 &lt;&lt; N)
+</span></span></span><span style="display:flex;"><span><span style="color:#008080"></span><span style="color:#000080;font-weight:bold">int</span> seats[NO_SEATS]; <span style="color:#080;font-style:italic">// zero initialised
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">static</span> <span style="color:#000080;font-weight:bold">int</span> encode(<span style="color:#000080;font-weight:bold">char</span> *start, <span style="color:#000080;font-weight:bold">char</span> *end)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">int</span> val = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> (; start != end; start++) {
+</span></span><span style="display:flex;"><span>    val &lt;&lt;= <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (*start == <span style="color:#800080">&#39;B&#39;</span> || *start == <span style="color:#800080">&#39;R&#39;</span>) val |= <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> val;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">int</span> main(<span style="color:#000080;font-weight:bold">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">while</span> (scanf(<span style="color:#00f">&#34;%s</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, buf) == <span style="color:#00f">1</span>) {
+</span></span><span style="display:flex;"><span>    seats[encode(buf, buf + <span style="color:#00f">10</span>)] = <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> i = <span style="color:#00f">1</span>; i &lt; NO_SEATS - <span style="color:#00f">1</span>; i++) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (seats[i - <span style="color:#00f">1</span>] == <span style="color:#00f">1</span> &amp;&amp; seats[i] == <span style="color:#00f">0</span> &amp;&amp; seats[i + <span style="color:#00f">1</span>] == <span style="color:#00f">1</span>) {
+</span></span><span style="display:flex;"><span>      printf(<span style="color:#00f">&#34;%d</span><span style="color:#00f">\n</span><span style="color:#00f">&#34;</span>, i);
+</span></span><span style="display:flex;"><span>      <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It is plenty fast enough, but one you discover that you are looking for one such index you can also do:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>occ_seats = set(x)
+</span></span><span style="display:flex;"><span>all_seats = { *range(min(x),max(x)+<span style="color:#00f">1</span>) }
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #2: </span><span style="color:#00f">{</span>(all_seats - occ_seats)<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>Here, <code>occ_seats</code> contains all the occupied seats and <code>all_seats</code> contains all seats between the smallest and the largest, and their difference is the one available seat. The <code>*</code> in the definition of <code>all_seats</code> is rather important, so don’t forget it. We create a set from the elements in the iterator we get out of the call to <code>range()</code>, not a set that contains the iterator.</p>
 <p>There is a way here that you can get a binary search into the puzzle if you are really dying to do so. If you are searching for the one missing seat in <code>x</code>, you can first sort <code>x</code>. For all indices less than the missing value, <code>min(x)+i == x[i]</code>, and for all indices above the missing value, <code>min(x)+i == x[i]+1</code>. You can use that for a binary search. If you started out with a sorted <code>x</code>, this would be an excellent idea. However, you don’t. If you have to sort <code>x</code> first, you will be using at least O(n) time to do so, and that is only if you do some indexing sort; otherwise, you use O(n log n). The linear scan through the seats in the C code also takes time O(n) and is faster than any sorting attempts. The set-based search is easier to program, and takes fewer lines of code, but is less efficient than the linear scan. It is still faster than the binary search solution, however.</p>
 <p>So, yeah, the description tries to trick you into thinking binary search, but you should be thinking binary numbers. Once you see that the seat encoding is a binary number, you are done with the puzzle. I am lucky enough that I have seen such problems often enough that I didn’t have to work it out this time, but of course, I had to the first couple of times I had a problem like this.</p>
 
@@ -545,59 +518,6 @@ all_seats = { *range(min(x),max(x)+<span style="color:#00f">1</span>) }
     </ul>
 </section>
     
-        <section class="comments-block">
-      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
-</section>
-
-<section id="disqus_thread"></section>
-
-<script>
-      (function () {
-            
-            
-            if (window.location.hostname == "localhost")
-                  return;
-
-            var disqus_loaded = false;
-            var disqus_shortname = 'mailund-dk';
-            var disqus_button = document.getElementById("show-comments");
-
-            disqus_button.style.display = "";
-            disqus_button.addEventListener("click", disqus, false);
-
-            function disqus() {
-
-                  if (!disqus_loaded) {
-                        disqus_loaded = true;
-
-                        var e = document.createElement("script");
-                        e.type = "text/javascript";
-                        e.async = true;
-                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
-                        (document.getElementsByTagName("head")[0] ||
-                              document.getElementsByTagName("body")[0])
-                        .appendChild(e);
-
-                        
-                        document.getElementById("show-comments").style.display = "none";
-                  }
-            }
-
-            
-            var hash = window.location.hash.substr(1);
-            if (hash.length > 8) {
-                  if (hash.substring(0, 8) == "comment-") {
-                        disqus();
-                  }
-            }
-
-            
-            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
-                  disqus();
-            }
-      })();
-</script>
-    
 
 
 
@@ -605,7 +525,7 @@ all_seats = { *range(min(x),max(x)+<span style="color:#00f">1</span>) }
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund |
+        <h6>Copyright © 2020-2025 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

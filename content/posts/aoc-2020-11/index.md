@@ -72,7 +72,7 @@ Merry Christmas, everyone.
 
 ### Update 26th Dec 2020
 
-{{< tweet 1342372049445130242 >}}
+{{< x user="@YassineAlouini" id="1342372049445130242" >}}
 
 Yup, that is more elegant:
 
@@ -99,7 +99,7 @@ The stuff about k-root in my tweet is nonsens. I started out looking at it like 
 
 It was pointed out to me that I shouldn’t expect a theoretically faster solution.
 
-{{< tweet 1342616617461702657 >}}
+{{< x user="@thomasahle" id="1342616617461702657" >}}
 
 A friend of mine told me that he did have an efficient algorithm for discrete logarithm once, but forgot to write it down. I hope he remembered to write down his notes for my upcoming C pointers book, because he is currently reviewing it…
 

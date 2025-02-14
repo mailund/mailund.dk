@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>functional-programming on Mailund on the Internet</title>
+    <title>Functional-Programming on Mailund on the Internet</title>
     <link>https://mailund.dk/tags/functional-programming/</link>
-    <description>Recent content in functional-programming on Mailund on the Internet</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2020 - Thomas Mailund</copyright>
+    <description>Recent content in Functional-Programming on Mailund on the Internet</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://mailund.dk/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://mailund.dk/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Errata: Functional Programming in R</title>
       <link>https://mailund.dk/errata/fpinr/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://mailund.dk/errata/fpinr/</guid>
-      <description>Chapter 2 The Structure of a Recursive Function, page 32: &amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;
-Chapter 3 Nested Functions and Scopes, page 53ff.</description>
+      <description>&lt;h2 id=&#34;chapter-2&#34;&gt;Chapter 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;the-structure-of-a-recursive-function-page-32&#34;&gt;The Structure of a Recursive Function, page 32:&lt;/h3&gt;&#xA;&lt;p&gt;&amp;ldquo;Here I am assuming that is an integer…&amp;rdquo; should be &amp;ldquo;Here I am assuming that n is an integer…&amp;rdquo;&lt;/p&gt;&#xA;&lt;h2 id=&#34;chapter-3&#34;&gt;Chapter 3&lt;/h2&gt;&#xA;&lt;h3 id=&#34;nested-functions-and-scopes-page-53ff&#34;&gt;Nested Functions and Scopes, page 53ff.&lt;/h3&gt;&#xA;&lt;p&gt;The code defines function g as &lt;code&gt;g &amp;lt;- function(y) x + y&lt;/code&gt; but in the environment chains g is defined as &lt;code&gt;g &amp;lt;- function(y) x + 1&lt;/code&gt;; that should also be &lt;code&gt;g &amp;lt;- function(y) x + y&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Errata: Functional Data-Structures in R</title>
       <link>https://mailund.dk/errata/fdsinr/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://mailund.dk/errata/fdsinr/</guid>
-      <description>One big regret I have about this book is that I didn’t implement the pattern matching code from Domain-Specific Languages in R before this book. Pattern matching makes implementing data structures much easier.</description>
+      <description>&lt;p&gt;One big regret I have about this book is that I didn’t implement the pattern matching code from &lt;a href=&#34;https://amzn.to/2QHMNLL&#34;&gt;&lt;em&gt;Domain-Specific Languages in R&lt;/em&gt;&lt;/a&gt; before this book. Pattern matching makes implementing data structures &lt;em&gt;much&lt;/em&gt; easier.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

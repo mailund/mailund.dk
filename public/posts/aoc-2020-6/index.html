@@ -7,7 +7,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
-  <meta name="author" content="Thomas Mailund" />
+  <meta name="author" content="" />
   
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -63,19 +63,6 @@
    });
  </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-10582357-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
 </head>
 
 <body>
@@ -86,21 +73,7 @@ if (!doNotTrack) {
             </h1>
 
       <ul id="social-media">
-        
-        <li><a href="https://twitter.com/ThomasMailund"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.linkedin.com/in/thomas-mailund-94153b1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://github.com/mailund"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
-          
-        <li><a href="https://www.facebook.com/mailund"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-          
-        <li><a href="https://patreon.com/mailund"><i class="fab fa-patreon fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.goodreads.com/author/show/15484380.Thomas_Mailund"><i class="fab fa-goodreads fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.stackoverflow.com/users/2170269/thomas-mailund"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
-        
+                
       </ul>
       
       <p><em>On Writing, Science, Programming and more</em></p>
@@ -204,87 +177,87 @@ if (!doNotTrack) {
 <p>On <a href="https://adventofcode.com/2020/day/17">Day 17</a> we return to <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway’s Game of Life</a>. We saw it last on <a href="https://mailund.dk/posts/aoc-2020-3/">day 11</a>, where we evaluated maps according to local rules. Now, we have to do the same thing again, but this time, the map we evaluate is infinite!</p>
 <p>How do we represent an infinite map? The obvious answer is that we don’t represent all coordinates explicitly. We start out with infinitely many inactive coordinates and a finite set of active coordinates. The rule for changing the map can only make finitely many active coordinates because it needs active coordinates to create one. This tells us that in finitely many steps, we can only have finitely many active coordinates. If we keep track of the coordinates that are active only, then we have a finite representation of a map.</p>
 <p>I wrapped up this idea in a class, <code>Map</code>, that pretends to be a table—it implements <code>__getitem__()</code> and <code>__setitem__()</code>, but it never inserts inactive coordinates, and under the hood, it uses a set of active coordinates to represent the state. Otherwise, it closely resembles the code from day 6 in how it works.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">from</span> itertools <span style="color:#000080;font-weight:bold">import</span> product
-_NEIGHBOUR_OFFSETS = (-<span style="color:#00f">1</span>,<span style="color:#00f">0</span>,<span style="color:#00f">1</span>)
-_NEIGHBOURS = [(i,j,k)
-               <span style="color:#000080;font-weight:bold">for</span> i,j,k <span style="font-weight:bold">in</span> product(*([_NEIGHBOUR_OFFSETS] * <span style="color:#00f">3</span>)) 
-               <span style="color:#000080;font-weight:bold">if</span> (i,j,k) != (<span style="color:#00f">0</span>,<span style="color:#00f">0</span>,<span style="color:#00f">0</span>)]
-
-<span style="color:#000080;font-weight:bold">def</span> expand_dim(val, dim):
-    <span style="color:#000080;font-weight:bold">return</span> (min(val, dim[<span style="color:#00f">0</span>]), max(val+<span style="color:#00f">1</span>,dim[<span style="color:#00f">1</span>]))
-
-<span style="color:#000080;font-weight:bold">class</span> Map(object):
-    <span style="color:#000080;font-weight:bold">def</span> __init__(self):
-        self.active = set()
-        self.x_dim = (<span style="color:#00f">0</span>,<span style="color:#00f">0</span>)
-        self.y_dim = (<span style="color:#00f">0</span>,<span style="color:#00f">0</span>)
-        self.z_dim = (<span style="color:#00f">0</span>,<span style="color:#00f">0</span>)
-
-    <span style="color:#000080;font-weight:bold">def</span> read_init(self, init_map):
-        <span style="color:#000080;font-weight:bold">for</span> i,row <span style="font-weight:bold">in</span> enumerate(init_map):
-            <span style="color:#000080;font-weight:bold">for</span> j,symb <span style="font-weight:bold">in</span> enumerate(row):
-                self[i,j,<span style="color:#00f">0</span>] = symb
-        <span style="color:#000080;font-weight:bold">return</span> self
-
-    <span style="color:#000080;font-weight:bold">def</span> __setitem__(self, coord, value):
-        <span style="color:#080;font-style:italic"># Only store the active coordinates</span>
-        <span style="color:#000080;font-weight:bold">if</span> value != <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">#</span><span style="color:#00f">&#39;</span>: <span style="color:#000080;font-weight:bold">return</span>
-        self.active.add(coord)
-        self.x_dim = expand_dim(coord[<span style="color:#00f">0</span>], self.x_dim)
-        self.y_dim = expand_dim(coord[<span style="color:#00f">1</span>], self.y_dim)
-        self.z_dim = expand_dim(coord[<span style="color:#00f">2</span>], self.z_dim)
-    
-    <span style="color:#000080;font-weight:bold">def</span> __getitem__(self, coord):
-        <span style="color:#080;font-style:italic"># Fake infinite space</span>
-        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">#</span><span style="color:#00f">&#39;</span> <span style="color:#000080;font-weight:bold">if</span> coord <span style="font-weight:bold">in</span> self.active <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">.</span><span style="color:#00f">&#39;</span>
-
-    <span style="color:#000080;font-weight:bold">def</span> __len__(self):
-        <span style="color:#080;font-style:italic"># The number of active locations in the map</span>
-        <span style="color:#000080;font-weight:bold">return</span> len(self.active)
-
-    <span style="color:#000080;font-weight:bold">def</span> neighbours(self, x, y, z):
-        <span style="color:#080;font-style:italic"># The number of active neighbours is the number of coordinates</span>
-        <span style="color:#080;font-style:italic"># we store in the neighbourhood.</span>
-        <span style="color:#000080;font-weight:bold">return</span> sum( ((x+i,y+j,z+k) <span style="font-weight:bold">in</span> self.active) 
-                    <span style="color:#000080;font-weight:bold">for</span> i,j,k <span style="font-weight:bold">in</span> _NEIGHBOURS )
-</code></pre></div><p>The map also keeps track of the range of coordinates in each dimension, where it stores active values. We use these when we compute a new map.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">from</span> itertools <span style="color:#000080;font-weight:bold">import</span> product
+</span></span><span style="display:flex;"><span>_NEIGHBOUR_OFFSETS = (-<span style="color:#00f">1</span>,<span style="color:#00f">0</span>,<span style="color:#00f">1</span>)
+</span></span><span style="display:flex;"><span>_NEIGHBOURS = [(i,j,k)
+</span></span><span style="display:flex;"><span>               <span style="color:#000080;font-weight:bold">for</span> i,j,k <span style="font-weight:bold">in</span> product(*([_NEIGHBOUR_OFFSETS] * <span style="color:#00f">3</span>)) 
+</span></span><span style="display:flex;"><span>               <span style="color:#000080;font-weight:bold">if</span> (i,j,k) != (<span style="color:#00f">0</span>,<span style="color:#00f">0</span>,<span style="color:#00f">0</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> expand_dim(val, dim):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> (min(val, dim[<span style="color:#00f">0</span>]), max(val+<span style="color:#00f">1</span>,dim[<span style="color:#00f">1</span>]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">class</span> Map(object):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self.active = set()
+</span></span><span style="display:flex;"><span>        self.x_dim = (<span style="color:#00f">0</span>,<span style="color:#00f">0</span>)
+</span></span><span style="display:flex;"><span>        self.y_dim = (<span style="color:#00f">0</span>,<span style="color:#00f">0</span>)
+</span></span><span style="display:flex;"><span>        self.z_dim = (<span style="color:#00f">0</span>,<span style="color:#00f">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">def</span> read_init(self, init_map):
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">for</span> i,row <span style="font-weight:bold">in</span> enumerate(init_map):
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">for</span> j,symb <span style="font-weight:bold">in</span> enumerate(row):
+</span></span><span style="display:flex;"><span>                self[i,j,<span style="color:#00f">0</span>] = symb
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> self
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">def</span> __setitem__(self, coord, value):
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-style:italic"># Only store the active coordinates</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> value != <span style="color:#00f">&#39;#&#39;</span>: <span style="color:#000080;font-weight:bold">return</span>
+</span></span><span style="display:flex;"><span>        self.active.add(coord)
+</span></span><span style="display:flex;"><span>        self.x_dim = expand_dim(coord[<span style="color:#00f">0</span>], self.x_dim)
+</span></span><span style="display:flex;"><span>        self.y_dim = expand_dim(coord[<span style="color:#00f">1</span>], self.y_dim)
+</span></span><span style="display:flex;"><span>        self.z_dim = expand_dim(coord[<span style="color:#00f">2</span>], self.z_dim)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">def</span> __getitem__(self, coord):
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-style:italic"># Fake infinite space</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">&#39;#&#39;</span> <span style="color:#000080;font-weight:bold">if</span> coord <span style="font-weight:bold">in</span> self.active <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">&#39;.&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">def</span> __len__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-style:italic"># The number of active locations in the map</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> len(self.active)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">def</span> neighbours(self, x, y, z):
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-style:italic"># The number of active neighbours is the number of coordinates</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-style:italic"># we store in the neighbourhood.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span> sum( ((x+i,y+j,z+k) <span style="font-weight:bold">in</span> self.active) 
+</span></span><span style="display:flex;"><span>                    <span style="color:#000080;font-weight:bold">for</span> i,j,k <span style="font-weight:bold">in</span> _NEIGHBOURS )
+</span></span></code></pre></div><p>The map also keeps track of the range of coordinates in each dimension, where it stores active values. We use these when we compute a new map.</p>
 <p>When we compute an updated map, we don’t have to consider coordinates more than one element away from the closest active cell. If we are more than one away, we are surrounded by inactive cells, and then we can only generate inactive cells—and we don’t have to worry about those, they are already implicitly there. So when computing the next map, we expand the coordinates in the old map by one in each direction, and then we iterate over all coordinates in the box that this gives us.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> rule(pos, no_act):
-    <span style="color:#000080;font-weight:bold">if</span> pos == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">#</span><span style="color:#00f">&#39;</span>: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">#</span><span style="color:#00f">&#39;</span> <span style="color:#000080;font-weight:bold">if</span> no_act <span style="font-weight:bold">in</span> [<span style="color:#00f">2</span>,<span style="color:#00f">3</span>] <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">.</span><span style="color:#00f">&#39;</span>
-    <span style="color:#000080;font-weight:bold">else</span>:          <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">#</span><span style="color:#00f">&#39;</span> <span style="color:#000080;font-weight:bold">if</span> no_act == <span style="color:#00f">3</span> <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">.</span><span style="color:#00f">&#39;</span>
-
-<span style="color:#000080;font-weight:bold">def</span> grow_dim(dim):
-    <span style="color:#000080;font-weight:bold">return</span> (dim[<span style="color:#00f">0</span>] - <span style="color:#00f">1</span>, dim[<span style="color:#00f">1</span>] + <span style="color:#00f">1</span>)
-
-<span style="color:#000080;font-weight:bold">def</span> next_map(old_map):
-    new_map = Map()
-    x0,x1 = grow_dim(old_map.x_dim)
-    y0,y1 = grow_dim(old_map.y_dim)
-    z0,z1 = grow_dim(old_map.z_dim)
-    <span style="color:#000080;font-weight:bold">for</span> x, y, z <span style="font-weight:bold">in</span> product(range(x0,x1), range(y0,y1), range(z0,z1)):
-        new_map[x,y,z] = rule(old_map[x,y,z],
-                              old_map.neighbours(x,y,z))
-    <span style="color:#000080;font-weight:bold">return</span> new_map
-</code></pre></div><p>We can be smarter here, and instead iterate through the neighbours of the active coordinates we have, applying the rule there instead. This isn’t what I did with my first solution, but it isn’t hard to do. It could look like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> next_map(old_map):
-    new_map = Map()
-    <span style="color:#000080;font-weight:bold">for</span> ax,ay,az <span style="font-weight:bold">in</span> old_map.active:
-        <span style="color:#000080;font-weight:bold">for</span> x,y,z <span style="font-weight:bold">in</span> ((ax+i,ay+j,az+k) <span style="color:#000080;font-weight:bold">for</span> i,j,k <span style="font-weight:bold">in</span> _NEIGHBOURS):
-            new_map[x,y,z] = rule(old_map[x,y,z],
-                                  old_map.neighbours(x,y,z))
-    <span style="color:#000080;font-weight:bold">return</span> new_map
-</code></pre></div><p>On my input data, it was slower than just running through the entire box, but that might change depending on how the system evolves.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> rule(pos, no_act):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> pos == <span style="color:#00f">&#39;#&#39;</span>: <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">&#39;#&#39;</span> <span style="color:#000080;font-weight:bold">if</span> no_act <span style="font-weight:bold">in</span> [<span style="color:#00f">2</span>,<span style="color:#00f">3</span>] <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">&#39;.&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">else</span>:          <span style="color:#000080;font-weight:bold">return</span> <span style="color:#00f">&#39;#&#39;</span> <span style="color:#000080;font-weight:bold">if</span> no_act == <span style="color:#00f">3</span> <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">&#39;.&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> grow_dim(dim):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> (dim[<span style="color:#00f">0</span>] - <span style="color:#00f">1</span>, dim[<span style="color:#00f">1</span>] + <span style="color:#00f">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> next_map(old_map):
+</span></span><span style="display:flex;"><span>    new_map = Map()
+</span></span><span style="display:flex;"><span>    x0,x1 = grow_dim(old_map.x_dim)
+</span></span><span style="display:flex;"><span>    y0,y1 = grow_dim(old_map.y_dim)
+</span></span><span style="display:flex;"><span>    z0,z1 = grow_dim(old_map.z_dim)
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> x, y, z <span style="font-weight:bold">in</span> product(range(x0,x1), range(y0,y1), range(z0,z1)):
+</span></span><span style="display:flex;"><span>        new_map[x,y,z] = rule(old_map[x,y,z],
+</span></span><span style="display:flex;"><span>                              old_map.neighbours(x,y,z))
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> new_map
+</span></span></code></pre></div><p>We can be smarter here, and instead iterate through the neighbours of the active coordinates we have, applying the rule there instead. This isn’t what I did with my first solution, but it isn’t hard to do. It could look like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> next_map(old_map):
+</span></span><span style="display:flex;"><span>    new_map = Map()
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> ax,ay,az <span style="font-weight:bold">in</span> old_map.active:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">for</span> x,y,z <span style="font-weight:bold">in</span> ((ax+i,ay+j,az+k) <span style="color:#000080;font-weight:bold">for</span> i,j,k <span style="font-weight:bold">in</span> _NEIGHBOURS):
+</span></span><span style="display:flex;"><span>            new_map[x,y,z] = rule(old_map[x,y,z],
+</span></span><span style="display:flex;"><span>                                  old_map.neighbours(x,y,z))
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> new_map
+</span></span></code></pre></div><p>On my input data, it was slower than just running through the entire box, but that might change depending on how the system evolves.</p>
 <p>Evolving the map for a number of iterations is trivial with the code we have above, so answering the puzzle is equally trivial now:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> evolve(m, n):
-    <span style="color:#000080;font-weight:bold">for</span> _ <span style="font-weight:bold">in</span> range(n):
-        m = next_map(m)
-    <span style="color:#000080;font-weight:bold">return</span> m
-
-f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/17/input.txt</span><span style="color:#00f">&#39;</span>)
-init_map = f.read().split()
-m = Map().read_init(init_map)
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {len(evolve(m, 6))}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div><p>Puzzle #2 is exactly the same, except that you add one extra dimension. Everywhere that you have <code>x,y,z</code> in the code above, you have <code>x,y,z,w</code>, and you keep track of the <code>w</code> dimension the same way as you keep track of the other dimensions. I will not list the code here, because it really is just a repeat.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> evolve(m, n):
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> _ <span style="font-weight:bold">in</span> range(n):
+</span></span><span style="display:flex;"><span>        m = next_map(m)
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> m
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/17/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>init_map = f.read().split()
+</span></span><span style="display:flex;"><span>m = Map().read_init(init_map)
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>len(evolve(m, <span style="color:#00f">6</span>))<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div><p>Puzzle #2 is exactly the same, except that you add one extra dimension. Everywhere that you have <code>x,y,z</code> in the code above, you have <code>x,y,z,w</code>, and you keep track of the <code>w</code> dimension the same way as you keep track of the other dimensions. I will not list the code here, because it really is just a repeat.</p>
 <h2 id="day-18--operation-order">Day 18 — Operation Order</h2>
 <p>Today, <a href="https://adventofcode.com/2020/day/18">day 18</a>, we have to do <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiGurfB_tbtAhUKmIsKHR1OAAUQyCkwAHoECAIQAw&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DUIKGV2cTgqA&amp;usg=AOvVaw3jVIdCqtpsS5Vv2uTSmZY9">new math</a>. Well, what we have to do is evaluate expressions with addition, multiplication, and parentheses. For Puzzle #1, there is no precedence, and you have to evaluate them left-to-right, and in Puzzle #1, addition gets higher precedence than multiplication. Otherwise, you could, of course, paste them into any calculator and get the results this way…</p>
 <p>Parsing and evaluating expressions is something I have done many times, and only a few weeks ago, we had exercises in my class about it, so I felt confident. However, I was overconfident. I know the “Right Way” to do it, but this is a quick exercise, so I felt confident that I could cut a few corners. I was wrong, and I spent an hour debugging when I had to fix the hack from Puzzle #1 to solve Puzzle #2. I will only show the solution for Puzzle #2 here (as both puzzles are a specialisation of the general approach that I should have taken in the first place).</p>
@@ -294,7 +267,7 @@ m = Map().read_init(init_map)
 <p>In the solution below, I put operands and operators on the stack when I see them, but before I put another operator on the stack, I will evaluate the top of the stack. That means we evaluate left-to-right, as we are supposed to in Puzzle #1. When I evaluate, I know the operator precedence of the next operator, because I have it in my hand when I call the evaluation, so I can make sure that I only evaluate expressions with higher binding.</p>
 <p>For example, let us say I have the expression <code>1 + 3 * 4</code>. Then I first put 1 on the stack, so I have <code>[1]</code>. Then I see the operator, <code>+</code>, and I evaluate the top of the stack, which doesn’t do anything because we only have a single value there, but that value is the result. After evaluating the left-hand-side of <code>+</code>, I push the operator, and my stack is now <code>[1, +]</code>. Then I get the right-hand-side, 3, and push that onto the stack, which becomes <code>[1, +, 3]</code>. Then we see the operator <code>*</code>, which means that we should evaluate its left-hand-side. This is where precedence is used. If <code>*</code> binds tighter than <code>+</code>, as it usually does, then we cannot evaluate past <code>+</code> on the stack. The left-hand-side of the multiplication is 3 and not (1+3). So when evaluating the stack, we run down until we see + and then stop. If we give <code>+</code> higher precedence, then we should evaluate the addition, and then we evaluate the entire stack, leaving the value 4 there, which after we put <code>*</code> on there as well makes the stack <code>[4, *]</code>.</p>
 <p>If we evaluate left-to-right, not considering operator binding, then the stack would be this during the evaluation:</p>
-<pre><code>[]        =&gt;
+<pre tabindex="0"><code>[]        =&gt;
 [1]       =&gt;
 [1, +]    =&gt;
 [1, +, 3] =&gt; (and now evaluate when we see *)
@@ -302,7 +275,7 @@ m = Map().read_init(init_map)
 [4, *, 4] =&gt; (and now evaluate for the final result)
 [16]
 </code></pre><p>If addition binds tighter than multiplication, as in Puzzle #2, you have the same evaluation. If multiplication binds tighter, we do not evaluate past the plus when we evaluate for <code>*</code>, and then the evaluation would be</p>
-<pre><code>[]              =&gt;
+<pre tabindex="0"><code>[]              =&gt;
 [1]             =&gt;
 [1, +]          =&gt;
 [1, +, 3]       =&gt; (with * we do not evaluate past +)
@@ -311,66 +284,66 @@ m = Map().read_init(init_map)
 [1, +, 3, *, 4] =&gt; (and now evaluate for the final result)
 [13]
 </code></pre><p>The stack evaluation is fairly straightforward (when you do it this way and don’t try to be smart—I am still cursing myself).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">from</span> operator <span style="color:#000080;font-weight:bold">import</span> add, mul
-op_tbl = {<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">+</span><span style="color:#00f">&#39;</span>: add, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">*</span><span style="color:#00f">&#39;</span>: mul}
-
-<span style="color:#000080;font-weight:bold">def</span> eval_stack(stack, precedence):
-    rhs = stack.pop()
-    <span style="color:#000080;font-weight:bold">while</span> stack:
-        <span style="color:#000080;font-weight:bold">if</span> precedence_table[stack[-<span style="color:#00f">1</span>]] &gt; precedence:
-            <span style="color:#000080;font-weight:bold">break</span>
-        op = stack.pop()
-        lhs = stack.pop()
-        rhs = op_tbl[op](lhs,rhs)
-    stack.append(rhs)
-</code></pre></div><p>I use a table to evaluate operations; that is the easiest way to do it, I think. I use another table to set precedence levels, and the evaluation stops if we run into an operation with higher precedence. I might have gotten the order of this wrong; we don’t go past something that binds looser than the operator we use right now, so maybe it would be better to change the order and the comparison, but you can multiply everything by minus one yourself. I have already spent more time on this than I want to.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">from</span> operator <span style="color:#000080;font-weight:bold">import</span> add, mul
+</span></span><span style="display:flex;"><span>op_tbl = {<span style="color:#00f">&#39;+&#39;</span>: add, <span style="color:#00f">&#39;*&#39;</span>: mul}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> eval_stack(stack, precedence):
+</span></span><span style="display:flex;"><span>    rhs = stack.pop()
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> stack:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> precedence_table[stack[-<span style="color:#00f">1</span>]] &gt; precedence:
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span>        op = stack.pop()
+</span></span><span style="display:flex;"><span>        lhs = stack.pop()
+</span></span><span style="display:flex;"><span>        rhs = op_tbl[op](lhs,rhs)
+</span></span><span style="display:flex;"><span>    stack.append(rhs)
+</span></span></code></pre></div><p>I use a table to evaluate operations; that is the easiest way to do it, I think. I use another table to set precedence levels, and the evaluation stops if we run into an operation with higher precedence. I might have gotten the order of this wrong; we don’t go past something that binds looser than the operator we use right now, so maybe it would be better to change the order and the comparison, but you can multiply everything by minus one yourself. I have already spent more time on this than I want to.</p>
 <p>We also need to handle parentheses, but the precedence table can handle that as well (and it was trying to handle parentheses in a different way that tripped me up). If we set the precedence of a left-parenthesis high, we won’t evaluate it past it. If we set the precedence of right-parentheses higher than the operators, but lower than the left-parenthesis, then evaluating with we see <code>)</code> will evaluate all the way down to the matching <code>(</code>.</p>
 <p>I would love to say that there are no special cases with parentheses, but we still have to treat them differently than operators. That is because the grammar for expressions treat them differently. The binary operators always have operands on the left and right, but left parentheses can either have the beginning of the expression on the left, or have an operator, and right parentheses can have the end of the expression on the right, or have operators. So the state of the stack is different when we encounter parentheses. When we see a ‘(‘, we cannot evaluate the stack, because we might have an operator on the top and not a number. So in the evaluation function, I handle the four different symbols separately—well, I treat <code>+</code> and <code>*</code> the same, but <code>(</code> and <code>)</code> I handle in separate if-branches.</p>
 <p>When I see a <code>(</code>, I put it on the stack. When I see an operator, I evaluate and then push the operator. When I see a <code>)</code>, I evaluate. Then I remove the corresponding left parenthesis afterwards.</p>
 <p>When I am through scanning the expression, I evaluate the full stack. It could be a complete expression, but only partially evaluated. We don’t evaluate until we see an operator or a right parenthesis, so if we scan through <code>2 + 2</code>, the stack would be <code>[2, +, 2]</code>, and we need to do the final evaluation. I do that with the highest precedence that I can think of, which happened to be 1234.</p>
 <p>The full solution looks like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">f = open(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">/Users/mailund/Projects/adventofcode/2020/18/input.txt</span><span style="color:#00f">&#39;</span>)
-expressions = [expr.replace(<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f"> </span><span style="color:#00f">&#34;</span>,<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">&#34;</span>)
-               <span style="color:#000080;font-weight:bold">for</span> expr <span style="font-weight:bold">in</span> f.read().strip().split(<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)]
-
-<span style="color:#000080;font-weight:bold">from</span> operator <span style="color:#000080;font-weight:bold">import</span> add, mul
-op_tbl = {<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">+</span><span style="color:#00f">&#39;</span>: add, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">*</span><span style="color:#00f">&#39;</span>: mul}
-
-<span style="color:#000080;font-weight:bold">def</span> eval_stack(stack, precedence):
-    rhs = stack.pop()
-    <span style="color:#000080;font-weight:bold">while</span> stack:
-        <span style="color:#000080;font-weight:bold">if</span> precedence_table[stack[-<span style="color:#00f">1</span>]] &gt; precedence:
-            <span style="color:#000080;font-weight:bold">break</span>
-        op = stack.pop()
-        lhs = stack.pop()
-        rhs = op_tbl[op](lhs,rhs)
-    stack.append(rhs)
-
-<span style="color:#000080;font-weight:bold">def</span> eval_expr(expr):
-    stack = []
-    <span style="color:#080;font-style:italic"># The numbers are single digits, so we can</span>
-    <span style="color:#080;font-style:italic"># look at individual characters--no lexer needed</span>
-    <span style="color:#000080;font-weight:bold">for</span> tok <span style="font-weight:bold">in</span> expr:
-        <span style="color:#000080;font-weight:bold">if</span> tok == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">(</span><span style="color:#00f">&#39;</span>:
-            stack.append(tok)
-        <span style="color:#000080;font-weight:bold">elif</span> tok <span style="font-weight:bold">in</span> <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">+*</span><span style="color:#00f">&#39;</span>:
-            eval_stack(stack, precedence_table[tok])
-            stack.append(tok)
-        <span style="color:#000080;font-weight:bold">elif</span> tok == <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">)</span><span style="color:#00f">&#39;</span>:
-            eval_stack(stack, precedence_table[<span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">)</span><span style="color:#00f">&#39;</span>])
-            stack.pop(-<span style="color:#00f">2</span>) <span style="color:#080;font-style:italic"># get rid of &#39;(&#39;</span>
-        <span style="color:#000080;font-weight:bold">else</span>:
-            stack.append(int(tok))
-
-    <span style="color:#080;font-style:italic"># End of expression</span>
-    eval_stack(stack, <span style="color:#00f">1234</span>) <span style="color:#080;font-style:italic"># 1234 is just max precedence</span>
-    <span style="color:#000080;font-weight:bold">return</span> stack[-<span style="color:#00f">1</span>]
-
-precedence_table = { <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">+</span><span style="color:#00f">&#39;</span>: <span style="color:#00f">0</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">*</span><span style="color:#00f">&#39;</span>: <span style="color:#00f">0</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">)</span><span style="color:#00f">&#39;</span>: <span style="color:#00f">2</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">(</span><span style="color:#00f">&#39;</span>: <span style="color:#00f">3</span> }
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #1: {sum( eval_expr(expr) for expr in expressions )}</span><span style="color:#00f">&#34;</span>)
-precedence_table = { <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">+</span><span style="color:#00f">&#39;</span>: <span style="color:#00f">0</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">*</span><span style="color:#00f">&#39;</span>: <span style="color:#00f">1</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">)</span><span style="color:#00f">&#39;</span>: <span style="color:#00f">2</span>, <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">(</span><span style="color:#00f">&#39;</span>: <span style="color:#00f">3</span> }
-<span style="color:#000080;font-weight:bold">print</span>(f<span style="color:#00f"></span><span style="color:#00f">&#34;</span><span style="color:#00f">Puzzle #2: {sum( eval_expr(expr) for expr in expressions )}</span><span style="color:#00f">&#34;</span>)
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>f = open(<span style="color:#00f">&#39;/Users/mailund/Projects/adventofcode/2020/18/input.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>expressions = [expr.replace(<span style="color:#00f">&#34; &#34;</span>,<span style="color:#00f">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>               <span style="color:#000080;font-weight:bold">for</span> expr <span style="font-weight:bold">in</span> f.read().strip().split(<span style="color:#00f">&#39;</span><span style="color:#00f">\n</span><span style="color:#00f">&#39;</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">from</span> operator <span style="color:#000080;font-weight:bold">import</span> add, mul
+</span></span><span style="display:flex;"><span>op_tbl = {<span style="color:#00f">&#39;+&#39;</span>: add, <span style="color:#00f">&#39;*&#39;</span>: mul}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> eval_stack(stack, precedence):
+</span></span><span style="display:flex;"><span>    rhs = stack.pop()
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> stack:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> precedence_table[stack[-<span style="color:#00f">1</span>]] &gt; precedence:
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span>        op = stack.pop()
+</span></span><span style="display:flex;"><span>        lhs = stack.pop()
+</span></span><span style="display:flex;"><span>        rhs = op_tbl[op](lhs,rhs)
+</span></span><span style="display:flex;"><span>    stack.append(rhs)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> eval_expr(expr):
+</span></span><span style="display:flex;"><span>    stack = []
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic"># The numbers are single digits, so we can</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic"># look at individual characters--no lexer needed</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> tok <span style="font-weight:bold">in</span> expr:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> tok == <span style="color:#00f">&#39;(&#39;</span>:
+</span></span><span style="display:flex;"><span>            stack.append(tok)
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">elif</span> tok <span style="font-weight:bold">in</span> <span style="color:#00f">&#39;+*&#39;</span>:
+</span></span><span style="display:flex;"><span>            eval_stack(stack, precedence_table[tok])
+</span></span><span style="display:flex;"><span>            stack.append(tok)
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">elif</span> tok == <span style="color:#00f">&#39;)&#39;</span>:
+</span></span><span style="display:flex;"><span>            eval_stack(stack, precedence_table[<span style="color:#00f">&#39;)&#39;</span>])
+</span></span><span style="display:flex;"><span>            stack.pop(-<span style="color:#00f">2</span>) <span style="color:#080;font-style:italic"># get rid of &#39;(&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>            stack.append(int(tok))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic"># End of expression</span>
+</span></span><span style="display:flex;"><span>    eval_stack(stack, <span style="color:#00f">1234</span>) <span style="color:#080;font-style:italic"># 1234 is just max precedence</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> stack[-<span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>precedence_table = { <span style="color:#00f">&#39;+&#39;</span>: <span style="color:#00f">0</span>, <span style="color:#00f">&#39;*&#39;</span>: <span style="color:#00f">0</span>, <span style="color:#00f">&#39;)&#39;</span>: <span style="color:#00f">2</span>, <span style="color:#00f">&#39;(&#39;</span>: <span style="color:#00f">3</span> }
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #1: </span><span style="color:#00f">{</span>sum( eval_expr(expr) <span style="color:#000080;font-weight:bold">for</span> expr <span style="font-weight:bold">in</span> expressions )<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span><span style="display:flex;"><span>precedence_table = { <span style="color:#00f">&#39;+&#39;</span>: <span style="color:#00f">0</span>, <span style="color:#00f">&#39;*&#39;</span>: <span style="color:#00f">1</span>, <span style="color:#00f">&#39;)&#39;</span>: <span style="color:#00f">2</span>, <span style="color:#00f">&#39;(&#39;</span>: <span style="color:#00f">3</span> }
+</span></span><span style="display:flex;"><span>print(<span style="color:#00f">f</span><span style="color:#00f">&#34;Puzzle #2: </span><span style="color:#00f">{</span>sum( eval_expr(expr) <span style="color:#000080;font-weight:bold">for</span> expr <span style="font-weight:bold">in</span> expressions )<span style="color:#00f">}</span><span style="color:#00f">&#34;</span>)
+</span></span></code></pre></div>
 
 </article>
 
@@ -390,59 +363,6 @@ precedence_table = { <span style="color:#00f"></span><span style="color:#00f">&#
     </ul>
 </section>
     
-        <section class="comments-block">
-      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
-</section>
-
-<section id="disqus_thread"></section>
-
-<script>
-      (function () {
-            
-            
-            if (window.location.hostname == "localhost")
-                  return;
-
-            var disqus_loaded = false;
-            var disqus_shortname = 'mailund-dk';
-            var disqus_button = document.getElementById("show-comments");
-
-            disqus_button.style.display = "";
-            disqus_button.addEventListener("click", disqus, false);
-
-            function disqus() {
-
-                  if (!disqus_loaded) {
-                        disqus_loaded = true;
-
-                        var e = document.createElement("script");
-                        e.type = "text/javascript";
-                        e.async = true;
-                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
-                        (document.getElementsByTagName("head")[0] ||
-                              document.getElementsByTagName("body")[0])
-                        .appendChild(e);
-
-                        
-                        document.getElementById("show-comments").style.display = "none";
-                  }
-            }
-
-            
-            var hash = window.location.hash.substr(1);
-            if (hash.length > 8) {
-                  if (hash.substring(0, 8) == "comment-") {
-                        disqus();
-                  }
-            }
-
-            
-            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
-                  disqus();
-            }
-      })();
-</script>
-    
 
 
 
@@ -450,7 +370,7 @@ precedence_table = { <span style="color:#00f"></span><span style="color:#00f">&#
 
 </main>
     <footer>
-        <h6>Copyright © 2020 - Thomas Mailund |
+        <h6>Copyright © 2020-2025 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
     </footer>

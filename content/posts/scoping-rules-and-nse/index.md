@@ -8,13 +8,13 @@ draft = false
 
 Earlier this week, I wrote some tweets about how you have to be careful about scopes when you do "non-standard evaluation". I cover this in both [*Metaprogramming in R*](https://amzn.to/2QHONDT) and [*Domain-Specific Languages in R*](https://amzn.to/2QHMNLL), but this tweet
 
-{{< tweet 1041563992332881920 >}}
+{{< x user="@dmi3k" id="1041563992332881920" >}}
 
 made me write about it again—only this time in a twitter thread.
 
 Well, I say thread—I don't actually know how to do that, it seems; I just replied to the tweet a bunch of times, and apparently that doesn't make a thread, it, therefore, my reply was hard to read. Apparently, this is where I went wrong
 
-{{< tweet 1041815478493229061 >}}
+{{< x user="@threadreaderapp" id="1041815478493229061" >}}
 
 Anyway, the first tweet links to [this page](https://github.com/WinVector/wrapr/blob/master/extras/MacrosInR.md) that contains a list of tools for implementing "macros" in R. This just means "tools for substituting expressions into other expressions" (preferably with some control over where they are put).[^macros] If you evaluate those expressions after the substitution, either right away or at some later time, it is also called *non-standard evaluation*. Not surprisingly, it is called that because it differs (at least it can differ) from standard evaluation where you simply have an expression and evaluate it.
 
@@ -22,8 +22,8 @@ Anyway, the first tweet links to [this page](https://github.com/WinVector/wrapr/
 
 The motivation for the [overview on macro methods](https://github.com/WinVector/wrapr/blob/master/extras/MacrosInR.md) was apparently that a paper on [the `wrapr` package](https://cran.r-project.org/web/packages/wrapr/) was rejected because it didn't compare the package with quasi-quotation from [`rlang`](https://cran.r-project.org/web/packages/rlang/). I might be partially responsible for this since I reviewed the paper, but I didn't complain about the lack of comparison—I complained that `wrapr` doesn't deal with scopes (which `rlang` does) and that this makes `wrapr`'s `let` function very risky to use. You can *very* easily write a function that seems to work but contains subtle errors.
 
-{{< tweet 1041567698239606785 >}}
-{{< tweet 1041677761130229761 >}}
+{{< x user="@dmi3k" id="1041567698239606785" >}}
+{{< x user="@ThomasMailund" id="1041677761130229761" >}}
 
 Since I didn't manage to make my tweets into a proper thread, so they would be easy to read, I will try to repeat it here. I can add a few things here, now that I have a whole post to work with, but I cannot get around all the exciting scope and NSE topics I would like to. For that, I will send you to my books or return to those topics at a later time.
 

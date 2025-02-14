@@ -1,18 +1,21 @@
 baseurl = "https://mailund.dk/"
 title = "Mailund on the Internet"
-copyright = "Copyright &copy; 2020 - Thomas Mailund"
+copyright = "Copyright &copy; 2020-2025 - Thomas Mailund"
 theme = "hugo-kiera"
 
 canonifyurls = true
 ignoreFiles = []
 
-googleAnalytics = "UA-10582357-1"
-disqusShortname = "mailund-dk"
 
-paginate = 20
+pagination.pagerSize = 20
 summaryLength = 30
 pygmentsCodeFences = true
 pygmentsStyle = "borland"
+
+ignoreLogs = ['warning-goldmark-raw-html', 'shortcode-x-getremote']
+
+# googleAnalytics = "UA-10582357-1"
+disqusShortname = "mailund-dk"
 
 [author]
     name = "Thomas Mailund"
