@@ -1,0 +1,660 @@
+<!doctype html>
+
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:1313/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=386493837"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '386493837');
+        }
+      </script>
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="http://localhost:1313/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+                
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="http://localhost:1313/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/fiction/">
+                <i class="fa-li fa  fa-lg"></i><span>Fiction</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Simple String Search Implementations</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2025-02-16T06:39:39&#43;01:00">Feb 16, 2025</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="http://localhost:1313/categories/programming/">Programming</a>
+                
+                    , 
+                    <a href="http://localhost:1313/categories/algorithms/">Algorithms</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="http://localhost:1313/tags/c/">#C</a>
+                
+                    , 
+                    <a href="http://localhost:1313/tags/rust/">#Rust</a>
+                
+                    , 
+                    <a href="http://localhost:1313/tags/go/">#Go</a>
+                
+                    , 
+                    <a href="http://localhost:1313/tags/python/">#Python</a>
+                
+            </em>
+        </li>
+        
+
+        <li>19 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>I’ll get back to playing with Scala soon, but since I don’t know which skills to brush up on, I also decided to play with a few other things.</p>
+<p>I have taught string algorithms for over a decade, so I figured that using a few simple algorithms I know very well would be an interesting way to play with how the same goal can be achieved in different languages.</p>
+<p>You can usually translate a solution from one language into an almost duplicate in another (with a few exceptions, such as when you have to use immutable data structures)—and I have seen a lot of solutions that gave me that vibe—but languages have idioms. Sometimes, such a solution <em>feels</em> wrong in the new language. They clash with what you would expect if you were familiar with the second language. They are not ergonomic to use in the new language because they don’t fit in with the ecosystem.</p>
+<p>So, it can be interesting to take the same algorithm and try it out in different languages, adapt the implementation to what feels natural there, and see how implementations differ.</p>
+<p>I picked a couple of string algorithms and implemented them in two languages I have used since the 1990s (Python and C) and two languages I have used in projects before, but where I feel that I still have much to learn (Go and Rust).</p>
+<h2 id="a-naïve-search-algorithm">A naïve search algorithm</h2>
+<p>Given two strings, <code>x</code> and <code>p</code>, find all occurrences of <code>p</code> in <code>x</code> and return their indices.</p>
+<p>The most straightforward, most naïve approach is to position <code>p</code> at every index in <code>x</code> and see if the location matches. Comparing <code>p</code> against a location in <code>x</code> takes time <em>m</em> if <em>m</em> is the length of <code>p</code>, so if <code>x</code>’s length is <em>n</em>, so we do <em>n-m</em> comparisons, the worst-case total running time is <em>O(nm)</em>.</p>
+<p>In practice, checking one location is faster than <em>m</em> since we don’t continue comparing past a mismatch. If the expected time to a mismatch is a constant, it would be if we use random strings, then the expected running time is <em>O(n)</em>. So “naïve” doesn’t mean stupid. But it <em>is</em> simple.</p>
+<h3 id="python">Python</h3>
+<p>In Python, you would expect to iterate through matches with a <code>for</code> loop:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> <span style="color:#000080;font-weight:bold">match</span> <span style="font-weight:bold">in</span> naive(x, p):
+</span></span><span style="display:flex;"><span>   ...
+</span></span></code></pre></div><p>So, a solution should return an iterator. Luckily, we have the <code>yield</code> keyword to turn a function into a generator, so this is straightforward:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> naive(x: str, p: str) -&gt; Iterator[int]:
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> len(x) == <span style="color:#00f">0</span> <span style="font-weight:bold">or</span> len(p) == <span style="color:#00f">0</span>: <span style="color:#000080;font-weight:bold">return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(len(x) - len(p) + <span style="color:#00f">1</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> x[i : i + len(p)] == p:
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">yield</span> i
+</span></span></code></pre></div><p>A simple implementation of a simple algorithm. It is also reasonably efficient (in the context of Python). Compared to everything else, there isn’t much overhead to using generators.</p>
+<p>The early return when <code>x</code> and <code>p</code> are empty is not strictly necessary, nor is it necessarily giving us the correct answer. If <code>p</code> is empty but <code>x</code> isn’t, you could argue that the empty string is found between every letter in <code>x</code>. But I made a choice, and I stand by it. Dealing with empty strings is a nightmare in string algorithms, as many algorithms’ “natural” implementations will treat them differently (often with crashing, which is clearly wrong). I don’t want to deal with them here, as that is not the point of this post.</p>
+<h3 id="c">C</h3>
+<p>You would also expect to use a <code>for</code> loop for something like this in C, but <code>for</code> loops in C are very different from those in Python. If we use a <code>for</code> loop in C, we have three components to work with: the initialisation, the test, and the increment.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> (init; test; increment) {
+</span></span><span style="display:flex;"><span>   ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We don’t have co-routines or generators or iterators to hold state; if we need that, we must implement it ourselves.</p>
+<p>Luckily, for this algorithm, we can use pointers into <code>x</code> as a form of iterator. If <code>init</code> finds the first occurrence and <code>increment</code> moves to the next, then we have to return a pointer where we can recognise the end of the file. We could use a <code>NULL</code> pointer (as I will), or we could point at the end of <code>x</code> and make the test a check for whether the pointer points to the zero terminal character, <code>'\0'</code>.</p>
+<p>I went for a solution that looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *i = naive(x, p); i; i = naive(i + <span style="color:#00f">1</span>, p)) {
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>naive</code> function returns a pointer that points at the first occurrence into its input that matches <code>p</code> or <code>NULL</code> if there are no occurrences. That means we can test for <code>NULL</code> (the test <code>i</code>) to see if we should enter the body, and if we want to move forward, we call with <code>i+1</code> to find the next occurrence (if any).</p>
+<p>An implementation could look like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *naive(<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *x, <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *p) {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *i = x; *i != <span style="color:#800080">&#39;\0&#39;</span>; i++) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *j = p; <span style="color:#080;font-style:italic">/* check in body */</span>; i++, j++)
+</span></span><span style="display:flex;"><span>      <span style="color:#000080;font-weight:bold">if</span> (*j == <span style="color:#800080">&#39;\0&#39;</span>) <span style="color:#080;font-style:italic">// We reached the end of p
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>        <span style="color:#000080;font-weight:bold">return</span> i;
+</span></span><span style="display:flex;"><span>      <span style="color:#000080;font-weight:bold">else</span> <span style="color:#000080;font-weight:bold">if</span> (*i != *j) <span style="color:#080;font-style:italic">// We hit a mismatch
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>        <span style="color:#000080;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It is more verbose than the Python version, but not by much.</p>
+<p>We scan through <code>x</code> until the end. We don’t use the length of the input strings because we don’t have those readily available in C, so we use the <code>'\0'</code> sentinel instead. For every position in <code>x</code>, <code>i</code>, we scan through <code>p</code>, using <code>j</code>. Here, I don’t check for termination in the inner loop because I do it in the first <code>if</code> statement, but notice that the inner loop increments both <code>i</code> and <code>j</code>.</p>
+<p>You can implement variations on this, but they will all look roughly like this. There aren’t enough language features to go crazy.</p>
+<h3 id="go">Go</h3>
+<p>With Go, I tried a few things. If I wanted to use a loop similar to Python and C, I would need a <code>for match := range ...</code>, but <code>range</code> is (as far as I can tell) restricted to array, slice, string, map or a channel. So, I have the choice of computing all matches eagerly and returning an array of them (which works fine but is memory inefficient) or using a channel.</p>
+<p>I tried using a channel, and it was <em>SLOW</em>. This is not surprising, considering that they have to deal with concurrency and synchronisation. I’m not complaining about channels being slow for something they are not intended to be used for. That is fair, but it shoots the idea of using this kind of <code>for</code> loop down.</p>
+<p>I then tried to build an explicit iterator—the design pattern for when a language doesn’t support it—but I found it an ugly solution. It didn’t feel right for the language. (Of course, I don’t have a strong sense of how Go is supposed to feel, but it still felt off.)</p>
+<p>Go, however, has very efficient closures, and those closures are used all over the standard library, so instead of trying to shoehorn an iterator into a language that seems to prefer closures, I also went with using a closure.</p>
+<p>Well, I went with the closure <em>and</em> the array solution, because the array solution was a lot easier to test. The function below translates from the closure solution to a function that gives you an array of matches</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// Interface with a closure</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">type</span> callbackSearch = <span style="color:#000080;font-weight:bold">func</span>(x, p <span style="color:#000080;font-weight:bold">string</span>, callback <span style="color:#000080;font-weight:bold">func</span>(<span style="color:#000080;font-weight:bold">int</span>))
+</span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic">// Interface with returning an array</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">type</span> searchFunc = <span style="color:#000080;font-weight:bold">func</span>(x, p <span style="color:#000080;font-weight:bold">string</span>) []<span style="color:#000080;font-weight:bold">int</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">func</span> convertSearchAlgo(algo callbackSearch) searchFunc {
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">return</span> <span style="color:#000080;font-weight:bold">func</span>(x, p <span style="color:#000080;font-weight:bold">string</span>) []<span style="color:#000080;font-weight:bold">int</span> {
+</span></span><span style="display:flex;"><span>		res := []<span style="color:#000080;font-weight:bold">int</span>{}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#080;font-style:italic">// This will call the closure on every match of p in x</span>
+</span></span><span style="display:flex;"><span>		algo(x, p, <span style="color:#000080;font-weight:bold">func</span>(i <span style="color:#000080;font-weight:bold">int</span>) {
+</span></span><span style="display:flex;"><span>			res = append(res, i)
+</span></span><span style="display:flex;"><span>		})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#080;font-style:italic">// Returning the (sorted) hits</span>
+</span></span><span style="display:flex;"><span>		sort.Ints(res)
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">return</span> res
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>convertSearchAlgo</code> function also demonstrates how you would use the callback version of the search. Here, the callback is used to get all the matches and append them to an array.</p>
+<p>The search implementation is closer to the Python version than the C version; we just use the callback instead of <code>yield</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">func</span> Naive(x, p <span style="color:#000080;font-weight:bold">string</span>, callback <span style="color:#000080;font-weight:bold">func</span>(<span style="color:#000080;font-weight:bold">int</span>)) {
+</span></span><span style="display:flex;"><span>	n, m := len(x), len(p)
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">if</span> n == <span style="color:#00f">0</span> || m == <span style="color:#00f">0</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">for</span> i := <span style="color:#00f">0</span>; i &lt; n-m+<span style="color:#00f">1</span>; i++ {
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">if</span> x[i : i+m] == p {
+</span></span><span style="display:flex;"><span>			callback(i)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>There is another issue that bothered me with the Go implementation and should have bothered me in Python. Not in C, though; C is too primitive even to have an issue with this. What are the strings we are manipulating, and is this a valid way of comparing them?</p>
+<p>In the Good Old Days(tm), strings were sequences of ASCII characters. 7-bit words (although usually represented in 8-bit bytes). That is no longer the world we live in.</p>
+<p>The day’s standard is Unicode, but representing strings as sequences of simple computer words poses a problem. There are currently 154 998 characters, and expect more to be added. The classical representation of strings as sequences of small computer words hinges on having small alphabets, but that is no longer what we have. So instead, we have to deal with encodings.</p>
+<p>We also have to worry that the exact same string can be written in different ways—beyond just having different encodings—but I’m not going there today!</p>
+<p>In Python, strings are represented as sequences of Unicode characters. It works because it chooses the size of its alphabet depending on the letters in a given string. So, we can safely index into a string and get the Unicode character out, and (ignoring the issue I didn’t want to talk about today) we can compare strings by comparing character by character.</p>
+<p>There is an issue with how much memory we use to represent strings—we can end up using four bytes per character in a string—and that is a potential problem, but from where we are in this post, it is not something to worry about.</p>
+<p>In any language that supports Unicode strings, though, we need to worry at least a little bit, and I did with the Go solution. I wasn’t sure how Go represented strings, so I need to figure that out.</p>
+<p>You can run into two problems if a language represents strings with a variable-length encoding such as UTF-8 (which Go uses). With such encodings, the different letters in a string are not sitting at fixed offsets from the beginning of the string, so you cannot index into them the way you would with an array. With an array, <code>a[i]</code> is whatever is at the address <code>a + i * element_size</code>, but if <code>element_size</code> isn’t a constant, you have to scan from the beginning of the string (in the worst case) until you have scanned past <code>i - 1</code> other characters. Indexing, then, is not a constant time operation but a linear time one, which would be bad.</p>
+<p>Luckily, such languages usually don’t let you index into strings either, so you don’t accidentally write highly inefficient code. But since I <em>can</em> index into Go strings, I have to worry.</p>
+<p>If you want to get <em>characters</em> out of a string, Go has glyphs, which are the real Unicode characters. When you index into a <code>string</code>, however, you get the individual bytes in the UTF-8 encoding. This means that when I am comparing <code>x</code> against <code>p</code> in the implementation, I am comparing bytes in the encoding rather than the characters.</p>
+<p>The good news is that any occurrence of <code>p</code> in <code>x</code> would still be found (assuming that encodings were unique, which&hellip; well, see above; and they can be put in a canonical form, so&hellip;).</p>
+<p>The worry then is if I can find an occurrence of the bytes in <code>p</code> inside the bytes of <code>x</code> that doesn’t match the characters if the bytes start <em>inside</em> a character. However, the UTF-8 encoding is constructed such that this cannot occur. So we are good.</p>
+<p>That being said, my go-to solution is to handle characters myself. Build an alphabet and map the strings I work with to that alphabet. This is the most efficient way for many data structures, especially if you work in bioinformatics, where the real alphabets are much smaller than for human languages.</p>
+<p>I’m not going to with this Go implementation, though. We are just playing, and I will have to do it in the Rust solution below in any case (because Rust won’t let me index into strings for the reasons just described).</p>
+<h3 id="rust">Rust</h3>
+<p>In Rust, if you have a <code>x: str</code>, you cannot index for a single character, <code>x[i]</code>. You <em>can</em> get a slice out, <code>x[i..i+1]</code>, but this is a worst-case <em>O(n)</em> operation.</p>
+<p>If you are working with small strings, you can get a vector of <code>char</code> out of a string (similar to how you can get glyphs out of a Go string), and you can index into a <code>Vec&lt;char&gt;</code> in constant time. The <code>char</code>, however, is 4 bytes, which is too large for many applications. So here, I took the effort of building my own alphabet and character mapping, so I could reduce strings to arrays using 8 or 16 bits per character.</p>
+<p>(You can go lower, but there is only so much I am willing to do for a play example).</p>
+<p>I build a table of all the characters I have in a string, and map them to integers. (I leave zero for other uses, although I don’t need it here. It is always good to have a sentinel tucked aside for a rainy day).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">struct</span> Alphabet<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// A vector of characters storing the alphabet in a specific order.
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>chars: Vec&lt;<span style="color:#000080;font-weight:bold">char</span>&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// A hash map mapping each character to its index in the `chars` vector.
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>indices: HashMap&lt;<span style="color:#000080;font-weight:bold">char</span>,<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">usize</span>&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>Then, I have code for creating alphabets (the <code>from_str</code> is the most interesting, as it lets me define an alphabet from a string over that alphabet), and I have functions that can translate strings into character vectors.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">impl</span><span style="color:#bbb"> </span>Alphabet<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> new(chars: <span style="color:#000080;font-weight:bold">&amp;</span>[<span style="color:#000080;font-weight:bold">char</span>])<span style="color:#bbb"> </span>-&gt; Alphabet<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#080;font-style:italic">// Turn the chars into the unique chars they contain.
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>seen<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>HashSet::new();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>chars: Vec&lt;<span style="color:#000080;font-weight:bold">char</span>&gt;<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>chars.iter().cloned().filter(|c|<span style="color:#bbb"> </span>seen.insert(*c)).collect();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>chars.sort_unstable();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>indices<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>HashMap::with_capacity(chars.len());<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>(i,<span style="color:#bbb"> </span>&amp;c)<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">in</span><span style="color:#bbb"> </span>chars.iter().enumerate()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>indices.insert(c,<span style="color:#bbb"> </span>i<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span><span style="color:#00f">1</span>);<span style="color:#bbb"> </span><span style="color:#080;font-style:italic">// The +1 is to leave room for the sentinel at zero
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Alphabet<span style="color:#bbb"> </span>{<span style="color:#bbb"> </span>chars,<span style="color:#bbb"> </span>indices<span style="color:#bbb"> </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> from_str(s: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>)<span style="color:#bbb"> </span>-&gt; Alphabet<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>chars: Vec&lt;<span style="color:#000080;font-weight:bold">char</span>&gt;<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>s.chars().collect();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Alphabet::new(&amp;chars)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> contains(&amp;self,<span style="color:#bbb"> </span>c: <span style="color:#000080;font-weight:bold">char</span>)<span style="color:#bbb"> </span>-&gt; <span style="color:#000080;font-weight:bold">bool</span> {<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>self.indices.contains_key(&amp;c)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> index(&amp;self,<span style="color:#bbb"> </span>c: <span style="color:#000080;font-weight:bold">char</span>)<span style="color:#bbb"> </span>-&gt; Option&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>self.indices.get(&amp;c).copied()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> len(&amp;self)<span style="color:#bbb"> </span>-&gt; <span style="color:#000080;font-weight:bold">usize</span> {<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>self.chars.len()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> char_size(&amp;self)<span style="color:#bbb"> </span>-&gt; Result&lt;CharSize,<span style="color:#bbb"> </span>Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>std::error::Error&gt;&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>CharSize::from_alphabet_size(self.len())<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> map_char&lt;Char&gt;(&amp;self,<span style="color:#bbb"> </span>c: <span style="color:#000080;font-weight:bold">char</span>)<span style="color:#bbb"> </span>-&gt; Result&lt;Char,<span style="color:#bbb"> </span>Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>std::error::Error&gt;&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Char: CharacterTrait,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>self.len()<span style="color:#bbb"> </span>&gt;<span style="color:#bbb"> </span>Char::MAX<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Err(<span style="color:#00f">&#34;Alphabet too large for Char type&#34;</span>.into());<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>idx<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">match</span><span style="color:#bbb"> </span>self.index(c)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>None<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Err(<span style="color:#00f">&#34;Character not in alphabet&#34;</span>.into()),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>Some(idx)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>idx,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>};<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Char::try_from(idx).map_err(|_|<span style="color:#bbb"> </span><span style="color:#00f">&#34;Index conversion failed&#34;</span>.into())<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> map_str&lt;Char&gt;(&amp;self,<span style="color:#bbb"> </span>s: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>)<span style="color:#bbb"> </span>-&gt; Result&lt;Vec&lt;Char&gt;,<span style="color:#bbb"> </span>Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>std::error::Error&gt;&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Char: CharacterTrait,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>s.chars().map(|c|<span style="color:#bbb"> </span>self.map_char(c)).collect()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>I’ve left out some details about character traits and such, but you should get the idea.</p>
+<p>The <code>char_size</code> gives me an enum I can use to work out the necessary character size for an alphabet. I imagine this won’t be necessary in most applications if you know your strings, but it gives me a way to dispatch to generic functions as well.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">enum</span> CharSize<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// 8 bits needed for each character
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>U8,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// 16 bits needed for each character
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>U16,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span><span style="color:#bbb"> </span>CharSize<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> from_alphabet_size(size: <span style="color:#000080;font-weight:bold">usize</span>)<span style="color:#bbb"> </span>-&gt; Result&lt;Self,<span style="color:#bbb"> </span>Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>std::error::Error&gt;&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">const</span><span style="color:#bbb"> </span>U8_MAX: <span style="color:#000080;font-weight:bold">usize</span> =<span style="color:#bbb"> </span>&lt;<span style="color:#000080;font-weight:bold">u8</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">as</span><span style="color:#bbb"> </span>CharacterTrait&gt;::MAX;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">const</span><span style="color:#bbb"> </span>U16_MIN: <span style="color:#000080;font-weight:bold">usize</span> =<span style="color:#bbb"> </span>U8_MAX<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span><span style="color:#00f">1</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">const</span><span style="color:#bbb"> </span>U16_MAX: <span style="color:#000080;font-weight:bold">usize</span> =<span style="color:#bbb"> </span>&lt;<span style="color:#000080;font-weight:bold">u16</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">as</span><span style="color:#bbb"> </span>CharacterTrait&gt;::MAX;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">match</span><span style="color:#bbb"> </span>size<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#00f">0</span>..=U8_MAX<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>Ok(CharSize::U8),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>U16_MIN..U16_MAX<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>Ok(CharSize::U16),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>_<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>Err(<span style="color:#00f">&#34;Alphabet too large for known Char types&#34;</span>.into()),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>From this, I made functions to map <code>str</code> to my own type, <code>Str&lt;Char&gt;</code>, where I know the character size and thus can index into them.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-style:italic">// StrMappers for dynamic dispatch from alphabets to mappers
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">enum</span> StrMappers<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// Mapping to u8 characters
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>U8Mapper(StrMapper&lt;<span style="color:#000080;font-weight:bold">u8</span>&gt;),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// Mapping to u16 characters
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>U16Mapper(StrMapper&lt;<span style="color:#000080;font-weight:bold">u16</span>&gt;),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span><span style="color:#bbb"> </span>StrMappers<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> new(alphabet: <span style="color:#000080;font-weight:bold">&amp;</span>Rc&lt;Alphabet&gt;)<span style="color:#bbb"> </span>-&gt; Self<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">use</span><span style="color:#bbb"> </span>CharSize::*;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">use</span><span style="color:#bbb"> </span>StrMappers::*;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">match</span><span style="color:#bbb"> </span>alphabet.char_size().unwrap()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>U8<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>U8Mapper(StrMapper::new(alphabet)),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>U16<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>U16Mapper(StrMapper::new(alphabet)),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> new_from_str(s: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>)<span style="color:#bbb"> </span>-&gt; Result&lt;Self,<span style="color:#bbb"> </span>Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>std::error::Error&gt;&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>alphabet<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>Rc::new(Alphabet::from_str(s));<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Ok(Self::new(&amp;alphabet))<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-style:italic">// Concrete mappers that know the character size
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">struct</span> StrMapper&lt;Char&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Char: CharacterTrait,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// The alphabet used for character encoding.
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span>alphabet: Rc&lt;Alphabet&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>_phantom: std::marker::PhantomData&lt;Char&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span>&lt;Char&gt;<span style="color:#bbb"> </span>StrMapper&lt;Char&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Char: CharacterTrait,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span>(self)<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> new(alphabet: <span style="color:#000080;font-weight:bold">&amp;</span>Rc&lt;Alphabet&gt;)<span style="color:#bbb"> </span>-&gt; Self<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Self<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>alphabet: alphabet.clone(),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>_phantom: std::marker::PhantomData,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> map_str(&amp;self,<span style="color:#bbb"> </span>s: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>)<span style="color:#bbb"> </span>-&gt; Result&lt;Str&lt;Char&gt;,<span style="color:#bbb"> </span>Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>std::error::Error&gt;&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>char_vector<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>self.alphabet.map_str::&lt;Char&gt;(s)?;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Ok(Str::new(char_vector,<span style="color:#bbb"> </span>&amp;self.alphabet))<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-style:italic">// Strings with known character size
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">struct</span> Str&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>char_vector: Vec&lt;Char&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span>alphabet: Rc&lt;Alphabet&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span>&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>Str&lt;Char&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> new(x: Vec&lt;Char&gt;,<span style="color:#bbb"> </span>alphabet: <span style="color:#000080;font-weight:bold">&amp;</span>Rc&lt;Alphabet&gt;)<span style="color:#bbb"> </span>-&gt; Self<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Self<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>char_vector: x,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>alphabet: alphabet.clone(),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> from_str(s: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>alphabet: <span style="color:#000080;font-weight:bold">&amp;</span>Rc&lt;Alphabet&gt;)<span style="color:#bbb"> </span>-&gt; Result&lt;Self,<span style="color:#bbb"> </span>Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>std::error::Error&gt;&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>alphabet.len()<span style="color:#bbb"> </span>&gt;<span style="color:#bbb"> </span>Char::MAX<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Err(<span style="color:#00f">&#34;Alphabet too large for Char type&#34;</span>.into());<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>x<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>s<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>.chars()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>.map(|c|<span style="color:#bbb"> </span>alphabet.map_char(c))<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>.collect::&lt;Result&lt;Vec&lt;Char&gt;,<span style="color:#bbb"> </span>Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>std::error::Error&gt;&gt;&gt;()?;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Ok(Self::new(x,<span style="color:#bbb"> </span>&amp;alphabet))<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> len(&amp;self)<span style="color:#bbb"> </span>-&gt; <span style="color:#000080;font-weight:bold">usize</span> {<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>self.char_vector.len()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> iter(&amp;self)<span style="color:#bbb"> </span>-&gt; std::slice::Iter&lt;Char&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>self.char_vector.iter()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span>&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>std::ops::Index&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>Str&lt;Char&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Char: TryFrom&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span>Copy,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>&lt;Char<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">as</span><span style="color:#bbb"> </span>TryFrom&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;&gt;::Error: std::fmt::Debug,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">type</span> Output<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>Char;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">fn</span> index(&amp;self,<span style="color:#bbb"> </span>index: <span style="color:#000080;font-weight:bold">usize</span>)<span style="color:#bbb"> </span>-&gt; <span style="color:#000080;font-weight:bold">&amp;</span>Self::Output<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>&amp;self.char_vector[index]<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span>&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>std::ops::IndexMut&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>Str&lt;Char&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Char: TryFrom&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span>Copy,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>&lt;Char<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">as</span><span style="color:#bbb"> </span>TryFrom&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;&gt;::Error: std::fmt::Debug,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">fn</span> index_mut(&amp;<span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>self,<span style="color:#bbb"> </span>index: <span style="color:#000080;font-weight:bold">usize</span>)<span style="color:#bbb"> </span>-&gt; <span style="color:#000080;font-weight:bold">&amp;</span>mut<span style="color:#bbb"> </span>Self::Output<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>&amp;<span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>self.char_vector[index]<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>It’s a lot of work just to get started, and I feel like I should just have gone with <code>Vec&lt;char&gt;</code> at this point&hellip;</p>
+<p>Anyway, on to the search algorithm. I wanted a version that felt natural to Rust, so I wanted an iterator. I can imagine using the search something like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>result: Vec&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>naive(x,<span style="color:#bbb"> </span>p).collect()<span style="color:#bbb">
+</span></span></span></code></pre></div><p>You can implement this algorithm as an iteration through <code>x</code> with a filter on that iterator, but it is hard to read, so I went with explicitly implementing an iterator myself.</p>
+<p>First, I tried with the signature</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> naive(x: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>p: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>)<span style="color:#bbb"> </span>-&gt; impl<span style="color:#bbb"> </span>Iterator&lt;Item<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> 
+</span></span></span></code></pre></div><p>but during the implementation, it gave me trouble. The <code>impl Iterator&lt;&gt;</code> wants a specific (although not specified) implementation of an iterator, one the compiler knows when it emits code, and for early leaving when <code>x</code> or <code>p</code> were empty, I ended up using <code>std::iter::empty</code>. That means that I can return more than one type of iterators, so I used</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> naive(x: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>p: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>)<span style="color:#bbb"> </span>-&gt; Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>Iterator&lt;Item<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">usize</span>&gt;&gt;<span style="color:#bbb"> 
+</span></span></span></code></pre></div><p>instead.</p>
+<p>I could have used <code>Either</code> or something like that as well, but I don’t mind a heap allocation once per search, so this will do.</p>
+<p>With the alphabet I have painstakingly implemented, I need to dispatch to concrete vector implementations based on the alphabet size of my strings, so my <code>naive</code> does just that:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> naive(x: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>p: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>)<span style="color:#bbb"> </span>-&gt; Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>Iterator&lt;Item<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">usize</span>&gt;&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>x.is_empty()<span style="color:#bbb"> </span>||<span style="color:#bbb"> </span>p.is_empty()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Box::new(std::iter::empty());<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>x.len()<span style="color:#bbb"> </span>&lt;<span style="color:#bbb"> </span>p.len()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Box::new(std::iter::empty());<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-style:italic">// We unwrap because we don&#39;t expect an alphabet larger than u16
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>mapper<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>StrMappers::new_from_str(x).unwrap();<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">match</span><span style="color:#bbb"> </span>mapper<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>StrMappers::U8Mapper(mapper)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>naive_impl(x,<span style="color:#bbb"> </span>p,<span style="color:#bbb"> </span>mapper),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>StrMappers::U16Mapper(mapper)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>naive_impl(x,<span style="color:#bbb"> </span>p,<span style="color:#bbb"> </span>mapper),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>The <code>naive_impl</code> function then translates the <code>str</code> to <code>Str&lt;Char&gt;</code> and returns the iterator:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">fn</span> naive_impl&lt;Char&gt;(x: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>p: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>mapper: StrMapper&lt;Char&gt;)<span style="color:#bbb"> </span>-&gt; Box&lt;<span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>Iterator&lt;Item<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">usize</span>&gt;&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Char: CharacterTrait,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>x<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>mapper.map_str(x).unwrap();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>p<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">match</span><span style="color:#bbb"> </span>mapper.map_str(p)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Ok(p)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>p,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#080;font-style:italic">// If we cannot map p, we also cannot match it
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">        </span>Err(_)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Box::new(std::iter::empty()),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>};<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Box::new(NaiveSearch<span style="color:#bbb"> </span>{<span style="color:#bbb"> </span>x,<span style="color:#bbb"> </span>p,<span style="color:#bbb"> </span>i: <span style="color:#00f">0</span><span style="color:#bbb"> </span>})<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>The iterator, that does the actual work, is the simplest of the code:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">struct</span> NaiveSearch&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>x: Str&lt;Char&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>p: Str&lt;Char&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>i: <span style="color:#000080;font-weight:bold">usize</span>,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span>&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>Iterator<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>NaiveSearch&lt;Char&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">type</span> Item<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">usize</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">fn</span> next(&amp;<span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>self)<span style="color:#bbb"> </span>-&gt; Option&lt;Self::Item&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>NaiveSearch<span style="color:#bbb"> </span>{<span style="color:#bbb"> </span>x,<span style="color:#bbb"> </span>p,<span style="color:#bbb"> </span>i<span style="color:#bbb"> </span>}<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>self;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>x.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>p.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">while</span><span style="color:#bbb"> </span>*i<span style="color:#bbb"> </span>&lt;=<span style="color:#bbb"> </span>n<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>k<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#00f">0</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">while</span><span style="color:#bbb"> </span>k<span style="color:#bbb"> </span>&lt;<span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>&amp;&amp;<span style="color:#bbb"> </span>p[k]<span style="color:#bbb"> </span>==<span style="color:#bbb"> </span>x[*i<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span>k]<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>k<span style="color:#bbb"> </span>+=<span style="color:#bbb"> </span><span style="color:#00f">1</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>*i<span style="color:#bbb"> </span>+=<span style="color:#bbb"> </span><span style="color:#00f">1</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>k<span style="color:#bbb"> </span>==<span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Some(*i<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span><span style="color:#00f">1</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>None<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>This ended up being very verbose and much worse than any of the previous languages. This surprises me a bit, and I suspect that my lack of Rust skills is partially to blame. To be fair, though, the code also handles a much harder problem: encoding strings into smaller alphabets.</p>
+<p>Still, there is room for improvement in my Rust solution. I would be thrilled to get some pointers.</p>
+<p>One approach to make the algorithm itself cleaner is to implement range indexing in <code>Str&lt;Char&gt;</code>. It is a <em>lot</em> of boiler plate code, but it simplifies the <code>next</code> function to this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">fn</span> next(&amp;<span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>self)<span style="color:#bbb"> </span>-&gt; Option&lt;Self::Item&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>NaiveSearch<span style="color:#bbb"> </span>{<span style="color:#bbb"> </span>x,<span style="color:#bbb"> </span>p,<span style="color:#bbb"> </span>i<span style="color:#bbb"> </span>}<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>self;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>x.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>p.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>j<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">in</span><span style="color:#bbb"> </span>*i..=(n<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span>m)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>&amp;x[j..(j<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span>m)]<span style="color:#bbb"> </span>==<span style="color:#bbb"> </span>&amp;p[..]<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>*i<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>j<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span><span style="color:#00f">1</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Some(j);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>None<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>You pay for the cleaner code here with the boilerplate code elsewhere, but it would be worth it in a more extensive library.</p>
+<p>You <em>can</em> also go the callback route I did with Go. I’m not sure how well it fits into Rust’s idioms—I feel that iterators is the right way to go rather than mapping functions—but you get rid of the iterator boilerplate.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> naive_cb(x: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>p: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>cb: <span style="color:#000080;font-weight:bold">&amp;</span>mut<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>FnMut(<span style="color:#000080;font-weight:bold">usize</span>))<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>x.is_empty()<span style="color:#bbb"> </span>||<span style="color:#bbb"> </span>p.is_empty()<span style="color:#bbb"> </span>||<span style="color:#bbb"> </span>x.len()<span style="color:#bbb"> </span>&lt;<span style="color:#bbb"> </span>p.len()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">return</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-style:italic">// We unwrap because we don&#39;t expect alphabet larger than u16
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>mapper<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>StrMappers::new_from_str(x).unwrap();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">match</span><span style="color:#bbb"> </span>mapper<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>StrMappers::U8Mapper(mapper)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>naive_cb_impl(x,<span style="color:#bbb"> </span>p,<span style="color:#bbb"> </span>mapper,<span style="color:#bbb"> </span>cb),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>StrMappers::U16Mapper(mapper)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>naive_cb_impl(x,<span style="color:#bbb"> </span>p,<span style="color:#bbb"> </span>mapper,<span style="color:#bbb"> </span>cb),<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">fn</span> naive_cb_impl&lt;Char&gt;(x: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>p: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>mapper: StrMapper&lt;Char&gt;,<span style="color:#bbb"> </span>cb: <span style="color:#000080;font-weight:bold">&amp;</span>mut<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">dyn</span><span style="color:#bbb"> </span>FnMut(<span style="color:#000080;font-weight:bold">usize</span>))<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Char: CharacterTrait,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>x<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>mapper.map_str(x).unwrap();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>p<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">match</span><span style="color:#bbb"> </span>mapper.map_str(p)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Ok(p)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span>p,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Err(_)<span style="color:#bbb"> </span>=&gt;<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">return</span>,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>};<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>x.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>p.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>i<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">in</span><span style="color:#bbb"> </span><span style="color:#00f">0</span>..=(n<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span>m)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>&amp;x[i..(i<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span>m)]<span style="color:#bbb"> </span>==<span style="color:#bbb"> </span>&amp;p[..]<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>cb(i);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>From the callback version I can get an iterator, the same way I could in Go, by collecting all the hits and returning an array.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> naive_iter(x: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>,<span style="color:#bbb"> </span>p: <span style="color:#000080;font-weight:bold">&amp;</span><span style="color:#000080;font-weight:bold">str</span>)<span style="color:#bbb"> </span>-&gt; impl<span style="color:#bbb"> </span>Iterator&lt;Item<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>results<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>Vec::new();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>naive_cb(x,<span style="color:#bbb"> </span>p,<span style="color:#bbb"> </span>&amp;<span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>|pos|<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>results.push(pos);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>});<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>results.into_iter()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>But just as for Go, I don’t think this feels right. You might search in a ginormous string and terminate after three matches, but with this solution, you would still pay for all the matches in the entire string.</p>
+<p>I feel that the iterator solution is the right one; it just feels unnecessarily complicated to write.</p>
+<hr>
+<p>For my next trick, I will implement the Knuth-Morris-Pratt and Boyer-Moore-Horshpool algorithms. Complexity-wise, it is not that different from the naïve solution, but there are some issues I am looking forward to exploring. I cannot use the simple “pointer as an iterator” trick I used in C because I need to allocate a border-array/jump-table and the character. The BMH base-case complexity of <em>O(n/m+m)</em> needs a little slight-of-hand, as translating the strings will take <em>O(n+m)</em>, eliminating one of the main benefits of that algorithm. But we will see how it goes when I have time to attack it.</p>
+<p>For now, I have to figure out how to write a CV and get that done. If I don’t, I will suddenly find myself with way too much time to play with programming.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://localhost:1313/posts/giving-scala-a-go/"><i class="fa fa-chevron-circle-left"></i> Giving Scala a Go—Playing with Lists</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020-2025 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://localhost:1313/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="http://localhost:1313/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>

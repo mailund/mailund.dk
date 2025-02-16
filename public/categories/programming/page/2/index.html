@@ -63,6 +63,20 @@
    });
  </script>
 
+      <script async src="https://www.googletagmanager.com/gtag/js?id=386493837"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '386493837');
+        }
+      </script>
 </head>
 
 <body>
@@ -143,6 +157,11 @@
 
     <h3>2020</h3>
     <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/cpointer-oop-example/">OOP example in C</a>
+            <time class="date-meta">Nov 12</time>
+        </li>
         
         <li>
             <a href="https://mailund.dk/posts/c-refcount-list/">Reference counting lists in C</a>

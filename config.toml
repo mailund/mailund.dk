@@ -14,8 +14,11 @@ pygmentsStyle = "borland"
 
 ignoreLogs = ['warning-goldmark-raw-html', 'shortcode-x-getremote']
 
-# googleAnalytics = "UA-10582357-1"
+googleAnalytics = "386493837"
 disqusShortname = "mailund-dk"
+
+[frontmatter]
+  newContentEditor = "index.md"
 
 [author]
     name = "Thomas Mailund"

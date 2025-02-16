@@ -12,10 +12,10 @@ If you decode the description—that is more cryptic than the mathematics—you 
 
 $$7^k \equiv b \mod N$$
 
-where \\(N = 20,201,227\\) and where \\(b\\) is part of our input (the public keys for a door and a card). Identify \\(k\\) and compute 
- 
+where \\(N = 20,201,227\\) and where \\(b\\) is part of our input (the public keys for a door and a card). Identify \\(k\\) and compute
+
 $$b_i^{k_j} \mod N$$
- 
+
 for public key \\(b_i\\) and secrete key \\(k_j\\), and you are done.
 
 It is a nice little puzzle—perhaps the organisers realise how cruel it would be to make us spend hours on the Christmas Day with their puzzles—but I still managed to spend almost an hour on it.
@@ -29,7 +29,6 @@ When you work with Python integers, you don’t have to worry about overflow, so
 Large integers are not as simple as those that fit into the computer’s registers, and you *really* pay for working with large numbers. It is not as much of a problem as when you work in a language with fixed-sized integers—where you get an overflow, and probably you don’t get a warning about it—but it does get terribly slow.
 
 Thus, for the linear search, I updated the value on the left-hand side in each iteration, and for computing the final value, I used `pow()` with a third `mod` argument, instead of `x ** k` to compute the power. You will get the right result if you use the `**` operator and `%` after taking the power, but you will have to wait longer for it.
-
 
 ```python
 N = 20201227
@@ -102,4 +101,3 @@ It was pointed out to me that I shouldn’t expect a theoretically faster soluti
 {{< x user="@thomasahle" id="1342616617461702657" >}}
 
 A friend of mine told me that he did have an efficient algorithm for discrete logarithm once, but forgot to write it down. I hope he remembered to write down his notes for my upcoming C pointers book, because he is currently reviewing it…
-

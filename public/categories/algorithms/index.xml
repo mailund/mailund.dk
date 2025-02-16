@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms on Mailund on the Internet</title>
+    <link>http://localhost:1313/categories/algorithms/</link>
+    <description>Recent content in Algorithms on Mailund on the Internet</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
+    <lastBuildDate>Sun, 16 Feb 2025 06:39:39 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simple String Search Implementations</title>
+      <link>http://localhost:1313/posts/some-simple-string-search-implementations/</link>
+      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
+      <guid>http://localhost:1313/posts/some-simple-string-search-implementations/</guid>
+      <description>&lt;p&gt;I’ll get back to playing with Scala soon, but since I don’t know which skills to brush up on, I also decided to play with a few other things.&lt;/p&gt;&#xA;&lt;p&gt;I have taught string algorithms for over a decade, so I figured that using a few simple algorithms I know very well would be an interesting way to play with how the same goal can be achieved in different languages.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,314 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=386493837"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '386493837');
+        }
+      </script>
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://mailund.dk/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+                
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://mailund.dk/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/fiction/">
+                <i class="fa-li fa  fa-lg"></i><span>Fiction</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://mailund.dk/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Giving Scala a Go—Playing with Lists</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2025-02-14T13:19:35&#43;01:00">Feb 14, 2025</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/categories/programming/">Programming</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                
+                    , 
+                    <a href="https://mailund.dk/tags/scala/">#Scala</a>
+                
+            </em>
+        </li>
+        
+
+        <li>5 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Soon, I will be unemployed — the needs of Kvantify and my interests and qualifications have diverged over the last year — so it is time to brush up on my skills, so I look interesting for potential future employer. Since I don’t know what a future employer will be looking for, this mainly means finding something I’m not familiar with but interested in and playing with it. Today, the choice fell on Scala.</p>
+<p>I have had students hand in Scala projects but never programmed in the language myself. I enjoy functional languages, though, so I decided to try it. Did a few smaller exercises and skimmed through a tutorial.</p>
+<p>I learn better when I have something specific I want to achieve, preferably something that I <em>am</em> familiar with, so I don’t need to handle too many new things at once. Since Scala is a functional language, implementing some functional data structures felt like just the thing.</p>
+<h2 id="lists">Lists</h2>
+<p>There are not many interesting data structures that are simpler than linked lists, and all functional languages have them. Compared to arrays, they are easier to use as building blocks for persistent data structures. Scala already has them, naturally, but I wanted to make my own.</p>
+<p>First, I tried to figure out how to define an abstract data structure, and I think the Scala approach is via traits (but please correct me if I am wrong). My idea was to have a function that creates an empty list, then functions for getting the head and tail (ignoring error handling for empty lists here), and for prepending and appending. For linked lists, we usually expect that prepending — i.e., putting a link at the front of a list — is constant time, while appending — creating a new list with the old list’s elements plus a new one at the end — takes linear time.</p>
+<p>I quickly wrote some methods but ran into problems when it came to defining a function that returns an empty list. I can’t use a method here because a method requires that I already have a list. Some googling told me that the usual approach then is to put such a method in an object rather than a class and that there is a trick that involves making a “companion” trait for the object. So I came up with this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">trait</span> List[<span style="color:#000080;font-weight:bold">T</span>] {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> isEmpty<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">Boolean</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> head<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">T</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> tail<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> prepend(h<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">T</span>)<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> append(t<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">U</span>)<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> reverse<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">trait</span> ListCompanion[<span style="color:#000080;font-weight:bold">L</span>[<span style="color:#000080;font-weight:bold">_</span>] <span style="color:#000080;font-weight:bold">&lt;:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">?</span>]] {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> empty[<span style="color:#000080;font-weight:bold">T</span>]<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">L</span>[<span style="color:#000080;font-weight:bold">T</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>An implementation that just wraps Scala’s own lists could then look like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">import</span> _root_.scala.collection.immutable.List as ScalaList
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">class</span> SimpleList[<span style="color:#000080;font-weight:bold">T</span>](<span style="color:#000080;font-weight:bold">private</span> <span style="color:#000080;font-weight:bold">val</span> elements<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">ScalaList</span>[<span style="color:#000080;font-weight:bold">T</span>]) <span style="color:#000080;font-weight:bold">extends</span> List[<span style="color:#000080;font-weight:bold">T</span>] {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">override</span> <span style="color:#000080;font-weight:bold">def</span> isEmpty<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">Boolean</span> = elements.isEmpty
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">override</span> <span style="color:#000080;font-weight:bold">def</span> head<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">T</span> = elements.head
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">override</span> <span style="color:#000080;font-weight:bold">def</span> tail<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>] <span style="color:#000080;font-weight:bold">=</span> <span style="color:#000080;font-weight:bold">new</span> SimpleList[<span style="color:#000080;font-weight:bold">T</span>](elements.tail)
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">override</span> <span style="color:#000080;font-weight:bold">def</span> prepend(h<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">T</span>)<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>] <span style="color:#000080;font-weight:bold">=</span> <span style="color:#000080;font-weight:bold">new</span> SimpleList[<span style="color:#000080;font-weight:bold">T</span>](h <span style="color:#000080;font-weight:bold">:</span><span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">elements</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">override</span> <span style="color:#000080;font-weight:bold">def</span> append(t<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">T</span>)<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>] <span style="color:#000080;font-weight:bold">=</span> <span style="color:#000080;font-weight:bold">new</span> SimpleList[<span style="color:#000080;font-weight:bold">T</span>](elements <span style="color:#000080;font-weight:bold">:</span><span style="color:#000080;font-weight:bold">+</span> <span style="color:#000080;font-weight:bold">t</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">object</span> SimpleList <span style="color:#000080;font-weight:bold">extends</span> ListCompanion[<span style="color:#000080;font-weight:bold">SimpleList</span>] {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">override</span> <span style="color:#000080;font-weight:bold">def</span> empty[<span style="color:#000080;font-weight:bold">T</span>]<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">SimpleList</span>[<span style="color:#000080;font-weight:bold">T</span>] <span style="color:#000080;font-weight:bold">=</span> <span style="color:#000080;font-weight:bold">new</span> SimpleList[<span style="color:#000080;font-weight:bold">T</span>](Nil)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="type-trouble">Type trouble&hellip;</h2>
+<p>As soon as I tried implementing a version that doesn’t depend on the existing <code>List</code>, though, I ran into some trouble. I wanted to implement something like <code>List[T] = Empty | Cons(T,List[T])</code> but I couldn’t make <code>Empty</code> of type <code>T</code> and had to allow a covariant <code>T</code>, so I updated the trait to this</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">trait</span> List[<span style="color:#000080;font-weight:bold">+T</span>] {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> isEmpty<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">Boolean</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> head<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">T</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> tail<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> prepend[<span style="color:#000080;font-weight:bold">U</span> <span style="color:#000080;font-weight:bold">&gt;:</span> <span style="color:#000080;font-weight:bold">T</span>](h<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">U</span>)<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">U</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> append[<span style="color:#000080;font-weight:bold">U</span> <span style="color:#000080;font-weight:bold">&gt;:</span> <span style="color:#000080;font-weight:bold">T</span>](t<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">U</span>)<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">U</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> reverse<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">T</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">trait</span> ListCompanion[<span style="color:#000080;font-weight:bold">L</span>[<span style="color:#000080;font-weight:bold">_</span>] <span style="color:#000080;font-weight:bold">&lt;:</span> <span style="color:#000080;font-weight:bold">List</span>[<span style="color:#000080;font-weight:bold">?</span>]] {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> empty[<span style="color:#000080;font-weight:bold">T</span>]<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">L</span>[<span style="color:#000080;font-weight:bold">T</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I allow <code>prepend</code> and <code>append</code> to take more general types, and the result of the operation is then a list of the more general type. This also works for union types, so I can, for example, write</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">val</span> x <span style="color:#000080;font-weight:bold">=</span> Empty.append(<span style="color:#00f">3</span>).append(<span style="color:#00f">1.2</span>)
+</span></span></code></pre></div><p>and now <code>x</code> has type</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">val</span> x<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">LazyList</span>[<span style="color:#000080;font-weight:bold">Int</span> <span style="color:#000080;font-weight:bold">|</span> <span style="color:#000080;font-weight:bold">Double</span>]
+</span></span></code></pre></div><p>With that change, I could implement the <code>List[T]</code> trait as</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span>enum EnumList[<span style="color:#000080;font-weight:bold">+T</span>] <span style="color:#000080;font-weight:bold">extends</span> List[<span style="color:#000080;font-weight:bold">T</span>]<span style="color:#000080;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">case</span> <span style="color:#000080;font-weight:bold">Empty</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">case</span> Cons(h<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">T</span>, t<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">EnumList</span>[<span style="color:#000080;font-weight:bold">T</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> isEmpty<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">Boolean</span> = <span style="color:#000080;font-weight:bold">this</span> <span style="color:#000080;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Empty <span style="color:#000080;font-weight:bold">=&gt;</span> <span style="color:#000080;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> <span style="color:#000080;font-weight:bold">_</span>     <span style="color:#000080;font-weight:bold">=&gt;</span> <span style="color:#000080;font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> head<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">T</span> = <span style="color:#000080;font-weight:bold">this</span> <span style="color:#000080;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Cons(h, <span style="color:#000080;font-weight:bold">_</span>) <span style="color:#000080;font-weight:bold">=&gt;</span> h
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Empty      <span style="color:#000080;font-weight:bold">=&gt;</span> <span style="color:#000080;font-weight:bold">throw</span> <span style="color:#000080;font-weight:bold">new</span> NoSuchElementException(<span style="color:#00f">&#34;head of empty list&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> tail<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">EnumList</span>[<span style="color:#000080;font-weight:bold">T</span>] <span style="color:#000080;font-weight:bold">=</span> <span style="color:#000080;font-weight:bold">this</span> <span style="color:#000080;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Cons(<span style="color:#000080;font-weight:bold">_</span>, t) <span style="color:#000080;font-weight:bold">=&gt;</span> t
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Empty <span style="color:#000080;font-weight:bold">=&gt;</span> <span style="color:#000080;font-weight:bold">throw</span> <span style="color:#000080;font-weight:bold">new</span> UnsupportedOperationException(<span style="color:#00f">&#34;tail of empty list&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> prepend[<span style="color:#000080;font-weight:bold">U</span> <span style="color:#000080;font-weight:bold">&gt;:</span> <span style="color:#000080;font-weight:bold">T</span>](elem<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">U</span>)<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">EnumList</span>[<span style="color:#000080;font-weight:bold">U</span>] <span style="color:#000080;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span>    Cons(elem, <span style="color:#000080;font-weight:bold">this</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">def</span> append[<span style="color:#000080;font-weight:bold">U</span> <span style="color:#000080;font-weight:bold">&gt;:</span> <span style="color:#000080;font-weight:bold">T</span>](elem<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">U</span>)<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">EnumList</span>[<span style="color:#000080;font-weight:bold">U</span>] <span style="color:#000080;font-weight:bold">=</span> <span style="color:#000080;font-weight:bold">this</span> <span style="color:#000080;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Empty         <span style="color:#000080;font-weight:bold">=&gt;</span> Cons(elem, Empty)
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Cons(h, tail) <span style="color:#000080;font-weight:bold">=&gt;</span> Cons(h, tail.append(elem))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">private</span> <span style="color:#000080;font-weight:bold">def</span> rev[<span style="color:#000080;font-weight:bold">U</span> <span style="color:#000080;font-weight:bold">&gt;:</span> <span style="color:#000080;font-weight:bold">T</span>](acc<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">EnumList</span>[<span style="color:#000080;font-weight:bold">U</span>])<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">EnumList</span>[<span style="color:#000080;font-weight:bold">U</span>] <span style="color:#000080;font-weight:bold">=</span> <span style="color:#000080;font-weight:bold">this</span> <span style="color:#000080;font-weight:bold">match</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Empty         <span style="color:#000080;font-weight:bold">=&gt;</span> acc
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">case</span> Cons(h, tail) <span style="color:#000080;font-weight:bold">=&gt;</span> tail.rev(Cons(h, acc))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">val</span> reverse <span style="color:#000080;font-weight:bold">=</span> rev(Empty)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">object</span> EnumList <span style="color:#000080;font-weight:bold">extends</span> ListCompanion[<span style="color:#000080;font-weight:bold">EnumList</span>] {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">override</span> <span style="color:#000080;font-weight:bold">def</span> empty[<span style="color:#000080;font-weight:bold">T</span>]<span style="color:#000080;font-weight:bold">:</span> <span style="color:#000080;font-weight:bold">EnumList</span>[<span style="color:#000080;font-weight:bold">T</span>] <span style="color:#000080;font-weight:bold">=</span> Empty
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If you have ever worked with functional languages, there shouldn’t be much difficulty here.</p>
+<p>I’m not sure how I feel about this. On the one hand, I like that I can get a list that automatically includes the general type of elements I have added. It is a very flexible way of determining the type and has a “dynamic typing” feel. But that is also what worries me. Sometimes, I really want to ensure that I have a list of exactly the type I asked for when I created the empty list.</p>
+<p>I don’t know how to define the <code>enum</code> such that <code>Empty</code> has type <code>EnumList[T]</code>, which annoys me more than it should. But I don’t have any more time to hammer at it today ‘cause it’s Valentine’s Day and my health, both physically and mentally, depends on me being elsewhere in an hour&hellip;</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://mailund.dk/posts/prefix-doubling-attemps/"><i class="fa fa-chevron-circle-left"></i> Prefix Doubling Attempts</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020-2025 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://mailund.dk/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>

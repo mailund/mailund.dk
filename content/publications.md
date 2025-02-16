@@ -9,11 +9,13 @@ weight = 4
 ## Textbooks
 
 ### 2021
+
 * [**Introduction to Computational Thinking: Problem Solving, Algorithms, Data Structures, and More**](https://www.amazon.com/Introduction-Computational-Thinking-Algorithms-Structures/dp/1484270762/ref=sr_1_7?crid=2NBNL9TZU749I&keywords=thomas+mailund&qid=1655460669&sprefix=thomas+mailund%2Caps%2C164&sr=8-7) <br/>Thomas Mailund<br/> Apress, July 17, 2021, ISBN-10: 1484270762, ISBN-13: 978-1484270769
 
 * [**Pointers in C programming: A modern approach to memory management, recursive data structures, strings, and arrays**](https://www.amazon.com/Pointers-Programming-Management-Recursive-Structures/dp/1484269268/ref=sr_1_3?crid=2NBNL9TZU749I&keywords=thomas+mailund&qid=1655460669&sprefix=thomas+mailund%2Caps%2C164&sr=8-3) <br/>Thomas Mailund<br/> Apress, April 23, 2021, ISBN-10: 1484269268, ISBN-13: 978-1484269268
 
 ### 2020
+
 * [**String Algorithms in C: Efficient text representation and search**](https://amzn.to/2NIdAYc) <br/>Thomas Mailund<br/> Apress, Sep 30, ISBN-10: 148425919X, ISBN-13: 978-1484259191
 
 ### 2019
@@ -25,9 +27,11 @@ weight = 4
 * [**The Joys of Hashing: Hash Table Programming with C**](https://amzn.to/2oWoTiQ) <br/> Thomas Mailund<br/> Apress, May 14, 2019, ISBN-10: 1484240650, ISBN-13: 978-1484240656
 
 ### 2018
+
 * [**Domain-Specific Languages in R:  Advanced Statistical Programming**](https://amzn.to/2N5r6aA) <br/> Thomas Mailund<br/> Apress, June 23, 2018, ISBN-10: 1484240049, ISBN-13: 978-1484240045
 
 ### 2017
+
 * [**Functional Data Structures in R: Advanced Statistical Programming in R**](http://amzn.to/2i0tPzN) <br/>
 Thomas Mailund <br/>
 Apress, November 18, 2017, ISBN-10: 1484231430, ISBN-13: 978-1484231432
