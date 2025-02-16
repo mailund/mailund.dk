@@ -7,8 +7,36 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 14 Feb 2025 13:19:35 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2025 06:39:39 +0100</lastBuildDate>
     <atom:link href="https://mailund.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C</title>
+      <link>https://mailund.dk/tags/c/</link>
+      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
+      <guid>https://mailund.dk/tags/c/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>https://mailund.dk/tags/go/</link>
+      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
+      <guid>https://mailund.dk/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://mailund.dk/tags/python/</link>
+      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
+      <guid>https://mailund.dk/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://mailund.dk/tags/rust/</link>
+      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
+      <guid>https://mailund.dk/tags/rust/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Programming</title>
       <link>https://mailund.dk/tags/programming/</link>
@@ -28,20 +56,6 @@
       <link>https://mailund.dk/tags/algorithms/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
       <guid>https://mailund.dk/tags/algorithms/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>C</title>
-      <link>https://mailund.dk/tags/c/</link>
-      <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      <guid>https://mailund.dk/tags/c/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://mailund.dk/tags/python/</link>
-      <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      <guid>https://mailund.dk/tags/python/</guid>
       <description></description>
     </item>
     <item>
@@ -70,13 +84,6 @@
       <link>https://mailund.dk/tags/krofatter-egon/</link>
       <pubDate>Sat, 13 Feb 2021 09:25:20 +0100</pubDate>
       <guid>https://mailund.dk/tags/krofatter-egon/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Go</title>
-      <link>https://mailund.dk/tags/go/</link>
-      <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      <guid>https://mailund.dk/tags/go/</guid>
       <description></description>
     </item>
     <item>

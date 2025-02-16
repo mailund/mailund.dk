@@ -15,7 +15,10 @@ pygmentsStyle = "borland"
 ignoreLogs = ['warning-goldmark-raw-html', 'shortcode-x-getremote']
 
 googleAnalytics = "386493837"
-disqusShortname = "mailund-dk"
+
+[services]
+  [services.disqus]
+    shortname = "mailund-dk"
 
 [frontmatter]
   newContentEditor = "index.md"

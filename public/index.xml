@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 14 Feb 2025 13:19:35 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2025 06:39:39 +0100</lastBuildDate>
     <atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
@@ -43,6 +43,13 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       <guid>https://mailund.dk/software/</guid>
       <description>&lt;p&gt;I have written various software over the years. You can get a list of most of it at &lt;a href=&#34;https://github.com/mailund&#34;&gt;GitHub&lt;/a&gt;. Below is a list of software I have worked on recently (and I promise to still be maintaining). I will do my best to handle issues with older software, but some of it is simply too old for me to keep track of.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Simple String Search Implementations</title>
+      <link>https://mailund.dk/posts/some-simple-string-search-implementations/</link>
+      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
+      <guid>https://mailund.dk/posts/some-simple-string-search-implementations/</guid>
+      <description>&lt;p&gt;I’ll get back to playing with Scala soon, but since I don’t know which skills to brush up on, I also decided to play with a few other things.&lt;/p&gt;&#xA;&lt;p&gt;I have taught string algorithms for over a decade, so I figured that using a few simple algorithms I know very well would be an interesting way to play with how the same goal can be achieved in different languages.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Giving Scala a Go—Playing with Lists</title>

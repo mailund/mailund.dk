@@ -17,14 +17,38 @@
     <loc>https://mailund.dk/software/</loc>
     <lastmod>2018-09-09T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://mailund.dk/categories/algorithms/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
+  </url><url>
+    <loc>https://mailund.dk/tags/c/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
+  </url><url>
+    <loc>https://mailund.dk/categories/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
+  </url><url>
+    <loc>https://mailund.dk/tags/go/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
+  </url><url>
     <loc>https://mailund.dk/</loc>
     <lastmod>2025-02-16T06:39:39+01:00</lastmod>
   </url><url>
     <loc>https://mailund.dk/posts/</loc>
     <lastmod>2025-02-16T06:39:39+01:00</lastmod>
   </url><url>
-    <loc>https://mailund.dk/categories/</loc>
-    <lastmod>2025-02-14T13:19:35+01:00</lastmod>
+    <loc>https://mailund.dk/categories/programming/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
+  </url><url>
+    <loc>https://mailund.dk/tags/python/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
+  </url><url>
+    <loc>https://mailund.dk/tags/rust/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
+  </url><url>
+    <loc>https://mailund.dk/posts/some-simple-string-search-implementations/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
+  </url><url>
+    <loc>https://mailund.dk/tags/</loc>
+    <lastmod>2025-02-16T06:39:39+01:00</lastmod>
   </url><url>
     <loc>https://mailund.dk/posts/giving-scala-a-go/</loc>
     <lastmod>2025-02-14T13:19:35+01:00</lastmod>
@@ -32,25 +56,13 @@
     <loc>https://mailund.dk/tags/programming/</loc>
     <lastmod>2025-02-14T13:19:35+01:00</lastmod>
   </url><url>
-    <loc>https://mailund.dk/categories/programming/</loc>
-    <lastmod>2025-02-14T13:19:35+01:00</lastmod>
-  </url><url>
     <loc>https://mailund.dk/tags/scala/</loc>
-    <lastmod>2025-02-14T13:19:35+01:00</lastmod>
-  </url><url>
-    <loc>https://mailund.dk/tags/</loc>
     <lastmod>2025-02-14T13:19:35+01:00</lastmod>
   </url><url>
     <loc>https://mailund.dk/tags/algorithms/</loc>
     <lastmod>2021-11-25T14:08:34+01:00</lastmod>
   </url><url>
-    <loc>https://mailund.dk/tags/c/</loc>
-    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
-  </url><url>
     <loc>https://mailund.dk/posts/prefix-doubling-attemps/</loc>
-    <lastmod>2021-11-25T14:08:34+01:00</lastmod>
-  </url><url>
-    <loc>https://mailund.dk/tags/python/</loc>
     <lastmod>2021-11-25T14:08:34+01:00</lastmod>
   </url><url>
     <loc>https://mailund.dk/posts/cps-and-iterators-in-c/</loc>
@@ -94,9 +106,6 @@
   </url><url>
     <loc>https://mailund.dk/posts/krofatter-11/</loc>
     <lastmod>2021-02-06T15:03:11+01:00</lastmod>
-  </url><url>
-    <loc>https://mailund.dk/tags/go/</loc>
-    <lastmod>2021-02-05T10:19:43+01:00</lastmod>
   </url><url>
     <loc>https://mailund.dk/posts/starting-up-exercises-bwt/</loc>
     <lastmod>2021-02-05T10:19:43+01:00</lastmod>

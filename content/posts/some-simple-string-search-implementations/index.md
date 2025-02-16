@@ -3,7 +3,6 @@ title: "Simple String Search Implementations"
 date: 2025-02-16T06:39:39+01:00
 categories: [Programming, Algorithms]
 tags: [C, Rust, Go, Python]
-draft: true
 ---
 
 I’ll get back to playing with Scala soon, but since I don’t know which skills to brush up on, I also decided to play with a few other things.
