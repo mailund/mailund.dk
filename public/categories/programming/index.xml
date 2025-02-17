@@ -2,179 +2,186 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on Mailund on the Internet</title>
-    <link>https://mailund.dk/categories/programming/</link>
+    <link>http://localhost:1313/categories/programming/</link>
     <description>Recent content in Programming on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Sun, 16 Feb 2025 06:39:39 +0100</lastBuildDate>
-    <atom:link href="https://mailund.dk/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Feb 2025 17:56:54 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KMP Implementations</title>
+      <link>http://localhost:1313/posts/kmp-implementations/</link>
+      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>http://localhost:1313/posts/kmp-implementations/</guid>
+      <description>&lt;p&gt;Following on my &lt;a href=&#34;https://mailund.dk/posts/some-simple-string-search-implementations/&#34;&gt;previous post&lt;/a&gt; I set out to implement the Knuth-Morris-Pratt algorithm.&lt;/p&gt;&#xA;&lt;p&gt;This algorithm shifts the pattern &lt;code&gt;p&lt;/code&gt; along &lt;code&gt;x&lt;/code&gt;, exploiting the structure in &lt;code&gt;p&lt;/code&gt; to skip positions we know cannot match. To do this, it uses a so-called &lt;em&gt;border array&lt;/em&gt; that we need to pre-compute.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Simple String Search Implementations</title>
-      <link>https://mailund.dk/posts/some-simple-string-search-implementations/</link>
+      <link>http://localhost:1313/posts/some-simple-string-search-implementations/</link>
       <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>https://mailund.dk/posts/some-simple-string-search-implementations/</guid>
+      <guid>http://localhost:1313/posts/some-simple-string-search-implementations/</guid>
       <description>&lt;p&gt;I’ll get back to playing with Scala soon, but since I don’t know which skills to brush up on, I also decided to play with a few other things.&lt;/p&gt;&#xA;&lt;p&gt;I have taught string algorithms for over a decade, so I figured that using a few simple algorithms I know very well would be an interesting way to play with how the same goal can be achieved in different languages.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Giving Scala a Go—Playing with Lists</title>
-      <link>https://mailund.dk/posts/giving-scala-a-go/</link>
+      <link>http://localhost:1313/posts/giving-scala-a-go/</link>
       <pubDate>Fri, 14 Feb 2025 13:19:35 +0100</pubDate>
-      <guid>https://mailund.dk/posts/giving-scala-a-go/</guid>
+      <guid>http://localhost:1313/posts/giving-scala-a-go/</guid>
       <description>&lt;p&gt;Soon, I will be unemployed — the needs of Kvantify and my interests and qualifications have diverged over the last year — so it is time to brush up on my skills, so I look interesting for potential future employer. Since I don’t know what a future employer will be looking for, this mainly means finding something I’m not familiar with but interested in and playing with it. Today, the choice fell on Scala.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Prefix Doubling Attempts</title>
-      <link>https://mailund.dk/posts/prefix-doubling-attemps/</link>
+      <link>http://localhost:1313/posts/prefix-doubling-attemps/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      <guid>https://mailund.dk/posts/prefix-doubling-attemps/</guid>
+      <guid>http://localhost:1313/posts/prefix-doubling-attemps/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been working on an algorithm for suffix array construction today. It&amp;rsquo;s called &lt;em&gt;prefix doubling&lt;/em&gt;, but I don&amp;rsquo;t have a link, sorry. I think it comes from &lt;a href=&#34;https://dl.acm.org/doi/10.1145/800152.804905&#34;&gt;this paper&lt;/a&gt; but I don&amp;rsquo;t have access to it at home.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CPS and Iterators in C</title>
-      <link>https://mailund.dk/posts/cps-and-iterators-in-c/</link>
+      <link>http://localhost:1313/posts/cps-and-iterators-in-c/</link>
       <pubDate>Thu, 21 Oct 2021 04:50:01 +0200</pubDate>
-      <guid>https://mailund.dk/posts/cps-and-iterators-in-c/</guid>
+      <guid>http://localhost:1313/posts/cps-and-iterators-in-c/</guid>
       <description>&lt;p&gt;Today, I want to talk about &lt;em&gt;continuation-passing-style&lt;/em&gt; (CSP). This is a general approach you can use to translate recursions into tail-calls.&lt;/p&gt;&#xA;&lt;p&gt;What&amp;rsquo;s tail-calls, I (imagine hearing) you ask?&lt;/p&gt;&#xA;&lt;p&gt;A &lt;a href=&#34;https://en.wikipedia.org/wiki/Tail_call&#34;&gt;tail-call&lt;/a&gt; is when a function calls another function as the last thing it does. Tail-recursion is when that last call is a recursive call, but that is just a special case of tail-calls.&lt;/p&gt;</description>
     </item>
     <item>
       <title>C Slices</title>
-      <link>https://mailund.dk/posts/cstr-slices/</link>
+      <link>http://localhost:1313/posts/cstr-slices/</link>
       <pubDate>Tue, 19 Oct 2021 04:25:05 +0200</pubDate>
-      <guid>https://mailund.dk/posts/cstr-slices/</guid>
+      <guid>http://localhost:1313/posts/cstr-slices/</guid>
       <description>&lt;p&gt;About those slices &lt;a href=&#34;https://mailund.dk/posts/macro-metaprogramming/&#34;&gt;I mentioned yesterday&lt;/a&gt;, here&amp;rsquo;s what&amp;rsquo;s that about.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m working on some string algorithms and more straightforward C implementations than those I put in &lt;a href=&#34;https://amzn.to/3pfzvdd&#34;&gt;my book&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,^[I&amp;rsquo;m toying with the idea of writing string algorithms books for those languages, but I have a long list of writing obligations, so I don&amp;rsquo;t know if that will ever happen.] and I plan to implement them in Rust as soon as I get the time. Still, I&amp;rsquo;m also playing with the idea of reimplementing everything in C in a (perhaps) more accessible form.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Macro Metaprogramming</title>
-      <link>https://mailund.dk/posts/macro-metaprogramming/</link>
+      <link>http://localhost:1313/posts/macro-metaprogramming/</link>
       <pubDate>Mon, 18 Oct 2021 04:43:09 +0200</pubDate>
-      <guid>https://mailund.dk/posts/macro-metaprogramming/</guid>
+      <guid>http://localhost:1313/posts/macro-metaprogramming/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been working on a small C library for Python- or Go-like slices the last couple of weeks. Essentially arrays, but where I can index from the end using negative numbers (like in Python) and where I can extract a sub-slice, &lt;code&gt;x[i:j]&lt;/code&gt;, in constant time (like in Go; I implement them the same way as Go does).&lt;/p&gt;</description>
     </item>
     <item>
       <title>&#39;Witness&#39; arrays</title>
-      <link>https://mailund.dk/posts/witness-array/</link>
+      <link>http://localhost:1313/posts/witness-array/</link>
       <pubDate>Wed, 15 Sep 2021 07:59:33 +0200</pubDate>
-      <guid>https://mailund.dk/posts/witness-array/</guid>
+      <guid>http://localhost:1313/posts/witness-array/</guid>
       <description>&lt;p&gt;The other day I was reminded of an exercises we got first or second year when I studied computer science. It is a cool little trick, that I&amp;rsquo;ve never seen outside of that exercise, so I thought I&amp;rsquo;d share it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Starting Up Exercises: Burrows-Wheeler Transform</title>
-      <link>https://mailund.dk/posts/starting-up-exercises-bwt/</link>
+      <link>http://localhost:1313/posts/starting-up-exercises-bwt/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      <guid>https://mailund.dk/posts/starting-up-exercises-bwt/</guid>
+      <guid>http://localhost:1313/posts/starting-up-exercises-bwt/</guid>
       <description>&lt;p&gt;I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.&lt;/p&gt;&#xA;&lt;p&gt;There is nothing new there, I have a class every year where we do that, but now it is individual projects. The content doesn&amp;rsquo;t change much; just the teaching format.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Chinese Remainder in Go</title>
-      <link>https://mailund.dk/posts/crt-go/</link>
+      <link>http://localhost:1313/posts/crt-go/</link>
       <pubDate>Wed, 06 Jan 2021 10:56:53 +0100</pubDate>
-      <guid>https://mailund.dk/posts/crt-go/</guid>
+      <guid>http://localhost:1313/posts/crt-go/</guid>
       <description>&lt;p&gt;In between exams, I plan to learn &lt;a href=&#34;https://golang.org&#34;&gt;Go&lt;/a&gt; in January. I have a book I plan to follow, but today I wanted to get started by just jumping into it, so I picked the &lt;a href=&#34;https://en.wikipedia.org/wiki/Chinese_remainder_theorem&#34;&gt;Chinese Remainder Theorem&lt;/a&gt; we used for 2020&amp;rsquo;s Advent of Code &lt;a href=&#34;https://mailund.dk/posts/aoc-2020-4/&#34;&gt;Day 13&lt;/a&gt;. There, I implemented it in Python (before I found out that it was already in SymPy). It is a simple numerical algorithm, so it should be easy to implement in Go. Or so I thought.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — day 24 remade</title>
-      <link>https://mailund.dk/posts/aoc-2020-12/</link>
+      <link>http://localhost:1313/posts/aoc-2020-12/</link>
       <pubDate>Fri, 25 Dec 2020 07:21:59 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-12/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-12/</guid>
       <description>&lt;p&gt;I wanted to get back to yesterday’s puzzle, and I have a little time before I need to run off…&lt;/p&gt;&#xA;&#xA;&lt;p&gt;The use of &lt;code&gt;findall()&lt;/code&gt; I refer to in the tweet is this. You can split the input using a regular expression, and then map each input code to a direction. If you combine that with a &lt;code&gt;reduce()&lt;/code&gt; you get a very succinct parser:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — day 25</title>
-      <link>https://mailund.dk/posts/aoc-2020-11/</link>
+      <link>http://localhost:1313/posts/aoc-2020-11/</link>
       <pubDate>Fri, 25 Dec 2020 07:01:59 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-11/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-11/</guid>
       <description>&lt;p&gt;On the &lt;a href=&#34;https://adventofcode.com/2020/day/25&#34;&gt;last day of Christmas AoC gave to me&lt;/a&gt; an encryption problem, that is really a modular arithmetic problem.&lt;/p&gt;&#xA;&lt;p&gt;If you decode the description—that is more cryptic than the mathematics—you find that we need to find secret keys by solving equations&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 23 and 24</title>
-      <link>https://mailund.dk/posts/aoc-2020-10/</link>
+      <link>http://localhost:1313/posts/aoc-2020-10/</link>
       <pubDate>Thu, 24 Dec 2020 07:51:59 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-10/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-10/</guid>
       <description>&lt;p&gt;Unexpectedly, I was allowed to play today—it &lt;em&gt;is&lt;/em&gt; Christmas, after all—as long as I didn’t spend too much time at the computer. So I hurried up and solved today’s and yesterday’s puzzles quickly.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — day 22</title>
-      <link>https://mailund.dk/posts/aoc-2020-9/</link>
+      <link>http://localhost:1313/posts/aoc-2020-9/</link>
       <pubDate>Tue, 22 Dec 2020 06:51:59 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-9/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-9/</guid>
       <description>&lt;p&gt;This will be the last post I write before New Year. We have vacation in the house from tomorrow, and I won’t be hacking when I am supposed to be social—I am told. I will do the last three puzzles, and post them, after the holiday.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 20 and 21</title>
-      <link>https://mailund.dk/posts/aoc-2020-8/</link>
+      <link>http://localhost:1313/posts/aoc-2020-8/</link>
       <pubDate>Mon, 21 Dec 2020 07:51:59 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-8/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-8/</guid>
       <description>&lt;h2 id=&#34;day-20-jurassic-jigsaw&#34;&gt;Day 20: Jurassic Jigsaw&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://adventofcode.com/2020/day/20&#34;&gt;Day 20&lt;/a&gt; we get tiles for a puzzle, and we have to work out the puzzle from them. The tiles can be rotated or flipped, but we can connect them by identifying how edges match.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — day 19</title>
-      <link>https://mailund.dk/posts/aoc-2020-7/</link>
+      <link>http://localhost:1313/posts/aoc-2020-7/</link>
       <pubDate>Sat, 19 Dec 2020 06:51:59 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-7/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-7/</guid>
       <description>&lt;p&gt;I will make this one quick, because I don’t have much time. &lt;a href=&#34;https://adventofcode.com/2020/day/19&#34;&gt;Today, we are given some rules&lt;/a&gt; for what strings should look like, and we are to validate a set of strings and count how many are valid. This is a bit of a mix between the parser from yesterday and the rule-validation from other days, but leaning, by far, towards the parser. The rules are a grammar, and checking the strings means we are matching them against the grammar.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 17-18</title>
-      <link>https://mailund.dk/posts/aoc-2020-6/</link>
+      <link>http://localhost:1313/posts/aoc-2020-6/</link>
       <pubDate>Fri, 18 Dec 2020 08:51:59 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-6/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-6/</guid>
       <description>&lt;p&gt;Well, today, my blogging catches up with my &lt;a href=&#34;https://adventofcode.com/&#34;&gt;Advent of Code&lt;/a&gt; hacking. Just in time to fall behind again in the weekend. If that happens, I should be able to write up my weekend solutions on Monday. I don’t think I have that much work waiting for me then.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 14-16</title>
-      <link>https://mailund.dk/posts/aoc-2020-5/</link>
+      <link>http://localhost:1313/posts/aoc-2020-5/</link>
       <pubDate>Thu, 17 Dec 2020 18:51:39 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-5/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-5/</guid>
       <description>&lt;p&gt;My posts are almost catching up to &lt;a href=&#34;https://adventofcode.com/2020&#34;&gt;Advent of Code&lt;/a&gt;, which probably means that I will fall behind in the weekend. Quite likely, actually. I probably have time for solving the puzzles, but not writing about them. If that happens—and if I were a better man, it is how I would bet—then I will make sure to catch up Monday.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 12-13</title>
-      <link>https://mailund.dk/posts/aoc-2020-4/</link>
+      <link>http://localhost:1313/posts/aoc-2020-4/</link>
       <pubDate>Thu, 17 Dec 2020 10:54:39 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-4/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-4/</guid>
       <description>&lt;p&gt;I don’t have a lot of time today, so I will only describe the solutions for two days. I promise that I will catch up to the day the puzzles are released, but it probably won’t be until after the weekend…&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 09–11</title>
-      <link>https://mailund.dk/posts/aoc-2020-3/</link>
+      <link>http://localhost:1313/posts/aoc-2020-3/</link>
       <pubDate>Wed, 16 Dec 2020 09:48:39 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-3/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-3/</guid>
       <description>&lt;p&gt;Another day, another post with solutions to 2020 &lt;a href=&#34;https://adventofcode.com&#34;&gt;Advent of Code&lt;/a&gt;. I am slowly catching up with the actual puzzles, and I will probably get there soon. After that, there will probably be one day per post, except that I expect that the 24th and 25th will be something I leave for after Christmas. I’m not sure I will be allowed to sit and write over Christmas. We will see.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 06–08</title>
-      <link>https://mailund.dk/posts/aoc-2020-2/</link>
+      <link>http://localhost:1313/posts/aoc-2020-2/</link>
       <pubDate>Tue, 15 Dec 2020 06:48:38 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-2/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-2/</guid>
       <description>&lt;p&gt;Ok, now that today’s puzzles are solved, I can go back and look at solutions to the previous days. Today, I will show you my solutions for days six through eight. There is some fun stuff in these days, with graph algorithms, memorisation, and virtual machines, the latter which I found particularly fun to play with.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 01-05</title>
-      <link>https://mailund.dk/posts/aoc-2020-1/</link>
+      <link>http://localhost:1313/posts/aoc-2020-1/</link>
       <pubDate>Mon, 14 Dec 2020 04:48:38 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-1/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-1/</guid>
       <description>&lt;p&gt;While I wait for comments on the last chapters of my upcoming C-pointers book, I have some time on my hands. And since corona keeps me at home, I have to find something to keep me entertained. So I thought I would write a little about the &lt;a href=&#34;https://adventofcode.com&#34;&gt;Advent of Code&lt;/a&gt; puzzles I’m solving this year, and how I am solving them.&lt;/p&gt;</description>
     </item>
     <item>
       <title>OOP example in C</title>
-      <link>https://mailund.dk/posts/cpointer-oop-example/</link>
+      <link>http://localhost:1313/posts/cpointer-oop-example/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      <guid>https://mailund.dk/posts/cpointer-oop-example/</guid>
+      <guid>http://localhost:1313/posts/cpointer-oop-example/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Reference counting lists in C</title>
-      <link>https://mailund.dk/posts/c-refcount-list/</link>
+      <link>http://localhost:1313/posts/c-refcount-list/</link>
       <pubDate>Fri, 30 Oct 2020 06:59:36 +0100</pubDate>
-      <guid>https://mailund.dk/posts/c-refcount-list/</guid>
+      <guid>http://localhost:1313/posts/c-refcount-list/</guid>
       <description>&lt;p&gt;I was playing with reference counting garbage collection last week, for something I want to add to my C pointers book. That chapter is still far in the future, and moving further into the future as the book seems to grow in front of me, but one day I will get to it. And by then, I have to have figured out some design issues that I ran into.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Generators in C</title>
-      <link>https://mailund.dk/posts/c-generators/</link>
+      <link>http://localhost:1313/posts/c-generators/</link>
       <pubDate>Fri, 23 Nov 2018 14:02:40 +0100</pubDate>
-      <guid>https://mailund.dk/posts/c-generators/</guid>
+      <guid>http://localhost:1313/posts/c-generators/</guid>
       <description>&lt;p&gt;Now that I am almost done with &lt;a href=&#34;https://amzn.to/2pngZQ0&#34;&gt;&lt;em&gt;The Joys of Hashing&lt;/em&gt;&lt;/a&gt;, I am looking at the material I made last year for our &lt;a href=&#34;https://kursuskatalog.au.dk/da/course/72431/Genome-Scale-Algorithms&#34;&gt;&lt;em&gt;Genome-scale Algorithms&lt;/em&gt; class&lt;/a&gt;. I implemented a toy read mapper as an example for the final project. I wrote several different approaches to mapping, from generating all strings at a certain edit distance to a read and doing exact matching to branch-and-bound using BWT.&lt;/p&gt;</description>
     </item>
   </channel>

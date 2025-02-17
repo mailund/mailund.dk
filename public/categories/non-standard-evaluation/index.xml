@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Non-Standard Evaluation on Mailund on the Internet</title>
-    <link>https://mailund.dk/categories/non-standard-evaluation/</link>
+    <link>http://localhost:1313/categories/non-standard-evaluation/</link>
     <description>Recent content in Non-Standard Evaluation on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Wed, 03 Oct 2018 09:10:01 +0200</lastBuildDate>
-    <atom:link href="https://mailund.dk/categories/non-standard-evaluation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/non-standard-evaluation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Promises, their environments, and how we evaluate them</title>
-      <link>https://mailund.dk/posts/promises-and-lazy-evaluation/</link>
+      <link>http://localhost:1313/posts/promises-and-lazy-evaluation/</link>
       <pubDate>Wed, 03 Oct 2018 09:10:01 +0200</pubDate>
-      <guid>https://mailund.dk/posts/promises-and-lazy-evaluation/</guid>
+      <guid>http://localhost:1313/posts/promises-and-lazy-evaluation/</guid>
       <description>&lt;p&gt;Have you ever wondered how functions are evaluated? How you can have arguments that would raise errors, but do not, or how default arguments can be expressions that depend on function arguments that you haven&amp;rsquo;t seen yet when you define a function?&lt;/p&gt;</description>
     </item>
   </channel>

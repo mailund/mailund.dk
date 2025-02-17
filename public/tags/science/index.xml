@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Science on Mailund on the Internet</title>
-    <link>https://mailund.dk/tags/science/</link>
+    <link>http://localhost:1313/tags/science/</link>
     <description>Recent content in Science on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Fri, 05 Oct 2018 12:38:07 +0200</lastBuildDate>
-    <atom:link href="https://mailund.dk/tags/science/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Elegant Scipy</title>
-      <link>https://mailund.dk/posts/elegant-scipy/</link>
+      <link>http://localhost:1313/posts/elegant-scipy/</link>
       <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>
-      <guid>https://mailund.dk/posts/elegant-scipy/</guid>
+      <guid>http://localhost:1313/posts/elegant-scipy/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2pz1kNE&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I was a little disappointed about this. I had hoped it would give a good overview of &lt;code&gt;Scipy&lt;/code&gt;, but instead, it is a bunch of examples that use it.  It is not that the examples aren&amp;rsquo;t interesting. They are. They just drown out features of &lt;code&gt;Scipy&lt;/code&gt;, so I didn&amp;rsquo;t learn much about that.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Seeing Further</title>
-      <link>https://mailund.dk/posts/seeing-further/</link>
+      <link>http://localhost:1313/posts/seeing-further/</link>
       <pubDate>Mon, 01 Oct 2018 15:57:13 +0200</pubDate>
-      <guid>https://mailund.dk/posts/seeing-further/</guid>
+      <guid>http://localhost:1313/posts/seeing-further/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2xPc4f4&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I also finished &lt;a href=&#34;https://amzn.to/2xPc4f4&#34;&gt;&lt;em&gt;Seeing Further: The Story of Science, Discovery, and the Genius of the Royal Society&lt;/em&gt;&lt;/a&gt; yesterday. I found this a mixed back. When I bought it I thought it was a Bill Bryson book—I like those—but if I had checked the description just a little bit I would have seen that it is only edited by Bryson.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Power of Habit</title>
-      <link>https://mailund.dk/posts/the-power-of-habit/</link>
+      <link>http://localhost:1313/posts/the-power-of-habit/</link>
       <pubDate>Mon, 01 Oct 2018 15:45:36 +0200</pubDate>
-      <guid>https://mailund.dk/posts/the-power-of-habit/</guid>
+      <guid>http://localhost:1313/posts/the-power-of-habit/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://amzn.to/2xO0QHW&#34;&gt;&lt;img src=&#34;cover.jpg#float&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;In the weekend I finished &lt;a href=&#34;https://amzn.to/2xO0QHW&#34;&gt;&lt;em&gt;The Power of Habit&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is a very interesting book. Duhigg writes about how we are run by habit to a degree I had not imagined. How we react to triggers where we have learned, unconsciously, to expect some rewards, and how our brains turn out and runs on routine when that happens. How advertisement exploits this, how sports-teams and companies  can hook into the habit loop for good or for evil.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Coming Storm</title>
-      <link>https://mailund.dk/posts/the-coming-storm/</link>
+      <link>http://localhost:1313/posts/the-coming-storm/</link>
       <pubDate>Wed, 12 Sep 2018 08:06:58 +0200</pubDate>
-      <guid>https://mailund.dk/posts/the-coming-storm/</guid>
+      <guid>http://localhost:1313/posts/the-coming-storm/</guid>
       <description>&lt;p&gt;If you are a member of &lt;a href=&#34;https://amzn.to/2NFCFop&#34;&gt;Audible&lt;/a&gt;—and if you like audiobooks I think you should be—then they now give you two of six selected books for free every month. They call this &lt;a href=&#34;https://www.audible.com/ep/audible-originals-member-benefit&#34;&gt;Audible Originals&lt;/a&gt;, and while you only get six books to choose from, I am not complaining about getting something for free.&lt;/p&gt;</description>
     </item>
   </channel>

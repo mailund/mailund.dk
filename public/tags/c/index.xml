@@ -2,109 +2,116 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on Mailund on the Internet</title>
-    <link>https://mailund.dk/tags/c/</link>
+    <link>http://localhost:1313/tags/c/</link>
     <description>Recent content in C on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Sun, 16 Feb 2025 06:39:39 +0100</lastBuildDate>
-    <atom:link href="https://mailund.dk/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Feb 2025 17:56:54 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KMP Implementations</title>
+      <link>http://localhost:1313/posts/kmp-implementations/</link>
+      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>http://localhost:1313/posts/kmp-implementations/</guid>
+      <description>&lt;p&gt;Following on my &lt;a href=&#34;https://mailund.dk/posts/some-simple-string-search-implementations/&#34;&gt;previous post&lt;/a&gt; I set out to implement the Knuth-Morris-Pratt algorithm.&lt;/p&gt;&#xA;&lt;p&gt;This algorithm shifts the pattern &lt;code&gt;p&lt;/code&gt; along &lt;code&gt;x&lt;/code&gt;, exploiting the structure in &lt;code&gt;p&lt;/code&gt; to skip positions we know cannot match. To do this, it uses a so-called &lt;em&gt;border array&lt;/em&gt; that we need to pre-compute.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Simple String Search Implementations</title>
-      <link>https://mailund.dk/posts/some-simple-string-search-implementations/</link>
+      <link>http://localhost:1313/posts/some-simple-string-search-implementations/</link>
       <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>https://mailund.dk/posts/some-simple-string-search-implementations/</guid>
+      <guid>http://localhost:1313/posts/some-simple-string-search-implementations/</guid>
       <description>&lt;p&gt;I’ll get back to playing with Scala soon, but since I don’t know which skills to brush up on, I also decided to play with a few other things.&lt;/p&gt;&#xA;&lt;p&gt;I have taught string algorithms for over a decade, so I figured that using a few simple algorithms I know very well would be an interesting way to play with how the same goal can be achieved in different languages.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Prefix Doubling Attempts</title>
-      <link>https://mailund.dk/posts/prefix-doubling-attemps/</link>
+      <link>http://localhost:1313/posts/prefix-doubling-attemps/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      <guid>https://mailund.dk/posts/prefix-doubling-attemps/</guid>
+      <guid>http://localhost:1313/posts/prefix-doubling-attemps/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been working on an algorithm for suffix array construction today. It&amp;rsquo;s called &lt;em&gt;prefix doubling&lt;/em&gt;, but I don&amp;rsquo;t have a link, sorry. I think it comes from &lt;a href=&#34;https://dl.acm.org/doi/10.1145/800152.804905&#34;&gt;this paper&lt;/a&gt; but I don&amp;rsquo;t have access to it at home.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CPS and Iterators in C</title>
-      <link>https://mailund.dk/posts/cps-and-iterators-in-c/</link>
+      <link>http://localhost:1313/posts/cps-and-iterators-in-c/</link>
       <pubDate>Thu, 21 Oct 2021 04:50:01 +0200</pubDate>
-      <guid>https://mailund.dk/posts/cps-and-iterators-in-c/</guid>
+      <guid>http://localhost:1313/posts/cps-and-iterators-in-c/</guid>
       <description>&lt;p&gt;Today, I want to talk about &lt;em&gt;continuation-passing-style&lt;/em&gt; (CSP). This is a general approach you can use to translate recursions into tail-calls.&lt;/p&gt;&#xA;&lt;p&gt;What&amp;rsquo;s tail-calls, I (imagine hearing) you ask?&lt;/p&gt;&#xA;&lt;p&gt;A &lt;a href=&#34;https://en.wikipedia.org/wiki/Tail_call&#34;&gt;tail-call&lt;/a&gt; is when a function calls another function as the last thing it does. Tail-recursion is when that last call is a recursive call, but that is just a special case of tail-calls.&lt;/p&gt;</description>
     </item>
     <item>
       <title>C Slices</title>
-      <link>https://mailund.dk/posts/cstr-slices/</link>
+      <link>http://localhost:1313/posts/cstr-slices/</link>
       <pubDate>Tue, 19 Oct 2021 04:25:05 +0200</pubDate>
-      <guid>https://mailund.dk/posts/cstr-slices/</guid>
+      <guid>http://localhost:1313/posts/cstr-slices/</guid>
       <description>&lt;p&gt;About those slices &lt;a href=&#34;https://mailund.dk/posts/macro-metaprogramming/&#34;&gt;I mentioned yesterday&lt;/a&gt;, here&amp;rsquo;s what&amp;rsquo;s that about.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m working on some string algorithms and more straightforward C implementations than those I put in &lt;a href=&#34;https://amzn.to/3pfzvdd&#34;&gt;my book&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I implemented all the algorithms and data structures I use in my string algorithm class in Python and Go in the spring,^[I&amp;rsquo;m toying with the idea of writing string algorithms books for those languages, but I have a long list of writing obligations, so I don&amp;rsquo;t know if that will ever happen.] and I plan to implement them in Rust as soon as I get the time. Still, I&amp;rsquo;m also playing with the idea of reimplementing everything in C in a (perhaps) more accessible form.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Macro Metaprogramming</title>
-      <link>https://mailund.dk/posts/macro-metaprogramming/</link>
+      <link>http://localhost:1313/posts/macro-metaprogramming/</link>
       <pubDate>Mon, 18 Oct 2021 04:43:09 +0200</pubDate>
-      <guid>https://mailund.dk/posts/macro-metaprogramming/</guid>
+      <guid>http://localhost:1313/posts/macro-metaprogramming/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been working on a small C library for Python- or Go-like slices the last couple of weeks. Essentially arrays, but where I can index from the end using negative numbers (like in Python) and where I can extract a sub-slice, &lt;code&gt;x[i:j]&lt;/code&gt;, in constant time (like in Go; I implement them the same way as Go does).&lt;/p&gt;</description>
     </item>
     <item>
       <title>&#39;Witness&#39; arrays</title>
-      <link>https://mailund.dk/posts/witness-array/</link>
+      <link>http://localhost:1313/posts/witness-array/</link>
       <pubDate>Wed, 15 Sep 2021 07:59:33 +0200</pubDate>
-      <guid>https://mailund.dk/posts/witness-array/</guid>
+      <guid>http://localhost:1313/posts/witness-array/</guid>
       <description>&lt;p&gt;The other day I was reminded of an exercises we got first or second year when I studied computer science. It is a cool little trick, that I&amp;rsquo;ve never seen outside of that exercise, so I thought I&amp;rsquo;d share it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Starting Up Exercises: Burrows-Wheeler Transform</title>
-      <link>https://mailund.dk/posts/starting-up-exercises-bwt/</link>
+      <link>http://localhost:1313/posts/starting-up-exercises-bwt/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      <guid>https://mailund.dk/posts/starting-up-exercises-bwt/</guid>
+      <guid>http://localhost:1313/posts/starting-up-exercises-bwt/</guid>
       <description>&lt;p&gt;I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.&lt;/p&gt;&#xA;&lt;p&gt;There is nothing new there, I have a class every year where we do that, but now it is individual projects. The content doesn&amp;rsquo;t change much; just the teaching format.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Book update: Pointers in C and and Computational Thinking</title>
-      <link>https://mailund.dk/posts/book-update-cptr-ct/</link>
+      <link>http://localhost:1313/posts/book-update-cptr-ct/</link>
       <pubDate>Tue, 12 Jan 2021 08:27:09 +0100</pubDate>
-      <guid>https://mailund.dk/posts/book-update-cptr-ct/</guid>
-      <description>&lt;figure class=&#34;float-right&#34;&gt;&lt;a href=&#34;https://amzn.to/35vpSfI&#34;&gt;&lt;img src=&#34;https://mailund.dk/posts/book-update-cptr-ct/cptrs.jpg&#34;&gt;&lt;/a&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;So, my C pointers book apparently has a cover now. Before you complain, I don&amp;rsquo;t write the titles (although I don&amp;rsquo;t disagree with the title for this book), nor the subtitles (where I do for this one). I don&amp;rsquo;t know what they mean by &amp;ldquo;modern approach to memory management&amp;rdquo;. It&amp;rsquo;s &lt;code&gt;malloc()&lt;/code&gt; and &lt;code&gt;free()&lt;/code&gt; and some tricks for that, like reference counting and allocation pools.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/book-update-cptr-ct/</guid>
+      <description>&lt;figure class=&#34;float-right&#34;&gt;&lt;a href=&#34;https://amzn.to/35vpSfI&#34;&gt;&lt;img src=&#34;http://localhost:1313/posts/book-update-cptr-ct/cptrs.jpg&#34;&gt;&lt;/a&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;So, my C pointers book apparently has a cover now. Before you complain, I don&amp;rsquo;t write the titles (although I don&amp;rsquo;t disagree with the title for this book), nor the subtitles (where I do for this one). I don&amp;rsquo;t know what they mean by &amp;ldquo;modern approach to memory management&amp;rdquo;. It&amp;rsquo;s &lt;code&gt;malloc()&lt;/code&gt; and &lt;code&gt;free()&lt;/code&gt; and some tricks for that, like reference counting and allocation pools.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 09–11</title>
-      <link>https://mailund.dk/posts/aoc-2020-3/</link>
+      <link>http://localhost:1313/posts/aoc-2020-3/</link>
       <pubDate>Wed, 16 Dec 2020 09:48:39 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-3/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-3/</guid>
       <description>&lt;p&gt;Another day, another post with solutions to 2020 &lt;a href=&#34;https://adventofcode.com&#34;&gt;Advent of Code&lt;/a&gt;. I am slowly catching up with the actual puzzles, and I will probably get there soon. After that, there will probably be one day per post, except that I expect that the 24th and 25th will be something I leave for after Christmas. I’m not sure I will be allowed to sit and write over Christmas. We will see.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Advent of Code 2020 — days 06–08</title>
-      <link>https://mailund.dk/posts/aoc-2020-2/</link>
+      <link>http://localhost:1313/posts/aoc-2020-2/</link>
       <pubDate>Tue, 15 Dec 2020 06:48:38 +0100</pubDate>
-      <guid>https://mailund.dk/posts/aoc-2020-2/</guid>
+      <guid>http://localhost:1313/posts/aoc-2020-2/</guid>
       <description>&lt;p&gt;Ok, now that today’s puzzles are solved, I can go back and look at solutions to the previous days. Today, I will show you my solutions for days six through eight. There is some fun stuff in these days, with graph algorithms, memorisation, and virtual machines, the latter which I found particularly fun to play with.&lt;/p&gt;</description>
     </item>
     <item>
       <title>OOP example in C</title>
-      <link>https://mailund.dk/posts/cpointer-oop-example/</link>
+      <link>http://localhost:1313/posts/cpointer-oop-example/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      <guid>https://mailund.dk/posts/cpointer-oop-example/</guid>
+      <guid>http://localhost:1313/posts/cpointer-oop-example/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Reference counting lists in C</title>
-      <link>https://mailund.dk/posts/c-refcount-list/</link>
+      <link>http://localhost:1313/posts/c-refcount-list/</link>
       <pubDate>Fri, 30 Oct 2020 06:59:36 +0100</pubDate>
-      <guid>https://mailund.dk/posts/c-refcount-list/</guid>
+      <guid>http://localhost:1313/posts/c-refcount-list/</guid>
       <description>&lt;p&gt;I was playing with reference counting garbage collection last week, for something I want to add to my C pointers book. That chapter is still far in the future, and moving further into the future as the book seems to grow in front of me, but one day I will get to it. And by then, I have to have figured out some design issues that I ran into.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Joys of Hashing</title>
-      <link>https://mailund.dk/posts/joys-of-hashing/</link>
+      <link>http://localhost:1313/posts/joys-of-hashing/</link>
       <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
-      <guid>https://mailund.dk/posts/joys-of-hashing/</guid>
+      <guid>http://localhost:1313/posts/joys-of-hashing/</guid>
       <description>&lt;p&gt;I forgot to post about it when The Joys of Hashing came out, but it is never too late to blow my own horn. It is out and you should get it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Generators in C</title>
-      <link>https://mailund.dk/posts/c-generators/</link>
+      <link>http://localhost:1313/posts/c-generators/</link>
       <pubDate>Fri, 23 Nov 2018 14:02:40 +0100</pubDate>
-      <guid>https://mailund.dk/posts/c-generators/</guid>
+      <guid>http://localhost:1313/posts/c-generators/</guid>
       <description>&lt;p&gt;Now that I am almost done with &lt;a href=&#34;https://amzn.to/2pngZQ0&#34;&gt;&lt;em&gt;The Joys of Hashing&lt;/em&gt;&lt;/a&gt;, I am looking at the material I made last year for our &lt;a href=&#34;https://kursuskatalog.au.dk/da/course/72431/Genome-Scale-Algorithms&#34;&gt;&lt;em&gt;Genome-scale Algorithms&lt;/em&gt; class&lt;/a&gt;. I implemented a toy read mapper as an example for the final project. I wrote several different approaches to mapping, from generating all strings at a certain edit distance to a read and doing exact matching to branch-and-bound using BWT.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,7 +2,7 @@
 
 <html lang="en">
 
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>Mailund on the Internet</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +16,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:1313/css/styles.css" />
 <link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
 
  
@@ -83,7 +83,7 @@
   <div id="container">
     <header>
       <h1>
-                <a href="https://mailund.dk/">Mailund on the Internet</a>
+                <a href="http://localhost:1313/">Mailund on the Internet</a>
             </h1>
 
       <ul id="social-media">
@@ -100,37 +100,37 @@
     <ul>
         
         <li>
-            <a class="" href="https://mailund.dk/about/">
+            <a class="" href="http://localhost:1313/about/">
                 <i class="fa-li fa  fa-lg"></i><span>About</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/posts">
+            <a class="" href="http://localhost:1313/posts">
                 <i class="fa-li fa  fa-lg"></i><span>Posts</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/books/">
+            <a class="" href="http://localhost:1313/books/">
                 <i class="fa-li fa  fa-lg"></i><span>Books</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/fiction/">
+            <a class="" href="http://localhost:1313/fiction/">
                 <i class="fa-li fa  fa-lg"></i><span>Fiction</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/publications/">
+            <a class="" href="http://localhost:1313/publications/">
                 <i class="fa-li fa  fa-lg"></i><span>Publications</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/software/">
+            <a class="" href="http://localhost:1313/software/">
                 <i class="fa-li fa  fa-lg"></i><span>Software</span>
             </a>
         </li>
@@ -161,10 +161,10 @@
             <em>
                 
                     
-                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                    <a href="http://localhost:1313/tags/programming/">#programming</a>
                 
                     , 
-                    <a href="https://mailund.dk/tags/rstats/">#rstats</a>
+                    <a href="http://localhost:1313/tags/rstats/">#rstats</a>
                 
             </em>
         </li>
@@ -177,7 +177,7 @@
 
     <p>In my <a href="https://mailund.github.io/r-programmer-blog/2018/09/20/scoping-rules-and-nse/">previous post</a> I used the <code>lm</code> function for an example of scope rules, but I left a few details out. I didn&rsquo;t want to muddy the example with too many details, so I chose to lie a little.</p>
 <p>The drawing I used to explain the example was this:</p>
-<figure><img src="https://mailund.dk/posts/eval-and-overscoping/lm2%20details%20ok.png">
+<figure><img src="http://localhost:1313/posts/eval-and-overscoping/lm2%20details%20ok.png">
 </figure>
 
 <p>I explained how the scope is implemented using environments that are chained through parent pointers, and how a function has an environment associated with it. This environment is the environment where you define the function.</p>
@@ -193,7 +193,7 @@
 <p>In the call to <code>f</code>, we created an environment for the call, and we put the parameter <code>x</code> into this. The parent of this environment is the one associated with <code>f</code>, which is the global environment.</p>
 <p>The environment associated with <code>g</code> is the one we created with the call to <code>f</code>, where we created the inner function. So, when we call <code>g</code>, we create an environment for the call, we set its parent to the one associated with <code>g</code>—the one we created when we called <code>g</code>. We put the parameter <code>y</code> into this environment, and it is in this environment we evaluate the body of <code>g</code>: <code>x + y</code>.</p>
 <p>The setup is this, where I have illustrated where the <code>g</code> body finds variables <code>x</code> and <code>y</code> by searching through the environment chain, the <code>y</code> variable in the immediate environment and the <code>x</code> variable in its parent.</p>
-<figure><img src="https://mailund.dk/posts/eval-and-overscoping/nested%20calls.png">
+<figure><img src="http://localhost:1313/posts/eval-and-overscoping/nested%20calls.png">
 </figure>
 
 <p>This is how lexical scope works.</p>
@@ -206,7 +206,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>h(<span style="color:#00f">5</span>)
 </span></span></code></pre></div><pre tabindex="0"><code>## [1] 3
 </code></pre><p>The rules are the same as before, and the environments and how they are chained is this:</p>
-<figure><img src="https://mailund.dk/posts/eval-and-overscoping/not%20nested.png">
+<figure><img src="http://localhost:1313/posts/eval-and-overscoping/not%20nested.png">
 </figure>
 
 <p>All three functions are associated with the global environment, so when we call them, that will be the parent of their call environments. This means that when we call <code>h(5)</code> we get an environment that maps <code>z</code> to 5, but we find the <code>y</code> we use in the call to <code>g</code> from the global environment, where it is 1. The call environment for <code>g(y = 1)</code> contains the mapping for <code>y</code>, but we find the <code>x</code> for the call <code>f(x)</code> in the global environment, so we call <code>f(x = 1)</code>. That creates yet another call environment where we map <code>x</code> to one. When we evaluate <code>x + y + z</code> we find <code>x</code> in the call-environment, and we find <code>y</code> and <code>z</code> in its parent-environment—the global environment. That is why <code>x + y + z</code> evaluates to three.</p>
@@ -281,7 +281,7 @@
 ## &lt;environment: 0x7fde1838c768&gt;
 </code></pre><pre tabindex="0"><code>## [1] 7
 </code></pre><p>So in this version, <code>g</code> will evaluate <code>f(x)</code> in <code>h(5)</code>&rsquo;s environment and <code>f</code> will evaluate <code>x + y + z</code> in the same environment. When <code>g</code> evaluates <code>x + y + z</code> it finds <code>z</code> in the call-environment of <code>h(5)</code>, and it finds <code>x</code> and <code>y</code> in the global environment (because this is the parent of <code>h(5)</code>&rsquo;s environment). The environments of <code>g(y)</code> and <code>f(x)</code> are never in play here; we skip them entirely.</p>
-<figure><img src="https://mailund.dk/posts/eval-and-overscoping/dyn%20scope%201.png">
+<figure><img src="http://localhost:1313/posts/eval-and-overscoping/dyn%20scope%201.png">
 </figure>
 
 <p>With me so far?</p>
@@ -506,12 +506,12 @@
     <ul>
         
         <li>
-            <a href="https://mailund.dk/posts/ct-slides-chapter5/"><i class="fa fa-chevron-circle-left"></i> Slides for Computational Thinking (Chapter 5)</a>
+            <a href="http://localhost:1313/posts/ct-slides-chapter5/"><i class="fa fa-chevron-circle-left"></i> Slides for Computational Thinking (Chapter 5)</a>
         </li>
         
         
         <li>
-            <a href="https://mailund.dk/posts/ctib-exercises-chapter4/">Exercises (CT chapter 4) <i class="fa fa-chevron-circle-right"></i> </a>
+            <a href="http://localhost:1313/posts/ctib-exercises-chapter4/">Exercises (CT chapter 4) <i class="fa fa-chevron-circle-right"></i> </a>
         </li>
         
     </ul>
@@ -526,10 +526,10 @@
     <footer>
         <h6>Copyright © 2020-2025 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+            <a href="http://localhost:1313/index.xml">Subscribe</a></h6>
     </footer>
 </div>
-<script src="https://mailund.dk/js/scripts.js"></script>
+<script src="http://localhost:1313/js/scripts.js"></script>
 </body>
 <div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
 <script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>

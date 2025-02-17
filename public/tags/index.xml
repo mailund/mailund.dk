@@ -2,186 +2,186 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Mailund on the Internet</title>
-    <link>https://mailund.dk/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Sun, 16 Feb 2025 06:39:39 +0100</lastBuildDate>
-    <atom:link href="https://mailund.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Feb 2025 17:56:54 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C</title>
-      <link>https://mailund.dk/tags/c/</link>
-      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>https://mailund.dk/tags/c/</guid>
+      <link>http://localhost:1313/tags/c/</link>
+      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>http://localhost:1313/tags/c/</guid>
       <description></description>
     </item>
     <item>
       <title>Go</title>
-      <link>https://mailund.dk/tags/go/</link>
-      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>https://mailund.dk/tags/go/</guid>
+      <link>http://localhost:1313/tags/go/</link>
+      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>http://localhost:1313/tags/go/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://mailund.dk/tags/python/</link>
-      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>https://mailund.dk/tags/python/</guid>
+      <link>http://localhost:1313/tags/python/</link>
+      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>http://localhost:1313/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Rust</title>
-      <link>https://mailund.dk/tags/rust/</link>
-      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>https://mailund.dk/tags/rust/</guid>
+      <link>http://localhost:1313/tags/rust/</link>
+      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>http://localhost:1313/tags/rust/</guid>
       <description></description>
     </item>
     <item>
       <title>Programming</title>
-      <link>https://mailund.dk/tags/programming/</link>
+      <link>http://localhost:1313/tags/programming/</link>
       <pubDate>Fri, 14 Feb 2025 13:19:35 +0100</pubDate>
-      <guid>https://mailund.dk/tags/programming/</guid>
+      <guid>http://localhost:1313/tags/programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Scala</title>
-      <link>https://mailund.dk/tags/scala/</link>
+      <link>http://localhost:1313/tags/scala/</link>
       <pubDate>Fri, 14 Feb 2025 13:19:35 +0100</pubDate>
-      <guid>https://mailund.dk/tags/scala/</guid>
+      <guid>http://localhost:1313/tags/scala/</guid>
       <description></description>
     </item>
     <item>
       <title>Algorithms</title>
-      <link>https://mailund.dk/tags/algorithms/</link>
+      <link>http://localhost:1313/tags/algorithms/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      <guid>https://mailund.dk/tags/algorithms/</guid>
+      <guid>http://localhost:1313/tags/algorithms/</guid>
       <description></description>
     </item>
     <item>
       <title>Books</title>
-      <link>https://mailund.dk/tags/books/</link>
+      <link>http://localhost:1313/tags/books/</link>
       <pubDate>Thu, 25 Feb 2021 09:30:35 +0100</pubDate>
-      <guid>https://mailund.dk/tags/books/</guid>
+      <guid>http://localhost:1313/tags/books/</guid>
       <description></description>
     </item>
     <item>
       <title>Fiction</title>
-      <link>https://mailund.dk/tags/fiction/</link>
+      <link>http://localhost:1313/tags/fiction/</link>
       <pubDate>Thu, 25 Feb 2021 09:30:35 +0100</pubDate>
-      <guid>https://mailund.dk/tags/fiction/</guid>
+      <guid>http://localhost:1313/tags/fiction/</guid>
       <description></description>
     </item>
     <item>
       <title>Writing</title>
-      <link>https://mailund.dk/tags/writing/</link>
+      <link>http://localhost:1313/tags/writing/</link>
       <pubDate>Thu, 25 Feb 2021 09:30:35 +0100</pubDate>
-      <guid>https://mailund.dk/tags/writing/</guid>
+      <guid>http://localhost:1313/tags/writing/</guid>
       <description></description>
     </item>
     <item>
       <title>Krofatter Egon</title>
-      <link>https://mailund.dk/tags/krofatter-egon/</link>
+      <link>http://localhost:1313/tags/krofatter-egon/</link>
       <pubDate>Sat, 13 Feb 2021 09:25:20 +0100</pubDate>
-      <guid>https://mailund.dk/tags/krofatter-egon/</guid>
+      <guid>http://localhost:1313/tags/krofatter-egon/</guid>
       <description></description>
     </item>
     <item>
       <title>String Algorithms</title>
-      <link>https://mailund.dk/tags/string-algorithms/</link>
+      <link>http://localhost:1313/tags/string-algorithms/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      <guid>https://mailund.dk/tags/string-algorithms/</guid>
+      <guid>http://localhost:1313/tags/string-algorithms/</guid>
       <description></description>
     </item>
     <item>
       <title>Teaching</title>
-      <link>https://mailund.dk/tags/teaching/</link>
+      <link>http://localhost:1313/tags/teaching/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      <guid>https://mailund.dk/tags/teaching/</guid>
+      <guid>http://localhost:1313/tags/teaching/</guid>
       <description></description>
     </item>
     <item>
       <title>Computational-Thinking</title>
-      <link>https://mailund.dk/tags/computational-thinking/</link>
+      <link>http://localhost:1313/tags/computational-thinking/</link>
       <pubDate>Tue, 12 Jan 2021 08:27:09 +0100</pubDate>
-      <guid>https://mailund.dk/tags/computational-thinking/</guid>
+      <guid>http://localhost:1313/tags/computational-thinking/</guid>
       <description></description>
     </item>
     <item>
       <title>R</title>
-      <link>https://mailund.dk/tags/r/</link>
+      <link>http://localhost:1313/tags/r/</link>
       <pubDate>Tue, 15 Dec 2020 06:48:38 +0100</pubDate>
-      <guid>https://mailund.dk/tags/r/</guid>
+      <guid>http://localhost:1313/tags/r/</guid>
       <description></description>
     </item>
     <item>
       <title>OOP</title>
-      <link>https://mailund.dk/tags/oop/</link>
+      <link>http://localhost:1313/tags/oop/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      <guid>https://mailund.dk/tags/oop/</guid>
+      <guid>http://localhost:1313/tags/oop/</guid>
       <description></description>
     </item>
     <item>
       <title>Polymorphism</title>
-      <link>https://mailund.dk/tags/polymorphism/</link>
+      <link>http://localhost:1313/tags/polymorphism/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      <guid>https://mailund.dk/tags/polymorphism/</guid>
+      <guid>http://localhost:1313/tags/polymorphism/</guid>
       <description></description>
     </item>
     <item>
       <title>Data-Structures</title>
-      <link>https://mailund.dk/tags/data-structures/</link>
+      <link>http://localhost:1313/tags/data-structures/</link>
       <pubDate>Mon, 08 Apr 2019 14:34:13 +0200</pubDate>
-      <guid>https://mailund.dk/tags/data-structures/</guid>
+      <guid>http://localhost:1313/tags/data-structures/</guid>
       <description></description>
     </item>
     <item>
       <title>Science</title>
-      <link>https://mailund.dk/tags/science/</link>
+      <link>http://localhost:1313/tags/science/</link>
       <pubDate>Fri, 05 Oct 2018 12:38:07 +0200</pubDate>
-      <guid>https://mailund.dk/tags/science/</guid>
+      <guid>http://localhost:1313/tags/science/</guid>
       <description></description>
     </item>
     <item>
       <title>Rstats</title>
-      <link>https://mailund.dk/tags/rstats/</link>
+      <link>http://localhost:1313/tags/rstats/</link>
       <pubDate>Thu, 04 Oct 2018 05:00:20 +0200</pubDate>
-      <guid>https://mailund.dk/tags/rstats/</guid>
+      <guid>http://localhost:1313/tags/rstats/</guid>
       <description></description>
     </item>
     <item>
       <title>Scope-Rules</title>
-      <link>https://mailund.dk/tags/scope-rules/</link>
+      <link>http://localhost:1313/tags/scope-rules/</link>
       <pubDate>Wed, 03 Oct 2018 09:10:01 +0200</pubDate>
-      <guid>https://mailund.dk/tags/scope-rules/</guid>
+      <guid>http://localhost:1313/tags/scope-rules/</guid>
       <description></description>
     </item>
     <item>
       <title>Errata</title>
-      <link>https://mailund.dk/tags/errata/</link>
+      <link>http://localhost:1313/tags/errata/</link>
       <pubDate>Mon, 01 Oct 2018 08:43:17 +0200</pubDate>
-      <guid>https://mailund.dk/tags/errata/</guid>
+      <guid>http://localhost:1313/tags/errata/</guid>
       <description></description>
     </item>
     <item>
       <title>Functional-Programming</title>
-      <link>https://mailund.dk/tags/functional-programming/</link>
+      <link>http://localhost:1313/tags/functional-programming/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>https://mailund.dk/tags/functional-programming/</guid>
+      <guid>http://localhost:1313/tags/functional-programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>https://mailund.dk/tags/blog/</link>
+      <link>http://localhost:1313/tags/blog/</link>
       <pubDate>Mon, 10 Sep 2018 06:32:53 +0200</pubDate>
-      <guid>https://mailund.dk/tags/blog/</guid>
+      <guid>http://localhost:1313/tags/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Software</title>
-      <link>https://mailund.dk/tags/software/</link>
+      <link>http://localhost:1313/tags/software/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>https://mailund.dk/tags/software/</guid>
+      <guid>http://localhost:1313/tags/software/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Mailund on the Internet</title>
-    <link>https://mailund.dk/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Sun, 16 Feb 2025 06:39:39 +0100</lastBuildDate>
-    <atom:link href="https://mailund.dk/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Feb 2025 17:56:54 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algorithms</title>
-      <link>https://mailund.dk/categories/algorithms/</link>
-      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>https://mailund.dk/categories/algorithms/</guid>
+      <link>http://localhost:1313/categories/algorithms/</link>
+      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>http://localhost:1313/categories/algorithms/</guid>
       <description></description>
     </item>
     <item>
       <title>Programming</title>
-      <link>https://mailund.dk/categories/programming/</link>
-      <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>https://mailund.dk/categories/programming/</guid>
+      <link>http://localhost:1313/categories/programming/</link>
+      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>http://localhost:1313/categories/programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Writing</title>
-      <link>https://mailund.dk/categories/writing/</link>
+      <link>http://localhost:1313/categories/writing/</link>
       <pubDate>Sat, 13 Feb 2021 09:25:20 +0100</pubDate>
-      <guid>https://mailund.dk/categories/writing/</guid>
+      <guid>http://localhost:1313/categories/writing/</guid>
       <description></description>
     </item>
     <item>
       <title>Go</title>
-      <link>https://mailund.dk/categories/go/</link>
+      <link>http://localhost:1313/categories/go/</link>
       <pubDate>Wed, 06 Jan 2021 10:56:53 +0100</pubDate>
-      <guid>https://mailund.dk/categories/go/</guid>
+      <guid>http://localhost:1313/categories/go/</guid>
       <description></description>
     </item>
     <item>
       <title>Non-Standard Evaluation</title>
-      <link>https://mailund.dk/categories/non-standard-evaluation/</link>
+      <link>http://localhost:1313/categories/non-standard-evaluation/</link>
       <pubDate>Wed, 03 Oct 2018 09:10:01 +0200</pubDate>
-      <guid>https://mailund.dk/categories/non-standard-evaluation/</guid>
+      <guid>http://localhost:1313/categories/non-standard-evaluation/</guid>
       <description></description>
     </item>
   </channel>

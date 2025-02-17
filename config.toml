@@ -7,7 +7,7 @@ canonifyurls = true
 ignoreFiles = []
 
 
-pagination.pagerSize = 20
+pagination.pagerSize = 30
 summaryLength = 30
 pygmentsCodeFences = true
 pygmentsStyle = "borland"

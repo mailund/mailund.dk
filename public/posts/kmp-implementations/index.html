@@ -1,0 +1,552 @@
+<!doctype html>
+
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>Mailund on the Internet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:1313/css/styles.css" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
+
+ 
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid Sans" type="text/css" media="all" />
+     
+       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Mono" type="text/css" media="all" />
+     
+
+ <style>
+ body {
+     font-family: 'Droid Sans';
+ }
+ code {
+    font-family: 'Fira Code';
+ }
+ </style>
+
+ <script type="text/javascript" async
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Queue(function() {
+     
+     
+     
+     var all = MathJax.Hub.getAllJax(), i;
+     for(i = 0; i < all.length; i += 1) {
+         all[i].SourceElement().parentNode.className += ' has-jax';
+     }
+   });
+
+   MathJax.Hub.Config({
+   
+   TeX: { equationNumbers: { autoNumber: "AMS" } }
+   });
+   MathJax.Hub.Config({
+   tex2jax: {
+     inlineMath: [['$$','$$'], ['\\(','\\)']],
+     displayMath: [['$$$','$$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+   }
+   });
+ </script>
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=386493837"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '386493837');
+        }
+      </script>
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="http://localhost:1313/">Mailund on the Internet</a>
+            </h1>
+
+      <ul id="social-media">
+                
+      </ul>
+      
+      <p><em>On Writing, Science, Programming and more</em></p>
+      
+
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="http://localhost:1313/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/posts">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/books/">
+                <i class="fa-li fa  fa-lg"></i><span>Books</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/fiction/">
+                <i class="fa-li fa  fa-lg"></i><span>Fiction</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/publications/">
+                <i class="fa-li fa  fa-lg"></i><span>Publications</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="http://localhost:1313/software/">
+                <i class="fa-li fa  fa-lg"></i><span>Software</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>KMP Implementations</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2025-02-16T17:56:54&#43;01:00">Feb 16, 2025</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="http://localhost:1313/categories/programming/">Programming</a>
+                
+                    , 
+                    <a href="http://localhost:1313/categories/algorithms/">Algorithms</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="http://localhost:1313/tags/c/">#C</a>
+                
+                    , 
+                    <a href="http://localhost:1313/tags/rust/">#Rust</a>
+                
+                    , 
+                    <a href="http://localhost:1313/tags/go/">#Go</a>
+                
+                    , 
+                    <a href="http://localhost:1313/tags/python/">#Python</a>
+                
+            </em>
+        </li>
+        
+
+        <li>11 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Following on my <a href="https://mailund.dk/posts/some-simple-string-search-implementations/">previous post</a> I set out to implement the Knuth-Morris-Pratt algorithm.</p>
+<p>This algorithm shifts the pattern <code>p</code> along <code>x</code>, exploiting the structure in <code>p</code> to skip positions we know cannot match. To do this, it uses a so-called <em>border array</em> that we need to pre-compute.</p>
+<p>A <em>border</em> of a string is a proper prefix and suffix. The “proper” means that it cannot be the full string but can be empty.</p>
+<p><img src="border-array/border.png" alt="Border"></p>
+<p>The <em>border array</em> of a string gives you the length of the longest border at every prefix. That is, for every index <code>i</code> in a string <code>i</code>, you have a prefix of the string, <code>x[..i]</code>. That prefix has one or more borders (there is always at least one because the empty string is a proper prefix and suffix), and <code>ba[i]</code> is the length of the longest.</p>
+<p><img src="border-array/border-array.png" alt="Border array"></p>
+<p>When you are building the border array, you do it left-to-right. The border for the first index, since borders have to be proper, has to be empty, so the first index is zero, and the remaining we can build from the borders on the left. Whenever we move from index <code>i</code> to <code>i+1</code>, we need to find a border. Whatever letter is at <code>x[i+1]</code>, the border needs to end with that (unless it is empty). So you scan through candidates, which will be the borders of <code>x[..i]</code>, and see if you can expand them.</p>
+<p><img src="border-array/building-border-array.png" alt="Building a border array"></p>
+<p>In the figure, the indexing seems slightly off, but if we are indexing from zero, then index <code>ba[i]</code> is one past the border of <code>x[..i]</code>. The length is always one past the last index. The figures would be cleaner if we index from one, but then we get into a different mess later.</p>
+<p>To do this scan, you don’t have to keep track of all the borders of <code>x[..i]</code>. The structure of borders mandates that the second-longest border (which must be a border, duh) must also be a border of the longest border. So to get the second longest border, you can ask for the longest border of the longest border. You can continue with this reasoning until you reach the empty border.</p>
+<p><img src="border-array/building-border-array-2.png" alt="Building a border array"></p>
+<p>This might look like a quadratic time algorithm—for each index <code>i</code>, you have to search through all the previous borders, of which there could be <em>O(i)</em>, but an amortisation argument shows that you cannot have long scans that often. If you have to scan down far, you end up with a short border, so you cannot do a long search next time.</p>
+<p>More formally, consider the current border a potential function. You can only increase the potential by one in each iteration, and you cannot reduce the potential below zero, so you end up with a linear time algorithm.</p>
+<p>The KMP algorithm doesn’t originally look like what I have implemented below, but it is pretty close. You can reformulate it as essentially running the border array algorithm on the string <code>p$x</code> that consists of the pattern you want to search for, <code>p</code>, a “sentinel” character that doesn’t appear in <code>p</code> or <code>x</code>, and then the string we search in. If we build the border array over <code>p</code>, we can scan through it and find all the borders of length <code>m=|p|</code> that lands in the <code>x</code> part. The sentinel prevents longer borders, and borders of length <code>m</code> are the longest we can get. Plus, where we have a border of length <code>m</code>, we have a bit of <code>x</code> that matches <code>p</code>.</p>
+<p>This algorithm, by the way, works fine, runs in linear time, and is simpler than the original KMP, so it is not a bad approach to searching in the simple case we consider here. It is <em>almost</em> the algorithm the way it was originally formulated and we just came to it from a different direction.</p>
+<p>In the original algorithm, though, there is one more trick. We are going to match <code>p</code> against all positions in <code>x</code> and make a jump whenever we have a mismatch, and this jump just happens to be the same kind of jump we do when we build the border array. However, since we are trying to match, rather than building the border array, we can jump a little further with a little more preprocessing. We are going to use a “strict” border array, where we require that the borders we have cannot be followed by the same character as the one that follows <code>x[..i]</code>.</p>
+<p><img src="border-array/strict-border.png" alt="Strict border array"></p>
+<p>By looking one ahead, we can jump a little further. It doesn’t change the asymptotic running time but is a speedup.</p>
+<p>Anyway, enough theory; let’s get to the hacking!</p>
+<h3 id="python">Python</h3>
+<p>Building the border array in Python is as straightforward as you could wish. Nothing interesting here.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> border_array(x: str) -&gt; list[int]:
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#34;&#34;&#34;Construct the border array for x.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    ba = [<span style="color:#00f">0</span>] * len(x)
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(<span style="color:#00f">1</span>, len(x)):
+</span></span><span style="display:flex;"><span>        b = ba[j - <span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">while</span> b &gt; <span style="color:#00f">0</span> <span style="font-weight:bold">and</span> x[j] != x[b]:
+</span></span><span style="display:flex;"><span>            b = ba[b - <span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>        ba[j] = b + <span style="color:#00f">1</span> <span style="color:#000080;font-weight:bold">if</span> x[j] == x[b] <span style="color:#000080;font-weight:bold">else</span> <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> ba
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> filter_border(p: str, ba: list[int]) -&gt; list[int]:
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    Construct the strict border array for p.
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    A struct border array is one where the border cannot
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    match on the next character. If b is the length of the
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    longest border for p[:i+1], it means p[:b] == p[i-b:i+1],
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    but for a strict border, it must be the longest border
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    such that p[b] != p[i+1].
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> j, b <span style="font-weight:bold">in</span> enumerate(ba[:-<span style="color:#00f">1</span>]):
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> p[b] == p[j + <span style="color:#00f">1</span>] <span style="font-weight:bold">and</span> b &gt; <span style="color:#00f">0</span>:
+</span></span><span style="display:flex;"><span>            ba[j] = ba[b - <span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> ba
+</span></span></code></pre></div><p>Building the strict version of the border array is the simplest way I know, and it gives you linear time preprocessing for both arrays. So that is what I will go with everywhere.</p>
+<p>There is also nothing unexpected about the KMP implementation, either. As I have implemented it, in Python and in the other languages, I am not just building the border array of <code>p$x</code>, but I have the border array of <code>p</code> and at every prefix I have matched of <code>x</code> I start out by shifting the matching position down with the border array jumps we had in the border array construction. Once I have the longest border I can find, I try to add one more character match, and if that takes me to the end of <code>p</code> I have a full match. After a full match, I have to start again from the longest border of the full <code>p</code>, so I update that after returning from the yield.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">def</span> kmp(x: str, p: str) -&gt; Iterator[int]:
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">&#34;&#34;&#34;Run the Knuth-Morris-Pratt algorithm.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> len(x) == <span style="color:#00f">0</span> <span style="font-weight:bold">or</span> len(p) == <span style="color:#00f">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    j = <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span>    ba = filter_border(p, border_array(p))
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">for</span> i, a <span style="font-weight:bold">in</span> enumerate(x):
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-style:italic"># shift down pattern...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">while</span> a != p[j] <span style="font-weight:bold">and</span> j &gt; <span style="color:#00f">0</span>:
+</span></span><span style="display:flex;"><span>            j = ba[j - <span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-style:italic"># match one up, if we can...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> a == p[j]:
+</span></span><span style="display:flex;"><span>            j += <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080;font-weight:bold">if</span> j == len(p):
+</span></span><span style="display:flex;"><span>            <span style="color:#000080;font-weight:bold">yield</span> i - len(p) + <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>            j = ba[j - <span style="color:#00f">1</span>]
+</span></span></code></pre></div><h3 id="c">C</h3>
+<p>For C, I didn’t expect any problems with the implementation, and there weren’t. I expected problems with how I would design the algorithm for use, and there were.</p>
+<p>First, building the border array. There is nothing new here except for syntax. I don’t have the length of C strings, so I use the <code>'\0'</code> sentinel instead, but otherwise, it is easily recognisable as the same algorithm we have in Python.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> border_array(<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *p, <span style="color:#000080;font-weight:bold">int</span> *b) {
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Classical border array
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  b[<span style="color:#00f">0</span>] = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">int</span> j = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> i = <span style="color:#00f">1</span>; p[i]; i++) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">while</span> (j &gt; <span style="color:#00f">0</span> &amp;&amp; p[i] != p[j])
+</span></span><span style="display:flex;"><span>      j = b[j - <span style="color:#00f">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (p[i] == p[j])
+</span></span><span style="display:flex;"><span>      j++;
+</span></span><span style="display:flex;"><span>    b[i] = j;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#080;font-style:italic">// Making it strict
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>  <span style="color:#000080;font-weight:bold">if</span> (!p[<span style="color:#00f">0</span>] || !p[<span style="color:#00f">1</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">int</span> i = <span style="color:#00f">1</span>; p[i + <span style="color:#00f">1</span>]; i++)
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">if</span> (b[i] &amp;&amp; p[b[i]] == p[i + <span style="color:#00f">1</span>])
+</span></span><span style="display:flex;"><span>      b[i] = b[b[i] - <span style="color:#00f">1</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>My problem is with how you would use this algorithm. In C, we don’t have any automatic resource management, so the border array we allocate has to be handled somehow.</p>
+<p>For a short time, you were allowed to allocate arrays with dynamic size on the heap, but now that is compiler-dependent (and probably for good reason). That means we need to heap allocate, and that means we need to free again.</p>
+<p>If I want to follow the <code>for (init; test; inc)</code> pattern, where do initialisation and deallocation go? If <code>init</code> should return a pointer into <code>x</code> as with the naïve algorithm, how would I return a reference to the allocated array? Should I automatically deallocate when the loop is completed (that was quickly rejected as there is no guarantee that a user wouldn’t break out of the loop early)? It is a mess. That’s why we love C.</p>
+<p>I decided that you would have to initialise and free an iterator yourself. It feels like the C spirit. You could still use the <code>for</code> loop pattern, but you would need to use an initialised iterator. Something like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> kmp_iter iter = kmp_iter_init(x, p);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> (<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *hit = kmp_iter_next(&amp;iter); 
+</span></span><span style="display:flex;"><span>       hit; hit = kmp_iter_next(&amp;iter)) {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  kmp_iter_free(&amp;iter);
+</span></span></code></pre></div><p>Once that was decided, implementing it was simple. Put all you need in the <code>kmp_iter</code> structure and go from there.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> kmp_iter kmp_iter_init(<span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *x, <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *p) {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">int</span> *b = malloc(strlen(p) * <span style="color:#000080;font-weight:bold">sizeof</span> *b);
+</span></span><span style="display:flex;"><span>  border_array(p, b);
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">struct</span> kmp_iter iter = {.x = x, .p = p, .b = b, .i = <span style="color:#00f">0</span>, .j = <span style="color:#00f">0</span>};
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> iter;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *kmp_iter_next(<span style="color:#000080;font-weight:bold">struct</span> kmp_iter *iter) {
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">if</span> (!iter-&gt;x[<span style="color:#00f">0</span>] || !iter-&gt;p[<span style="color:#00f">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#000080;font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">for</span> (; iter-&gt;x[iter-&gt;i]; iter-&gt;i++) {
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Shift pattern down
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">while</span> (iter-&gt;j &gt; <span style="color:#00f">0</span> &amp;&amp; iter-&gt;x[iter-&gt;i] != iter-&gt;p[iter-&gt;j])
+</span></span><span style="display:flex;"><span>      iter-&gt;j = iter-&gt;b[iter-&gt;j - <span style="color:#00f">1</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// Move one step forward (if we can)
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">if</span> (iter-&gt;x[iter-&gt;i] == iter-&gt;p[iter-&gt;j])
+</span></span><span style="display:flex;"><span>      iter-&gt;j++;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-style:italic">// If we reached the end of the pattern, we found a match
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>    <span style="color:#000080;font-weight:bold">if</span> (iter-&gt;p[iter-&gt;j] == <span style="color:#800080">&#39;\0&#39;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#000080;font-weight:bold">const</span> <span style="color:#000080;font-weight:bold">char</span> *result = iter-&gt;x + iter-&gt;i - iter-&gt;j + <span style="color:#00f">1</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#080;font-style:italic">// Updating iter for next iteration
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span>      iter-&gt;j = <span style="color:#00f">0</span>;
+</span></span><span style="display:flex;"><span>      iter-&gt;i++;
+</span></span><span style="display:flex;"><span>      <span style="color:#000080;font-weight:bold">return</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000080;font-weight:bold">return</span> NULL;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">void</span> kmp_iter_free(<span style="color:#000080;font-weight:bold">struct</span> kmp_iter *iter) { free(iter-&gt;b); }
+</span></span></code></pre></div><p>Any of the proposed solutions for registering deallocation (implemented in compiler-specific ways if you don’t care about the standard) would have given me a nicer solution, but I work with what I (decide that I) have got.</p>
+<h3 id="go">Go</h3>
+<p>The Go solution is downright trivial by now. If I’m going with the callback solution, there is only one way to go here, so that is the way I took.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">func</span> Borderarray(x <span style="color:#000080;font-weight:bold">string</span>) []<span style="color:#000080;font-weight:bold">int</span> {
+</span></span><span style="display:flex;"><span>	ba := make([]<span style="color:#000080;font-weight:bold">int</span>, len(x))
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">for</span> i := <span style="color:#00f">1</span>; i &lt; len(x); i++ {
+</span></span><span style="display:flex;"><span>		b := ba[i-<span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">for</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#000080;font-weight:bold">if</span> x[b] == x[i] {
+</span></span><span style="display:flex;"><span>				ba[i] = b + <span style="color:#00f">1</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#000080;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#000080;font-weight:bold">if</span> b == <span style="color:#00f">0</span> {
+</span></span><span style="display:flex;"><span>				ba[i] = <span style="color:#00f">0</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#000080;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			b = ba[b-<span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">return</span> ba
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">func</span> StrictBorderarray(x <span style="color:#000080;font-weight:bold">string</span>) []<span style="color:#000080;font-weight:bold">int</span> {
+</span></span><span style="display:flex;"><span>	ba := Borderarray(x)
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">for</span> i := <span style="color:#00f">1</span>; i &lt; len(x)-<span style="color:#00f">1</span>; i++ {
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">if</span> ba[i] &gt; <span style="color:#00f">0</span> &amp;&amp; x[ba[i]] == x[i+<span style="color:#00f">1</span>] {
+</span></span><span style="display:flex;"><span>			ba[i] = ba[ba[i]-<span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">return</span> ba
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">func</span> Kmp(x, p <span style="color:#000080;font-weight:bold">string</span>, callback <span style="color:#000080;font-weight:bold">func</span>(<span style="color:#000080;font-weight:bold">int</span>)) {
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">if</span> x == <span style="color:#00f">&#34;&#34;</span> || p == <span style="color:#00f">&#34;&#34;</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	ba := StrictBorderarray(p)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">var</span> i, j <span style="color:#000080;font-weight:bold">int</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#000080;font-weight:bold">for</span> i &lt; len(x) {
+</span></span><span style="display:flex;"><span>		<span style="color:#080;font-style:italic">// Match...</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">for</span> i &lt; len(x) &amp;&amp; j &lt; len(p) &amp;&amp; x[i] == p[j] {
+</span></span><span style="display:flex;"><span>			i++
+</span></span><span style="display:flex;"><span>			j++
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#080;font-style:italic">// Report...</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">if</span> j == len(p) {
+</span></span><span style="display:flex;"><span>			callback(i - len(p))
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#080;font-style:italic">// Shift pattern...</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#000080;font-weight:bold">if</span> j == <span style="color:#00f">0</span> {
+</span></span><span style="display:flex;"><span>			i++
+</span></span><span style="display:flex;"><span>		} <span style="color:#000080;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>			j = ba[j-<span style="color:#00f">1</span>]
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="rust">Rust</h3>
+<p>Finally, Rust.</p>
+<p>I’m going to ignore all the alphabet stuff, that I deeply regret getting into, but I used it in this implementation anyway (just so I got something out of it).</p>
+<p>And <em>if</em> you ignore that, the implementation is much like the others above. You just have better memory management than what C provides.</p>
+<p>Building the arrays I don’t think you have much wiggle room with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> border_array&lt;Char&gt;(p: <span style="color:#000080;font-weight:bold">&amp;</span>Str&lt;Char&gt;)<span style="color:#bbb"> </span>-&gt; Vec&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Char: CharacterTrait,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>p.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>ba<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>vec![<span style="color:#00f">0</span>;<span style="color:#bbb"> </span>m];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>j<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#00f">0</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>i<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">in</span><span style="color:#bbb"> </span><span style="color:#00f">1</span>..m<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">while</span><span style="color:#bbb"> </span>j<span style="color:#bbb"> </span>&gt;<span style="color:#bbb"> </span><span style="color:#00f">0</span><span style="color:#bbb"> </span>&amp;&amp;<span style="color:#bbb"> </span>&amp;p[i]<span style="color:#bbb"> </span>!=<span style="color:#bbb"> </span>&amp;p[j]<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>j<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>ba[j<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span><span style="color:#00f">1</span>];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>&amp;p[i]<span style="color:#bbb"> </span>==<span style="color:#bbb"> </span>&amp;p[j]<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>j<span style="color:#bbb"> </span>+=<span style="color:#bbb"> </span><span style="color:#00f">1</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>ba[i]<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>j;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>ba<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">fn</span> strict_border_array&lt;Char&gt;(p: <span style="color:#000080;font-weight:bold">&amp;</span>Str&lt;Char&gt;)<span style="color:#bbb"> </span>-&gt; Vec&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">where</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Char: CharacterTrait,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>ba<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>border_array(p);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>j<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">in</span><span style="color:#bbb"> </span><span style="color:#00f">1</span>..(ba.len()<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span><span style="color:#00f">1</span>)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>b<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>ba[j];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>b<span style="color:#bbb"> </span>&gt;<span style="color:#bbb"> </span><span style="color:#00f">0</span><span style="color:#bbb"> </span>&amp;&amp;<span style="color:#bbb"> </span>p[b]<span style="color:#bbb"> </span>==<span style="color:#bbb"> </span>p[j<span style="color:#bbb"> </span>+<span style="color:#bbb"> </span><span style="color:#00f">1</span>]<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>ba[j]<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>ba[b<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span><span style="color:#00f">1</span>];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>ba<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>And since I’m still using an explicit Iterator, I have something that resembles the C solution the most.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#000080;font-weight:bold">struct</span> KMPSearch&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// The string we are searching in
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>x: Str&lt;Char&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// The pattern we are searching for
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>p: Str&lt;Char&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// The border array of the pattern
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>ba: Vec&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// The current index in the string
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>x_index: <span style="color:#000080;font-weight:bold">usize</span>,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#00f">/// The current index in the pattern
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span><span style="color:#bbb">    </span>p_index: <span style="color:#000080;font-weight:bold">usize</span>,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span>&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>KMPSearch&lt;Char&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">fn</span> new(x: Str&lt;Char&gt;,<span style="color:#bbb"> </span>p: Str&lt;Char&gt;)<span style="color:#bbb"> </span>-&gt; KMPSearch&lt;Char&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>ba<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>strict_border_array(&amp;p);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>KMPSearch<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>x,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>p,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>ba,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>x_index: <span style="color:#00f">0</span>,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>p_index: <span style="color:#00f">0</span>,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000080;font-weight:bold">impl</span>&lt;Char: CharacterTrait&gt;<span style="color:#bbb"> </span>Iterator<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">for</span><span style="color:#bbb"> </span>KMPSearch&lt;Char&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">type</span> Item<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span><span style="color:#000080;font-weight:bold">usize</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000080;font-weight:bold">fn</span> next(&amp;<span style="color:#000080;font-weight:bold">mut</span><span style="color:#bbb"> </span>self)<span style="color:#bbb"> </span>-&gt; Option&lt;<span style="color:#000080;font-weight:bold">usize</span>&gt;<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>KMPSearch<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>x,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>p,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>ba,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>x_index: i,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>p_index: j,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>..<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>self;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>x.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">let</span><span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>p.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000080;font-weight:bold">while</span><span style="color:#bbb"> </span>*i<span style="color:#bbb"> </span>&lt;<span style="color:#bbb"> </span>n<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#080;font-style:italic">// Shift pattern until it matches the border
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">while</span><span style="color:#bbb"> </span>*j<span style="color:#bbb"> </span>&gt;<span style="color:#bbb"> </span><span style="color:#00f">0</span><span style="color:#bbb"> </span>&amp;&amp;<span style="color:#bbb"> </span>&amp;x[*i]<span style="color:#bbb"> </span>!=<span style="color:#bbb"> </span>&amp;p[*j]<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>*j<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>ba[*j<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span><span style="color:#00f">1</span>];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#080;font-style:italic">// Move one step forward (if we can)
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>&amp;x[*i]<span style="color:#bbb"> </span>==<span style="color:#bbb"> </span>&amp;p[*j]<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>*j<span style="color:#bbb"> </span>+=<span style="color:#bbb"> </span><span style="color:#00f">1</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#080;font-style:italic">// Move to the next position (saving it for the next call to next)
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">            </span>*i<span style="color:#bbb"> </span>+=<span style="color:#bbb"> </span><span style="color:#00f">1</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#080;font-style:italic">// Return if a match was found
+</span></span></span><span style="display:flex;"><span><span style="color:#080;font-style:italic"></span><span style="color:#bbb">            </span><span style="color:#000080;font-weight:bold">if</span><span style="color:#bbb"> </span>*j<span style="color:#bbb"> </span>==<span style="color:#bbb"> </span>m<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>*j<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>ba[*j<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span><span style="color:#00f">1</span>];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span><span style="color:#000080;font-weight:bold">return</span><span style="color:#bbb"> </span>Some(*i<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span>m);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>None<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div>
+
+</article>
+
+
+<hr/>
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "mailund-dk" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<hr/>
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://localhost:1313/posts/some-simple-string-search-implementations/"><i class="fa fa-chevron-circle-left"></i> Simple String Search Implementations</a>
+        </li>
+        
+        
+    </ul>
+</section>
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2020-2025 - Thomas Mailund |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://localhost:1313/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="http://localhost:1313/js/scripts.js"></script>
+</body>
+<div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
+<script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</html>

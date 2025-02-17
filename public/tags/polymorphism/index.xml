@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Polymorphism on Mailund on the Internet</title>
-    <link>https://mailund.dk/tags/polymorphism/</link>
+    <link>http://localhost:1313/tags/polymorphism/</link>
     <description>Recent content in Polymorphism on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Thu, 12 Nov 2020 05:08:49 +0100</lastBuildDate>
-    <atom:link href="https://mailund.dk/tags/polymorphism/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/polymorphism/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OOP example in C</title>
-      <link>https://mailund.dk/posts/cpointer-oop-example/</link>
+      <link>http://localhost:1313/posts/cpointer-oop-example/</link>
       <pubDate>Thu, 12 Nov 2020 05:08:49 +0100</pubDate>
-      <guid>https://mailund.dk/posts/cpointer-oop-example/</guid>
+      <guid>http://localhost:1313/posts/cpointer-oop-example/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m writing the chapter on function pointers in my C pointers book, and I want a nice example of how you can use them to implement rudimentary object-oriented programming with dynamic dispatch.&lt;/p&gt;</description>
     </item>
   </channel>

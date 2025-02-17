@@ -2,7 +2,7 @@
 
 <html lang="en">
 
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>Mailund on the Internet</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +16,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-<link rel="stylesheet" type="text/css" href="https://mailund.dk/css/styles.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:1313/css/styles.css" />
 <link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.205/distr/fira_code.css">
 
  
@@ -83,7 +83,7 @@
   <div id="container">
     <header>
       <h1>
-                <a href="https://mailund.dk/">Mailund on the Internet</a>
+                <a href="http://localhost:1313/">Mailund on the Internet</a>
             </h1>
 
       <ul id="social-media">
@@ -100,37 +100,37 @@
     <ul>
         
         <li>
-            <a class="" href="https://mailund.dk/about/">
+            <a class="" href="http://localhost:1313/about/">
                 <i class="fa-li fa  fa-lg"></i><span>About</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/posts">
+            <a class="" href="http://localhost:1313/posts">
                 <i class="fa-li fa  fa-lg"></i><span>Posts</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/books/">
+            <a class="" href="http://localhost:1313/books/">
                 <i class="fa-li fa  fa-lg"></i><span>Books</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/fiction/">
+            <a class="" href="http://localhost:1313/fiction/">
                 <i class="fa-li fa  fa-lg"></i><span>Fiction</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/publications/">
+            <a class="" href="http://localhost:1313/publications/">
                 <i class="fa-li fa  fa-lg"></i><span>Publications</span>
             </a>
         </li>
         
         <li>
-            <a class="" href="https://mailund.dk/software/">
+            <a class="" href="http://localhost:1313/software/">
                 <i class="fa-li fa  fa-lg"></i><span>Software</span>
             </a>
         </li>
@@ -161,10 +161,10 @@
             <em>
                 
                     
-                    <a href="https://mailund.dk/tags/programming/">#programming</a>
+                    <a href="http://localhost:1313/tags/programming/">#programming</a>
                 
                     , 
-                    <a href="https://mailund.dk/tags/rstats/">#rstats</a>
+                    <a href="http://localhost:1313/tags/rstats/">#rstats</a>
                 
             </em>
         </li>
@@ -378,7 +378,7 @@
 </span></span></code></pre></div><p>it will contain those two variables:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>ls()
 </span></span></code></pre></div><pre tabindex="0"><code>## [1] &#34;x&#34; &#34;y&#34;
-</code></pre><figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/global-scope.png">
+</code></pre><figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/global-scope.png">
 </figure>
 
 <p>When you call <code>ls()</code> without arguments, you get the list of variables in the environment you are currently in. In this case, the global environment. You can also explicitly give <code>ls()</code> an environment. You get the global environment by calling the function <code>globalenv()</code>:</p>
@@ -393,14 +393,14 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>environment(f)
 </span></span></code></pre></div><pre tabindex="0"><code>## &lt;environment: R_GlobalEnv&gt;
 </code></pre><p>You can change this environment if you want to, but by default, it is the environment in which you defined the function. In this case, the global environment.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/global%20scope%20with%20function.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/global%20scope%20with%20function.png">
 </figure>
 
 <p>The function environment is <em>not</em> a new environment, however. You do not create an environment when you define a function. You just associate an environment with it. This environment is used as the parent of environments you create when you <em>call</em> a function.</p>
 <p>If you call a function, e.g. call</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>f(<span style="color:#00f">5</span>)
 </span></span></code></pre></div><p>you <em>will</em> create a new environment. You put function arguments and local variables into this environment, and the parent of the environment is the environment associated with the function.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/global%20scope%20with%20function%20instance.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/global%20scope%20with%20function%20instance.png">
 </figure>
 
 <p>When you evaluate the <code>x + y</code> in the body of <code>f</code>, R will first check the function instance environment, where it will find <code>x</code> mapped to five, and then search up the parent chain for <code>y</code>, which it will find in the global environment mapped to three.</p>
@@ -412,25 +412,25 @@
 </span></span><span style="display:flex;"><span>    g
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>After we have defined the function and assigned it to <code>f</code>, the global environment maps <code>f</code> to the function and the function&rsquo;s environment is the global variable.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/nested%20function%20before%20call.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/nested%20function%20before%20call.png">
 </figure>
 
 <p>It doesn&rsquo;t matter what happens inside the function body, because we haven&rsquo;t evaluated it yet. There is no inner function yet; it doesn&rsquo;t exist before we evaluate <code>f</code>.</p>
 <p>Now, let us call <code>f</code> with argument 2. This creates an instance-environment and set its parent to the global environment (the environment of function f). Inside this environment, we store the argument <code>x</code> and the local function <code>g</code>. The environment of <code>g</code> is the instance environment of the <code>f(2)</code> call.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/nested%20function%20outer%20fall%20before%20h.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/nested%20function%20outer%20fall%20before%20h.png">
 </figure>
 
 <p>When you return from the call to <code>f</code> and assign the result to <code>h</code>, you have this setup:</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/nested%20functions%20after%20outer%20call.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/nested%20functions%20after%20outer%20call.png">
 </figure>
 
 <p>You do not have a direct handle on the instance-environment from the call to <code>f</code>, but it exists as the parent of the function environment of <code>h</code>.</p>
 <p>If you then call <code>h(3)</code> you create another instance environment in which you map <code>y</code> to three. The parent environment is the function <code>h</code>&rsquo;s environment—we are applying the same rule as before about instance environments and functions—so the state of the system in the call is this:</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/nested%20functions%20inner%20call.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/nested%20functions%20inner%20call.png">
 </figure>
 
 <p>To evaluate <code>x + y</code> inside the <code>h(3)</code> call, we have this chain of environments:</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/evaluate%20in%20inner.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/evaluate%20in%20inner.png">
 </figure>
 
 <p>When we look for <code>y</code>, we can find it directly in the current environment. To find <code>x</code> we need to look in its parent. If we wanted <code>f</code>, <code>g</code>, and <code>h</code> we would find them in the chain as well.</p>
@@ -448,7 +448,7 @@
 <p>The parent environment of the <code>eval</code> call is the environment where we defined the <code>eval</code> function, which is the global environment.^[Actually, <code>eval</code> doesn&rsquo;t live in the global environment, but as I said earlier, we simplify the discussion by pretending that the global environment is the root of all the environments. It doesn&rsquo;t matter that it isn&rsquo;t for the points I want to make in this post.] That environment doesn&rsquo;t know anything about the variables we captured in the different closures when we constructed the function <code>h</code>.</p>
 <p>When we call <code>eval</code>, we do not want it to evaluate its input in its own environment; rather, we want it to evaluate it in the caller&rsquo;s environment.</p>
 <p>Traditionally, we call function instances on the call stack frames. Since instance environment can survive longer than function calls, we are not really working with proper frames, but the terminology persists. We want to evaluate the expression we give <code>eval</code> in the caller&rsquo;s frame, not in <code>eval</code>&rsquo;s environment.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/calling%20eval.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/calling%20eval.png">
 </figure>
 
 <p>Well, <code>eval</code> is implemented using magic, and this is exactly what it does; it evaluates its input in the caller&rsquo;s frame.^[When I say magic, I am not far from the truth. The <code>eval</code> function uses a function that is built into the R runtime system, and that means that it can do more than we can do with normal R functions. We cannot implement <code>eval</code> as a normal R function, because we need the functionality that <code>eval</code> provides to do that. Some magic is needed. Once we have it, though, we can exploit the hell out of it.]</p>
@@ -460,7 +460,7 @@
 </span></span><span style="display:flex;"><span>dyn_closure &lt;- dynamic(<span style="color:#00f">1</span>)
 </span></span></code></pre></div><p>Here, we have two functions that create closures, and we create one from each. I have called them <code>lexical</code> and <code>dynamic</code> because they implement lexical and dynamic scoping, respectively. Don&rsquo;t worry about the terminology if it is unfamiliar. All sensible languages use lexical scoping—it is much easier to reason about—but dynamic scoping is something we can exploit in a non-standard evaluation. You will see the difference between the two in just a second.</p>
 <p>After creation <code>lex_closure</code> and <code>dyn_closures</code>, the setup looks very similar.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/lex%20vs%20dyn.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/lex%20vs%20dyn.png">
 </figure>
 
 <p>Both closures have an environment that contains a value for <code>x</code>—in both cases that value is 1—and both environments have the global environment as the parent. The only difference in the two closures is the function body we execute when we call them.</p>
@@ -471,15 +471,15 @@
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>caller(<span style="color:#00f">2</span>, dyn_closure)
 </span></span></code></pre></div><pre tabindex="0"><code>## [1] 2
 </code></pre><p>The two calls to <code>caller</code> look the same. You get this graph of function instances with parent environments (in brown) and caller frames (in blue) regardless of whether you use the lex closure or the dyn closure.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/Lex%20dyn%20call.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/Lex%20dyn%20call.png">
 </figure>
 
 <p>The difference between the two calls is the path that R takes to search for <code>x</code>. In the lexical scoping closures, <code>eval</code> will look in its caller frame, which is the <code>lex_closure</code> instance, and then search up the parent chain there.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/Lex%20dyn%20call%20search.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/Lex%20dyn%20call%20search.png">
 </figure>
 
 <p>With <code>dyn_closure</code> we connect <code>eval</code> with <code>dyn_closure</code>&rsquo;s calling frame, so we skip <code>dyn_closure</code>&rsquo;s instance environment entirely and search in <code>caller</code> instead, where we find <code>x</code>.</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/Lex%20dyn%20call%20search%202.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/Lex%20dyn%20call%20search%202.png">
 </figure>
 
 <p>The figures are getting a bit crowded by now, but I am sure you can work your way through them, with little effort. They capture most of what you need to know about scopes and evaluation: how environments are chained together by the lexical scope and how function call-stacks are chained together through caller frames.</p>
@@ -592,21 +592,21 @@
 </code></pre><p>Wait, what? Why doesn&rsquo;t it work with <code>x</code> for <code>d2</code>?</p>
 <p>The <code>let</code> function does precisely what it is supposed to do with the substitution. The problem is when we evaluate the result.</p>
 <p>The setup that works looks like this:</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/lm_prob2%20ok.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/lm_prob2%20ok.png">
 </figure>
 
 <p>The one that fails looks like this:</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/lm_prob2%20fail.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/lm_prob2%20fail.png">
 </figure>
 
 <p>They look very similar, almost identically, so why does one work while the other does not?</p>
 <p>The function <code>lm</code> also uses a non-standard evaluation. If we give it a data frame, it will look for variables there before it looks in the enclosing scope, i.e. the function that calls <code>lm</code>.</p>
 <p>When we evaluate <code>lm(y ~ a, data = d)</code>, we search for <code>a</code> and <code>y</code> like this:</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/lm2%20details%20ok.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/lm2%20details%20ok.png">
 </figure>
 
 <p>When we evaluate <code>lm(b ~ x, data = d)</code>, we search for <code>x</code> and <code>b</code> like this:</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/lm2%20details%20ok%20fail.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/lm2%20details%20ok%20fail.png">
 </figure>
 
 <p>The <code>x</code> we find is the local variable, not the global one. That is why the function call fails.</p>
@@ -670,7 +670,7 @@
 </span></span></code></pre></div><pre tabindex="0"><code>## Error in is.data.frame(data): objekt &#39;d&#39; blev ikke fundet
 </code></pre><p>It cannot find <code>d</code> because that name only exists in the call-environment of <code>indirect(aa, bb, eval = TRUE)</code>.</p>
 <p>The search for <code>d</code> goes as follows:</p>
-<figure><img src="https://mailund.dk/posts/scoping-rules-and-nse/lm%20prob%205%20failure.png">
+<figure><img src="http://localhost:1313/posts/scoping-rules-and-nse/lm%20prob%205%20failure.png">
 </figure>
 
 <p>We do not follow the &ldquo;caller frame&rdquo; reference from <code>lm_prob4</code> to <code>indirect</code>. We do get an error; we would be worse off if the global scope had a data frame called <code>d</code>. Then we might not get an error but instead just get the wrong result. That can be hard to debug.</p>
@@ -720,12 +720,12 @@
     <ul>
         
         <li>
-            <a href="https://mailund.dk/posts/ctib-slides-chp3-and-4/"><i class="fa fa-chevron-circle-left"></i> Slides (CT chapters 3 and 4)</a>
+            <a href="http://localhost:1313/posts/ctib-slides-chp3-and-4/"><i class="fa fa-chevron-circle-left"></i> Slides (CT chapters 3 and 4)</a>
         </li>
         
         
         <li>
-            <a href="https://mailund.dk/posts/ct-slides-chapter5/">Slides for Computational Thinking (Chapter 5) <i class="fa fa-chevron-circle-right"></i> </a>
+            <a href="http://localhost:1313/posts/ct-slides-chapter5/">Slides for Computational Thinking (Chapter 5) <i class="fa fa-chevron-circle-right"></i> </a>
         </li>
         
     </ul>
@@ -740,10 +740,10 @@
     <footer>
         <h6>Copyright © 2020-2025 - Thomas Mailund |
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="https://mailund.dk/index.xml">Subscribe</a></h6>
+            <a href="http://localhost:1313/index.xml">Subscribe</a></h6>
     </footer>
 </div>
-<script src="https://mailund.dk/js/scripts.js"></script>
+<script src="http://localhost:1313/js/scripts.js"></script>
 </body>
 <div id="amzn-assoc-ad-04956520-8388-43ab-9b6e-fbe758d208f8"></div>
 <script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=04956520-8388-43ab-9b6e-fbe758d208f8"></script>
