@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software on Mailund on the Internet</title>
-    <link>http://localhost:1313/tags/software/</link>
+    <link>https://mailund.dk/tags/software/</link>
     <description>Recent content in Software on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/software/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mailund.dk/tags/software/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Software</title>
-      <link>http://localhost:1313/software/</link>
+      <link>https://mailund.dk/software/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/software/</guid>
+      <guid>https://mailund.dk/software/</guid>
       <description>&lt;p&gt;I have written various software over the years. You can get a list of most of it at &lt;a href=&#34;https://github.com/mailund&#34;&gt;GitHub&lt;/a&gt;. Below is a list of software I have worked on recently (and I promise to still be maintaining). I will do my best to handle issues with older software, but some of it is simply too old for me to keep track of.&lt;/p&gt;</description>
     </item>
   </channel>

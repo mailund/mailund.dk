@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Algorithms on Mailund on the Internet</title>
-    <link>http://localhost:1313/tags/algorithms/</link>
+    <link>https://mailund.dk/tags/algorithms/</link>
     <description>Recent content in Algorithms on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Thu, 25 Nov 2021 14:08:34 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mailund.dk/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Prefix Doubling Attempts</title>
-      <link>http://localhost:1313/posts/prefix-doubling-attemps/</link>
+      <link>https://mailund.dk/posts/prefix-doubling-attemps/</link>
       <pubDate>Thu, 25 Nov 2021 14:08:34 +0100</pubDate>
-      <guid>http://localhost:1313/posts/prefix-doubling-attemps/</guid>
+      <guid>https://mailund.dk/posts/prefix-doubling-attemps/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been working on an algorithm for suffix array construction today. It&amp;rsquo;s called &lt;em&gt;prefix doubling&lt;/em&gt;, but I don&amp;rsquo;t have a link, sorry. I think it comes from &lt;a href=&#34;https://dl.acm.org/doi/10.1145/800152.804905&#34;&gt;this paper&lt;/a&gt; but I don&amp;rsquo;t have access to it at home.&lt;/p&gt;</description>
     </item>
     <item>
       <title>&#39;Witness&#39; arrays</title>
-      <link>http://localhost:1313/posts/witness-array/</link>
+      <link>https://mailund.dk/posts/witness-array/</link>
       <pubDate>Wed, 15 Sep 2021 07:59:33 +0200</pubDate>
-      <guid>http://localhost:1313/posts/witness-array/</guid>
+      <guid>https://mailund.dk/posts/witness-array/</guid>
       <description>&lt;p&gt;The other day I was reminded of an exercises we got first or second year when I studied computer science. It is a cool little trick, that I&amp;rsquo;ve never seen outside of that exercise, so I thought I&amp;rsquo;d share it.&lt;/p&gt;</description>
     </item>
   </channel>

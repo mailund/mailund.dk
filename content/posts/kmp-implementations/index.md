@@ -1,9 +1,8 @@
 ---
 title: "KMP Implementations"
-date: 2025-02-16T17:56:54+01:00
+date: 2025-02-17T17:56:54+01:00
 categories: [Programming, Algorithms]
 tags: [C, Rust, Go, Python]
-draft: true
 ---
 
 Following on my [previous post](https://mailund.dk/posts/some-simple-string-search-implementations/) I set out to implement the Knuth-Morris-Pratt algorithm.

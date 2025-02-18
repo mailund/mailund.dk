@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>String Algorithms on Mailund on the Internet</title>
-    <link>http://localhost:1313/tags/string-algorithms/</link>
+    <link>https://mailund.dk/tags/string-algorithms/</link>
     <description>Recent content in String Algorithms on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Fri, 05 Feb 2021 10:19:43 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/string-algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mailund.dk/tags/string-algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Starting Up Exercises: Burrows-Wheeler Transform</title>
-      <link>http://localhost:1313/posts/starting-up-exercises-bwt/</link>
+      <link>https://mailund.dk/posts/starting-up-exercises-bwt/</link>
       <pubDate>Fri, 05 Feb 2021 10:19:43 +0100</pubDate>
-      <guid>http://localhost:1313/posts/starting-up-exercises-bwt/</guid>
+      <guid>https://mailund.dk/posts/starting-up-exercises-bwt/</guid>
       <description>&lt;p&gt;I am supervising some projects this spring, on algorithms for read-mapping. It&amp;rsquo;s different projects that all involve implementing a working, but primitive, read mapper.&lt;/p&gt;&#xA;&lt;p&gt;There is nothing new there, I have a class every year where we do that, but now it is individual projects. The content doesn&amp;rsquo;t change much; just the teaching format.&lt;/p&gt;</description>
     </item>
   </channel>

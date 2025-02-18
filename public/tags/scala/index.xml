@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scala on Mailund on the Internet</title>
-    <link>http://localhost:1313/tags/scala/</link>
+    <link>https://mailund.dk/tags/scala/</link>
     <description>Recent content in Scala on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Fri, 14 Feb 2025 13:19:35 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mailund.dk/tags/scala/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Giving Scala a Go—Playing with Lists</title>
-      <link>http://localhost:1313/posts/giving-scala-a-go/</link>
+      <link>https://mailund.dk/posts/giving-scala-a-go/</link>
       <pubDate>Fri, 14 Feb 2025 13:19:35 +0100</pubDate>
-      <guid>http://localhost:1313/posts/giving-scala-a-go/</guid>
+      <guid>https://mailund.dk/posts/giving-scala-a-go/</guid>
       <description>&lt;p&gt;Soon, I will be unemployed — the needs of Kvantify and my interests and qualifications have diverged over the last year — so it is time to brush up on my skills, so I look interesting for potential future employer. Since I don’t know what a future employer will be looking for, this mainly means finding something I’m not familiar with but interested in and playing with it. Today, the choice fell on Scala.&lt;/p&gt;</description>
     </item>
   </channel>

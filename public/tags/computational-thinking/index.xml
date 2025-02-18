@@ -2,95 +2,95 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Computational-Thinking on Mailund on the Internet</title>
-    <link>http://localhost:1313/tags/computational-thinking/</link>
+    <link>https://mailund.dk/tags/computational-thinking/</link>
     <description>Recent content in Computational-Thinking on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
     <lastBuildDate>Tue, 12 Jan 2021 08:27:09 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/computational-thinking/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mailund.dk/tags/computational-thinking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Book update: Pointers in C and and Computational Thinking</title>
-      <link>http://localhost:1313/posts/book-update-cptr-ct/</link>
+      <link>https://mailund.dk/posts/book-update-cptr-ct/</link>
       <pubDate>Tue, 12 Jan 2021 08:27:09 +0100</pubDate>
-      <guid>http://localhost:1313/posts/book-update-cptr-ct/</guid>
-      <description>&lt;figure class=&#34;float-right&#34;&gt;&lt;a href=&#34;https://amzn.to/35vpSfI&#34;&gt;&lt;img src=&#34;http://localhost:1313/posts/book-update-cptr-ct/cptrs.jpg&#34;&gt;&lt;/a&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;So, my C pointers book apparently has a cover now. Before you complain, I don&amp;rsquo;t write the titles (although I don&amp;rsquo;t disagree with the title for this book), nor the subtitles (where I do for this one). I don&amp;rsquo;t know what they mean by &amp;ldquo;modern approach to memory management&amp;rdquo;. It&amp;rsquo;s &lt;code&gt;malloc()&lt;/code&gt; and &lt;code&gt;free()&lt;/code&gt; and some tricks for that, like reference counting and allocation pools.&lt;/p&gt;</description>
+      <guid>https://mailund.dk/posts/book-update-cptr-ct/</guid>
+      <description>&lt;figure class=&#34;float-right&#34;&gt;&lt;a href=&#34;https://amzn.to/35vpSfI&#34;&gt;&lt;img src=&#34;https://mailund.dk/posts/book-update-cptr-ct/cptrs.jpg&#34;&gt;&lt;/a&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;So, my C pointers book apparently has a cover now. Before you complain, I don&amp;rsquo;t write the titles (although I don&amp;rsquo;t disagree with the title for this book), nor the subtitles (where I do for this one). I don&amp;rsquo;t know what they mean by &amp;ldquo;modern approach to memory management&amp;rdquo;. It&amp;rsquo;s &lt;code&gt;malloc()&lt;/code&gt; and &lt;code&gt;free()&lt;/code&gt; and some tricks for that, like reference counting and allocation pools.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Exercises (CT Chapter 9)</title>
-      <link>http://localhost:1313/posts/ctib-exercises-chapter9/</link>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter9/</link>
       <pubDate>Mon, 01 Oct 2018 15:36:05 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-exercises-chapter9/</guid>
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter9/</guid>
       <description>&lt;h1 id=&#34;exercises&#34;&gt;Exercises&lt;/h1&gt;&#xA;&lt;h2 id=&#34;missing-element&#34;&gt;Missing element&lt;/h2&gt;&#xA;&lt;p&gt;You are given a sorted array, &lt;code&gt;A&lt;/code&gt;. It contains n - 1 of the numbers from 1 to n. You should find the missing number.&lt;/p&gt;&#xA;&lt;p&gt;You can use the property that for all numbers &lt;code&gt;i&lt;/code&gt; less than the missing number you have &lt;code&gt;A[i] == i&lt;/code&gt;, while for all &lt;code&gt;i&lt;/code&gt; larger than the missing number you have &lt;code&gt;A[i] == i - 1&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Slides (CT Chapter 9)</title>
-      <link>http://localhost:1313/posts/ctib-slides-chapter9/</link>
+      <link>https://mailund.dk/posts/ctib-slides-chapter9/</link>
       <pubDate>Mon, 01 Oct 2018 08:54:19 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-slides-chapter9/</guid>
+      <guid>https://mailund.dk/posts/ctib-slides-chapter9/</guid>
       <description>&lt;p&gt;Here are some slides for chapter 9 of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%209%20-%20Divide%20and%20conquer/Chapter%209%20-%20Divide%20and%20Conquer.pdf&#34;&gt;Slides&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%209%20-%20Divide%20and%20conquer/Chapter%209%20-%20Divide%20and%20Conquer%20handouts.pdf&#34;&gt;Handouts&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%209%20-%20Divide%20and%20conquer/Chapter%209%20-%20Divide%20and%20Conquer%20handouts%20with%20notes.pdf&#34;&gt;Handouts with notes&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Exercises (CT Chapter 7)</title>
-      <link>http://localhost:1313/posts/ctib-exercises-chapter7/</link>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter7/</link>
       <pubDate>Tue, 25 Sep 2018 17:04:13 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-exercises-chapter7/</guid>
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter7/</guid>
       <description>&lt;p&gt;I don’t really have a lot of exercises for the chapter on recursion. I had planned to combine recursion with divide-and-conquer, but now the two topics are split over two weeks. Instead, I will have a project for the students to do while they learn about recursion; then it doesn’t matter so much that there are not that many exercises.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Slides (CT Chapter 7)</title>
-      <link>http://localhost:1313/posts/ctib-slides-chapter7/</link>
+      <link>https://mailund.dk/posts/ctib-slides-chapter7/</link>
       <pubDate>Tue, 25 Sep 2018 15:33:57 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-slides-chapter7/</guid>
+      <guid>https://mailund.dk/posts/ctib-slides-chapter7/</guid>
       <description>&lt;p&gt;There is not a whole lot to say about recursion as such, but I&amp;rsquo;ve made a few slides. Half of it is just about how function calls work.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%207%20-%20Recursion/Chapter%207%20-%20Recursion.pdf&#34;&gt;Slides&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%207%20-%20Recursion/Chapter%207%20-%20Recursion%20handouts.pdf&#34;&gt;Handouts&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/mailund/compthink/raw/master/slides/Chapter%207%20-%20Recursion/Chapter%207%20-%20Recursion%20handouts%20with%20notes.pdf&#34;&gt;Handouts with notes&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Exercises (CT chapter 5)</title>
-      <link>http://localhost:1313/posts/ctib-exercises-chapter5/</link>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter5/</link>
       <pubDate>Mon, 24 Sep 2018 10:54:12 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-exercises-chapter5/</guid>
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter5/</guid>
       <description>&lt;p&gt;I’m on a roll today! Here are the exercises for chapter 5 of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Let me know if you spot any errors; I am known to make some from time to time.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Exercises (CT chapter 4)</title>
-      <link>http://localhost:1313/posts/ctib-exercises-chapter4/</link>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter4/</link>
       <pubDate>Mon, 24 Sep 2018 07:19:28 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-exercises-chapter4/</guid>
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter4/</guid>
       <description>&lt;p&gt;I think I’m done with the exercises for chapter 4 of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;. Which is good, because I need to put them on Blackboard for my students this week.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Slides for Computational Thinking (Chapter 5)</title>
-      <link>http://localhost:1313/posts/ct-slides-chapter5/</link>
+      <link>https://mailund.dk/posts/ct-slides-chapter5/</link>
       <pubDate>Sat, 22 Sep 2018 12:12:45 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ct-slides-chapter5/</guid>
+      <guid>https://mailund.dk/posts/ct-slides-chapter5/</guid>
       <description>&lt;p&gt;I just finished make slides for chapter 5 of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt; that covers search and sorting algorithms.&lt;/p&gt;&#xA;&lt;p&gt;The slides cover linear and binary search, insertion, selection and bubble sort, as well as bucket and radix sort. The chapter covers a little bit more, including how numbers are represented on a computer, and the consequences of this for bucket and radix sort.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Slides (CT chapters 3 and 4)</title>
-      <link>http://localhost:1313/posts/ctib-slides-chp3-and-4/</link>
+      <link>https://mailund.dk/posts/ctib-slides-chp3-and-4/</link>
       <pubDate>Wed, 19 Sep 2018 17:04:47 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-slides-chp3-and-4/</guid>
+      <guid>https://mailund.dk/posts/ctib-slides-chp3-and-4/</guid>
       <description>&lt;p&gt;I played around a little with my slides for chapter three of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt; and made slides for chapter four.&lt;/p&gt;&#xA;&lt;p&gt;It takes surprisingly long to make these; I had expected to be done with the five chapters I use in my class this year a few weeks ago but I still have three chapters to go. I won’t run out of time—I have plenty of time to make slides between the first and last lecture—but it is eating into time I really should be using on &lt;a href=&#34;https://amzn.to/2pngZQ0&#34;&gt;&lt;em&gt;The Joys of Hashing&lt;/em&gt;&lt;/a&gt; where a deadline is coming up.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Exercises (CT chapter 3)</title>
-      <link>http://localhost:1313/posts/ctib-exercises-chapter3/</link>
+      <link>https://mailund.dk/posts/ctib-exercises-chapter3/</link>
       <pubDate>Wed, 19 Sep 2018 16:41:37 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-exercises-chapter3/</guid>
+      <guid>https://mailund.dk/posts/ctib-exercises-chapter3/</guid>
       <description>&lt;p&gt;I have cleaned up the exercises for chapter three of &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;Introduction to Computational Thinking&lt;/a&gt;. I’m still not exactly sure how best to provide them to my students, or if I can figure out some way to automatically test answers so they can be more interactive, but I have listed them below. I have listed my answers below the exercises, so if you want to do the exercises, then stop in time.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Complexity Exercises</title>
-      <link>http://localhost:1313/posts/ctib-complexity-exercises/</link>
+      <link>https://mailund.dk/posts/ctib-complexity-exercises/</link>
       <pubDate>Fri, 14 Sep 2018 10:20:44 +0200</pubDate>
-      <guid>http://localhost:1313/posts/ctib-complexity-exercises/</guid>
+      <guid>https://mailund.dk/posts/ctib-complexity-exercises/</guid>
       <description>&lt;p&gt;In the second lesson that I teach in our &lt;a href=&#34;https://kursuskatalog.au.dk/da/course/82773/Computational-Thinking-in-Bioinformatics&#34;&gt;Computational Thinking in Bioinformatics&lt;/a&gt; I cover algorithmic complexity. It is chapter four in my (draft) book on the topic: &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Slides for Computational Thinking (Chapter 3)</title>
-      <link>http://localhost:1313/posts/compbio-chapter-3-slides/</link>
+      <link>https://mailund.dk/posts/compbio-chapter-3-slides/</link>
       <pubDate>Wed, 12 Sep 2018 13:40:42 +0200</pubDate>
-      <guid>http://localhost:1313/posts/compbio-chapter-3-slides/</guid>
+      <guid>https://mailund.dk/posts/compbio-chapter-3-slides/</guid>
       <description>&lt;p&gt;I’m teaching four weeks of a class called &lt;em&gt;Computational Thinking in Bioinformatics&lt;/em&gt; this year (the other weeks are taught by colleagues).&lt;/p&gt;&#xA;&lt;p&gt;It is this class that got me started on my book on the topic: &lt;a href=&#34;https://leanpub.com/comp-thinking&#34;&gt;&lt;em&gt;Introduction to Computational Thinking&lt;/em&gt;&lt;/a&gt;. I have finished the chapters I need for the class—chapters three, four, five, seven and nine—but there is still a &lt;em&gt;looong&lt;/em&gt; way to go before the book is done.&lt;/p&gt;</description>
     </item>
   </channel>

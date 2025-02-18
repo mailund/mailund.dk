@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rust on Mailund on the Internet</title>
-    <link>http://localhost:1313/tags/rust/</link>
+    <link>https://mailund.dk/tags/rust/</link>
     <description>Recent content in Rust on Mailund on the Internet</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Sun, 16 Feb 2025 17:56:54 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Feb 2025 17:56:54 +0100</lastBuildDate>
+    <atom:link href="https://mailund.dk/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>KMP Implementations</title>
-      <link>http://localhost:1313/posts/kmp-implementations/</link>
-      <pubDate>Sun, 16 Feb 2025 17:56:54 +0100</pubDate>
-      <guid>http://localhost:1313/posts/kmp-implementations/</guid>
+      <link>https://mailund.dk/posts/kmp-implementations/</link>
+      <pubDate>Mon, 17 Feb 2025 17:56:54 +0100</pubDate>
+      <guid>https://mailund.dk/posts/kmp-implementations/</guid>
       <description>&lt;p&gt;Following on my &lt;a href=&#34;https://mailund.dk/posts/some-simple-string-search-implementations/&#34;&gt;previous post&lt;/a&gt; I set out to implement the Knuth-Morris-Pratt algorithm.&lt;/p&gt;&#xA;&lt;p&gt;This algorithm shifts the pattern &lt;code&gt;p&lt;/code&gt; along &lt;code&gt;x&lt;/code&gt;, exploiting the structure in &lt;code&gt;p&lt;/code&gt; to skip positions we know cannot match. To do this, it uses a so-called &lt;em&gt;border array&lt;/em&gt; that we need to pre-compute.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Simple String Search Implementations</title>
-      <link>http://localhost:1313/posts/some-simple-string-search-implementations/</link>
+      <link>https://mailund.dk/posts/some-simple-string-search-implementations/</link>
       <pubDate>Sun, 16 Feb 2025 06:39:39 +0100</pubDate>
-      <guid>http://localhost:1313/posts/some-simple-string-search-implementations/</guid>
+      <guid>https://mailund.dk/posts/some-simple-string-search-implementations/</guid>
       <description>&lt;p&gt;I’ll get back to playing with Scala soon, but since I don’t know which skills to brush up on, I also decided to play with a few other things.&lt;/p&gt;&#xA;&lt;p&gt;I have taught string algorithms for over a decade, so I figured that using a few simple algorithms I know very well would be an interesting way to play with how the same goal can be achieved in different languages.&lt;/p&gt;</description>
     </item>
   </channel>
