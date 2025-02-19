@@ -7,20 +7,20 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 17 Feb 2025 17:56:54 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2025 06:22:14 +0100</lastBuildDate>
     <atom:link href="https://mailund.dk/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programming</title>
+      <link>https://mailund.dk/categories/programming/</link>
+      <pubDate>Wed, 19 Feb 2025 06:22:14 +0100</pubDate>
+      <guid>https://mailund.dk/categories/programming/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Algorithms</title>
       <link>https://mailund.dk/categories/algorithms/</link>
       <pubDate>Mon, 17 Feb 2025 17:56:54 +0100</pubDate>
       <guid>https://mailund.dk/categories/algorithms/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Programming</title>
-      <link>https://mailund.dk/categories/programming/</link>
-      <pubDate>Mon, 17 Feb 2025 17:56:54 +0100</pubDate>
-      <guid>https://mailund.dk/categories/programming/</guid>
       <description></description>
     </item>
     <item>

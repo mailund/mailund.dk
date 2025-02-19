@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Fri, 14 Feb 2025 13:19:35 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2025 06:22:14 +0100</lastBuildDate>
     <atom:link href="https://mailund.dk/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scala Lists, Eager and Lazy</title>
+      <link>https://mailund.dk/posts/scala-lists/</link>
+      <pubDate>Wed, 19 Feb 2025 06:22:14 +0100</pubDate>
+      <guid>https://mailund.dk/posts/scala-lists/</guid>
+      <description>&lt;p&gt;So, I returned to looking at Scala. I wanted to implement two types of lists: a regular linked list and a lazy list (i.e., a list where you don’t evaluate the tail before you need it). Both are already available in Scala, but I’m solely doing this for educational purposes.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Giving Scala a Go—Playing with Lists</title>
       <link>https://mailund.dk/posts/giving-scala-a-go/</link>

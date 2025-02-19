@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright &amp;copy; 2020-2025 - Thomas Mailund</copyright>
-    <lastBuildDate>Mon, 17 Feb 2025 17:56:54 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2025 06:22:14 +0100</lastBuildDate>
     <atom:link href="https://mailund.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
@@ -43,6 +43,13 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       <guid>https://mailund.dk/software/</guid>
       <description>&lt;p&gt;I have written various software over the years. You can get a list of most of it at &lt;a href=&#34;https://github.com/mailund&#34;&gt;GitHub&lt;/a&gt;. Below is a list of software I have worked on recently (and I promise to still be maintaining). I will do my best to handle issues with older software, but some of it is simply too old for me to keep track of.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Scala Lists, Eager and Lazy</title>
+      <link>https://mailund.dk/posts/scala-lists/</link>
+      <pubDate>Wed, 19 Feb 2025 06:22:14 +0100</pubDate>
+      <guid>https://mailund.dk/posts/scala-lists/</guid>
+      <description>&lt;p&gt;So, I returned to looking at Scala. I wanted to implement two types of lists: a regular linked list and a lazy list (i.e., a list where you don’t evaluate the tail before you need it). Both are already available in Scala, but I’m solely doing this for educational purposes.&lt;/p&gt;</description>
     </item>
     <item>
       <title>KMP Implementations</title>
